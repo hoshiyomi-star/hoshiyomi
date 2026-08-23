@@ -1,95 +1,335 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>星詠｜HOSHIYOMI — Ver.2</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#050817;color:#f5f3ea;font-family:"Noto Serif JP",serif;line-height:1.9}
-a{color:inherit;text-decoration:none}
-.hero{min-height:100svh;position:relative;overflow:hidden;display:grid;place-items:center;text-align:center;
-background:radial-gradient(circle at 70% 25%,#1d2a55 0,transparent 28%),linear-gradient(180deg,#02040d 0%,#07112c 55%,#030713 100%)}
-.stars,.stars:before,.stars:after{content:"";position:absolute;inset:0;background-image:
-radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1.5px),
-radial-gradient(circle,rgba(196,211,255,.65) 1px,transparent 1.5px);
-background-size:97px 97px,151px 151px;background-position:10px 20px,55px 70px;opacity:.55;animation:drift 28s linear infinite}
-.stars:before{opacity:.25;transform:scale(1.2);animation-duration:45s}.stars:after{opacity:.18;transform:scale(1.45);animation-duration:65s}
-@keyframes drift{to{transform:translate3d(-30px,35px,0)}}
-.starfield{position:absolute;inset:-20%;pointer-events:none;will-change:transform}
-.starfield-far{opacity:.45;background-image:
-radial-gradient(circle,rgba(255,255,255,.8) 0 1px,transparent 1.7px),
-radial-gradient(circle,rgba(183,199,255,.55) 0 1px,transparent 1.7px);
-background-size:127px 127px,211px 211px;background-position:20px 40px,90px 15px;
-animation:starDriftFar 75s linear infinite}
-.starfield-near{opacity:.7;background-image:
-radial-gradient(circle,rgba(255,255,255,.9) 0 1.4px,transparent 2px),
-radial-gradient(circle,rgba(238,220,153,.7) 0 1.1px,transparent 1.8px);
-background-size:181px 181px,263px 263px;background-position:40px 100px,130px 55px;
-animation:starDriftNear 38s linear infinite}
-@keyframes starDriftFar{to{transform:translate3d(-45px,30px,0)}}
-@keyframes starDriftNear{to{transform:translate3d(-105px,70px,0)}}
-.shooting-star{position:absolute;left:10%;top:32%;width:2px;height:2px;border-radius:50%;
-background:#fff;box-shadow:0 0 8px 2px rgba(255,255,255,.9);opacity:0;animation:shoot 11s ease-in-out infinite 3s}
-.shooting-star:after{content:"";position:absolute;right:2px;top:0;width:95px;height:1px;
-transform-origin:right center;transform:rotate(-28deg);
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.55))}
-@keyframes shoot{0%,72%,100%{opacity:0;transform:translate(0,0)}76%{opacity:1}85%{opacity:0;transform:translate(210px,115px)}}
-.moon{position:absolute;width:150px;height:150px;border-radius:50%;right:12%;top:13%;
-background:radial-gradient(circle at 35% 30%,#fffdf0,#d8d7c8 58%,#8e92aa 100%);
-box-shadow:0 0 60px rgba(222,228,255,.25);will-change:transform}
-.content{position:relative;z-index:2;padding:40px 22px}
-.mark{font-family:serif;font-size:clamp(3.4rem,12vw,7rem);letter-spacing:.22em;margin-left:.22em}
-.sub{font:600 1rem/1.2 Georgia,serif;letter-spacing:.35em;margin:4px 0 30px;opacity:.8}
-.tag{font-size:clamp(1rem,3.5vw,1.35rem);letter-spacing:.12em;margin:0 auto 38px}
-.cta{display:inline-block;border:1px solid rgba(238,220,153,.7);padding:10px 28px;border-radius:999px;color:#f2df9d;transition:.3s}
-.cta:hover{background:rgba(238,220,153,.1);transform:translateY(-2px)}
-.scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:.72rem;letter-spacing:.3em;opacity:.55}
-section{padding:100px 22px;max-width:980px;margin:auto}
-h2{font-size:1.7rem;font-weight:400;letter-spacing:.18em;margin:0 0 28px}
-.lead{font-size:1.05rem}.cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
-.card{min-height:170px;border:1px solid rgba(255,255,255,.12);padding:28px;background:rgba(15,24,53,.5);border-radius:14px}
-.card b{color:#ead796;font-weight:400;letter-spacing:.1em}
-footer{text-align:center;padding:65px 20px;border-top:1px solid rgba(255,255,255,.1);opacity:.8}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
-@media(max-width:650px){.moon{width:95px;height:95px;right:8%;top:10%}.cardgrid{grid-template-columns:1fr}.hero{min-height:92svh}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>権利・利用について｜星詠</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header class="hero" id="top">
-  <div class="stars"></div>
-  <div class="starfield starfield-far" aria-hidden="true"></div>
-  <div class="starfield starfield-near" aria-hidden="true"></div>
-  <div class="shooting-star" aria-hidden="true"></div>
-  <div class="moon"></div>
-  <div class="content">
-    <div class="mark">星詠</div><div class="sub">HOSHIYOMI</div>
-    <p class="tag">無限に広がる夜空から、<br>あなただけの星を。</p>
-    <a class="cta" href="#about">星詠について</a>
-  </div>
-  <div class="scroll">SCROLL ↓</div>
-</header>
-<main>
-<section id="about"><h2>ABOUT｜星詠について</h2>
-<p class="lead">「リアルのあなた」と「理想のあなた」。</p>
-<p>REALITYのアバターに込めた想い、雰囲気、テーマ、そして「こうなりたい」という理想。それらを丁寧に受け取り、一枚の作品として形にします。</p>
-<p>あなたの中にある魅力を、<strong>音のない詞</strong>として。</p></section>
-<section id="menu"><h2>MENU｜制作メニュー</h2><div class="cardgrid">
-<div class="card"><b>MINI SHIKISHI</b><br><strong>ミニ色紙</strong><br>¥10,000〜</div>
-<div class="card"><b>ACRYLIC CHARM</b><br><strong>アクリルチャーム</strong><br>¥15,000〜</div>
-<div class="card"><b>ILLUSTRATION</b><br><strong>一枚絵</strong><br>¥30,000〜</div>
-</div></section>
-<section id="flow"><h2>FLOW｜ご依頼の流れ</h2>
-<p>相談 → 内容確認・お見積もり → 正式依頼 → ヒアリング → ラフ → 線画 → お支払い → 着彩 → 完成・納品</p>
-<p>納期は<strong>1〜3ヶ月程度</strong>を目安としております。</p></section>
-<section id="contact"><h2>CONTACT｜ご依頼・ご相談</h2>
-<p>「こんな雰囲気にしたい」「この想いを描いてほしい」など、まだイメージがまとまっていなくても大丈夫です。</p>
-<a class="cta" href="mailto:example@example.com">お問い合わせ</a></section>
+
+<main class="rights-page">
+
+  <section class="page-header">
+    <p class="eyebrow">RIGHTS & USE</p>
+    <h1>権利・利用について</h1>
+
+    <p>
+      作品をお渡ししたあとも、<br>
+      その作品がどのように扱われるのかは大切なことです。
+    </p>
+
+    <p>
+      「これは使っていい？」<br>
+      「こういう使い方はできる？」
+    </p>
+
+    <p>
+      そんな疑問が残らないよう、<br>
+      星詠で制作した作品の権利と利用について定めています。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>著作権について</h2>
+
+    <p>
+      星詠が制作した作品の著作権は、原則として星詠に帰属します。
+    </p>
+
+    <p>
+      著作権の譲渡は行っておりません。
+    </p>
+
+    <p>
+      作品を購入・納品したことによって、
+      著作権そのものが依頼者様へ移転するものではありません。
+    </p>
+
+    <p>
+      依頼者様には、定められた範囲で作品を利用する権利を付与します。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>利用方法</h2>
+
+    <table class="rights-table">
+      <thead>
+        <tr>
+          <th>利用</th>
+          <th>利用できる範囲</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>SNSアイコン</td>
+          <td>○</td>
+        </tr>
+        <tr>
+          <td>SNSヘッダー</td>
+          <td>○</td>
+        </tr>
+        <tr>
+          <td>SNSへの投稿</td>
+          <td>○</td>
+        </tr>
+        <tr>
+          <td>個人利用</td>
+          <td>○</td>
+        </tr>
+        <tr>
+          <td>印刷</td>
+          <td>○</td>
+        </tr>
+        <tr>
+          <td>配信活動</td>
+          <td>△</td>
+        </tr>
+        <tr>
+          <td>グッズ制作</td>
+          <td>△</td>
+        </tr>
+        <tr>
+          <td>商用利用</td>
+          <td>✕</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>配信活動</h2>
+
+    <p>
+      配信活動での使用は、具体的な使用方法を事前にご相談ください。
+    </p>
+
+    <p>
+      配信画面、サムネイル、プロフィール画像など、
+      利用方法によって条件が異なる場合があります。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>グッズについて</h2>
+
+    <h3>個人で楽しむためのグッズ</h3>
+
+    <p>
+      自分自身で楽しむ目的であれば、基本的にご自由に制作いただけます。
+    </p>
+
+    <h3>販売・配布</h3>
+
+    <p>
+      グッズを販売・配布する場合は、必ず事前にご相談ください。
+    </p>
+
+    <p>
+      利用方法によって、追加料金や条件が発生する場合があります。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>商用利用について</h2>
+
+    <p>
+      通常のご依頼では、商用利用をお受けしていません。
+    </p>
+
+    <p>
+      商品販売、広告、有料サービスの宣伝など、
+      商用目的で使用する場合は事前にご相談ください。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>二次利用・加工</h2>
+
+    <table class="rights-table">
+      <thead>
+        <tr>
+          <th>内容</th>
+          <th>利用</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>色の変更</td>
+          <td>✕</td>
+        </tr>
+        <tr>
+          <td>トリミング</td>
+          <td>○</td>
+        </tr>
+        <tr>
+          <td>加工・描き足し</td>
+          <td>✕</td>
+        </tr>
+        <tr>
+          <td>別作品への使用</td>
+          <td>✕</td>
+        </tr>
+        <tr>
+          <td>第三者による加工</td>
+          <td>△</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      トリミングは、SNS等で使用するために必要な範囲で可能です。
+    </p>
+
+    <p>
+      第三者による加工については、加工内容を事前にご相談ください。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>AIについて</h2>
+
+    <p>
+      星詠で制作した作品を、
+    </p>
+
+    <ul>
+      <li>AI画像生成</li>
+      <li>AI画像加工</li>
+      <li>AI学習</li>
+      <li>AIモデルへの読み込み</li>
+      <li>AI生成素材の作成</li>
+    </ul>
+
+    <p>
+      などの目的で使用することを禁止します。
+    </p>
+
+    <p>
+      また、AI生成画像を参考資料として使用する場合は、
+      事前にお知らせください。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>クレジット</h2>
+
+    <p>
+      SNSなどで作品を使用する場合、
+    </p>
+
+    <p>
+      「星詠」
+    </p>
+
+    <p>
+      のクレジット表記を、可能な範囲でお願いいたします。
+    </p>
+
+    <p>
+      クレジット表記は原則任意です。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>実績掲載</h2>
+
+    <p>
+      星詠では、制作した作品を制作実績として掲載する場合があります。
+    </p>
+
+    <p>掲載先：</p>
+
+    <ul>
+      <li>星詠Webサイト</li>
+      <li>星詠SNS</li>
+      <li>ポートフォリオ</li>
+      <li>制作実績ページ</li>
+    </ul>
+
+    <p>
+      掲載を希望されない場合は、ご依頼時に事前にお知らせください。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>第三者の著作物</h2>
+
+    <p>
+      他者が権利を持つ、
+    </p>
+
+    <ul>
+      <li>キャラクター</li>
+      <li>デザイン</li>
+      <li>イラスト</li>
+      <li>企業・作品のキャラクター</li>
+      <li>その他第三者の著作物</li>
+    </ul>
+
+    <p>
+      を使用する場合は、権利者本人から必要な許可を得たうえでご依頼ください。
+    </p>
+
+    <p>
+      権利関係に問題があると判断した場合、制作をお断りすることがあります。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>REALITY等のアバター</h2>
+
+    <p>
+      REALITYなどのサービス上で使用しているアバター・キャラクターを
+      もとに制作する場合は、各サービスの利用規約および権利関係をご確認ください。
+    </p>
+
+    <p>
+      第三者の権利を侵害する可能性がある場合は、お受けできないことがあります。
+    </p>
+  </section>
+
+
+  <section class="rights-section">
+    <h2>禁止事項</h2>
+
+    <p>以下の利用は禁止します。</p>
+
+    <ul>
+      <li>著作権を侵害する利用</li>
+      <li>無断での商用利用</li>
+      <li>無断でのグッズ販売・配布</li>
+      <li>作品の自作発言</li>
+      <li>作者を偽る行為</li>
+      <li>AIへの読み込み・学習・加工</li>
+      <li>無断での大幅な加工・改変</li>
+      <li>第三者の権利を侵害する利用</li>
+      <li>その他、星詠が不適切と判断する利用</li>
+    </ul>
+  </section>
+
+  <div class="page-back">
+  <a href="index.html">
+    星の海へ戻る
+  </a>
+</div>
+
 </main>
-<footer>星詠｜HOSHIYOMI<br><small>無限に広がる夜空から、あなただけの星を。</small></footer>
-<script>
-(()=>{const far=document.querySelector('.starfield-far'),near=document.querySelector('.starfield-near'),moon=document.querySelector('.moon');let ticking=false;
-function parallax(){const y=scrollY||0;far.style.transform=`translate3d(${y*-0.018}px,${y*0.035}px,0)`;near.style.transform=`translate3d(${y*-0.035}px,${y*0.07}px,0)`;moon.style.transform=`translate3d(0,${y*0.12}px,0)`;ticking=false}
-addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(parallax);ticking=true}},{passive:true});parallax()})();
-</script>
-</body></html>
+
+</body>
+</html>
