@@ -1,101 +1,230 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>星詠｜送信完了</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-font-family:"Noto Sans JP","Yu Gothic",sans-serif;color:#dcecff;
-background:radial-gradient(circle at 50% 15%,rgba(75,100,190,.22),transparent 42%),
-radial-gradient(circle at 20% 70%,rgba(70,80,170,.1),transparent 35%),
-linear-gradient(180deg,#071225 0%,#050b18 55%,#030711 100%);overflow:hidden}
-.star-field{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.star{position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(220,235,255,.8);
-box-shadow:0 0 8px rgba(150,200,255,.5);animation:twinkle 4s ease-in-out infinite}
-.star:nth-child(1){top:12%;left:14%}.star:nth-child(2){top:20%;left:73%;animation-delay:1.2s}
-.star:nth-child(3){top:33%;left:43%;animation-delay:2.1s}.star:nth-child(4){top:47%;left:84%;animation-delay:.7s}
-.star:nth-child(5){top:59%;left:17%;animation-delay:1.7s}.star:nth-child(6){top:70%;left:63%;animation-delay:2.5s}
-.star:nth-child(7){top:82%;left:34%;animation-delay:.9s}.star:nth-child(8){top:88%;left:80%;animation-delay:2.3s}
-.star:nth-child(9){top:37%;left:8%;animation-delay:3s}.star:nth-child(10){top:73%;left:91%;animation-delay:1.4s}
-@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.4)}}
-.thanks-page{position:relative;z-index:1;width:min(760px,calc(100% - 32px));max-height:92vh;overflow-y:auto;
-text-align:center;padding:30px 0}
-.symbol{margin-bottom:24px;color:rgba(210,230,255,.85);font-size:1.8rem;text-shadow:0 0 18px rgba(120,190,255,.5)}
-.title-label{margin-bottom:14px;color:rgba(160,205,255,.55);font-size:.72rem;letter-spacing:.3em}
-h1{margin:0;color:#e5f3ff;font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
-font-size:clamp(2rem,7vw,3.4rem);font-weight:400;line-height:1.6;letter-spacing:.12em}
-.divider{width:75px;height:1px;margin:32px auto;background:rgba(180,220,255,.45)}
-.message-card{padding:clamp(30px,6vw,52px);background:rgba(8,20,42,.68);
-border:1px solid rgba(145,200,255,.16);border-radius:20px;box-shadow:0 20px 60px rgba(0,15,50,.3);
-backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.message{color:rgba(220,235,250,.82);font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
-font-size:clamp(.9rem,3vw,1rem);line-height:2.3;letter-spacing:.08em}
-.message strong{display:block;margin-bottom:20px;color:#eaf7ff;font-size:1.08em;font-weight:400}
-.star-message{margin-top:32px;color:rgba(175,210,240,.62);font-size:.82rem;line-height:2.2;letter-spacing:.06em}
-.back-area{margin-top:38px}.back-button{display:inline-block;min-width:200px;padding:13px 28px;color:#eaf7ff;
-text-decoration:none;font-size:.85rem;letter-spacing:.1em;background:rgba(45,100,170,.4);
-border:1px solid rgba(155,215,255,.32);border-radius:999px;transition:.3s ease}
-.back-button:hover{background:rgba(70,140,220,.5);border-color:rgba(180,230,255,.65);transform:translateY(-2px)}
-@media(max-width:600px){.thanks-page{width:calc(100% - 24px)}h1{font-size:clamp(1.8rem,9vw,2.6rem)}
-.message-card{padding:32px 20px}.message{font-size:.86rem;line-height:2.2}.star-message{font-size:.76rem}.back-button{width:100%;max-width:260px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星は、確かに届きました。｜星詠</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
+      color: #dcecff;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(65, 105, 180, 0.20), transparent 42%),
+        radial-gradient(circle at 80% 65%, rgba(75, 95, 180, 0.10), transparent 35%),
+        linear-gradient(180deg, #071225 0%, #050b18 55%, #030711 100%);
+      overflow-x: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(225, 240, 255, 0.75);
+      border-radius: 50%;
+      box-shadow: 0 0 7px rgba(170, 215, 255, 0.45);
+      animation: twinkle 4s ease-in-out infinite;
+    }
+
+    .star:nth-child(1) { top: 12%; left: 15%; animation-delay: 0s; }
+    .star:nth-child(2) { top: 20%; left: 72%; animation-delay: 1.2s; }
+    .star:nth-child(3) { top: 31%; left: 42%; animation-delay: 2.1s; }
+    .star:nth-child(4) { top: 44%; left: 84%; animation-delay: 0.8s; }
+    .star:nth-child(5) { top: 56%; left: 18%; animation-delay: 1.8s; }
+    .star:nth-child(6) { top: 68%; left: 63%; animation-delay: 2.7s; }
+    .star:nth-child(7) { top: 78%; left: 34%; animation-delay: 1s; }
+    .star:nth-child(8) { top: 88%; left: 78%; animation-delay: 2.4s; }
+    .star:nth-child(9) { top: 36%; left: 8%; animation-delay: 3s; }
+    .star:nth-child(10) { top: 73%; left: 91%; animation-delay: 1.5s; }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.25;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+    }
+
+    .thanks-page {
+      position: relative;
+      z-index: 1;
+      width: min(900px, calc(100% - 32px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 80px 0 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .label {
+      margin-bottom: 22px;
+      color: rgba(160, 205, 255, 0.55);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+    }
+
+    h1 {
+      margin: 0;
+      color: #eaf6ff;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 20px rgba(110, 180, 255, 0.18);
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      margin: 34px 0;
+      background: rgba(180, 220, 255, 0.45);
+      box-shadow: 0 0 12px rgba(120, 190, 255, 0.2);
+    }
+
+    .message {
+      color: rgba(215, 230, 245, 0.75);
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      line-height: 2.4;
+      letter-spacing: 0.08em;
+    }
+
+    .message .emphasis {
+      display: block;
+      margin-bottom: 20px;
+      color: #dcecff;
+      font-size: 1.05em;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 50px;
+      padding: 13px 30px;
+      color: #eaf7ff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      background: rgba(35, 80, 140, 0.35);
+      border: 1px solid rgba(155, 215, 255, 0.32);
+      border-radius: 999px;
+      transition: 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: rgba(70, 130, 210, 0.45);
+      border-color: rgba(190, 230, 255, 0.65);
+      box-shadow: 0 0 22px rgba(100, 190, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .footer-note {
+      position: absolute;
+      bottom: 28px;
+      color: rgba(180, 205, 230, 0.3);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+    }
+
+    @media (max-width: 600px) {
+      .thanks-page {
+        width: calc(100% - 28px);
+        padding: 60px 0 80px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
+      }
+
+      .message {
+        font-size: 0.85rem;
+        line-height: 2.2;
+      }
+
+      .back-button {
+        margin-top: 40px;
+        padding: 12px 25px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="star-field">
-<span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-<span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-</div>
 
-<main class="thanks-page">
-<div class="symbol">✦</div>
+  <div class="stars">
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+  </div>
 
-<section id="contact-message">
-<div class="title-label">INQUIRY RECEIVED</div>
-<h1>お問い合わせを<br>受け付けました。</h1>
-<div class="divider"></div>
-<section class="message-card">
-<div class="message">
-<strong>あなたからの言葉を、確かに受け取りました。</strong>
-お問い合わせありがとうございます。<br>
-内容を確認のうえ、必要に応じてご連絡いたします。
-</div>
-<div class="star-message">
-星詠での時間が、<br>あなたにとって少しでも心に残るものでありますように。
-</div>
-</section>
-</section>
+  <main class="thanks-page">
 
-<section id="star-message" style="display:none">
-<div class="title-label">STAR FRAGMENT RECEIVED</div>
-<h1>星のかけらが<br>届きました。</h1>
-<div class="divider"></div>
-<section class="message-card">
-<div class="message">
-<strong>あなたの星のかけらを、確かに受け取りました。</strong>
-あなたの中にあるもの。<br>
-好きなもの、思い出、願い、景色。<br>
-そのひとつひとつが、あなたを形作る星になります。
-</div>
-<div class="star-message">
-まだ名前のない星も、<br>これから見つかる星も。<br><br>
-あなたのかけらから、<br>あなただけの星を探していきます。
-</div>
-</section>
-</section>
+    <div class="label">
+      STAR FRAGMENT RECEIVED
+    </div>
 
-<div class="back-area"><a href="index.html" class="back-button">✦ 星の海へ戻る</a></div>
-</main>
+    <h1>
+      星は、確かに届きました。
+    </h1>
 
-<script>
-const type=new URLSearchParams(location.search).get("type");
-const contact=document.getElementById("contact-message");
-const star=document.getElementById("star-message");
-if(type==="star"){
-contact.style.display="none";star.style.display="block";
-document.title="星のかけらが届きました｜星詠";
-}
-</script>
+    <div class="divider"></div>
+
+    <div class="message">
+
+      <span class="emphasis">
+        あなたの星のかけらを、確かに受け取りました。
+      </span>
+
+      あなたの中にあるもの。<br>
+      好きなもの、思い出、願い、景色。<br>
+      そのひとつひとつが、あなたを形作る星になります。
+
+      <br><br>
+
+      まだ名前のない星も、<br>
+      これから見つかる星も。<br><br>
+
+      あなたのかけらから、<br>
+      あなただけの星を探していきます。
+
+    </div>
+
+    <a href="index.html" class="back-button">
+      ✦ 星詠へ戻る
+    </a>
+
+    <div class="footer-note">
+      HOSHIYOMI
+    </div>
+
+  </main>
+
 </body>
 </html>
