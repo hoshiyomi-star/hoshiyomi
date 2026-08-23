@@ -5,602 +5,784 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ご依頼相談｜星詠 HOSHIYOMI</title>
+  <title>お問い合わせ｜星詠</title>
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        sans-serif;
+
+      color: #dcecff;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(65, 105, 180, 0.18),
+          transparent 45%
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(70, 80, 180, 0.08),
+          transparent 35%
+        ),
+        linear-gradient(
+          180deg,
+          #071225 0%,
+          #050b18 55%,
+          #030711 100%
+        );
+
+      background-attachment: fixed;
+    }
+
+
+    /* =========================
+       ページ全体
+    ========================== */
+
+    .contact-page {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 70px 0 110px;
+    }
+
+
+    /* =========================
+       上部ナビゲーション
+    ========================== */
+
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      margin-bottom: 65px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+
+      padding: 9px 18px;
+
+      color: rgba(205, 230, 255, 0.72);
+
+      text-decoration: none;
+
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+
+      background:
+        rgba(20, 45, 85, 0.38);
+
+      border:
+        1px solid rgba(150, 205, 255, 0.18);
+
+      border-radius: 999px;
+
+      transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .page-nav a:hover {
+      color: #eaf7ff;
+
+      background:
+        rgba(55, 110, 180, 0.28);
+
+      border-color:
+        rgba(160, 220, 255, 0.55);
+
+      box-shadow:
+        0 0 18px rgba(100, 180, 255, 0.18);
+
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================
+       タイトル
+    ========================== */
+
+    .title-area {
+      text-align: center;
+
+      margin-bottom: 55px;
+    }
+
+    .title-label {
+      margin-bottom: 14px;
+
+      color:
+        rgba(160, 205, 255, 0.55);
+
+      font-size: 0.72rem;
+
+      letter-spacing: 0.3em;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: #e5f3ff;
+
+      font-size:
+        clamp(2rem, 5vw, 3rem);
+
+      font-weight: 400;
+
+      letter-spacing: 0.14em;
+
+      text-shadow:
+        0 0 18px rgba(110, 180, 255, 0.18);
+    }
+
+    .title-description {
+      margin-top: 26px;
+
+      color:
+        rgba(205, 225, 245, 0.72);
+
+      line-height: 2.1;
+
+      font-size: 0.9rem;
+
+      letter-spacing: 0.04em;
+    }
+
+
+    /* =========================
+       フォーム
+    ========================== */
+
+    .contact-form {
+      position: relative;
+
+      padding:
+        clamp(26px, 5vw, 50px);
+
+      background:
+        rgba(8, 20, 42, 0.68);
+
+      border:
+        1px solid rgba(145, 200, 255, 0.16);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 20px 60px rgba(0, 15, 50, 0.3),
+        inset 0 0 35px rgba(90, 150, 230, 0.025);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* 上部の小さな星 */
+
+    .contact-form::before {
+      content: "✦";
+
+      position: absolute;
+
+      top: 18px;
+      right: 24px;
+
+      color:
+        rgba(190, 225, 255, 0.45);
+
+      font-size: 0.75rem;
+
+      text-shadow:
+        0 0 12px rgba(150, 210, 255, 0.4);
+    }
+
+
+    /* =========================
+       フォーム項目
+    ========================== */
+
+    .form-section {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+
+      margin-bottom: 28px;
+
+      color: #dcecff;
+
+      font-size: 0.9rem;
+
+      line-height: 1.7;
+
+      letter-spacing: 0.03em;
+    }
+
+    .required {
+      margin-left: 7px;
+
+      color:
+        rgba(150, 205, 255, 0.65);
+
+      font-size: 0.68rem;
+
+      letter-spacing: 0.05em;
+    }
+
+
+    /* =========================
+       入力欄
+    ========================== */
+
+    input,
+    select,
+    textarea {
+      display: block;
+
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 14px 15px;
+
+      color: #e5f3ff;
+
+      font-family: inherit;
+
+      font-size: 0.9rem;
+
+      letter-spacing: 0.02em;
+
+      background:
+        rgba(3, 12, 28, 0.72);
+
+      border:
+        1px solid rgba(145, 200, 255, 0.18);
+
+      border-radius: 10px;
+
+      outline: none;
+
+      transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color:
+        rgba(185, 210, 235, 0.36);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      background:
+        rgba(5, 17, 38, 0.82);
+
+      border-color:
+        rgba(145, 210, 255, 0.55);
+
+      box-shadow:
+        0 0 15px rgba(100, 180, 255, 0.1);
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    textarea {
+      min-height: 180px;
+
+      resize: vertical;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================
+       入力欄の選択肢
+    ========================== */
+
+    option {
+      color: #dcecff;
+
+      background: #071225;
+    }
+
+
+    /* =========================
+       送信前メッセージ
+    ========================== */
+
+    .contact-message {
+      margin:
+        38px 0 32px;
+
+      padding-top: 26px;
+
+      text-align: center;
+
+      color:
+        rgba(205, 225, 245, 0.62);
+
+      font-size: 0.82rem;
+
+      line-height: 2;
+
+      letter-spacing: 0.04em;
+
+      border-top:
+        1px solid rgba(145, 200, 255, 0.1);
+    }
+
+
+    /* =========================
+       送信ボタン
+    ========================== */
+
+    .submit-area {
+      text-align: center;
+    }
+
+    .submit-button {
+      min-width: 190px;
+
+      padding: 14px 30px;
+
+      color: #eaf7ff;
+
+      font-family: inherit;
+
+      font-size: 0.9rem;
+
+      letter-spacing: 0.12em;
+
+      background:
+        rgba(45, 100, 170, 0.45);
+
+      border:
+        1px solid rgba(155, 215, 255, 0.35);
+
+      border-radius: 999px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background:
+        rgba(70, 140, 220, 0.55);
+
+      border-color:
+        rgba(180, 230, 255, 0.7);
+
+      box-shadow:
+        0 0 22px rgba(100, 190, 255, 0.2);
+
+      transform: translateY(-2px);
+    }
+
+    .submit-button:active {
+      transform: translateY(0);
+    }
+
+
+    /* =========================
+       ページ下部
+    ========================== */
+
+    .page-footer {
+      margin-top: 55px;
+
+      text-align: center;
+
+      color:
+        rgba(160, 195, 225, 0.42);
+
+      font-size: 0.72rem;
+
+      line-height: 2;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* =========================
+       スマートフォン
+    ========================== */
+
+    @media (max-width: 600px) {
+
+      .contact-page {
+        width:
+          calc(100% - 20px);
+
+        padding:
+          40px 0 80px;
+      }
+
+      .page-nav {
+        margin-bottom: 45px;
+
+        gap: 8px;
+      }
+
+      .page-nav a {
+        padding:
+          8px 12px;
+
+        font-size: 0.72rem;
+      }
+
+      .title-area {
+        margin-bottom: 40px;
+      }
+
+      .title-description {
+        font-size: 0.82rem;
+
+        line-height: 2;
+      }
+
+      .contact-form {
+        padding:
+          28px 18px;
+      }
+
+      label {
+        font-size: 0.85rem;
+
+        margin-bottom: 25px;
+      }
+
+      input,
+      select,
+      textarea {
+        font-size: 0.85rem;
+
+        padding:
+          13px 12px;
+      }
+
+      textarea {
+        min-height: 160px;
+      }
+
+      .contact-message {
+        font-size: 0.76rem;
+      }
+
+      .submit-button {
+        width: 100%;
+
+        max-width: 260px;
+      }
+
+      .page-footer {
+        margin-top: 40px;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
   <main class="contact-page">
 
+
     <!-- =========================
-         HERO
-    ========================= -->
+         ページ移動
+    ========================== -->
 
-    <section class="contact-hero">
+    <nav class="page-nav">
 
-      <div class="contact-inner">
+      <a href="index.html">
+        ✦ 星詠
+      </a>
 
-        <p class="request-label">CONTACT</p>
+      <a href="star-sheet.html">
+        ✦ 星のかけら
+      </a>
 
-        <h1>
-          あなたの星を、<br>
-          聞かせてください。
-        </h1>
+      <a href="contact.html">
+        ✦ お問い合わせ
+      </a>
 
-        <div class="request-line"></div>
+    </nav>
 
-        <p class="contact-lead">
-          本名でのご登録は必要ありません。<br>
-          活動名・ハンドルネームでご相談いただけます。
-        </p>
 
-        <p class="contact-note">
-          すべての項目に答える必要はありません。<br>
-          あなたが話したいことだけ、聞かせてください。
-        </p>
+    <!-- =========================
+         タイトル
+    ========================== -->
+
+    <header class="title-area">
+
+      <div class="title-label">
+        CONTACT
+      </div>
+
+      <h1>お問い合わせ</h1>
+
+      <div class="title-description">
+
+        星の海を訪れてくださり、ありがとうございます。<br>
+        ご質問やご相談、ご依頼についてなど、<br>
+        どうぞお気軽にお声がけください。
 
       </div>
 
-    </section>
+    </header>
 
 
     <!-- =========================
-         FORM
-    ========================= -->
+         問い合わせフォーム
+    ========================== -->
 
-    <section class="contact-form-section">
+    <form
+      class="contact-form"
+      action="https://formsubmit.co/hoshi.sengetu@gmail.com"
+      method="POST"
+      accept-charset="UTF-8"
+    >
 
-      <div class="contact-content">
+      <!-- FormSubmit設定 -->
 
-        <p class="request-label">REQUEST FORM</p>
+      <input
+        type="hidden"
+        name="_subject"
+        value="【星詠】お問い合わせが届きました"
+      >
 
-        <h2>ご依頼相談</h2>
+       <input
+        type="hidden"
+        name="_next"
+        value="http://127.0.0.1:5500/thanks.html"
+    >
 
-        <p class="contact-description">
-          ご依頼内容と、あなた自身についてお聞かせください。<br>
-          いただいた内容をもとに、あなたらしい一枚を考えていきます。
-        </p>
+      <input
+        type="hidden"
+        name="_captcha"
+        value="false"
+      >
 
 
-        <form class="contact-form">
+      <div class="form-section">
+
+
+        <!-- =========================
+             お名前
+        ========================== -->
+
+        <label>
+
+          お名前・呼ばれたい名前
+          <span class="required">必須</span>
+
+          <input
+            type="text"
+            name="お名前"
+            placeholder="お名前や呼ばれたい名前"
+            required
+          >
+
+        </label>
+
+
+        <!-- =========================
+             メールアドレス
+        ========================== -->
+
+        <label>
+
+          メールアドレス
+          <span class="required">必須</span>
+
+          <input
+            type="email"
+            name="メールアドレス"
+            placeholder="example@example.com"
+            required
+          >
+
+        </label>
+
+
+        <!-- =========================
+             お問い合わせの種類
+        ========================== -->
+
+        <label>
+
+          お問い合わせの種類
+          <span class="required">必須</span>
+
+          <select
+            name="お問い合わせの種類"
+            required
+          >
+
+            <option
+              value=""
+              selected
+              disabled
+            >
+              星の海から選択してください
+            </option>
+
+            <option value="ご依頼について">
+              ご依頼について
+            </option>
+
+            <option value="サービスについて">
+              サービスについて
+            </option>
+
+            <option value="サイトについて">
+              サイトについて
+            </option>
+
+            <option value="料金について">
+              料金について
+            </option>
+
+            <option value="利用規約・権利について">
+              利用規約・権利について
+            </option>
+
+            <option value="その他">
+              その他
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <!-- =========================
+             件名
+        ========================== -->
+
+        <label>
+
+          件名
+          <span class="required">必須</span>
+
+          <input
+            type="text"
+            name="件名"
+            placeholder="お問い合わせの件名"
+            required
+          >
+
+        </label>
+
+
+        <!-- =========================
+             お問い合わせ内容
+        ========================== -->
+
+        <label>
+
+          お問い合わせ内容
+          <span class="required">必須</span>
+
+          <textarea
+            name="お問い合わせ内容"
+            placeholder="お問い合わせ内容をご記入ください。"
+            required
+          ></textarea>
+
+        </label>
+
+
+        <!-- =========================
+             その他
+        ========================== -->
+
+        <label>
+
+          その他、伝えておきたいこと
+
+          <textarea
+            name="その他、伝えておきたいこと"
+            placeholder="必要があれば、自由にお書きください。"
+          ></textarea>
+
+        </label>
+
+
+      </div>
+
 
       <!-- =========================
-     01 あなたについて
-========================= -->
+           送信前メッセージ
+      ========================== -->
 
-<div class="form-section">
+      <div class="contact-message">
 
-  <p class="form-number">01</p>
-
-  <h3>あなたについて</h3>
-
-  <p class="form-section-lead">
-    まずは、あなたのことを少しだけ教えてください。
-  </p>
-
-  <div class="form-group">
-    <label for="name">
-      呼ばれたい名前
-      <span>必須</span>
-    </label>
-
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="あなたが呼ばれたい名前"
-      required
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="self">
-      どんな自分を描いてみたいですか？
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="self"
-      name="self"
-      rows="5"
-      placeholder="決まっていなくても大丈夫です。"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="info">
-      描写に必要な情報
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="info"
-      name="info"
-      rows="5"
-      placeholder="年齢、性別、設定など。必要な範囲で自由に。"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="appearance">
-      外見で決まっている特徴的な部分
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="appearance"
-      name="appearance"
-      rows="5"
-      placeholder="髪型、目、服装など。"
-    ></textarea>
-  </div>
-
-</div>
-
-
-<!-- =========================
-     02 あなたの好きなもの
-========================= -->
-
-<div class="form-section">
-
-  <p class="form-number">02</p>
-
-  <h3>あなたの好きなもの</h3>
-
-  <p class="form-section-lead">
-    あなたの好きなものや、心惹かれるものを教えてください。
-  </p>
-
-  <div class="form-group">
-    <label for="color">
-      好きな色
-      <span>任意</span>
-    </label>
-
-    <input type="text" id="color" name="color">
-  </div>
-
-  <div class="form-group">
-    <label for="place">
-      好きな場所
-      <span>任意</span>
-    </label>
-
-    <input type="text" id="place" name="place">
-  </div>
-
-  <div class="form-group">
-    <label for="season">
-      好きな季節
-      <span>任意</span>
-    </label>
-
-    <input type="text" id="season" name="season">
-  </div>
-
-  <div class="form-group">
-    <label for="favorites">
-      好きなもの・動物・植物など
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="favorites"
-      name="favorites"
-      rows="5"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="mood">
-      好きな雰囲気
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="mood"
-      name="mood"
-      rows="5"
-    ></textarea>
-  </div>
-
-</div>
-
-
-<!-- =========================
-     03 あなたの記憶
-========================= -->
-
-<div class="form-section">
-
-  <p class="form-number">03</p>
-
-  <h3>あなたの記憶</h3>
-
-  <div class="form-group">
-    <label for="memory">
-      大切な思い出
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="memory"
-      name="memory"
-      rows="6"
-      placeholder="話せる範囲で。無理に書く必要はありません。"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="memoryPlace">
-      心に残っている場所
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="memoryPlace"
-      name="memoryPlace"
-      rows="5"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="landscape">
-      忘れられない景色
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="landscape"
-      name="landscape"
-      rows="5"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="event">
-      今でも覚えている出来事
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="event"
-      name="event"
-      rows="5"
-    ></textarea>
-  </div>
-
-</div>
-
-
-<!-- =========================
-     04 あなたの憧れ
-========================= -->
-
-<div class="form-section">
-
-  <p class="form-number">04</p>
-
-  <h3>あなたの憧れ</h3>
-
-  <div class="form-group">
-    <label for="admire">
-      密かに憧れているもの
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="admire"
-      name="admire"
-      rows="5"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="ideal">
-      「こんな自分になれたら」という姿
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="ideal"
-      name="ideal"
-      rows="5"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="wear">
-      身につけてみたいもの
-      <span>任意</span>
-    </label>
-
-    <input
-      type="text"
-      id="wear"
-      name="wear"
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="expression">
-      表現してみたい雰囲気
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="expression"
-      name="expression"
-      rows="5"
-    ></textarea>
-  </div>
-
-</div>
-
-
-<!-- =========================
-     05 まだ言葉にならないもの
-========================= -->
-
-<div class="form-section">
-
-  <p class="form-number">05</p>
-
-  <h3>まだ言葉にならないもの</h3>
-
-  <p class="form-section-lead">
-    うまく説明できないけれど、なんとなく好き。<br>
-    理由は分からないけれど、惹かれる。<br>
-    こんな感じにしてほしい、という感覚だけある。
-  </p>
-
-  <div class="form-group">
-
-    <textarea
-      id="unspoken"
-      name="unspoken"
-      rows="8"
-      placeholder="言葉にならないままでも大丈夫です。"
-    ></textarea>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     06 描いてほしくないもの
-========================= -->
-
-<div class="form-section">
-
-  <p class="form-number">06</p>
-
-  <h3>描いてほしくないもの</h3>
-
-  <div class="form-group">
-    <label for="avoidColor">
-      苦手な色
-      <span>任意</span>
-    </label>
-
-    <input
-      type="text"
-      id="avoidColor"
-      name="avoidColor"
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="avoidMotif">
-      入れてほしくないモチーフ
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="avoidMotif"
-      name="avoidMotif"
-      rows="5"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="avoidExpression">
-      描いてほしくない表現
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="avoidExpression"
-      name="avoidExpression"
-      rows="5"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="avoidMemory">
-      他人に触れてほしくない記憶
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="avoidMemory"
-      name="avoidMemory"
-      rows="5"
-      placeholder="話したくないことは、無理に書かなくて大丈夫です。"
-    ></textarea>
-  </div>
-
-</div>
-
-
-<!-- =========================
-     最後の星
-========================= -->
-
-<div class="form-section">
-
-  <p class="form-number">✦</p>
-
-  <h3>最後の星</h3>
-
-  <p class="form-section-lead">
-    このシートを書いてみて、最後に一つだけ。
-  </p>
-
-  <div class="form-group">
-
-    <label for="lastStar">
-      「あなたを一言で表すなら、どんな言葉になりますか？」
-      <span>任意</span>
-    </label>
-
-    <textarea
-      id="lastStar"
-      name="lastStar"
-      rows="6"
-      placeholder="分からなければ、空欄でも構いません。"
-    ></textarea>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     依頼内容
-========================= -->
-
-<div class="form-section">
-
-  <p class="form-number">REQUEST</p>
-
-  <h3>今回のご依頼</h3>
-
-  <div class="form-group">
-
-    <label for="request">
-      ご依頼内容
-      <span>必須</span>
-    </label>
-
-    <textarea
-      id="request"
-      name="request"
-      rows="8"
-      placeholder="作りたいもの、構図、雰囲気など、自由にお聞かせください。"
-      required
-    ></textarea>
-
-  </div>
-
-  <div class="form-group">
-
-    <label for="purpose">
-      使用用途
-      <span>必須</span>
-    </label>
-
-    <input
-      type="text"
-      id="purpose"
-      name="purpose"
-      placeholder="例：SNS、配信、グッズ制作など"
-      required
-    >
-
-  </div>
-
-  <div class="form-group">
-
-    <label for="deadline">
-      希望納期
-      <span>任意</span>
-    </label>
-
-    <input
-      type="text"
-      id="deadline"
-      name="deadline"
-      placeholder="例：○月頃まで"
-    >
-
-  </div>
-
-  <div class="form-group">
-
-    <label for="budget">
-      ご予算
-      <span>任意</span>
-    </label>
-
-    <input
-      type="text"
-      id="budget"
-      name="budget"
-      placeholder="例：15,000円〜"
-    >
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     連絡先
-========================= -->
-
-<div class="form-section contact-info-section">
-
-  <p class="form-number">CONTACT</p>
-
-  <h3>連絡先</h3>
-
-  <div class="form-group">
-
-    <label for="email">
-      連絡用メールアドレス
-      <span>必須</span>
-    </label>
-
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="example@example.com"
-      required
-    >
-
-  </div>
-
-  <p class="form-privacy">
-    本名の入力は必要ありません。<br>
-    活動名・ハンドルネームでご相談いただけます。<br><br>
-
-    ご相談・お見積りの段階では、必要以上の個人情報を<br>
-    お尋ねすることはありません。
-  </p>
-
-</div>
-
-
-<button
-  type="submit"
-  class="contact-submit"
->
-  ✦ 星を届ける
-</button>
-         
-
-
-        </form>
+        お預かりした言葉は、星詠にて大切に拝見いたします。<br>
+        内容を確認のうえ、順次ご返信いたします。
 
       </div>
 
-    </section>
+
+      <!-- =========================
+           送信ボタン
+      ========================== -->
+
+      <div class="submit-area">
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+          ✦ 星へ届ける
+        </button>
+
+      </div>
+
+
+    </form>
+
+
+    <!-- =========================
+         フッター
+    ========================== -->
+
+    <div class="page-footer">
+
+      星の海から、あなたの言葉を。
+
+    </div>
+
 
   </main>
 
