@@ -1,89 +1,430 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.18.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.18.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.18.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <title>星詠 - HOSHIYOMI</title>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050817;
+      color: #f4f6ff;
+      font-family:
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+      overflow-x: hidden;
+    }
+
+    /* 星空 */
+    .sky {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 50% 20%, #18244f 0%, #0b1028 40%, #050817 80%);
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px),
+        radial-gradient(circle, rgba(180,210,255,.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-size:
+        140px 140px,
+        220px 220px,
+        310px 310px;
+      background-position:
+        20px 30px,
+        90px 120px,
+        150px 50px;
+      animation: starMove 40s linear infinite;
+      opacity: .7;
+    }
+
+    @keyframes starMove {
+      from {
+        transform: translateY(0);
       }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      to {
+        transform: translateY(140px);
+      }
+    }
+
+    /* 月 */
+    .moon {
+      position: absolute;
+      top: 13vh;
+      right: 13vw;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: #f7f4df;
+      box-shadow:
+        0 0 35px rgba(220,230,255,.45),
+        0 0 100px rgba(120,150,255,.18);
+    }
+
+    .moon::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 25px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: #0b1028;
+    }
+
+    /* ナビ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 24px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background: linear-gradient(
+        to bottom,
+        rgba(5,8,23,.8),
+        transparent
+      );
+    }
+
+    .logo {
+      font-size: 22px;
+      letter-spacing: .25em;
+    }
+
+    nav a {
+      color: #dfe5ff;
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: 13px;
+      letter-spacing: .12em;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: white;
+      text-shadow: 0 0 12px #9bb7ff;
+    }
+
+    /* メイン */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .small-title {
+      font-size: 13px;
+      letter-spacing: .45em;
+      color: #aab8e8;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 10vw, 110px);
+      font-weight: 400;
+      letter-spacing: .25em;
+      margin-left: .25em;
+      text-shadow:
+        0 0 25px rgba(170,190,255,.25);
+    }
+
+    .subtitle {
+      margin-top: 30px;
+      font-size: clamp(16px, 2vw, 21px);
+      letter-spacing: .18em;
+      line-height: 2;
+      color: #d9def5;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      letter-spacing: .35em;
+      color: #8994bd;
+    }
+
+    .scroll::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 55px;
+      margin: 12px auto 0;
+      background: linear-gradient(#8994bd, transparent);
+    }
+
+    /* セクション */
+    section {
+      min-height: 75vh;
+      padding: 140px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-inner {
+      width: min(900px, 100%);
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: .4em;
+      color: #8492c5;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 400;
+      letter-spacing: .18em;
+      margin-bottom: 35px;
+    }
+
+    .text {
+      font-family:
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        sans-serif;
+      color: #c3cae5;
+      line-height: 2.4;
+      letter-spacing: .08em;
+      font-size: 15px;
+    }
+
+    /* 星のカード */
+    .star-card {
+      margin: 70px auto 0;
+      padding: 55px 30px;
+      max-width: 650px;
+      border: 1px solid rgba(170,190,255,.18);
+      background: rgba(15,22,52,.35);
+      backdrop-filter: blur(8px);
+      box-shadow:
+        0 0 50px rgba(70,90,160,.08);
+    }
+
+    .star-symbol {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #dce5ff;
+    }
+
+    .star-card h3 {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: .15em;
+      margin-bottom: 18px;
+    }
+
+    /* フッター */
+    footer {
+      padding: 70px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(170,190,255,.1);
+      color: #697394;
+      font-size: 11px;
+      letter-spacing: .2em;
+    }
+
+    /* スマホ */
+    @media (max-width: 700px) {
+      nav {
+        padding: 20px;
+      }
+
+      nav .links {
+        display: none;
+      }
+
+      .moon {
+        width: 90px;
+        height: 90px;
+        right: 8vw;
+        top: 14vh;
+      }
+
+      .moon::after {
+        width: 90px;
+        height: 90px;
+        left: 18px;
+      }
+
+      section {
+        padding: 100px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sky"></div>
+  <div class="stars"></div>
+
+  <div class="moon"></div>
+
+  <nav>
+    <div class="logo">星詠</div>
+
+    <div class="links">
+      <a href="#concept">CONCEPT</a>
+      <a href="#star">YOUR STAR</a>
+      <a href="#about">ABOUT</a>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </nav>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <main>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="small-title">
+          H O S H I Y O M I
+        </div>
+
+        <h1>星詠</h1>
+
+        <p class="subtitle">
+          無限に広がる夜空から、<br>
+          あなただけの星を。
+        </p>
+
+      </div>
+
+      <div class="scroll">
+        SCROLL
+      </div>
+    </section>
+
+
+    <section id="concept">
+      <div class="section-inner">
+
+        <div class="section-label">
+          CONCEPT
+        </div>
+
+        <h2>静かに流れる星</h2>
+
+        <p class="text">
+          夜空を見上げたとき、<br>
+          無数の星の中にひとつだけ、<br>
+          なぜか目を奪われる星がある。<br><br>
+
+          星詠は、そんな「あなたの星」を探す場所。<br>
+          静かに流れる夜空の中で、<br>
+          あなただけの輝きを見つけてください。
+        </p>
+
+      </div>
+    </section>
+
+
+    <section id="star">
+      <div class="section-inner">
+
+        <div class="section-label">
+          YOUR STAR
+        </div>
+
+        <h2>あなたの星</h2>
+
+        <div class="star-card">
+
+          <div class="star-symbol">✦</div>
+
+          <h3>まだ名前のない星</h3>
+
+          <p class="text">
+            誰かと同じでなくていい。<br>
+            誰かに決められなくてもいい。<br><br>
+
+            あなたにしかない色、<br>
+            あなたにしかない物語。<br><br>
+
+            その輝きを、夜空へ。
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="about">
+      <div class="section-inner">
+
+        <div class="section-label">
+          ABOUT HOSHIYOMI
+        </div>
+
+        <h2>星詠について</h2>
+
+        <p class="text">
+          星詠 ― HOSHIYOMI ―<br><br>
+
+          静かな夜空を眺めるように、<br>
+          ゆっくりと自分自身を見つめるための場所。<br><br>
+
+          星は、ひとつひとつ違う。<br>
+          だからこそ、夜空は美しい。
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    © HOSHIYOMI
+  </footer>
+
+
+  <script>
+    /* スクロールに合わせて星空を少し動かす */
+    window.addEventListener("scroll", () => {
+      const stars = document.querySelector(".stars");
+      const y = window.scrollY;
+
+      stars.style.transform =
+        `translateY(${y * 0.08}px)`;
+    });
+  </script>
+
+</body>
 </html>
