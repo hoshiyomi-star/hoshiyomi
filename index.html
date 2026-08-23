@@ -4,427 +4,788 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>星詠 - HOSHIYOMI</title>
+  <title>星詠｜HOSHIYOMI</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #050817;
-      color: #f4f6ff;
-      font-family:
-        "Yu Mincho",
-        "Hiragino Mincho ProN",
-        serif;
-      overflow-x: hidden;
-    }
-
-    /* 星空 */
-    .sky {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(circle at 50% 20%, #18244f 0%, #0b1028 40%, #050817 80%);
-    }
-
-    .stars {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px),
-        radial-gradient(circle, rgba(180,210,255,.7) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
-      background-size:
-        140px 140px,
-        220px 220px,
-        310px 310px;
-      background-position:
-        20px 30px,
-        90px 120px,
-        150px 50px;
-      animation: starMove 40s linear infinite;
-      opacity: .7;
-    }
-
-    @keyframes starMove {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(140px);
-      }
-    }
-
-    /* 月 */
-    .moon {
-      position: absolute;
-      top: 13vh;
-      right: 13vw;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: #f7f4df;
-      box-shadow:
-        0 0 35px rgba(220,230,255,.45),
-        0 0 100px rgba(120,150,255,.18);
-    }
-
-    .moon::after {
-      content: "";
-      position: absolute;
-      top: -8px;
-      left: 25px;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: #0b1028;
-    }
-
-    /* ナビ */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 24px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-      background: linear-gradient(
-        to bottom,
-        rgba(5,8,23,.8),
-        transparent
-      );
-    }
-
-    .logo {
-      font-size: 22px;
-      letter-spacing: .25em;
-    }
-
-    nav a {
-      color: #dfe5ff;
-      text-decoration: none;
-      margin-left: 28px;
-      font-size: 13px;
-      letter-spacing: .12em;
-      transition: .3s;
-    }
-
-    nav a:hover {
-      color: white;
-      text-shadow: 0 0 12px #9bb7ff;
-    }
-
-    /* メイン */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 20px;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .small-title {
-      font-size: 13px;
-      letter-spacing: .45em;
-      color: #aab8e8;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      font-size: clamp(55px, 10vw, 110px);
-      font-weight: 400;
-      letter-spacing: .25em;
-      margin-left: .25em;
-      text-shadow:
-        0 0 25px rgba(170,190,255,.25);
-    }
-
-    .subtitle {
-      margin-top: 30px;
-      font-size: clamp(16px, 2vw, 21px);
-      letter-spacing: .18em;
-      line-height: 2;
-      color: #d9def5;
-    }
-
-    .scroll {
-      position: absolute;
-      bottom: 35px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 10px;
-      letter-spacing: .35em;
-      color: #8994bd;
-    }
-
-    .scroll::after {
-      content: "";
-      display: block;
-      width: 1px;
-      height: 55px;
-      margin: 12px auto 0;
-      background: linear-gradient(#8994bd, transparent);
-    }
-
-    /* セクション */
-    section {
-      min-height: 75vh;
-      padding: 140px 8%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .section-inner {
-      width: min(900px, 100%);
-      text-align: center;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: .4em;
-      color: #8492c5;
-      margin-bottom: 25px;
-    }
-
-    h2 {
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 400;
-      letter-spacing: .18em;
-      margin-bottom: 35px;
-    }
-
-    .text {
-      font-family:
-        "Yu Gothic",
-        "Hiragino Kaku Gothic ProN",
-        sans-serif;
-      color: #c3cae5;
-      line-height: 2.4;
-      letter-spacing: .08em;
-      font-size: 15px;
-    }
-
-    /* 星のカード */
-    .star-card {
-      margin: 70px auto 0;
-      padding: 55px 30px;
-      max-width: 650px;
-      border: 1px solid rgba(170,190,255,.18);
-      background: rgba(15,22,52,.35);
-      backdrop-filter: blur(8px);
-      box-shadow:
-        0 0 50px rgba(70,90,160,.08);
-    }
-
-    .star-symbol {
-      font-size: 42px;
-      margin-bottom: 20px;
-      color: #dce5ff;
-    }
-
-    .star-card h3 {
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: .15em;
-      margin-bottom: 18px;
-    }
-
-    /* フッター */
-    footer {
-      padding: 70px 20px;
-      text-align: center;
-      border-top: 1px solid rgba(170,190,255,.1);
-      color: #697394;
-      font-size: 11px;
-      letter-spacing: .2em;
-    }
-
-    /* スマホ */
-    @media (max-width: 700px) {
-      nav {
-        padding: 20px;
-      }
-
-      nav .links {
-        display: none;
-      }
-
-      .moon {
-        width: 90px;
-        height: 90px;
-        right: 8vw;
-        top: 14vh;
-      }
-
-      .moon::after {
-        width: 90px;
-        height: 90px;
-        left: 18px;
-      }
-
-      section {
-        padding: 100px 25px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<!-- 星空の装飾 -->
+<div class="star-field" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
-  <div class="sky"></div>
-  <div class="stars"></div>
-
-  <div class="moon"></div>
-
-  <nav>
-    <div class="logo">星詠</div>
-
-    <div class="links">
-      <a href="#concept">CONCEPT</a>
-      <a href="#star">YOUR STAR</a>
-      <a href="#about">ABOUT</a>
-    </div>
-  </nav>
+  <!-- =========================
+       01｜TOP
+  ========================= -->
 
   <main>
 
-    <section class="hero">
+    <section class="hero" id="top">
+
       <div class="hero-content">
 
-        <div class="small-title">
-          H O S H I Y O M I
-        </div>
+        <p class="hero-label">星詠</p>
 
-        <h1>星詠</h1>
+        <h1>
+          HOSHIYOMI
+        </h1>
 
-        <p class="subtitle">
+        <p class="hero-catch">
           無限に広がる夜空から、<br>
           あなただけの星を。
         </p>
 
-      </div>
-
-      <div class="scroll">
-        SCROLL
-      </div>
-    </section>
-
-
-    <section id="concept">
-      <div class="section-inner">
-
-        <div class="section-label">
-          CONCEPT
-        </div>
-
-        <h2>静かに流れる星</h2>
-
-        <p class="text">
-          夜空を見上げたとき、<br>
-          無数の星の中にひとつだけ、<br>
-          なぜか目を奪われる星がある。<br><br>
-
-          星詠は、そんな「あなたの星」を探す場所。<br>
-          静かに流れる夜空の中で、<br>
-          あなただけの輝きを見つけてください。
+        <p class="hero-scroll">
+          SCROLL ↓
         </p>
 
       </div>
-    </section>
+
+     <!-- オリオン座 -->
+
+     <div class="orion" aria-hidden="true">
+
+      <span class="orion-star betelgeuse"></span>
+      <span class="orion-star bellatrix"></span>
+      <span class="orion-star alnitak"></span>
+      <span class="orion-star alnilam"></span>
+      <span class="orion-star mintaka"></span>
+      <span class="orion-star saiph"></span>
+      <span class="orion-star rigel"></span>
+
+     </div>
+
+  
+     </section>
+    <!-- =========================
+     02｜星詠について
+========================= -->
+
+<section class="about" id="about">
+
+  <div class="about-content">
+
+    <p class="section-label">ABOUT HOSHIYOMI</p>
+
+    <h2>
+      星詠とは
+    </h2>
+
+    <div class="about-line"></div>
+
+    <p class="about-lead">
+      無限に広がる夜空から、<br>
+      あなただけの星を。
+    </p>
+
+    <p class="about-text">
+      星詠は、あなたの中にあるものを<br>
+      一枚の絵として見つけていく場所です。
+    </p>
+
+    <p class="about-text">
+      好きなもの。<br>
+      大切な記憶。<br>
+      憧れているもの。<br>
+      まだ言葉にならない気持ち。
+    </p>
+
+    <p class="about-text">
+      そのひとつひとつを星として拾い集め、<br>
+      あなたにしかない一枚へと描いていきます。
+    </p>
+
+  </div>
+
+</section>
+<!-- =========================
+     星詠を始めた理由
+========================= -->
+
+<section class="story">
+
+  <div class="story-content">
+
+    <p class="section-label">WHY HOSHIYOMI</p>
+
+    <h2>なぜ、星詠を始めたのか</h2>
+
+    <div class="story-line"></div>
+
+    <div class="story-text">
+
+  <p>
+    中学生の頃、俺は人を信用することができず、<br>
+    自分のことを何も話せないまま生きていました。
+  </p>
+
+  <p>
+    限界が来てからは、ただ蛇足のように生きている。<br>
+    そんな感覚しか持てなくなっていました。
+  </p>
+
+  <p>
+    そんな中、たまたまの巡り合わせで恩師と出会い、<br>
+    そして、絵と出会いました。
+  </p>
+
+  <p>
+    初めて、自分の気持ちを手当たり次第のものに託して、<br>
+    一枚の絵にしました。
+  </p>
+
+  <p>
+    綺麗な絵ではありませんでした。<br>
+    自分でも、何を描いたのか分からない。<br>
+    ぐちゃぐちゃで、まとまりのない絵でした。
+  </p>
+
+  <p>
+    それでも、その絵を見て<br>
+    「綺麗だ」と言ってくれた人がいました。
+  </p>
+
+  <p>
+    その言葉で、俺は人生で初めて、<br>
+    誰かに自分を認めてもらえたように感じました。
+  </p>
+
+  <p>
+    だから今度は、俺がその思いを誰かに届けたい。
+  </p>
+
+  <p>
+    うまく話せない人にも、<br>
+    誰にも言えなかったことがある人にも。
+  </p>
+
+  <p>
+    第三者だからこそ話せることがある。<br>
+    何気ない話を誰かとするだけでも、<br>
+    少しだけ心が軽くなることがある。
+  </p>
+
+  <p>
+    俺は、そんなふうに誰かの背中を<br>
+    ほんの少しだけ押せる場所を作りたいと思いました。
+  </p>
+
+  <div class="story-subsection">
+
+    <h3>絵を通して、残したいもの</h3>
+
+    <p>
+      絵は、ときに牙を向いてきます。
+    </p>
+
+    <p>
+      描くことが楽しいだけではなく、<br>
+      思うようにいかないことも、苦しくなることもある。
+    </p>
+
+    <p>
+      それでも、絵を描くことを楽しむためには、<br>
+      自分自身がその時間を楽しまなければならない。
+    </p>
+
+    <p>
+      これは、絵を描き続けてきた人にしか<br>
+      分からないものなのかもしれません。
+    </p>
+
+    <p>
+      それでも俺は、絵に人の軌跡を残したい。
+    </p>
+
+    <p>
+      その人が好きだったもの。<br>
+      大切にしてきたもの。<br>
+      抱えてきたもの。<br>
+      そして、その人自身が歩いてきた時間。
+    </p>
+
+    <p>
+      それらを、一枚の絵の中に残したい。
+    </p>
+
+    <p>
+      だから、俺は描き続けています。
+    </p>
+
+  </div>
+
+  <div class="story-subsection">
+
+    <h3>「星詠」という名前に込めたもの</h3>
+
+    <p>
+      星には、様々な形があり、<br>
+      それぞれ違った光り方があります。
+    </p>
+
+    <p>
+      けれど、同じ星はひとつとしてありません。
+    </p>
+
+    <p>
+      人も、それと同じだと思っています。
+    </p>
+
+    <p>
+      誰かと同じである必要はない。<br>
+      違っていていい。
+    </p>
+
+    <p>
+      だからこそ、その人だけが持っている「星」を、<br>
+      一つひとつ一緒に探していきたい。
+    </p>
+
+    <p>
+      そして、いつか。
+    </p>
+
+    <p>
+      何もなかった夜空に、<br>
+      星詠を訪れてくれた人たちの星が<br>
+      たくさん輝いていたらいい。
+    </p>
+
+    <p>
+      そんな思いを込めて、<br>
+      この場所を「星詠」と名付けました。
+    </p>
+
+  </div>
+
+</div>
+    </p>
+
+  </div>
+
+</section>
+<!-- =========================
+     03｜胸に灯るもの
+========================= -->
+
+<section class="heart" id="heart">
+
+  <div class="heart-content">
+
+    <p class="section-label">03｜BELLATRIX</p>
+
+    <h2>胸に灯るもの</h2>
+
+    <div class="heart-line"></div>
+
+    <div class="heart-item">
+
+      <h3>個性について</h3>
+
+      <p>
+        「普通」に合わせなくていい。
+      </p>
+
+      <p>
+        一人ひとり違っていい。<br>
+        それが、その人の素敵なところだから。
+      </p>
+
+    </div>
+
+    <div class="heart-item">
+
+      <h3>年齢や性別について</h3>
+
+      <p>
+        年齢や性別、立場や肩書きだけで、<br>
+        その人を決めつけません。
+      </p>
+
+      <p>
+        あなたがあなたであることを、<br>
+        大切にします。
+      </p>
+
+    </div>
+
+    <div class="heart-item">
+
+      <h3>言葉にするのが苦手な人へ</h3>
+
+      <p>
+        「なんとなく好き」でも大丈夫。
+      </p>
+
+      <p>
+        好きを、上手に説明する必要はありません。
+      </p>
+
+      <p>
+        話したくないことは、<br>
+        話さなくても大丈夫です。
+      </p>
+
+    </div>
+
+    <div class="heart-item">
+
+      <h3>好きを大切にする</h3>
+
+      <p>
+        好きな色。<br>
+        好きなもの。<br>
+        好きな雰囲気。
+      </p>
+
+      <p>
+        その小さな「好き」も、<br>
+        あなたを作っている星の一つです。
+      </p>
+
+    </div>
+
+    <div class="heart-ending">
+
+      <p>
+        無理に大きな言葉にしなくても大丈夫。
+      </p>
+
+      <p>
+        少しずつ、一緒に拾っていきましょう。
+      </p>
+
+    </div>
 
 
-    <section id="star">
-      <div class="section-inner">
+  </div>
 
-        <div class="section-label">
-          YOUR STAR
+</section>
+<!-- =========================
+     04｜アルニタク
+========================= -->
+
+<section class="gallery" id="gallery">
+
+  <div class="gallery-content">
+
+    <p class="section-label">04｜ALNITAK</p>
+
+    <h2>結ぶ</h2>
+
+    <div class="gallery-line"></div>
+
+    <p class="gallery-lead">
+      誰かの「好き」と、絵を結ぶ。
+    </p>
+
+    <p class="gallery-description">
+      これまでに制作した作品をご紹介します。<br>
+      一枚一枚に、それぞれの「星」が込められています。
+    </p>
+
+
+    <!-- 作品一覧 -->
+
+    <div class="gallery-grid">
+
+
+      <!-- 作品01 -->
+
+      <article class="gallery-card">
+
+        <div class="gallery-image">
+          <span>作品画像</span>
         </div>
 
-        <h2>あなたの星</h2>
+        <div class="gallery-info">
 
-        <div class="star-card">
+          <h3>あなたの姿</h3>
 
-          <div class="star-symbol">✦</div>
-
-          <h3>まだ名前のない星</h3>
-
-          <p class="text">
-            誰かと同じでなくていい。<br>
-            誰かに決められなくてもいい。<br><br>
-
-            あなたにしかない色、<br>
-            あなたにしかない物語。<br><br>
-
-            その輝きを、夜空へ。
+          <p>
+            あなたらしさを一枚に。
           </p>
 
+          <span class="gallery-type">
+            あなたの姿
+          </span>
+
         </div>
 
-      </div>
-    </section>
+      </article>
 
 
-    <section id="about">
-      <div class="section-inner">
+      <!-- 作品02 -->
 
-        <div class="section-label">
-          ABOUT HOSHIYOMI
+      <article class="gallery-card">
+
+        <div class="gallery-image">
+          <span>作品画像</span>
         </div>
 
-        <h2>星詠について</h2>
+        <div class="gallery-info">
 
-        <p class="text">
-          星詠 ― HOSHIYOMI ―<br><br>
+          <h3>あなたの世界</h3>
 
-          静かな夜空を眺めるように、<br>
-          ゆっくりと自分自身を見つめるための場所。<br><br>
+          <p>
+            頭の中にある世界を一枚に。
+          </p>
 
-          星は、ひとつひとつ違う。<br>
-          だからこそ、夜空は美しい。
-        </p>
+          <span class="gallery-type">
+            あなたの世界
+          </span>
+
+        </div>
+
+      </article>
+
+
+      <!-- 作品03 -->
+
+      <article class="gallery-card">
+
+        <div class="gallery-image">
+          <span>作品画像</span>
+        </div>
+
+        <div class="gallery-info">
+
+          <h3>その他の作品</h3>
+
+          <p>
+            星詠で生まれた作品たち。
+          </p>
+
+          <span class="gallery-type">
+            その他
+          </span>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+
+    <p class="gallery-ending">
+      あなたの「好き」も、いつか一枚の作品になるかもしれません。
+    </p>
+
+  </div>
+
+</section>
+<!-- =========================
+     05｜アルニラム
+========================= -->
+
+<section class="yourself" id="yourself">
+
+  <div class="yourself-content">
+
+   <p class="section-label">05｜ALNILAM</p>
+
+<h2>あなたの姿</h2>
+
+<div class="yourself-line"></div>
+
+<p class="yourself-lead">
+    自分自身を、一枚の作品に。
+</p>
+
+<p class="yourself-description">
+    あなたの好きなもの、雰囲気、色、衣装、表情などを聞きながら、<br>
+    あなたらしい姿を形にします。
+</p>
+
+
+    <!-- こんな方へ -->
+
+    <div class="yourself-block">
+
+      <h3>こんな方へ</h3>
+
+      <ul>
+        <li>自分自身を絵にして残したい</li>
+        <li>自分らしい姿を描いてほしい</li>
+        <li>好きな衣装やモチーフを取り入れたい</li>
+        <li>自分の雰囲気を絵にしてほしい</li>
+        <li>頭の中にある理想の姿を形にしたい</li>
+        <li>「こうなってみたい」を描いてほしい</li>
+      </ul>
+
+    </div>
+
+
+    <!-- 作品に込めるもの -->
+
+    <div class="yourself-block">
+
+      <h3>作品に込めるもの</h3>
+
+      <ul>
+        <li>髪型</li>
+        <li>服装</li>
+        <li>表情</li>
+        <li>好きな色</li>
+        <li>好きなモチーフ</li>
+        <li>好きな雰囲気</li>
+        <li>大切にしているもの</li>
+        <li>世界観</li>
+        <li>理想の姿</li>
+      </ul>
+
+    </div>
+
+
+    <!-- 制作の流れ -->
+
+    <div class="yourself-block">
+
+      <h3>制作の流れ</h3>
+
+      <div class="production-flow">
+
+        <span>相談</span>
+        <span>あなたを知るシート</span>
+        <span>星のかけらを集める</span>
+        <span>イメージ整理</span>
+        <span>アイデアラフ</span>
+        <span>確認・修正</span>
+        <span>ラフ</span>
+        <span>確認・修正</span>
+        <span>線画</span>
+        <span>着彩</span>
+        <span>完成</span>
 
       </div>
-    </section>
 
-  </main>
-
-
-  <footer>
-    © HOSHIYOMI
-  </footer>
+    </div>
 
 
-  <script>
-    /* スクロールに合わせて星空を少し動かす */
-    window.addEventListener("scroll", () => {
-      const stars = document.querySelector(".stars");
-      const y = window.scrollY;
+    <div class="service-price">
 
-      stars.style.transform =
-        `translateY(${y * 0.08}px)`;
-    });
-  </script>
+  <p class="service-price-label">
+    制作料金
+  </p>
+
+  <p class="service-price-main">
+    12,000<span>円～</span>
+  </p>
+
+  <p class="service-price-note">
+    ※内容やご希望によって変動いたします。詳しくはご相談ください。
+  </p>
+
+</div>
+
+  </div>
+
+</section>
+<!-- =========================
+     06｜まだ言葉にならないもの
+========================= -->
+
+<section class="unspoken" id="unspoken">
+
+  <div class="unspoken-content">
+
+    <p class="section-label">06｜UNSPOKEN</p>
+
+    <h2>まだ言葉にならないもの</h2>
+
+    <div class="unspoken-line"></div>
+
+    <p class="unspoken-lead">
+      うまく説明できなくても、大丈夫。
+    </p>
+
+    <p class="unspoken-description">
+      「なんとなく好き」<br>
+      「理由は分からないけれど惹かれる」<br>
+      「こんな感じにしてほしい」
+    </p>
+
+    <p class="unspoken-description">
+      そんな言葉にならない感覚も、<br>
+      あなたの大切な「星」のひとつです。
+    </p>
+
+    <div class="unspoken-message">
+
+      <p>
+        上手に説明する必要はありません。
+      </p>
+
+      <p>
+        あなたの中にあるものを、<br>
+        一緒に探していきます。
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================
+     07｜ミンタカ
+========================= -->
+
+<section class="world" id="world">
+
+  <div class="world-content">
+
+    <p class="section-label">07｜MINTAKA</p>
+
+    <h2>あなたの世界</h2>
+
+    <div class="world-line"></div>
+
+    <p class="world-lead">
+      自分の中にある世界を、一枚の作品に。
+    </p>
+
+    <p class="world-description">
+      景色、思い出、物語、空気感。<br>
+      存在しない世界でも大丈夫です。
+    </p>
+
+
+    <!-- こんな方へ -->
+
+    <div class="world-block">
+
+      <h3>こんな方へ</h3>
+
+      <ul>
+        <li>頭の中に世界がある</li>
+        <li>好きな景色を残したい</li>
+        <li>思い出を一枚にしたい</li>
+        <li>自分だけの物語を絵にしたい</li>
+        <li>雰囲気を形にしたい</li>
+        <li>言葉では説明できない景色がある</li>
+        <li>自分自身ではなく、自分の世界を描いてほしい</li>
+      </ul>
+
+    </div>
+
+
+    <!-- 作品に込めるもの -->
+
+    <div class="world-block">
+
+      <h3>作品に込めるもの</h3>
+
+      <ul>
+        <li>景色</li>
+        <li>建物</li>
+        <li>自然</li>
+        <li>空</li>
+        <li>季節</li>
+        <li>思い出</li>
+        <li>モチーフ</li>
+        <li>世界観</li>
+        <li>空気感</li>
+        <li>物語</li>
+      </ul>
+
+    </div>
+
+
+    <!-- メッセージ -->
+
+    <div class="world-message">
+
+      <p>
+        頭の中にあるだけだった景色も、<br>
+        誰かに話せなかった世界も。
+      </p>
+
+      <p>
+        少しずつ聞かせてください。
+      </p>
+
+      <p>
+        急かすことはありません。
+      </p>
+
+      <p>
+        ゆっくりで大丈夫です。
+      </p>
+
+    </div>
+
+
+   <div class="service-price">
+
+  <p class="service-price-label">
+    制作料金
+  </p>
+
+  <p class="service-price-main">
+    15,000<span>円～</span>
+  </p>
+
+  <p class="service-price-note">
+    ※内容やご希望によって変動いたします。詳しくはご相談ください。
+  </p>
+
+</div> 
+
+  </div>
+
+</section>
+</main>
+
+   </body>
+
+   <!-- 星の海メニュー -->
+<button class="star-menu-button" id="starMenuButton">
+  星の海を開く
+</button>
+
+<nav class="star-menu" id="starMenu">
+  <div class="star-menu-inner">
+
+    <p class="star-menu-label">HOSHIYOMI</p>
+    <h2>星の海</h2>
+
+    <div class="star-menu-line"></div>
+
+<a href="#top">01｜星詠</a>
+<a href="#about">02｜星詠とは</a>
+<a href="#heart">03｜胸に灯るもの</a>
+<a href="#gallery">04｜結ぶ</a>
+<a href="#yourself">05｜あなたの姿</a>
+<a href="#unspoken">06｜まだ言葉にならないもの</a>
+<a href="#world">07｜あなたの世界</a>
+
+<div class="star-menu-line"></div>
+
+<a href="star-sheet.html">08｜星のシート</a>
+<a href="price.html">09｜料金について</a>
+<a href="notes.html">10｜ご依頼について</a>
+<a href="rights.html">11｜権利について</a>
+<a href="contact.html">12｜お問い合わせ</a>
+
+<button class="star-menu-close" id="starMenuClose">
+    星の海を閉じる
+</button>
+
+</nav>
+
+<script src="script.js"></script>
 
 </body>
 </html>
