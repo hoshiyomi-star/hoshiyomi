@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>星は、確かに届きました。｜星詠</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        sans-serif;
+
+      color: #dcecff;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(65, 105, 180, 0.20),
+          transparent 42%
+        ),
+        radial-gradient(
+          circle at 80% 65%,
+          rgba(75, 95, 180, 0.10),
+          transparent 35%
+        ),
+        linear-gradient(
+          180deg,
+          #071225 0%,
+          #050b18 55%,
+          #030711 100%
+        );
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================
+       星
+    ========================== */
+
+    .stars {
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      overflow: hidden;
+
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+
+      width: 2px;
+      height: 2px;
+
+      background: rgba(225, 240, 255, 0.75);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 7px rgba(170, 215, 255, 0.45);
+
+      animation:
+        twinkle 4s ease-in-out infinite;
+    }
+
+    .star:nth-child(1) {
+      top: 12%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    .star:nth-child(2) {
+      top: 20%;
+      left: 72%;
+      animation-delay: 1.2s;
+    }
+
+    .star:nth-child(3) {
+      top: 31%;
+      left: 42%;
+      animation-delay: 2.1s;
+    }
+
+    .star:nth-child(4) {
+      top: 44%;
+      left: 84%;
+      animation-delay: 0.8s;
+    }
+
+    .star:nth-child(5) {
+      top: 56%;
+      left: 18%;
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(6) {
+      top: 68%;
+      left: 63%;
+      animation-delay: 2.7s;
+    }
+
+    .star:nth-child(7) {
+      top: 78%;
+      left: 34%;
+      animation-delay: 1s;
+    }
+
+    .star:nth-child(8) {
+      top: 88%;
+      left: 78%;
+      animation-delay: 2.4s;
+    }
+
+    .star:nth-child(9) {
+      top: 36%;
+      left: 8%;
+      animation-delay: 3s;
+    }
+
+    .star:nth-child(10) {
+      top: 73%;
+      left: 91%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes twinkle {
+      0%,
+      100% {
+        opacity: 0.25;
+        transform: scale(0.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+    }
+
+
+    /* =========================
+       メイン
+    ========================== */
+
+    .thanks-page {
+      position: relative;
+
+      z-index: 1;
+
+      width: min(900px, calc(100% - 32px));
+
+      min-height: 100vh;
+
+      margin: 0 auto;
+
+      padding:
+        80px 0
+        100px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+    }
+
+
+    /* =========================
+       上部ラベル
+    ========================== */
+
+    .label {
+      margin-bottom: 22px;
+
+      color:
+        rgba(160, 205, 255, 0.55);
+
+      font-size: 0.75rem;
+
+      letter-spacing: 0.3em;
+    }
+
+
+    /* =========================
+       タイトル
+    ========================== */
+
+    h1 {
+      margin: 0;
+
+      color: #eaf6ff;
+
+      font-family:
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+
+      font-size:
+        clamp(2rem, 7vw, 3.5rem);
+
+      font-weight: 400;
+
+      line-height: 1.7;
+
+      letter-spacing: 0.12em;
+
+      text-shadow:
+        0 0 20px rgba(110, 180, 255, 0.18);
+    }
+
+
+    /* =========================
+       区切り
+    ========================== */
+
+    .divider {
+      width: 80px;
+
+      height: 1px;
+
+      margin: 34px 0;
+
+      background:
+        rgba(180, 220, 255, 0.45);
+
+      box-shadow:
+        0 0 12px rgba(120, 190, 255, 0.2);
+    }
+
+
+    /* =========================
+       メッセージ
+    ========================== */
+
+    .message {
+      color:
+        rgba(215, 230, 245, 0.75);
+
+      font-family:
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+
+      font-size:
+        clamp(0.9rem, 3vw, 1rem);
+
+      line-height: 2.4;
+
+      letter-spacing: 0.08em;
+    }
+
+    .message .emphasis {
+      display: block;
+
+      margin-bottom: 20px;
+
+      color: #dcecff;
+
+      font-size: 1.05em;
+    }
+
+
+    /* =========================
+       戻るボタン
+    ========================== */
+
+    .back-button {
+      display: inline-block;
+
+      margin-top: 50px;
+
+      padding: 13px 30px;
+
+      color: #eaf7ff;
+
+      text-decoration: none;
+
+      font-size: 0.85rem;
+
+      letter-spacing: 0.1em;
+
+      background:
+        rgba(35, 80, 140, 0.35);
+
+      border:
+        1px solid rgba(155, 215, 255, 0.32);
+
+      border-radius: 999px;
+
+      transition:
+        0.3s ease;
+    }
+
+    .back-button:hover {
+      background:
+        rgba(70, 130, 210, 0.45);
+
+      border-color:
+        rgba(190, 230, 255, 0.65);
+
+      box-shadow:
+        0 0 22px rgba(100, 190, 255, 0.18);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================
+       フッター
+    ========================== */
+
+    .footer-note {
+      position: absolute;
+
+      bottom: 28px;
+
+      color:
+        rgba(180, 205, 230, 0.3);
+
+      font-size: 0.7rem;
+
+      letter-spacing: 0.18em;
+    }
+
+
+    /* =========================
+       スマホ
+    ========================== */
+
+    @media (max-width: 600px) {
+
+      .thanks-page {
+        width:
+          calc(100% - 28px);
+
+        padding:
+          60px 0
+          80px;
+      }
+
+      h1 {
+        font-size:
+          clamp(1.8rem, 9vw, 2.5rem);
+      }
+
+      .message {
+        font-size: 0.85rem;
+
+        line-height: 2.2;
+      }
+
+      .back-button {
+        margin-top: 40px;
+
+        padding:
+          12px 25px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       星
+  ========================== -->
+
+  <div class="stars">
+
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+
+  </div>
+
+
+  <!-- =========================
+       完了ページ
+  ========================== -->
+
+  <main class="thanks-page">
+
+
+    <div class="label">
+      MESSAGE RECEIVED
+    </div>
+
+
+    <h1>
+      星は、確かに届きました。
+    </h1>
+
+
+    <div class="divider"></div>
+
+
+    <div class="message">
+
+      <span class="emphasis">
+        お問い合わせをお預かりしました。
+      </span>
+
+      内容を確認のうえ、<br>
+      順次お返事いたします。
+
+      <br><br>
+
+      夜空のどこかで、<br>
+      あなたから届いた言葉を受け取りました。
+
+    </div>
+
+
+    <a
+      href="index.html"
+      class="back-button"
+    >
+      ✦ 星詠へ戻る
+    </a>
+
+
+    <div class="footer-note">
+      HOSHIYOMI
+    </div>
+
+
+  </main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星のかけら｜星詠</title>
+  <style>
+/* ==============================
+   星詠｜あなたの星を探すシート
+   ============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #eef5ff;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(120, 150, 220, 0.16), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(80, 120, 190, 0.12), transparent 30%),
+    linear-gradient(180deg, #050916 0%, #081326 45%, #040812 100%);
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic",
+    "Hiragino Kaku Gothic ProN",
+    sans-serif;
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+
+/* ==============================
+   背景の星
+   ============================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(180,210,255,0.6) 1px, transparent 1px);
+  background-size: 120px 120px, 190px 190px;
+  background-position: 20px 30px, 80px 100px;
+  z-index: 0;
+}
+
+
+/* ==============================
+   フォーム全体
+   ============================== */
+
+form {
+  position: relative;
+  z-index: 1;
+
+  width: min(920px, calc(100% - 32px));
+  margin: 60px auto;
+  padding: 60px 50px;
+
+  background: rgba(8, 18, 38, 0.78);
+  border: 1px solid rgba(180, 210, 255, 0.18);
+  border-radius: 24px;
+
+  box-shadow:
+    0 0 60px rgba(60, 100, 180, 0.12),
+    0 20px 80px rgba(0, 0, 0, 0.35);
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* ==============================
+   タイトル
+   ============================== */
+
+.section-label {
+  margin: 0 0 8px;
+  color: #9db9e8;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+form > h1 {
+  margin: 0 0 30px;
+  color: #ffffff;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-align: center;
+
+  text-shadow:
+    0 0 18px rgba(170, 205, 255, 0.35);
+}
+
+
+/* ==============================
+   導入文
+   ============================== */
+
+.star-sheet-intro {
+  margin: 0 auto 55px;
+  max-width: 650px;
+
+  color: #cbd8ec;
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+}
+
+.star-sheet-intro p {
+  margin: 0 0 18px;
+}
+
+.star-sheet-intro p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ==============================
+   各セクション
+   ============================== */
+
+.sheet-section {
+  margin-bottom: 42px;
+  padding: 32px;
+
+  background: rgba(12, 27, 52, 0.62);
+  border: 1px solid rgba(170, 200, 240, 0.13);
+  border-radius: 18px;
+
+  box-shadow:
+    inset 0 0 30px rgba(120, 160, 220, 0.025);
+}
+
+.sheet-section h2 {
+  position: relative;
+
+  margin: 0 0 28px;
+  padding-left: 18px;
+
+  color: #eef5ff;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 12px rgba(170, 205, 255, 0.35);
+}
+
+.sheet-section h2::before {
+  content: "✦";
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  color: #a9c8f5;
+  font-size: 0.8em;
+
+  text-shadow:
+    0 0 12px rgba(160, 200, 255, 0.8);
+}
+
+
+/* ==============================
+   説明文
+   ============================== */
+
+.sheet-section > p {
+  color: #c4d0e2;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.sheet-note {
+  margin-top: 18px;
+  color: #8fa7ca !important;
+  font-size: 0.8rem !important;
+}
+
+
+/* ==============================
+   ラベル・入力欄
+   ============================== */
+
+.sheet-section label {
+  display: block;
+  margin-bottom: 26px;
+
+  color: #dce7f8;
+  font-size: 0.9rem;
+}
+
+.sheet-section label:last-child {
+  margin-bottom: 0;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+
+  color: #edf4ff;
+  font-family: inherit;
+  font-size: 0.95rem;
+
+  background: rgba(3, 10, 24, 0.72);
+  border: 1px solid rgba(160, 195, 240, 0.2);
+  border-radius: 10px;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+input[type="text"] {
+  height: 48px;
+  padding: 0 15px;
+}
+
+textarea {
+  min-height: 120px;
+  padding: 13px 15px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  background: rgba(7, 18, 39, 0.9);
+  border-color: rgba(170, 205, 255, 0.6);
+
+  box-shadow:
+    0 0 0 3px rgba(120, 165, 230, 0.08),
+    0 0 20px rgba(100, 150, 230, 0.1);
+}
+
+
+/* ==============================
+   ファイル選択
+   ============================== */
+
+input[type="file"] {
+  padding: 12px;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  margin-right: 12px;
+  padding: 8px 14px;
+
+  color: #eaf2ff;
+  background: rgba(100, 140, 200, 0.2);
+
+  border: 1px solid rgba(170, 205, 255, 0.25);
+  border-radius: 7px;
+
+  cursor: pointer;
+}
+
+
+/* ==============================
+   送信エリア
+   ============================== */
+
+.sheet-submit {
+  margin-top: 55px;
+  text-align: center;
+}
+
+.sheet-submit button {
+  position: relative;
+
+  min-width: 220px;
+  padding: 15px 34px;
+
+  color: #f7fbff;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(110, 150, 220, 0.85),
+      rgba(70, 105, 170, 0.85)
+    );
+
+  border: 1px solid rgba(210, 230, 255, 0.35);
+  border-radius: 999px;
+
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 25px rgba(100, 150, 230, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.sheet-submit button::before {
+  content: "✦";
+  margin-right: 10px;
+}
+
+.sheet-submit button:hover {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(130, 170, 235, 0.95),
+      rgba(80, 120, 190, 0.95)
+    );
+
+  box-shadow:
+    0 0 35px rgba(120, 175, 245, 0.35);
+}
+
+.sheet-submit button:active {
+  transform: translateY(0);
+}
+
+
+/* ==============================
+   スマートフォン
+   ============================== */
+
+@media (max-width: 700px) {
+
+  form {
+    width: calc(100% - 20px);
+    margin: 20px auto;
+    padding: 38px 18px;
+
+    border-radius: 18px;
+  }
+
+  form > h1 {
+    font-size: 1.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  .star-sheet-intro {
+    font-size: 0.88rem;
+    margin-bottom: 38px;
+  }
+
+  .sheet-section {
+    margin-bottom: 25px;
+    padding: 24px 18px;
+    border-radius: 15px;
+  }
+
+  .sheet-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .sheet-section label {
+    font-size: 0.85rem;
+  }
+
+  .sheet-submit {
+    margin-top: 38px;
+  }
+
+  .sheet-submit button {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ===== ページ切り替えナビ ===== */
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 28px;
+  padding: 10px;
+}
+
+.page-nav a {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid rgba(120, 190, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(12, 27, 52, 0.65);
+  color: #dff5ff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  transition: 0.25s ease;
+}
+
+.page-nav a:hover {
+  background: rgba(70, 150, 230, 0.25);
+  border-color: rgba(150, 220, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.sheet-nav a {
+    color: rgba(180, 210, 255, 0.33);
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 14px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.sheet-nav a:hover {
+    color: rgba(180, 220, 255, 0.9);
+    text-shadow: 0 0 8px rgba(120, 200, 255, 0.5);
+}
+
+.back-to-sea {
+  display: inline-block;
+  margin: 40px 0;
+  padding: 12px 24px;
+  border: 1px solid rgba(180, 220, 255, 0.5);
+  border-radius: 30px;
+  color: rgba(220, 240, 255, 0.95);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: 0.3s;
+}
+
+.back-to-sea:hover {
+  background: rgba(120, 180, 255, 0.12);
+  border-color: rgba(200, 230, 255, 0.8);
+  box-shadow: 0 0 15px rgba(120, 200, 255, 0.3);
+}
+  </style>
+</head>
+
+<body>
+
+<!-- あなたの星を探すシート -->
+
+<nav class="page-nav">
+<a href="#appearance">✦ あなたの姿</a>
+<a href="#world">✦ あなたの世界</a>
+</nav>
+
+<section class="star-sheet">
+
+<form action="https://formsubmit.co/hoshi.sengetu@gmail.com" method="POST" enctype="multipart/form-data">
+
+  <input type="hidden" name="_subject" value="【星詠】星のかけらが届きました">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- =========================
+       タイトル
+  ========================== -->
+
+  <p class="section-label">YOUR STAR SHEET</p>
+  <h1>星のかけら</h1>
+
+  <div class="star-sheet-intro">
+
+    <p>
+      あなたの中にある、小さなかけらを教えてください。
+    </p>
+
+    <p>
+      好きなもの、思い出、願い、景色。<br>
+      ひとつひとつのかけらから、あなたの星を探していきます。
+    </p>
+
+    <p>
+      きれいな文章にする必要はありません。
+    </p>
+
+    <p>
+      「分からない」<br>
+      「まだ決まっていない」<br>
+      「なんとなく」
+    </p>
+
+    <p>
+      それも、あなたの答えです。
+    </p>
+
+  </div>
+
+
+  <!-- =========================
+       星ナビ
+  ========================== -->
+
+  <nav class="sheet-nav" aria-label="シート内ナビゲーション">
+
+    <a href="#about">あなたについて</a>
+    <a href="#appearance">あなたの姿</a>
+    <a href="#world">あなたの世界</a>
+    <a href="#important">大切なもの</a>
+    <a href="#message">作品に込めたいもの</a>
+    <a href="#references">参考資料</a>
+    <a href="#last">最後に</a>
+
+  </nav>
+
+
+  <!-- =========================
+       ① あなたについて
+  ========================== -->
+
+  <div class="sheet-section" id="about">
+
+    <h2>あなたについて</h2>
+
+    <p>
+      まずは、あなた自身について教えてください。
+    </p>
+
+    <p>
+      答えにくいものは、無理に答える必要はありません。
+    </p>
+
+
+    <label>
+      お名前・呼ばれたい名前
+      <input
+        type="text"
+        name="name"
+      >
+    </label>
+
+
+    <label>
+      あなたを一言で表すなら？
+      <textarea
+        name="about_personality"
+        placeholder="性格でも、雰囲気でも、なんとなくの印象でも大丈夫です。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      好きなもの・好きなこと
+      <textarea
+        name="favorite_things"
+        placeholder="色、場所、季節、音楽、食べ物、趣味など。思いつくものを自由に教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      苦手なもの・避けたいもの
+      <textarea
+        name="avoid_things"
+        placeholder="作品に入れてほしくないものや、避けたい表現などがあれば教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      あなたらしいと思うもの
+      <textarea
+        name="your_symbol"
+        placeholder="物、色、場所、言葉など、「これを見ると自分っぽい」と思うものがあれば教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      あなたについて、知ってほしいこと
+      <textarea
+        name="about_you"
+        placeholder="うまく言葉にできなくても大丈夫です。「なんとなくこういう人です」くらいでも構いません。"
+      ></textarea>
+    </label>
+
+  </div>
+
+
+  <!-- =========================
+       ② あなたの姿
+  ========================== -->
+
+  <div class="sheet-section" id="appearance">
+
+    <h2>あなたの姿</h2>
+
+    <p>
+      この作品では、どんなあなたを描きたいですか？
+    </p>
+
+    <p>
+      今の自分でも、理想の自分でも構いません。
+    </p>
+
+    <p class="sheet-note">
+      ※「あなたの姿」と「あなたの世界」は、どちらか一方だけでも大丈夫です。<br>
+      両方思い浮かぶ場合は、ぜひ教えてください。
+    </p>
+
+
+    <label>
+      この作品では、どんな自分を描きたいですか？
+      <textarea
+        name="desired_appearance"
+        placeholder="今の自分でも、理想の自分でも、自由に教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      どんな雰囲気の姿にしたいですか？
+      <textarea
+        name="appearance_atmosphere"
+        placeholder="静か、幻想的、凛としている、かわいい、儚い、かっこいい……など。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      髪型・服装・表情など、希望はありますか？
+      <textarea
+        name="appearance_details"
+        placeholder="具体的に決まっていなくても大丈夫です。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      作品に入れたい色はありますか？
+      <input
+        type="text"
+        name="appearance_color"
+      >
+    </label>
+
+
+    <label>
+      絶対に入れたいモチーフはありますか？
+      <textarea
+        name="must_motif"
+      ></textarea>
+    </label>
+
+
+    <label>
+      できれば入れてほしいものはありますか？
+      <textarea
+        name="wanted_elements"
+      ></textarea>
+    </label>
+
+
+    <label>
+      逆に、描いてほしくないものはありますか？
+      <textarea
+        name="avoid_motif"
+        placeholder="色・モチーフ・表現など、気になるものがあれば教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      「こんな自分を見てみたい」という姿はありますか？
+      <textarea
+        name="ideal_self"
+        placeholder="現実の自分とは違っていても構いません。"
+      ></textarea>
+    </label>
+
+  </div>
+
+
+  <!-- =========================
+       ③ あなたの世界
+  ========================== -->
+
+  <div class="sheet-section" id="world">
+
+    <h2>あなたの世界</h2>
+
+    <p>
+      あなたの頭の中にある世界や景色を教えてください。
+    </p>
+
+    <p>
+      実際にある場所でも、想像の世界でも構いません。
+    </p>
+
+    <p class="sheet-note">
+      ※「あなたの姿」と「あなたの世界」は、どちらか一方だけでも大丈夫です。<br>
+      「なんとなく」や「分からない」も、あなたの答えです。
+    </p>
+
+
+    <label>
+      頭の中にある景色を、一枚の絵にするとしたら？
+      <textarea
+        name="world_landscape"
+        placeholder="どんな場所が思い浮かびますか？"
+      ></textarea>
+    </label>
+
+
+    <label>
+      そこには何がありますか？
+      <textarea
+        name="world_elements"
+        placeholder="建物、自然、星、海、街、人、動物など。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      いつの時間ですか？
+      <input
+        type="text"
+        name="world_time"
+        placeholder="朝・昼・夕方・夜・深夜など"
+      >
+    </label>
+
+
+    <label>
+      季節はいつですか？
+      <input
+        type="text"
+        name="world_season"
+      >
+    </label>
+
+
+    <label>
+      どんな天気ですか？
+      <input
+        type="text"
+        name="world_weather"
+      >
+    </label>
+
+
+    <label>
+      どんな音が聞こえますか？
+      <textarea
+        name="world_sound"
+        placeholder="風の音、波の音、雨音、街の音、音楽、静寂など。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      どんな匂いがしますか？
+      <textarea
+        name="world_smell"
+        placeholder="花、雨、木、海、夜の空気など。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      そこに誰かいるとしたら、誰がいますか？
+      <textarea
+        name="world_people"
+        placeholder="自分だけでも、誰か大切な人でも、動物でも構いません。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      その世界で、一番大切なものは何ですか？
+      <textarea
+        name="world_most_important"
+      ></textarea>
+    </label>
+
+
+    <label>
+      もし、その世界を一枚の絵にして残すなら、絶対に消したくないものは何ですか？
+      <textarea
+        name="world_essential"
+      ></textarea>
+    </label>
+
+  </div>
+
+
+  <!-- =========================
+       ④ 大切なもの
+  ========================== -->
+
+  <div class="sheet-section" id="important">
+
+    <h2>大切なもの</h2>
+
+    <p>
+      あなたが大切にしているものを教えてください。
+    </p>
+
+    <p>
+      人でも、物でも、場所でも、思い出でも構いません。<br>
+      小さなものでも、あなたにとって大切なら、それだけで十分です。
+    </p>
+
+
+    <label>
+      あなたが大切にしているもの
+      <textarea
+        name="important_things"
+      ></textarea>
+    </label>
+
+
+    <label>
+      それは、なぜ大切ですか？
+      <textarea
+        name="important_reason"
+        placeholder="話せる範囲で教えてください。うまく言葉にできなくても大丈夫です。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      それを作品の中に残したいと思いますか？
+      <textarea
+        name="important_in_art"
+        placeholder="「入れてほしい」「さりげなく入れてほしい」「入れなくてもいい」など、自由に教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      そのほか、あなたにとって大切なものはありますか？
+      <textarea
+        name="other_important_things"
+        placeholder="いくつあっても構いません。思いつくままに教えてください。"
+      ></textarea>
+    </label>
+
+  </div>
+
+
+  <!-- =========================
+       ⑤ この作品に込めたいもの
+  ========================== -->
+
+  <div class="sheet-section" id="message">
+
+    <h2>この作品に込めたいもの</h2>
+
+
+    <label>
+      この作品を通して、どんなものを残したいですか？
+      <textarea
+        name="work_legacy"
+        placeholder="気持ち、思い出、願い、言葉、今の自分、未来の自分など。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      この作品を見たとき、自分自身にどんな気持ちになってほしいですか？
+      <textarea
+        name="feeling_for_self"
+        placeholder="「少し安心したい」「自分を好きになりたい」など、自由に教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      この作品を見た人には、どんなものを感じてほしいですか？
+      <textarea
+        name="feeling_for_viewer"
+        placeholder="言葉にしにくい感覚でも構いません。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      この作品を、どんな一枚にしたいですか？
+      <textarea
+        name="work_image"
+        placeholder="静かな一枚、忘れたくない一枚、未来へ残したい一枚……など。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      もし、この作品にひとつだけ言葉を添えるとしたら、どんな言葉を選びますか？
+      <textarea
+        name="work_words"
+        placeholder="一言でも、短い文章でも構いません。"
+      ></textarea>
+    </label>
+
+  </div>
+
+
+  <!-- =========================
+       ⑥ 参考資料
+  ========================== -->
+
+  <div class="sheet-section" id="references">
+
+    <h2>参考資料</h2>
+
+    <p>
+      作品をつくるうえで、参考にしてほしいものがあれば教えてください。
+    </p>
+
+    <p>
+      写真・キャラクター資料・衣装・色・景色・モチーフなど、
+      どんなものでも構いません。
+    </p>
+
+    <p>
+      参考資料がなくても大丈夫です。<br>
+      言葉だけでも、一緒にイメージを作っていきます。
+    </p>
+
+    <p class="sheet-note">
+      ※参考資料は最大5枚まで添付できます。<br>
+      ※画像の合計サイズが10MBを超えないようにしてください。
+    </p>
+
+
+    <label>
+      どんなところを参考にしてほしいですか？
+      <textarea
+        name="reference_points"
+        placeholder="「この色が好き」「この服の雰囲気」「この景色の空気感」など。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      参考資料について、特に伝えておきたいことはありますか？
+      <textarea
+        name="reference_notes"
+        placeholder="「この写真の色だけ参考にしてほしい」など、気になることがあれば教えてください。"
+      ></textarea>
+    </label>
+
+
+    <label>
+      参考資料①
+      <input
+        type="file"
+        name="reference_1"
+        accept="image/*"
+      >
+    </label>
+
+
+    <label>
+      参考資料②
+      <input
+        type="file"
+        name="reference_2"
+        accept="image/*"
+      >
+    </label>
+
+
+    <label>
+      参考資料③
+      <input
+        type="file"
+        name="reference_3"
+        accept="image/*"
+      >
+    </label>
+
+
+    <label>
+      参考資料④
+      <input
+        type="file"
+        name="reference_4"
+        accept="image/*"
+      >
+    </label>
+
+
+    <label>
+      参考資料⑤
+      <input
+        type="file"
+        name="reference_5"
+        accept="image/*"
+      >
+    </label>
+
+  </div>
+
+
+  <!-- =========================
+       ⑦ 最後に
+  ========================== -->
+
+  <div class="sheet-section" id="last">
+
+    <h2>最後に</h2>
+
+    <p>
+      ここまでの質問では書けなかったこと、
+      伝えておきたいこと、迷っていることなど、
+      自由に書いてください。
+    </p>
+
+    <p>
+      小さなことでも構いません。
+    </p>
+
+
+    <label>
+      「これだけは伝えておきたい」ということがあれば教えてください。
+      <textarea
+        name="last_message"
+      ></textarea>
+    </label>
+
+  </div>
+
+
+  <!-- =========================
+       最後の言葉
+  ========================== -->
+
+  <div class="star-sheet-intro">
+
+    <p>
+      あなたから届いた星のかけらを、<br>
+      大切に受け取ります。
+    </p>
+
+  </div>
+
+
+  <!-- =========================
+       送信
+  ========================== -->
+
+  <div class="sheet-submit">
+
+    <button type="submit">
+      星に届ける
+    </button>
+
+  </div>
+
+
+</form>
+
+<a href="index.html" class="back-to-sea">← 星の海へ戻る</a>
+
+</body>
+</html>
