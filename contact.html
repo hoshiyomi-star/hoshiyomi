@@ -510,6 +510,287 @@
     }
 
   </style>
+
+<style id="hoshiyomi-contact-night-design">
+  /* 星詠｜お問い合わせ：星のかけらと同じ夜空 */
+  html, body {
+    min-height: 100%;
+  }
+
+  body {
+    position: relative;
+    overflow-x: hidden;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(132,163,235,.17), transparent 38%),
+      radial-gradient(circle at 12% 34%, rgba(85,121,205,.09), transparent 24%),
+      radial-gradient(circle at 88% 62%, rgba(75,108,190,.08), transparent 26%),
+      linear-gradient(180deg, #020612 0%, #06132b 52%, #02050d 100%) !important;
+    color: #edf4ff !important;
+    letter-spacing: .025em;
+  }
+
+  /* 月明かり */
+  body::before {
+    content: "";
+    position: fixed;
+    width: 34vw;
+    height: 34vw;
+    min-width: 220px;
+    min-height: 220px;
+    max-width: 480px;
+    max-height: 480px;
+    top: -13vw;
+    right: -9vw;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      circle,
+      rgba(205,222,255,.16) 0%,
+      rgba(145,180,245,.08) 28%,
+      rgba(100,135,210,.025) 50%,
+      transparent 72%
+    );
+    filter: blur(3px);
+  }
+
+  /* 遠い星 */
+  body::after {
+    content:
+      "·   ✦      ·       ˚     ·  ✧        ·"
+      "       ˚       ·      ✦       ·       ˚"
+      "   ·       ✧       ·       ˚      ✦   ";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    color: rgba(218,231,255,.42);
+    font-size: 12px;
+    line-height: 5.2;
+    letter-spacing: 1.15em;
+    white-space: pre-wrap;
+    opacity: .55;
+    transform: rotate(-4deg) scale(1.08);
+  }
+
+  .contact-container,
+  .contact-form {
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-container {
+    color: #edf4ff !important;
+  }
+
+  .contact-form {
+    border: 1px solid rgba(185,213,255,.16) !important;
+    border-radius: 24px !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(155,190,250,.09), transparent 42%),
+      rgba(5,14,31,.78) !important;
+    box-shadow:
+      0 18px 60px rgba(0,0,0,.25),
+      inset 0 1px 0 rgba(255,255,255,.025) !important;
+    overflow: hidden;
+  }
+
+  .contact-form h1 {
+    color: #edf5ff !important;
+    font-weight: 500 !important;
+    letter-spacing: .14em;
+    text-shadow: 0 0 22px rgba(164,198,255,.18);
+  }
+
+  .contact-form h1::before {
+    content: "✦";
+    margin-right: .65em;
+    color: rgba(190,220,255,.72);
+    font-size: .55em;
+    vertical-align: middle;
+    text-shadow: 0 0 14px rgba(180,215,255,.8);
+  }
+
+  .contact-form h1::after {
+    content: "✦";
+    margin-left: .65em;
+    color: rgba(190,220,255,.42);
+    font-size: .5em;
+    vertical-align: middle;
+  }
+
+  .form-section {
+    border-color: rgba(175,204,245,.11) !important;
+    background: rgba(10,24,48,.48) !important;
+  }
+
+  .form-section h2,
+  .form-section h3 {
+    color: #dce7f8 !important;
+    font-weight: 500 !important;
+    letter-spacing: .09em;
+  }
+
+  .form-section h2::before,
+  .form-section h3::before {
+    content: "✧";
+    margin-right: .5em;
+    color: rgba(190,216,255,.62);
+    font-size: .7em;
+    text-shadow: 0 0 10px rgba(170,205,255,.55);
+  }
+
+  label {
+    color: #dce7f8 !important;
+    font-weight: 500;
+    line-height: 2;
+  }
+
+  label::before {
+    content: "✦";
+    margin-right: .5em;
+    color: rgba(174,205,250,.52);
+    font-size: .72em;
+    text-shadow: 0 0 9px rgba(170,205,255,.45);
+  }
+
+  input,
+  textarea,
+  select {
+    border: 1px solid rgba(177,205,246,.16) !important;
+    border-radius: 12px !important;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.018)),
+      rgba(3,10,24,.58) !important;
+    color: #edf4ff !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.025),
+      0 7px 24px rgba(0,0,0,.12) !important;
+    letter-spacing: .02em;
+  }
+
+  input::placeholder,
+  textarea::placeholder,
+  select {
+    color: rgba(192,207,232,.48) !important;
+  }
+
+  input:hover,
+  textarea:hover,
+  select:hover {
+    border-color: rgba(177,205,246,.27) !important;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none !important;
+    border-color: rgba(184,214,255,.48) !important;
+    box-shadow:
+      0 0 0 3px rgba(125,170,238,.055),
+      0 0 22px rgba(125,170,238,.09),
+      inset 0 1px 0 rgba(255,255,255,.035) !important;
+  }
+
+  textarea {
+    line-height: 2;
+  }
+
+  .required {
+    color: #a9c9f7 !important;
+    opacity: .78;
+  }
+
+  /* 送信前メッセージ */
+  .contact-note,
+  .form-note,
+  .notice {
+    color: rgba(200,214,236,.74) !important;
+    line-height: 2;
+  }
+
+  /* 送信ボタン */
+  .contact-form button[type="submit"],
+  .submit-button,
+  .contact-submit {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(190,218,255,.24) !important;
+    border-radius: 999px !important;
+    color: #eef5ff !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(180,215,255,.13), transparent 60%),
+      linear-gradient(180deg, rgba(93,135,205,.18), rgba(47,79,135,.16)) !important;
+    box-shadow:
+      0 8px 30px rgba(0,0,0,.22),
+      0 0 24px rgba(120,170,245,.055) !important;
+    letter-spacing: .08em;
+    font-weight: 500;
+    transition: transform .22s ease, border-color .22s ease,
+                box-shadow .22s ease, background .22s ease;
+  }
+
+  .contact-form button[type="submit"]::before,
+  .submit-button::before,
+  .contact-submit::before {
+    content: "✦";
+    display: inline-block;
+    margin-right: .7em;
+    color: rgba(215,232,255,.88);
+    text-shadow: 0 0 12px rgba(185,220,255,.8);
+  }
+
+  .contact-form button[type="submit"]:hover,
+  .submit-button:hover,
+  .contact-submit:hover {
+    transform: translateY(-2px);
+    border-color: rgba(202,225,255,.38) !important;
+    box-shadow:
+      0 10px 34px rgba(0,0,0,.25),
+      0 0 30px rgba(130,180,255,.11) !important;
+  }
+
+  /* 最後の一言 */
+  .contact-form::after {
+    content: "あなたは、あなたのままで輝く星です。";
+    display: block;
+    margin: 6px auto 28px;
+    padding: 0 20px;
+    text-align: center;
+    color: rgba(210,228,255,.58);
+    font-size: 13px;
+    letter-spacing: .08em;
+    line-height: 2;
+  }
+
+  @media (max-width: 700px) {
+    body::before {
+      width: 280px;
+      height: 280px;
+      top: -90px;
+      right: -100px;
+    }
+
+    body::after {
+      font-size: 9px;
+      line-height: 6.4;
+      letter-spacing: .65em;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .contact-form {
+      border-radius: 18px !important;
+    }
+
+    input,
+    textarea,
+    select {
+      border-radius: 10px !important;
+    }
+  }
+</style>
+
 </head>
 
 
