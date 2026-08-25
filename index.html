@@ -7,6 +7,2552 @@
   <title>星詠｜HOSHIYOMI</title>
 
   <link rel="stylesheet" href="style.css">
+
+<style id="hoshiyomi-balance-edit-v1">
+/* =========================================================
+   星詠｜公開用 第1版
+   足し算・引き算：情報量は変えず、列の重さだけ整える
+   ========================================================= */
+
+/* 「あなたの姿」：3つの情報ブロックを
+   2列＋最後を中央の1列にして視線の重さを整える */
+@media (min-width: 900px) {
+  .yourself-content {
+    max-width: 980px;
+    margin-inline: auto;
+  }
+
+  .yourself-block {
+    box-sizing: border-box;
+  }
+
+  .yourself-content > .yourself-block:nth-of-type(1),
+  .yourself-content > .yourself-block:nth-of-type(2) {
+    width: calc(50% - 18px);
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .yourself-content > .yourself-block:nth-of-type(1) {
+    margin-right: 32px;
+  }
+
+  .yourself-content > .yourself-block:nth-of-type(3) {
+    width: min(760px, 100%);
+    margin: 34px auto 0;
+  }
+
+  /* 制作料金は3ブロック目と同じ流れで見せる */
+  .yourself-content > .service-price {
+    width: min(560px, 100%);
+    margin: 28px auto 0;
+  }
+
+  /* 「あなたの世界」：左右2列を均等に */
+  .world-content {
+    max-width: 980px;
+    margin-inline: auto;
+  }
+
+  .world-content > .world-block {
+    width: calc(50% - 18px);
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+  }
+
+  .world-content > .world-block:first-of-type {
+    margin-right: 32px;
+  }
+
+  .world-content > .world-message {
+    max-width: 760px;
+    margin: 38px auto 0;
+  }
+
+  .world-content > .service-price {
+    width: min(560px, 100%);
+    margin: 28px auto 0;
+  }
+}
+
+/* 長い文章が横に広がりすぎないようにする */
+.story-content,
+.heart-content,
+.gallery-content,
+.unspoken-content {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* 作品カードは3枚の存在感を揃える */
+.gallery-grid {
+  align-items: stretch;
+}
+
+.gallery-card {
+  min-width: 0;
+}
+
+/* スマホでは無理に2列にしない */
+@media (max-width: 899px) {
+  .yourself-content > .yourself-block,
+  .world-content > .world-block {
+    width: 100%;
+    display: block;
+    margin-right: 0;
+  }
+
+  .yourself-content > .yourself-block:nth-of-type(3),
+  .world-content > .world-message {
+    margin-top: 28px;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-search-stars">
+  .hoshiyomi-search-stars {
+    margin: 34px auto 0;
+    max-width: 720px;
+    text-align: center;
+    color: rgba(215, 230, 252, .78);
+    font-size: clamp(14px, 1.7vw, 17px);
+    line-height: 2.1;
+    letter-spacing: .09em;
+    text-shadow: 0 0 18px rgba(165, 201, 255, .12);
+  }
+
+  .hoshiyomi-search-stars::before {
+    content: "✦";
+    margin-right: .7em;
+    color: rgba(190, 218, 255, .72);
+    text-shadow: 0 0 12px rgba(180, 215, 255, .65);
+  }
+
+  .hoshiyomi-search-stars::after {
+    content: "✦";
+    margin-left: .7em;
+    color: rgba(190, 218, 255, .42);
+  }
+</style>
+
+
+<style id="hoshiyomi-work-photo-slot">
+/* 星詠｜作品群：あとから写真を差し替えられる枠 */
+.gallery-grid {
+  align-items: stretch;
+}
+
+.gallery-card {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.gallery-card .hoshiyomi-work-image,
+.gallery-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* 画像が未設定・読み込み失敗しても「ここに作品写真を入れる」ことが分かる */
+.gallery-card .hoshiyomi-photo-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed rgba(185,213,255,.22);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(155,190,250,.08), transparent 55%),
+    rgba(5,14,31,.48);
+  color: rgba(195,214,240,.48);
+  letter-spacing: .08em;
+}
+
+/* 写真を入れた時に既存の星詠デザインから浮かない */
+.gallery-card img {
+  transition: transform .45s ease, filter .45s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.018);
+}
+
+/*
+  写真の差し替えはHTML内の
+  <img class="hoshiyomi-work-image" src="ここに画像ファイル名">
+  のsrcだけ変更すればOK。
+*/
+</style>
+
+
+<style id="hoshiyomi-work-modal-style">
+  .hoshiyomi-work-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px auto 2px;
+    padding: 9px 15px;
+    border: 1px solid rgba(185,213,255,.18);
+    border-radius: 999px;
+    background: rgba(5,14,31,.34);
+    color: rgba(220,233,251,.78);
+    font: inherit;
+    font-size: 12px;
+    letter-spacing: .06em;
+    cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+
+  .hoshiyomi-work-open:hover {
+    transform: translateY(-1px);
+    border-color: rgba(195,220,255,.34);
+    background: rgba(70,105,165,.12);
+  }
+
+  .hoshiyomi-work-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .hoshiyomi-work-modal.is-open {
+    display: flex;
+  }
+
+  .hoshiyomi-work-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(1,5,14,.78);
+    backdrop-filter: blur(8px);
+  }
+
+  .hoshiyomi-work-modal-panel {
+    position: relative;
+    z-index: 1;
+    width: min(920px, 100%);
+    max-height: min(88vh, 900px);
+    overflow: auto;
+    border: 1px solid rgba(190,218,255,.18);
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(155,190,250,.10), transparent 46%),
+      linear-gradient(180deg, rgba(8,20,43,.98), rgba(3,9,22,.98));
+    box-shadow: 0 30px 90px rgba(0,0,0,.5);
+  }
+
+  .hoshiyomi-work-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(200,220,247,.18);
+    border-radius: 50%;
+    background: rgba(2,8,20,.58);
+    color: #eaf3ff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .hoshiyomi-work-modal-image-wrap {
+    width: 100%;
+    background: rgba(0,0,0,.15);
+  }
+
+  .hoshiyomi-work-modal-image-wrap img {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+  }
+
+  .hoshiyomi-work-modal-body {
+    padding: 30px clamp(22px, 5vw, 48px) 40px;
+  }
+
+  .hoshiyomi-work-modal-label {
+    margin: 0 0 6px;
+    color: rgba(180,211,255,.52);
+    font-size: 10px;
+    letter-spacing: .25em;
+  }
+
+  .hoshiyomi-work-modal-body h3 {
+    margin: 0 0 16px;
+    color: #edf5ff;
+    font-weight: 500;
+    letter-spacing: .08em;
+  }
+
+  .hoshiyomi-work-modal-body > p:not(.hoshiyomi-work-modal-label) {
+    margin: 0;
+    color: rgba(207,222,243,.76);
+    line-height: 2;
+  }
+
+  .hoshiyomi-work-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 28px 0 0;
+  }
+
+  .hoshiyomi-work-meta div {
+    padding: 14px;
+    border: 1px solid rgba(185,213,255,.10);
+    border-radius: 12px;
+    background: rgba(255,255,255,.018);
+  }
+
+  .hoshiyomi-work-meta dt {
+    color: rgba(180,207,239,.52);
+    font-size: 10px;
+    letter-spacing: .08em;
+  }
+
+  .hoshiyomi-work-meta dd {
+    margin: 5px 0 0;
+    color: rgba(224,236,253,.82);
+    font-size: 13px;
+  }
+
+  @media (max-width: 640px) {
+    .hoshiyomi-work-modal {
+      padding: 12px;
+    }
+
+    .hoshiyomi-work-modal-panel {
+      border-radius: 18px;
+    }
+
+    .hoshiyomi-work-meta {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+
+<style id="hoshiyomi-new-star-style">
+  /* 最新作品だけに出る「新しい星」 */
+  .hoshiyomi-new-star {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 16px;
+    color: rgba(213,230,255,.78);
+    font-size: 12px;
+    letter-spacing: .12em;
+    line-height: 1.7;
+    opacity: 0;
+  }
+
+  .hoshiyomi-new-star.is-visible {
+    display: flex;
+    animation: hoshiyomiStarBirth .9s ease forwards;
+  }
+
+  .hoshiyomi-new-star-glyph {
+    display: inline-block;
+    color: #e7f2ff;
+    font-size: 17px;
+    text-shadow:
+      0 0 7px rgba(190,220,255,.9),
+      0 0 22px rgba(150,200,255,.7);
+    animation: hoshiyomiStarPulse 2.2s ease-in-out infinite;
+  }
+
+  .hoshiyomi-new-star-text {
+    text-shadow: 0 0 18px rgba(160,200,255,.14);
+  }
+
+  @keyframes hoshiyomiStarBirth {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(5px);
+    }
+    55% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    100% {
+      opacity: .86;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes hoshiyomiStarPulse {
+    0%, 100% {
+      transform: scale(.92);
+      opacity: .65;
+    }
+    50% {
+      transform: scale(1.18);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hoshiyomi-new-star.is-visible,
+    .hoshiyomi-new-star-glyph {
+      animation: none;
+      opacity: .86;
+    }
+  }
+</style>
+
+
+<style id="hoshiyomi-star-born-soon-style">
+  .hoshiyomi-new-star {
+    color: rgba(205,224,248,.66);
+  }
+
+  .hoshiyomi-new-star-glyph {
+    opacity: .68;
+    text-shadow:
+      0 0 5px rgba(190,220,255,.62),
+      0 0 15px rgba(150,200,255,.38);
+    animation: hoshiyomiStarGrowing 3s ease-in-out infinite;
+  }
+
+  @keyframes hoshiyomiStarGrowing {
+    0%, 100% {
+      transform: scale(.82);
+      opacity: .42;
+      filter: blur(.3px);
+    }
+    50% {
+      transform: scale(1.04);
+      opacity: .82;
+      filter: blur(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hoshiyomi-new-star-glyph {
+      animation: none;
+      opacity: .62;
+    }
+  }
+</style>
+
+
+<style id="hoshiyomi-work-coming-soon">
+  /* 作品がまだ無い期間の作品例表示 */
+  .hoshiyomi-work-coming-soon {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 20px;
+    box-sizing: border-box;
+    color: rgba(214,229,249,.68);
+  }
+
+  .hoshiyomi-work-coming-soon p {
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: .10em;
+  }
+
+  .hoshiyomi-coming-star {
+    color: rgba(211,231,255,.62);
+    font-size: 20px;
+    text-shadow:
+      0 0 8px rgba(180,215,255,.65),
+      0 0 20px rgba(150,195,255,.32);
+    animation: hoshiyomiComingStar 3s ease-in-out infinite;
+  }
+
+  @keyframes hoshiyomiComingStar {
+    0%, 100% {
+      opacity: .35;
+      transform: scale(.88);
+    }
+    50% {
+      opacity: .82;
+      transform: scale(1.06);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hoshiyomi-work-coming-soon {
+      min-height: 220px;
+    }
+  }
+</style>
+
+
+<style id="hoshiyomi-design-polish-v9">
+/* =========================================================
+   星詠｜第9版
+   デザイン調整：夜空の中を静かに進んでいく感覚
+   ※文章・料金・構成は変更しない
+   ========================================================= */
+
+/* セクション間に「星の余韻」を作る */
+section {
+  position: relative;
+}
+
+section:not(:first-of-type)::before {
+  content: "✦";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(190, 216, 250, .24);
+  font-size: 10px;
+  text-shadow: 0 0 14px rgba(150, 195, 255, .42);
+  pointer-events: none;
+}
+
+/* 見出しを少しだけ夜空側へ */
+section h2,
+section h3 {
+  text-shadow: 0 0 24px rgba(120, 170, 235, .10);
+}
+
+/* セクションの小さな英字タイトル */
+section .section-label,
+section .eyebrow,
+section .section-number {
+  letter-spacing: .24em;
+}
+
+/* カードは「箱」より「夜空に浮かぶ面」に近づける */
+.yourself-block,
+.world-block,
+.gallery-card,
+.service-price,
+.heart-block,
+.story-block {
+  transition:
+    border-color .35s ease,
+    background-color .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.yourself-block:hover,
+.world-block:hover,
+.gallery-card:hover,
+.heart-block:hover,
+.story-block:hover {
+  border-color: rgba(190, 218, 255, .18);
+  background-color: rgba(255,255,255,.022);
+  box-shadow: 0 14px 40px rgba(0,0,0,.10);
+}
+
+/* 作品がまだ生まれていない場所は、少し静かに */
+.hoshiyomi-work-coming-soon {
+  min-height: 300px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(135,180,245,.055), transparent 38%);
+}
+
+.hoshiyomi-work-coming-soon p {
+  color: rgba(214,229,249,.62);
+}
+
+/* 星詠の「探す」文章に少しだけ余韻を */
+.hoshiyomi-search-stars {
+  position: relative;
+  margin-top: 42px !important;
+}
+
+.hoshiyomi-search-stars::before,
+.hoshiyomi-search-stars::after {
+  opacity: .55;
+}
+
+/* スクロールバーも夜空に馴染ませる */
+html {
+  scrollbar-color: rgba(145, 177, 220, .35) rgba(3, 9, 22, .55);
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: rgba(3, 9, 22, .55);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(145, 177, 220, .30);
+  border-radius: 99px;
+}
+
+/* モバイルでは余韻を控えめに */
+@media (max-width: 640px) {
+  section:not(:first-of-type)::before {
+    top: -12px;
+    font-size: 8px;
+  }
+
+  .hoshiyomi-work-coming-soon {
+    min-height: 230px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yourself-block,
+  .world-block,
+  .gallery-card,
+  .service-price,
+  .heart-block,
+  .story-block {
+    transition: none;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-gallery-coming-soon-final">
+.hoshiyomi-gallery-coming-soon-single{
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:34px auto 0;
+  padding:40px 24px;
+  border:1px solid rgba(185,213,255,.09);
+  border-radius:18px;
+  background:radial-gradient(circle at 50% 45%,rgba(135,180,245,.055),transparent 40%),rgba(255,255,255,.012);
+  text-align:center;
+}
+.hoshiyomi-gallery-coming-soon-single span{
+  color:rgba(211,231,255,.62);
+  font-size:21px;
+  text-shadow:0 0 8px rgba(180,215,255,.65),0 0 20px rgba(150,195,255,.32);
+  animation:hoshiyomiComingStarFinal 3s ease-in-out infinite;
+}
+.hoshiyomi-gallery-coming-soon-single p{
+  margin:12px 0 0;
+  color:rgba(214,229,249,.66);
+  font-size:14px;
+  letter-spacing:.10em;
+  line-height:2;
+}
+@keyframes hoshiyomiComingStarFinal{
+  0%,100%{opacity:.35;transform:scale(.88)}
+  50%{opacity:.82;transform:scale(1.06)}
+}
+@media(max-width:640px){
+  .hoshiyomi-gallery-coming-soon-single{min-height:220px}
+}
+</style>
+
+
+<style id="hoshiyomi-top-minimal-v11">
+.hero-content{
+  padding-top:2vh;
+  padding-bottom:4vh;
+}
+
+.hero-label{
+  opacity:.9;
+}
+
+.hero h1{
+  letter-spacing:.18em;
+  text-indent:.18em;
+}
+
+.hero-catch{
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.hero-scroll{
+  opacity:.78;
+}
+</style>
+
+
+<style id="hoshiyomi-starry-layer-v12">
+.hoshiyomi-star-layer{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.hoshiyomi-star-layer i{
+  position:absolute;
+  display:block;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:rgba(232,242,255,.78);
+  box-shadow:0 0 6px rgba(170,210,255,.58);
+  opacity:.55;
+}
+
+/* 小さな星 */
+.hoshiyomi-star-layer i:nth-child(1){top:10%;left:9%}
+.hoshiyomi-star-layer i:nth-child(2){top:18%;left:23%;width:1px;height:1px;opacity:.45}
+.hoshiyomi-star-layer i:nth-child(3){top:13%;left:46%;opacity:.65}
+.hoshiyomi-star-layer i:nth-child(4){top:22%;left:88%;width:1px;height:1px}
+.hoshiyomi-star-layer i:nth-child(5){top:34%;left:15%;opacity:.42}
+.hoshiyomi-star-layer i:nth-child(6){top:39%;left:37%;width:1px;height:1px}
+.hoshiyomi-star-layer i:nth-child(7){top:29%;left:62%;opacity:.58}
+.hoshiyomi-star-layer i:nth-child(8){top:47%;left:94%;width:1px;height:1px}
+.hoshiyomi-star-layer i:nth-child(9){top:56%;left:8%;opacity:.48}
+.hoshiyomi-star-layer i:nth-child(10){top:63%;left:27%;width:1px;height:1px}
+.hoshiyomi-star-layer i:nth-child(11){top:70%;left:56%;opacity:.55}
+.hoshiyomi-star-layer i:nth-child(12){top:77%;left:82%;width:1px;height:1px}
+.hoshiyomi-star-layer i:nth-child(13){top:84%;left:18%;opacity:.45}
+.hoshiyomi-star-layer i:nth-child(14){top:88%;left:47%;width:1px;height:1px}
+.hoshiyomi-star-layer i:nth-child(15){top:73%;left:72%;opacity:.62}
+.hoshiyomi-star-layer i:nth-child(16){top:92%;left:91%;width:1px;height:1px}
+.hoshiyomi-star-layer i:nth-child(17){top:52%;left:72%;width:1px;height:1px;opacity:.4}
+.hoshiyomi-star-layer i:nth-child(18){top:31%;left:81%;opacity:.5}
+
+.hero,
+section,
+footer{
+  position:relative;
+  z-index:1;
+}
+
+/* 星は「ある」と分かる程度。背景を覆わない */
+@media(max-width:600px){
+  .hoshiyomi-star-layer i{opacity:.42}
+}
+</style>
+
+
+<style id="hoshiyomi-visual-v13">
+html,body{
+  margin:0!important;
+  padding:0!important;
+  background:#030818!important;
+  color:#edf2ff!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+}
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
+  background:
+    radial-gradient(ellipse at 18% 38%,rgba(91,74,150,.14),transparent 25%),
+    radial-gradient(ellipse at 76% 52%,rgba(54,92,157,.13),transparent 28%),
+    radial-gradient(ellipse at 48% 18%,rgba(88,108,180,.10),transparent 32%),
+    linear-gradient(180deg,#020714 0%,#050c21 48%,#020714 100%)!important;
+}
+
+/* 天の川のような淡い帯 */
+body::before{
+  content:"";
+  position:fixed;
+  z-index:0;
+  pointer-events:none;
+  width:75vw;
+  height:145vh;
+  left:34%;
+  top:-22%;
+  transform:rotate(-24deg);
+  background:
+    radial-gradient(ellipse at center,
+      rgba(160,176,230,.10) 0%,
+      rgba(116,135,195,.055) 22%,
+      rgba(90,108,170,.025) 42%,
+      transparent 68%);
+  filter:blur(24px);
+  opacity:.85;
+}
+
+/* 星屑 */
+body::after{
+  content:"";
+  position:fixed;
+  z-index:0;
+  inset:0;
+  pointer-events:none;
+  opacity:.62;
+  background-image:
+    radial-gradient(circle at 7% 13%,rgba(255,255,255,.85) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 16% 72%,rgba(205,220,255,.62) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 27% 23%,rgba(255,255,255,.7) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 38% 79%,rgba(190,210,255,.55) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 48% 11%,rgba(255,255,255,.76) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 59% 67%,rgba(210,225,255,.58) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 71% 18%,rgba(255,255,255,.78) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 84% 46%,rgba(196,215,255,.62) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 93% 81%,rgba(255,255,255,.72) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 12% 91%,rgba(180,205,255,.46) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 54% 42%,rgba(255,255,255,.58) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 89% 12%,rgba(205,220,255,.52) 0 1px,transparent 1.5px);
+}
+
+main,section,header,footer,.hero-content,.about-content,.story-content,
+.heart-content,.gallery-content,.yourself-content,.unspoken-content,
+.world-content,.star-menu,.star-menu-inner{
+  position:relative;
+  z-index:1;
+}
+
+/* ヒーロー */
+.hero{
+  min-height:100svh!important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 24px!important;
+  background:transparent!important;
+  border:0!important;
+  text-align:center;
+}
+.hero-content{
+  width:min(900px,100%)!important;
+  padding:40px 0 60px;
+}
+.hero-label{
+  color:rgba(205,215,241,.62)!important;
+  font-family:inherit!important;
+  font-size:.72rem!important;
+  letter-spacing:.42em!important;
+  margin-bottom:20px!important;
+}
+.hero h1{
+  color:#f4f6ff!important;
+  font-family:"Times New Roman","Yu Mincho",serif!important;
+  font-size:clamp(3.2rem,8vw,6.2rem)!important;
+  font-weight:400!important;
+  letter-spacing:.24em!important;
+  text-indent:.24em!important;
+  text-shadow:0 0 28px rgba(180,195,255,.13)!important;
+}
+.hero-catch{
+  color:rgba(232,236,249,.82)!important;
+  font-size:clamp(1rem,2vw,1.22rem)!important;
+  line-height:2.25!important;
+  letter-spacing:.13em!important;
+  margin:30px auto 0!important;
+}
+.hero-scroll{
+  color:rgba(203,211,235,.45)!important;
+  letter-spacing:.34em!important;
+  margin-top:72px!important;
+}
+
+/* オリオン座を自然に見せる */
+.orion{opacity:.48!important}
+.orion-star{
+  background:#edf3ff!important;
+  box-shadow:0 0 8px rgba(190,210,255,.8),0 0 20px rgba(135,165,235,.35)!important;
+}
+
+/* セクション */
+section{
+  min-height:78vh!important;
+  padding:120px 24px!important;
+  background:rgba(3,8,22,.72)!important;
+  border-top:1px solid rgba(188,205,245,.045)!important;
+}
+section:nth-of-type(even){
+  background:
+    radial-gradient(ellipse at 50% 20%,rgba(80,95,160,.055),transparent 38%),
+    rgba(4,10,28,.78)!important;
+}
+section h2{
+  color:#f0f3ff!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.14em!important;
+  text-shadow:0 0 22px rgba(165,185,240,.10)!important;
+}
+.section-label{
+  color:rgba(178,184,224,.62)!important;
+  letter-spacing:.32em!important;
+}
+.about-lead,.gallery-lead,.yourself-lead,.unspoken-lead,.world-lead{
+  color:rgba(225,230,244,.78)!important;
+}
+.about-text,.story-text,.story-subsection,.heart-item,.heart-ending,
+.gallery-description,.gallery-ending,.yourself-description,
+.unspoken-description,.unspoken-message,.world-description,.world-message{
+  color:rgba(207,216,237,.72)!important;
+}
+.story-subsection,.heart-item,.yourself-block,.world-block{
+  border-color:rgba(185,205,245,.075)!important;
+  background:rgba(255,255,255,.012)!important;
+}
+.about-line,.story-line,.heart-line,.gallery-line,.yourself-line,
+.unspoken-line,.world-line{
+  background:linear-gradient(90deg,transparent,rgba(180,195,240,.42),transparent)!important;
+  box-shadow:none!important;
+}
+
+/* 作品群 */
+.gallery-grid{gap:26px!important}
+.gallery-card{
+  border-color:rgba(185,205,245,.10)!important;
+  background:rgba(5,12,29,.42)!important;
+}
+.gallery-image{
+  background:
+    radial-gradient(circle at 50% 45%,rgba(130,155,215,.07),transparent 44%),
+    rgba(255,255,255,.012)!important;
+}
+.gallery-info h3{color:#e9effc!important}
+.gallery-info p{color:rgba(195,208,232,.65)!important}
+
+/* 現在の「まだ星は生まれている最中です」 */
+.hoshiyomi-gallery-coming-soon-single{
+  border-color:rgba(185,205,245,.085)!important;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(120,145,210,.065),transparent 42%),
+    rgba(255,255,255,.012)!important;
+}
+.hoshiyomi-gallery-coming-soon-single span{
+  color:rgba(224,231,255,.72)!important;
+  text-shadow:0 0 9px rgba(175,195,255,.7),0 0 22px rgba(130,155,230,.3)!important;
+}
+.hoshiyomi-gallery-coming-soon-single p{
+  color:rgba(214,222,240,.68)!important;
+}
+
+/* 価格表示 */
+.service-price{
+  border-color:rgba(185,205,245,.075)!important;
+}
+.service-price-label{color:rgba(177,190,222,.55)!important}
+.service-price-main{color:#eef2ff!important}
+.service-price-note{color:rgba(180,194,220,.52)!important}
+
+/* メニュー */
+.star-menu-button{
+  border-color:rgba(190,207,244,.16)!important;
+  background:rgba(3,9,24,.72)!important;
+  color:rgba(225,231,246,.78)!important;
+}
+.star-menu{
+  background:rgba(2,6,18,.96)!important;
+}
+.star-menu a{color:rgba(218,225,242,.72)!important}
+
+/* モバイル */
+@media(max-width:600px){
+  .hero h1{
+    font-size:3rem!important;
+    letter-spacing:.16em!important;
+    text-indent:.16em!important;
+  }
+  .hero-catch{
+    font-size:.9rem!important;
+    letter-spacing:.08em!important;
+  }
+  section{padding:90px 20px!important}
+}
+</style>
+
+
+<style id="hoshiyomi-soft-celestial-v14">
+/* =========================================================
+   HOSHIYOMI / 星と柔らかな文字のデザイン
+   ※本文・料金・既存の内容は変更せず、見た目だけを調整
+   ========================================================= */
+
+html{scroll-behavior:smooth}
+
+body{
+  background:
+    radial-gradient(ellipse at 50% 18%,rgba(103,91,174,.11),transparent 30%),
+    radial-gradient(ellipse at 18% 55%,rgba(64,102,170,.10),transparent 30%),
+    radial-gradient(ellipse at 82% 70%,rgba(94,73,157,.09),transparent 28%),
+    linear-gradient(180deg,#020713 0%,#060d25 48%,#020713 100%)!important;
+}
+
+/* 星屑を増やしすぎず、細かな星を散らす */
+body::after{
+  opacity:.72!important;
+  background-image:
+    radial-gradient(circle at 6% 11%,rgba(255,255,255,.88) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 14% 42%,rgba(211,224,255,.62) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 23% 18%,rgba(255,255,255,.72) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 31% 72%,rgba(194,211,255,.58) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 42% 29%,rgba(255,255,255,.72) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 51% 12%,rgba(224,231,255,.76) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 62% 76%,rgba(193,211,255,.56) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 72% 25%,rgba(255,255,255,.82) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 81% 51%,rgba(209,221,255,.62) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 91% 18%,rgba(255,255,255,.74) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 94% 84%,rgba(198,215,255,.58) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 8% 88%,rgba(210,223,255,.56) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 56% 48%,rgba(255,255,255,.54) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 38% 91%,rgba(203,219,255,.52) 0 1px,transparent 1.5px);
+}
+
+/* 大きな四芒星をCSSで表現 */
+.hoshiyomi-star-layer i:nth-child(1),
+.hoshiyomi-star-layer i:nth-child(7),
+.hoshiyomi-star-layer i:nth-child(13){
+  width:4px!important;
+  height:4px!important;
+  opacity:.9!important;
+  background:rgba(239,241,255,.92)!important;
+  box-shadow:
+    0 0 8px rgba(210,220,255,.9),
+    0 0 20px rgba(150,175,245,.48)!important;
+}
+.hoshiyomi-star-layer i:nth-child(1)::before,
+.hoshiyomi-star-layer i:nth-child(7)::before,
+.hoshiyomi-star-layer i:nth-child(13)::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:18px;
+  height:1px;
+  transform:translate(-50%,-50%);
+  background:rgba(225,231,255,.52);
+}
+.hoshiyomi-star-layer i:nth-child(1)::after,
+.hoshiyomi-star-layer i:nth-child(7)::after,
+.hoshiyomi-star-layer i:nth-child(13)::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:1px;
+  height:18px;
+  transform:translate(-50%,-50%);
+  background:rgba(225,231,255,.52);
+}
+
+/* ヒーロー */
+.hero{
+  min-height:100svh!important;
+  background:transparent!important;
+  overflow:hidden;
+}
+.hero-content{
+  padding-top:32px!important;
+  padding-bottom:72px!important;
+}
+.hero-label{
+  color:rgba(208,214,240,.60)!important;
+  letter-spacing:.34em!important;
+  font-size:.68rem!important;
+}
+.hero h1{
+  color:#f1effc!important;
+  font-family:"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif!important;
+  font-weight:400!important;
+  letter-spacing:.28em!important;
+  text-indent:.28em!important;
+  font-size:clamp(3.5rem,9vw,6.8rem)!important;
+  text-shadow:
+    0 0 16px rgba(210,195,255,.10),
+    0 0 38px rgba(120,135,220,.08)!important;
+}
+.hero-catch{
+  color:rgba(232,230,244,.82)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-size:clamp(1rem,2vw,1.2rem)!important;
+  line-height:2.35!important;
+  letter-spacing:.14em!important;
+}
+
+/* HOSHIYOMIの下に細い星の軌道 */
+.hero-content::after{
+  content:"✦";
+  display:block;
+  width:min(520px,72vw);
+  margin:42px auto 0;
+  padding-bottom:20px;
+  color:rgba(206,191,255,.62);
+  font-size:15px;
+  letter-spacing:14em;
+  border-bottom:1px solid rgba(202,191,235,.20);
+  transform:translateX(7em);
+  text-shadow:0 0 12px rgba(190,170,255,.5);
+}
+
+.hero-scroll{
+  margin-top:46px!important;
+  color:rgba(205,211,235,.46)!important;
+  letter-spacing:.32em!important;
+}
+
+/* セクション見出しを柔らかく */
+section h2{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.14em!important;
+  color:#f0eff8!important;
+}
+.section-label{
+  font-family:"Times New Roman","Yu Mincho",serif!important;
+  letter-spacing:.34em!important;
+  color:rgba(187,181,222,.68)!important;
+}
+
+/* 見出し横の星モチーフ */
+.section-label::before,
+.section-label::after{
+  display:inline-block;
+  content:"✦";
+  margin:0 15px;
+  color:rgba(197,185,241,.56);
+  font-size:.7em;
+  vertical-align:middle;
+  text-shadow:0 0 8px rgba(190,170,255,.42);
+}
+
+/* 区切り線を「星が浮かぶ線」に */
+.about-line,.story-line,.heart-line,.gallery-line,
+.yourself-line,.unspoken-line,.world-line{
+  position:relative;
+  width:min(230px,50vw)!important;
+  height:1px!important;
+  margin:26px auto 40px!important;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(196,190,225,.34),
+    transparent
+  )!important;
+}
+.about-line::after,.story-line::after,.heart-line::after,
+.gallery-line::after,.yourself-line::after,.unspoken-line::after,
+.world-line::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-54%);
+  padding:0 9px;
+  color:rgba(208,193,248,.70);
+  background:#060d25;
+  font-size:12px;
+  text-shadow:0 0 10px rgba(190,170,255,.5);
+}
+
+/* 本文は真っ白にせず、少し青紫を含ませる */
+.about-text,.story-text,.story-subsection,.heart-item,
+.heart-ending,.gallery-description,.gallery-ending,
+.yourself-description,.unspoken-description,.unspoken-message,
+.world-description,.world-message{
+  color:rgba(216,220,238,.76)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  line-height:2.25!important;
+}
+
+/* 「実際に、あなたを探しに星をめぐりました。」 */
+.hoshiyomi-search-stars{
+  color:rgba(222,211,245,.84)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  letter-spacing:.10em;
+  text-shadow:0 0 16px rgba(180,160,235,.12);
+}
+
+/* 準備中の星 */
+.hoshiyomi-gallery-coming-soon-single{
+  background:
+    radial-gradient(circle at 50% 45%,rgba(145,123,205,.08),transparent 42%),
+    rgba(255,255,255,.012)!important;
+}
+.hoshiyomi-gallery-coming-soon-single span{
+  font-size:24px!important;
+  color:rgba(218,205,251,.78)!important;
+}
+
+/* 料金やカードも硬くなりすぎないように */
+.gallery-card,.heart-item,.yourself-block,.world-block{
+  border-color:rgba(190,195,230,.09)!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.012)!important;
+}
+
+/* スマホ */
+@media(max-width:600px){
+  .hero h1{
+    font-size:3.15rem!important;
+    letter-spacing:.17em!important;
+    text-indent:.17em!important;
+  }
+  .hero-content::after{
+    width:70vw;
+    letter-spacing:5em;
+    transform:translateX(2.5em);
+  }
+  .section-label::before,
+  .section-label::after{
+    margin:0 8px;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-typography-calm-v15">
+/* ===== 文字デザインを落ち着かせる =====
+   星・夜空のモチーフは残し、文字だけを静かに。
+*/
+
+body{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  letter-spacing:normal!important;
+}
+
+.hero-label,
+.section-label{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.22em!important;
+  text-indent:0!important;
+}
+
+.hero h1{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.18em!important;
+  text-indent:.18em!important;
+  line-height:1.25!important;
+  text-shadow:0 0 20px rgba(180,190,230,.10)!important;
+}
+
+.hero-catch{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.08em!important;
+  line-height:2.05!important;
+}
+
+.hero-scroll{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  letter-spacing:.20em!important;
+}
+
+section h2{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  font-size:clamp(1.65rem,3vw,2.25rem)!important;
+  letter-spacing:.08em!important;
+  line-height:1.7!important;
+  text-shadow:none!important;
+}
+
+.section-label{
+  font-size:.72rem!important;
+  color:rgba(190,193,215,.60)!important;
+}
+
+/* 見出し横の星は小さく、文字より目立たせない */
+.section-label::before,
+.section-label::after{
+  margin:0 11px!important;
+  color:rgba(195,185,225,.45)!important;
+  font-size:.62em!important;
+  text-shadow:none!important;
+}
+
+/* 本文 */
+.about-lead,
+.gallery-lead,
+.yourself-lead,
+.unspoken-lead,
+.world-lead,
+.about-text,
+.story-text,
+.story-subsection,
+.heart-item,
+.heart-ending,
+.gallery-description,
+.gallery-ending,
+.yourself-description,
+.unspoken-description,
+.unspoken-message,
+.world-description,
+.world-message,
+.hoshiyomi-search-stars{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.045em!important;
+  line-height:2.15!important;
+  text-shadow:none!important;
+}
+
+.about-lead,
+.gallery-lead,
+.yourself-lead,
+.unspoken-lead,
+.world-lead{
+  font-size:1.02em!important;
+  color:rgba(222,224,235,.78)!important;
+}
+
+/* カード内の文字 */
+.gallery-info h3,
+.service-price-label,
+.service-price-main,
+.service-price-note{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.06em!important;
+  text-shadow:none!important;
+}
+
+.gallery-info h3{
+  font-size:1.05rem!important;
+}
+
+.service-price-main{
+  letter-spacing:.08em!important;
+}
+
+/* 作品準備中 */
+.hoshiyomi-gallery-coming-soon-single p{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.08em!important;
+  line-height:2!important;
+}
+
+/* メニュー */
+.star-menu-button,
+.star-menu a{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.06em!important;
+}
+
+/* スクロール時も落ち着いた印象 */
+@media(max-width:600px){
+  .hero h1{
+    font-size:3rem!important;
+    letter-spacing:.12em!important;
+    text-indent:.12em!important;
+  }
+
+  .hero-catch{
+    font-size:.9rem!important;
+    letter-spacing:.045em!important;
+    line-height:2.15!important;
+  }
+
+  section h2{
+    font-size:1.65rem!important;
+    letter-spacing:.06em!important;
+  }
+
+  .section-label{
+    letter-spacing:.16em!important;
+  }
+
+  .section-label::before,
+  .section-label::after{
+    margin:0 7px!important;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-final-balance-v17">
+/* =========================================================
+   星詠 第17版
+   「夜空の中に、言葉が静かに浮かぶ」
+   ※既存の文章・料金・構成は変更しない
+   ========================================================= */
+
+body{
+  background:
+    radial-gradient(ellipse at 50% 12%,rgba(101,91,165,.10),transparent 30%),
+    radial-gradient(ellipse at 15% 55%,rgba(58,91,150,.08),transparent 28%),
+    radial-gradient(ellipse at 85% 72%,rgba(85,67,145,.07),transparent 30%),
+    linear-gradient(180deg,#020713 0%,#060d22 50%,#020713 100%)!important;
+}
+
+/* 背景の星は「気づくといる」くらい */
+body::after{
+  opacity:.58!important;
+}
+
+/* 本文を主役にする */
+section{
+  background:rgba(3,8,22,.58)!important;
+  border-top:1px solid rgba(190,205,240,.045)!important;
+}
+
+section:nth-of-type(even){
+  background:rgba(5,10,28,.62)!important;
+}
+
+/* 見出し */
+section h2{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  font-size:clamp(1.7rem,3vw,2.2rem)!important;
+  letter-spacing:.075em!important;
+  line-height:1.75!important;
+  text-align:center!important;
+  color:rgba(241,241,248,.92)!important;
+  text-shadow:none!important;
+}
+
+/* セクションラベル */
+.section-label{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  font-size:.7rem!important;
+  letter-spacing:.18em!important;
+  color:rgba(191,194,215,.58)!important;
+  text-align:center!important;
+}
+
+/* 星は左右に小さく添える */
+.section-label::before,
+.section-label::after{
+  content:"✦"!important;
+  display:inline-block!important;
+  font-size:.58em!important;
+  color:rgba(201,191,231,.44)!important;
+  margin:0 13px!important;
+  vertical-align:middle!important;
+  text-shadow:0 0 8px rgba(185,170,235,.25)!important;
+}
+
+/* 区切り線 */
+.about-line,.story-line,.heart-line,.gallery-line,
+.yourself-line,.unspoken-line,.world-line{
+  width:min(210px,46vw)!important;
+  height:1px!important;
+  margin:25px auto 42px!important;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(190,195,220,.28),
+    transparent
+  )!important;
+}
+
+.about-line::after,.story-line::after,.heart-line::after,
+.gallery-line::after,.yourself-line::after,.unspoken-line::after,
+.world-line::after{
+  content:"✦"!important;
+  color:rgba(205,193,236,.55)!important;
+  background:#060d22!important;
+  font-size:10px!important;
+  padding:0 8px!important;
+  text-shadow:0 0 9px rgba(185,165,230,.3)!important;
+}
+
+/* 本文 */
+.about-lead,
+.gallery-lead,
+.yourself-lead,
+.unspoken-lead,
+.world-lead,
+.about-text,
+.story-text,
+.story-subsection,
+.heart-item,
+.heart-ending,
+.gallery-description,
+.gallery-ending,
+.yourself-description,
+.unspoken-description,
+.unspoken-message,
+.world-description,
+.world-message{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.025em!important;
+  line-height:2.15!important;
+  text-shadow:none!important;
+}
+
+.about-text,
+.story-text,
+.gallery-description,
+.yourself-description,
+.unspoken-description,
+.world-description{
+  color:rgba(215,219,232,.74)!important;
+}
+
+/* 「こんな方へ」などの内容をカードにしすぎない */
+.story-subsection,
+.heart-item,
+.yourself-block,
+.world-block{
+  border:1px solid rgba(190,201,230,.055)!important;
+  border-radius:18px!important;
+  background:rgba(255,255,255,.009)!important;
+  box-shadow:none!important;
+}
+
+/* 箇条書き */
+ul,ol{
+  margin-top:18px!important;
+}
+
+li{
+  line-height:2.05!important;
+  color:rgba(220,222,234,.76)!important;
+}
+
+/* カード内の星は控えめ */
+.gallery-card{
+  border-color:rgba(190,201,230,.07)!important;
+  background:rgba(255,255,255,.009)!important;
+  box-shadow:none!important;
+  border-radius:20px!important;
+}
+
+/* 準備中 */
+.hoshiyomi-gallery-coming-soon-single{
+  border-color:rgba(190,201,230,.07)!important;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(125,110,190,.06),transparent 48%),
+    rgba(255,255,255,.008)!important;
+  box-shadow:none!important;
+}
+
+.hoshiyomi-gallery-coming-soon-single span{
+  color:rgba(216,207,239,.72)!important;
+  text-shadow:0 0 13px rgba(180,160,225,.22)!important;
+}
+
+/* ヒーロー */
+.hero h1{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-weight:400!important;
+  letter-spacing:.16em!important;
+  text-indent:.16em!important;
+}
+
+.hero-catch{
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  letter-spacing:.055em!important;
+  line-height:2.15!important;
+  color:rgba(229,229,239,.80)!important;
+}
+
+/* 星の軌道装飾はかなり薄く */
+.hero-content::after{
+  color:rgba(204,193,235,.42)!important;
+  border-bottom-color:rgba(202,195,225,.14)!important;
+  text-shadow:0 0 9px rgba(185,170,225,.25)!important;
+}
+
+/* 料金 */
+.service-price{
+  border-color:rgba(190,201,230,.06)!important;
+  background:rgba(255,255,255,.008)!important;
+  box-shadow:none!important;
+}
+
+/* モバイル */
+@media(max-width:600px){
+  section h2{
+    font-size:1.6rem!important;
+    letter-spacing:.055em!important;
+  }
+
+  .section-label::before,
+  .section-label::after{
+    margin:0 8px!important;
+  }
+
+  .about-text,
+  .story-text,
+  .gallery-description,
+  .yourself-description,
+  .unspoken-description,
+  .world-description{
+    line-height:2.05!important;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-nebula-color-v18">
+/* =========================================================
+   HOSHIYOMI 第18版
+   深い紺 × 青 × 紫 × 星雲の光
+   ※既存の文章・料金・構成は変更しない
+   ========================================================= */
+
+:root{
+  --night:#020817;
+  --navy:#07153a;
+  --blue:#173f88;
+  --violet:#6750a8;
+  --soft-violet:#9b86d7;
+  --star:#eaf3ff;
+  --star-blue:#b8d9ff;
+  --text:#e8eaf4;
+  --sub:#c8cce0;
+}
+
+/* 夜空 */
+body{
+  background:
+    radial-gradient(ellipse 38% 24% at 17% 22%,
+      rgba(74,111,205,.20),transparent 72%),
+    radial-gradient(ellipse 40% 30% at 82% 35%,
+      rgba(82,58,157,.18),transparent 72%),
+    radial-gradient(ellipse 46% 28% at 72% 76%,
+      rgba(39,103,194,.15),transparent 72%),
+    radial-gradient(ellipse 30% 24% at 22% 88%,
+      rgba(106,62,165,.13),transparent 72%),
+    linear-gradient(145deg,#020715 0%,#061638 48%,#03091d 100%)!important;
+  color:var(--text)!important;
+}
+
+/* 青紫の星雲 */
+body::before{
+  opacity:.95!important;
+  background:
+    radial-gradient(ellipse at 20% 28%,
+      rgba(95,126,230,.18),transparent 24%),
+    radial-gradient(ellipse at 76% 68%,
+      rgba(126,78,195,.16),transparent 28%),
+    radial-gradient(ellipse at 52% 48%,
+      rgba(63,108,197,.07),transparent 38%)!important;
+  filter:blur(30px)!important;
+}
+
+/* 星屑 */
+body::after{
+  opacity:.72!important;
+  background-image:
+    radial-gradient(circle at 6% 11%,rgba(255,255,255,.95) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 14% 42%,rgba(184,217,255,.80) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 23% 18%,rgba(255,255,255,.78) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 31% 72%,rgba(196,185,255,.72) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 42% 29%,rgba(255,255,255,.82) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 51% 12%,rgba(205,230,255,.88) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 62% 76%,rgba(190,205,255,.68) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 72% 25%,rgba(255,255,255,.90) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 81% 51%,rgba(180,215,255,.76) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 91% 18%,rgba(220,207,255,.82) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 94% 84%,rgba(198,225,255,.72) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 8% 88%,rgba(215,201,255,.68) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 56% 48%,rgba(255,255,255,.62) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 38% 91%,rgba(189,218,255,.62) 0 1px,transparent 1.6px);
+}
+
+/* セクションにもほんのり色を残す */
+section{
+  background:
+    radial-gradient(ellipse at 18% 50%,rgba(45,88,175,.055),transparent 30%),
+    radial-gradient(ellipse at 84% 35%,rgba(101,68,173,.045),transparent 32%),
+    rgba(2,8,23,.56)!important;
+  border-top:1px solid rgba(150,181,235,.075)!important;
+}
+section:nth-of-type(even){
+  background:
+    radial-gradient(ellipse at 78% 68%,rgba(92,66,170,.065),transparent 30%),
+    radial-gradient(ellipse at 20% 28%,rgba(44,102,191,.05),transparent 32%),
+    rgba(4,10,29,.58)!important;
+}
+
+/* HOSHIYOMI */
+.hero h1{
+  color:#f2f5ff!important;
+  text-shadow:
+    0 0 18px rgba(166,199,255,.12),
+    0 0 36px rgba(125,99,200,.10)!important;
+}
+
+/* キャッチコピー */
+.hero-catch{
+  color:rgba(231,236,249,.86)!important;
+}
+
+/* 見出し */
+section h2{
+  color:#edf1fc!important;
+  text-shadow:0 0 18px rgba(149,176,235,.08)!important;
+}
+
+/* セクションラベル */
+.section-label{
+  color:rgba(180,204,240,.70)!important;
+}
+.section-label::before,
+.section-label::after{
+  color:rgba(177,202,255,.72)!important;
+  text-shadow:
+    0 0 7px rgba(120,178,255,.65),
+    0 0 14px rgba(135,105,225,.32)!important;
+}
+
+/* 区切り線 */
+.about-line,.story-line,.heart-line,.gallery-line,
+.yourself-line,.unspoken-line,.world-line{
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(126,173,240,.42),
+    rgba(155,119,220,.36),
+    transparent
+  )!important;
+}
+.about-line::after,.story-line::after,.heart-line::after,
+.gallery-line::after,.yourself-line::after,.unspoken-line::after,
+.world-line::after{
+  color:#d8e6ff!important;
+  background:#06102d!important;
+  text-shadow:
+    0 0 8px rgba(119,185,255,.80),
+    0 0 15px rgba(149,107,220,.42)!important;
+}
+
+/* 本文 */
+.about-lead,
+.gallery-lead,
+.yourself-lead,
+.unspoken-lead,
+.world-lead{
+  color:rgba(222,231,247,.84)!important;
+}
+.about-text,
+.story-text,
+.story-subsection,
+.heart-item,
+.heart-ending,
+.gallery-description,
+.gallery-ending,
+.yourself-description,
+.unspoken-description,
+.unspoken-message,
+.world-description,
+.world-message{
+  color:rgba(209,218,237,.76)!important;
+}
+
+/* 「あなたらしさ」を感じる場所に少し紫 */
+.hoshiyomi-search-stars{
+  color:rgba(220,211,245,.86)!important;
+  text-shadow:0 0 15px rgba(150,121,220,.14)!important;
+}
+
+/* カード */
+.gallery-card,
+.story-subsection,
+.heart-item,
+.yourself-block,
+.world-block,
+.service-price{
+  border-color:rgba(132,166,222,.11)!important;
+  background:
+    linear-gradient(145deg,
+      rgba(38,73,143,.055),
+      rgba(103,69,158,.035))!important;
+}
+
+/* 作品準備中 */
+.hoshiyomi-gallery-coming-soon-single{
+  border-color:rgba(142,177,234,.12)!important;
+  background:
+    radial-gradient(circle at 50% 45%,
+      rgba(84,117,207,.09),transparent 38%),
+    radial-gradient(circle at 68% 62%,
+      rgba(119,76,181,.07),transparent 32%),
+    rgba(255,255,255,.008)!important;
+}
+.hoshiyomi-gallery-coming-soon-single span{
+  color:rgba(218,230,250,.80)!important;
+  text-shadow:
+    0 0 10px rgba(129,190,255,.40),
+    0 0 20px rgba(145,105,220,.22)!important;
+}
+
+/* 料金 */
+.service-price-main{
+  color:#eaf2ff!important;
+}
+.service-price-label{
+  color:rgba(174,201,239,.66)!important;
+}
+.service-price-note{
+  color:rgba(191,197,219,.60)!important;
+}
+
+/* メニュー */
+.star-menu-button{
+  border-color:rgba(137,174,235,.20)!important;
+  background:rgba(3,10,29,.76)!important;
+  color:rgba(221,232,249,.82)!important;
+}
+.star-menu{
+  background:rgba(2,7,21,.97)!important;
+}
+.star-menu a{
+  color:rgba(210,224,244,.76)!important;
+}
+
+/* スマホ */
+@media(max-width:600px){
+  body::before{filter:blur(24px)!important}
+  section{
+    background:rgba(3,9,25,.62)!important;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-celestial-detail-v19">
+/* =========================================================
+   HOSHIYOMI 第19版
+   第18版をベースに、星・月・星座のディテールを追加
+   ※本文・料金・ページ構成は変更しない
+   ========================================================= */
+
+/* ---------- 星のきらめき ---------- */
+body::after{
+  animation:hoshiyomiTwinkle 8s ease-in-out infinite alternate;
+}
+@keyframes hoshiyomiTwinkle{
+  0%{opacity:.52}
+  48%{opacity:.70}
+  100%{opacity:.58}
+}
+
+/* 大きめの星をCSSで数個だけ追加 */
+body::before{
+  content:"✦";
+  position:fixed;
+  z-index:0;
+  pointer-events:none;
+  left:13%;
+  top:24%;
+  color:rgba(218,232,255,.72);
+  font-size:15px;
+  text-shadow:
+    0 0 8px rgba(124,190,255,.85),
+    0 0 20px rgba(125,103,210,.35);
+  animation:hoshiyomiGlow 5s ease-in-out infinite;
+}
+@keyframes hoshiyomiGlow{
+  0%,100%{opacity:.42;transform:scale(.82)}
+  50%{opacity:.95;transform:scale(1.12)}
+}
+
+/* もう一つの淡い紫星 */
+.hero-content::before{
+  content:"✦";
+  position:absolute;
+  right:12%;
+  top:12%;
+  color:rgba(216,199,255,.70);
+  font-size:11px;
+  text-shadow:
+    0 0 8px rgba(160,120,230,.75),
+    0 0 18px rgba(120,145,240,.30);
+  animation:hoshiyomiGlow 6s 1.4s ease-in-out infinite;
+}
+
+/* ---------- 月のモチーフ ---------- */
+.hero{
+  position:relative!important;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  right:11%;
+  top:18%;
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 38% 35%,
+      rgba(241,244,255,.90),
+      rgba(197,211,255,.72) 42%,
+      rgba(144,166,235,.30) 68%,
+      transparent 70%);
+  box-shadow:
+    0 0 18px rgba(172,201,255,.30),
+    0 0 42px rgba(111,99,195,.16);
+  opacity:.72;
+  clip-path:polygon(0 0,100% 0,100% 100%,57% 100%,72% 86%,79% 68%,77% 48%,69% 28%,56% 13%,39% 5%);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  right:10.2%;
+  top:17.1%;
+  width:76px;
+  height:76px;
+  border:1px solid rgba(166,192,245,.12);
+  border-radius:50%;
+  box-shadow:0 0 24px rgba(111,91,180,.12);
+  pointer-events:none;
+}
+
+/* ---------- 星座の細い線 ---------- */
+section:first-of-type::before{
+  content:"";
+  position:absolute;
+  right:7%;
+  top:20%;
+  width:150px;
+  height:110px;
+  opacity:.30;
+  background:
+    linear-gradient(34deg,transparent 49.4%,rgba(171,196,245,.48) 49.8%,rgba(171,196,245,.48) 50.2%,transparent 50.6%),
+    linear-gradient(151deg,transparent 49.4%,rgba(183,164,231,.38) 49.8%,rgba(183,164,231,.38) 50.2%,transparent 50.6%),
+    linear-gradient(77deg,transparent 49.4%,rgba(171,196,245,.32) 49.8%,rgba(171,196,245,.32) 50.2%,transparent 50.6%);
+  transform:rotate(-8deg);
+  pointer-events:none;
+}
+
+/* 星座の接点 */
+section:first-of-type::after{
+  content:"•  •   •\A   •     •";
+  white-space:pre;
+  position:absolute;
+  right:8.5%;
+  top:19%;
+  color:rgba(205,222,255,.62);
+  font-size:13px;
+  line-height:2.4;
+  letter-spacing:17px;
+  text-shadow:0 0 8px rgba(122,177,255,.55);
+  pointer-events:none;
+}
+
+/* ---------- セクションごとの星雲色 ---------- */
+section:nth-of-type(3)::before,
+section:nth-of-type(5)::before{
+  content:"";
+  position:absolute;
+  left:8%;
+  top:18%;
+  width:280px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(
+    ellipse,
+    rgba(77,112,210,.075),
+    rgba(99,72,170,.045) 38%,
+    transparent 72%
+  );
+  filter:blur(12px);
+  pointer-events:none;
+}
+
+section:nth-of-type(4)::before,
+section:nth-of-type(6)::before{
+  content:"";
+  position:absolute;
+  right:6%;
+  bottom:14%;
+  width:300px;
+  height:230px;
+  border-radius:50%;
+  background:radial-gradient(
+    ellipse,
+    rgba(105,73,183,.075),
+    rgba(45,106,191,.035) 42%,
+    transparent 72%
+  );
+  filter:blur(14px);
+  pointer-events:none;
+}
+
+/* ---------- 見出しの星を少しだけ明るく ---------- */
+.section-label::before,
+.section-label::after{
+  transition:opacity .4s ease, text-shadow .4s ease;
+}
+section:hover .section-label::before,
+section:hover .section-label::after{
+  opacity:.9;
+  text-shadow:
+    0 0 8px rgba(125,191,255,.75),
+    0 0 18px rgba(150,105,225,.38)!important;
+}
+
+/* ---------- 作品カードの星空感 ---------- */
+.gallery-card{
+  position:relative!important;
+  overflow:hidden!important;
+}
+.gallery-card::after{
+  content:"✦  ·  ·  ✦";
+  position:absolute;
+  right:17px;
+  top:14px;
+  color:rgba(190,215,255,.34);
+  font-size:9px;
+  letter-spacing:6px;
+  text-shadow:0 0 8px rgba(125,178,255,.35);
+  pointer-events:none;
+}
+
+/* ---------- 料金カードも夜空の一部に ---------- */
+.service-price{
+  position:relative!important;
+  overflow:hidden!important;
+}
+.service-price::after{
+  content:"✦";
+  position:absolute;
+  right:22px;
+  bottom:18px;
+  color:rgba(173,197,255,.34);
+  font-size:11px;
+  text-shadow:0 0 9px rgba(135,177,255,.38);
+}
+
+/* ---------- モバイルでは月・星座を控えめに ---------- */
+@media(max-width:700px){
+  .hero::before{
+    right:8%;
+    top:13%;
+    width:48px;
+    height:48px;
+  }
+  .hero::after{
+    right:7%;
+    top:12.2%;
+    width:55px;
+    height:55px;
+  }
+  .hero-content::before{
+    right:20%;
+    top:9%;
+  }
+  section:first-of-type::before,
+  section:first-of-type::after{
+    opacity:.16;
+    transform:scale(.72);
+    transform-origin:top right;
+  }
+}
+
+@media(max-width:480px){
+  .hero::before{
+    opacity:.48;
+  }
+  .hero::after{
+    opacity:.40;
+  }
+  .gallery-card::after{
+    opacity:.45;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-final-polish-v21">
+/* =========================================================
+   第21版：星空全体の微調整
+   ※文章・料金・構成は変更しない
+   ========================================================= */
+
+/* 夜空の奥行きを少し強める */
+body{
+  background:
+    radial-gradient(ellipse 32% 20% at 14% 18%,
+      rgba(70,115,225,.18),transparent 72%),
+    radial-gradient(ellipse 38% 25% at 88% 30%,
+      rgba(91,61,177,.17),transparent 72%),
+    radial-gradient(ellipse 44% 28% at 74% 77%,
+      rgba(47,105,204,.13),transparent 72%),
+    radial-gradient(ellipse 34% 22% at 18% 83%,
+      rgba(111,65,174,.12),transparent 72%),
+    linear-gradient(145deg,#020714 0%,#061536 48%,#03091d 100%)!important;
+}
+
+/* 月：少し小さく、余白を活かす */
+.hero::before{
+  right:12%!important;
+  top:16%!important;
+  width:60px!important;
+  height:60px!important;
+  opacity:.64!important;
+}
+.hero::after{
+  right:11.3%!important;
+  top:15.3%!important;
+  width:68px!important;
+  height:68px!important;
+  opacity:.55!important;
+}
+
+/* オリオン座：主役級だが文章の邪魔はしない */
+.hoshiyomi-orion{
+  right:4.5%!important;
+  top:11%!important;
+  width:min(225px,21vw)!important;
+  opacity:.58!important;
+}
+.hoshiyomi-orion .orion-lines{
+  stroke:rgba(178,201,245,.29)!important;
+}
+.hoshiyomi-orion .orion-stars{
+  fill:rgba(235,243,255,.88)!important;
+}
+
+/* 星雲は少しだけ紫を増やす */
+section:nth-of-type(2)::before,
+section:nth-of-type(6)::before{
+  opacity:1!important;
+  background:
+    radial-gradient(ellipse,
+      rgba(112,74,190,.075),
+      rgba(51,103,201,.035) 45%,
+      transparent 74%)!important;
+}
+
+/* セクション間に呼吸できる余白 */
+section{
+  padding-top:clamp(72px,8vw,110px)!important;
+  padding-bottom:clamp(72px,8vw,110px)!important;
+}
+
+/* 見出しは少しだけ細く */
+section h2{
+  font-weight:400!important;
+  letter-spacing:.07em!important;
+}
+
+/* カードは「置く」のではなく「浮かせる」 */
+.gallery-card,
+.story-subsection,
+.heart-item,
+.yourself-block,
+.world-block,
+.service-price{
+  backdrop-filter:blur(7px)!important;
+  -webkit-backdrop-filter:blur(7px)!important;
+  background:
+    linear-gradient(145deg,
+      rgba(26,57,121,.075),
+      rgba(91,65,153,.045))!important;
+  border-color:rgba(157,188,237,.12)!important;
+}
+
+/* ホバー時だけ星空の光が少し反応 */
+.gallery-card:hover,
+.service-price:hover{
+  border-color:rgba(174,205,255,.25)!important;
+  box-shadow:
+    0 0 28px rgba(73,116,205,.08),
+    0 0 48px rgba(111,77,176,.06)!important;
+  transform:translateY(-2px);
+  transition:all .35s ease;
+}
+
+/* 作品準備中は静かに */
+.hoshiyomi-gallery-coming-soon-single{
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+}
+
+/* 星の区切りを少しだけ見やすく */
+.section-label::before,
+.section-label::after{
+  opacity:.72!important;
+}
+
+/* 最後の「まだ星は生まれている最中です」を少し特別に */
+.hoshiyomi-gallery-coming-soon-single span{
+  letter-spacing:.10em!important;
+  color:rgba(220,231,250,.82)!important;
+}
+
+/* スマホ：装飾より文章を優先 */
+@media(max-width:700px){
+  section{
+    padding-top:64px!important;
+    padding-bottom:64px!important;
+  }
+
+  .hoshiyomi-orion{
+    width:125px!important;
+    right:1%!important;
+    top:7%!important;
+    opacity:.30!important;
+  }
+
+  .hero::before{
+    width:46px!important;
+    height:46px!important;
+    right:8%!important;
+    top:12%!important;
+  }
+
+  .hero::after{
+    width:53px!important;
+    height:53px!important;
+    right:7.3%!important;
+    top:11.2%!important;
+  }
+
+  .gallery-card:hover,
+  .service-price:hover{
+    transform:none;
+    box-shadow:none!important;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-star-sea-menu-v22">
+/* =========================================================
+   第22版：星の海メニュー整理
+   ※既存のメニュー文言は変更しない
+   ========================================================= */
+
+.star-menu-button{
+  position:fixed!important;
+  z-index:100!important;
+  right:26px!important;
+  bottom:26px!important;
+  width:auto!important;
+  min-width:116px!important;
+  height:44px!important;
+  padding:0 18px!important;
+  border:1px solid rgba(174,202,246,.28)!important;
+  border-radius:999px!important;
+  background:
+    linear-gradient(135deg,
+      rgba(12,31,72,.86),
+      rgba(46,29,83,.82))!important;
+  color:rgba(236,241,252,.88)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-size:.78rem!important;
+  font-weight:400!important;
+  letter-spacing:.12em!important;
+  box-shadow:
+    0 6px 28px rgba(0,0,0,.22),
+    0 0 18px rgba(77,126,220,.10)!important;
+  backdrop-filter:blur(10px)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+  cursor:pointer!important;
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease,
+    background .3s ease!important;
+}
+
+.star-menu-button::before{
+  content:"✦"!important;
+  margin-right:9px!important;
+  color:rgba(201,225,255,.86)!important;
+  font-size:.8em!important;
+  text-shadow:0 0 8px rgba(120,184,255,.6)!important;
+}
+
+.star-menu-button:hover{
+  transform:translateY(-2px)!important;
+  border-color:rgba(184,213,255,.46)!important;
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.25),
+    0 0 24px rgba(84,139,232,.16),
+    0 0 34px rgba(114,76,180,.08)!important;
+}
+
+/* メニュー本体 */
+.star-menu{
+  position:fixed!important;
+  z-index:99!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:40px 24px!important;
+  box-sizing:border-box!important;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(67,105,190,.13),transparent 34%),
+    radial-gradient(circle at 72% 68%,rgba(105,68,173,.10),transparent 32%),
+    rgba(1,6,18,.94)!important;
+  backdrop-filter:blur(16px)!important;
+  -webkit-backdrop-filter:blur(16px)!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(10px)!important;
+  transition:
+    opacity .35s ease,
+    transform .35s ease,
+    visibility .35s ease!important;
+}
+
+.star-menu.is-open{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:translateY(0)!important;
+}
+
+.star-menu-inner{
+  position:relative!important;
+  width:min(560px,100%)!important;
+  max-height:min(760px,88vh)!important;
+  overflow:auto!important;
+  padding:42px 34px 34px!important;
+  border:1px solid rgba(158,191,241,.14)!important;
+  border-radius:28px!important;
+  background:
+    radial-gradient(circle at 30% 18%,rgba(63,105,196,.08),transparent 36%),
+    radial-gradient(circle at 78% 76%,rgba(108,72,173,.07),transparent 38%),
+    rgba(4,11,29,.78)!important;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,.36),
+    0 0 42px rgba(65,105,190,.06)!important;
+}
+
+/* ラベルとタイトル */
+.star-menu-label{
+  margin:0 0 9px!important;
+  text-align:center!important;
+  color:rgba(171,201,241,.60)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-size:.66rem!important;
+  letter-spacing:.24em!important;
+}
+
+.star-menu h2{
+  margin:0!important;
+  text-align:center!important;
+  color:rgba(239,243,252,.92)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-size:1.65rem!important;
+  font-weight:400!important;
+  letter-spacing:.16em!important;
+}
+
+.star-menu h2::before{
+  content:"✦"!important;
+  margin-right:12px!important;
+  color:rgba(190,218,255,.78)!important;
+  font-size:.62em!important;
+  vertical-align:.15em!important;
+}
+
+.star-menu-line{
+  width:70%!important;
+  height:1px!important;
+  margin:24px auto!important;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(150,184,235,.22),
+    rgba(159,121,211,.18),
+    transparent
+  )!important;
+}
+
+/* メニュー項目 */
+.star-menu a{
+  position:relative!important;
+  display:block!important;
+  padding:12px 16px!important;
+  margin:3px 0!important;
+  border-radius:12px!important;
+  color:rgba(220,229,245,.78)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-size:.88rem!important;
+  font-weight:400!important;
+  letter-spacing:.055em!important;
+  text-decoration:none!important;
+  transition:
+    color .25s ease,
+    background .25s ease,
+    padding-left .25s ease!important;
+}
+
+.star-menu a:hover{
+  color:rgba(239,245,255,.96)!important;
+  background:rgba(82,122,200,.08)!important;
+  padding-left:21px!important;
+}
+
+.star-menu a:hover::after{
+  content:"✦"!important;
+  position:absolute!important;
+  right:16px!important;
+  color:rgba(185,216,255,.72)!important;
+  text-shadow:0 0 8px rgba(118,181,255,.55)!important;
+}
+
+/* 閉じる */
+.star-menu-close{
+  display:block!important;
+  margin:26px auto 0!important;
+  padding:10px 22px!important;
+  border:1px solid rgba(160,189,235,.14)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.018)!important;
+  color:rgba(196,208,229,.62)!important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif!important;
+  font-size:.74rem!important;
+  letter-spacing:.08em!important;
+  cursor:pointer!important;
+}
+
+/* スマホ */
+@media(max-width:600px){
+  .star-menu-button{
+    right:16px!important;
+    bottom:16px!important;
+    min-width:104px!important;
+    height:40px!important;
+    padding:0 14px!important;
+    font-size:.72rem!important;
+  }
+
+  .star-menu-inner{
+    width:calc(100% - 8px)!important;
+    max-height:88vh!important;
+    padding:32px 20px 24px!important;
+    border-radius:22px!important;
+  }
+
+  .star-menu a{
+    padding:11px 10px!important;
+    font-size:.82rem!important;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-page-navigation-v23">
+/* =========================================================
+   第23版：星の海から各ページへ
+   ※本文・料金・デザインは変更しない
+   ========================================================= */
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:24px;
+}
+
+/* 各セクションを「一つのページ」のように移動 */
+section[id]{
+  scroll-margin-top:24px;
+}
+
+/* メニューから移動したとき、文字を邪魔しない程度に着地点を強調 */
+section[id]:target{
+  animation:hoshiyomiTargetGlow 1.6s ease-out;
+}
+
+@keyframes hoshiyomiTargetGlow{
+  0%{
+    box-shadow:inset 0 0 80px rgba(91,128,218,.10);
+  }
+  100%{
+    box-shadow:inset 0 0 0 rgba(91,128,218,0);
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-page-navigation-fix">
+html { scroll-behavior:smooth; scroll-padding-top:24px; }
+section[id] { scroll-margin-top:24px; }
+</style>
+
+
+
+<style id="hoshiyomi-menu-final-v24">
+/* 星の海：確実に開閉できるメニュー */
+#starMenu{
+  position:fixed!important;
+  inset:0!important;
+  z-index:9998!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  padding:32px 20px!important;
+  background:rgba(1,6,18,.94)!important;
+  backdrop-filter:blur(16px)!important;
+  -webkit-backdrop-filter:blur(16px)!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transition:opacity .28s ease, visibility .28s ease!important;
+}
+#starMenu.is-open,
+#starMenu[aria-hidden="false"]{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+}
+#starMenu .star-menu-inner{
+  position:relative!important;
+  z-index:1!important;
+  width:min(560px,100%)!important;
+  max-height:88vh!important;
+  overflow:auto!important;
+  box-sizing:border-box!important;
+  padding:40px 30px 30px!important;
+  border:1px solid rgba(158,191,241,.16)!important;
+  border-radius:26px!important;
+  background:rgba(4,11,29,.90)!important;
+  box-shadow:0 24px 80px rgba(0,0,0,.38)!important;
+}
+#starMenuButton{
+  position:fixed!important;
+  z-index:9999!important;
+  right:26px!important;
+  bottom:26px!important;
+  cursor:pointer!important;
+}
+#starMenuClose{
+  cursor:pointer!important;
+}
+@media(max-width:600px){
+  #starMenuButton{right:16px!important;bottom:16px!important;}
+  #starMenu .star-menu-inner{padding:32px 20px 24px!important;}
+}
+</style>
+
+
+<style id="hoshiyomi-final-polish-v25">
+body{overflow-x:hidden!important}
+body::before{filter:blur(34px)!important;opacity:.82!important}
+body::after{opacity:.62!important}
+.hero::before{opacity:.60!important}
+.hoshiyomi-orion{opacity:.54!important}
+section{position:relative!important;isolation:isolate}
+section{border-top-color:rgba(155,187,235,.055)!important}
+.about-text,.story-text,.story-subsection,.heart-item,.heart-ending,.gallery-description,.gallery-ending,.yourself-description,.unspoken-description,.unspoken-message,.world-description,.world-message{line-height:1.95!important}
+section > *{position:relative;z-index:2}
+#starMenuButton{letter-spacing:.14em!important}
+#starMenu .star-menu-inner{box-shadow:0 24px 80px rgba(0,0,0,.38),0 0 42px rgba(65,105,190,.07),0 0 60px rgba(105,72,173,.04)!important}
+.hoshiyomi-gallery-coming-soon-single{min-height:180px}
+@media(max-width:600px){
+.about-text,.story-text,.story-subsection,.heart-item,.heart-ending,.gallery-description,.gallery-ending,.yourself-description,.unspoken-description,.unspoken-message,.world-description,.world-message{line-height:1.88!important}
+}
+</style>
+
 </head>
 
 <!-- 星空の装飾 -->
@@ -84,7 +2630,12 @@
 
     <div class="about-line"></div>
 
-    <p class="about-lead">
+    
+<p class="hoshiyomi-search-stars">
+  実際に、あなたを探しに星をめぐりました。
+</p>
+
+<p class="about-lead">
       無限に広がる夜空から、<br>
       あなただけの星を。
     </p>
@@ -113,7 +2664,7 @@
      星詠を始めた理由
 ========================= -->
 
-<section class="story">
+<section id="about" class="story">
 
   <div class="story-content">
 
@@ -398,82 +2949,31 @@
 
     <!-- 作品一覧 -->
 
-    <div class="gallery-grid">
-
-
-      <!-- 作品01 -->
-
-      <article class="gallery-card">
-
-        <div class="gallery-image">
-          <span>作品画像</span>
-        </div>
-
-        <div class="gallery-info">
-
-          <h3>あなたの姿</h3>
-
-          <p>
-            あなたらしさを一枚に。
-          </p>
-
-          <span class="gallery-type">
-            あなたの姿
-          </span>
-
-        </div>
-
-      </article>
+    <div class="hoshiyomi-gallery-coming-soon-single">
+  <span aria-hidden="true">✦</span>
+  <p>まだ星は生まれている最中です</p>
+</div>
+</article>
 
 
       <!-- 作品02 -->
 
       <article class="gallery-card">
-
-        <div class="gallery-image">
-          <span>作品画像</span>
-        </div>
-
-        <div class="gallery-info">
-
-          <h3>あなたの世界</h3>
-
-          <p>
-            頭の中にある世界を一枚に。
-          </p>
-
-          <span class="gallery-type">
-            あなたの世界
-          </span>
-
-        </div>
-
-      </article>
+<div class="hoshiyomi-work-coming-soon">
+  <span class="hoshiyomi-coming-star" aria-hidden="true">✦</span>
+  <p>まだ星は生まれている最中です</p>
+</div>
+</article>
 
 
       <!-- 作品03 -->
 
       <article class="gallery-card">
-
-        <div class="gallery-image">
-          <span>作品画像</span>
-        </div>
-
-        <div class="gallery-info">
-
-          <h3>その他の作品</h3>
-
-          <p>
-            星詠で生まれた作品たち。
-          </p>
-
-          <span class="gallery-type">
-            その他
-          </span>
-
-        </div>
-
-      </article>
+<div class="hoshiyomi-work-coming-soon">
+  <span class="hoshiyomi-coming-star" aria-hidden="true">✦</span>
+  <p>まだ星は生まれている最中です</p>
+</div>
+</article>
 
 
     </div>
@@ -489,6 +2989,48 @@
 <!-- =========================
      05｜アルニラム
 ========================= -->
+
+<section class="unspoken" id="unspoken">
+
+  <div class="unspoken-content">
+
+    <p class="section-label">06｜UNSPOKEN</p>
+
+    <h2>まだ言葉にならないもの</h2>
+
+    <div class="unspoken-line"></div>
+
+    <p class="unspoken-lead">
+      うまく説明できなくても、大丈夫。
+    </p>
+
+    <p class="unspoken-description">
+      「なんとなく好き」<br>
+      「理由は分からないけれど惹かれる」<br>
+      「こんな感じにしてほしい」
+    </p>
+
+    <p class="unspoken-description">
+      そんな言葉にならない感覚も、<br>
+      あなたの大切な「星」のひとつです。
+    </p>
+
+    <div class="unspoken-message">
+
+      <p>
+        上手に説明する必要はありません。
+      </p>
+
+      <p>
+        あなたの中にあるものを、<br>
+        一緒に探していきます。
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
 <section class="yourself" id="yourself">
 
@@ -597,47 +3139,7 @@
      06｜まだ言葉にならないもの
 ========================= -->
 
-<section class="unspoken" id="unspoken">
 
-  <div class="unspoken-content">
-
-    <p class="section-label">06｜UNSPOKEN</p>
-
-    <h2>まだ言葉にならないもの</h2>
-
-    <div class="unspoken-line"></div>
-
-    <p class="unspoken-lead">
-      うまく説明できなくても、大丈夫。
-    </p>
-
-    <p class="unspoken-description">
-      「なんとなく好き」<br>
-      「理由は分からないけれど惹かれる」<br>
-      「こんな感じにしてほしい」
-    </p>
-
-    <p class="unspoken-description">
-      そんな言葉にならない感覚も、<br>
-      あなたの大切な「星」のひとつです。
-    </p>
-
-    <div class="unspoken-message">
-
-      <p>
-        上手に説明する必要はありません。
-      </p>
-
-      <p>
-        あなたの中にあるものを、<br>
-        一緒に探していきます。
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
 <!-- =========================
      07｜ミンタカ
 ========================= -->
@@ -748,9 +3250,323 @@
 </section>
 </main>
 
-   </body>
+   
+<div class="hoshiyomi-work-modal" id="hoshiyomiWorkModal" aria-hidden="true">
+  <div class="hoshiyomi-work-modal-backdrop" data-close-work-modal></div>
+  <div class="hoshiyomi-work-modal-panel" role="dialog" aria-modal="true" aria-labelledby="hoshiyomiWorkTitle">
+    <button type="button" class="hoshiyomi-work-modal-close" data-close-work-modal aria-label="作品詳細を閉じる">×</button>
+    <div class="hoshiyomi-work-modal-image-wrap">
+      <img id="hoshiyomiWorkModalImage" src="" alt="">
+    </div>
+    <div class="hoshiyomi-work-modal-body">
+    <div class="hoshiyomi-new-star" id="hoshiyomiNewStar" aria-hidden="true">
+      <span class="hoshiyomi-new-star-glyph">✦</span>
+      <span class="hoshiyomi-new-star-text">まだ、星は生まれる途中です</span>
+    </div>
 
-   <!-- 星の海メニュー -->
+      <p class="hoshiyomi-work-modal-label">WORK</p>
+      <h3 id="hoshiyomiWorkTitle">作品詳細</h3>
+      <p id="hoshiyomiWorkDescription"></p>
+      <dl class="hoshiyomi-work-meta">
+        <div><dt>制作内容</dt><dd id="hoshiyomiWorkType"></dd></div>
+        <div><dt>サイズ</dt><dd id="hoshiyomiWorkSize"></dd></div>
+        <div><dt>制作期間</dt><dd id="hoshiyomiWorkPeriod"></dd></div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+
+<script id="hoshiyomi-work-modal-script">
+(function () {
+  const modal = document.getElementById('hoshiyomiWorkModal');
+  if (!modal) return;
+
+  const data = [
+    {
+      title: '作品例 1',
+      description: 'ここに作品の説明を入れられます。制作意図や作品に込めた想いなどを、あとから自由に編集できます。',
+      type: '1枚絵',
+      size: '—',
+      period: '—'
+    },
+    {
+      title: '作品例 2',
+      description: 'ここに作品の説明を入れられます。制作内容やこだわった部分などを掲載できます。',
+      type: 'キャラクターイラスト',
+      size: '—',
+      period: '—'
+    },
+    {
+      title: '作品例 3',
+      description: 'ここに作品の説明を入れられます。依頼者との制作の流れや作品の特徴なども掲載できます。',
+      type: 'オリジナル作品',
+      size: '—',
+      period: '—'
+    }
+  ];
+
+  const image = document.getElementById('hoshiyomiWorkModalImage');
+  const title = document.getElementById('hoshiyomiWorkTitle');
+  const desc = document.getElementById('hoshiyomiWorkDescription');
+  const type = document.getElementById('hoshiyomiWorkType');
+  const size = document.getElementById('hoshiyomiWorkSize');
+  const period = document.getElementById('hoshiyomiWorkPeriod');
+
+  function open(index, card) {
+    const item = data[index - 1] || data[0];
+    const cardImage = card ? card.querySelector('img') : null;
+
+    title.textContent = item.title;
+    desc.textContent = item.description;
+    type.textContent = item.type;
+    size.textContent = item.size;
+    period.textContent = item.period;
+
+    const newStar = document.getElementById('hoshiyomiNewStar');
+    if (newStar) {
+      const isLatest = index === 1;
+      newStar.classList.toggle('is-visible', isLatest);
+      newStar.setAttribute('aria-hidden', isLatest ? 'false' : 'true');
+    }
+
+    if (cardImage && cardImage.getAttribute('src')) {
+      image.src = cardImage.getAttribute('src');
+      image.alt = item.title;
+      image.style.display = 'block';
+    } else {
+      image.removeAttribute('src');
+      image.alt = '';
+      image.style.display = 'none';
+    }
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.hoshiyomi-work-open').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const card = button.closest('.gallery-card');
+      open(Number(button.dataset.workIndex), card);
+    });
+  });
+
+  modal.querySelectorAll('[data-close-work-modal]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();
+</script>
+
+
+<!-- Orion constellation: visual decoration only; no existing page text is changed -->
+<div class="hoshiyomi-orion" aria-hidden="true">
+  <svg viewBox="0 0 260 330" role="presentation">
+    <g class="orion-lines">
+      <line x1="72" y1="34" x2="188" y2="48"/>
+      <line x1="72" y1="34" x2="112" y2="116"/>
+      <line x1="188" y1="48" x2="149" y2="119"/>
+      <line x1="112" y1="116" x2="149" y2="119"/>
+      <line x1="112" y1="116" x2="78" y2="242"/>
+      <line x1="149" y1="119" x2="188" y2="249"/>
+      <line x1="78" y1="242" x2="54" y2="310"/>
+      <line x1="188" y1="249" x2="216" y2="307"/>
+      <line x1="112" y1="116" x2="130" y2="166"/>
+      <line x1="130" y1="166" x2="149" y2="119"/>
+      <line x1="118" y1="166" x2="130" y2="166"/>
+      <line x1="130" y1="166" x2="143" y2="166"/>
+    </g>
+    <g class="orion-stars">
+      <circle cx="72" cy="34" r="4.2"/>
+      <circle cx="188" cy="48" r="4.6"/>
+      <circle cx="112" cy="116" r="4.0"/>
+      <circle cx="149" cy="119" r="4.1"/>
+      <circle cx="78" cy="242" r="3.5"/>
+      <circle cx="188" cy="249" r="3.7"/>
+      <circle cx="54" cy="310" r="3.1"/>
+      <circle cx="216" cy="307" r="3.0"/>
+      <circle cx="118" cy="166" r="2.6"/>
+      <circle cx="130" cy="166" r="2.9"/>
+      <circle cx="143" cy="166" r="2.5"/>
+    </g>
+  </svg>
+</div>
+
+<style id="hoshiyomi-orion-v20">
+/* =========================================================
+   第20版：オリオン座を追加
+   既存の文章・見出し・料金・作品文言は変更しない
+   ========================================================= */
+
+.hoshiyomi-orion{
+  position:absolute;
+  z-index:1;
+  width:min(250px,23vw);
+  aspect-ratio:260 / 330;
+  right:5%;
+  top:13%;
+  pointer-events:none;
+  opacity:.66;
+  filter:drop-shadow(0 0 8px rgba(142,190,255,.28));
+}
+
+.hoshiyomi-orion svg{
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+
+.hoshiyomi-orion .orion-lines{
+  fill:none;
+  stroke:rgba(170,198,244,.34);
+  stroke-width:1;
+  stroke-linecap:round;
+}
+
+.hoshiyomi-orion .orion-stars{
+  fill:rgba(231,241,255,.92);
+  stroke:rgba(171,207,255,.45);
+  stroke-width:1;
+}
+
+.hoshiyomi-orion .orion-stars circle:nth-child(1),
+.hoshiyomi-orion .orion-stars circle:nth-child(2){
+  filter:drop-shadow(0 0 6px rgba(145,195,255,.85));
+}
+
+.hoshiyomi-orion .orion-stars circle:nth-child(3),
+.hoshiyomi-orion .orion-stars circle:nth-child(4){
+  fill:rgba(215,205,255,.94);
+  filter:drop-shadow(0 0 6px rgba(159,119,228,.72));
+}
+
+/* 星詠の文章を隠さない */
+.hero-content,
+.hero h1,
+.hero-catch{
+  position:relative;
+  z-index:2;
+}
+
+/* デスクトップでは「見えるけど主張しすぎない」 */
+@media(max-width:900px){
+  .hoshiyomi-orion{
+    width:180px;
+    right:3%;
+    top:10%;
+    opacity:.48;
+  }
+}
+
+@media(max-width:600px){
+  .hoshiyomi-orion{
+    width:125px;
+    right:2%;
+    top:8%;
+    opacity:.34;
+  }
+}
+</style>
+
+
+
+
+
+<script id="hoshiyomi-menu-final-v24">
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.getElementById("starMenuButton");
+  const menu = document.getElementById("starMenu");
+  const close = document.getElementById("starMenuClose");
+
+  if (!button || !menu) {
+    console.warn("星の海メニュー: ボタンまたはメニューが見つかりません。");
+    return;
+  }
+
+  function openMenu() {
+    menu.classList.add("is-open");
+    menu.setAttribute("aria-hidden", "false");
+    button.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    menu.classList.remove("is-open");
+    menu.setAttribute("aria-hidden", "true");
+    button.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  menu.setAttribute("aria-hidden", "true");
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-controls", "starMenu");
+
+  /* クリック */
+  button.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (menu.classList.contains("is-open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  if (close) {
+    close.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
+
+  /* 背景クリック */
+  menu.addEventListener("click", function (e) {
+    if (e.target === menu) closeMenu();
+  });
+
+  /* メニュー内のページ移動 */
+  menu.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      const href = link.getAttribute("href");
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      closeMenu();
+
+      setTimeout(function () {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 80);
+    });
+  });
+
+  /* Esc */
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeMenu();
+  });
+});
+</script>
+
+</body>
+
+   
+
+
+<!-- 星の海メニュー -->
 <button class="star-menu-button" id="starMenuButton">
   星の海を開く
 </button>
@@ -784,8 +3600,5 @@
 </button>
 
 </nav>
-
-<script src="script.js"></script>
-
 </body>
 </html>
