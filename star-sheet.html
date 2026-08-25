@@ -205,6 +205,28 @@ form > h1 {
   margin-bottom: 0;
 }
 
+.choice-group {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.choice-item {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 0 !important;
+  padding: 12px 14px;
+  background: rgba(3, 10, 24, 0.45);
+  border: 1px solid rgba(160, 195, 240, 0.12);
+  border-radius: 10px;
+}
+
+.choice-item input {
+  margin-top: 5px;
+  flex: 0 0 auto;
+}
+
 input[type="text"],
 textarea,
 input[type="file"] {
@@ -447,6 +469,855 @@ input[type="file"]::file-selector-button {
   box-shadow: 0 0 15px rgba(120, 200, 255, 0.3);
 }
   </style>
+
+<style id="submission-success-style">
+  .submission-success {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .submission-success[hidden] {
+    display: none;
+  }
+
+  .success-inner {
+    width: min(680px, 100%);
+  }
+
+  .success-inner h2 {
+    margin: 12px 0 28px;
+  }
+
+  .success-inner p {
+    line-height: 2;
+  }
+
+  .success-flow {
+    margin: 40px auto;
+    padding: 28px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 14px;
+  }
+
+  .success-flow ol {
+    margin: 12px 0 0;
+    padding-left: 1.5em;
+    line-height: 2;
+  }
+
+  .success-message {
+    margin: 42px 0;
+  }
+</style>
+
+
+<style id="submission-confirm-style">
+.submission-confirm {
+  min-height: 80vh;
+  padding: 80px 20px;
+}
+.submission-confirm[hidden] {
+  display: none;
+}
+.confirm-inner {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+.confirm-lead {
+  line-height: 2;
+  margin-bottom: 36px;
+}
+.confirm-content {
+  display: grid;
+  gap: 16px;
+}
+.confirm-item {
+  padding: 20px 22px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 14px;
+}
+.confirm-item-label {
+  display: block;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  opacity: .65;
+  margin-bottom: 8px;
+}
+.confirm-item-value {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.confirm-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 42px;
+}
+.confirm-actions button {
+  cursor: pointer;
+}
+</style>
+
+
+<style id="reference-mail-style">
+.reference-mail-notice {
+  margin: 36px auto;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 14px;
+  text-align: left;
+  line-height: 1.9;
+}
+.reference-mail-title {
+  margin-top: 0;
+  font-weight: 600;
+}
+.reference-mail-notice p:last-child {
+  margin-bottom: 0;
+}
+</style>
+
+
+<style id="star-soft-finish">
+  /* 星のかけら：仕上げ調整 */
+  body {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(142, 174, 255, 0.18), transparent 24%),
+      radial-gradient(circle at 82% 30%, rgba(94, 122, 210, 0.13), transparent 28%),
+      radial-gradient(circle at 50% 92%, rgba(60, 100, 190, 0.12), transparent 32%),
+      linear-gradient(180deg, #030712 0%, #07142c 48%, #02050d 100%);
+  }
+
+  body::after {
+    content: "✦  ·  ˚  ✧  ·  ⋆  ·  ✦  ·  ˚  ✧";
+    position: fixed;
+    inset: 8% 0 auto;
+    z-index: 0;
+    pointer-events: none;
+    text-align: center;
+    color: rgba(220, 235, 255, 0.24);
+    font-size: clamp(12px, 1.8vw, 18px);
+    letter-spacing: 1.2em;
+    text-shadow: 0 0 14px rgba(170, 205, 255, 0.45);
+    animation: starFloat 7s ease-in-out infinite;
+  }
+
+  form {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(130, 165, 240, 0.07), transparent 38%),
+      rgba(7, 16, 36, 0.82);
+    border-color: rgba(190, 215, 255, 0.2);
+  }
+
+  form > h1::before,
+  form > h1::after {
+    color: rgba(190, 220, 255, 0.72);
+    font-size: .55em;
+    vertical-align: middle;
+    text-shadow: 0 0 14px rgba(180, 215, 255, .8);
+  }
+
+  form > h1::before { content: "✦"; margin-right: .65em; }
+  form > h1::after  { content: "✦"; margin-left: .65em; }
+
+  .sheet-section {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(135, 170, 235, 0.035), transparent 55%),
+      rgba(10, 24, 48, 0.64);
+  }
+
+  .sheet-section h2::before {
+    content: "✦";
+  }
+
+  .star-sheet-intro {
+    color: #d3def0;
+  }
+
+  .star-sheet-intro p:last-child {
+    color: #dbe8fa;
+    text-shadow: 0 0 12px rgba(170, 205, 255, 0.16);
+  }
+
+  .reference-mail-notice {
+    background: rgba(10, 25, 50, .34);
+    border-color: rgba(180, 210, 255, .2);
+    box-shadow: inset 0 0 24px rgba(130, 170, 240, .025);
+  }
+
+  .reference-mail-title::before {
+    content: "✧ ";
+    color: #bcd7ff;
+  }
+
+  .success-message {
+    color: #dbe9ff;
+    text-shadow: 0 0 14px rgba(160, 200, 255, .18);
+  }
+
+  .success-star-line {
+    margin: 28px 0 6px;
+    color: rgba(210, 230, 255, .72);
+    letter-spacing: .8em;
+    text-align: center;
+    text-shadow: 0 0 16px rgba(170, 210, 255, .7);
+  }
+
+  .success-identity {
+    margin: 22px 0 34px;
+    color: #f0f6ff;
+    font-size: 1.05rem;
+    line-height: 2.2;
+    letter-spacing: .08em;
+  }
+
+  .success-identity strong {
+    font-weight: 500;
+    color: #ffffff;
+    text-shadow: 0 0 16px rgba(180, 215, 255, .4);
+  }
+
+  @keyframes starFloat {
+    0%, 100% { transform: translateY(0); opacity: .65; }
+    50% { transform: translateY(6px); opacity: .95; }
+  }
+
+  @media (max-width: 700px) {
+    body::after {
+      letter-spacing: .45em;
+      font-size: 11px;
+    }
+
+    .success-identity {
+      font-size: .95rem;
+    }
+  }
+</style>
+
+
+<style id="night-sky-finish">
+  /* 静かな夜空：既存デザインを壊さず、奥行きだけ追加 */
+  body {
+    position: relative;
+    overflow-x: hidden;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(132, 163, 235, .17), transparent 38%),
+      radial-gradient(circle at 12% 34%, rgba(85, 121, 205, .09), transparent 24%),
+      radial-gradient(circle at 88% 62%, rgba(75, 108, 190, .08), transparent 26%),
+      linear-gradient(180deg, #020612 0%, #06132b 52%, #02050d 100%);
+  }
+
+  /* 大きなぼんやりした月明かり */
+  body::before {
+    content: "";
+    position: fixed;
+    width: 34vw;
+    height: 34vw;
+    min-width: 220px;
+    min-height: 220px;
+    max-width: 480px;
+    max-height: 480px;
+    top: -13vw;
+    right: -9vw;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      circle,
+      rgba(205, 222, 255, .16) 0%,
+      rgba(145, 180, 245, .08) 28%,
+      rgba(100, 135, 210, .025) 50%,
+      transparent 72%
+    );
+    filter: blur(3px);
+  }
+
+  /* 遠い星 */
+  body::after {
+    content:
+      "·   ✦      ·       ˚     ·  ✧        ·"
+      "       ˚       ·      ✦       ·       ˚"
+      "   ·       ✧       ·       ˚      ✦   ";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    color: rgba(218, 231, 255, .42);
+    font-size: 12px;
+    line-height: 5.2;
+    letter-spacing: 1.15em;
+    white-space: pre-wrap;
+    opacity: .55;
+    transform: rotate(-4deg) scale(1.08);
+  }
+
+  form,
+  #submission-confirm,
+  #submission-success {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* タイトルにだけ、ごく弱い星の光 */
+  form > h1 {
+    text-shadow:
+      0 0 22px rgba(164, 198, 255, .18),
+      0 2px 20px rgba(0, 0, 0, .35);
+  }
+
+  /* セクション境界を夜空の光のように */
+  .sheet-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sheet-section::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -110px;
+    right: -80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(180, 210, 255, .07), transparent 68%);
+    pointer-events: none;
+  }
+
+  /* ボタンは「強い光」ではなく、夜の中の小さな星 */
+  .sheet-submit button,
+  .button {
+    box-shadow:
+      0 0 0 1px rgba(185, 215, 255, .08),
+      0 8px 28px rgba(0, 0, 0, .22);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+
+  .sheet-submit button:hover,
+  .button:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 20px rgba(150, 195, 255, .13),
+      0 10px 30px rgba(0, 0, 0, .25);
+  }
+
+  /* 重要な一文を少しだけ月明かりで照らす */
+  .success-identity strong {
+    text-shadow:
+      0 0 10px rgba(180, 215, 255, .28),
+      0 0 28px rgba(120, 165, 240, .12);
+  }
+
+  @media (max-width: 700px) {
+    body::before {
+      width: 280px;
+      height: 280px;
+      top: -90px;
+      right: -100px;
+    }
+
+    body::after {
+      font-size: 9px;
+      line-height: 6.4;
+      letter-spacing: .65em;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      scroll-behavior: auto !important;
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+
+<style id="soft-text-finish">
+  /* 文字を少しだけ柔らかく。夜空の静けさは維持 */
+  body {
+    letter-spacing: .025em;
+  }
+
+  form > h1 {
+    letter-spacing: .14em;
+    font-weight: 500;
+  }
+
+  .sheet-section h2,
+  .section-title,
+  .submission-confirm h2 {
+    font-weight: 500;
+    letter-spacing: .09em;
+  }
+
+  p,
+  label,
+  .sheet-note,
+  .confirm-lead,
+  .confirm-content,
+  .success-message {
+    line-height: 2.05;
+  }
+
+  .star-sheet-intro {
+    line-height: 2.15;
+    color: rgba(221, 231, 247, .88);
+  }
+
+  .star-sheet-intro p {
+    margin-bottom: 1.45em;
+  }
+
+  .star-sheet-intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 見出しの両脇に小さな星 */
+  .sheet-section h2::before {
+    content: "✦";
+    margin-right: .55em;
+    color: rgba(190, 216, 255, .62);
+    font-size: .65em;
+    text-shadow: 0 0 10px rgba(170, 205, 255, .55);
+  }
+
+  .sheet-section h2::after {
+    content: "✦";
+    margin-left: .55em;
+    color: rgba(190, 216, 255, .42);
+    font-size: .5em;
+    vertical-align: .1em;
+  }
+
+  /* 入力欄も少し柔らかく */
+  input,
+  textarea,
+  select {
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: rgba(180, 211, 255, .46) !important;
+    box-shadow: 0 0 0 3px rgba(130, 170, 235, .07),
+                0 0 18px rgba(130, 170, 235, .06);
+  }
+
+  /* 「あなたは～」を一番大切な一文として、余白を取る */
+  .success-identity {
+    position: relative;
+    margin: 34px auto 38px;
+    padding: 25px 18px;
+    max-width: 620px;
+    border-top: 1px solid rgba(185, 214, 255, .12);
+    border-bottom: 1px solid rgba(185, 214, 255, .12);
+    line-height: 2.3;
+  }
+
+  .success-identity::before {
+    content: "✧";
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(205, 225, 255, .72);
+    font-size: 15px;
+    text-shadow: 0 0 12px rgba(180, 215, 255, .65);
+  }
+
+  .success-identity strong {
+    font-weight: 500;
+    letter-spacing: .08em;
+  }
+
+  .success-star-line {
+    opacity: .7;
+    letter-spacing: .65em;
+  }
+
+  @media (max-width: 560px) {
+    body {
+      letter-spacing: .015em;
+    }
+
+    .star-sheet-intro,
+    p,
+    label,
+    .sheet-note,
+    .confirm-lead,
+    .confirm-content,
+    .success-message {
+      line-height: 1.95;
+    }
+
+    .success-identity {
+      padding: 22px 12px;
+      line-height: 2.15;
+    }
+
+    .success-identity strong {
+      letter-spacing: .04em;
+    }
+  }
+</style>
+
+
+<style id="input-night-finish">
+  /* 入力欄：夜空の中に静かに浮かぶカード */
+  .form-group {
+    position: relative;
+  }
+
+  input,
+  textarea,
+  select {
+    border: 1px solid rgba(177, 205, 246, .16) !important;
+    border-radius: 12px !important;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.018)),
+      rgba(3, 10, 24, .58) !important;
+    color: #edf4ff !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.025),
+      0 7px 24px rgba(0,0,0,.12) !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(192, 207, 232, .48) !important;
+  }
+
+  input:hover,
+  textarea:hover,
+  select:hover {
+    border-color: rgba(177, 205, 246, .27) !important;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02)),
+      rgba(4, 13, 30, .64) !important;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none !important;
+    border-color: rgba(184, 214, 255, .48) !important;
+    box-shadow:
+      0 0 0 3px rgba(125, 170, 238, .055),
+      0 0 22px rgba(125, 170, 238, .09),
+      inset 0 1px 0 rgba(255,255,255,.035) !important;
+  }
+
+  textarea {
+    min-height: 130px;
+    resize: vertical;
+  }
+
+  label {
+    color: #dce7f8;
+    font-weight: 500;
+  }
+
+  label::before {
+    content: "✦";
+    margin-right: .5em;
+    color: rgba(174, 205, 250, .52);
+    font-size: .72em;
+    text-shadow: 0 0 9px rgba(170, 205, 255, .45);
+  }
+
+  .required {
+    color: #a9c9f7 !important;
+    opacity: .78;
+  }
+
+  /* ファイル選択も同じ世界観に */
+  input[type="file"] {
+    padding: 10px !important;
+  }
+
+  input[type="file"]::file-selector-button {
+    margin-right: 12px;
+    padding: 8px 13px;
+    border: 1px solid rgba(185, 213, 255, .18);
+    border-radius: 9px;
+    color: #dce9ff;
+    background: rgba(120, 160, 225, .10);
+    cursor: pointer;
+  }
+
+  input[type="file"]::file-selector-button:hover {
+    background: rgba(135, 177, 240, .15);
+  }
+
+  .sheet-note {
+    color: rgba(190, 205, 229, .68);
+  }
+
+  @media (max-width: 560px) {
+    input,
+    textarea,
+    select {
+      border-radius: 10px !important;
+    }
+
+    textarea {
+      min-height: 115px;
+    }
+  }
+</style>
+
+
+<style id="button-night-finish">
+  /* 送信ボタン：夜空の中で、静かに光る星 */
+  .sheet-submit {
+    margin-top: 34px;
+    text-align: center;
+  }
+
+  .sheet-submit button,
+  #confirm-send,
+  #confirm-back {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(190, 218, 255, .24) !important;
+    border-radius: 999px !important;
+    color: #eef5ff !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(180, 215, 255, .13), transparent 60%),
+      linear-gradient(180deg, rgba(93, 135, 205, .18), rgba(47, 79, 135, .16)) !important;
+    box-shadow:
+      0 8px 30px rgba(0,0,0,.22),
+      0 0 24px rgba(120, 170, 245, .055) !important;
+    letter-spacing: .08em;
+    font-weight: 500;
+    transition:
+      transform .22s ease,
+      border-color .22s ease,
+      box-shadow .22s ease,
+      background .22s ease;
+  }
+
+  .sheet-submit button::before,
+  #confirm-send::before {
+    content: "✦";
+    display: inline-block;
+    margin-right: .7em;
+    color: rgba(215, 232, 255, .88);
+    text-shadow: 0 0 12px rgba(185, 220, 255, .8);
+    transition: transform .22s ease;
+  }
+
+  .sheet-submit button::after,
+  #confirm-send::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -45%;
+    width: 32%;
+    height: 160%;
+    transform: rotate(18deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(230, 241, 255, .18),
+      transparent
+    );
+    transition: left .55s ease;
+  }
+
+  .sheet-submit button:hover,
+  #confirm-send:hover,
+  #confirm-back:hover {
+    transform: translateY(-2px);
+    border-color: rgba(202, 225, 255, .38) !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(190, 220, 255, .18), transparent 62%),
+      linear-gradient(180deg, rgba(103, 150, 225, .22), rgba(54, 88, 148, .18)) !important;
+    box-shadow:
+      0 10px 34px rgba(0,0,0,.25),
+      0 0 30px rgba(130, 180, 255, .11) !important;
+  }
+
+  .sheet-submit button:hover::before,
+  #confirm-send:hover::before {
+    transform: scale(1.12);
+  }
+
+  .sheet-submit button:hover::after,
+  #confirm-send:hover::after {
+    left: 120%;
+  }
+
+  .sheet-submit button:active,
+  #confirm-send:active,
+  #confirm-back:active {
+    transform: translateY(0);
+  }
+
+  .sheet-submit button:disabled,
+  #confirm-send:disabled {
+    opacity: .6;
+    cursor: wait;
+    transform: none;
+  }
+
+  #confirm-back {
+    color: #c8d5e9 !important;
+    background: rgba(255,255,255,.035) !important;
+    box-shadow: none !important;
+  }
+
+  #confirm-send {
+    min-width: 190px;
+  }
+
+  @media (max-width: 560px) {
+    .sheet-submit button,
+    #confirm-send,
+    #confirm-back {
+      width: 100%;
+      min-height: 48px;
+    }
+
+    #confirm-send {
+      min-width: 0;
+    }
+  }
+</style>
+
+
+<style id="confirm-night-finish">
+  /* 確認画面：送る前に、星のかけらを静かに見つめる */
+  #submission-confirm {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 0 40px;
+  }
+
+  #submission-confirm .confirm-inner {
+    position: relative;
+    overflow: hidden;
+    padding: 42px clamp(22px, 5vw, 54px);
+    border: 1px solid rgba(185, 213, 255, .16);
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(155, 190, 250, .09), transparent 42%),
+      rgba(5, 14, 31, .78);
+    box-shadow:
+      0 18px 60px rgba(0,0,0,.25),
+      inset 0 1px 0 rgba(255,255,255,.025);
+  }
+
+  #submission-confirm .confirm-inner::before {
+    content: "✦      ˚      ✧      ·      ✦";
+    position: absolute;
+    top: 16px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: rgba(210, 228, 255, .34);
+    font-size: 10px;
+    letter-spacing: .75em;
+    pointer-events: none;
+  }
+
+  #submission-confirm .section-label {
+    margin: 0 0 10px;
+    text-align: center;
+    color: rgba(170, 201, 246, .62);
+    font-size: 11px;
+    letter-spacing: .25em;
+  }
+
+  #submission-confirm h2 {
+    margin: 0;
+    text-align: center;
+    color: #edf5ff;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-shadow: 0 0 20px rgba(170, 205, 255, .12);
+  }
+
+  #submission-confirm .confirm-lead {
+    margin: 20px auto 30px;
+    max-width: 560px;
+    text-align: center;
+    color: rgba(213, 225, 243, .78);
+    line-height: 2;
+  }
+
+  #submission-confirm .confirm-content {
+    display: grid;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  #submission-confirm .confirm-item {
+    padding: 15px 18px;
+    border: 1px solid rgba(175, 204, 245, .11);
+    border-radius: 14px;
+    background: rgba(255,255,255,.025);
+  }
+
+  #submission-confirm .confirm-item-label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(181, 207, 246, .65);
+    font-size: 12px;
+    letter-spacing: .06em;
+  }
+
+  #submission-confirm .confirm-item-label::before {
+    content: "✧";
+    margin-right: .45em;
+    color: rgba(190, 216, 255, .62);
+  }
+
+  #submission-confirm .confirm-item-value {
+    color: #e8f0fc;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.85;
+  }
+
+  #submission-confirm .confirm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  #submission-confirm .confirm-actions button {
+    margin-top: 0;
+  }
+
+  @media (max-width: 560px) {
+    #submission-confirm {
+      padding-top: 12px;
+    }
+
+    #submission-confirm .confirm-inner {
+      padding: 38px 17px 30px;
+      border-radius: 18px;
+    }
+
+    #submission-confirm .confirm-actions {
+      flex-direction: column-reverse;
+    }
+
+    #submission-confirm .confirm-actions button {
+      width: 100%;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -460,7 +1331,7 @@ input[type="file"]::file-selector-button {
 
 <section class="star-sheet">
 
-<form action="https://formsubmit.co/hoshi.sengetu@gmail.com" method="POST" enctype="multipart/form-data">
+<form method="POST" action="https://formspree.io/f/xqpzvrjd" enctype="multipart/form-data">
 
   <input type="hidden" name="_subject" value="【星詠】星のかけらが届きました">
   <input type="hidden" name="_template" value="table">
@@ -508,11 +1379,13 @@ input[type="file"]::file-selector-button {
   <nav class="sheet-nav" aria-label="シート内ナビゲーション">
 
     <a href="#about">あなたについて</a>
+    <a href="#request-type">依頼する作品</a>
     <a href="#appearance">あなたの姿</a>
     <a href="#world">あなたの世界</a>
     <a href="#important">大切なもの</a>
     <a href="#message">作品に込めたいもの</a>
     <a href="#references">参考資料</a>
+    <a href="#publication">実績公開</a>
     <a href="#last">最後に</a>
 
   </nav>
@@ -592,7 +1465,37 @@ input[type="file"]::file-selector-button {
 
 
   <!-- =========================
-       ② あなたの姿
+       ② 依頼する作品
+  ========================== -->
+
+  <div class="sheet-section" id="request-type">
+
+    <h2>依頼する作品</h2>
+
+    <p>今回、どの作品を希望しますか？</p>
+
+    <div class="choice-group">
+      <label class="choice-item">
+        <input type="radio" name="request_type" value="your_form" required>
+        <span><strong>あなたの姿</strong><br>あなた自身・キャラクターを、全身の一枚絵として。</span>
+      </label>
+
+      <label class="choice-item">
+        <input type="radio" name="request_type" value="your_world">
+        <span><strong>あなたの世界</strong><br>あなた自身と、その人を取り巻く世界まで一枚の作品として。</span>
+      </label>
+    </div>
+
+    <p class="sheet-note">
+      ※両方をご希望の場合も、その旨を最後の欄などにお知らせください。
+      具体的に決まっていない場合は、一緒に整理していきます。
+    </p>
+
+  </div>
+
+
+  <!-- =========================
+       ③ あなたの姿
   ========================== -->
 
   <div class="sheet-section" id="appearance">
@@ -600,87 +1503,62 @@ input[type="file"]::file-selector-button {
     <h2>あなたの姿</h2>
 
     <p>
-      この作品では、どんなあなたを描きたいですか？
-    </p>
-
-    <p>
       今の自分でも、理想の自分でも構いません。
     </p>
 
-    <p class="sheet-note">
-      ※「あなたの姿」と「あなたの世界」は、どちらか一方だけでも大丈夫です。<br>
-      両方思い浮かぶ場合は、ぜひ教えてください。
-    </p>
-
-
     <label>
       この作品では、どんな自分を描きたいですか？
-      <textarea
-        name="desired_appearance"
-        placeholder="今の自分でも、理想の自分でも、自由に教えてください。"
-      ></textarea>
+      <textarea name="desired_appearance" placeholder="今の自分でも、理想の自分でも、自由に教えてください。"></textarea>
     </label>
-
 
     <label>
       どんな雰囲気の姿にしたいですか？
-      <textarea
-        name="appearance_atmosphere"
-        placeholder="静か、幻想的、凛としている、かわいい、儚い、かっこいい……など。"
-      ></textarea>
+      <textarea name="appearance_atmosphere" placeholder="静か、幻想的、凛としている、かわいい、儚い、かっこいい……など。"></textarea>
     </label>
 
+    <label>
+      ポーズはどうしますか？
+      <textarea name="appearance_pose" placeholder="参考資料があれば添付してください。おまかせでも大丈夫です。"></textarea>
+    </label>
 
     <label>
       髪型・服装・表情など、希望はありますか？
-      <textarea
-        name="appearance_details"
-        placeholder="具体的に決まっていなくても大丈夫です。"
-      ></textarea>
+      <textarea name="appearance_details" placeholder="具体的に決まっていなくても大丈夫です。表情はおまかせでも構いません。"></textarea>
     </label>
-
 
     <label>
       作品に入れたい色はありますか？
-      <input
-        type="text"
-        name="appearance_color"
-      >
+      <input type="text" name="appearance_color">
     </label>
 
+    <label>
+      小物・装飾について希望はありますか？
+      <textarea name="appearance_accessories" placeholder="頭まわりの小物は2つまで（ケモ耳を除く）、イヤリング、指輪は3つまで。希望がなければおまかせで大丈夫です。"></textarea>
+    </label>
 
     <label>
       絶対に入れたいモチーフはありますか？
-      <textarea
-        name="must_motif"
-      ></textarea>
+      <textarea name="must_motif"></textarea>
     </label>
-
 
     <label>
       できれば入れてほしいものはありますか？
-      <textarea
-        name="wanted_elements"
-      ></textarea>
+      <textarea name="wanted_elements"></textarea>
     </label>
-
 
     <label>
       逆に、描いてほしくないものはありますか？
-      <textarea
-        name="avoid_motif"
-        placeholder="色・モチーフ・表現など、気になるものがあれば教えてください。"
-      ></textarea>
+      <textarea name="avoid_motif" placeholder="色・モチーフ・表現など、気になるものがあれば教えてください。"></textarea>
     </label>
-
 
     <label>
       「こんな自分を見てみたい」という姿はありますか？
-      <textarea
-        name="ideal_self"
-        placeholder="現実の自分とは違っていても構いません。"
-      ></textarea>
+      <textarea name="ideal_self" placeholder="現実の自分とは違っていても構いません。"></textarea>
     </label>
+
+    <p class="sheet-note">
+      ※背景は基本的に色のみです。背景を含む世界観まで描きたい場合は「あなたの世界」をお選びください。
+    </p>
 
   </div>
 
@@ -1008,7 +1886,35 @@ input[type="file"]::file-selector-button {
 
 
   <!-- =========================
-       ⑦ 最後に
+       ⑦ 実績公開について
+  ========================== -->
+
+  <div class="sheet-section" id="publication">
+
+    <h2>実績公開について</h2>
+
+    <p>完成した作品を、星詠の実績として公開してよいか教えてください。</p>
+
+    <div class="choice-group">
+      <label class="choice-item">
+        <input type="radio" name="publication" value="A" required>
+        <span><strong>A｜実績公開OK</strong><br>完成した絵と、REALITYアバター等を参考にした制作であることを公開できます。</span>
+      </label>
+      <label class="choice-item">
+        <input type="radio" name="publication" value="B">
+        <span><strong>B｜絵のみ公開OK</strong><br>完成した絵のみ公開できます。REALITY等の利用・参考資料であることやユーザー名は公開しません。</span>
+      </label>
+      <label class="choice-item">
+        <input type="radio" name="publication" value="C">
+        <span><strong>C｜実績公開NG</strong><br>完成した作品を実績として公開しません。</span>
+      </label>
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       ⑧ 最後に
   ========================== -->
 
   <div class="sheet-section" id="last">
@@ -1054,6 +1960,15 @@ input[type="file"]::file-selector-button {
        送信
   ========================== -->
 
+<div class="form-group">
+  <label for="contact-email">メールアドレス <span class="required">必須</span></label>
+  <input type="email" id="contact-email" name="email"
+         autocomplete="email" placeholder="example@example.com" required>
+  <p class="sheet-note">
+    こちらのメールアドレスへ、受付内容や今後のご連絡をお送りします。
+  </p>
+</div>
+
   <div class="sheet-submit">
 
     <button type="submit">
@@ -1063,9 +1978,249 @@ input[type="file"]::file-selector-button {
   </div>
 
 
+
+
+
 </form>
 
 <a href="index.html" class="back-to-sea">← 星の海へ戻る</a>
+
+
+<div id="submission-success" class="submission-success" hidden>
+  <div class="success-inner">
+    <p class="section-label">A STAR HAS ARRIVED</p>
+    <h2>星のかけらは、確かに届きました。</h2>
+
+    <p>
+      あなたが届けてくれた言葉や想いを、<br>
+      ひとつひとつ大切に受け取ります。
+    </p>
+
+    <p>
+      いただいた内容を確認したうえで、星詠から改めてご連絡します。
+    </p>
+
+    <div class="success-flow">
+      <p><strong>このあと</strong></p>
+      <ol>
+        <li>内容を確認</li>
+        <li>制作内容・料金を整理</li>
+        <li>必要に応じて確認や相談</li>
+        <li>内容確定後、制作開始</li>
+      </ol>
+    </div>
+
+    <p class="sheet-note">
+      ※この時点では、まだ正式な制作開始・確定ではありません。
+    </p>
+
+    
+<div class="reference-mail-notice">
+  <p class="reference-mail-title">参考資料をお持ちの方へ</p>
+  <p>
+    もし参考画像や資料が足りない場合は、<br>
+    <strong>どうぞ遠慮なく、送信後にメールでお送りください。</strong>
+  </p>
+  <p><strong>件名：星のかけら｜参考資料｜お名前</strong></p>
+  <p class="sheet-note">
+    画像だけでなく、PDFなどの資料もお送りいただけます。<br>
+    「これも見てほしい」と思ったものがあれば、気軽にお送りください。
+  </p>
+</div>
+
+<div class="success-star-line">✦　˚　✧　⋆　✦</div>
+
+<p class="success-message">
+      「あなたの星が、どんな形になるのか。」<br>
+      その答えを、一緒に探していきます。
+    </p>
+
+<p class="success-identity">
+      そして、忘れないでください。<br>
+      <strong>あなたは、あなたのままで輝く星です。</strong>
+    </p>
+
+<div class="success-star-line">✧　·　✦　·　˚　✧</div>
+
+    <a href="index.html" class="back-to-sea">← 星の海へ戻る</a>
+  </div>
+</div>
+
+
+
+
+<script id="submission-success-script">
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+  const confirm = document.getElementById("submission-confirm");
+  const success = document.getElementById("submission-success");
+  const content = document.getElementById("confirm-content");
+  const back = document.getElementById("confirm-back");
+  const send = document.getElementById("confirm-send");
+
+  if (!form || !confirm || !success || !content || !back || !send) return;
+
+  function getLabel(field) {
+    if (field.id) {
+      const label = document.querySelector(
+        'label[for="' + CSS.escape(field.id) + '"]'
+      );
+      if (label) return label.textContent.trim();
+    }
+    return field.name || "入力内容";
+  }
+
+  function getValue(field) {
+    if (field.type === "file") {
+      return Array.from(field.files || [])
+        .map(file => file.name)
+        .join("\n") || "選択なし";
+    }
+
+    if (field.type === "checkbox" || field.type === "radio") {
+      if (!field.checked) return null;
+
+      const label = field.id
+        ? document.querySelector(
+            'label[for="' + CSS.escape(field.id) + '"]'
+          )
+        : null;
+
+      return label
+        ? label.textContent.trim()
+        : (field.value || "選択済み");
+    }
+
+    return field.value.trim() || "未入力";
+  }
+
+  function buildConfirmation() {
+    content.innerHTML = "";
+
+    const fields = Array.from(
+      form.querySelectorAll("input, textarea, select")
+    )
+      .filter(field => field.name || field.id)
+      .filter(field =>
+        !["submit", "button", "reset"].includes(field.type)
+      );
+
+    const rendered = new Set();
+
+    fields.forEach(field => {
+      const key = field.name || field.id;
+      if (rendered.has(key)) return;
+
+      const sameFields = fields.filter(
+        item => (item.name || item.id) === key
+      );
+
+      const values = sameFields
+        .map(getValue)
+        .filter(value => value !== null);
+
+      if (!values.length) return;
+
+      rendered.add(key);
+
+      const item = document.createElement("div");
+      item.className = "confirm-item";
+
+      const label = document.createElement("span");
+      label.className = "confirm-item-label";
+      label.textContent = getLabel(field);
+
+      const value = document.createElement("div");
+      value.className = "confirm-item-value";
+      value.textContent = [...new Set(values)].join("\n");
+
+      item.append(label, value);
+      content.appendChild(item);
+    });
+  }
+
+  // 1回目：入力内容を確認画面へ
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    buildConfirmation();
+
+    form.hidden = true;
+    confirm.hidden = false;
+    success.hidden = true;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // 確認画面から入力画面へ戻る
+  back.addEventListener("click", () => {
+    confirm.hidden = true;
+    form.hidden = false;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // 最終送信：Formspreeへ実際にPOST
+  send.addEventListener("click", async () => {
+    send.disabled = true;
+    const originalText = send.textContent;
+    send.textContent = "届けています…";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("送信に失敗しました");
+      }
+
+      confirm.hidden = true;
+      form.hidden = true;
+      success.hidden = false;
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error) {
+      alert(
+        "送信できませんでした。\n" +
+        "通信状態を確認して、もう一度お試しください。"
+      );
+      send.disabled = false;
+      send.textContent = originalText;
+    }
+  });
+});
+</script>
+
+
+
+
+<div id="submission-confirm" class="submission-confirm" hidden>
+  <div class="confirm-inner">
+    <p class="section-label">BEFORE SENDING</p>
+    <h2>届ける前に、少しだけ。</h2>
+    <p class="confirm-lead">
+      入力した内容を確認してください。<br>
+      修正したいところがあれば、戻って変更できます。
+    </p>
+
+    <div id="confirm-content" class="confirm-content"></div>
+
+    <div class="confirm-actions">
+      <button type="button" id="confirm-back">← 内容を修正する</button>
+      <button type="button" id="confirm-send">星に届ける ✦</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
