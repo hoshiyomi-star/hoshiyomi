@@ -8,195 +8,106 @@
 
   <link rel="stylesheet" href="style.css">
 
-<style>
-/* =========================
-   今回の星詠トップ改訂
-========================= */
+<style id="hoshiyomi-balance-edit-v1">
+/* =========================================================
+   星詠｜公開用 第1版
+   足し算・引き算：情報量は変えず、列の重さだけ整える
+   ========================================================= */
 
-/* 02｜星詠とは：入口を軽く */
-.about-intro-short {
-  margin-top: 1.8rem;
-  line-height: 2.15;
-  letter-spacing: 0.08em;
-}
-
-/* 05｜あなたの姿：2ブロックを横並び */
-.yourself-info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
-  margin-top: 3.5rem;
-}
-
-.yourself-info-grid .yourself-block {
-  margin: 0;
-  padding: 34px 36px;
-  border: 1px solid rgba(190, 210, 255, 0.24);
-  border-radius: 22px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(65, 80, 180, 0.10),
-      rgba(105, 65, 165, 0.08)
-    );
-  box-sizing: border-box;
-}
-
-.yourself-info-grid .yourself-block h3 {
-  margin: 0 0 28px;
-  text-align: center;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-}
-
-.yourself-info-grid .yourself-block ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.yourself-info-grid .yourself-block li {
-  position: relative;
-  padding-left: 25px;
-  margin-bottom: 18px;
-  line-height: 1.9;
-  letter-spacing: 0.06em;
-}
-
-.yourself-info-grid .yourself-block li::before {
-  content: "✦";
-  position: absolute;
-  left: 0;
-  top: 0.05em;
-  font-size: 0.7em;
-  color: #bfd7ff;
-}
-
-/* スマホでは縦並びに戻して読みやすく */
-@media (max-width: 800px) {
-  .yourself-info-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    margin-top: 2.8rem;
+/* 「あなたの姿」：3つの情報ブロックを
+   2列＋最後を中央の1列にして視線の重さを整える */
+@media (min-width: 900px) {
+  .yourself-content {
+    max-width: 980px;
+    margin-inline: auto;
   }
 
-  .yourself-info-grid .yourself-block {
-    padding: 28px 24px;
-    border-radius: 20px;
+  .yourself-block {
+    box-sizing: border-box;
   }
 
-  .yourself-info-grid .yourself-block h3 {
-    margin-bottom: 24px;
+  .yourself-content > .yourself-block:nth-of-type(1),
+  .yourself-content > .yourself-block:nth-of-type(2) {
+    width: calc(50% - 18px);
+    display: inline-block;
+    vertical-align: top;
   }
 
-  .yourself-info-grid .yourself-block li {
-    margin-bottom: 17px;
-    line-height: 2;
+  .yourself-content > .yourself-block:nth-of-type(1) {
+    margin-right: 32px;
   }
 
-  .about-intro-short {
-    line-height: 2.2;
-  }
-}
-</style>
-
-
-<style>
-/* =========================
-   05｜あなたの姿 / 06｜あなたの世界
-   統一カードデザイン
-========================= */
-
-.yourself-info-grid,
-.world-info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
-  margin-top: 3.5rem;
-}
-
-.yourself-info-grid .yourself-block,
-.world-info-grid .unified-info-card,
-.world .unified-info-card {
-  margin: 0;
-  padding: 34px 36px;
-  border: 1px solid rgba(190, 210, 255, 0.24);
-  border-radius: 22px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(65, 80, 180, 0.10),
-      rgba(105, 65, 165, 0.08)
-    );
-  box-sizing: border-box;
-  box-shadow: 0 0 35px rgba(60, 80, 180, 0.06);
-}
-
-.yourself-info-grid .yourself-block h3,
-.world .unified-info-card h3 {
-  margin: 0 0 28px;
-  text-align: center;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-}
-
-.yourself-info-grid .yourself-block ul,
-.world .unified-info-card ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.yourself-info-grid .yourself-block li,
-.world .unified-info-card li {
-  position: relative;
-  padding-left: 25px;
-  margin-bottom: 18px;
-  line-height: 1.9;
-  letter-spacing: 0.06em;
-}
-
-.yourself-info-grid .yourself-block li::before,
-.world .unified-info-card li::before {
-  content: "✦";
-  position: absolute;
-  left: 0;
-  top: 0.05em;
-  font-size: 0.7em;
-  color: #bfd7ff;
-}
-
-/* 世界側が1枚カードなら中央に配置 */
-.world .unified-info-card:only-child {
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* スマホ */
-@media (max-width: 800px) {
-  .yourself-info-grid,
-  .world-info-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    margin-top: 2.8rem;
+  .yourself-content > .yourself-block:nth-of-type(3) {
+    width: min(760px, 100%);
+    margin: 34px auto 0;
   }
 
-  .yourself-info-grid .yourself-block,
-  .world .unified-info-card {
-    padding: 28px 24px;
-    border-radius: 20px;
+  /* 制作料金は3ブロック目と同じ流れで見せる */
+  .yourself-content > .service-price {
+    width: min(560px, 100%);
+    margin: 28px auto 0;
   }
 
-  .yourself-info-grid .yourself-block h3,
-  .world .unified-info-card h3 {
-    margin-bottom: 24px;
+  /* 「あなたの世界」：3枚目の「あなたの姿」と同じ左右2列レイアウト */
+  .world-content {
+    max-width: 980px;
+    margin-inline: auto;
   }
 
-  .yourself-info-grid .yourself-block li,
-  .world .unified-info-card li {
-    margin-bottom: 17px;
-    line-height: 2;
+  .world-content > .world-block {
+    width: calc(50% - 18px);
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+  }
+
+  .world-content > .world-block:first-of-type {
+    margin-right: 32px;
+  }
+
+  .world-content > .world-message {
+    max-width: 760px;
+    margin: 38px auto 0;
+    clear: both;
+  }
+
+  .world-content > .service-price {
+    width: min(560px, 100%);
+    margin: 28px auto 0;
+    clear: both;
+  }
+}
+
+/* 長い文章が横に広がりすぎないようにする */
+.story-content,
+.heart-content,
+.gallery-content,
+.unspoken-content {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* 作品カードは3枚の存在感を揃える */
+.gallery-grid {
+  align-items: stretch;
+}
+
+.gallery-card {
+  min-width: 0;
+}
+
+/* スマホでは無理に2列にしない */
+@media (max-width: 899px) {
+  .yourself-content > .yourself-block,
+  .world-content > .world-block {
+    width: 100%;
+    display: block;
+    margin-right: 0;
+  }
+
+  .yourself-content > .yourself-block:nth-of-type(3),
+  .world-content > .world-message {
+    margin-top: 28px;
   }
 }
 </style>
@@ -241,12 +152,27 @@
         </p>
 
         <p class="hero-scroll">
-      好きなものや、大切なものを少しずつ集めて、<br>
-      一緒に探していきませんか？
-    </p>
+          SCROLL ↓
+        </p>
 
       </div>
-</section>
+
+     <!-- オリオン座 -->
+
+     <div class="orion" aria-hidden="true">
+
+      <span class="orion-star betelgeuse"></span>
+      <span class="orion-star bellatrix"></span>
+      <span class="orion-star alnitak"></span>
+      <span class="orion-star alnilam"></span>
+      <span class="orion-star mintaka"></span>
+      <span class="orion-star saiph"></span>
+      <span class="orion-star rigel"></span>
+
+     </div>
+
+  
+     </section>
     <!-- =========================
      02｜星詠について
 ========================= -->
@@ -268,9 +194,21 @@
       あなただけの星を。
     </p>
 
-    <p class="about-text about-intro-short">
-      あなたの好きなものや、心に残る景色を集めて、<br>
-      一緒に探していきませんか？
+    <p class="about-text">
+      星詠は、あなたの中にあるものを<br>
+      一枚の絵として見つけていく場所です。
+    </p>
+
+    <p class="about-text">
+      好きなもの。<br>
+      大切な記憶。<br>
+      憧れているもの。<br>
+      まだ言葉にならない気持ち。
+    </p>
+
+    <p class="about-text">
+      そのひとつひとつを星として拾い集め、<br>
+      あなたにしかない一枚へと描いていきます。
     </p>
 
   </div>
@@ -657,99 +595,61 @@
      05｜アルニラム
 ========================= -->
 
-<section class="unspoken" id="unspoken">
-
-  <div class="unspoken-content">
-
-    <p class="section-label">05｜UNSPOKEN</p>
-
-    <h2>まだ言葉にならないもの</h2>
-
-    <div class="unspoken-line"></div>
-
-    <p class="unspoken-lead">
-      うまく説明できなくても、大丈夫。
-    </p>
-
-    <p class="unspoken-description">
-      「なんとなく好き」<br>
-      「理由は分からないけれど惹かれる」<br>
-      「こんな感じにしてほしい」
-    </p>
-
-    <p class="unspoken-description">
-      そんな言葉にならない感覚も、<br>
-      あなたの大切な「星」のひとつです。
-    </p>
-
-    <div class="unspoken-message">
-
-      <p>
-        上手に説明する必要はありません。
-      </p>
-
-      <p>
-        あなたの中にあるものを、<br>
-        一緒に探していきます。
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
 <section class="yourself" id="yourself">
 
   <div class="yourself-content">
 
-    <p class="section-label">06｜ALNILAM</p>
+   <p class="section-label">05｜ALNILAM</p>
 
-    <h2>あなたの姿</h2>
+<h2>あなたの姿</h2>
 
-    <div class="yourself-line"></div>
+<div class="yourself-line"></div>
 
-    <p class="yourself-lead">
-      自分自身を、一枚の作品に。
-    </p>
+<p class="yourself-lead">
+    自分自身を、一枚の作品に。
+</p>
 
-    <p class="yourself-description">
-      あなたの好きなもの、雰囲気、色、衣装、表情などを聞きながら、<br>
-      あなたらしい姿を形にします。
-    </p>
+<p class="yourself-description">
+    あなたの好きなもの、雰囲気、色、衣装、表情などを聞きながら、<br>
+    あなたらしい姿を形にします。
+</p>
 
 
-    <!-- こんな方へ / 作品に込めるもの -->
+    <!-- こんな方へ -->
 
-    <div class="yourself-info-grid">
+    <div class="yourself-block">
 
-      <div class="yourself-block">
-        <h3>こんな方へ</h3>
+      <h3>こんな方へ</h3>
 
-        <ul>
-          <li>自分自身を絵にして残したい</li>
-          <li>自分らしい姿を描いてほしい</li>
-          <li>好きな衣装やモチーフを取り入れたい</li>
-          <li>自分の雰囲気を絵にしてほしい</li>
-          <li>頭の中にある理想の姿を形にしたい</li>
-          <li>「こうなってみたい」を描いてほしい</li>
-        </ul>
-      </div>
+      <ul>
+        <li>自分自身を絵にして残したい</li>
+        <li>自分らしい姿を描いてほしい</li>
+        <li>好きな衣装やモチーフを取り入れたい</li>
+        <li>自分の雰囲気を絵にしてほしい</li>
+        <li>頭の中にある理想の姿を形にしたい</li>
+        <li>「こうなってみたい」を描いてほしい</li>
+      </ul>
 
-      <div class="yourself-block">
-        <h3>作品に込めるもの</h3>
+    </div>
 
-        <ul>
-          <li>髪型</li>
-          <li>服装</li>
-          <li>表情</li>
-          <li>好きな色</li>
-          <li>好きなモチーフ</li>
-          <li>好きな雰囲気</li>
-          <li>大切にしているもの</li>
-          <li>世界観</li>
-          <li>理想の姿</li>
-        </ul>
-      </div>
+
+    <!-- 作品に込めるもの -->
+
+    <div class="yourself-block">
+
+      <h3>作品に込めるもの</h3>
+
+      <ul>
+        <li>髪型</li>
+        <li>服装</li>
+        <li>表情</li>
+        <li>好きな色</li>
+        <li>好きなモチーフ</li>
+        <li>好きな雰囲気</li>
+        <li>大切にしているもの</li>
+        <li>世界観</li>
+        <li>理想の姿</li>
+      </ul>
 
     </div>
 
@@ -798,6 +698,55 @@
   </div>
 
 </section>
+<!-- =========================
+     06｜まだ言葉にならないもの
+========================= -->
+
+<section class="unspoken" id="unspoken">
+
+  <div class="unspoken-content">
+
+    <p class="section-label">06｜UNSPOKEN</p>
+
+    <h2>まだ言葉にならないもの</h2>
+
+    <div class="unspoken-line"></div>
+
+    <p class="unspoken-lead">
+      うまく説明できなくても、大丈夫。
+    </p>
+
+    <p class="unspoken-description">
+      「なんとなく好き」<br>
+      「理由は分からないけれど惹かれる」<br>
+      「こんな感じにしてほしい」
+    </p>
+
+    <p class="unspoken-description">
+      そんな言葉にならない感覚も、<br>
+      あなたの大切な「星」のひとつです。
+    </p>
+
+    <div class="unspoken-message">
+
+      <p>
+        上手に説明する必要はありません。
+      </p>
+
+      <p>
+        あなたの中にあるものを、<br>
+        一緒に探していきます。
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================
+     07｜ミンタカ
+========================= -->
+
 <section class="world" id="world">
 
   <div class="world-content">
@@ -820,7 +769,7 @@
 
     <!-- こんな方へ -->
 
-    <div class="world-block unified-info-card">
+    <div class="world-block">
 
       <h3>こんな方へ</h3>
 
@@ -839,7 +788,7 @@
 
     <!-- 作品に込めるもの -->
 
-    <div class="world-block unified-info-card">
+    <div class="world-block">
 
       <h3>作品に込めるもの</h3>
 
@@ -902,16 +851,6 @@
   </div>
 
 </section>
-<!-- =========================
-     06｜まだ言葉にならないもの
-========================= -->
-
-
-<!-- =========================
-     07｜ミンタカ
-========================= -->
-
-
 </main>
 
    </body>
@@ -933,13 +872,13 @@
 <a href="#about">02｜星詠とは</a>
 <a href="#heart">03｜胸に灯るもの</a>
 <a href="#gallery">04｜結ぶ</a>
-<a href="#unspoken">05｜まだ言葉にならないもの</a>
-<a href="#yourself">06｜あなたの姿</a>
+<a href="#yourself">05｜あなたの姿</a>
+<a href="#unspoken">06｜まだ言葉にならないもの</a>
 <a href="#world">07｜あなたの世界</a>
 
 <div class="star-menu-line"></div>
 
-<a href="star-sheet.html">08｜星のかけら</a>
+<a href="star-sheet.html">08｜星のシート</a>
 <a href="price.html">09｜料金について</a>
 <a href="notes.html">10｜ご依頼について</a>
 <a href="rights.html">11｜権利について</a>
