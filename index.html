@@ -252,6 +252,61 @@
     align-self: stretch;
   }
 
+
+
+/* ===== こんな方へ／作品に込めるもの 高さ合わせ ===== */
+.yourself-content,
+.world-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+}
+
+/* 2つのカードを横並びにして、上端を完全に合わせる */
+.yourself-content,
+.world-content {
+  align-self: start;
+}
+
+/* リストの各項目を同じリズムで配置 */
+.yourself-content ul,
+.world-content ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0;
+}
+
+.yourself-content li,
+.world-content li {
+  box-sizing: border-box;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+/* 見出しから最初の項目までの高さも統一 */
+.yourself-content h3,
+.world-content h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* 既存の左右カラム側で高さがズレないようにする */
+.yourself-content > *,
+.world-content > * {
+  box-sizing: border-box;
+}
+
+/* 画面幅が十分ある場合は、左右のカード自体も同じ高さにする */
+@media (min-width: 768px) {
+  .yourself-content,
+  .world-content {
+    height: 100%;
+  }
+}
+
 </style>
 
 </head>
@@ -1038,3 +1093,6 @@
 </nav>
 
 <script src="script.js"></script>
+
+</body>
+</html>
