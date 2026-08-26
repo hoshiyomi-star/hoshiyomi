@@ -202,6 +202,56 @@
     }
   }
 
+
+  /* 左右カードの高さを揃える */
+  .yourself-content > .yourself-block,
+  .world-content > .world-block {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .yourself-content,
+  .world-content {
+    align-items: stretch;
+  }
+
+
+  /* あなたの姿／あなたの世界：左右カードの文字位置を完全に統一 */
+  .yourself-content > .yourself-block,
+  .world-content > .world-block {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 100%;
+  }
+
+  .yourself-content > .yourself-block h3,
+  .world-content > .world-block h3 {
+    margin-top: 0;
+    margin-bottom: 18px;
+  }
+
+  .yourself-content > .yourself-block p,
+  .world-content > .world-block p {
+    margin-top: 0;
+  }
+
+  .yourself-content > .yourself-block ul,
+  .world-content > .world-block ul {
+    margin-top: 12px;
+  }
+
+  /* 左右のカードそのものの上端を必ず同じ位置にする */
+  .yourself-content,
+  .world-content {
+    align-items: start;
+  }
+
+  .yourself-content > .yourself-block,
+  .world-content > .world-block {
+    align-self: stretch;
+  }
+
 </style>
 
 </head>
@@ -687,11 +737,53 @@
      05｜アルニラム
 ========================= -->
 
+<section class="unspoken" id="unspoken">
+
+  <div class="unspoken-content">
+
+    <p class="section-label">05｜UNSPOKEN</p>
+
+    <h2>まだ言葉にならないもの</h2>
+
+    <div class="unspoken-line"></div>
+
+    <p class="unspoken-lead">
+      うまく説明できなくても、大丈夫。
+    </p>
+
+    <p class="unspoken-description">
+      「なんとなく好き」<br>
+      「理由は分からないけれど惹かれる」<br>
+      「こんな感じにしてほしい」
+    </p>
+
+    <p class="unspoken-description">
+      そんな言葉にならない感覚も、<br>
+      あなたの大切な「星」のひとつです。
+    </p>
+
+    <div class="unspoken-message">
+
+      <p>
+        上手に説明する必要はありません。
+      </p>
+
+      <p>
+        あなたの中にあるものを、<br>
+        一緒に探していきます。
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
 <section class="yourself" id="yourself">
 
   <div class="yourself-content">
 
-   <p class="section-label">05｜ALNILAM</p>
+   <p class="section-label">06｜ALNILAM</p>
 
 <h2>あなたの姿</h2>
 
@@ -790,54 +882,6 @@
   </div>
 
 </section>
-<!-- =========================
-     06｜まだ言葉にならないもの
-========================= -->
-
-<section class="unspoken" id="unspoken">
-
-  <div class="unspoken-content">
-
-    <p class="section-label">06｜UNSPOKEN</p>
-
-    <h2>まだ言葉にならないもの</h2>
-
-    <div class="unspoken-line"></div>
-
-    <p class="unspoken-lead">
-      うまく説明できなくても、大丈夫。
-    </p>
-
-    <p class="unspoken-description">
-      「なんとなく好き」<br>
-      「理由は分からないけれど惹かれる」<br>
-      「こんな感じにしてほしい」
-    </p>
-
-    <p class="unspoken-description">
-      そんな言葉にならない感覚も、<br>
-      あなたの大切な「星」のひとつです。
-    </p>
-
-    <div class="unspoken-message">
-
-      <p>
-        上手に説明する必要はありません。
-      </p>
-
-      <p>
-        あなたの中にあるものを、<br>
-        一緒に探していきます。
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-<!-- =========================
-     07｜ミンタカ
-========================= -->
 
 <section class="world" id="world">
 
@@ -943,6 +987,17 @@
   </div>
 
 </section>
+
+<!-- =========================
+     06｜まだ言葉にならないもの
+========================= -->
+
+
+<!-- =========================
+     07｜ミンタカ
+========================= -->
+
+
 </main>
 
    </body>
@@ -964,8 +1019,8 @@
 <a href="#about">02｜星詠とは</a>
 <a href="#heart">03｜胸に灯るもの</a>
 <a href="#gallery">04｜結ぶ</a>
-<a href="#yourself">05｜あなたの姿</a>
-<a href="#unspoken">06｜まだ言葉にならないもの</a>
+<a href="#unspoken">05｜まだ言葉にならないもの</a>
+<a href="#yourself">06｜あなたの姿</a>
 <a href="#world">07｜あなたの世界</a>
 
 <div class="star-menu-line"></div>
