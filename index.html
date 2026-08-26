@@ -1,3 +1,107 @@
+
+IMG_E7155776-F771-4540-A069-7BB80FED38F0.jpeg
+IMG_86E4CFE3-1B68-47E3-9E7D-8A1CCCC5F33F.jpeg
+IMG_C263B583-8AAB-4F94-AC0B-D34940D723C6.jpeg
+1、2枚目を3枚目みたいに並べて欲しい
+
+生成された画像：星空テーマのウェブページを映すノートパソコン
+
+
+編集
+
+
+生成された画像：星空に浮かぶ星詠みの案内	panel
+
+
+編集
+
+
+生成された画像：星詠の星空ポートフォリオ
+
+
+編集
+
+
+ごめん、前の修正版は**「横並びにする指定」が確実じゃなかった**。
+
+今回はそこを直して、
+
+左
+「こんな方へ」
+→ あなたの世界の内容
+
+右
+「作品に込めるもの」
+→ 景色・建物・自然……の内容
+
+という形で、3枚目と同じように左右2列で固定した。
+
+デザイン自体は変えず、並びだけを確実に修正してある。
+
+修正版を開く 
+
+
+
+星詠_世界_左右2列_確実修正版.html
+HTML
+
+
+これなおってる？
+
+うん、今度の修正版は「横並び」にするCSS自体は入ってる。
+
+ただ、正直に言うと、さっきのファイルを俺が実際にブラウザで表示確認したわけではないから、「絶対に画像と同じ状態になってる」とまでは断言できない。
+
+理想の状態はこれ👇
+
+┌─────────────────┬─────────────────┐
+│    こんな方へ     │  作品に込めるもの  │
+│                  │                 │
+│ ・頭の中に世界がある│ ・景色            │
+│ ・好きな景色を残したい│ ・建物          │
+│ ・思い出を一枚にしたい│ ・自然          │
+│ ・自分だけの物語を… │ ・空             │
+│ ・雰囲気を形にしたい │ ・季節          │
+│ ・言葉では説明…     │ ・思い出          │
+│ ・自分自身ではなく… │ ・モチーフ        │
+│                  │ ・世界観          │
+│                  │ ・空気感          │
+│                  │ ・物語            │
+└─────────────────┴─────────────────┘
+3枚目と同じ「左：こんな方へ／右：作品に込めるもの」の2枚構成にするのが今回の目的。
+
+もし今ブラウザで見てまだ縦に並んでるなら、今のHTMLをそのまま送ってくれれば、そこから確実に直す。
+
+
+
+貼り付けられたテキスト（1 点）(3).txt
+ドキュメント
+
+うん、今送ってくれた実際のHTMLを元に直した。
+
+今回のポイントは、
+
+左：こんな方へ
+
+右：作品に込めるもの
+
+その上の「あなたの世界」のタイトル・説明は中央
+
+下のメッセージ・料金も中央
+
+中身の文章は変更なし
+
+3枚目の「あなたの姿」と同じ雰囲気の2列
+
+以前言ってた通り、オリオン座の部分も削除
+
+にしてある。
+
+完成版HTMLを開く
+
+今回のファイルは、今送ってくれたHTMLの「あなたの世界」が実際に07｜MINTAKA → こんな方へ → 作品に込めるものという構造になっていることを確認してから直してる。
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -108,6 +212,84 @@
   .yourself-content > .yourself-block:nth-of-type(3),
   .world-content > .world-message {
     margin-top: 28px;
+  }
+}
+</style>
+
+
+<style id="hoshiyomi-world-two-column-final">
+/* =========================================================
+   星詠｜「あなたの世界」左右2列 最終調整
+   左：こんな方へ ／ 右：作品に込めるもの
+   既存のデザイン・内容は変更しない
+   ========================================================= */
+
+@media (min-width: 900px) {
+  section.world .world-content {
+    width: min(980px, calc(100% - 40px));
+    margin-left: auto;
+    margin-right: auto;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: 32px !important;
+    align-items: start;
+  }
+
+  /* 見出し～説明文は2列の上に横幅いっぱい */
+  section.world .world-content > .section-label,
+  section.world .world-content > h2,
+  section.world .world-content > .world-line,
+  section.world .world-content > .world-lead,
+  section.world .world-content > .world-description {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* 左：こんな方へ */
+  section.world .world-content > .world-block:nth-child(6) {
+    grid-column: 1 !important;
+    grid-row: 6 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* 右：作品に込めるもの */
+  section.world .world-content > .world-block:nth-child(7) {
+    grid-column: 2 !important;
+    grid-row: 6 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* 下のメッセージと料金は2列をまたいで中央 */
+  section.world .world-content > .world-message,
+  section.world .world-content > .service-price {
+    grid-column: 1 / -1 !important;
+    clear: none !important;
+  }
+
+  section.world .world-content > .world-message {
+    width: 100%;
+    max-width: 760px;
+    margin: 38px auto 0 !important;
+  }
+
+  section.world .world-content > .service-price {
+    width: min(560px, 100%);
+    margin: 28px auto 0 !important;
+  }
+}
+
+@media (max-width: 899px) {
+  section.world .world-content {
+    display: block !important;
+  }
+
+  section.world .world-content > .world-block {
+    width: 100% !important;
+    margin-right: 0 !important;
   }
 }
 </style>
@@ -894,3 +1076,8 @@
 
 </body>
 </html>
+
+星詠_世界左右2列_完成版.html
+HTML
+
+
