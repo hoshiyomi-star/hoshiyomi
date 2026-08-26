@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>権利・利用について｜星詠</title>
-  <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
 
-<style id="hoshiyomi-rights-redesign-v1">
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>権利・利用について｜星詠</title><style>
 :root{
-  --night:#030817;
-  --deep:#071633;
-  --purple:#9d7bc7;
-  --purple2:#c5afe7;
-  --blue:#a8caff;
-  --text:#edf2fc;
-  --muted:#c0cbe0;
-  --line:rgba(171,197,238,.14);
+  --bg:#050b18;
+  --bg2:#0a1730;
+  --blue:#a9c9ff;
+  --purple:#c7a9e9;
+  --green:#8fcbb3;
+  --text:#edf3ff;
+  --muted:#c9d5e8;
+  --soft:rgba(201,213,232,.78);
+  --panel:rgba(8,22,48,.62);
+  --line:rgba(164,193,231,.16);
+  --glow:rgba(154,105,211,.18);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -24,1246 +24,758 @@ body{
   min-height:100vh;
   color:var(--text);
   background:
-    radial-gradient(ellipse 38% 28% at 10% 12%,rgba(57,101,205,.18),transparent 70%),
-    radial-gradient(ellipse 46% 34% at 88% 24%,rgba(137,82,197,.24),transparent 70%),
-    radial-gradient(ellipse 42% 30% at 72% 80%,rgba(101,62,184,.18),transparent 70%),
-    linear-gradient(145deg,var(--night),var(--deep) 48%,#0b0620);
-  font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+    radial-gradient(ellipse 38% 28% at 8% 10%,rgba(62,111,218,.18),transparent 70%),
+    radial-gradient(ellipse 45% 34% at 90% 24%,rgba(142,83,199,.23),transparent 70%),
+    radial-gradient(ellipse 42% 32% at 75% 82%,rgba(103,65,185,.19),transparent 70%),
+    linear-gradient(145deg,#030817 0%,#071633 45%,#0b061c 100%);
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Noto Sans JP",sans-serif;
   font-weight:400;
   letter-spacing:.035em;
   line-height:2;
   overflow-x:hidden;
 }
 body::before{
-  content:"✦   ·    ✧       ·    ✦       ·       ✧";
+  content:"✦     ·       ✧        ·       ✦        ·       ✧";
   position:fixed;
-  inset:4% 3% auto;
-  height:92vh;
-  color:rgba(216,228,250,.32);
-  font-size:12px;
-  letter-spacing:2em;
-  line-height:7;
+  inset:3% 2% auto;
+  height:94vh;
+  color:rgba(220,231,250,.25);
+  font-size:11px;
+  letter-spacing:1.5em;
+  line-height:8;
   pointer-events:none;
   z-index:0;
 }
 body::after{
   content:"";
   position:fixed;
-  width:520px;height:520px;
-  right:-200px;top:5%;
+  width:540px;height:540px;
+  right:-210px;top:4%;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(172,113,225,.17),rgba(113,78,187,.07) 42%,transparent 70%);
-  filter:blur(14px);
+  background:radial-gradient(circle,rgba(175,116,226,.16),rgba(100,78,182,.06) 43%,transparent 70%);
+  filter:blur(18px);
   pointer-events:none;
+  z-index:0;
 }
-.price-page{
+.rights-page{
   position:relative;
   z-index:1;
-  width:min(900px,calc(100% - 40px));
+  width:min(760px,calc(100% - 40px));
   margin:0 auto;
-  padding:90px 0 80px;
+  padding:72px 0 78px;
 }
 .page-header{
-  position:relative;
-  padding:42px 44px 48px;
-  border:1px solid rgba(186,159,222,.18);
+  padding:44px 48px 48px;
+  text-align:center;
+  border:1px solid rgba(185,157,226,.18);
   border-radius:28px;
   background:
-    radial-gradient(circle at 82% 18%,rgba(154,91,211,.16),transparent 38%),
-    linear-gradient(145deg,rgba(17,39,86,.30),rgba(91,55,139,.19));
+    radial-gradient(circle at 82% 18%,rgba(153,91,211,.15),transparent 38%),
+    linear-gradient(145deg,rgba(17,39,86,.34),rgba(78,52,119,.20));
   box-shadow:0 25px 70px rgba(0,0,0,.22);
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(9px);
 }
-.page-header::after{
-  content:"✦";
-  position:absolute;
-  right:30px;top:25px;
-  color:rgba(220,198,247,.70);
-  text-shadow:0 0 14px rgba(158,103,218,.65);
-}
-.section-label{
-  margin:0 0 12px;
-  color:rgba(199,177,231,.72);
-  font-size:.67rem;
-  letter-spacing:.21em;
+.eyebrow{
+  margin:0 0 18px;
+  color:rgba(201,179,233,.72);
+  font-size:.68rem;
+  letter-spacing:.22em;
 }
 .page-header h1{
   margin:0;
+  font-size:clamp(1.7rem,4vw,2.35rem);
   font-weight:400;
   letter-spacing:.075em;
-  line-height:1.65;
-  font-size:clamp(1.85rem,4vw,2.55rem);
-  text-shadow:0 0 26px rgba(145,91,205,.12);
+  line-height:1.8;
 }
-.page-lead{
-  margin:25px 0 0;
-  color:rgba(207,217,235,.77);
-  line-height:2.15;
-  font-size:.9rem;
+.page-header > p:not(.eyebrow){
+  max-width:560px;
+  margin:24px auto 0;
+  color:var(--soft);
+  font-size:.88rem;
+  line-height:2.65;
+  letter-spacing:.065em;
 }
-.price-section{
+.page-header::after{
+  content:"✦";
+  display:block;
+  margin-top:24px;
+  color:rgba(215,194,242,.62);
+  text-shadow:0 0 15px rgba(160,102,217,.65);
+}
+.rights-section{
   position:relative;
-  margin-top:58px;
-  padding:40px 44px 43px;
-  border:1px solid rgba(178,154,220,.13);
-  border-radius:24px;
+  margin-top:30px;
+  padding:34px 38px 38px;
+  border:1px solid var(--line);
+  border-radius:22px;
   background:
-    radial-gradient(circle at 88% 12%,rgba(144,84,202,.12),transparent 38%),
-    rgba(5,16,39,.43);
-  box-shadow:0 18px 55px rgba(0,0,0,.12);
+    radial-gradient(circle at 88% 10%,rgba(148,89,205,.09),transparent 38%),
+    rgba(7,19,42,.58);
+  box-shadow:0 16px 45px rgba(0,0,0,.12);
   backdrop-filter:blur(7px);
 }
-.price-section::before{
+.rights-section::before{
   content:"✦";
   position:absolute;
-  top:24px;right:27px;
-  color:rgba(212,191,242,.48);
-  font-size:10px;
-  text-shadow:0 0 12px rgba(153,99,213,.55);
+  top:24px;
+  right:25px;
+  color:rgba(207,188,235,.48);
+  font-size:.72rem;
 }
-.price-section h2{
-  margin:0 0 25px;
-  font-size:1.5rem;
+.rights-section h2{
+  margin:0 0 28px;
+  text-align:center;
+  font-size:1.28rem;
   font-weight:400;
   letter-spacing:.075em;
-  line-height:1.65;
+  line-height:1.9;
 }
-.price-section h3{
-  margin:25px 0 8px;
-  color:rgba(220,210,239,.92);
+.rights-section h3{
+  margin:30px 0 17px;
+  text-align:center;
+  color:rgba(225,217,239,.92);
   font-size:1rem;
   font-weight:400;
-  letter-spacing:.06em;
+  letter-spacing:.065em;
+  line-height:2;
 }
-.price-section p,
-.price-section li{
-  color:rgba(201,213,233,.76);
-  font-size:.88rem;
-  line-height:2.05;
+.rights-section h3::before{
+  content:"✦";
+  margin-right:9px;
+  color:rgba(192,159,224,.62);
+  font-size:.7em;
 }
-.price-section ul{
-  margin:16px 0 0;
-  padding-left:1.25em;
+.rights-section p{
+  max-width:590px;
+  margin:0 auto 25px;
+  color:var(--soft);
+  font-size:.87rem;
+  line-height:2.9;
+  letter-spacing:.07em;
 }
-.price-note{
-  margin-top:20px;
-  padding:21px 23px;
-  border:1px solid rgba(187,159,226,.15);
-  border-radius:17px;
+.rights-section p:last-child{margin-bottom:0}
+.rights-section ul{
+  max-width:590px;
+  margin:0 auto;
+  padding:0 0 0 1.45em;
+}
+.rights-section li{
+  margin:0 0 17px;
+  padding-left:.18em;
+  color:var(--soft);
+  font-size:.87rem;
+  line-height:2.8;
+  letter-spacing:.065em;
+}
+.rights-section li:last-child{margin-bottom:0}
+.rights-section li::marker{
+  color:rgba(179,199,239,.72);
+}
+.rights-section strong{
+  color:rgba(229,235,248,.95);
+  font-weight:600;
+}
+.rights-note{
+  max-width:590px;
+  margin:34px auto 0;
+  padding:25px 28px;
+  text-align:center;
+  border:1px solid rgba(190,159,228,.18);
+  border-radius:18px;
   background:
-    radial-gradient(circle at 84% 15%,rgba(157,91,213,.12),transparent 43%),
-    rgba(15,28,61,.40);
+    radial-gradient(circle at 85% 15%,rgba(154,91,211,.12),transparent 45%),
+    rgba(17,31,62,.45);
 }
-.price-note h3{margin-top:0}
+.rights-note p{
+  margin:0;
+  line-height:2.55;
+}
+.rights-choice{
+  max-width:590px;
+  margin:24px auto;
+  padding:22px 26px 25px;
+  border:1px solid rgba(164,193,231,.13);
+  border-radius:18px;
+  background:rgba(10,27,55,.40);
+}
+.rights-choice h3{
+  margin:0 0 15px;
+  text-align:left;
+}
+.rights-choice ul{padding-left:1.35em}
+.rights-choice li{margin-bottom:12px}
+.concept-flow{
+  max-width:590px;
+  margin:0 auto;
+  text-align:center;
+}
+.concept-flow p{
+  margin:0 auto;
+  padding:16px 20px;
+  border:1px solid rgba(164,193,231,.11);
+  border-radius:15px;
+  background:rgba(11,29,57,.38);
+}
+.concept-flow span{
+  display:block;
+  margin:7px 0;
+  color:rgba(196,174,228,.65);
+  line-height:1.4;
+}
+.rights-table{
+  width:min(590px,100%);
+  margin:0 auto 27px;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border:1px solid rgba(164,193,231,.14);
+  border-radius:16px;
+  background:rgba(8,24,49,.40);
+}
+.rights-table th,
+.rights-table td{
+  padding:15px 18px;
+  text-align:left;
+  border-bottom:1px solid rgba(164,193,231,.10);
+  color:var(--soft);
+  font-size:.84rem;
+  line-height:2.1;
+}
+.rights-table th{
+  color:rgba(222,215,237,.92);
+  font-weight:400;
+  background:rgba(101,74,139,.14);
+}
+.rights-table tr:last-child td{border-bottom:0}
+.rights-table td:last-child,
+.rights-table th:last-child{text-align:center}
 .page-back{
-  margin:48px 0 0;
+  margin-top:48px;
   text-align:center;
 }
 .page-back a{
   display:inline-block;
-  padding:11px 24px;
-  border:1px solid rgba(177,154,218,.18);
+  padding:12px 25px;
+  border:1px solid rgba(185,157,226,.20);
   border-radius:999px;
-  color:rgba(205,195,224,.75);
+  color:rgba(211,202,230,.80);
   text-decoration:none;
   font-size:.78rem;
   letter-spacing:.09em;
   background:rgba(255,255,255,.018);
-  transition:.25s ease;
-}
-.page-back a:hover{
-  color:rgba(235,229,248,.94);
-  border-color:rgba(197,172,233,.34);
-  box-shadow:0 0 22px rgba(135,85,192,.10);
-  transform:translateY(-1px);
 }
 @media(max-width:650px){
-  .price-page{width:min(100% - 24px,900px);padding:52px 0 60px}
-  .page-header,.price-section{padding:30px 22px}
-  .page-header h1{font-size:1.75rem}
-  .price-section{margin-top:42px}
-  .price-section p,.price-section li{font-size:.84rem}
-}
-</style>
-
-
-<style id="hoshiyomi-rights-font-soft-v2">
-/* 漢字を含む日本語全体を、少し丸く・親しみやすい印象へ */
-body{
-  font-family:
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    "YuGothic",
-    "Noto Sans JP",
-    sans-serif!important;
-  font-weight:400!important;
-  letter-spacing:.045em!important;
-  line-height:2.05!important;
-}
-.page-header h1,
-.price-section h2,
-.price-section h3{
-  font-family:
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    "YuGothic",
-    "Noto Sans JP",
-    sans-serif!important;
-  font-weight:400!important;
-}
-.page-header h1{
-  letter-spacing:.07em!important;
-  line-height:1.7!important;
-}
-.section-label{
-  font-family:
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    "YuGothic",
-    "Noto Sans JP",
-    sans-serif!important;
-  font-weight:400!important;
-  letter-spacing:.18em!important;
-}
-.page-lead,
-.price-section p,
-.price-section li{
-  letter-spacing:.045em!important;
-  line-height:2.12!important;
-}
-.price-section h2{
-  letter-spacing:.06em!important;
-  line-height:1.7!important;
-}
-.price-section h3{
-  letter-spacing:.045em!important;
-  line-height:1.75!important;
-}
-.page-back a{
-  font-family:
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    "YuGothic",
-    "Noto Sans JP",
-    sans-serif!important;
-  font-weight:400!important;
-}
-@media(max-width:650px){
-  body{line-height:2!important}
-  .page-header h1{line-height:1.65!important}
-  .price-section p,
-  .price-section li{line-height:2.05!important}
-}
-</style>
-
-
-<style id="hoshiyomi-rights-unified-v3">
-/* 既存の星詠ページと同じ「夜空＋青紫＋柔らかい文字」の統一感 */
-body{
-  background:
-    radial-gradient(ellipse 36% 26% at 10% 10%,
-      rgba(61,104,212,.20),transparent 70%),
-    radial-gradient(ellipse 46% 35% at 88% 23%,
-      rgba(153,87,215,.30),transparent 69%),
-    radial-gradient(ellipse 45% 31% at 72% 78%,
-      rgba(111,65,202,.24),transparent 69%),
-    radial-gradient(ellipse 38% 26% at 18% 86%,
-      rgba(151,77,202,.19),transparent 70%),
-    linear-gradient(145deg,#030817 0%,#071633 40%,#0c0622 100%)!important;
-  color:#edf3ff!important;
-}
-body::after{
-  width:520px!important;
-  height:520px!important;
-  right:-190px!important;
-  top:4%!important;
-  background:
-    radial-gradient(circle,
-      rgba(178,116,229,.20),
-      rgba(121,82,198,.09) 42%,
-      transparent 70%)!important;
-  filter:blur(14px)!important;
-}
-.page-header{
-  border:1px solid rgba(185,157,226,.20)!important;
-  border-radius:28px!important;
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(163,96,216,.19),transparent 38%),
-    linear-gradient(145deg,
-      rgba(17,39,86,.30),
-      rgba(96,57,147,.22))!important;
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.22),
-    0 0 38px rgba(127,78,187,.06)!important;
-}
-.section-label{
-  color:rgba(205,181,239,.76)!important;
-}
-.page-header h1{
-  font-family:
-    "Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic",
-    "Noto Sans JP",sans-serif!important;
-  font-weight:400!important;
-  letter-spacing:.07em!important;
-  text-shadow:0 0 28px rgba(145,91,205,.14)!important;
-}
-.page-lead{
-  color:rgba(207,217,235,.77)!important;
-}
-.price-section{
-  margin-top:58px!important;
-  border:1px solid rgba(181,153,224,.16)!important;
-  border-radius:24px!important;
-  background:
-    radial-gradient(circle at 88% 12%,
-      rgba(150,88,211,.15),transparent 38%),
-    radial-gradient(circle at 12% 88%,
-      rgba(78,92,190,.07),transparent 35%),
-    rgba(5,16,39,.43)!important;
-  box-shadow:0 18px 55px rgba(0,0,0,.12)!important;
-}
-.price-section::before{
-  color:rgba(220,197,247,.72)!important;
-  text-shadow:0 0 14px rgba(160,103,218,.70)!important;
-}
-.price-section h2{
-  font-family:
-    "Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic",
-    "Noto Sans JP",sans-serif!important;
-  font-weight:400!important;
-  letter-spacing:.06em!important;
-  text-shadow:0 0 22px rgba(145,91,205,.10)!important;
-}
-.price-section h3{
-  font-family:
-    "Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic",
-    "Noto Sans JP",sans-serif!important;
-  font-weight:400!important;
-  color:rgba(226,216,240,.91)!important;
-}
-.price-section p,
-.price-section li{
-  color:rgba(201,213,233,.78)!important;
-}
-.price-note{
-  border-color:rgba(190,159,231,.20)!important;
-  background:
-    radial-gradient(circle at 84% 15%,
-      rgba(164,96,218,.16),transparent 43%),
-    rgba(15,28,61,.40)!important;
-}
-.page-back a{
-  border-color:rgba(190,159,231,.20)!important;
-  color:rgba(213,203,230,.78)!important;
-  background:rgba(255,255,255,.018)!important;
-}
-.page-back a:hover{
-  border-color:rgba(205,177,239,.38)!important;
-  box-shadow:
-    0 0 22px rgba(135,85,192,.13),
-    0 0 35px rgba(92,111,205,.05)!important;
-}
-</style>
-
-
-<style id="hoshiyomi-rights-green-v4">
-/* 権利ページだけ、紫の夜空を「深い緑＋青緑」に変更 */
-body{
-  background:
-    radial-gradient(ellipse 36% 26% at 10% 10%,
-      rgba(50,126,119,.20),transparent 70%),
-    radial-gradient(ellipse 46% 35% at 88% 23%,
-      rgba(45,137,116,.28),transparent 69%),
-    radial-gradient(ellipse 45% 31% at 72% 78%,
-      rgba(30,116,91,.23),transparent 69%),
-    radial-gradient(ellipse 38% 26% at 18% 86%,
-      rgba(53,139,116,.18),transparent 70%),
-    linear-gradient(145deg,#030b0b 0%,#061c1b 40%,#031713 100%)!important;
-}
-body::after{
-  background:
-    radial-gradient(circle,
-      rgba(91,188,157,.18),
-      rgba(47,137,115,.08) 42%,
-      transparent 70%)!important;
-}
-.page-header{
-  border-color:rgba(123,191,168,.20)!important;
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(57,151,124,.18),transparent 38%),
-    linear-gradient(145deg,
-      rgba(10,52,55,.31),
-      rgba(27,91,76,.22))!important;
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.22),
-    0 0 38px rgba(47,142,111,.06)!important;
-}
-.section-label{
-  color:rgba(173,218,198,.76)!important;
-}
-.page-header h1{
-  text-shadow:0 0 28px rgba(73,161,128,.13)!important;
-}
-.price-section{
-  border-color:rgba(111,177,154,.17)!important;
-  background:
-    radial-gradient(circle at 88% 12%,
-      rgba(50,145,116,.15),transparent 38%),
-    radial-gradient(circle at 12% 88%,
-      rgba(44,115,122,.07),transparent 35%),
-    rgba(4,24,26,.46)!important;
-}
-.price-section::before{
-  color:rgba(177,225,205,.72)!important;
-  text-shadow:0 0 14px rgba(66,166,127,.65)!important;
-}
-.page-header::after{
-  color:rgba(185,229,208,.72)!important;
-  text-shadow:0 0 14px rgba(68,165,127,.65)!important;
-}
-.price-section h2{
-  text-shadow:0 0 22px rgba(65,157,125,.10)!important;
-}
-.price-note{
-  border-color:rgba(116,184,157,.19)!important;
-  background:
-    radial-gradient(circle at 84% 15%,
-      rgba(54,151,117,.16),transparent 43%),
-    rgba(8,35,34,.42)!important;
-}
-.page-back a{
-  border-color:rgba(115,183,157,.20)!important;
-  color:rgba(201,225,214,.80)!important;
-}
-.page-back a:hover{
-  border-color:rgba(140,204,177,.38)!important;
-  box-shadow:
-    0 0 22px rgba(48,143,108,.13),
-    0 0 35px rgba(46,117,131,.05)!important;
-}
-</style>
-
-
-<style id="hoshiyomi-rights-spacing-v5">
-/* 文字が詰まって見えないよう、横幅・行間・段落間をゆったり */
-.price-page{
-  width:min(860px,calc(100% - 48px))!important;
-}
-.page-header{
-  padding:46px 52px 52px!important;
-}
-.page-lead{
-  max-width:720px!important;
-  margin-top:28px!important;
-  line-height:2.35!important;
-  letter-spacing:.065em!important;
-}
-.price-section{
-  padding:44px 52px 50px!important;
-  margin-top:68px!important;
-}
-.price-section h2{
-  margin-bottom:30px!important;
-  letter-spacing:.075em!important;
-}
-.price-section h3{
-  margin-top:34px!important;
-  margin-bottom:14px!important;
-  letter-spacing:.065em!important;
-}
-.price-section p,
-.price-section li{
-  line-height:2.3!important;
-  letter-spacing:.065em!important;
-}
-.price-section p{
-  margin-top:0!important;
-  margin-bottom:20px!important;
-}
-.price-section ul{
-  margin-top:20px!important;
-  margin-bottom:24px!important;
-  padding-left:1.5em!important;
-}
-.price-section li{
-  margin-bottom:8px!important;
-}
-.price-note{
-  margin-top:28px!important;
-  padding:25px 28px!important;
-  line-height:2.3!important;
-}
-.page-back{
-  margin-top:58px!important;
-}
-@media(max-width:650px){
-  .price-page{
-    width:calc(100% - 28px)!important;
+  .rights-page{
+    width:calc(100% - 24px);
+    padding:42px 0 58px;
   }
   .page-header{
-    padding:34px 25px 38px!important;
+    padding:32px 22px 35px;
+    border-radius:23px;
   }
-  .price-section{
-    padding:34px 25px 40px!important;
-    margin-top:48px!important;
-  }
-  .page-lead{
-    line-height:2.2!important;
-    letter-spacing:.055em!important;
-  }
-  .price-section p,
-  .price-section li{
-    line-height:2.2!important;
-    letter-spacing:.055em!important;
-  }
-}
-</style>
-
-
-<style id="hoshiyomi-rights-blocks-v6">
-/* 話題ごとに「小さな星の部屋」のように分けて、内容を追いやすくする */
-.price-section{
-  padding:42px 0 0!important;
-  background:transparent!important;
-  border:0!important;
-  box-shadow:none!important;
-}
-.price-section::before{display:none!important}
-
-.price-section > h2{
-  padding:0 46px!important;
-  margin-bottom:30px!important;
-}
-
-.price-section > p,
-.price-section > h3,
-.price-section > ul,
-.price-section > ol,
-.price-section > .price-note{
-  margin-left:0!important;
-  margin-right:0!important;
-}
-
-.price-section > h3{
-  position:relative;
-  margin:0 0 0!important;
-  padding:22px 46px 10px!important;
-  border:1px solid rgba(113,183,157,.15);
-  border-bottom:0;
-  border-radius:20px 20px 0 0;
-  background:
-    radial-gradient(circle at 88% 10%,rgba(54,151,117,.10),transparent 38%),
-    rgba(5,25,27,.43);
-}
-.price-section > h3:not(:first-of-type){
-  margin-top:22px!important;
-  border-radius:20px 20px 0 0;
-}
-.price-section > h3::before{
-  content:"✦";
-  margin-right:10px;
-  color:rgba(163,218,194,.58);
-  font-size:.72em;
-}
-
-.price-section > h3 + p,
-.price-section > h3 + ul,
-.price-section > h3 + ol{
-  margin-top:0!important;
-  padding:15px 46px 28px!important;
-  border:1px solid rgba(113,183,157,.15);
-  border-top:0;
-  border-radius:0 0 20px 20px;
-  background:rgba(5,25,27,.43);
-}
-
-.price-section > h3 + p{
-  margin-bottom:0!important;
-}
-
-.price-section > ul,
-.price-section > ol{
-  padding-left:66px!important;
-  padding-right:46px!important;
-  padding-top:20px!important;
-  padding-bottom:26px!important;
-  border:1px solid rgba(113,183,157,.15);
-  border-radius:20px;
-  background:
-    radial-gradient(circle at 85% 15%,rgba(54,151,117,.08),transparent 42%),
-    rgba(5,25,27,.43);
-}
-
-.price-section > p:not(.page-lead){
-  padding:24px 46px 28px!important;
-  border:1px solid rgba(113,183,157,.15);
-  border-radius:20px;
-  background:
-    radial-gradient(circle at 85% 15%,rgba(54,151,117,.08),transparent 42%),
-    rgba(5,25,27,.43);
-}
-
-.price-note{
-  border:1px solid rgba(113,183,157,.18)!important;
-  border-radius:20px!important;
-  background:
-    radial-gradient(circle at 84% 15%,rgba(54,151,117,.12),transparent 43%),
-    rgba(5,25,27,.43)!important;
-}
-
-/* 連続したブロック同士の間に、星空が少し見える余白 */
-.price-section > h3 + p + h3,
-.price-section > h3 + p + ul + h3,
-.price-section > h3 + ul + h3,
-.price-section > p + h3{
-  margin-top:22px!important;
-}
-
-@media(max-width:650px){
-  .price-section > h2{padding:0 25px!important}
-  .price-section > h3{
-    padding:19px 25px 9px!important;
-  }
-  .price-section > h3 + p,
-  .price-section > h3 + ul,
-  .price-section > h3 + ol{
-    padding:14px 25px 25px!important;
-  }
-  .price-section > ul,
-  .price-section > ol{
-    padding-left:44px!important;
-    padding-right:25px!important;
-  }
-  .price-section > p:not(.page-lead){
-    padding:21px 25px 25px!important;
-  }
-}
-</style>
-
-
-<style id="hoshiyomi-rights-text-spacing-v7">
-/* ブロック内の文字に、もう少し呼吸できる余白を追加 */
-.price-section > h3{
-  letter-spacing:.09em!important;
-  padding-bottom:14px!important;
-}
-.price-section > h3 + p,
-.price-section > h3 + ul,
-.price-section > h3 + ol{
-  padding-top:19px!important;
-  padding-bottom:32px!important;
-}
-.price-section p,
-.price-section li{
-  letter-spacing:.075em!important;
-  line-height:2.45!important;
-}
-.price-section p{
-  word-spacing:.08em;
-}
-.price-section li{
-  margin-bottom:11px!important;
-}
-.price-section > p:not(.page-lead){
-  padding-top:28px!important;
-  padding-bottom:32px!important;
-}
-.price-note{
-  padding:28px 30px!important;
-}
-.price-note p,
-.price-note li{
-  line-height:2.4!important;
-}
-@media(max-width:650px){
-  .price-section p,
-  .price-section li{
-    letter-spacing:.06em!important;
-    line-height:2.3!important;
-  }
-  .price-section > h3{
-    letter-spacing:.075em!important;
-  }
-}
-</style>
-
-
-<style id="hoshiyomi-rights-mobile-v8">
-/* スマホでの読みやすさを優先した最終調整 */
-@media(max-width:650px){
-  .price-page{
-    width:calc(100% - 24px)!important;
-    padding:42px 0 58px!important;
-  }
-
-  .page-header{
-    padding:30px 22px 36px!important;
-    border-radius:24px!important;
-  }
-
   .page-header h1{
-    font-size:1.65rem!important;
-    letter-spacing:.06em!important;
-    line-height:1.75!important;
+    font-size:1.58rem;
+    line-height:1.85;
   }
-
-  .page-lead{
-    margin-top:24px!important;
-    font-size:.86rem!important;
-    line-height:2.35!important;
-    letter-spacing:.055em!important;
+  .page-header > p:not(.eyebrow){
+    margin-top:21px;
+    font-size:.82rem;
+    line-height:2.65;
+    letter-spacing:.045em;
   }
-
-  .price-section{
-    margin-top:44px!important;
-    padding-top:34px!important;
+  .rights-section{
+    margin-top:24px;
+    padding:29px 22px 32px;
+    border-radius:20px;
   }
-
-  .price-section > h2{
-    padding:0 22px!important;
-    margin-bottom:28px!important;
-    font-size:1.35rem!important;
-    line-height:1.8!important;
+  .rights-section h2{
+    margin-bottom:27px;
+    font-size:1.18rem;
+    line-height:1.95;
+    letter-spacing:.055em;
   }
-
-  .price-section > h3{
-    padding:20px 22px 13px!important;
-    font-size:.98rem!important;
-    line-height:1.85!important;
-    letter-spacing:.065em!important;
+  .rights-section h3{
+    margin-top:27px;
+    margin-bottom:15px;
+    font-size:.94rem;
+    line-height:2.05;
+    letter-spacing:.045em;
   }
-
-  .price-section > h3 + p,
-  .price-section > h3 + ul,
-  .price-section > h3 + ol{
-    padding:19px 22px 34px!important;
+  .rights-section p{
+    max-width:none;
+    font-size:.82rem;
+    line-height:2.9;
+    letter-spacing:.04em;
+    margin-bottom:26px;
   }
-
-  .price-section p,
-  .price-section li{
-    font-size:.84rem!important;
-    line-height:2.55!important;
-    letter-spacing:.055em!important;
+  .rights-section ul{
+    max-width:none;
+    padding-left:1.35em;
   }
-
-  .price-section > p:not(.page-lead){
-    padding:26px 22px 34px!important;
+  .rights-section li{
+    font-size:.82rem;
+    line-height:2.8;
+    letter-spacing:.035em;
+    margin-bottom:16px;
   }
-
-  .price-section > ul,
-  .price-section > ol{
-    padding-left:40px!important;
-    padding-right:22px!important;
-    padding-top:21px!important;
-    padding-bottom:32px!important;
+  .rights-note{
+    padding:23px 20px;
   }
-
-  .price-section li{
-    margin-bottom:13px!important;
+  .rights-choice{
+    padding:20px 19px 23px;
   }
-
-  .price-note{
-    padding:26px 22px!important;
-  }
-
-  .price-note p,
-  .price-note li{
-    line-height:2.5!important;
-  }
-
-  .page-back{
-    margin-top:48px!important;
-  }
-
-  .page-back a{
-    padding:12px 22px!important;
+  .rights-table th,
+  .rights-table td{
+    padding:13px 12px;
+    font-size:.77rem;
+    line-height:2;
   }
 }
-</style>
+</style><style id="hoshiyomi-green-accent">
+/* 星詠｜権利ページ 緑アクセント */
+:root{
+  --green:#8fcbb3;
+  --green-soft:rgba(143,203,179,.72);
+  --green-line:rgba(143,203,179,.18);
+  --green-glow:rgba(83,174,139,.12);
+}
 
-</head>
+/* 夜空に淡い緑の光を追加 */
+body{
+  background:
+    radial-gradient(ellipse 38% 28% at 8% 10%,rgba(62,111,218,.18),transparent 70%),
+    radial-gradient(ellipse 45% 34% at 90% 24%,rgba(142,83,199,.21),transparent 70%),
+    radial-gradient(ellipse 42% 32% at 75% 82%,rgba(73,151,120,.15),transparent 70%),
+    radial-gradient(ellipse 30% 25% at 16% 76%,rgba(76,155,128,.08),transparent 70%),
+    linear-gradient(145deg,#030817 0%,#071633 45%,#081b1c 100%);
+}
 
-<body>
+/* ヘッダーにも緑をほんのり */
+.page-header{
+  background:
+    radial-gradient(circle at 82% 18%,rgba(153,91,211,.14),transparent 38%),
+    radial-gradient(circle at 12% 88%,rgba(77,166,133,.09),transparent 38%),
+    linear-gradient(145deg,rgba(17,39,86,.34),rgba(63,82,112,.18));
+  border-color:rgba(143,203,179,.16);
+}
 
+/* 各ブロックに緑の星雲を薄く */
+.rights-section{
+  background:
+    radial-gradient(circle at 88% 10%,rgba(148,89,205,.08),transparent 38%),
+    radial-gradient(circle at 12% 88%,rgba(72,166,132,.07),transparent 40%),
+    rgba(7,19,42,.58);
+  border-color:rgba(143,203,179,.15);
+}
+
+/* 見出しの星だけ少し緑 */
+.rights-section h3::before{
+  color:rgba(143,203,179,.68);
+  text-shadow:0 0 12px rgba(83,174,139,.35);
+}
+
+/* 強調部分にも緑を少し */
+.rights-section strong{
+  color:rgba(206,235,224,.95);
+}
+
+/* 注記・選択ブロック */
+.rights-note,
+.rights-choice{
+  border-color:rgba(143,203,179,.16);
+  background:
+    radial-gradient(circle at 85% 15%,rgba(83,174,139,.10),transparent 45%),
+    rgba(10,31,48,.42);
+}
+
+/* 箇条書きのマーカー */
+.rights-section li::marker{
+  color:rgba(143,203,179,.75);
+}
+
+/* 戻るボタン */
+.page-back a{
+  border-color:rgba(143,203,179,.20);
+}
+</style></head><body>
 <main class="rights-page">
-
-  <section class="page-header">
-    <p class="eyebrow">RIGHTS & USE</p>
-    <h1>権利・利用について</h1>
-
-    <p>
-      作品をお渡ししたあとも、<br>
+<section class="page-header">
+<p class="eyebrow">RIGHTS &amp; USE</p>
+<h1>権利・利用について</h1>
+<p>
+      作品をお渡ししたあとも、<br/>
       その作品がどのように扱われるのかは大切なことです。
     </p>
-
-    <p>
-      「これは使っていい？」<br>
+<p>
+      「これは使っていい？」<br/>
       「こういう使い方はできる？」
     </p>
-
-    <p>
-      そんな疑問が残らないよう、<br>
+<p>
+      そんな疑問が残らないよう、<br/>
       星詠で制作した作品の権利と利用について定めています。
     </p>
-  </section>
-
-
-  <!-- ① 使用するアバターについて -->
-  <section class="rights-section">
-    <h2>使用するアバターについて</h2>
-
-    <ul>
-      <li>原則として、<strong>依頼者本人が使用しているREALITYアバターのみ</strong>を対象とします。</li>
-      <li>第三者のアバターを本人の許可なく参考資料として使用しません。</li>
-      <li>REALITYアバターそのものを商品化・複製することを目的としません。</li>
-      <li>REALITYの3Dモデルデータを抽出・取得・加工して使用しません。</li>
-      <li><strong>REALITYアバターの完全再現を目的とした依頼は受け付けません。</strong></li>
-      <li>あくまで「自分がなりたい姿・好きな姿」を伝えるための参考資料として使用し、星詠独自の絵として再構築します。</li>
-    </ul>
-  </section>
-
-
-  <!-- ② アバター・参考資料の提出方法 -->
-  <section class="rights-section">
-    <h2>アバター・参考資料の提出方法</h2>
-
-    <ul>
-      <li>依頼者本人が、<strong>星詠独自の依頼フォーム</strong>から資料を提出します。</li>
-      <li>REALITYアバターの画像等も、依頼者本人が参考資料として提出します。</li>
-      <li>提出された資料はフォームを通じて<strong>星詠の管理用Gmail</strong>へ送信されます。</li>
-      <li>資料は、依頼内容の確認・ヒアリング・制作等に必要な範囲で使用します。</li>
-      <li>星詠側からREALITYへアクセスしてアバターを取得したり、3Dモデルを取得したりしません。</li>
-      <li>提出されたREALITY画像そのものを、そのまま加工・販売することはしません。</li>
-      <li>REALITY以外のアバターサービスについても、<strong>各サービス側で利用・二次創作等の許可が確認できる場合のみ使用可能</strong>とします。</li>
-      <li>依頼者が提出する第三者の画像・作品等については、<strong>依頼者自身が使用する権利を持っている、または必要な許可を取得している資料のみ提出可能</strong>とします。</li>
-    </ul>
-  </section>
-
-
-  <!-- ③ 完成作品の利用・グッズ化 -->
-  <section class="rights-section">
-    <h2>完成作品の利用・グッズ化</h2>
-
-    <ul>
-      <li>完成した絵は、基本的に<strong>依頼者への納品を目的</strong>とします。</li>
-      <li>星詠側がWebサイト・SNS・ポートフォリオ等で制作実績として公開する場合は、依頼者の事前許可を得ます。</li>
-      <li>依頼者が完成作品を<strong>グッズ化する場合は、事前にREALITY側から必要な許可を取得していることを条件</strong>とします。</li>
-      <li>REALITY側の許可を確認できない場合、グッズ化を前提とした依頼は受け付けません。</li>
-      <li>星詠側がREALITYに代わってグッズ化の許可を出すことはありません。</li>
-      <li>星詠側が独自に作品をグッズ化・販売することも行いません。</li>
-    </ul>
-  </section>
-
-
-  <!-- ④ アバターと本人の魅力 -->
-  <section class="rights-section">
-    <h2>アバターと本人の魅力について</h2>
-
-    <p>
+</section>
+<!-- ① 使用するアバターについて -->
+<section class="rights-section">
+<h2>使用するアバターについて</h2>
+<ul>
+<li>原則として、<strong>依頼者本人が使用しているREALITYアバターのみ</strong>を対象とします。</li>
+<li>第三者のアバターを本人の許可なく参考資料として使用しません。</li>
+<li>REALITYアバターそのものを商品化・複製することを目的としません。</li>
+<li>REALITYの3Dモデルデータを抽出・取得・加工して使用しません。</li>
+<li><strong>REALITYアバターの完全再現を目的とした依頼は受け付けません。</strong></li>
+<li>あくまで「自分がなりたい姿・好きな姿」を伝えるための参考資料として使用し、星詠独自の絵として再構築します。</li>
+</ul>
+</section>
+<!-- ② アバター・参考資料の提出方法 -->
+<section class="rights-section">
+<h2>アバター・参考資料の提出方法</h2>
+<ul>
+<li>依頼者本人が、<strong>星詠独自の依頼フォーム</strong>から資料を提出します。</li>
+<li>REALITYアバターの画像等も、依頼者本人が参考資料として提出します。</li>
+<li>提出された資料はフォームを通じて<strong>星詠の管理用Gmail</strong>へ送信されます。</li>
+<li>資料は、依頼内容の確認・ヒアリング・制作等に必要な範囲で使用します。</li>
+<li>星詠側からREALITYへアクセスしてアバターを取得したり、3Dモデルを取得したりしません。</li>
+<li>提出されたREALITY画像そのものを、そのまま加工・販売することはしません。</li>
+<li>REALITY以外のアバターサービスについても、<strong>各サービス側で利用・二次創作等の許可が確認できる場合のみ使用可能</strong>とします。</li>
+<li>依頼者が提出する第三者の画像・作品等については、<strong>依頼者自身が使用する権利を持っている、または必要な許可を取得している資料のみ提出可能</strong>とします。</li>
+</ul>
+</section>
+<!-- ③ 完成作品の利用・グッズ化 -->
+<section class="rights-section">
+<h2>完成作品の利用・グッズ化</h2>
+<ul>
+<li>完成した絵は、基本的に<strong>依頼者への納品を目的</strong>とします。</li>
+<li>星詠側がWebサイト・SNS・ポートフォリオ等で制作実績として公開する場合は、依頼者の事前許可を得ます。</li>
+<li>依頼者が完成作品を<strong>グッズ化する場合は、事前にREALITY側から必要な許可を取得していることを条件</strong>とします。</li>
+<li>REALITY側の許可を確認できない場合、グッズ化を前提とした依頼は受け付けません。</li>
+<li>星詠側がREALITYに代わってグッズ化の許可を出すことはありません。</li>
+<li>星詠側が独自に作品をグッズ化・販売することも行いません。</li>
+</ul>
+</section>
+<!-- ④ アバターと本人の魅力 -->
+<section class="rights-section">
+<h2>アバターと本人の魅力について</h2>
+<p>
       REALITYアバターを<strong>「本人そのもの」ではなく、「本人が好きな姿・なりたい姿を伝えるための資料」</strong>として扱います。
     </p>
-
-    <p>そこから、</p>
-
-    <ul>
-      <li>REALITYアバター</li>
-      <li>本人の雰囲気</li>
-      <li>性格</li>
-      <li>好きなもの</li>
-      <li>現実の本人の魅力</li>
-      <li>理想としている姿</li>
-      <li>表現したい世界観</li>
-    </ul>
-
-    <p>
+<p>そこから、</p>
+<ul>
+<li>REALITYアバター</li>
+<li>本人の雰囲気</li>
+<li>性格</li>
+<li>好きなもの</li>
+<li>現実の本人の魅力</li>
+<li>理想としている姿</li>
+<li>表現したい世界観</li>
+</ul>
+<p>
       などをヒアリングし、<strong>制作者自身の手で一枚の新しい絵として再構築します。</strong>
-    </p>
-
-    <p>
+</p>
+<p>
       顔出しは必須ではなく、<strong>顔写真等を提出しなくても依頼可能</strong>です。
     </p>
-
-    <div class="rights-note">
-      <p>
-        <strong>「アバターを描く」のではなく、「アバターを入口として、その人自身の魅力や理想を描く」</strong>
-      </p>
-    </div>
-  </section>
-
-
-  <!-- ⑤ REALITYの名称・ロゴ -->
-  <section class="rights-section">
-    <h2>REALITYの名称・ロゴ</h2>
-
-    <ul>
-      <li><strong>REALITYのロゴは星詠のWebサイト・広告・サービスページ等では使用しません。</strong></li>
-      <li>REALITYの公式・公認・提携サービスであると誤認されるような表示は行いません。</li>
-      <li>REALITYという名称を使用する場合も、参考資料等について事実を説明するための必要な範囲にとどめます。</li>
-      <li>名称の使用について特別なルールがある場合は、REALITY側へ確認します。</li>
-    </ul>
-  </section>
-
-
-  <!-- ⑥ AI・著作権・未成年者 -->
-  <section class="rights-section">
-    <h2>AI・著作権・未成年者</h2>
-
-    <h3>AIについて</h3>
-
-    <ul>
-      <li>星詠側の制作では<strong>生成AIを使用しません。</strong></li>
-      <li>依頼者が生成AIで作成した資料を提出する場合は、<strong>制作の参考資料としてのみ使用</strong>します。</li>
-      <li>そのAI資料は外部への公開・配布・販売等を行わず、門外不出の資料として扱います。</li>
-      <li>星詠の制作物そのものにAIを使用する場合は、事前申請・確認を必須とします。</li>
-    </ul>
-
-    <h3>未成年者について</h3>
-
-    <ul>
-      <li>未成年者からの依頼も可能です。</li>
-      <li>ただし、<strong>保護者の同意を必須</strong>とします。</li>
-      <li>銀行口座を利用した支払いを予定しているため、保護者の確認を得た上で依頼を受けます。</li>
-    </ul>
-
-    <h3>著作権について</h3>
-
-    <p>
-      <strong>著作権は制作者に帰属し、依頼者には納品物を個人利用する権利を許諾します。商用利用・グッズ化等は別途確認します。</strong>
-    </p>
-
-    <p>
+<div class="rights-note">
+<p>
+<strong>「アバターを描く」のではなく、「アバターを入口として、その人自身の魅力や理想を描く」</strong>
+</p>
+</div>
+</section>
+<!-- ⑤ REALITYの名称・ロゴ -->
+<section class="rights-section">
+<h2>REALITYの名称・ロゴ</h2>
+<ul>
+<li><strong>REALITYのロゴは星詠のWebサイト・広告・サービスページ等では使用しません。</strong></li>
+<li>REALITYの公式・公認・提携サービスであると誤認されるような表示は行いません。</li>
+<li>REALITYという名称を使用する場合も、参考資料等について事実を説明するための必要な範囲にとどめます。</li>
+<li>名称の使用について特別なルールがある場合は、REALITY側へ確認します。</li>
+</ul>
+</section>
+<!-- ⑥ AI・著作権・未成年者 -->
+<section class="rights-section">
+<h2>AI・著作権・未成年者</h2>
+<h3>AIについて</h3>
+<ul>
+<li>星詠側の制作では<strong>生成AIを使用しません。</strong></li>
+<li>依頼者が生成AIで作成した資料を提出する場合は、<strong>制作の参考資料としてのみ使用</strong>します。</li>
+<li>そのAI資料は外部への公開・配布・販売等を行わず、門外不出の資料として扱います。</li>
+<li>星詠の制作物そのものにAIを使用する場合は、事前申請・確認を必須とします。</li>
+</ul>
+<h3>未成年者について</h3>
+<ul>
+<li>未成年者からの依頼も可能です。</li>
+<li>ただし、<strong>保護者の同意を必須</strong>とします。</li>
+<li>銀行口座を利用した支払いを予定しているため、保護者の確認を得た上で依頼を受けます。</li>
+</ul>
+<h3>著作権について</h3>
+<p>
+<strong>著作権は制作者に帰属し、依頼者には納品物を個人利用する権利を許諾します。商用利用・グッズ化等は別途確認します。</strong>
+</p>
+<p>
       著作権の譲渡を行うものではありません。
     </p>
-  </section>
-
-
-  <!-- ⑦ 個人情報・提出資料の管理 -->
-  <section class="rights-section">
-    <h2>個人情報・提出資料の管理</h2>
-
-    <ul>
-      <li>氏名は<strong>偽名のみ</strong>とし、本名の提出は求めません。</li>
-      <li>連絡先は<strong>Gmailのみ</strong>とします。</li>
-      <li>電話番号・住所等は原則として取得しません。</li>
-      <li>依頼フォームから提出された制作資料はファイリングして管理します。</li>
-      <li><strong>資料の保存期間は1年間</strong>とします。</li>
-      <li>保存目的は、依頼内容の確認・制作・納品後の問い合わせ対応等、星詠の運営に必要な範囲とします。</li>
-      <li>依頼者から削除希望があった場合は、<strong>削除依頼を受け付けます。</strong></li>
-      <li>保存期間終了後は、不要となった資料を削除します。</li>
-    </ul>
-  </section>
-
-
-  <!-- ⑧ 制作実績の公開 -->
-  <section class="rights-section">
-    <h2>制作実績の公開</h2>
-
-    <p>
+</section>
+<!-- ⑦ 個人情報・提出資料の管理 -->
+<section class="rights-section">
+<h2>個人情報・提出資料の管理</h2>
+<ul>
+<li>氏名は<strong>偽名のみ</strong>とし、本名の提出は求めません。</li>
+<li>連絡先は<strong>Gmailのみ</strong>とします。</li>
+<li>電話番号・住所等は原則として取得しません。</li>
+<li>依頼フォームから提出された制作資料はファイリングして管理します。</li>
+<li><strong>資料の保存期間は1年間</strong>とします。</li>
+<li>保存目的は、依頼内容の確認・制作・納品後の問い合わせ対応等、星詠の運営に必要な範囲とします。</li>
+<li>依頼者から削除希望があった場合は、<strong>削除依頼を受け付けます。</strong></li>
+<li>保存期間終了後は、不要となった資料を削除します。</li>
+</ul>
+</section>
+<!-- ⑧ 制作実績の公開 -->
+<section class="rights-section">
+<h2>制作実績の公開</h2>
+<p>
       完成作品の実績公開については、<strong>依頼者が3段階から選択</strong>できます。
     </p>
-
-    <div class="rights-choice">
-      <h3>A：実績公開OK</h3>
-      <ul>
-        <li>完成した絵をWebサイト・SNS・ポートフォリオ等へ掲載可能。</li>
-        <li>REALITYアバターを参考にして制作したことも公開可能。</li>
-      </ul>
-    </div>
-
-    <div class="rights-choice">
-      <h3>B：絵のみ公開OK</h3>
-      <ul>
-        <li>完成した絵のみ実績として公開可能。</li>
-        <li>REALITYアバターを参考にしたことは公開しません。</li>
-        <li>REALITY上のユーザー名等も公開しません。</li>
-      </ul>
-    </div>
-
-    <div class="rights-choice">
-      <h3>C：非公開</h3>
-      <ul>
-        <li>完成した絵を含め、星詠の制作実績として公開しません。</li>
-      </ul>
-    </div>
-
-    <p>
+<div class="rights-choice">
+<h3>A：実績公開OK</h3>
+<ul>
+<li>完成した絵をWebサイト・SNS・ポートフォリオ等へ掲載可能。</li>
+<li>REALITYアバターを参考にして制作したことも公開可能。</li>
+</ul>
+</div>
+<div class="rights-choice">
+<h3>B：絵のみ公開OK</h3>
+<ul>
+<li>完成した絵のみ実績として公開可能。</li>
+<li>REALITYアバターを参考にしたことは公開しません。</li>
+<li>REALITY上のユーザー名等も公開しません。</li>
+</ul>
+</div>
+<div class="rights-choice">
+<h3>C：非公開</h3>
+<ul>
+<li>完成した絵を含め、星詠の制作実績として公開しません。</li>
+</ul>
+</div>
+<p>
       また、以下の情報を実績として公開する場合は、<strong>別途明確な同意を得ます。</strong>
-    </p>
-
-    <ul>
-      <li>依頼者の氏名</li>
-      <li>REALITY上のユーザー名</li>
-      <li>その他、依頼者を特定できる情報</li>
-    </ul>
-  </section>
-
-
-  <!-- 星詠の考え方 -->
-  <section class="rights-section concept-section">
-    <h2>星詠の考え方</h2>
-
-    <p>
+</p>
+<ul>
+<li>依頼者の氏名</li>
+<li>REALITY上のユーザー名</li>
+<li>その他、依頼者を特定できる情報</li>
+</ul>
+</section>
+<!-- 星詠の考え方 -->
+<section class="rights-section concept-section">
+<h2>星詠の考え方</h2>
+<p>
       星詠では、REALITYで作った「なりたい自分」を、そのまま絵にするのではなく、
       その人自身の魅力や理想を描くための入口として大切に扱います。
     </p>
-
-    <div class="concept-flow">
-      <p><strong>REALITYで作った「なりたい自分」</strong></p>
-      <span>↓</span>
-      <p>星詠のフォームから参考資料として提出</p>
-      <span>↓</span>
-      <p>本人の理想・個性・魅力をヒアリング</p>
-      <span>↓</span>
-      <p>REALITYアバターをそのまま描かず、手描きで再構築</p>
-      <span>↓</span>
-      <p><strong>その人自身の魅力を込めた「新しい絵」にする</strong></p>
-    </div>
-  </section>
-
-
-  <!-- 既存の権利・利用ルール -->
-  <section class="rights-section">
-    <h2>完成作品の基本的な利用範囲</h2>
-
-    <table class="rights-table">
-      <thead>
-        <tr>
-          <th>利用</th>
-          <th>利用できる範囲</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>SNSアイコン</td>
-          <td>○</td>
-        </tr>
-        <tr>
-          <td>SNSヘッダー</td>
-          <td>○</td>
-        </tr>
-        <tr>
-          <td>SNSへの投稿</td>
-          <td>○</td>
-        </tr>
-        <tr>
-          <td>個人利用</td>
-          <td>○</td>
-        </tr>
-        <tr>
-          <td>印刷</td>
-          <td>○</td>
-        </tr>
-        <tr>
-          <td>配信活動</td>
-          <td>△</td>
-        </tr>
-        <tr>
-          <td>グッズ制作</td>
-          <td>△</td>
-        </tr>
-        <tr>
-          <td>商用利用</td>
-          <td>✕</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>
+<div class="concept-flow">
+<p><strong>REALITYで作った「なりたい自分」</strong></p>
+<span>↓</span>
+<p>星詠のフォームから参考資料として提出</p>
+<span>↓</span>
+<p>本人の理想・個性・魅力をヒアリング</p>
+<span>↓</span>
+<p>REALITYアバターをそのまま描かず、手描きで再構築</p>
+<span>↓</span>
+<p><strong>その人自身の魅力を込めた「新しい絵」にする</strong></p>
+</div>
+</section>
+<!-- 既存の権利・利用ルール -->
+<section class="rights-section">
+<h2>完成作品の基本的な利用範囲</h2>
+<table class="rights-table">
+<thead>
+<tr>
+<th>利用</th>
+<th>利用できる範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SNSアイコン</td>
+<td>○</td>
+</tr>
+<tr>
+<td>SNSヘッダー</td>
+<td>○</td>
+</tr>
+<tr>
+<td>SNSへの投稿</td>
+<td>○</td>
+</tr>
+<tr>
+<td>個人利用</td>
+<td>○</td>
+</tr>
+<tr>
+<td>印刷</td>
+<td>○</td>
+</tr>
+<tr>
+<td>配信活動</td>
+<td>△</td>
+</tr>
+<tr>
+<td>グッズ制作</td>
+<td>△</td>
+</tr>
+<tr>
+<td>商用利用</td>
+<td>✕</td>
+</tr>
+</tbody>
+</table>
+<p>
       配信活動、グッズ制作、商用利用など、利用方法によって条件が異なる場合があります。
       不明な場合は、使用前に星詠へご相談ください。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>二次利用・加工</h2>
-
-    <table class="rights-table">
-      <thead>
-        <tr>
-          <th>内容</th>
-          <th>利用</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>色の変更</td>
-          <td>✕</td>
-        </tr>
-        <tr>
-          <td>トリミング</td>
-          <td>○</td>
-        </tr>
-        <tr>
-          <td>加工・描き足し</td>
-          <td>✕</td>
-        </tr>
-        <tr>
-          <td>別作品への使用</td>
-          <td>✕</td>
-        </tr>
-        <tr>
-          <td>第三者による加工</td>
-          <td>△</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>
+</section>
+<section class="rights-section">
+<h2>二次利用・加工</h2>
+<table class="rights-table">
+<thead>
+<tr>
+<th>内容</th>
+<th>利用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>色の変更</td>
+<td>✕</td>
+</tr>
+<tr>
+<td>トリミング</td>
+<td>○</td>
+</tr>
+<tr>
+<td>加工・描き足し</td>
+<td>✕</td>
+</tr>
+<tr>
+<td>別作品への使用</td>
+<td>✕</td>
+</tr>
+<tr>
+<td>第三者による加工</td>
+<td>△</td>
+</tr>
+</tbody>
+</table>
+<p>
       トリミングは、SNS等で使用するために必要な範囲で可能です。
     </p>
-
-    <p>
+<p>
       第三者による加工については、加工内容を事前にご相談ください。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>配信活動</h2>
-
-    <p>
+</section>
+<section class="rights-section">
+<h2>配信活動</h2>
+<p>
       配信活動での使用は、具体的な使用方法を事前にご相談ください。
     </p>
-
-    <p>
+<p>
       配信画面、サムネイル、プロフィール画像など、
       利用方法によって条件が異なる場合があります。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>グッズについて</h2>
-
-    <h3>個人で楽しむためのグッズ</h3>
-
-    <p>
+</section>
+<section class="rights-section">
+<h2>グッズについて</h2>
+<h3>個人で楽しむためのグッズ</h3>
+<p>
       自分自身で楽しむ目的であれば、基本的にご自由に制作いただけます。
     </p>
-
-    <h3>販売・配布</h3>
-
-    <p>
+<h3>販売・配布</h3>
+<p>
       グッズを販売・配布する場合は、必ず事前にご相談ください。
     </p>
-
-    <p>
+<p>
       ただし、REALITY等のアバターをもとにした作品については、
       <strong>各サービス側で必要な許可を取得していることを条件</strong>とします。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>商用利用について</h2>
-
-    <p>
+</section>
+<section class="rights-section">
+<h2>商用利用について</h2>
+<p>
       通常のご依頼では、商用利用をお受けしていません。
     </p>
-
-    <p>
+<p>
       商品販売、広告、有料サービスの宣伝など、
       商用目的で使用する場合は事前にご相談ください。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>クレジット</h2>
-
-    <p>
+</section>
+<section class="rights-section">
+<h2>クレジット</h2>
+<p>
       SNSなどで作品を使用する場合、
     </p>
-
-    <p>
+<p>
       「星詠」
     </p>
-
-    <p>
+<p>
       のクレジット表記を、可能な範囲でお願いいたします。
     </p>
-
-    <p>
+<p>
       クレジット表記は原則任意です。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>第三者の著作物</h2>
-
-    <p>
+</section>
+<section class="rights-section">
+<h2>第三者の著作物</h2>
+<p>
       他者が権利を持つ、
     </p>
-
-    <ul>
-      <li>キャラクター</li>
-      <li>デザイン</li>
-      <li>イラスト</li>
-      <li>企業・作品のキャラクター</li>
-      <li>その他第三者の著作物</li>
-    </ul>
-
-    <p>
+<ul>
+<li>キャラクター</li>
+<li>デザイン</li>
+<li>イラスト</li>
+<li>企業・作品のキャラクター</li>
+<li>その他第三者の著作物</li>
+</ul>
+<p>
       を使用する場合は、権利者本人から必要な許可を得たうえでご依頼ください。
     </p>
-
-    <p>
+<p>
       権利関係に問題があると判断した場合、制作をお断りすることがあります。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>REALITY等のアバター</h2>
-
-    <p>
+</section>
+<section class="rights-section">
+<h2>REALITY等のアバター</h2>
+<p>
       REALITYなどのサービス上で使用しているアバター・キャラクターを
       もとに制作する場合は、各サービスの利用規約および権利関係をご確認ください。
     </p>
-
-    <p>
+<p>
       第三者の権利を侵害する可能性がある場合は、お受けできないことがあります。
     </p>
-
-    <p>
+<p>
       星詠側からREALITYへアクセスしてアバターを取得したり、
       3Dモデルデータを取得・抽出・加工したりすることはありません。
     </p>
-  </section>
-
-
-  <section class="rights-section">
-    <h2>禁止事項</h2>
-
-    <p>以下の利用は禁止します。</p>
-
-    <ul>
-      <li>著作権を侵害する利用</li>
-      <li>無断での商用利用</li>
-      <li>無断でのグッズ販売・配布</li>
-      <li>作品の自作発言</li>
-      <li>作者を偽る行為</li>
-      <li>AIへの読み込み・学習・加工</li>
-      <li>無断での大幅な加工・改変</li>
-      <li>第三者の権利を侵害する利用</li>
-      <li>その他、星詠が不適切と判断する利用</li>
-    </ul>
-  </section>
-
-
-  <div class="page-back">
-    <a href="index.html">
+</section>
+<section class="rights-section">
+<h2>禁止事項</h2>
+<p>以下の利用は禁止します。</p>
+<ul>
+<li>著作権を侵害する利用</li>
+<li>無断での商用利用</li>
+<li>無断でのグッズ販売・配布</li>
+<li>作品の自作発言</li>
+<li>作者を偽る行為</li>
+<li>AIへの読み込み・学習・加工</li>
+<li>無断での大幅な加工・改変</li>
+<li>第三者の権利を侵害する利用</li>
+<li>その他、星詠が不適切と判断する利用</li>
+</ul>
+</section>
+<div class="page-back">
+<a href="index.html">
       星の海へ戻る
     </a>
-  </div>
-
+</div>
 </main>
-
-</body>
-</html>
+</body></html>
