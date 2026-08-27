@@ -254,58 +254,37 @@
 
 
 
-/* ===== こんな方へ／作品に込めるもの 高さ合わせ ===== */
-.yourself-content,
-.world-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-content: start;
-}
 
-/* 2つのカードを横並びにして、上端を完全に合わせる */
-.yourself-content,
-.world-content {
-  align-self: start;
-}
 
-/* リストの各項目を同じリズムで配置 */
-.yourself-content ul,
-.world-content ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 0;
-}
 
-.yourself-content li,
-.world-content li {
-  box-sizing: border-box;
-  min-height: 72px;
-  display: flex;
-  align-items: center;
-  margin: 0;
-}
 
-/* 見出しから最初の項目までの高さも統一 */
-.yourself-content h3,
-.world-content h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-}
+/* ===== あなたの姿：重なりを起こさない位置調整 ===== */
+@media (min-width: 900px) {
+  section.yourself .yourself-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: 32px !important;
+    align-items: start !important;
+  }
 
-/* 既存の左右カラム側で高さがズレないようにする */
-.yourself-content > *,
-.world-content > * {
-  box-sizing: border-box;
-}
+  section.yourself .yourself-content > .yourself-block {
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    align-self: start !important;
+  }
 
-/* 画面幅が十分ある場合は、左右のカード自体も同じ高さにする */
-@media (min-width: 768px) {
-  .yourself-content,
-  .world-content {
-    height: 100%;
+  section.yourself .yourself-content > .yourself-block h3 {
+    margin-top: 0 !important;
+  }
+
+  section.yourself .yourself-content > .yourself-block ul {
+    margin-top: 0 !important;
   }
 }
+
+/* あなたの世界はここでは変更しない */
 
 </style>
 
