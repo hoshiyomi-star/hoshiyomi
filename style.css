@@ -3223,13 +3223,3 @@ body::after {
     grid-column: 2;
     grid-row: 6;
 
-    /* ここだけ一段上げる */
-    transform: translateY(-58px);
-  }
-
-}
-
-  .contact-submit {
-    max-width: none;
-  }
-}
