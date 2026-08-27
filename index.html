@@ -254,23 +254,50 @@
 
 
 
-/* ===== あなたの姿だけ最小調整 ===== */
+
+
+
+
+/* ===== あなたの姿：重なりを起こさない位置調整 ===== */
 @media (min-width: 900px) {
   section.yourself .yourself-content {
-    position: relative;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: 32px !important;
+    align-items: start !important;
   }
 
-  /* 姿の左右2ブロックだけを上へ。
-     世界には何も指定しない。 */
   section.yourself .yourself-content > .yourself-block {
-    position: relative;
-    top: -58px;
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    align-self: start !important;
+  }
+
+  section.yourself .yourself-content > .yourself-block h3 {
+    margin-top: 0 !important;
+  }
+
+  section.yourself .yourself-content > .yourself-block ul {
+    margin-top: 0 !important;
   }
 }
 
+/* あなたの世界はここでは変更しない */
+
+
+
+/* ===== 制作の流れ：あなたの世界の下へ ===== */
+section.world + .yourself-block {
+  width: min(980px, calc(100% - 40px));
+  margin: 70px auto 0;
+}
+
 @media (max-width: 899px) {
-  section.yourself .yourself-content > .yourself-block {
-    position: static;
+  section.world + .yourself-block {
+    width: calc(100% - 40px);
+    margin-top: 50px;
   }
 }
 
@@ -860,29 +887,7 @@
     </div>
 
 
-    <!-- 制作の流れ -->
 
-    <div class="yourself-block">
-
-      <h3>制作の流れ</h3>
-
-      <div class="production-flow">
-
-        <span>相談</span>
-        <span>あなたを知るシート</span>
-        <span>星のかけらを集める</span>
-        <span>イメージ整理</span>
-        <span>アイデアラフ</span>
-        <span>確認・修正</span>
-        <span>ラフ</span>
-        <span>確認・修正</span>
-        <span>線画</span>
-        <span>着彩</span>
-        <span>完成</span>
-
-      </div>
-
-    </div>
 
 
     <div class="service-price">
@@ -1009,6 +1014,31 @@
   </div>
 
 </section>
+
+<!-- 制作の流れ -->
+
+<div class="yourself-block">
+
+      <h3>制作の流れ</h3>
+
+      <div class="production-flow">
+
+        <span>相談</span>
+        <span>あなたを知るシート</span>
+        <span>星のかけらを集める</span>
+        <span>イメージ整理</span>
+        <span>アイデアラフ</span>
+        <span>確認・修正</span>
+        <span>ラフ</span>
+        <span>確認・修正</span>
+        <span>線画</span>
+        <span>着彩</span>
+        <span>完成</span>
+
+      </div>
+
+    </div>
+
 
 <!-- =========================
      06｜まだ言葉にならないもの
