@@ -254,37 +254,25 @@
 
 
 
-
-
-
-
-/* ===== あなたの姿：重なりを起こさない位置調整 ===== */
+/* ===== あなたの姿だけ最小調整 ===== */
 @media (min-width: 900px) {
   section.yourself .yourself-content {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    column-gap: 32px !important;
-    align-items: start !important;
+    position: relative;
   }
 
+  /* 姿の左右2ブロックだけを上へ。
+     世界には何も指定しない。 */
   section.yourself .yourself-content > .yourself-block {
-    position: static !important;
-    top: auto !important;
-    transform: none !important;
-    margin: 0 !important;
-    align-self: start !important;
-  }
-
-  section.yourself .yourself-content > .yourself-block h3 {
-    margin-top: 0 !important;
-  }
-
-  section.yourself .yourself-content > .yourself-block ul {
-    margin-top: 0 !important;
+    position: relative;
+    top: -58px;
   }
 }
 
-/* あなたの世界はここでは変更しない */
+@media (max-width: 899px) {
+  section.yourself .yourself-content > .yourself-block {
+    position: static;
+  }
+}
 
 </style>
 
