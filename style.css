@@ -3197,6 +3197,38 @@ body::after {
     min-height: 120px;
   }
 
+/* ========================================
+   あなたの世界
+   「作品に込めるもの」を一段上へ
+======================================== */
+
+@media (min-width: 900px) {
+
+  /* 左右の2列はそのまま */
+  .world-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    align-items: start;
+  }
+
+  /* こんな方へ */
+  .world-content > .world-block:first-of-type {
+    grid-column: 1;
+    grid-row: 6;
+  }
+
+  /* 作品に込めるもの */
+  .world-content > .world-block:first-of-type + .world-block {
+    grid-column: 2;
+    grid-row: 6;
+
+    /* ここだけ一段上げる */
+    transform: translateY(-58px);
+  }
+
+}
+
   .contact-submit {
     max-width: none;
   }
