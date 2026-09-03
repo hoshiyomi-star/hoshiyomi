@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>あなたの世界｜星詠 HOSHIYOMI</title>
+<link rel="stylesheet" href="style.css">
+<style>
+:root{--bg:#040916;--deep:#081936;--blue:#8fbfff;--violet:#a992d2;--text:#edf3ff;--muted:#b9c7df}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% 8%,rgba(76,104,165,.14),transparent 34%),linear-gradient(180deg,#040916 0%,#061127 48%,#040916 100%);color:var(--text);font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;line-height:2}
+a{color:inherit}
+.world-page{min-height:100vh;overflow:hidden}
+.world-hero{width:min(980px,calc(100% - 48px));margin:0 auto;padding:130px 0 110px;text-align:center}
+.section-label{margin:0 0 14px;font-size:.72rem;letter-spacing:.2em;opacity:.52}
+h1{margin:0;font-size:clamp(2rem,5vw,3.2rem);font-weight:400;letter-spacing:.14em;line-height:1.5}
+.hero-line{width:54px;height:1px;margin:28px auto;background:rgba(200,220,255,.3)}
+.hero-lead{margin:0;font-size:1.12rem;line-height:2.2;letter-spacing:.06em}
+.hero-note{margin:26px auto 0;max-width:700px;font-size:.9rem;line-height:2.1;opacity:.68}
+.world-section{width:min(900px,calc(100% - 48px));margin:0 auto;padding:100px 0;border-top:1px solid rgba(180,205,255,.12)}
+.world-section-head{text-align:center;margin-bottom:52px}
+.world-section-head h2{margin:0;font-size:1.65rem;font-weight:400;letter-spacing:.1em}
+.world-section-head p{margin:16px 0 0;font-size:.9rem;opacity:.68}
+.world-copy{text-align:center;max-width:720px;margin:0 auto;font-size:1rem;line-height:2.25;opacity:.86}
+.world-copy p{margin:0}
+.world-copy p+p{margin-top:28px}
+.points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:48px}
+.point{padding:30px 32px;border:1px solid rgba(180,205,255,.14);background:rgba(7,16,36,.25);border-radius:4px}
+.point-number{display:block;font-size:.68rem;letter-spacing:.16em;opacity:.45;margin-bottom:8px}
+.point h3{margin:0;font-weight:400;font-size:1.05rem;letter-spacing:.08em}
+.point p{margin:14px 0 0;font-size:.86rem;line-height:2;opacity:.72}
+.flow{max-width:720px;margin:0 auto}
+.flow-item{position:relative;padding:0 0 34px 48px}
+.flow-item:last-child{padding-bottom:0}
+.flow-item:not(:last-child)::after{content:"";position:absolute;left:10px;top:22px;bottom:0;width:1px;background:rgba(180,205,255,.14)}
+.flow-item::before{content:"";position:absolute;left:2px;top:7px;width:18px;height:18px;border:1px solid rgba(200,220,255,.34);border-radius:50%;background:#061127}
+.flow-item strong{display:block;font-weight:400;font-size:.95rem;letter-spacing:.08em}
+.flow-item span{display:block;margin-top:6px;font-size:.82rem;opacity:.65}
+.price-box{max-width:720px;margin:0 auto;padding:42px 46px;border:1px solid rgba(180,205,255,.17);background:rgba(7,16,36,.28);text-align:center;border-radius:4px}
+.price{font-size:1.8rem;letter-spacing:.08em}.price small{font-size:.75rem;opacity:.65}
+.price-box p{margin:16px 0 0;font-size:.82rem;opacity:.65}
+.cta{padding:110px 24px 140px;text-align:center;border-top:1px solid rgba(180,205,255,.12)}
+.cta p{margin:0;line-height:2.2}.cta p+p{margin-top:24px;font-size:.9rem;opacity:.7}
+.cta a{display:inline-block;margin-top:30px;padding-bottom:5px;border-bottom:1px solid rgba(220,230,255,.25);text-decoration:none;font-size:.88rem;letter-spacing:.08em}
+.back{display:block;margin-top:42px;font-size:.75rem;opacity:.5;text-decoration:none}
+@media(max-width:640px){.world-hero{padding:90px 0 80px}.world-section{padding:75px 0}.points{grid-template-columns:1fr}.price-box{padding:32px 24px}.hero-lead{font-size:1rem}}
+</style>
+</head>
+<body>
+<main class="world-page">
+<section class="world-hero">
+<p class="section-label">03｜YOUR WORLD</p>
+<h1>あなたの世界</h1>
+<div class="hero-line"></div>
+<p class="hero-lead">自分の中にある世界を、<br>一枚の作品に。</p>
+<p class="hero-note">頭の中に浮かぶ景色や、好きなもの、物語。<br>まだ形になっていない世界も、ひとつずつ拾いながら作品にしていきます。</p>
+</section>
+
+<section class="world-section">
+<div class="world-section-head"><p class="section-label">ABOUT THIS PLAN</p><h2>世界を描くということ</h2></div>
+<div class="world-copy">
+<p>「こんな場所があったらいいな」<br>「この世界で、この物語を生きてみたい」</p>
+<p>そんな頭の中にある景色は、<br>言葉だけでは伝えきれないことがあります。</p>
+<p>星詠では、あなたの中にある世界を聞き、<br>その世界を一枚の絵として形にします。</p>
+</div>
+</section>
+
+<section class="world-section">
+<div class="world-section-head"><p class="section-label">WHAT WE COLLECT</p><h2>世界の「かけら」</h2><p>すべてを決めていなくても大丈夫です。</p></div>
+<div class="points">
+<article class="point"><span class="point-number">01｜SCENE</span><h3>場所・景色</h3><p>街、森、空、部屋。頭の中にある「ここに行きたい」という景色。</p></article>
+<article class="point"><span class="point-number">02｜ATMOSPHERE</span><h3>色・空気</h3><p>静か、暖かい、寂しい、幻想的。言葉にしづらい雰囲気も大切にします。</p></article>
+<article class="point"><span class="point-number">03｜STORY</span><h3>物語・設定</h3><p>その世界で起きていること、そこにいる人、背景にある物語。</p></article>
+<article class="point"><span class="point-number">04｜FAVORITES</span><h3>好きなもの</h3><p>色、花、星、動物、建物など。その世界をあなたらしくするもの。</p></article>
+</div>
+</section>
+
+<section class="world-section">
+<div class="world-section-head"><p class="section-label">PRODUCTION FLOW</p><h2>制作の流れ</h2></div>
+<div class="flow">
+<div class="flow-item"><strong>星のかけらを集める</strong><span>あなたの世界について、思いつくことを教えてください。</span></div>
+<div class="flow-item"><strong>世界を読み解く</strong><span>いただいた内容をもとに、作品の方向性を整理します。</span></div>
+<div class="flow-item"><strong>ラフで景色をつくる</strong><span>構図や世界の見え方を確認します。</span></div>
+<div class="flow-item"><strong>仕上げる</strong><span>ラフで決めた方向性をもとに、一枚の世界へ仕上げます。</span></div>
+<div class="flow-item"><strong>あなたの世界を届ける</strong><span>完成した作品をデータでお渡しします。</span></div>
+</div>
+</section>
+
+<section class="world-section">
+<div class="world-section-head"><p class="section-label">PLAN</p><h2>料金について</h2></div>
+<div class="price-box"><div class="price">15,000<small>円〜</small></div><p>内容・構図・描き込み量など、ご希望によって料金が変わります。<br>具体的な内容は、お申し込み後に確認してご案内します。</p></div>
+</section>
+
+<section class="cta">
+<p>まだ名前のない世界でも、<br>一緒に星を灯していけます。</p>
+<p>まずは、あなたの中にある「世界のかけら」を聞かせてください。</p>
+<a href="contact.html">ご依頼について見る →</a>
+<a class="back" href="index.html#services">← 星詠のサービス一覧へ</a>
+</section>
+</main>
+</body>
+</html>
