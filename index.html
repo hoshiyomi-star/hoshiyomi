@@ -272,6 +272,171 @@
         transform: rotate(90deg);
       }
     }
+  
+    /* ===== 07｜サービス：見やすさ優先の2×2横長カード ===== */
+    #services .service-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      width: min(1120px, calc(100% - 48px)) !important;
+      margin: 58px auto 0 !important;
+      gap: 24px !important;
+    }
+
+    #services .service-card {
+      display: grid !important;
+      grid-template-columns: 170px minmax(0, 1fr) !important;
+      grid-template-rows: auto auto 1fr auto !important;
+      grid-template-areas:
+        "number lead"
+        "title  lead"
+        "note   price"
+        ".      link" !important;
+      column-gap: 30px !important;
+      width: auto !important;
+      min-width: 0 !important;
+      min-height: 270px !important;
+      margin: 0 !important;
+      padding: 32px 34px 30px !important;
+      box-sizing: border-box !important;
+      border: 1px solid rgba(180,205,255,.16) !important;
+      border-radius: 4px !important;
+      background: rgba(7,16,36,.28) !important;
+      text-align: left !important;
+      align-items: start !important;
+    }
+
+    #services .service-card + .service-card {
+      margin-top: 0 !important;
+    }
+
+    #services .service-number {
+      grid-area: number !important;
+      margin: 0 0 8px !important;
+      font-size: .72rem !important;
+      letter-spacing: .16em !important;
+      line-height: 1.5 !important;
+      opacity: .5 !important;
+      text-align: left !important;
+    }
+
+    #services .service-card h3 {
+      grid-area: title !important;
+      align-self: start !important;
+      margin: 0 !important;
+      font-size: 1.2rem !important;
+      font-weight: 400 !important;
+      letter-spacing: .08em !important;
+      line-height: 1.6 !important;
+      text-align: left !important;
+    }
+
+    #services .service-lead {
+      grid-area: lead !important;
+      max-width: none !important;
+      min-height: 0 !important;
+      margin: 4px 0 0 !important;
+      padding-left: 2px !important;
+      font-size: .86rem !important;
+      line-height: 2 !important;
+      text-align: left !important;
+      opacity: .78 !important;
+    }
+
+    #services .service-price-overview {
+      grid-area: price !important;
+      align-self: end !important;
+      margin: 12px 0 0 !important;
+      font-size: 1.08rem !important;
+      letter-spacing: .04em !important;
+      line-height: 1.5 !important;
+      text-align: left !important;
+    }
+
+    #services .service-price-overview span {
+      font-size: .74rem !important;
+      opacity: .7 !important;
+    }
+
+    #services .service-note {
+      grid-area: note !important;
+      align-self: end !important;
+      margin: 12px 0 0 !important;
+      font-size: .73rem !important;
+      line-height: 1.7 !important;
+      text-align: left !important;
+      opacity: .55 !important;
+    }
+
+    #services .service-detail-link {
+      grid-area: link !important;
+      justify-self: start !important;
+      align-self: end !important;
+      position: static !important;
+      margin: 10px 0 0 !important;
+      padding-bottom: 3px !important;
+      border-bottom: 1px solid rgba(220,230,255,.22) !important;
+      font-size: .76rem !important;
+      letter-spacing: .08em !important;
+      text-align: left !important;
+    }
+
+    #services .service-card:hover {
+      transform: translateY(-3px) !important;
+      border-color: rgba(180,205,255,.28) !important;
+    }
+
+    @media (max-width: 900px) {
+      #services .service-grid {
+        width: calc(100% - 36px) !important;
+        gap: 18px !important;
+      }
+
+      #services .service-card {
+        grid-template-columns: 125px minmax(0, 1fr) !important;
+        column-gap: 22px !important;
+        min-height: 260px !important;
+        padding: 28px 24px !important;
+      }
+
+      #services .service-card h3 {
+        font-size: 1.08rem !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #services .service-grid {
+        width: calc(100% - 28px) !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+      }
+
+      #services .service-card {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+        grid-template-areas:
+          "number"
+          "title"
+          "lead"
+          "price"
+          "note"
+          "link" !important;
+        min-height: 0 !important;
+        row-gap: 7px !important;
+        padding: 28px 24px 30px !important;
+      }
+
+      #services .service-lead {
+        padding-left: 0 !important;
+        margin-top: 8px !important;
+      }
+
+      #services .service-price-overview,
+      #services .service-note,
+      #services .service-detail-link {
+        margin-top: 7px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -662,7 +827,7 @@
           <span class="service-number">01｜FIRST STAR</span>
           <h3>シンプルプラン</h3>
           <p class="service-lead">
-            まずは星詠の制作を体験してみたい方へ。
+            まずは星詠の制作を<br>体験してみたい方へ。
           </p>
           <p class="service-price-overview">
             3,000<span>円〜</span>
@@ -677,7 +842,7 @@
           <span class="service-number">02｜YOUR STAR</span>
           <h3>あなたの姿</h3>
           <p class="service-lead">
-            自分自身を、一枚の作品に。
+            自分自身を、<br>一枚の作品に。
           </p>
           <p class="service-price-overview">
             12,000<span>円〜</span>
@@ -694,7 +859,7 @@
           <span class="service-number">03｜YOUR WORLD</span>
           <h3>あなたの世界</h3>
           <p class="service-lead">
-            自分の中にある世界を、一枚の作品に。
+            自分の中にある世界を、<br>一枚の作品に。
           </p>
           <p class="service-price-overview">
             15,000<span>円〜</span>
@@ -711,7 +876,7 @@
           <span class="service-number">04｜GIFT STAR</span>
           <h3>返礼品制作</h3>
           <p class="service-lead">
-            あなたの星を、あなたを支える人へ。
+            あなたの星を、<br>あなたを支える人へ。
           </p>
           <p class="service-price-overview">
             5,000<span>円〜／1点</span>
