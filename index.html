@@ -10,279 +10,42 @@
   <style>
     /* ========================================
        07〜10｜トップ後半レイアウト
-       07は横長カード2×2、08〜10は縦に
+       07は大きな2×2カード、09は縦型フロー
        ======================================== */
 
-    /* 07｜サービス */
+    /* 07｜星をつくる */
+    #services {
+      display: block !important;
+      width: 100% !important;
+    }
+
+    #services .about-content {
+      width: min(760px, calc(100% - 40px)) !important;
+      margin: 0 auto !important;
+      text-align: center !important;
+    }
+
+    #services .about-content .about-lead,
+    #services .about-content .about-text {
+      text-align: center !important;
+    }
+
     #services .service-grid {
-      width: min(1120px, calc(100% - 48px));
-      margin: 58px auto 0;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    #services .service-card {
-      width: auto;
-      min-width: 0;
-      min-height: 230px;
-      margin: 0;
-      padding: 30px 34px;
-      box-sizing: border-box;
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      grid-template-rows: auto 1fr auto;
-      column-gap: 28px;
-      border: 1px solid rgba(180,205,255,.16);
-      border-radius: 4px;
-      background: rgba(7,16,36,.28);
-      text-align: left;
-      transition: transform .3s ease, border-color .3s ease, background .3s ease;
-    }
-
-    #services .service-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(180,205,255,.28);
-      background: rgba(7,16,36,.36);
-      opacity: 1;
-    }
-
-    #services .service-number {
-      grid-column: 1;
-      grid-row: 1;
-      margin: 0 0 10px;
-      font-size: .68rem;
-      letter-spacing: .18em;
-      opacity: .48;
-    }
-
-    #services .service-card h3 {
-      grid-column: 1;
-      grid-row: 2;
-      align-self: start;
-      margin: 0;
-      font-size: 1.12rem;
-      font-weight: 400;
-      letter-spacing: .08em;
-      line-height: 1.7;
-      text-align: left;
-    }
-
-    #services .service-lead {
-      grid-column: 2;
-      grid-row: 1 / span 2;
-      margin: 0;
-      max-width: none;
-      font-size: .82rem;
-      line-height: 2;
-      text-align: left;
-      opacity: .76;
-    }
-
-    #services .service-price-overview {
-      grid-column: 2;
-      grid-row: 3;
-      align-self: end;
-      margin: 18px 0 0;
-      font-size: 1rem;
-      letter-spacing: .05em;
-      text-align: left;
-    }
-
-    #services .service-price-overview span {
-      font-size: .72rem;
-      opacity: .7;
-    }
-
-    #services .service-note {
-      grid-column: 1;
-      grid-row: 3;
-      align-self: end;
-      margin: 18px 0 0;
-      font-size: .7rem;
-      line-height: 1.7;
-      text-align: left;
-      opacity: .5;
-    }
-
-    #services .service-detail-link {
-      position: absolute;
-      right: 34px;
-      bottom: 29px;
-      padding-bottom: 3px;
-      border-bottom: 1px solid rgba(220,230,255,.22);
-      color: inherit;
-      text-decoration: none;
-      font-size: .74rem;
-      letter-spacing: .08em;
-    }
-
-    #services .service-detail-link:hover {
-      opacity: .65;
-    }
-
-    /* 08｜星を届ける */
-    #delivery .delivery-message {
-      margin: 36px auto 0;
-      text-align: center;
-      line-height: 2.1;
-    }
-
-    #delivery .delivery-points {
-      width: min(760px, calc(100% - 40px));
-      margin: 48px auto 0;
-      display: block;
-    }
-
-    #delivery .delivery-point {
-      padding: 25px 20px;
-      border-top: 1px solid rgba(180,205,255,.12);
-      text-align: center;
-    }
-
-    #delivery .delivery-point:last-child {
-      border-bottom: 1px solid rgba(180,205,255,.08);
-    }
-
-    #delivery .delivery-point h3 {
-      margin: 0 0 9px;
-      font-weight: 400;
-      letter-spacing: .08em;
-    }
-
-    #delivery .delivery-point p {
-      margin: 0;
-      line-height: 1.9;
-      opacity: .7;
-    }
-
-    /* 09｜ご依頼の流れ */
-    #flow .flow-overview {
-      width: min(900px, calc(100% - 40px));
-      margin: 46px auto 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    #flow .flow-step {
-      padding: 12px 17px;
-      border: 1px solid rgba(180,205,255,.12);
-      border-radius: 3px;
-      font-size: .8rem;
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    #flow .flow-step::before {
-      display: none;
-    }
-
-    #flow .flow-arrow {
-      display: inline-block;
-      opacity: .4;
-      font-size: .75rem;
-    }
-
-    /* 10｜最後 */
-    #contact-guide .top-final-message {
-      width: min(620px, calc(100% - 40px));
-      margin: 58px auto 0;
-      text-align: center;
-      line-height: 2.2;
-    }
-
-    #contact-guide .star-sea-entry {
-      width: min(680px, calc(100% - 40px));
-      margin: 46px auto 0;
-      padding: 32px 20px;
-      text-align: center;
-    }
-
-    @media (max-width: 900px) {
-      #services .service-grid {
-        width: calc(100% - 36px);
-        gap: 16px;
-      }
-
-      #services .service-card {
-        grid-template-columns: 115px minmax(0, 1fr);
-        column-gap: 20px;
-        min-height: 220px;
-        padding: 26px 24px;
-      }
-
-      #services .service-detail-link {
-        right: 24px;
-        bottom: 25px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      #services .service-grid {
-        width: calc(100% - 28px);
-        grid-template-columns: 1fr;
-      }
-
-      #services .service-card {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        min-height: 0;
-        padding: 28px 24px 58px;
-        row-gap: 8px;
-      }
-
-      #services .service-number,
-      #services .service-card h3,
-      #services .service-lead,
-      #services .service-price-overview,
-      #services .service-note {
-        grid-column: 1;
-        grid-row: auto;
-        margin-left: 0;
-      }
-
-      #services .service-lead {
-        margin-top: 4px;
-      }
-
-      #services .service-price-overview {
-        margin-top: 8px;
-      }
-
-      #services .service-note {
-        margin-top: 0;
-      }
-
-      #services .service-detail-link {
-        left: 24px;
-        right: auto;
-        bottom: 27px;
-      }
-
-      #flow .flow-overview {
-        width: calc(100% - 28px);
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      #flow .flow-arrow {
-        transform: rotate(90deg);
-      }
-    }
-  
-    /* ===== 07｜サービス：見やすさ優先の2×2横長カード ===== */
-    #services .service-grid {
-      display: grid !important;
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       width: min(1120px, calc(100% - 48px)) !important;
       margin: 58px auto 0 !important;
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 24px !important;
     }
 
     #services .service-card {
+      position: relative !important;
+      width: auto !important;
+      min-width: 0 !important;
+      min-height: 270px !important;
+      margin: 0 !important;
+      padding: 32px 34px 30px !important;
+      box-sizing: border-box !important;
       display: grid !important;
       grid-template-columns: 170px minmax(0, 1fr) !important;
       grid-template-rows: auto auto 1fr auto !important;
@@ -292,21 +55,18 @@
         "note   price"
         ".      link" !important;
       column-gap: 30px !important;
-      width: auto !important;
-      min-width: 0 !important;
-      min-height: 270px !important;
-      margin: 0 !important;
-      padding: 32px 34px 30px !important;
-      box-sizing: border-box !important;
       border: 1px solid rgba(180,205,255,.16) !important;
       border-radius: 4px !important;
       background: rgba(7,16,36,.28) !important;
       text-align: left !important;
-      align-items: start !important;
+      transition: transform .3s ease, border-color .3s ease, background .3s ease !important;
     }
 
-    #services .service-card + .service-card {
-      margin-top: 0 !important;
+    #services .service-card:hover {
+      transform: translateY(-3px) !important;
+      border-color: rgba(180,205,255,.28) !important;
+      background: rgba(7,16,36,.36) !important;
+      opacity: 1 !important;
     }
 
     #services .service-number {
@@ -375,14 +135,121 @@
       margin: 10px 0 0 !important;
       padding-bottom: 3px !important;
       border-bottom: 1px solid rgba(220,230,255,.22) !important;
+      color: inherit !important;
+      text-decoration: none !important;
       font-size: .76rem !important;
       letter-spacing: .08em !important;
       text-align: left !important;
     }
 
-    #services .service-card:hover {
-      transform: translateY(-3px) !important;
-      border-color: rgba(180,205,255,.28) !important;
+    #services .service-detail-link:hover {
+      opacity: .65 !important;
+    }
+
+    /* 08｜星を届ける */
+    #delivery .delivery-message {
+      margin: 36px auto 0 !important;
+      text-align: center !important;
+      line-height: 2.1 !important;
+    }
+
+    #delivery .delivery-points {
+      width: min(760px, calc(100% - 40px)) !important;
+      margin: 48px auto 0 !important;
+      display: block !important;
+    }
+
+    #delivery .delivery-point {
+      padding: 25px 20px !important;
+      border-top: 1px solid rgba(180,205,255,.12) !important;
+      text-align: center !important;
+    }
+
+    #delivery .delivery-point:last-child {
+      border-bottom: 1px solid rgba(180,205,255,.08) !important;
+    }
+
+    #delivery .delivery-point h3 {
+      margin: 0 0 9px !important;
+      font-weight: 400 !important;
+      letter-spacing: .08em !important;
+    }
+
+    #delivery .delivery-point p {
+      margin: 0 !important;
+      line-height: 1.9 !important;
+      opacity: .7 !important;
+    }
+
+    /* 09｜ご依頼の流れ：順番を追いやすい縦型 */
+    #flow .flow-overview {
+      width: min(680px, calc(100% - 40px)) !important;
+      margin: 52px auto 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: flex-start !important;
+      gap: 0 !important;
+      flex-wrap: nowrap !important;
+      position: relative !important;
+    }
+
+    #flow .flow-overview::before {
+      content: "" !important;
+      position: absolute !important;
+      left: 22px !important;
+      top: 23px !important;
+      bottom: 23px !important;
+      width: 1px !important;
+      background: rgba(180,205,255,.16) !important;
+    }
+
+    #flow .flow-step {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      min-height: 48px !important;
+      padding: 13px 18px 13px 58px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      font-size: .82rem !important;
+      line-height: 1.7 !important;
+      text-align: left !important;
+      background: transparent !important;
+    }
+
+    #flow .flow-step::before {
+      content: "" !important;
+      display: block !important;
+      position: absolute !important;
+      left: 15px !important;
+      top: 50% !important;
+      width: 15px !important;
+      height: 15px !important;
+      transform: translateY(-50%) !important;
+      box-sizing: border-box !important;
+      border: 1px solid rgba(200,220,255,.35) !important;
+      border-radius: 50% !important;
+      background: rgba(7,16,36,.8) !important;
+    }
+
+    #flow .flow-arrow {
+      display: none !important;
+    }
+
+    /* 10｜最後 */
+    #contact-guide .top-final-message {
+      width: min(620px, calc(100% - 40px)) !important;
+      margin: 58px auto 0 !important;
+      text-align: center !important;
+      line-height: 2.2 !important;
+    }
+
+    #contact-guide .star-sea-entry {
+      width: min(680px, calc(100% - 40px)) !important;
+      margin: 46px auto 0 !important;
+      padding: 32px 20px !important;
+      text-align: center !important;
     }
 
     @media (max-width: 900px) {
@@ -404,6 +271,10 @@
     }
 
     @media (max-width: 640px) {
+      #services .about-content {
+        width: calc(100% - 28px) !important;
+      }
+
       #services .service-grid {
         width: calc(100% - 28px) !important;
         grid-template-columns: 1fr !important;
@@ -435,8 +306,11 @@
       #services .service-detail-link {
         margin-top: 7px !important;
       }
-    }
 
+      #flow .flow-overview {
+        width: calc(100% - 28px) !important;
+      }
+    }
   </style>
 </head>
 
