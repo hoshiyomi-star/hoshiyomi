@@ -268,6 +268,28 @@
     }
     .simple-sheet-note strong{font-weight:400;color:var(--sp-text);}
 
+
+    .simple-form-heading{
+      margin:58px auto 0;
+      max-width:720px;
+      padding-top:42px;
+      border-top:1px solid var(--sp-line);
+      text-align:center;
+    }
+    .simple-form-heading .simple-section-label{margin-bottom:12px;}
+    .simple-form-heading h3{
+      margin:0;
+      font-size:1.45rem;
+      font-weight:400;
+      letter-spacing:.08em;
+    }
+    .simple-form-heading p:last-child{
+      margin:16px 0 0;
+      color:var(--sp-muted);
+      font-size:.9rem;
+      line-height:2;
+    }
+
     .simple-order-form{
       margin-top:40px;
       padding:34px 34px 36px;
@@ -560,9 +582,16 @@
         うまく言葉にできなくても大丈夫です。
       </div>
 
+      <div class="simple-form-heading">
+        <p class="simple-section-label">SEND YOUR FRAGMENT</p>
+        <h3>星のかけらを入力する</h3>
+        <p>ここから、あなたのことを少しずつ教えてください。<br>すべてをきれいに言葉にする必要はありません。</p>
+      </div>
+
       <form class="simple-order-form" id="simplePlanForm">
         <p class="simple-form-note">
-          下の項目を入力して送信してください。送信内容は星詠の依頼受付先へ届きます。
+          下の項目を入力して送信してください。<br>
+          <span>※「必須」とある項目は入力が必要です。</span>
         </p>
 
         <div class="simple-form-grid">
