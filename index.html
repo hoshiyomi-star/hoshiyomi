@@ -3,1093 +3,893 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>星詠｜HOSHIYOMI</title>
-
   <link rel="stylesheet" href="style.css">
 
-<style id="hoshiyomi-balance-edit-v1">
-/* =========================================================
-   星詠｜公開用 第1版
-   足し算・引き算：情報量は変えず、列の重さだけ整える
-   ========================================================= */
-
-/* 「あなたの姿」：3つの情報ブロックを
-   2列＋最後を中央の1列にして視線の重さを整える */
-@media (min-width: 900px) {
-  .yourself-content {
-    max-width: 980px;
-    margin-inline: auto;
-  }
-
-  .yourself-block {
-    box-sizing: border-box;
-  }
-
-  .yourself-content > .yourself-block:nth-of-type(1),
-  .yourself-content > .yourself-block:nth-of-type(2) {
-    width: calc(50% - 18px);
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .yourself-content > .yourself-block:nth-of-type(1) {
-    margin-right: 32px;
-  }
-
-  .yourself-content > .yourself-block:nth-of-type(3) {
-    width: min(760px, 100%);
-    margin: 34px auto 0;
-  }
-
-  /* 制作料金は3ブロック目と同じ流れで見せる */
-  .yourself-content > .service-price {
-    width: min(560px, 100%);
-    margin: 28px auto 0;
-  }
-
-  /* 「あなたの世界」だけを左右2列にする */
-  .world-content {
-    max-width: 980px;
-    margin-inline: auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 32px;
-    align-items: start;
-  }
-
-  .world-content > .section-label,
-  .world-content > h2,
-  .world-content > .world-line,
-  .world-content > .world-lead,
-  .world-content > .world-description,
-  .world-content > .world-message,
-  .world-content > .service-price {
-    grid-column: 1 / -1;
-  }
-
-  .world-content > .world-message {
-    max-width: 760px;
-    margin: 38px auto 0;
-  }
-
-  .world-content > .service-price {
-    width: min(560px, 100%);
-    margin: 28px auto 0;
-  }
-
-  @media (max-width: 899px) {
-    .world-content {
-      display: block;
+  <!-- トップページ追加スタイル -->
+  <style>
+    .service-overview,
+    .delivery-overview {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
     }
-  }
 
-</style>
-
-
-<style id="hoshiyomi-world-two-column-final">
-/* =========================================================
-   星詠｜「あなたの世界」左右2列 最終調整
-   左：こんな方へ ／ 右：作品に込めるもの
-   既存のデザイン・内容は変更しない
-   ========================================================= */
-
-@media (min-width: 900px) {
-  section.world .world-content {
-    width: min(980px, calc(100% - 40px));
-    margin-left: auto;
-    margin-right: auto;
-
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    column-gap: 32px !important;
-    align-items: start;
-  }
-
-  /* 見出し～説明文は2列の上に横幅いっぱい */
-  section.world .world-content > .section-label,
-  section.world .world-content > h2,
-  section.world .world-content > .world-line,
-  section.world .world-content > .world-lead,
-  section.world .world-content > .world-description {
-    grid-column: 1 / -1 !important;
-  }
-
-  /* 左：こんな方へ */
-  section.world .world-content > .world-block:nth-child(6) {
-    grid-column: 1 !important;
-    grid-row: 6 !important;
-    width: 100% !important;
-    margin: 0 !important;
-    display: block !important;
-  }
-
-  /* 右：作品に込めるもの */
-  section.world .world-content > .world-block:nth-child(7) {
-    grid-column: 2 !important;
-    grid-row: 6 !important;
-    width: 100% !important;
-    margin: 0 !important;
-    display: block !important;
-  }
-
-  /* 下のメッセージと料金は2列をまたいで中央 */
-  section.world .world-content > .world-message,
-  section.world .world-content > .service-price {
-    grid-column: 1 / -1 !important;
-    clear: none !important;
-  }
-
-  section.world .world-content > .world-message {
-    width: 100%;
-    max-width: 760px;
-    margin: 38px auto 0 !important;
-  }
-
-  section.world .world-content > .service-price {
-    width: min(560px, 100%);
-    margin: 28px auto 0 !important;
-  }
-}
-
-@media (max-width: 899px) {
-  section.world .world-content {
-    display: block !important;
-  }
-
-  section.world .world-content > .world-block {
-    width: 100% !important;
-    margin-right: 0 !important;
-  }
-}
-
-  /* あなたの姿／あなたの世界 共通：こんな方へ・作品に込めるものを左右2列 */
-  .yourself-content,
-  .world-content {
-    max-width: 980px;
-    margin-inline: auto;
-  }
-
-  .yourself-content,
-  .world-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 32px;
-    align-items: start;
-  }
-
-  .yourself-content > .section-label,
-  .yourself-content > h2,
-  .yourself-content > .yourself-line,
-  .yourself-content > .yourself-lead,
-  .yourself-content > .yourself-description,
-  .yourself-content > .yourself-message,
-  .yourself-content > .service-price,
-  .world-content > .section-label,
-  .world-content > h2,
-  .world-content > .world-line,
-  .world-content > .world-lead,
-  .world-content > .world-description,
-  .world-content > .world-message,
-  .world-content > .service-price {
-    grid-column: 1 / -1;
-  }
-
-  @media (max-width: 899px) {
-    .yourself-content,
-    .world-content {
-      display: block;
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 48px;
     }
-  }
 
+    .service-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+      padding: 32px;
+      border: 1px solid rgba(180, 205, 255, .16);
+      background: rgba(7, 18, 42, .28);
+      box-sizing: border-box;
+      transition: transform .35s ease, border-color .35s ease, background .35s ease;
+    }
 
-  /* 左右カードの高さを揃える */
-  .yourself-content > .yourself-block,
-  .world-content > .world-block {
-    height: 100%;
-    box-sizing: border-box;
-  }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(180, 205, 255, .34);
+      background: rgba(10, 25, 54, .38);
+    }
 
-  .yourself-content,
-  .world-content {
-    align-items: stretch;
-  }
+    .service-number {
+      display: block;
+      margin-bottom: 22px;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      opacity: .58;
+    }
 
+    .service-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      font-weight: 500;
+    }
 
-  /* あなたの姿／あなたの世界：左右カードの文字位置を完全に統一 */
-  .yourself-content > .yourself-block,
-  .world-content > .world-block {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    min-height: 100%;
-  }
+    .service-lead {
+      margin: 0 0 18px;
+      line-height: 1.9;
+    }
 
-  .yourself-content > .yourself-block h3,
-  .world-content > .world-block h3 {
-    margin-top: 0;
-    margin-bottom: 18px;
-  }
+    .service-price-overview {
+      margin-top: auto;
+      padding-top: 20px;
+      font-size: 1.15rem;
+      letter-spacing: .05em;
+    }
 
-  .yourself-content > .yourself-block p,
-  .world-content > .world-block p {
-    margin-top: 0;
-  }
+    .service-price-overview span {
+      font-size: .8rem;
+      opacity: .7;
+    }
 
-  .yourself-content > .yourself-block ul,
-  .world-content > .world-block ul {
-    margin-top: 12px;
-  }
+    .service-note {
+      margin-top: 8px;
+      font-size: .78rem;
+      opacity: .62;
+    }
 
-  /* 左右のカードそのものの上端を必ず同じ位置にする */
-  .yourself-content,
-  .world-content {
-    align-items: start;
-  }
+    .service-detail-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      margin-top: 22px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(220, 230, 255, .35);
+      color: inherit;
+      text-decoration: none;
+      font-size: .84rem;
+      letter-spacing: .08em;
+      transition: opacity .3s ease, gap .3s ease;
+    }
 
-  .yourself-content > .yourself-block,
-  .world-content > .world-block {
-    align-self: stretch;
-  }
+    .service-detail-link:hover {
+      gap: 15px;
+      opacity: .72;
+    }
 
+    .delivery-message {
+      max-width: 720px;
+      margin: 42px auto 0;
+      text-align: center;
+      line-height: 2.1;
+    }
 
+    .delivery-points {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 42px;
+    }
 
+    .delivery-point {
+      padding: 22px 18px;
+      text-align: center;
+      border-top: 1px solid rgba(180, 205, 255, .16);
+      border-bottom: 1px solid rgba(180, 205, 255, .10);
+    }
 
+    .delivery-point h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      font-weight: 500;
+    }
 
+    .delivery-point p {
+      margin: 0;
+      font-size: .84rem;
+      line-height: 1.8;
+      opacity: .76;
+    }
 
+    .flow-overview {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      max-width: 900px;
+      margin: 48px auto 0;
+    }
 
-/* ===== あなたの姿：重なりを起こさない位置調整 ===== */
-@media (min-width: 900px) {
-  section.yourself .yourself-content {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    column-gap: 32px !important;
-    align-items: start !important;
-  }
+    .flow-step {
+      padding: 12px 18px;
+      border: 1px solid rgba(180, 205, 255, .15);
+      font-size: .82rem;
+      letter-spacing: .04em;
+    }
 
-  section.yourself .yourself-content > .yourself-block {
-    position: static !important;
-    top: auto !important;
-    transform: none !important;
-    margin: 0 !important;
-    align-self: start !important;
-  }
+    .flow-arrow {
+      opacity: .45;
+    }
 
-  section.yourself .yourself-content > .yourself-block h3 {
-    margin-top: 0 !important;
-  }
+    .top-final-message {
+      max-width: 680px;
+      margin: 80px auto 20px;
+      text-align: center;
+      line-height: 2.2;
+    }
 
-  section.yourself .yourself-content > .yourself-block ul {
-    margin-top: 0 !important;
-  }
-}
+    .top-final-message p {
+      margin: 0 0 14px;
+    }
 
-/* あなたの世界はここでは変更しない */
+    /* ===== 星の海｜シンプルプランへの入口 ===== */
+    .star-sea-entry {
+      position: relative;
+      max-width: 760px;
+      margin: 70px auto 0;
+      padding: 52px 28px 48px;
+      text-align: center;
+      border-top: 1px solid rgba(180, 205, 255, .14);
+      border-bottom: 1px solid rgba(180, 205, 255, .10);
+      overflow: hidden;
+    }
 
+    .star-sea-entry::before {
+      content: '';
+      position: absolute;
+      top: 42px;
+      left: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(220, 235, 255, .95);
+      box-shadow: 0 0 18px rgba(180, 215, 255, .75);
+      transform: translateX(-50%);
+    }
 
+    .star-sea-entry-label {
+      margin: 0 0 18px;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      opacity: .58;
+    }
 
-/* ===== 制作の流れ：あなたの世界の下へ ===== */
-section.world + .yourself-block {
-  width: min(980px, calc(100% - 40px));
-  margin: 70px auto 0;
-}
+    .star-sea-entry h3 {
+      margin: 0 0 18px;
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: .08em;
+    }
 
-@media (max-width: 899px) {
-  section.world + .yourself-block {
-    width: calc(100% - 40px);
-    margin-top: 50px;
-  }
-}
+    .star-sea-entry p {
+      margin: 0 auto 26px;
+      max-width: 520px;
+      font-size: .88rem;
+      line-height: 2;
+      opacity: .78;
+    }
 
-</style>
+    .star-sea-entry a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 210px;
+      padding: 13px 22px;
+      border: 1px solid rgba(180, 205, 255, .22);
+      color: inherit;
+      text-decoration: none;
+      font-size: .82rem;
+      letter-spacing: .08em;
+      transition: background .3s ease, border-color .3s ease, transform .3s ease;
+    }
 
+    .star-sea-entry a:hover {
+      background: rgba(180, 205, 255, .06);
+      border-color: rgba(180, 205, 255, .38);
+      transform: translateY(-2px);
+    }
+
+    .star-menu-entry {
+      margin: 18px 0 8px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(180, 205, 255, .16);
+    }
+
+    .star-menu-entry small {
+      display: block;
+      margin-bottom: 7px;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      opacity: .55;
+    }
+
+    .star-menu-entry strong {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 400;
+    }
+
+    .star-menu-entry span {
+      display: block;
+      font-size: .72rem;
+      opacity: .62;
+    }
+
+    @media (max-width: 760px) {
+      .service-grid,
+      .delivery-points {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+
+      .delivery-points {
+        gap: 10px;
+      }
+
+      .flow-overview {
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
 </head>
 
-<!-- 星空の装飾 -->
-<div class="star-field" aria-hidden="true">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+<body>
 
-  <!-- =========================
-       01｜TOP
-  ========================= -->
+  <!-- 星空の装飾 -->
+  <div class="star-field" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
 
   <main>
 
+    <!-- =========================
+         01｜TOP
+    ========================= -->
     <section class="hero" id="top">
-
       <div class="hero-content">
-
         <p class="hero-label">星詠</p>
 
-        <h1>
-          HOSHIYOMI
-        </h1>
+        <h1>HOSHIYOMI</h1>
 
         <p class="hero-catch">
           無限に広がる夜空から、<br>
           あなただけの星を。
         </p>
 
-        <p class="hero-scroll">
-          SCROLL ↓
+        <p class="hero-scroll">SCROLL ↓</p>
+      </div>
+
+      <!-- オリオン座 -->
+      <div class="orion" aria-hidden="true">
+        <span class="orion-star betelgeuse"></span>
+        <span class="orion-star bellatrix"></span>
+        <span class="orion-star alnitak"></span>
+        <span class="orion-star alnilam"></span>
+        <span class="orion-star mintaka"></span>
+        <span class="orion-star saiph"></span>
+        <span class="orion-star rigel"></span>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         02｜星詠とは
+    ========================= -->
+    <section class="about" id="about">
+      <div class="about-content">
+        <p class="section-label">ABOUT HOSHIYOMI</p>
+        <h2>星詠とは</h2>
+        <div class="about-line"></div>
+
+        <p class="about-lead">
+          無限に広がる夜空から、<br>
+          あなただけの星を。
         </p>
 
+        <p class="about-text">
+          星詠は、あなたの中にあるものを<br>
+          一枚の絵として見つけていく場所です。
+        </p>
+
+        <p class="about-text">
+          好きなもの。<br>
+          大切な記憶。<br>
+          憧れているもの。<br>
+          まだ言葉にならない気持ち。
+        </p>
+
+        <p class="about-text">
+          そのひとつひとつを星として拾い集め、<br>
+          あなたにしかない一枚へと描いていきます。
+        </p>
       </div>
+    </section>
 
-     <!-- オリオン座 -->
 
-     <div class="orion" aria-hidden="true">
-
-      <span class="orion-star betelgeuse"></span>
-      <span class="orion-star bellatrix"></span>
-      <span class="orion-star alnitak"></span>
-      <span class="orion-star alnilam"></span>
-      <span class="orion-star mintaka"></span>
-      <span class="orion-star saiph"></span>
-      <span class="orion-star rigel"></span>
-
-     </div>
-
-  
-     </section>
     <!-- =========================
-     02｜星詠について
-========================= -->
-
-<section class="about" id="about">
-
-  <div class="about-content">
-
-    <p class="section-label">ABOUT HOSHIYOMI</p>
-
-    <h2>
-      星詠とは
-    </h2>
-
-    <div class="about-line"></div>
-
-    <p class="about-lead">
-      無限に広がる夜空から、<br>
-      あなただけの星を。
-    </p>
-
-    <p class="about-text">
-      星詠は、あなたの中にあるものを<br>
-      一枚の絵として見つけていく場所です。
-    </p>
-
-    <p class="about-text">
-      好きなもの。<br>
-      大切な記憶。<br>
-      憧れているもの。<br>
-      まだ言葉にならない気持ち。
-    </p>
-
-    <p class="about-text">
-      そのひとつひとつを星として拾い集め、<br>
-      あなたにしかない一枚へと描いていきます。
-    </p>
-
-  </div>
-
-</section>
-<!-- =========================
-     星詠を始めた理由
-========================= -->
-
-<section class="story">
-
-  <div class="story-content">
-
-    <p class="section-label">WHY HOSHIYOMI</p>
-
-    <h2>なぜ、星詠を始めたのか</h2>
-
-    <div class="story-line"></div>
-
-    <div class="story-text">
-
-  <p>
-    中学生の頃、俺は人を信用することができず、<br>
-    自分のことを何も話せないまま生きていました。
-  </p>
-
-  <p>
-    限界が来てからは、ただ蛇足のように生きている。<br>
-    そんな感覚しか持てなくなっていました。
-  </p>
-
-  <p>
-    そんな中、たまたまの巡り合わせで恩師と出会い、<br>
-    そして、絵と出会いました。
-  </p>
-
-  <p>
-    初めて、自分の気持ちを手当たり次第のものに託して、<br>
-    一枚の絵にしました。
-  </p>
-
-  <p>
-    綺麗な絵ではありませんでした。<br>
-    自分でも、何を描いたのか分からない。<br>
-    ぐちゃぐちゃで、まとまりのない絵でした。
-  </p>
-
-  <p>
-    それでも、その絵を見て<br>
-    「綺麗だ」と言ってくれた人がいました。
-  </p>
-
-  <p>
-    その言葉で、俺は人生で初めて、<br>
-    誰かに自分を認めてもらえたように感じました。
-  </p>
-
-  <p>
-    だから今度は、俺がその思いを誰かに届けたい。
-  </p>
-
-  <p>
-    うまく話せない人にも、<br>
-    誰にも言えなかったことがある人にも。
-  </p>
-
-  <p>
-    第三者だからこそ話せることがある。<br>
-    何気ない話を誰かとするだけでも、<br>
-    少しだけ心が軽くなることがある。
-  </p>
-
-  <p>
-    俺は、そんなふうに誰かの背中を<br>
-    ほんの少しだけ押せる場所を作りたいと思いました。
-  </p>
-
-  <div class="story-subsection">
-
-    <h3>絵を通して、残したいもの</h3>
-
-    <p>
-      絵は、ときに牙を向いてきます。
-    </p>
-
-    <p>
-      描くことが楽しいだけではなく、<br>
-      思うようにいかないことも、苦しくなることもある。
-    </p>
-
-    <p>
-      それでも、絵を描くことを楽しむためには、<br>
-      自分自身がその時間を楽しまなければならない。
-    </p>
-
-    <p>
-      これは、絵を描き続けてきた人にしか<br>
-      分からないものなのかもしれません。
-    </p>
-
-    <p>
-      それでも俺は、絵に人の軌跡を残したい。
-    </p>
-
-    <p>
-      その人が好きだったもの。<br>
-      大切にしてきたもの。<br>
-      抱えてきたもの。<br>
-      そして、その人自身が歩いてきた時間。
-    </p>
-
-    <p>
-      それらを、一枚の絵の中に残したい。
-    </p>
-
-    <p>
-      だから、俺は描き続けています。
-    </p>
-
-  </div>
-
-  <div class="story-subsection">
-
-    <h3>「星詠」という名前に込めたもの</h3>
-
-    <p>
-      星には、様々な形があり、<br>
-      それぞれ違った光り方があります。
-    </p>
-
-    <p>
-      けれど、同じ星はひとつとしてありません。
-    </p>
-
-    <p>
-      人も、それと同じだと思っています。
-    </p>
-
-    <p>
-      誰かと同じである必要はない。<br>
-      違っていていい。
-    </p>
-
-    <p>
-      だからこそ、その人だけが持っている「星」を、<br>
-      一つひとつ一緒に探していきたい。
-    </p>
-
-    <p>
-      そして、いつか。
-    </p>
-
-    <p>
-      何もなかった夜空に、<br>
-      星詠を訪れてくれた人たちの星が<br>
-      たくさん輝いていたらいい。
-    </p>
-
-    <p>
-      そんな思いを込めて、<br>
-      この場所を「星詠」と名付けました。
-    </p>
-
-  </div>
-
-</div>
-    </p>
-
-  </div>
-
-</section>
-<!-- =========================
-     03｜胸に灯るもの
-========================= -->
-
-<section class="heart" id="heart">
-
-  <div class="heart-content">
-
-    <p class="section-label">03｜BELLATRIX</p>
-
-    <h2>胸に灯るもの</h2>
-
-    <div class="heart-line"></div>
-
-    <div class="heart-item">
-
-      <h3>個性について</h3>
-
-      <p>
-        「普通」に合わせなくていい。
-      </p>
-
-      <p>
-        一人ひとり違っていい。<br>
-        それが、その人の素敵なところだから。
-      </p>
-
-    </div>
-
-    <div class="heart-item">
-
-      <h3>年齢や性別について</h3>
-
-      <p>
-        年齢や性別、立場や肩書きだけで、<br>
-        その人を決めつけません。
-      </p>
-
-      <p>
-        あなたがあなたであることを、<br>
-        大切にします。
-      </p>
-
-    </div>
-
-    <div class="heart-item">
-
-      <h3>言葉にするのが苦手な人へ</h3>
-
-      <p>
-        「なんとなく好き」でも大丈夫。
-      </p>
-
-      <p>
-        好きを、上手に説明する必要はありません。
-      </p>
-
-      <p>
-        話したくないことは、<br>
-        話さなくても大丈夫です。
-      </p>
-
-    </div>
-
-    <div class="heart-item">
-
-      <h3>好きを大切にする</h3>
-
-      <p>
-        好きな色。<br>
-        好きなもの。<br>
-        好きな雰囲気。
-      </p>
-
-      <p>
-        その小さな「好き」も、<br>
-        あなたを作っている星の一つです。
-      </p>
-
-    </div>
-
-    <div class="heart-ending">
-
-      <p>
-        無理に大きな言葉にしなくても大丈夫。
-      </p>
-
-      <p>
-        少しずつ、一緒に拾っていきましょう。
-      </p>
-
-    </div>
-
-
-  </div>
-
-</section>
-<!-- =========================
-     04｜アルニタク
-========================= -->
-
-<section class="gallery" id="gallery">
-
-  <div class="gallery-content">
-
-    <p class="section-label">04｜ALNITAK</p>
-
-    <h2>結ぶ</h2>
-
-    <div class="gallery-line"></div>
-
-    <p class="gallery-lead">
-      誰かの「好き」と、絵を結ぶ。
-    </p>
-
-    <p class="gallery-description">
-      これまでに制作した作品をご紹介します。<br>
-      一枚一枚に、それぞれの「星」が込められています。
-    </p>
-
-
-    <!-- 作品一覧 -->
-
-    <div class="gallery-grid">
-
-
-      <!-- 作品01 -->
-
-      <article class="gallery-card">
-
-        <div class="gallery-image">
-          <span>作品画像</span>
-        </div>
-
-        <div class="gallery-info">
-
-          <h3>あなたの姿</h3>
-
+         03｜なぜ、星詠を始めたのか
+    ========================= -->
+    <section class="story" id="story">
+      <div class="story-content">
+        <p class="section-label">WHY HOSHIYOMI</p>
+        <h2>なぜ、星詠を始めたのか</h2>
+        <div class="story-line"></div>
+
+        <div class="story-text">
           <p>
-            あなたらしさを一枚に。
+            中学生の頃、俺は人を信用することができず、<br>
+            自分のことを何も話せないまま生きていました。
           </p>
 
-          <span class="gallery-type">
-            あなたの姿
-          </span>
-
-        </div>
-
-      </article>
-
-
-      <!-- 作品02 -->
-
-      <article class="gallery-card">
-
-        <div class="gallery-image">
-          <span>作品画像</span>
-        </div>
-
-        <div class="gallery-info">
-
-          <h3>あなたの世界</h3>
-
           <p>
-            頭の中にある世界を一枚に。
+            限界が来てからは、ただ蛇足のように生きている。<br>
+            そんな感覚しか持てなくなっていました。
           </p>
 
-          <span class="gallery-type">
-            あなたの世界
-          </span>
-
-        </div>
-
-      </article>
-
-
-      <!-- 作品03 -->
-
-      <article class="gallery-card">
-
-        <div class="gallery-image">
-          <span>作品画像</span>
-        </div>
-
-        <div class="gallery-info">
-
-          <h3>その他の作品</h3>
-
           <p>
-            星詠で生まれた作品たち。
+            そんな中、たまたまの巡り合わせで恩師と出会い、<br>
+            そして、絵と出会いました。
           </p>
 
-          <span class="gallery-type">
-            その他
-          </span>
+          <p>
+            初めて、自分の気持ちを手当たり次第のものに託して、<br>
+            一枚の絵にしました。
+          </p>
+
+          <p>
+            綺麗な絵ではありませんでした。<br>
+            自分でも、何を描いたのか分からない。<br>
+            ぐちゃぐちゃで、まとまりのない絵でした。
+          </p>
+
+          <p>
+            それでも、その絵を見て<br>
+            「綺麗だ」と言ってくれた人がいました。
+          </p>
+
+          <p>
+            その言葉で、俺は人生で初めて、<br>
+            誰かに自分を認めてもらえたように感じました。
+          </p>
+
+          <p>
+            だから今度は、俺がその思いを誰かに届けたい。
+          </p>
+
+          <p>
+            うまく話せない人にも、<br>
+            誰にも言えなかったことがある人にも。
+          </p>
+
+          <p>
+            第三者だからこそ話せることがある。<br>
+            何気ない話を誰かとするだけでも、<br>
+            少しだけ心が軽くなることがある。
+          </p>
+
+          <p>
+            俺は、そんなふうに誰かの背中を<br>
+            ほんの少しだけ押せる場所を作りたいと思いました。
+          </p>
+
+          <div class="story-subsection">
+            <h3>絵を通して、残したいもの</h3>
+
+            <p>絵は、ときに牙を向いてきます。</p>
+
+            <p>
+              描くことが楽しいだけではなく、<br>
+              思うようにいかないことも、苦しくなることもある。
+            </p>
+
+            <p>
+              それでも、絵を描くことを楽しむためには、<br>
+              自分自身がその時間を楽しまなければならない。
+            </p>
+
+            <p>
+              これは、絵を描き続けてきた人にしか<br>
+              分からないものなのかもしれません。
+            </p>
+
+            <p>それでも俺は、絵に人の軌跡を残したい。</p>
+
+            <p>
+              その人が好きだったもの。<br>
+              大切にしてきたもの。<br>
+              抱えてきたもの。<br>
+              そして、その人自身が歩いてきた時間。
+            </p>
+
+            <p>それらを、一枚の絵の中に残したい。</p>
+
+            <p>だから、俺は描き続けています。</p>
+          </div>
+
+          <div class="story-subsection">
+            <h3>「星詠」という名前に込めたもの</h3>
+
+            <p>
+              星には、様々な形があり、<br>
+              それぞれ違った光り方があります。
+            </p>
+
+            <p>けれど、同じ星はひとつとしてありません。</p>
+
+            <p>人も、それと同じだと思っています。</p>
+
+            <p>
+              誰かと同じである必要はない。<br>
+              違っていていい。
+            </p>
+
+            <p>
+              だからこそ、その人だけが持っている「星」を、<br>
+              一つひとつ一緒に探していきたい。
+            </p>
+
+            <p>そして、いつか。</p>
+
+            <p>
+              何もなかった夜空に、<br>
+              星詠を訪れてくれた人たちの星が<br>
+              たくさん輝いていたらいい。
+            </p>
+
+            <p>
+              そんな思いを込めて、<br>
+              この場所を「星詠」と名付けました。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         04｜胸に灯るもの
+    ========================= -->
+    <section class="heart" id="heart">
+      <div class="heart-content">
+        <p class="section-label">04｜BELLATRIX</p>
+        <h2>胸に灯るもの</h2>
+        <div class="heart-line"></div>
+
+        <div class="heart-item">
+          <h3>個性について</h3>
+          <p>「普通」に合わせなくていい。</p>
+          <p>一人ひとり違っていい。<br>それが、その人の素敵なところだから。</p>
+        </div>
+
+        <div class="heart-item">
+          <h3>年齢や性別について</h3>
+          <p>年齢や性別、立場や肩書きだけで、<br>その人を決めつけません。</p>
+          <p>あなたがあなたであることを、<br>大切にします。</p>
+        </div>
+
+        <div class="heart-item">
+          <h3>言葉にするのが苦手な人へ</h3>
+          <p>「なんとなく好き」でも大丈夫。</p>
+          <p>好きを、上手に説明する必要はありません。</p>
+          <p>話したくないことは、<br>話さなくても大丈夫です。</p>
+        </div>
+
+        <div class="heart-item">
+          <h3>好きを大切にする</h3>
+          <p>
+            好きな色。<br>
+            好きなもの。<br>
+            好きな雰囲気。
+          </p>
+          <p>
+            その小さな「好き」も、<br>
+            あなたを作っている星の一つです。
+          </p>
+        </div>
+
+        <div class="heart-ending">
+          <p>無理に大きな言葉にしなくても大丈夫。</p>
+          <p>少しずつ、一緒に拾っていきましょう。</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         05｜結ぶ｜作品
+    ========================= -->
+    <section class="gallery" id="gallery">
+      <div class="gallery-content">
+        <p class="section-label">05｜ALNITAK</p>
+        <h2>結ぶ</h2>
+        <div class="gallery-line"></div>
+
+        <p class="gallery-lead">
+          誰かの「好き」と、絵を結ぶ。
+        </p>
+
+        <p class="gallery-description">
+          これまでに制作した作品をご紹介します。<br>
+          一枚一枚に、それぞれの「星」が込められています。
+        </p>
+
+        <div class="gallery-grid">
+
+          <article class="gallery-card">
+            <div class="gallery-image">
+              <span>作品画像</span>
+            </div>
+            <div class="gallery-info">
+              <h3>あなたの姿</h3>
+              <p>あなたらしさを一枚に。</p>
+              <span class="gallery-type">あなたの姿</span>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <div class="gallery-image">
+              <span>作品画像</span>
+            </div>
+            <div class="gallery-info">
+              <h3>あなたの世界</h3>
+              <p>頭の中にある世界を一枚に。</p>
+              <span class="gallery-type">あなたの世界</span>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <div class="gallery-image">
+              <span>作品画像</span>
+            </div>
+            <div class="gallery-info">
+              <h3>その他の作品</h3>
+              <p>星詠で生まれた作品たち。</p>
+              <span class="gallery-type">その他</span>
+            </div>
+          </article>
 
         </div>
 
-      </article>
-
-
-    </div>
-
-
-    <p class="gallery-ending">
-      あなたの「好き」も、いつか一枚の作品になるかもしれません。
-    </p>
-
-  </div>
-
-</section>
-<!-- =========================
-     05｜アルニラム
-========================= -->
-
-<section class="unspoken" id="unspoken">
-
-  <div class="unspoken-content">
-
-    <p class="section-label">05｜UNSPOKEN</p>
-
-    <h2>まだ言葉にならないもの</h2>
-
-    <div class="unspoken-line"></div>
-
-    <p class="unspoken-lead">
-      うまく説明できなくても、大丈夫。
-    </p>
-
-    <p class="unspoken-description">
-      「なんとなく好き」<br>
-      「理由は分からないけれど惹かれる」<br>
-      「こんな感じにしてほしい」
-    </p>
-
-    <p class="unspoken-description">
-      そんな言葉にならない感覚も、<br>
-      あなたの大切な「星」のひとつです。
-    </p>
-
-    <div class="unspoken-message">
-
-      <p>
-        上手に説明する必要はありません。
-      </p>
-
-      <p>
-        あなたの中にあるものを、<br>
-        一緒に探していきます。
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section class="yourself" id="yourself">
-
-  <div class="yourself-content">
-
-   <p class="section-label">06｜ALNILAM</p>
-
-<h2>あなたの姿</h2>
-
-<div class="yourself-line"></div>
-
-<p class="yourself-lead">
-    自分自身を、一枚の作品に。
-</p>
-
-<p class="yourself-description">
-    あなたの好きなもの、雰囲気、色、衣装、表情などを聞きながら、<br>
-    あなたらしい姿を形にします。
-</p>
-
-
-    <!-- こんな方へ -->
-
-    <div class="yourself-block">
-
-      <h3>こんな方へ</h3>
-
-      <ul>
-        <li>自分自身を絵にして残したい</li>
-        <li>自分らしい姿を描いてほしい</li>
-        <li>好きな衣装やモチーフを取り入れたい</li>
-        <li>自分の雰囲気を絵にしてほしい</li>
-        <li>頭の中にある理想の姿を形にしたい</li>
-        <li>「こうなってみたい」を描いてほしい</li>
-      </ul>
-
-    </div>
-
-
-    <!-- 作品に込めるもの -->
-
-    <div class="yourself-block">
-
-      <h3>作品に込めるもの</h3>
-
-      <ul>
-        <li>髪型</li>
-        <li>服装</li>
-        <li>表情</li>
-        <li>好きな色</li>
-        <li>好きなモチーフ</li>
-        <li>好きな雰囲気</li>
-        <li>大切にしているもの</li>
-        <li>世界観</li>
-        <li>理想の姿</li>
-      </ul>
-
-    </div>
-
-
-
-
-
-    <div class="service-price">
-
-  <p class="service-price-label">
-    制作料金
-  </p>
-
-  <p class="service-price-main">
-    12,000<span>円～</span>
-  </p>
-
-  <p class="service-price-note">
-    ※内容やご希望によって変動いたします。詳しくはご相談ください。
-  </p>
-
-</div>
-
-  </div>
-
-</section>
-
-<section class="world" id="world">
-
-  <div class="world-content">
-
-    <p class="section-label">07｜MINTAKA</p>
-
-    <h2>あなたの世界</h2>
-
-    <div class="world-line"></div>
-
-    <p class="world-lead">
-      自分の中にある世界を、一枚の作品に。
-    </p>
-
-    <p class="world-description">
-      景色、思い出、物語、空気感。<br>
-      存在しない世界でも大丈夫です。
-    </p>
-
-
-    <!-- こんな方へ -->
-
-    <div class="world-block">
-
-      <h3>こんな方へ</h3>
-
-      <ul>
-        <li>頭の中に世界がある</li>
-        <li>好きな景色を残したい</li>
-        <li>思い出を一枚にしたい</li>
-        <li>自分だけの物語を絵にしたい</li>
-        <li>雰囲気を形にしたい</li>
-        <li>言葉では説明できない景色がある</li>
-        <li>自分自身ではなく、自分の世界を描いてほしい</li>
-      </ul>
-
-    </div>
-
-
-    <!-- 作品に込めるもの -->
-
-    <div class="world-block">
-
-      <h3>作品に込めるもの</h3>
-
-      <ul>
-        <li>景色</li>
-        <li>建物</li>
-        <li>自然</li>
-        <li>空</li>
-        <li>季節</li>
-        <li>思い出</li>
-        <li>モチーフ</li>
-        <li>世界観</li>
-        <li>空気感</li>
-        <li>物語</li>
-      </ul>
-
-    </div>
-
-
-    <!-- メッセージ -->
-
-    <div class="world-message">
-
-      <p>
-        頭の中にあるだけだった景色も、<br>
-        誰かに話せなかった世界も。
-      </p>
-
-      <p>
-        少しずつ聞かせてください。
-      </p>
-
-      <p>
-        急かすことはありません。
-      </p>
-
-      <p>
-        ゆっくりで大丈夫です。
-      </p>
-
-    </div>
-
-
-   <div class="service-price">
-
-  <p class="service-price-label">
-    制作料金
-  </p>
-
-  <p class="service-price-main">
-    15,000<span>円～</span>
-  </p>
-
-  <p class="service-price-note">
-    ※内容やご希望によって変動いたします。詳しくはご相談ください。
-  </p>
-
-</div> 
-
-  </div>
-
-</section>
-
-<!-- 制作の流れ -->
-
-<div class="yourself-block">
-
-      <h3>制作の流れ</h3>
-
-      <div class="production-flow">
-
-        <span>相談</span>
-        <span>あなたを知るシート</span>
-        <span>星のかけらを集める</span>
-        <span>イメージ整理</span>
-        <span>アイデアラフ</span>
-        <span>確認・修正</span>
-        <span>ラフ</span>
-        <span>確認・修正</span>
-        <span>線画</span>
-        <span>着彩</span>
-        <span>完成</span>
-
+        <p class="gallery-ending">
+          あなたの「好き」も、いつか一枚の作品になるかもしれません。
+        </p>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         06｜まだ言葉にならないもの
+    ========================= -->
+    <section class="unspoken" id="unspoken">
+      <div class="unspoken-content">
+        <p class="section-label">06｜UNSPOKEN</p>
+        <h2>まだ言葉にならないもの</h2>
+        <div class="unspoken-line"></div>
+
+        <p class="unspoken-lead">
+          うまく説明できなくても、大丈夫。
+        </p>
+
+        <p class="unspoken-description">
+          「なんとなく好き」<br>
+          「理由は分からないけれど惹かれる」<br>
+          「こんな感じにしてほしい」
+        </p>
+
+        <p class="unspoken-description">
+          そんな言葉にならない感覚も、<br>
+          あなたの大切な「星」のひとつです。
+        </p>
+
+        <div class="unspoken-message">
+          <p>上手に説明する必要はありません。</p>
+          <p>
+            あなたの中にあるものを、<br>
+            一緒に探していきます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         07｜星をつくる｜サービス
+    ========================= -->
+    <section class="service-overview" id="services">
+      <div class="about-content">
+        <p class="section-label">07｜SERVICES</p>
+        <h2>星をつくる</h2>
+        <div class="about-line"></div>
+
+        <p class="about-lead">
+          あなたのために。<br>
+          誰かに届けるために。
+        </p>
+
+        <p class="about-text">
+          星詠では、あなたの想いや世界を一枚の作品にする制作から、<br>
+          大切な人へ届けるための返礼品制作までご用意しています。
+        </p>
       </div>
 
+      <div class="service-grid">
+
+        <article class="service-card">
+          <span class="service-number">01｜FIRST STAR</span>
+          <h3>シンプルプラン</h3>
+          <p class="service-lead">
+            まずは星詠の制作を体験してみたい方へ。
+          </p>
+          <p class="service-price-overview">
+            3,000<span>円〜</span>
+          </p>
+          <p class="service-note">初回のご依頼時のみ</p>
+          <a class="service-detail-link" href="simple-plan.html">
+            詳しく見る →
+          </a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-number">02｜YOUR STAR</span>
+          <h3>あなたの姿</h3>
+          <p class="service-lead">
+            自分自身を、一枚の作品に。
+          </p>
+          <p class="service-price-overview">
+            12,000<span>円〜</span>
+          </p>
+          <p class="service-note">
+            内容やご希望によって料金が変わります。
+          </p>
+          <a class="service-detail-link" href="yourself.html">
+            詳しく見る →
+          </a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-number">03｜YOUR WORLD</span>
+          <h3>あなたの世界</h3>
+          <p class="service-lead">
+            自分の中にある世界を、一枚の作品に。
+          </p>
+          <p class="service-price-overview">
+            15,000<span>円〜</span>
+          </p>
+          <p class="service-note">
+            内容やご希望によって料金が変わります。
+          </p>
+          <a class="service-detail-link" href="world.html">
+            詳しく見る →
+          </a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-number">04｜GIFT STAR</span>
+          <h3>返礼品制作</h3>
+          <p class="service-lead">
+            あなたの星を、あなたを支える人へ。
+          </p>
+          <p class="service-price-overview">
+            5,000<span>円〜／1点</span>
+          </p>
+          <p class="service-note">
+            内容・数量などによって個別にご相談いただけます。
+          </p>
+          <a class="service-detail-link" href="return-gift.html">
+            詳しく見る →
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         08｜星を届ける
+    ========================= -->
+    <section class="delivery-overview" id="delivery">
+      <div class="about-content">
+        <p class="section-label">08｜DELIVER THE STAR</p>
+        <h2>星を届ける</h2>
+        <div class="about-line"></div>
+
+        <p class="about-lead">
+          自分のために。<br>
+          そして、大切な人へ。
+        </p>
+
+        <p class="delivery-message">
+          配信活動やイベント、記念日、誕生日。<br>
+          あなたが大切にしてきた時間を、<br>
+          誰かへ届ける作品にもできます。
+        </p>
+      </div>
+
+      <div class="delivery-points">
+        <div class="delivery-point">
+          <h3>返礼品</h3>
+          <p>応援してくれる人へ<br>感謝を届ける作品に。</p>
+        </div>
+
+        <div class="delivery-point">
+          <h3>イベント達成</h3>
+          <p>順位や記録など、<br>大切な瞬間を残すために。</p>
+        </div>
+
+        <div class="delivery-point">
+          <h3>記念日</h3>
+          <p>活動の積み重ねを、<br>一枚の記録として。</p>
+        </div>
+
+        <div class="delivery-point">
+          <h3>誕生日</h3>
+          <p>その人自身を祝う、<br>特別な一枚に。</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         09｜ご依頼の流れ
+    ========================= -->
+    <section class="delivery-overview" id="flow">
+      <div class="about-content">
+        <p class="section-label">09｜ORDER FLOW</p>
+        <h2>ご依頼の流れ</h2>
+        <div class="about-line"></div>
+
+        <p class="about-text">
+          ご依頼内容に合わせて、必要なところから一緒に進めていきます。
+        </p>
+      </div>
+
+      <div class="flow-overview">
+        <span class="flow-step">申し込み</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">星のかけら</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">内容確認</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">ヒアリング</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">料金・納期確定</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">お支払い</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">制作</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">ラフ確認</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">仕上げ・納品</span>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         10｜最後の案内
+    ========================= -->
+    <section class="top-final" id="contact-guide">
+      <div class="top-final-message">
+        <p>
+          あなたの中にある小さな星を、<br>
+          一緒に見つけてみませんか。
+        </p>
+        <p>
+          詳しい内容やご依頼については、<br>
+          「星の海」からご覧いただけます。
+        </p>
+      </div>
+
+      <div class="star-sea-entry">
+        <p class="star-sea-entry-label">YOUR FIRST STAR</p>
+        <h3>はじめての星</h3>
+        <p>
+          いきなり大きなご依頼をするのが不安な方へ。<br>
+          まずは、星詠の制作をひとつ体験してみませんか。
+        </p>
+        <a href="simple-plan.html">シンプルプランを見る →</a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       星の海メニュー
+  ========================= -->
+  <button class="star-menu-button" id="starMenuButton">
+    星の海を開く
+  </button>
+
+  <nav class="star-menu" id="starMenu">
+    <div class="star-menu-inner">
+      <p class="star-menu-label">HOSHIYOMI</p>
+      <h2>星の海</h2>
+
+      <div class="star-menu-line"></div>
+
+      <a href="#top">01｜星詠</a>
+      <a href="#about">02｜星詠とは</a>
+      <a href="#story">03｜なぜ、星詠を始めたのか</a>
+      <a href="#heart">04｜胸に灯るもの</a>
+      <a href="#gallery">05｜結ぶ</a>
+      <a href="#unspoken">06｜まだ言葉にならないもの</a>
+      <a href="#services">07｜星をつくる</a>
+      <a href="#delivery">08｜星を届ける</a>
+      <a href="#flow">09｜ご依頼の流れ</a>
+
+      <div class="star-menu-line"></div>
+
+      <a href="star-sheet.html">10｜星のシート</a>
+      <a href="price.html">11｜料金について</a>
+      <a href="notes.html">12｜ご依頼について</a>
+      <a href="rights.html">13｜権利について</a>
+      <a href="contact.html">14｜お問い合わせ</a>
+
+      <div class="star-menu-entry">
+        <small>FIRST STAR</small>
+        <strong>はじめての星</strong>
+        <span>シンプルプラン｜3,000円～</span>
+        <a href="simple-plan.html">シンプルプランを見る →</a>
+      </div>
+
+      <button class="star-menu-close" id="starMenuClose">
+        星の海を閉じる
+      </button>
     </div>
+  </nav>
 
-
-<!-- =========================
-     06｜まだ言葉にならないもの
-========================= -->
-
-
-<!-- =========================
-     07｜ミンタカ
-========================= -->
-
-
-</main>
-
-   </body>
-
-   <!-- 星の海メニュー -->
-<button class="star-menu-button" id="starMenuButton">
-  星の海を開く
-</button>
-
-<nav class="star-menu" id="starMenu">
-  <div class="star-menu-inner">
-
-    <p class="star-menu-label">HOSHIYOMI</p>
-    <h2>星の海</h2>
-
-    <div class="star-menu-line"></div>
-
-<a href="#top">01｜星詠</a>
-<a href="#about">02｜星詠とは</a>
-<a href="#heart">03｜胸に灯るもの</a>
-<a href="#gallery">04｜結ぶ</a>
-<a href="#unspoken">05｜まだ言葉にならないもの</a>
-<a href="#yourself">06｜あなたの姿</a>
-<a href="#world">07｜あなたの世界</a>
-
-<div class="star-menu-line"></div>
-
-<a href="star-sheet.html">08｜星のシート</a>
-<a href="price.html">09｜料金について</a>
-<a href="notes.html">10｜ご依頼について</a>
-<a href="rights.html">11｜権利について</a>
-<a href="contact.html">12｜お問い合わせ</a>
-
-<button class="star-menu-close" id="starMenuClose">
-    星の海を閉じる
-</button>
-
-</nav>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
