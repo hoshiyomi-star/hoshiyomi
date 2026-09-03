@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>返礼品制作｜星詠</title>
+<style>
+:root{
+  --bg:#040916;
+  --deep:#081936;
+  --blue:#8fbfff;
+  --violet:#a992d2;
+  --text:#edf3ff;
+  --muted:#b8c4da;
+  --line:rgba(180,205,255,.16);
+  --soft:rgba(7,16,36,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--text);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(72,105,170,.15),transparent 34%),
+    radial-gradient(circle at 15% 45%,rgba(95,72,150,.07),transparent 28%),
+    linear-gradient(180deg,#030713 0%,var(--bg) 48%,#06132b 100%);
+  font-family:"Yu Gothic",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  line-height:2;letter-spacing:.04em;
+}
+a{color:inherit;text-decoration:none}
+.page{min-height:100vh;padding-bottom:100px}
+.hero{
+  width:min(980px,calc(100% - 48px));
+  margin:0 auto;padding:110px 24px 86px;text-align:center;
+}
+.label{
+  margin:0 0 14px;font-size:.76rem;letter-spacing:.22em;
+  color:var(--blue);opacity:.82
+}
+h1{margin:0;font-size:2.55rem;font-weight:400;letter-spacing:.16em}
+.hero-line{width:42px;height:1px;background:rgba(200,220,255,.35);margin:30px auto}
+.hero-lead{margin:0;font-size:1.08rem;line-height:2.2;color:#dce7fa}
+.hero-copy{margin:28px auto 0;max-width:680px;font-size:.9rem;color:var(--muted)}
+main{width:min(980px,calc(100% - 48px));margin:0 auto}
+.section{padding:64px 0;border-top:1px solid var(--line)}
+.section h2{
+  margin:0 0 22px;font-size:1.45rem;font-weight:400;letter-spacing:.12em
+}
+.section-intro{margin:0;color:var(--muted);line-height:2.15}
+.card-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;margin-top:34px
+}
+.card{
+  padding:30px 26px;border:1px solid var(--line);
+  background:var(--soft);border-radius:5px;
+}
+.card .num{font-size:.7rem;letter-spacing:.16em;color:var(--blue);opacity:.75}
+.card h3{margin:8px 0 12px;font-size:1.02rem;font-weight:400;letter-spacing:.08em}
+.card p{margin:0;font-size:.88rem;color:var(--muted);line-height:2.05}
+.price-box{
+  margin-top:34px;padding:34px 38px;
+  border:1px solid rgba(180,205,255,.2);
+  background:rgba(7,16,36,.32);text-align:center;border-radius:5px;
+}
+.price{margin:0;font-size:1.45rem;letter-spacing:.12em}
+.price-note{margin:8px 0 0!important;font-size:.82rem;opacity:.72}
+.table-wrap{margin-top:30px;border-top:1px solid var(--line)}
+.row{
+  display:grid;grid-template-columns:200px 1fr;gap:24px;
+  padding:20px 0;border-bottom:1px solid var(--line)
+}
+.row strong{font-weight:400;color:#dce7fa}
+.row span{color:var(--muted)}
+.note{
+  margin-top:28px;padding:22px 24px;border-left:1px solid rgba(180,205,255,.3);
+  background:rgba(7,16,36,.18);font-size:.86rem;color:var(--muted)
+}
+.feature{
+  margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px
+}
+.feature-card{
+  padding:30px;border:1px solid var(--line);
+  background:rgba(7,16,36,.22);border-radius:5px
+}
+.feature-card h3{margin:0 0 12px;font-weight:400;font-size:1rem}
+.feature-card p{margin:0;color:var(--muted);font-size:.88rem}
+.flow{
+  margin-top:30px;border-left:1px solid rgba(180,205,255,.22);
+  padding-left:28px
+}
+.flow-item{position:relative;padding:10px 0 22px}
+.flow-item:last-child{padding-bottom:0}
+.flow-item::before{
+  content:"";position:absolute;left:-33px;top:19px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--blue);box-shadow:0 0 12px rgba(143,191,255,.35)
+}
+.flow-num{display:block;font-size:.68rem;letter-spacing:.16em;color:var(--blue);opacity:.72}
+.flow-title{display:block;margin:2px 0 4px;color:#dce7fa;font-size:.98rem}
+.flow-text{display:block;color:var(--muted);font-size:.86rem}
+.cta{
+  text-align:center;padding:78px 0 20px;
+  border-top:1px solid var(--line);margin-top:10px
+}
+.cta p{margin:0;color:var(--muted);font-size:.92rem}
+.cta-main{
+  display:inline-block;margin-top:28px;padding:13px 28px;
+  border:1px solid rgba(180,205,255,.25);
+  font-size:.88rem;letter-spacing:.1em;background:rgba(7,16,36,.2);
+  transition:.25s ease
+}
+.cta-main:hover{background:rgba(120,160,230,.08)}
+.back{
+  display:inline-block;margin:22px 10px 0;
+  font-size:.78rem;opacity:.65;letter-spacing:.1em
+}
+@media(max-width:760px){
+  .hero{padding-top:78px}
+  h1{font-size:2rem}
+  .card-grid,.feature{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:4px}
+  .price-box{padding:28px 20px}
+}
+
+/* 星の海メニュー */
+.star-menu-button{
+  position:fixed;right:22px;bottom:22px;z-index:1000;
+  padding:10px 18px;border:1px solid rgba(180,205,255,.24);
+  border-radius:999px;background:rgba(4,9,22,.82);backdrop-filter:blur(10px);
+  color:#edf3ff;font:inherit;font-size:.82rem;letter-spacing:.08em;cursor:pointer;
+}
+.star-menu{
+  position:fixed;inset:0;z-index:1100;display:none;
+  background:rgba(2,6,16,.72);backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.star-menu.is-open{display:flex}
+.star-menu-inner{
+  width:min(620px,100%);max-height:calc(100vh - 48px);overflow:auto;
+  padding:42px 34px;border:1px solid rgba(180,205,255,.18);
+  border-radius:8px;background:rgba(5,12,29,.96);
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+}
+.star-menu-label{margin:0 0 6px;text-align:center;font-size:.7rem;letter-spacing:.24em;color:#8fbfff;opacity:.75}
+.star-menu-inner h2{margin:0;text-align:center;font-size:1.5rem;font-weight:400;letter-spacing:.14em}
+.star-menu-line{height:1px;background:rgba(180,205,255,.14);margin:24px 0}
+.star-menu-inner>a{display:block;padding:12px 4px;color:#dce7fa;font-size:.9rem;letter-spacing:.05em;border-bottom:1px solid rgba(180,205,255,.07);transition:opacity .2s,transform .2s}
+.star-menu-inner>a:hover{opacity:.7;transform:translateX(3px)}
+.star-menu-close{display:block;margin:28px auto 0;padding:9px 18px;border:1px solid rgba(180,205,255,.18);border-radius:999px;background:transparent;color:#b8c4da;font:inherit;font-size:.78rem;letter-spacing:.08em;cursor:pointer}
+@media(max-width:640px){
+  .star-menu-button{right:14px;bottom:14px}
+  .star-menu-inner{padding:32px 22px}
+  .star-menu-inner>a{font-size:.82rem}
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hero">
+  <p class="label">04｜GIFT STAR</p>
+  <h1>返礼品制作</h1>
+  <div class="hero-line"></div>
+  <p class="hero-lead">あなたの星を、<br>あなたを支える人へ。</p>
+  <p class="hero-copy">
+    イベントや企画、活動の節目に。<br>
+    応援してくれた人へ届けるための作品を、星詠で制作します。
+  </p>
+</header>
+
+<main>
+
+<section class="section">
+  <h2>応援してくれた人へ、星を届ける</h2>
+  <p class="section-intro">
+    イベントや記念日など、あなたを応援してくれた人へ贈る返礼品を制作します。<br>
+    ただ配るための画像ではなく、あなたの活動と、その時間を一緒に残せる一枚を目指します。
+  </p>
+</section>
+
+<section class="section">
+  <h2>こんな場面に</h2>
+  <p class="section-intro">「ありがとう」を、作品として届けたいときに。</p>
+
+  <div class="card-grid">
+    <article class="card">
+      <span class="num">01｜EVENT</span>
+      <h3>イベントの返礼品</h3>
+      <p>ランキングイベントや達成企画など、応援してくれた方へのお礼に。</p>
+    </article>
+    <article class="card">
+      <span class="num">02｜ANNIVERSARY</span>
+      <h3>記念日の贈り物</h3>
+      <p>活動記念日や周年など、その日に合わせた特別な一枚に。</p>
+    </article>
+    <article class="card">
+      <span class="num">03｜SUPPORT</span>
+      <h3>支えてくれる人へ</h3>
+      <p>いつも応援してくれる方へ、感謝を形にして届けたいときに。</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>制作できる返礼品</h2>
+  <p class="section-intro">内容は企画に合わせてご相談いただけます。</p>
+
+  <div class="feature">
+    <article class="feature-card">
+      <h3>ミニイラスト</h3>
+      <p>応援してくれた方へ贈る、小さな記念作品として。</p>
+    </article>
+    <article class="feature-card">
+      <h3>スマートフォン壁紙</h3>
+      <p>日常の中でも使ってもらえる、デジタル作品として。</p>
+    </article>
+    <article class="feature-card">
+      <h3>デジタルカード</h3>
+      <p>名前やメッセージなどを添えた、記念の一枚として。</p>
+    </article>
+    <article class="feature-card">
+      <h3>その他の仕様</h3>
+      <p>企画内容や配布方法に合わせた制作も、まずはご相談ください。</p>
+    </article>
+  </div>
+
+  <div class="note">
+    ※制作内容・サイズ・個別対応の有無などによって料金が変わります。
+    「こういう返礼品にしたい」という段階でもお気軽にご相談ください。
+  </div>
+</section>
+
+<section class="section">
+  <h2>料金</h2>
+  <div class="price-box">
+    <p class="price">5,000円〜｜1点</p>
+    <p class="price-note">内容・数量・仕様などによって個別にご相談いただけます。</p>
+  </div>
+
+  <div class="table-wrap">
+    <div class="row"><strong>1〜4点</strong><span>通常料金</span></div>
+    <div class="row"><strong>5〜9点</strong><span>5% OFF</span></div>
+    <div class="row"><strong>10点〜</strong><span>10% OFF</span></div>
+  </div>
+
+  <div class="note">
+    ※まとめ依頼の割引は、同じご依頼者・同じ企画や用途でまとめてご依頼いただく場合に適用します。<br>
+    ※ほかの割引との併用はできません。<br>
+    ※大規模な制作や特殊仕様などは、内容を確認したうえで別途お見積もりとなります。
+  </div>
+</section>
+
+<section class="section">
+  <h2>制作内容を決める</h2>
+  <div class="table-wrap">
+    <div class="row"><strong>同一絵</strong><span>全員に同じ作品を配布する形式</span></div>
+    <div class="row"><strong>個別絵</strong><span>配布する相手ごとに内容を変える形式</span></div>
+    <div class="row"><strong>名前・メッセージ</strong><span>個別の名前やメッセージを入れるか</span></div>
+    <div class="row"><strong>配布方法</strong><span>データとしてどのようにお渡しするか</span></div>
+    <div class="row"><strong>利用目的</strong><span>個人利用か、企画・活動での配布か</span></div>
+  </div>
+  <div class="note">
+    同一絵か個別絵か、名前やメッセージを入れるかによって制作量が大きく変わります。
+    そのため、最初に内容を確認してから正式な料金と納期をご案内します。
+  </div>
+</section>
+
+<section class="section">
+  <h2>ご依頼前に確認すること</h2>
+  <div class="table-wrap">
+    <div class="row"><strong>何の企画か</strong><span>イベント名・達成企画など、どのような場面の返礼品か</span></div>
+    <div class="row"><strong>配布予定日</strong><span>いつ頃までに必要か</span></div>
+    <div class="row"><strong>必要点数</strong><span>何点必要か</span></div>
+    <div class="row"><strong>参考資料</strong><span>キャラクター・ロゴ・雰囲気など、制作に必要な資料</span></div>
+    <div class="row"><strong>商用利用</strong><span>販売・広告・その他商用目的で使用する予定があるか</span></div>
+  </div>
+  <div class="note">
+    大人数への配布や、通常とは異なる仕様・サイズなどをご希望の場合も、まずはご相談ください。
+    内容を確認したうえでお見積もりします。
+  </div>
+</section>
+
+<section class="section">
+  <h2>ご依頼の流れ</h2>
+  <p class="section-intro">返礼品の内容とスケジュールを確認しながら進めます。</p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <span class="flow-num">01</span>
+      <span class="flow-title">お問い合わせ・お申し込み</span>
+      <span class="flow-text">企画の内容、必要点数、配布予定日などをお知らせください。</span>
+    </div>
+    <div class="flow-item">
+      <span class="flow-num">02</span>
+      <span class="flow-title">内容確認</span>
+      <span class="flow-text">同一絵・個別絵、仕様、利用目的、参考資料などを確認します。</span>
+    </div>
+    <div class="flow-item">
+      <span class="flow-num">03</span>
+      <span class="flow-title">料金・納期確定</span>
+      <span class="flow-text">内容をもとに正式な料金と納期をご案内します。</span>
+    </div>
+    <div class="flow-item">
+      <span class="flow-num">04</span>
+      <span class="flow-title">お支払い</span>
+      <span class="flow-text">お支払い確認後、制作を開始します。</span>
+    </div>
+    <div class="flow-item">
+      <span class="flow-num">05</span>
+      <span class="flow-title">制作・ラフ確認</span>
+      <span class="flow-text">必要に応じてラフをご確認いただき、仕上げへ進みます。</span>
+    </div>
+    <div class="flow-item">
+      <span class="flow-num">06</span>
+      <span class="flow-title">仕上げ・納品</span>
+      <span class="flow-text">完成した返礼品を、指定の形式で納品します。</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>返礼品も、ひとつの星として</h2>
+  <p class="section-intro">
+    イベントが終わったあとに残るのは、順位や数字だけではありません。<br>
+    一緒に走ってくれた人がいたこと、その時間を大切に残すことも、ひとつの活動の形だと星詠は考えています。
+  </p>
+</section>
+
+<section class="cta">
+  <p>
+    内容がまだ決まっていなくても大丈夫です。<br>
+    まずは、あなたの企画について聞かせてください。
+  </p>
+  <a class="cta-main" href="index.html#contact-guide">星詠へ依頼する →</a>
+  <br>
+  <a class="back" href="index.html#services">← 星をつくるへ戻る</a>
+  <br>
+  <a class="back" href="index.html#contact-guide">← 星の海へ戻る</a>
+</section>
+
+</main>
+
+<!-- =========================
+     星の海メニュー
+========================= -->
+<button class="star-menu-button" id="starMenuButton" type="button">星の海を開く</button>
+
+<nav class="star-menu" id="starMenu" aria-hidden="true">
+  <div class="star-menu-inner">
+    <p class="star-menu-label">HOSHIYOMI</p>
+    <h2>星の海</h2>
+
+    <div class="star-menu-line"></div>
+
+    <a href="index.html#services">01｜星をつくる　｜ サービス一覧</a>
+    <a href="benefits.html">02｜星を届ける　｜ 活用・特典</a>
+    <a href="index.html#flow">03｜ご依頼の流れ　｜ お申し込みの手順</a>
+    <a href="index.html#contact-guide">04｜最後の案内　｜ はじめての方へ</a>
+
+    <div class="star-menu-line"></div>
+
+    <a href="return-gift.html">返礼品制作　｜ あなたの星を支える人へ</a>
+
+    <button class="star-menu-close" id="starMenuClose" type="button">星の海を閉じる</button>
+  </div>
+</nav>
+
+<script>
+(function(){
+  const button=document.getElementById('starMenuButton');
+  const menu=document.getElementById('starMenu');
+  const close=document.getElementById('starMenuClose');
+  if(!button||!menu||!close) return;
+  function openMenu(){menu.classList.add('is-open');menu.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+  function closeMenu(){menu.classList.remove('is-open');menu.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  button.addEventListener('click',openMenu);
+  close.addEventListener('click',closeMenu);
+  menu.addEventListener('click',e=>{if(e.target===menu) closeMenu();});
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeMenu();});
+})();
+</script>
+
+</div>
+</body>
+</html>
