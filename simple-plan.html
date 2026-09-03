@@ -268,6 +268,85 @@
     }
     .simple-sheet-note strong{font-weight:400;color:var(--sp-text);}
 
+    .simple-order-form{
+      margin-top:40px;
+      padding:34px 34px 36px;
+      border:1px solid var(--sp-line);
+      background:rgba(7,16,36,.14);
+      text-align:left;
+    }
+    .simple-form-note{
+      margin:0 0 28px;
+      color:var(--sp-muted);
+      font-size:.88rem;
+      line-height:1.9;
+    }
+    .simple-form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .simple-form-field{margin:0;}
+    .simple-form-field.full{grid-column:1/-1;}
+    .simple-form-field label{
+      display:block;
+      margin:0 0 8px;
+      font-size:.82rem;
+      letter-spacing:.08em;
+      opacity:.72;
+    }
+    .simple-form-field label span{
+      margin-left:8px;
+      font-size:.68rem;
+      letter-spacing:.08em;
+      opacity:.52;
+    }
+    .simple-form-field input,
+    .simple-form-field textarea,
+    .simple-form-field select{
+      width:100%;
+      box-sizing:border-box;
+      border:1px solid rgba(180,205,255,.18);
+      border-radius:3px;
+      background:rgba(4,9,22,.48);
+      color:var(--sp-text);
+      padding:12px 13px;
+      font:inherit;
+      line-height:1.7;
+      outline:none;
+    }
+    .simple-form-field textarea{min-height:120px;resize:vertical;}
+    .simple-form-field input:focus,
+    .simple-form-field textarea:focus,
+    .simple-form-field select:focus{border-color:rgba(180,205,255,.42);}
+    .simple-form-submit-wrap{
+      margin-top:26px;
+      text-align:center;
+    }
+    .simple-form-submit{
+      appearance:none;
+      border:0;
+      border-bottom:1px solid rgba(200,220,255,.35);
+      background:transparent;
+      color:var(--sp-text);
+      padding:10px 20px 7px;
+      font:inherit;
+      font-size:.95rem;
+      letter-spacing:.1em;
+      cursor:pointer;
+    }
+    .simple-form-submit:disabled{opacity:.45;cursor:wait;}
+    .simple-form-status{
+      margin:18px 0 0;
+      min-height:1.8em;
+      text-align:center;
+      color:var(--sp-muted);
+      font-size:.86rem;
+      line-height:1.8;
+    }
+    .simple-form-success{color:var(--sp-text);}
+    .simple-form-error{color:var(--sp-muted);}
+
     .simple-final{
       width:min(900px,calc(100% - 48px));
       margin:0 auto;
@@ -294,6 +373,9 @@
       .simple-flow{padding-left:22px;}
       .simple-flow-item{padding-left:25px;}
       .simple-note{padding:24px 20px;}
+      .simple-order-form{padding:26px 20px 28px;}
+      .simple-form-grid{grid-template-columns:1fr;}
+      .simple-form-field.full{grid-column:auto;}
       .simple-mini-item{grid-template-columns:42px 1fr;gap:14px;padding:24px 20px;}
       .simple-sheet-note{padding:20px 16px;}
     }
@@ -478,9 +560,63 @@
         うまく言葉にできなくても大丈夫です。
       </div>
 
-      <div class="simple-sheet">
-        <a href="star-sheet.html">星のかけらを見る →</a>
-      </div>
+      <form class="simple-order-form" id="simplePlanForm">
+        <p class="simple-form-note">
+          下の項目を入力して送信してください。送信内容は星詠の依頼受付先へ届きます。
+        </p>
+
+        <div class="simple-form-grid">
+          <div class="simple-form-field">
+            <label for="sp-name">お名前 <span>必須</span></label>
+            <input id="sp-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="simple-form-field">
+            <label for="sp-callname">呼ばれたい名前</label>
+            <input id="sp-callname" name="callName" type="text">
+          </div>
+          <div class="simple-form-field full">
+            <label for="sp-draw">今回描いてほしいもの <span>必須</span></label>
+            <input id="sp-draw" name="draw" type="text" required>
+          </div>
+          <div class="simple-form-field full">
+            <label for="sp-appearance">髪型・髪色・服装など</label>
+            <textarea id="sp-appearance" name="appearance" placeholder="必要な外見情報を自由に書いてください。"></textarea>
+          </div>
+          <div class="simple-form-field">
+            <label for="sp-color">好きな色</label>
+            <input id="sp-color" name="favoriteColor" type="text">
+          </div>
+          <div class="simple-form-field">
+            <label for="sp-place">好きなもの・場所</label>
+            <input id="sp-place" name="favoriteThingPlace" type="text">
+          </div>
+          <div class="simple-form-field full">
+            <label for="sp-mood">好きな雰囲気</label>
+            <textarea id="sp-mood" name="favoriteMood" placeholder="静か、透明感、あたたかい、夜っぽい…など自由にどうぞ。"></textarea>
+          </div>
+          <div class="simple-form-field full">
+            <label for="sp-piece">今回の作品について</label>
+            <textarea id="sp-piece" name="piece" placeholder="どんな雰囲気にしたいか、入れてほしいものなどを書いてください。"></textarea>
+          </div>
+          <div class="simple-form-field full">
+            <label for="sp-avoid">入れてほしくないもの</label>
+            <textarea id="sp-avoid" name="avoid" placeholder="苦手なモチーフ・色などがあれば書いてください。"></textarea>
+          </div>
+          <div class="simple-form-field full">
+            <label for="sp-reference">参考画像・参考URL</label>
+            <textarea id="sp-reference" name="reference" placeholder="画像そのものは送れないため、参考画像の共有URLなどがあれば記入してください。"></textarea>
+          </div>
+          <div class="simple-form-field full">
+            <label for="sp-contact">連絡先（メールアドレス） <span>必須</span></label>
+            <input id="sp-contact" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="simple-form-submit-wrap">
+          <button class="simple-form-submit" type="submit">星のかけらを送る →</button>
+          <p class="simple-form-status" id="simplePlanStatus" aria-live="polite"></p>
+        </div>
+      </form>
     </section>
 
     <section class="simple-final">
@@ -526,6 +662,48 @@
     </div>
   </nav>
 
+  <script>
+    // Google Apps Script のウェブアプリURLをここに設定します。
+    const SIMPLE_PLAN_ENDPOINT = "https://script.google.com/macros/s/AKfycbxvsVDameUa4kxjpsHZAHUy2IZvZVzg7O7RkC1Gcoy7jvDQuSIotJBatqbbbxJLjIrYcA/exec";
+
+    const simplePlanForm = document.getElementById("simplePlanForm");
+    const simplePlanStatus = document.getElementById("simplePlanStatus");
+
+    simplePlanForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!SIMPLE_PLAN_ENDPOINT) {
+        simplePlanStatus.className = "simple-form-status simple-form-error";
+        simplePlanStatus.textContent = "送信先の設定がまだ完了していません。公開前にGoogle Apps ScriptのURLを設定してください。";
+        return;
+      }
+
+      const submitButton = simplePlanForm.querySelector("button[type='submit']");
+      submitButton.disabled = true;
+      simplePlanStatus.className = "simple-form-status";
+      simplePlanStatus.textContent = "送信しています…";
+
+      const data = Object.fromEntries(new FormData(simplePlanForm).entries());
+
+      try {
+        await fetch(SIMPLE_PLAN_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(data)
+        });
+
+        simplePlanForm.reset();
+        simplePlanStatus.className = "simple-form-status simple-form-success";
+        simplePlanStatus.textContent = "星のかけらを送信しました。ありがとうございます。";
+      } catch (error) {
+        simplePlanStatus.className = "simple-form-status simple-form-error";
+        simplePlanStatus.textContent = "送信できませんでした。通信状態を確認して、もう一度お試しください。";
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
