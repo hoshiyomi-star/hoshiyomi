@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>シンプルプラン｜星詠 HOSHIYOMI</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --sp-bg:#040916;
+      --sp-deep:#081936;
+      --sp-blue:#8fbfff;
+      --sp-violet:#a992d2;
+      --sp-text:#edf3ff;
+      --sp-muted:rgba(237,243,255,.72);
+      --sp-line:rgba(180,205,255,.15);
+    }
+
+    body{color:var(--sp-text);}
+
+    .simple-page{
+      width:100%;
+      min-height:100vh;
+      padding:0 0 120px;
+      position:relative;
+      z-index:1;
+    }
+
+    .simple-hero{
+      width:min(920px,calc(100% - 48px));
+      margin:0 auto;
+      padding:150px 0 100px;
+      text-align:center;
+    }
+    .simple-label{
+      margin:0 0 18px;
+      font-size:.82rem;
+      letter-spacing:.2em;
+      opacity:.62;
+    }
+    .simple-hero h1{
+      margin:0;
+      font-size:clamp(2.2rem,5vw,3.5rem);
+      font-weight:400;
+      letter-spacing:.12em;
+      line-height:1.45;
+    }
+    .simple-hero .hero-sub{
+      margin:26px 0 0;
+      font-size:1.05rem;
+      line-height:2.1;
+      color:var(--sp-muted);
+    }
+    .simple-price{
+      margin:34px 0 0;
+      font-size:1.15rem;
+      letter-spacing:.1em;
+    }
+
+    .simple-section{
+      width:min(900px,calc(100% - 48px));
+      margin:0 auto;
+      padding:74px 0;
+      border-top:1px solid var(--sp-line);
+    }
+    .simple-section-label{
+      margin:0 0 12px;
+      font-size:.76rem;
+      letter-spacing:.18em;
+      opacity:.55;
+    }
+    .simple-section h2{
+      margin:0;
+      font-size:1.7rem;
+      font-weight:400;
+      letter-spacing:.1em;
+      line-height:1.6;
+    }
+    .simple-section-lead{
+      margin:24px 0 0;
+      font-size:1rem;
+      line-height:2.15;
+      color:var(--sp-muted);
+    }
+
+    .simple-intro{
+      padding:0 0 74px;
+      border-top:0;
+      text-align:center;
+    }
+    .simple-intro p{
+      margin:0;
+      font-size:1.05rem;
+      line-height:2.25;
+      color:var(--sp-muted);
+    }
+
+    .simple-points{
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      border:1px solid var(--sp-line);
+      background:rgba(7,16,36,.15);
+    }
+    .simple-point{
+      padding:30px 24px;
+      text-align:center;
+      border-right:1px solid var(--sp-line);
+    }
+    .simple-point:last-child{border-right:0;}
+    .simple-point small{
+      display:block;
+      margin-bottom:10px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      opacity:.5;
+    }
+    .simple-point strong{
+      display:block;
+      font-size:1rem;
+      font-weight:400;
+      line-height:1.8;
+    }
+
+    .simple-specs{
+      margin-top:38px;
+      border-top:1px solid var(--sp-line);
+    }
+    .simple-spec{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:30px;
+      padding:22px 10px;
+      border-bottom:1px solid var(--sp-line);
+      align-items:center;
+    }
+    .simple-spec dt{font-size:.86rem;letter-spacing:.1em;opacity:.62;}
+    .simple-spec dd{margin:0;font-size:1rem;line-height:1.9;}
+
+    .simple-flow{
+      margin-top:42px;
+      position:relative;
+      padding-left:34px;
+    }
+    .simple-flow::before{
+      content:"";
+      position:absolute;
+      left:8px;
+      top:10px;
+      bottom:10px;
+      width:1px;
+      background:rgba(180,205,255,.16);
+    }
+    .simple-flow-item{
+      position:relative;
+      padding:0 0 34px 28px;
+    }
+    .simple-flow-item:last-child{padding-bottom:0;}
+    .simple-flow-item::before{
+      content:"";
+      position:absolute;
+      left:-1px;
+      top:4px;
+      width:18px;
+      height:18px;
+      box-sizing:border-box;
+      border:1px solid rgba(200,220,255,.35);
+      border-radius:50%;
+      background:rgba(7,16,36,.9);
+    }
+    .simple-flow-item small{
+      display:block;
+      margin-bottom:7px;
+      font-size:.7rem;
+      letter-spacing:.16em;
+      opacity:.48;
+    }
+    .simple-flow-item strong{
+      display:block;
+      font-weight:400;
+      font-size:1rem;
+      letter-spacing:.06em;
+    }
+    .simple-flow-item p{
+      margin:7px 0 0;
+      color:var(--sp-muted);
+      font-size:.9rem;
+      line-height:1.9;
+    }
+
+    .simple-note{
+      margin-top:38px;
+      padding:28px 30px;
+      border:1px solid rgba(180,205,255,.13);
+      background:rgba(7,16,36,.14);
+      line-height:2;
+      color:var(--sp-muted);
+      font-size:.9rem;
+    }
+    .simple-note strong{font-weight:400;color:var(--sp-text);}
+
+    .simple-sheet{
+      margin-top:40px;
+      text-align:center;
+    }
+    .simple-sheet a,
+    .simple-back a{
+      display:inline-block;
+      padding:12px 22px;
+      border-bottom:1px solid rgba(200,220,255,.35);
+      color:inherit;
+      text-decoration:none;
+      letter-spacing:.08em;
+      transition:opacity .25s ease;
+    }
+    .simple-sheet a:hover,
+    .simple-back a:hover{opacity:.65;}
+
+    .simple-final{
+      width:min(900px,calc(100% - 48px));
+      margin:0 auto;
+      padding:76px 30px 30px;
+      box-sizing:border-box;
+      text-align:center;
+      border-top:1px solid var(--sp-line);
+    }
+    .simple-final p{
+      margin:0;
+      font-size:1.05rem;
+      line-height:2.2;
+      color:var(--sp-muted);
+    }
+    .simple-final .simple-back{margin-top:32px;}
+
+    @media(max-width:700px){
+      .simple-hero{padding:110px 0 76px;width:calc(100% - 32px);}
+      .simple-section,.simple-final{width:calc(100% - 32px);}
+      .simple-points{grid-template-columns:1fr;}
+      .simple-point{border-right:0;border-bottom:1px solid var(--sp-line);}
+      .simple-point:last-child{border-bottom:0;}
+      .simple-spec{grid-template-columns:1fr;gap:7px;padding:20px 4px;}
+      .simple-flow{padding-left:22px;}
+      .simple-flow-item{padding-left:25px;}
+      .simple-note{padding:24px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="star-field" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <main class="simple-page">
+    <section class="simple-hero">
+      <p class="simple-label">01｜FIRST STAR</p>
+      <h1>シンプルプラン</h1>
+      <p class="hero-sub">
+        まずは星詠の制作を、ひとつ体験してみたい方へ。<br>
+        小さな一歩から、あなたの星を形にします。
+      </p>
+      <p class="simple-price">3,000円〜</p>
+    </section>
+
+    <section class="simple-section simple-intro">
+      <p>
+        高額な料金でのご依頼を、いきなりお願いするのは<br>
+        少し不安に感じる方もいると思います。<br><br>
+        そこで星詠では、まずは星詠の制作を体験していただける<br>
+        「シンプルプラン」をご用意しました。<br><br>
+        内容は一部となりますが、星詠がどのようにあなたの想いを受け取り、<br>
+        一枚の作品へと形にしていくのかを、実際に体験していただけます。
+      </p>
+    </section>
+
+    <section class="simple-section">
+      <p class="simple-section-label">ABOUT THE PLAN</p>
+      <h2>シンプルプランについて</h2>
+      <p class="simple-section-lead">
+        「いきなり大きな依頼をするのは少し不安」<br>
+        「まず星詠がどんな制作をするのか知りたい」<br>
+        そんな方のための、最初の星です。
+      </p>
+
+      <div class="simple-points">
+        <div class="simple-point">
+          <small>HEARING</small>
+          <strong>ヒアリング<br>30分</strong>
+        </div>
+        <div class="simple-point">
+          <small>REVISION</small>
+          <strong>修正<br>1回のみ</strong>
+        </div>
+        <div class="simple-point">
+          <small>DELIVERY</small>
+          <strong>データのみ<br>納品</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="simple-section">
+      <p class="simple-section-label">PLAN DETAILS</p>
+      <h2>料金と内容</h2>
+
+      <dl class="simple-specs">
+        <div class="simple-spec">
+          <dt>料金</dt>
+          <dd>3,000円〜</dd>
+        </div>
+        <div class="simple-spec">
+          <dt>ご利用</dt>
+          <dd>初回のご依頼時のみ</dd>
+        </div>
+        <div class="simple-spec">
+          <dt>ヒアリング</dt>
+          <dd>30分</dd>
+        </div>
+        <div class="simple-spec">
+          <dt>修正</dt>
+          <dd>ラフ段階で1回のみ</dd>
+        </div>
+        <div class="simple-spec">
+          <dt>納品</dt>
+          <dd>データのみ</dd>
+        </div>
+      </dl>
+
+      <div class="simple-note">
+        <strong>※シンプルプランのご利用は、初回のご依頼時のみとなります。</strong><br>
+        内容やご希望によって、追加料金が発生する場合があります。<br>
+        詳細はお申し込み後の内容確認でご案内します。
+      </div>
+    </section>
+
+    <section class="simple-section">
+      <p class="simple-section-label">ORDER FLOW</p>
+      <h2>シンプルプランの流れ</h2>
+
+      <div class="simple-flow">
+        <div class="simple-flow-item">
+          <small>01</small>
+          <strong>申し込み</strong>
+          <p>シンプルプランを選んでお申し込みください。</p>
+        </div>
+        <div class="simple-flow-item">
+          <small>02</small>
+          <strong>「星のかけら」を記入</strong>
+          <p>あなたについて、好きなもの、記憶、憧れなどをお聞かせください。</p>
+        </div>
+        <div class="simple-flow-item">
+          <small>03</small>
+          <strong>内容確認</strong>
+          <p>制作内容や参考資料、納期などを確認します。</p>
+        </div>
+        <div class="simple-flow-item">
+          <small>04</small>
+          <strong>ヒアリング</strong>
+          <p>必要に応じて、30分のヒアリングを行います。</p>
+        </div>
+        <div class="simple-flow-item">
+          <small>05</small>
+          <strong>料金・納期確定</strong>
+          <p>内容をもとに料金と納期を確定します。</p>
+        </div>
+        <div class="simple-flow-item">
+          <small>06</small>
+          <strong>お支払い</strong>
+          <p>お支払い確認後、制作を開始します。</p>
+        </div>
+        <div class="simple-flow-item">
+          <small>07</small>
+          <strong>制作・ラフ確認</strong>
+          <p>ラフ段階で方向性を確認し、修正は1回までお受けします。</p>
+        </div>
+        <div class="simple-flow-item">
+          <small>08</small>
+          <strong>仕上げ・納品</strong>
+          <p>ラフ確認後は星詠におまかせで仕上げ、データで納品します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="simple-section">
+      <p class="simple-section-label">YOUR STAR</p>
+      <h2>「星のかけら」について</h2>
+      <p class="simple-section-lead">
+        うまく言葉にできなくても大丈夫です。<br>
+        好きなものや思い出、憧れ、なんとなく残したい感覚。<br>
+        あなたからもらった小さな「かけら」を集めて、ひとつの作品にします。
+      </p>
+      <div class="simple-sheet">
+        <a href="star-sheet.html">星のかけらを見る →</a>
+      </div>
+    </section>
+
+    <section class="simple-final">
+      <p>
+        はじめての星から、ゆっくりと。<br>
+        あなたの中にあるものを、一緒に形にしてみませんか。
+      </p>
+      <div class="simple-back">
+        <a href="index.html#services">星詠のサービス一覧へ →</a>
+      </div>
+    </section>
+  </main>
+
+  <button class="star-menu-button" id="starMenuButton">星の海を開く</button>
+
+  <nav class="star-menu" id="starMenu">
+    <div class="star-menu-inner">
+      <p class="star-menu-label">HOSHIYOMI</p>
+      <h2>星の海</h2>
+      <div class="star-menu-line"></div>
+      <a href="index.html#top">01｜星詠</a>
+      <a href="index.html#about">02｜星詠とは</a>
+      <a href="index.html#story">03｜なぜ、星詠を始めたのか</a>
+      <a href="index.html#heart">04｜胸に灯るもの</a>
+      <a href="index.html#gallery">05｜結ぶ</a>
+      <a href="index.html#unspoken">06｜まだ言葉にならないもの</a>
+      <a href="index.html#services">07｜星をつくる</a>
+      <a href="index.html#delivery">08｜星を届ける</a>
+      <a href="index.html#flow">09｜ご依頼の流れ</a>
+      <div class="star-menu-line"></div>
+      <a href="star-sheet.html">10｜星のシート</a>
+      <a href="price.html">11｜料金について</a>
+      <a href="notes.html">12｜ご依頼について</a>
+      <a href="rights.html">13｜権利について</a>
+      <a href="contact.html">14｜お問い合わせ</a>
+      <div class="star-menu-entry">
+        <small>FIRST STAR</small>
+        <strong>はじめての星</strong>
+        <span>シンプルプラン｜3,000円～</span>
+        <a href="simple-plan.html">シンプルプランを見る →</a>
+      </div>
+      <button class="star-menu-close" id="starMenuClose">星の海を閉じる</button>
+    </div>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
