@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あなたの姿｜星詠 HOSHIYOMI</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --ys-bg:#040916;
+      --ys-deep:#081936;
+      --ys-blue:#8fbfff;
+      --ys-violet:#a992d2;
+      --ys-text:#edf3ff;
+      --ys-muted:rgba(237,243,255,.72);
+      --ys-line:rgba(180,205,255,.15);
+    }
+    body{color:var(--ys-text);}
+    .your-page{width:100%;min-height:100vh;padding:0 0 120px;position:relative;z-index:1;}
+    .your-hero{width:min(920px,calc(100% - 48px));margin:0 auto;padding:150px 0 100px;text-align:center;}
+    .your-label{margin:0 0 18px;font-size:.82rem;letter-spacing:.2em;opacity:.62;}
+    .your-hero h1{margin:0;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:400;letter-spacing:.12em;line-height:1.45;}
+    .your-hero .hero-sub{margin:26px 0 0;font-size:1.05rem;line-height:2.1;color:var(--ys-muted);}
+    .your-price{margin:34px 0 0;font-size:1.15rem;letter-spacing:.1em;}
+    .your-section{width:min(900px,calc(100% - 48px));margin:0 auto;padding:74px 0;border-top:1px solid var(--ys-line);}
+    .your-section-label{margin:0 0 12px;font-size:.76rem;letter-spacing:.18em;opacity:.55;}
+    .your-section h2{margin:0;font-size:1.7rem;font-weight:400;letter-spacing:.1em;line-height:1.6;}
+    .your-lead{margin:24px 0 0;font-size:1rem;line-height:2.15;color:var(--ys-muted);}
+    .your-intro{text-align:center;border-top:0;padding-top:0;}
+    .your-intro p{margin:0;font-size:1.05rem;line-height:2.25;color:var(--ys-muted);}
+    .your-cards{margin-top:42px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+    .your-card{padding:32px 30px;border:1px solid var(--ys-line);background:rgba(7,16,36,.14);}
+    .your-card small{display:block;margin-bottom:12px;font-size:.72rem;letter-spacing:.16em;opacity:.5;}
+    .your-card strong{display:block;font-size:1.05rem;font-weight:400;line-height:1.8;letter-spacing:.05em;}
+    .your-card p{margin:12px 0 0;font-size:.9rem;line-height:1.95;color:var(--ys-muted);}
+    .your-specs{margin-top:40px;border-top:1px solid var(--ys-line);}
+    .your-spec{display:grid;grid-template-columns:190px 1fr;gap:30px;padding:22px 10px;border-bottom:1px solid var(--ys-line);align-items:center;}
+    .your-spec dt{font-size:.86rem;letter-spacing:.1em;opacity:.62;}
+    .your-spec dd{margin:0;font-size:1rem;line-height:1.9;}
+    .your-note{margin-top:38px;padding:28px 30px;border:1px solid rgba(180,205,255,.13);background:rgba(7,16,36,.14);line-height:2;color:var(--ys-muted);font-size:.9rem;}
+    .your-note strong{font-weight:400;color:var(--ys-text);}
+    .your-final{width:min(900px,calc(100% - 48px));margin:0 auto;padding:76px 30px 30px;box-sizing:border-box;text-align:center;border-top:1px solid var(--ys-line);}
+    .your-final p{margin:0;font-size:1.05rem;line-height:2.2;color:var(--ys-muted);}
+    .your-back{margin-top:32px;}
+    .your-back a{display:inline-block;padding:12px 22px;border-bottom:1px solid rgba(200,220,255,.35);color:inherit;text-decoration:none;letter-spacing:.08em;transition:opacity .25s ease;}
+    .your-back a:hover{opacity:.65;}
+    @media(max-width:700px){
+      .your-hero{padding:110px 0 76px;width:calc(100% - 32px);}
+      .your-section,.your-final{width:calc(100% - 32px);}
+      .your-cards{grid-template-columns:1fr;}
+      .your-spec{grid-template-columns:1fr;gap:8px;padding:20px 6px;}
+      .your-final{padding-left:0;padding-right:0;}
+    }
+  </style>
+</head>
+<body>
+  <main class="your-page">
+    <header class="your-hero">
+      <p class="your-label">02｜YOUR STAR</p>
+      <h1>あなたの姿</h1>
+      <p class="hero-sub">自分自身を、<br>一枚の作品に。</p>
+      <p class="your-price">12,000円〜</p>
+    </header>
+
+    <section class="your-section your-intro">
+      <p>
+        あなた自身を中心に、好きなものや雰囲気、<br>
+        そこに込めたい想いまで受け取りながら、一枚の作品に仕上げます。
+      </p>
+    </section>
+
+    <section class="your-section">
+      <p class="your-section-label">FOR YOU</p>
+      <h2>こんな方へ</h2>
+      <div class="your-cards">
+        <article class="your-card">
+          <small>01</small>
+          <strong>自分自身を作品として残したい</strong>
+          <p>今の自分や、活動している姿を一枚の絵として残したい方へ。</p>
+        </article>
+        <article class="your-card">
+          <small>02</small>
+          <strong>いつもの姿とは少し違う自分を描きたい</strong>
+          <p>好きな世界観や憧れを重ねて、「こんな自分」を形にできます。</p>
+        </article>
+        <article class="your-card">
+          <small>03</small>
+          <strong>記念になる一枚をつくりたい</strong>
+          <p>誕生日や記念日、活動の節目など、大切な時間を作品として残したい方へ。</p>
+        </article>
+        <article class="your-card">
+          <small>04</small>
+          <strong>言葉だけでは伝えきれないものを残したい</strong>
+          <p>うまく説明できなくても大丈夫。小さな「かけら」から一緒に形を探します。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="your-section">
+      <p class="your-section-label">WHAT WE MAKE</p>
+      <h2>作品に込めるもの</h2>
+      <p class="your-lead">
+        髪型や服装などの外見だけではなく、<br>
+        あなたの好きな色、好きな場所、思い出、憧れ、作品に残したい雰囲気。<br>
+        そうした一つひとつを組み合わせて、あなたらしい一枚をつくります。
+      </p>
+
+      <dl class="your-specs">
+        <div class="your-spec"><dt>あなたについて</dt><dd>お名前・呼ばれたい名前、描いてほしい姿、必要な外見情報など</dd></div>
+        <div class="your-spec"><dt>好きなもの</dt><dd>好きな色・場所・季節・動物・雰囲気など</dd></div>
+        <div class="your-spec"><dt>記憶</dt><dd>大切な思い出や風景、作品に残したい出来事など</dd></div>
+        <div class="your-spec"><dt>憧れ</dt><dd>こんな自分を描いてほしい、こんな雰囲気にしたい、という想い</dd></div>
+        <div class="your-spec"><dt>作品について</dt><dd>色・雰囲気、必ず入れてほしいもの、入れてほしくないもの、参考画像など</dd></div>
+      </dl>
+    </section>
+
+    <section class="your-section">
+      <p class="your-section-label">PROCESS</p>
+      <h2>制作について</h2>
+      <p class="your-lead">
+        まずは「星のかけら」を通して、あなたのことを教えてください。<br>
+        内容を確認したあと、必要に応じてヒアリングを行い、方向性を一緒に整えていきます。
+      </p>
+      <div class="your-note">
+        <strong>ラフ段階で方向性を確認し、その後の仕上げは星詠におまかせ。</strong><br>
+        あなたから受け取ったものを大切にしながら、一枚の作品へと仕上げます。
+      </div>
+    </section>
+
+    <section class="your-section">
+      <p class="your-section-label">PRICE</p>
+      <h2>料金について</h2>
+      <p class="your-lead">
+        基本料金は12,000円〜です。<br>
+        描画内容や構図、背景、追加のご希望などによって料金が変動します。
+      </p>
+      <div class="your-note">
+        <strong>※内容やご希望によって料金は変動いたします。</strong><br>
+        正確な料金・納期については、内容を確認したうえで個別にご案内します。
+      </div>
+    </section>
+
+    <footer class="your-final">
+      <p>
+        あなたの姿を、あなたの星として。<br>
+        言葉にならないものまで、一枚に残してみませんか。
+      </p>
+      <div class="your-back">
+        <a href="index.html#services">星をつくる｜サービス一覧へ →</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
