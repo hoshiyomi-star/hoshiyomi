@@ -216,6 +216,58 @@
     .simple-sheet a:hover,
     .simple-back a:hover{opacity:.65;}
 
+
+    .simple-mini-sheet{
+      margin-top:40px;
+      border:1px solid var(--sp-line);
+      background:rgba(7,16,36,.14);
+    }
+    .simple-mini-item{
+      display:grid;
+      grid-template-columns:58px 1fr;
+      gap:22px;
+      padding:28px 30px;
+      border-bottom:1px solid var(--sp-line);
+      align-items:start;
+    }
+    .simple-mini-item:last-child{border-bottom:0;}
+    .simple-mini-item > span{
+      font-size:.72rem;
+      letter-spacing:.16em;
+      opacity:.45;
+      padding-top:4px;
+    }
+    .simple-mini-item small{
+      display:block;
+      margin-bottom:7px;
+      font-size:.68rem;
+      letter-spacing:.16em;
+      opacity:.48;
+    }
+    .simple-mini-item strong{
+      display:block;
+      font-weight:400;
+      font-size:1.05rem;
+      letter-spacing:.06em;
+    }
+    .simple-mini-item p{
+      margin:8px 0 0;
+      color:var(--sp-muted);
+      font-size:.9rem;
+      line-height:1.9;
+    }
+    .simple-sheet-note{
+      margin-top:24px;
+      padding:22px 24px;
+      text-align:center;
+      border:1px solid rgba(180,205,255,.11);
+      background:rgba(7,16,36,.10);
+      color:var(--sp-muted);
+      font-size:.9rem;
+      line-height:2;
+    }
+    .simple-sheet-note strong{font-weight:400;color:var(--sp-text);}
+
     .simple-final{
       width:min(900px,calc(100% - 48px));
       margin:0 auto;
@@ -242,6 +294,8 @@
       .simple-flow{padding-left:22px;}
       .simple-flow-item{padding-left:25px;}
       .simple-note{padding:24px 20px;}
+      .simple-mini-item{grid-template-columns:42px 1fr;gap:14px;padding:24px 20px;}
+      .simple-sheet-note{padding:20px 16px;}
     }
   </style>
 </head>
@@ -382,14 +436,48 @@
       </div>
     </section>
 
-    <section class="simple-section">
-      <p class="simple-section-label">YOUR STAR</p>
-      <h2>「星のかけら」について</h2>
+    <section class="simple-section simple-sheet-section">
+      <p class="simple-section-label">YOUR FIRST STAR</p>
+      <h2>シンプルプランの「星のかけら」</h2>
       <p class="simple-section-lead">
-        うまく言葉にできなくても大丈夫です。<br>
-        好きなものや思い出、憧れ、なんとなく残したい感覚。<br>
-        あなたからもらった小さな「かけら」を集めて、ひとつの作品にします。
+        シンプルプランでは、星詠をはじめて体験していただくために、
+        本編よりも少しだけ簡単な「星のかけら」をご用意しています。<br>
+        すべてをきれいに言葉にする必要はありません。
+        あなたが伝えたいことを、できるところからお聞かせください。
       </p>
+
+      <div class="simple-mini-sheet">
+        <div class="simple-mini-item">
+          <span>01</span>
+          <div>
+            <small>ABOUT YOU</small>
+            <strong>あなたについて</strong>
+            <p>お名前・呼ばれたい名前／今回描いてほしいもの／髪型・髪色・服装など</p>
+          </div>
+        </div>
+        <div class="simple-mini-item">
+          <span>02</span>
+          <div>
+            <small>LIKES</small>
+            <strong>好きなもの</strong>
+            <p>好きな色／好きなもの・場所／好きな雰囲気</p>
+          </div>
+        </div>
+        <div class="simple-mini-item">
+          <span>03</span>
+          <div>
+            <small>THIS PIECE</small>
+            <strong>今回の作品について</strong>
+            <p>どんな雰囲気にしたいか／入れてほしいもの／入れてほしくないもの／参考画像など</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="simple-sheet-note">
+        <strong>あなたからもらった小さな「かけら」を集めて、ひとつの作品にします。</strong><br>
+        うまく言葉にできなくても大丈夫です。
+      </div>
+
       <div class="simple-sheet">
         <a href="star-sheet.html">星のかけらを見る →</a>
       </div>
