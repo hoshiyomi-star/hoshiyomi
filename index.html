@@ -1034,6 +1034,92 @@
         max-width: 420px;
       }
     }
+
+    /* 07｜サービスカード：横書きで情報を読みやすく */
+    #services .service-grid {
+      width: min(1120px, calc(100% - 48px));
+      margin: 62px auto 0;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    #services .service-card {
+      min-height: 350px;
+      padding: 38px 30px 34px;
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    #services .service-number,
+    #services .service-card h3,
+    #services .service-lead,
+    #services .service-price-overview,
+    #services .service-note {
+      text-align: left;
+    }
+
+    #services .service-card h3 {
+      margin-bottom: 18px;
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    #services .service-lead {
+      max-width: none;
+      min-height: 5.2em;
+      margin: 0 0 22px;
+      font-size: .82rem;
+      line-height: 2;
+    }
+
+    #services .service-price-overview {
+      margin-top: auto;
+      font-size: 1rem;
+    }
+
+    #services .service-note {
+      max-width: none;
+      min-height: 3.4em;
+      margin: 5px 0 0;
+      font-size: .72rem;
+      line-height: 1.8;
+    }
+
+    #services .service-detail-link {
+      align-self: flex-start;
+      margin-top: 23px;
+      font-size: .77rem;
+      letter-spacing: .1em;
+    }
+
+    @media (max-width: 900px) {
+      #services .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      #services .service-card {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #services .service-grid {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      #services .service-card {
+        min-height: 0;
+        padding: 32px 26px 30px;
+      }
+
+      #services .service-lead,
+      #services .service-note {
+        min-height: 0;
+      }
+    }
   </style>
 </head>
 
