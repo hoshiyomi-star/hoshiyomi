@@ -4,236 +4,236 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>星詠｜返礼品の星</title>
-
 <style>
-*{
-  box-sizing:border-box;
-}
-
-html,body{
-  margin:0;
-  padding:0;
-  min-height:100%;
-}
-
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
 body{
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+  overflow-x:hidden;
   color:#edf3ff;
-  font-family:
-    "Noto Serif JP",
-    "Yu Mincho",
-    "Hiragino Mincho ProN",
-    serif;
-
+  font-family:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
   background:
-    radial-gradient(
-      circle at 50% 45%,
-      rgba(90,120,190,.16) 0%,
-      rgba(20,35,75,.12) 28%,
-      rgba(4,9,22,0) 58%
-    ),
-    linear-gradient(
-      180deg,
-      #020611 0%,
-      #071329 48%,
-      #030817 100%
-    );
+    radial-gradient(ellipse at 50% 38%,rgba(65,100,175,.12),transparent 48%),
+    linear-gradient(180deg,#020611 0%,#07152d 55%,#030817 100%);
 }
 
-/* 星 */
-body::before,
-body::after{
-  content:"";
+/* 静かな星空 */
+.sky{
   position:fixed;
   inset:0;
   pointer-events:none;
+  overflow:hidden;
+}
+.sky::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.28;
   background-image:
-    radial-gradient(circle, rgba(220,235,255,.7) 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(170,200,255,.45) 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(255,255,255,.35) .8px, transparent 1.3px);
-  background-size:
-    170px 170px,
-    240px 240px,
-    310px 310px;
-  background-position:
-    20px 30px,
-    80px 120px,
-    150px 60px;
-  opacity:.35;
+    radial-gradient(circle at 14% 17%,rgba(235,243,255,.9) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 83% 26%,rgba(205,225,255,.65) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 73% 67%,rgba(225,238,255,.65) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 24% 72%,rgba(195,220,255,.5) 0 1px,transparent 1.8px);
+}
+.nebula{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 78% 30%,rgba(80,105,180,.13),transparent 34%),
+    radial-gradient(ellipse at 20% 63%,rgba(70,100,175,.10),transparent 35%);
+  filter:blur(18px);
 }
 
-body::after{
-  opacity:.18;
-  animation:twinkle 6s ease-in-out infinite alternate;
+/* ごく少数の流星 */
+.meteor{
+  position:absolute;
+  top:-90px;
+  width:1px;
+  height:55px;
+  opacity:0;
+  border-radius:999px;
+  background:linear-gradient(to bottom,transparent,rgba(225,237,255,.78),#fff);
+  box-shadow:0 0 7px rgba(175,205,255,.38);
+  transform:rotate(var(--angle));
+  animation:meteor var(--time) linear var(--delay) infinite;
+}
+@keyframes meteor{
+  0%,12%{opacity:0;transform:translate(0,0) rotate(var(--angle))}
+  18%{opacity:.42}
+  72%{opacity:.42}
+  100%{opacity:0;transform:translate(var(--drift),115vh) rotate(var(--angle))}
 }
 
-@keyframes twinkle{
-  from{opacity:.12;}
-  to{opacity:.28;}
-}
-
-.success-wrap{
-  width:min(720px, calc(100% - 40px));
-  text-align:center;
+.page{
   position:relative;
   z-index:2;
-  padding:60px 30px;
+  width:min(760px,calc(100% - 36px));
+  margin:auto;
+  padding:78px 20px 55px;
+  text-align:center;
 }
 
-.success-wrap::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:520px;
-  height:520px;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(
-    circle,
-    rgba(130,160,230,.12),
-    rgba(130,160,230,0) 70%
-  );
-  pointer-events:none;
-}
-
-.star{
-  position:relative;
-  margin:0 auto 34px;
-  width:9px;
-  height:9px;
+.emblem{
+  width:52px;height:52px;
+  margin:0 auto 38px;
+  border:1px solid rgba(190,215,255,.38);
   border-radius:50%;
-  background:#eef5ff;
-  box-shadow:
-    0 0 8px rgba(220,235,255,.9),
-    0 0 24px rgba(150,190,255,.55);
+  position:relative;
+  opacity:.82;
 }
-
-.star::before,
-.star::after{
+.emblem::before,.emblem::after{
   content:"";
   position:absolute;
-  left:50%;
-  top:50%;
+  left:50%;top:50%;
+  background:rgba(215,230,255,.58);
   transform:translate(-50%,-50%);
-  background:rgba(210,230,255,.6);
 }
-
-.star::before{
-  width:70px;
-  height:1px;
-}
-
-.star::after{
-  width:1px;
-  height:70px;
+.emblem::before{width:70px;height:1px}
+.emblem::after{width:1px;height:70px}
+.emblem span{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:19px;
 }
 
 h1{
-  position:relative;
-  margin:0 0 28px;
-  font-size:clamp(25px,5vw,40px);
+  margin:0 0 32px;
+  font-size:clamp(23px,4vw,35px);
   font-weight:400;
-  letter-spacing:.12em;
-  line-height:1.8;
+  letter-spacing:.08em;
+  line-height:1.9;
+  text-shadow:0 0 18px rgba(150,190,255,.10);
 }
-
 .lead{
-  position:relative;
-  margin:0 auto 28px;
-  font-size:16px;
-  line-height:2.2;
+  margin:0 0 36px;
+  font-size:15px;
+  line-height:2.15;
   letter-spacing:.08em;
 }
 
 .notice{
-  position:relative;
-  margin:0 auto 34px;
-  max-width:600px;
-  padding:25px 25px;
-  border:1px solid rgba(170,195,235,.18);
-  background:rgba(8,18,42,.38);
-  border-radius:10px;
+  max-width:650px;
+  margin:0 auto 42px;
+  padding:29px 26px;
+  border:1px solid rgba(180,205,245,.22);
+  border-radius:12px;
+  background:rgba(5,17,43,.38);
+  backdrop-filter:blur(5px);
   font-size:14px;
-  line-height:2;
-  letter-spacing:.06em;
+  line-height:2.05;
+  letter-spacing:.04em;
 }
-
 .notice strong{
   display:block;
-  margin-bottom:10px;
-  color:#dfeaff;
+  margin-bottom:14px;
   font-weight:500;
 }
-
-.final-message{
+.divider{
+  width:120px;
+  height:1px;
+  margin:22px auto;
+  background:linear-gradient(90deg,transparent,rgba(220,235,255,.58),transparent);
   position:relative;
-  margin:35px 0 40px;
+}
+.divider::after{
+  content:"✦";
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-54%);
+  padding:0 8px;
+  background:#07152d;
+  color:#e8f1ff;
+  font-size:14px;
+}
+
+.final{
+  margin:0 0 30px;
   font-size:16px;
+  letter-spacing:.10em;
   line-height:2;
-  letter-spacing:.12em;
 }
 
-.return-link{
-  position:relative;
-  display:inline-block;
-  padding:12px 24px;
-  color:#dfeaff;
+.return{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  min-width:245px;
+  padding:14px 28px;
+  color:#e9f2ff;
   text-decoration:none;
-  font-size:13px;
-  letter-spacing:.1em;
-  border:1px solid rgba(180,205,245,.28);
+  border:1px solid rgba(195,220,255,.42);
   border-radius:999px;
-  background:rgba(8,18,42,.35);
-  transition:
-    background .3s ease,
-    border-color .3s ease,
-    box-shadow .3s ease;
+  background:rgba(8,20,48,.35);
+  box-shadow:0 0 20px rgba(120,170,245,.06);
+  font-size:14px;
+  letter-spacing:.12em;
+  transition:.3s ease;
 }
-
-.return-link:hover{
-  background:rgba(80,110,170,.18);
-  border-color:rgba(200,220,255,.5);
-  box-shadow:0 0 20px rgba(130,170,230,.12);
+.return:hover{
+  background:rgba(80,110,180,.15);
+  border-color:rgba(220,235,255,.68);
+  box-shadow:0 0 26px rgba(130,180,255,.13);
+  transform:translateY(-2px);
 }
+.return::before{content:"✦";font-size:16px}
 
 .brand{
-  position:relative;
-  margin-top:42px;
+  margin-top:40px;
   font-size:11px;
-  letter-spacing:.2em;
-  opacity:.55;
+  letter-spacing:.20em;
+  opacity:.48;
+}
+
+.sea{
+  position:fixed;
+  z-index:0;
+  left:0;right:0;bottom:0;
+  height:22vh;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,transparent,rgba(3,12,30,.25) 28%,rgba(2,8,21,.92)),
+    repeating-linear-gradient(
+      178deg,
+      transparent 0 11px,
+      rgba(180,210,255,.035) 12px 13px,
+      transparent 14px 25px
+    );
+}
+.sea::after{
+  content:"";
+  position:absolute;
+  left:50%;top:18%;
+  width:40%;
+  height:35%;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse,rgba(190,220,255,.13),transparent 70%);
+  filter:blur(8px);
 }
 
 @media(max-width:600px){
-  .success-wrap{
-    padding:45px 20px;
-  }
-
-  h1{
-    font-size:24px;
-  }
-
-  .lead,
-  .final-message{
-    font-size:14px;
-  }
-
-  .notice{
-    padding:20px 18px;
-  }
+  .page{padding:58px 10px 42px}
+  h1{font-size:23px;line-height:1.85}
+  .lead,.final{font-size:14px}
+  .notice{padding:22px 17px;font-size:13px}
+  .return{min-width:225px}
 }
 </style>
 </head>
 
 <body>
+<div class="sky">
+  <div class="nebula"></div>
+  <span class="meteor" style="left:18%;--time:15s;--delay:-4s;--drift:28px;--angle:3deg"></span>
+  <span class="meteor" style="left:79%;--time:19s;--delay:-11s;--drift:-35px;--angle:-4deg"></span>
+</div>
 
-<main class="success-wrap">
+<div class="sea"></div>
 
-  <div class="star"></div>
+<main class="page">
+  <div class="emblem"><span>✦</span></div>
 
   <h1>
     あなたの大切な想いから生まれる、<br>
@@ -246,29 +246,29 @@ h1{
     誰かを想う気持ちをお預かりします。
   </p>
 
-  <div class="notice">
+  <section class="notice">
     <strong>この時点では、ご依頼の確定ではありません。</strong>
 
     ご依頼内容や納期、制作について確認が必要な場合は、<br>
-    ご入力いただいたメールアドレスへご連絡いたします。<br><br>
+    ご入力いただいたメールアドレスへご連絡いたします。
+
+    <div class="divider"></div>
 
     内容を確認したうえで、<br>
     後日正式な料金・納期などをご案内します。
-  </div>
+  </section>
 
-  <p class="final-message">
+  <p class="final">
     あなたの星が、誰かのもとへ届きますように。
   </p>
 
-  <a class="return-link" href="index.html">
-    星の海へ戻る →
-  </a>
+  <a class="return" href="index.html">星の海へ戻る →</a>
 
-  <div class="brand">
-    ― 星詠｜HOSHIYOMI ―
-  </div>
-
+  <div class="brand">― 星詠｜HOSHIYOMI ―</div>
 </main>
 
+<script>
+/* 画面には2本だけ、かなり低頻度で流星が現れます */
+</script>
 </body>
 </html>
