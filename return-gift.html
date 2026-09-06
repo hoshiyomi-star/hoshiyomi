@@ -505,7 +505,7 @@ body.return-gift-soft::after{
 <header class="hero">
   <p class="label">04｜GIFT STAR</p>
   <h1>返礼品制作</h1>
-  <div class="hero-line"></div>
+  
   <p class="hero-lead">あなたの星を、<br>あなたを支える人へ。</p>
   <p class="hero-copy">
     イベントや企画、活動の節目に。<br>
@@ -681,14 +681,31 @@ body.return-gift-soft::after{
 
 
 
-<section class="cta">
+<section class="cta" style="text-align:center;">
   <p>
     内容がまだ決まっていなくても大丈夫です。<br>
     まずは、あなたの企画について聞かせてください。
   </p>
-  <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;">
-    <a class="return-submit" href="return-gift-form.html" style="display:inline-block;padding:14px 30px;text-decoration:none;">返礼品の星を託す →</a>
-    <a class="back" href="index.html#contact-guide">← 星の海へ戻る</a>
+
+  <div class="form-entry" style="max-width:760px;margin:42px auto 65px;text-align:center;">
+    <p class="section-label">FOR REQUEST</p>
+    <h2>返礼品制作をご依頼の方へ</h2>
+    <p style="line-height:2;margin:18px 0 28px;">
+      返礼品制作をご依頼される方は、<br>
+      <strong>こちらのフォームから必要事項をご記載ください。</strong><br>
+      内容を確認したうえで、制作内容・料金・納期についてご案内します。
+    </p>
+    <a class="return-submit" href="return-gift-form.html"
+       style="display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:14px 34px;min-width:260px;text-decoration:none;line-height:1.45;">
+      <span style="font-size:1.05em;">返礼品の星を託す</span>
+      <span style="font-size:.82em;opacity:.9;">返礼品フォームはこちら →</span>
+    </a>
+  </div>
+
+  
+</section>
+
+
   </div>
 </section>
 
@@ -704,14 +721,14 @@ body.return-gift-soft::after{
     <p class="star-menu-label">HOSHIYOMI</p>
     <h2>星の海</h2>
 
-    <div class="star-menu-line"></div>
+    
 
     <a href="index.html#services">01｜星をつくる　｜ サービス一覧</a>
     <a href="benefits.html">02｜星を届ける　｜ 活用・特典</a>
     <a href="index.html#flow">03｜ご依頼の流れ　｜ お申し込みの手順</a>
     <a href="index.html#contact-guide">04｜最後の案内　｜ はじめての方へ</a>
 
-    <div class="star-menu-line"></div>
+    
 
     <a href="return-gift-form.html">返礼品の星を託す　｜ お申し込みフォーム</a>
 
@@ -735,18 +752,6 @@ body.return-gift-soft::after{
 })();
 </script>
 
-</div>
-
-
-
-
-    <div class="confirm-final-check"><label><input type="checkbox" id="returnFinalConfirm">入力内容を確認し、この内容で星詠へ送信することを確認しました。</label></div>
-    <div class="confirm-modal-actions">
-      <button class="confirm-edit" id="returnConfirmEdit" type="button">入力内容を修正する</button>
-      <button class="confirm-send" id="returnConfirmSend" type="button">この内容で送信する →</button>
-    </div>
-    <p class="confirm-note">送信後、入力された返信用メールアドレスへ星詠からご連絡します。</p>
-  </div>
 </div>
 </body>
 </html>
