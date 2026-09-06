@@ -562,6 +562,139 @@
 }
 </style>
 
+
+<style id="delivery-mobile-layout-fix">
+/* 星を届ける｜スマホで横書き・画面内に完全に収める */
+@media screen and (max-width: 760px) {
+  #delivery,
+  #delivery * {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #delivery {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    overflow: hidden !important;
+  }
+
+  #delivery .about-content {
+    width: min(100%, 680px) !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    display: block !important;
+    text-align: center !important;
+  }
+
+  #delivery .section-label {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto 18px !important;
+    text-align: center !important;
+    line-height: 1.6 !important;
+    letter-spacing: .16em !important;
+  }
+
+  #delivery .about-content h2 {
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
+    letter-spacing: .08em !important;
+  }
+
+  #delivery .about-content .about-line {
+    width: 48px !important;
+    height: 1px !important;
+    margin: 22px auto !important;
+  }
+
+  #delivery .about-lead {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    line-height: 2 !important;
+  }
+
+  #delivery .delivery-message {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    margin: 28px auto 0 !important;
+    text-align: center !important;
+    line-height: 2 !important;
+  }
+
+  #delivery .delivery-benefits-link {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 30px auto 8px !important;
+    text-align: center !important;
+    overflow: visible !important;
+  }
+
+  #delivery .delivery-benefits-link a {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  #delivery .delivery-points {
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 40px auto 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    overflow: visible !important;
+  }
+
+  #delivery .delivery-point {
+    width: 100% !important;
+    min-height: 0 !important;
+    padding: 24px 8px !important;
+    border: 0 !important;
+    border-top: 1px solid rgba(180,205,255,.14) !important;
+    display: block !important;
+    text-align: center !important;
+  }
+
+  #delivery .delivery-point:last-child {
+    border-bottom: 1px solid rgba(180,205,255,.10) !important;
+  }
+
+  #delivery .delivery-point h3 {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 0 10px !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+
+  #delivery .delivery-point p {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: .84rem !important;
+    line-height: 1.9 !important;
+    text-align: center !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
