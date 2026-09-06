@@ -563,225 +563,151 @@
 </style>
 
 
-<style id="delivery-mobile-layout-fix">
-/* 星を届ける｜スマホで横書き・画面内に完全に収める */
+<style id="delivery-mobile-layout-final">
+/* 星を届ける｜スマホ専用レイアウト
+   PCの縦書きデザインは変更せず、スマホだけ読みやすい1列構成にする */
 @media screen and (max-width: 760px) {
-  #delivery,
-  #delivery * {
-    writing-mode: horizontal-tb !important;
-    text-orientation: mixed !important;
-    min-width: 0 !important;
+  section#delivery.delivery-overview {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
     box-sizing: border-box !important;
   }
 
-  #delivery {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    overflow: hidden !important;
-  }
-
-  #delivery .about-content {
+  section#delivery.delivery-overview > .about-content {
     width: min(100%, 680px) !important;
-    max-width: 100% !important;
+    max-width: calc(100% - 36px) !important;
     margin: 0 auto !important;
-    padding: 0 !important;
     display: block !important;
+    writing-mode: horizontal-tb !important;
     text-align: center !important;
+    box-sizing: border-box !important;
   }
 
-  #delivery .section-label {
-    width: auto !important;
-    max-width: 100% !important;
-    margin: 0 auto 18px !important;
-    text-align: center !important;
-    line-height: 1.6 !important;
-    letter-spacing: .16em !important;
+  section#delivery.delivery-overview > .about-content > * {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
   }
 
-  #delivery .about-content h2 {
+  section#delivery .about-content h2 {
     width: auto !important;
     max-width: 100% !important;
     max-height: none !important;
-    margin: 0 auto !important;
-    text-align: center !important;
-    line-height: 1.5 !important;
+    margin: 22px auto 0 !important;
+    line-height: 1.35 !important;
     letter-spacing: .08em !important;
+    text-align: center !important;
   }
 
-  #delivery .about-content .about-line {
+  section#delivery .about-content .about-line {
     width: 48px !important;
     height: 1px !important;
-    margin: 22px auto !important;
+    margin: 24px auto !important;
   }
 
-  #delivery .about-lead {
-    width: 100% !important;
+  section#delivery .about-content .about-lead {
     max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
+    margin: 0 auto !important;
     line-height: 2 !important;
+    text-align: center !important;
   }
 
-  #delivery .delivery-message {
+  section#delivery .delivery-message {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 620px !important;
     max-height: none !important;
-    margin: 28px auto 0 !important;
-    text-align: center !important;
+    margin: 30px auto 0 !important;
     line-height: 2 !important;
-  }
-
-  #delivery .delivery-benefits-link {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 30px auto 8px !important;
     text-align: center !important;
-    overflow: visible !important;
+    white-space: normal !important;
+    writing-mode: horizontal-tb !important;
   }
 
-  #delivery .delivery-benefits-link a {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    white-space: nowrap !important;
+  section#delivery .delivery-message br {
+    display: none !important;
   }
 
-  #delivery .delivery-points {
+  section#delivery .delivery-benefits-link {
     width: 100% !important;
-    max-width: 680px !important;
-    margin: 40px auto 0 !important;
+    margin: 30px auto 0 !important;
+    text-align: center !important;
+  }
+
+  section#delivery .delivery-benefits-link a {
+    max-width: calc(100% - 36px) !important;
+    min-width: 0 !important;
+    padding: 11px 18px !important;
+    font-size: .86rem !important;
+    box-sizing: border-box !important;
+  }
+
+  section#delivery .delivery-points {
+    width: min(100%, 680px) !important;
+    max-width: calc(100% - 36px) !important;
+    margin: 42px auto 0 !important;
+    padding: 0 !important;
     display: grid !important;
     grid-template-columns: 1fr !important;
+    grid-auto-flow: row !important;
     gap: 0 !important;
     overflow: visible !important;
+    box-sizing: border-box !important;
   }
 
-  #delivery .delivery-point {
+  section#delivery .delivery-point {
     width: 100% !important;
+    min-width: 0 !important;
     min-height: 0 !important;
-    padding: 24px 8px !important;
+    margin: 0 !important;
+    padding: 26px 8px 30px !important;
     border: 0 !important;
     border-top: 1px solid rgba(180,205,255,.14) !important;
     display: block !important;
     text-align: center !important;
+    box-sizing: border-box !important;
+    writing-mode: horizontal-tb !important;
   }
 
-  #delivery .delivery-point:last-child {
+  section#delivery .delivery-point:last-child {
     border-bottom: 1px solid rgba(180,205,255,.10) !important;
   }
 
-  #delivery .delivery-point h3 {
-    width: auto !important;
-    max-width: 100% !important;
-    margin: 0 0 10px !important;
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-    text-align: center !important;
-  }
-
-  #delivery .delivery-point p {
-    width: auto !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    font-size: .84rem !important;
-    line-height: 1.9 !important;
-    text-align: center !important;
-  }
-}
-</style>
-
-
-<style id="delivery-mobile-readable-final">
-@media screen and (max-width: 760px) {
-  #delivery .about-content {
-    width: min(100%, 680px) !important;
-    margin: 0 auto !important;
-  }
-  #delivery .about-content h2 {
-    writing-mode: horizontal-tb !important;
-    text-orientation: mixed !important;
-    width: auto !important;
-    max-height: none !important;
-    text-align: center !important;
-    margin: 18px auto 0 !important;
-    line-height: 1.5 !important;
-  }
-  #delivery .delivery-message {
-    writing-mode: horizontal-tb !important;
-    text-orientation: mixed !important;
-    width: min(100%, 620px) !important;
-    max-height: none !important;
-    margin: 32px auto 0 !important;
-    padding: 0 8px !important;
-    box-sizing: border-box !important;
-    text-align: center !important;
-    line-height: 2 !important;
-  }
-  #delivery .delivery-points {
-    writing-mode: horizontal-tb !important;
-    width: min(100%, 620px) !important;
-    max-width: none !important;
-    margin: 42px auto 0 !important;
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
-    overflow: visible !important;
-  }
-  #delivery .delivery-point {
-    writing-mode: horizontal-tb !important;
+  section#delivery .delivery-point h3,
+  section#delivery .delivery-point p {
     width: 100% !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-    box-sizing: border-box !important;
-    padding: 26px 18px 28px !important;
-    border: 0 !important;
-    border-top: 1px solid rgba(180,205,255,.14) !important;
-    text-align: center !important;
-  }
-  #delivery .delivery-point:last-child {
-    border-bottom: 1px solid rgba(180,205,255,.10) !important;
-  }
-  #delivery .delivery-point h3,
-  #delivery .delivery-point p {
-    writing-mode: horizontal-tb !important;
-    text-orientation: mixed !important;
+    max-width: 100% !important;
     max-height: none !important;
-    width: auto !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
     white-space: normal !important;
     word-break: normal !important;
-    overflow-wrap: anywhere !important;
+    overflow-wrap: break-word !important;
   }
-  #delivery .delivery-point h3 {
+
+  section#delivery .delivery-point h3 {
     margin-top: 0 !important;
-    font-size: 1rem !important;
-    line-height: 1.7 !important;
-  }
-  #delivery .delivery-point p {
-    margin-top: 10px !important;
-    font-size: .84rem !important;
-    line-height: 2 !important;
+    margin-bottom: 10px !important;
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
     text-align: center !important;
   }
-  #delivery .star-sea-entry {
-    writing-mode: horizontal-tb !important;
-    width: min(100%, 620px) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+
+  section#delivery .delivery-point p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: .86rem !important;
+    line-height: 1.95 !important;
+    text-align: center !important;
   }
-  #delivery .star-sea-entry a {
-    writing-mode: horizontal-tb !important;
-    white-space: nowrap !important;
-    display: inline-block !important;
+
+  section#delivery .delivery-point p br {
+    display: none !important;
   }
 }
 </style>
+
 </head>
 
 <body>
