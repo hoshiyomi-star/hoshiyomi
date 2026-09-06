@@ -1166,7 +1166,7 @@ returnConfirmSend.addEventListener("click", async ()=>{
     data.realityPermissionProofFile = returnRealityProof.files.length ? returnRealityProof.files[0].name : "";
     data.thirdPartyPermissionProofFile = returnThirdPartyProof.files.length ? returnThirdPartyProof.files[0].name : "";
     await fetch(RETURN_GIFT_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
-    closeConfirmModal(); form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; showReturnGiftSuccess();
+    closeConfirmModal(); form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; window.location.href = "return-gift-success-fantasy-with-back.html";
   }catch(error){status.textContent=error.message||"送信できませんでした。時間を置いて、もう一度お試しください。";}
   finally{returnConfirmSend.disabled=false; returnConfirmEdit.disabled=false;}
 });
