@@ -506,9 +506,377 @@ body::after{
 }
 </style>
 
+
+<style id="hoshiyomi-price-clarity-v1">
+.price-section h3{
+  margin:28px 0 12px;
+  color:rgba(219,228,245,.88);
+  font-size:1rem;
+  font-weight:400;
+  letter-spacing:.06em;
+}
+.price-note,
+.payment-list,
+.delivery-block,
+.cancel-table{
+  margin-top:22px;
+}
+.price-note{
+  padding:22px 24px;
+  border:1px solid rgba(171,198,239,.12);
+  border-radius:16px;
+  background:rgba(9,27,58,.28);
+}
+.price-note h3{margin:0 0 10px}
+.price-note p{margin:0;color:rgba(201,213,233,.75);line-height:2.05}
+.preorder-list{
+  margin:22px 0 0;
+  padding:18px 24px 18px 1.55em;
+  border:1px solid rgba(174,151,220,.13);
+  border-radius:16px;
+  background:rgba(10,25,53,.30);
+}
+.preorder-list li{
+  margin-bottom:9px;
+  color:rgba(205,216,235,.78);
+  line-height:2.15;
+}
+.preorder-list li:last-child{margin-bottom:0}
+.price-cta{
+  margin:54px 0 0;
+  text-align:center;
+}
+.price-cta a{
+  display:inline-block;
+  padding:13px 26px;
+  border:1px solid rgba(181,157,224,.20);
+  border-radius:999px;
+  color:rgba(222,232,248,.88);
+  text-decoration:none;
+  background:rgba(255,255,255,.018);
+  letter-spacing:.08em;
+  transition:.25s ease;
+}
+.price-cta a:hover{
+  border-color:rgba(202,180,239,.40);
+  box-shadow:0 0 26px rgba(139,89,194,.12);
+  transform:translateY(-1px);
+}
+.combination-limit-note{
+  border-color:rgba(202,174,229,.20);
+  background:
+    radial-gradient(circle at 88% 12%,rgba(150,88,211,.10),transparent 42%),
+    rgba(10,24,52,.32);
+}
+.combination-limit-note h3{
+  color:rgba(218,199,239,.90);
+}
+.combination-limit-note strong{
+  color:rgba(226,217,243,.96);
+}
+@media(max-width:650px){
+  .price-note{padding:20px 18px}
+  .preorder-list{padding:17px 16px 17px 1.4em}
+  .price-cta{margin-top:44px}
+}
+</style>
+
+
+<style id="hoshiyomi-deep-space-background">
+html, body { background:#020713 !important; }
+body {
+  position:relative;
+  overflow-x:hidden;
+  background:
+    radial-gradient(ellipse at 72% 16%, rgba(123,155,255,.24), transparent 34%),
+    radial-gradient(ellipse at 20% 70%, rgba(92,104,220,.18), transparent 38%),
+    linear-gradient(180deg,#010611 0%,#06122c 52%,#071a35 100%) !important;
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:-12%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 7% 12%, #dce7ff 0 1.3px, transparent 2px),
+    radial-gradient(circle at 15% 30%, #b8d1ff 0 1px, transparent 1.8px),
+    radial-gradient(circle at 25% 18%, #f1f5ff 0 1.2px, transparent 2px),
+    radial-gradient(circle at 36% 39%, #aac7ff 0 1.1px, transparent 1.9px),
+    radial-gradient(circle at 48% 10%, #e5edff 0 1.3px, transparent 2px),
+    radial-gradient(circle at 58% 31%, #b9d1ff 0 1px, transparent 1.8px),
+    radial-gradient(circle at 69% 12%, #f0f4ff 0 1.2px, transparent 2px),
+    radial-gradient(circle at 82% 28%, #b9cfff 0 1.1px, transparent 1.9px),
+    radial-gradient(circle at 94% 15%, #e8efff 0 1.2px, transparent 2px),
+    radial-gradient(circle at 11% 62%, #b9d0ff 0 1px, transparent 1.8px),
+    radial-gradient(circle at 29% 78%, #eef3ff 0 1.2px, transparent 2px),
+    radial-gradient(circle at 44% 62%, #b6cfff 0 1px, transparent 1.8px),
+    radial-gradient(circle at 63% 76%, #e4ecff 0 1.2px, transparent 2px),
+    radial-gradient(circle at 78% 60%, #afc9ff 0 1px, transparent 1.8px),
+    radial-gradient(circle at 91% 82%, #e9f0ff 0 1.2px, transparent 2px);
+  opacity:.78;
+}
+body::after {
+  content:"";
+  position:fixed;
+  width:150vw;
+  height:72vh;
+  left:-25vw;
+  top:22vh;
+  z-index:-1;
+  pointer-events:none;
+  transform:rotate(-17deg);
+  background:
+    radial-gradient(ellipse at center,
+      rgba(117,151,255,.32) 0%,
+      rgba(112,125,225,.24) 22%,
+      rgba(96,103,200,.15) 42%,
+      rgba(68,83,166,.08) 58%,
+      transparent 72%);
+  filter:blur(14px);
+}
+.hoshiyomi-star-sea {
+  position:fixed;
+  left:0; right:0; bottom:-5vh;
+  height:38vh;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(66,160,225,.28), transparent 62%),
+    radial-gradient(ellipse at 50% 80%, rgba(89,116,224,.12), transparent 65%),
+    linear-gradient(180deg,transparent,rgba(44,106,181,.13));
+  filter:blur(8px);
+}
+.hoshiyomi-meteor {
+  position:fixed;
+  top:21%; right:9%;
+  width:150px; height:2px;
+  z-index:-1;
+  pointer-events:none;
+  transform:rotate(-28deg);
+  background:linear-gradient(90deg,transparent,rgba(207,225,255,.78),rgba(151,190,255,.22),transparent);
+  box-shadow:0 0 9px rgba(160,200,255,.35);
+  opacity:.55;
+}
+</style>>
+
+<style id="hoshiyomi-sea-return-style">
+.hoshiyomi-sea-return{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:.65em !important;
+  box-sizing:border-box !important;
+  width:max-content !important;
+  max-width:calc(100% - 32px) !important;
+  min-height:46px !important;
+  padding:11px 22px !important;
+  margin:22px auto !important;
+  border:1px solid rgba(160,196,255,.55) !important;
+  border-radius:999px !important;
+  background:rgba(7,20,48,.78) !important;
+  color:#eaf2ff !important;
+  text-decoration:none !important;
+  font-size:.95rem !important;
+  font-weight:500 !important;
+  letter-spacing:.04em !important;
+  line-height:1.35 !important;
+  white-space:nowrap !important;
+  box-shadow:0 0 18px rgba(92,139,225,.12), inset 0 0 12px rgba(115,160,235,.05) !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+  transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease !important;
+}
+.hoshiyomi-sea-return:hover,
+.hoshiyomi-sea-return:focus-visible{
+  transform:translateY(-2px) !important;
+  border-color:rgba(181,211,255,.9) !important;
+  background:rgba(10,29,64,.9) !important;
+  box-shadow:0 0 24px rgba(103,158,244,.24), inset 0 0 14px rgba(132,179,255,.08) !important;
+  outline:none !important;
+}
+.hoshiyomi-sea-return span{
+  display:inline-block;
+  font-size:1.05em;
+  transition:transform .22s ease;
+}
+.hoshiyomi-sea-return:hover span,
+.hoshiyomi-sea-return:focus-visible span{
+  transform:translateX(3px);
+}
+@media (max-width:560px){
+  .hoshiyomi-sea-return{
+    min-height:44px !important;
+    padding:10px 18px !important;
+    font-size:.9rem !important;
+    max-width:calc(100% - 24px) !important;
+  }
+}
+</style>
+
+<style id="hoshiyomi-real-galaxy-background">
+html,body{
+  background:#020713 !important;
+}
+body{
+  position:relative;
+  overflow-x:hidden;
+  background:
+    radial-gradient(ellipse 65% 42% at 76% 23%, rgba(118,132,235,.30), transparent 68%),
+    radial-gradient(ellipse 58% 35% at 24% 55%, rgba(73,105,205,.20), transparent 70%),
+    radial-gradient(ellipse 70% 30% at 50% 91%, rgba(42,116,190,.22), transparent 72%),
+    linear-gradient(180deg,#010611 0%,#041027 42%,#071735 72%,#06182f 100%) !important;
+}
+
+/* 銀河の帯 */
+body::before{
+  content:"";
+  position:fixed;
+  z-index:-3;
+  pointer-events:none;
+  width:145vw;
+  height:70vh;
+  left:-22vw;
+  top:18vh;
+  transform:rotate(-17deg);
+  background:
+    radial-gradient(ellipse 55% 28% at 50% 50%,
+      rgba(146,151,245,.27) 0%,
+      rgba(93,117,224,.23) 28%,
+      rgba(73,87,187,.13) 52%,
+      transparent 76%);
+  filter:blur(18px);
+}
+
+/* 銀河中心の淡い光 */
+body::after{
+  content:"";
+  position:fixed;
+  z-index:-2;
+  pointer-events:none;
+  width:75vw;
+  height:75vw;
+  max-width:1000px;
+  max-height:1000px;
+  right:-12vw;
+  top:2vh;
+  background:
+    radial-gradient(circle,
+      rgba(209,198,255,.15) 0%,
+      rgba(143,157,245,.12) 18%,
+      rgba(76,103,207,.07) 38%,
+      transparent 67%);
+  filter:blur(20px);
+}
+
+/* 星の海 */
+.hoshiyomi-star-sea{
+  position:fixed;
+  z-index:-1;
+  left:0;
+  right:0;
+  bottom:-4vh;
+  height:34vh;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 100%,
+      rgba(86,170,230,.30),
+      rgba(55,119,194,.15) 38%,
+      transparent 72%),
+    linear-gradient(180deg,transparent 0%,rgba(23,73,132,.08) 42%,rgba(31,91,150,.20) 100%);
+  filter:blur(7px);
+}
+
+/* 控えめな星 */
+.hoshiyomi-real-stars{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.8;
+  background-image:
+    radial-gradient(circle at 8% 12%,rgba(225,235,255,.95) 0 1.3px,transparent 2.4px),
+    radial-gradient(circle at 17% 27%,rgba(180,211,255,.8) 0 1px,transparent 2px),
+    radial-gradient(circle at 28% 9%,rgba(240,244,255,.9) 0 1.2px,transparent 2.2px),
+    radial-gradient(circle at 39% 34%,rgba(174,202,255,.7) 0 1px,transparent 2px),
+    radial-gradient(circle at 52% 14%,rgba(230,239,255,.9) 0 1.2px,transparent 2.2px),
+    radial-gradient(circle at 63% 30%,rgba(190,213,255,.75) 0 1px,transparent 2px),
+    radial-gradient(circle at 75% 10%,rgba(236,243,255,.95) 0 1.2px,transparent 2.2px),
+    radial-gradient(circle at 88% 25%,rgba(175,204,255,.72) 0 1px,transparent 2px),
+    radial-gradient(circle at 95% 46%,rgba(229,238,255,.88) 0 1.2px,transparent 2.2px),
+    radial-gradient(circle at 12% 58%,rgba(184,212,255,.7) 0 1px,transparent 2px),
+    radial-gradient(circle at 25% 73%,rgba(228,238,255,.82) 0 1.2px,transparent 2.2px),
+    radial-gradient(circle at 44% 66%,rgba(175,204,255,.68) 0 1px,transparent 2px),
+    radial-gradient(circle at 59% 78%,rgba(226,237,255,.8) 0 1.1px,transparent 2.1px),
+    radial-gradient(circle at 79% 64%,rgba(180,209,255,.72) 0 1px,transparent 2px),
+    radial-gradient(circle at 91% 84%,rgba(235,242,255,.9) 0 1.2px,transparent 2.2px);
+}
+
+/* ごく薄い流星 */
+.hoshiyomi-real-meteor{
+  position:fixed;
+  z-index:-1;
+  top:22%;
+  right:12%;
+  width:135px;
+  height:1px;
+  transform:rotate(-30deg);
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(211,228,255,.72),transparent);
+  box-shadow:0 0 8px rgba(153,195,255,.32);
+  opacity:.52;
+}
+
+/* 水面の光 */
+.hoshiyomi-waterline{
+  position:fixed;
+  z-index:-1;
+  left:8%;
+  right:8%;
+  bottom:13vh;
+  height:1px;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(145,204,255,.18),rgba(220,237,255,.7),rgba(145,204,255,.18),transparent);
+  box-shadow:0 0 18px rgba(103,184,255,.18);
+  opacity:.7;
+}
+</style>
+
+<style id="hoshiyomi-linebreak-fix">
+/* 日本語の見出し・ボタン・料金名が意図せず途中で折れないようにする */
+h1, h2, h3,
+button,
+a.hoshiyomi-sea-return,
+.price-name,
+.price-value,
+.section-title,
+.section-heading,
+.card-title {
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+/* 料金・説明文は画面幅に合わせて自然に折り返す */
+p, li, td, .price-note, .description, .lead {
+  overflow-wrap: anywhere;
+}
+
+/* ボタンは常に一行 */
+.hoshiyomi-sea-return {
+  white-space: nowrap !important;
+}
+
+/* 小さい画面でも見出しが窮屈になりすぎない */
+@media (max-width: 560px) {
+  h1, h2 {
+    line-height: 1.55 !important;
+    word-break: keep-all !important;
+  }
+}
+</style>
 </head>
 
-<body>
+<body><div class="hoshiyomi-real-stars"></div><div class="hoshiyomi-star-sea"></div><div class="hoshiyomi-real-meteor"></div><div class="hoshiyomi-waterline"></div><div class="hoshiyomi-star-sea"></div><div class="hoshiyomi-meteor"></div>
 
   <main class="price-page">
 
@@ -580,6 +948,12 @@ body::after{
       <p>
         それぞれの料金を合算した金額が、基本的な制作料金となります。
       </p>
+
+      <div class="price-note combination-limit-note">
+        <h3>⚠ 料金の組み合わせについての注意</h3>
+        <p><strong>「料金の組み合わせ」という仕組み自体は、「あなたの姿」と「あなたの世界」のみ適用されます。</strong></p>
+        <p>ミニ色紙・アクリルチャーム・A4サイズ一枚絵などの作品については、この組み合わせ料金の対象外です。制作内容や仕様に応じて、別途お見積もりとなる場合があります。</p>
+      </div>
 
       <div class="price-example">
 
@@ -807,10 +1181,32 @@ body::after{
     </section>
 
 
+
+    <section class="price-section">
+      <p class="section-label">BEFORE ORDER</p>
+      <h2>ご依頼前に</h2>
+      <p>正式にご依頼いただく前に、以下の内容をご確認ください。</p>
+      <ul class="preorder-list">
+        <li>料金・制作内容をご確認ください。</li>
+        <li>注意事項をご確認ください。</li>
+        <li>使用する画像・キャラクター・ロゴ・素材などの権利関係をご確認ください。</li>
+        <li>REALITYなどのサービスに関係する素材を使用する場合は、各サービスの最新の利用規約・ガイドラインをご確認ください。</li>
+        <li>ご希望の内容や納期について、不明な点があれば制作開始前にご相談ください。</li>
+      </ul>
+      <div class="price-note">
+        <h3>正式な料金について</h3>
+        <p>掲載している料金は基本料金です。仕様・制作内容・追加作業などによって料金が変わる場合があります。ご依頼内容を確認したうえで、正式な料金と納期をご案内します。</p>
+      </div>
+    </section>
+
+    <div class="price-cta">
+      <a href="star-sheet.html">星のかけらへ →</a>
+    </div>
+
     <!-- 戻る -->
     <div class="page-back">
 
-      <a href="index.html">
+      <a href="index.html" class="hoshiyomi-sea-return">
         星の海へ戻る
       </a>
 
