@@ -425,7 +425,143 @@
       box-shadow:0 0 22px rgba(160,200,255,.28),0 0 42px rgba(130,170,255,.12);
       transform:translateY(-1px);
     }
-  </style>
+  
+    /* スマホでは「星を届ける」を横書きに戻す */
+    @media (max-width: 760px) {
+      #delivery .about-content h2,
+      #delivery .delivery-message,
+      #delivery .delivery-point h3,
+      #delivery .delivery-point p {
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+      }
+
+      #delivery .about-content h2 {
+        line-height: 1.5;
+        letter-spacing: .08em;
+      }
+
+      #delivery .delivery-message {
+        max-height: none;
+        margin: 34px auto 0;
+        line-height: 2.1;
+        text-align: center;
+      }
+
+      #delivery .delivery-points {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: min(100%, 760px);
+        margin-top: 48px;
+        overflow: visible;
+      }
+
+      #delivery .delivery-point {
+        width: auto;
+        min-width: 0;
+        min-height: 0;
+        padding: 26px 0 28px;
+        border-left: 0;
+        border-top: 1px solid rgba(180,205,255,.14);
+        text-align: left;
+        display: block;
+      }
+
+      #delivery .delivery-point:last-child {
+        border-right: 0;
+        border-bottom: 1px solid rgba(180,205,255,.10);
+      }
+
+      #delivery .delivery-point h3 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      #delivery .delivery-point p {
+        margin: 0;
+        font-size: .84rem;
+        line-height: 1.9;
+      }
+    }
+</style>
+
+<style id="delivery-mobile-horizontal-final">
+/* 星を届ける｜スマホ表示は必ず横書き */
+@media screen and (max-width: 760px) {
+  #delivery .about-content,
+  #delivery .about-content h2,
+  #delivery .delivery-message,
+  #delivery .delivery-points,
+  #delivery .delivery-point,
+  #delivery .delivery-point h3,
+  #delivery .delivery-point p,
+  #delivery .star-sea-entry,
+  #delivery .star-sea-entry-label,
+  #delivery .star-sea-entry h3,
+  #delivery .star-sea-entry p,
+  #delivery .star-sea-entry a {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+  }
+
+  #delivery .about-content {
+    display: block !important;
+  }
+
+  #delivery .about-content h2 {
+    width: auto !important;
+    max-height: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  #delivery .delivery-message {
+    max-height: none !important;
+    width: min(100%, 680px) !important;
+    margin: 34px auto 0 !important;
+    line-height: 2.1 !important;
+    text-align: center !important;
+  }
+
+  #delivery .delivery-points {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: min(100%, 760px) !important;
+    margin: 48px auto 0 !important;
+    overflow: visible !important;
+  }
+
+  #delivery .delivery-point {
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 28px 18px !important;
+    border-left: 0 !important;
+    border-bottom: 1px solid rgba(180,205,255,.14) !important;
+  }
+
+  #delivery .delivery-point:last-child {
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  #delivery .delivery-point h3,
+  #delivery .delivery-point p {
+    max-height: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #delivery .delivery-point p {
+    margin-top: 14px !important;
+    line-height: 2 !important;
+    text-align: center !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
