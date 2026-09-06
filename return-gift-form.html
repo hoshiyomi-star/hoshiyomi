@@ -505,25 +505,90 @@ body.return-gift-soft::after{
 .return-gift-form .confirm-list label > span a{display:inline;white-space:normal;}
 </style>
 
-<style id="return-success-style">
-.return-success{
-  margin:34px auto 0;max-width:760px;padding:34px 28px;
-  border:1px solid rgba(190,215,255,.18);border-radius:14px;
-  background:linear-gradient(145deg,rgba(12,27,57,.48),rgba(5,13,30,.38));
-  box-shadow:0 0 30px rgba(100,145,220,.07),inset 0 0 28px rgba(143,191,255,.025);
-  color:#c8d4e8;line-height:2;
+<style id="return-gift-success-style">
+.return-gift-success{
+  display:none;
+  min-height:70vh;
+  width:min(900px,calc(100% - 48px));
+  margin:0 auto;
+  padding:100px 24px 120px;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
 }
-.return-success p{margin:0 0 20px;}
-.return-success-title{color:#edf3ff;font-size:1.12rem;line-height:2;font-weight:400;letter-spacing:.08em;text-shadow:0 0 12px rgba(210,225,255,.18);}
-.return-success-important{color:#f4e8c8;font-weight:600;text-shadow:0 0 12px rgba(255,232,174,.18);}
-.return-success-final{margin-top:30px!important;color:#e7efff;font-size:1.02rem;letter-spacing:.08em;text-shadow:0 0 14px rgba(170,205,255,.18);}
-.return-success-sign{margin-bottom:0!important;color:#aebbd0;font-size:.82rem;letter-spacing:.08em;}
+.return-gift-success.is-visible{display:flex;}
+.return-gift-success-inner{width:min(720px,100%);}
+.return-gift-success .success-label{
+  margin:0 0 22px;
+  font-size:.76rem;
+  letter-spacing:.22em;
+  color:var(--blue);
+  opacity:.82;
+}
+.return-gift-success h2{
+  margin:0;
+  font-size:clamp(1.35rem,3vw,2rem);
+  font-weight:400;
+  line-height:2;
+  letter-spacing:.08em;
+}
+.return-gift-success .success-line{
+  width:42px;
+  height:1px;
+  margin:30px auto 34px;
+  background:rgba(200,220,255,.35);
+}
+.return-gift-success p{
+  margin:0 0 22px;
+  color:var(--muted);
+  line-height:2.2;
+  font-size:.92rem;
+}
+.return-gift-success .success-notice{
+  margin:34px auto;
+  padding:22px 24px;
+  border-left:1px solid rgba(180,205,255,.3);
+  border-right:1px solid rgba(180,205,255,.12);
+  background:rgba(7,16,36,.18);
+  line-height:2;
+  color:var(--muted);
+}
+.return-gift-success .success-notice strong{
+  display:block;
+  margin-bottom:8px;
+  color:#dce7fa;
+  font-weight:400;
+}
+.return-gift-success .success-final{
+  margin-top:42px;
+  color:#dce7fa;
+  font-size:1.02rem;
+  letter-spacing:.08em;
+}
+.return-gift-success .success-back{
+  display:inline-block;
+  margin-top:38px;
+  padding:13px 24px;
+  border:1px solid rgba(180,205,255,.22);
+  color:#dce7fa;
+  background:rgba(7,16,36,.24);
+  text-decoration:none;
+  transition:.2s ease;
+}
+.return-gift-success .success-back:hover{
+  border-color:rgba(180,205,255,.45);
+  background:rgba(7,16,36,.4);
+}
 @media(max-width:640px){
-  .return-success{padding:28px 20px;}
-  .return-success-title{font-size:1rem;}
-  .return-success br{display:none;}
+  .return-gift-success{
+    width:calc(100% - 28px);
+    padding:80px 14px 100px;
+  }
+  .return-gift-success h2{font-size:1.05rem;}
+  .return-gift-success br{display:none;}
 }
 </style>
+
 </head>
 <body class="return-gift-soft return-gift-form-page">
 <header class="site-header"><a class="site-logo" href="index.html">星詠</a></header>
@@ -799,6 +864,30 @@ body.return-gift-soft::after{
       <button class="return-submit" type="submit">返礼品の星を託す →</button>
       <p class="return-form-status" id="returnGiftStatus" aria-live="polite"></p>
     </form>
+
+<section id="returnGiftSuccess" class="return-gift-success" aria-hidden="true">
+  <div class="return-gift-success-inner">
+    <p class="success-label">RETURN GIFT｜RECEIVED</p>
+    <h2>あなたの大切な想いから生まれる、<br>返礼品の星の願い。<br>受け取りました。</h2>
+    <div class="success-line"></div>
+
+    <p>あなたから届いた、<br>誰かを想う気持ちをお預かりします。</p>
+
+    <p>ご依頼内容や納期、制作について確認が必要な場合は、<br>
+    ご入力いただいたメールアドレスへご連絡いたします。</p>
+
+    <div class="success-notice">
+      <strong>この時点では、ご依頼の確定ではありません。ご注意ください。</strong>
+      内容を確認したうえで、後日正式な料金・納期などをご案内します。
+    </div>
+
+    <p class="success-final">あなたの星が、誰かのもとへ届きますように。</p>
+    <p>― 星詠｜HOSHIYOMI</p>
+
+    <a class="success-back" href="index.html">星の海へ戻る →</a>
+  </div>
+</section>
+
   </div>
 </section>
 <div style="text-align:center;margin:40px 0 80px;"><a class="back" href="return-gift.html">← 返礼品制作へ戻る</a></div>
@@ -1044,6 +1133,17 @@ function closeConfirmModal(){
 returnConfirmEdit.addEventListener("click",closeConfirmModal);
 returnConfirmModal.addEventListener("click",e=>{if(e.target===returnConfirmModal) closeConfirmModal();});
 
+
+function showReturnGiftSuccess(){
+  const success = document.getElementById("returnGiftSuccess");
+  if(!success) return;
+  form.style.display = "none";
+  success.classList.add("is-visible");
+  success.setAttribute("aria-hidden","false");
+  if(status) status.textContent = "";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
 form.addEventListener("submit", e=>{
   e.preventDefault();
   if(!form.checkValidity()){form.reportValidity();return;}
@@ -1066,15 +1166,7 @@ returnConfirmSend.addEventListener("click", async ()=>{
     data.realityPermissionProofFile = returnRealityProof.files.length ? returnRealityProof.files[0].name : "";
     data.thirdPartyPermissionProofFile = returnThirdPartyProof.files.length ? returnThirdPartyProof.files[0].name : "";
     await fetch(RETURN_GIFT_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
-    closeConfirmModal(); form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; status.innerHTML=`<div class="return-success" role="status" aria-live="polite">
-  <p class="return-success-title">あなたの大切な想いから生まれる、返礼品の星の願い。<br>受け取りました。</p>
-  <p>あなたから届いた、<br>誰かを想う気持ちをお預かりします。</p>
-  <p>ご依頼内容や納期、制作について確認が必要な場合は、<br>ご入力いただいたメールアドレスへご連絡いたします。</p>
-  <p class="return-success-important">この時点では、ご依頼の確定ではありません。ご注意ください。</p>
-  <p>内容を確認したうえで、後日正式な料金・納期などをご案内します。</p>
-  <p class="return-success-final">あなたの星が、誰かのもとへ届きますように。</p>
-  <p class="return-success-sign">― 星詠｜HOSHIYOMI</p>
-</div>`;
+    closeConfirmModal(); form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; showReturnGiftSuccess();
   }catch(error){status.textContent=error.message||"送信できませんでした。時間を置いて、もう一度お試しください。";}
   finally{returnConfirmSend.disabled=false; returnConfirmEdit.disabled=false;}
 });
