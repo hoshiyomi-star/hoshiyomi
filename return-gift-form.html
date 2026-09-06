@@ -504,6 +504,26 @@ body.return-gift-soft::after{
 .return-gift-form .confirm-list label > span{display:block;flex:1 1 auto;min-width:0;line-height:1.75;}
 .return-gift-form .confirm-list label > span a{display:inline;white-space:normal;}
 </style>
+
+<style id="return-success-style">
+.return-success{
+  margin:34px auto 0;max-width:760px;padding:34px 28px;
+  border:1px solid rgba(190,215,255,.18);border-radius:14px;
+  background:linear-gradient(145deg,rgba(12,27,57,.48),rgba(5,13,30,.38));
+  box-shadow:0 0 30px rgba(100,145,220,.07),inset 0 0 28px rgba(143,191,255,.025);
+  color:#c8d4e8;line-height:2;
+}
+.return-success p{margin:0 0 20px;}
+.return-success-title{color:#edf3ff;font-size:1.12rem;line-height:2;font-weight:400;letter-spacing:.08em;text-shadow:0 0 12px rgba(210,225,255,.18);}
+.return-success-important{color:#f4e8c8;font-weight:600;text-shadow:0 0 12px rgba(255,232,174,.18);}
+.return-success-final{margin-top:30px!important;color:#e7efff;font-size:1.02rem;letter-spacing:.08em;text-shadow:0 0 14px rgba(170,205,255,.18);}
+.return-success-sign{margin-bottom:0!important;color:#aebbd0;font-size:.82rem;letter-spacing:.08em;}
+@media(max-width:640px){
+  .return-success{padding:28px 20px;}
+  .return-success-title{font-size:1rem;}
+  .return-success br{display:none;}
+}
+</style>
 </head>
 <body class="return-gift-soft return-gift-form-page">
 <header class="site-header"><a class="site-logo" href="index.html">星詠</a></header>
@@ -1046,7 +1066,15 @@ returnConfirmSend.addEventListener("click", async ()=>{
     data.realityPermissionProofFile = returnRealityProof.files.length ? returnRealityProof.files[0].name : "";
     data.thirdPartyPermissionProofFile = returnThirdPartyProof.files.length ? returnThirdPartyProof.files[0].name : "";
     await fetch(RETURN_GIFT_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
-    closeConfirmModal(); form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; status.textContent="ありがとうございます。返礼品の星を受け取りました。内容を確認のうえ、ご連絡します。";
+    closeConfirmModal(); form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; status.innerHTML=`<div class="return-success" role="status" aria-live="polite">
+  <p class="return-success-title">あなたの大切な想いから生まれる、返礼品の星の願い。<br>受け取りました。</p>
+  <p>あなたから届いた、<br>誰かを想う気持ちをお預かりします。</p>
+  <p>ご依頼内容や納期、制作について確認が必要な場合は、<br>ご入力いただいたメールアドレスへご連絡いたします。</p>
+  <p class="return-success-important">この時点では、ご依頼の確定ではありません。ご注意ください。</p>
+  <p>内容を確認したうえで、後日正式な料金・納期などをご案内します。</p>
+  <p class="return-success-final">あなたの星が、誰かのもとへ届きますように。</p>
+  <p class="return-success-sign">― 星詠｜HOSHIYOMI</p>
+</div>`;
   }catch(error){status.textContent=error.message||"送信できませんでした。時間を置いて、もう一度お試しください。";}
   finally{returnConfirmSend.disabled=false; returnConfirmEdit.disabled=false;}
 });
