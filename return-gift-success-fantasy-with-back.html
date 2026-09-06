@@ -1,1 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星詠｜返礼品の星</title>
 
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:#edf3ff;
+  font-family:
+    "Noto Serif JP",
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    serif;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(90,120,190,.16) 0%,
+      rgba(20,35,75,.12) 28%,
+      rgba(4,9,22,0) 58%
+    ),
+    linear-gradient(
+      180deg,
+      #020611 0%,
+      #071329 48%,
+      #030817 100%
+    );
+}
+
+/* 星 */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle, rgba(220,235,255,.7) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(170,200,255,.45) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,.35) .8px, transparent 1.3px);
+  background-size:
+    170px 170px,
+    240px 240px,
+    310px 310px;
+  background-position:
+    20px 30px,
+    80px 120px,
+    150px 60px;
+  opacity:.35;
+}
+
+body::after{
+  opacity:.18;
+  animation:twinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.12;}
+  to{opacity:.28;}
+}
+
+.success-wrap{
+  width:min(720px, calc(100% - 40px));
+  text-align:center;
+  position:relative;
+  z-index:2;
+  padding:60px 30px;
+}
+
+.success-wrap::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:520px;
+  height:520px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(
+    circle,
+    rgba(130,160,230,.12),
+    rgba(130,160,230,0) 70%
+  );
+  pointer-events:none;
+}
+
+.star{
+  position:relative;
+  margin:0 auto 34px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#eef5ff;
+  box-shadow:
+    0 0 8px rgba(220,235,255,.9),
+    0 0 24px rgba(150,190,255,.55);
+}
+
+.star::before,
+.star::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(210,230,255,.6);
+}
+
+.star::before{
+  width:70px;
+  height:1px;
+}
+
+.star::after{
+  width:1px;
+  height:70px;
+}
+
+h1{
+  position:relative;
+  margin:0 0 28px;
+  font-size:clamp(25px,5vw,40px);
+  font-weight:400;
+  letter-spacing:.12em;
+  line-height:1.8;
+}
+
+.lead{
+  position:relative;
+  margin:0 auto 28px;
+  font-size:16px;
+  line-height:2.2;
+  letter-spacing:.08em;
+}
+
+.notice{
+  position:relative;
+  margin:0 auto 34px;
+  max-width:600px;
+  padding:25px 25px;
+  border:1px solid rgba(170,195,235,.18);
+  background:rgba(8,18,42,.38);
+  border-radius:10px;
+  font-size:14px;
+  line-height:2;
+  letter-spacing:.06em;
+}
+
+.notice strong{
+  display:block;
+  margin-bottom:10px;
+  color:#dfeaff;
+  font-weight:500;
+}
+
+.final-message{
+  position:relative;
+  margin:35px 0 40px;
+  font-size:16px;
+  line-height:2;
+  letter-spacing:.12em;
+}
+
+.return-link{
+  position:relative;
+  display:inline-block;
+  padding:12px 24px;
+  color:#dfeaff;
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:.1em;
+  border:1px solid rgba(180,205,245,.28);
+  border-radius:999px;
+  background:rgba(8,18,42,.35);
+  transition:
+    background .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.return-link:hover{
+  background:rgba(80,110,170,.18);
+  border-color:rgba(200,220,255,.5);
+  box-shadow:0 0 20px rgba(130,170,230,.12);
+}
+
+.brand{
+  position:relative;
+  margin-top:42px;
+  font-size:11px;
+  letter-spacing:.2em;
+  opacity:.55;
+}
+
+@media(max-width:600px){
+  .success-wrap{
+    padding:45px 20px;
+  }
+
+  h1{
+    font-size:24px;
+  }
+
+  .lead,
+  .final-message{
+    font-size:14px;
+  }
+
+  .notice{
+    padding:20px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="success-wrap">
+
+  <div class="star"></div>
+
+  <h1>
+    あなたの大切な想いから生まれる、<br>
+    返礼品の星の願い。<br>
+    受け取りました。
+  </h1>
+
+  <p class="lead">
+    あなたから届いた、<br>
+    誰かを想う気持ちをお預かりします。
+  </p>
+
+  <div class="notice">
+    <strong>この時点では、ご依頼の確定ではありません。</strong>
+
+    ご依頼内容や納期、制作について確認が必要な場合は、<br>
+    ご入力いただいたメールアドレスへご連絡いたします。<br><br>
+
+    内容を確認したうえで、<br>
+    後日正式な料金・納期などをご案内します。
+  </div>
+
+  <p class="final-message">
+    あなたの星が、誰かのもとへ届きますように。
+  </p>
+
+  <a class="return-link" href="index.html">
+    星の海へ戻る →
+  </a>
+
+  <div class="brand">
+    ― 星詠｜HOSHIYOMI ―
+  </div>
+
+</main>
+
+</body>
+</html>
