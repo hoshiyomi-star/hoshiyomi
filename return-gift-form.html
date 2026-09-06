@@ -498,6 +498,12 @@ body.return-gift-soft::after{
     radial-gradient(circle at 52% 88%, rgba(221,208,255,.55) 0 1px, transparent 1.8px);
 }
 </style>
+<style id="reality-check-layout-fix">
+.return-gift-form .confirm-list label{display:flex;align-items:flex-start;gap:10px;}
+.return-gift-form .confirm-list label > input{flex:0 0 20px;width:20px;height:20px;margin:.28em 0 0;}
+.return-gift-form .confirm-list label > span{display:block;flex:1 1 auto;min-width:0;line-height:1.75;}
+.return-gift-form .confirm-list label > span a{display:inline;white-space:normal;}
+</style>
 </head>
 <body class="return-gift-soft return-gift-form-page">
 <header class="site-header"><a class="site-logo" href="index.html">星詠</a></header>
@@ -663,8 +669,8 @@ body.return-gift-soft::after{
           </div>
 
           <div class="confirm-list">
-            <label><input type="checkbox" name="realityRightsCheck" value="REALITY二次利用ガイドライン確認">REALITYの<a href="https://reality.app/guideline/derivative_works.html" target="_blank" rel="noopener">二次利用ガイドライン</a>を確認しました。</label>
-            <label><input type="checkbox" name="realityRightsCheck" value="REALITY利用規約確認">REALITYの<a href="https://reality.app/legal/terms_of_use.html" target="_blank" rel="noopener">利用規約</a>を確認しました。</label>
+            <label><input type="checkbox" name="realityRightsCheck" value="REALITY二次利用ガイドライン確認"><span>REALITYの<a href="https://reality.app/guideline/derivative_works.html" target="_blank" rel="noopener">二次利用ガイドライン</a>を確認しました。</span></label>
+            <label><input type="checkbox" name="realityRightsCheck" value="REALITY利用規約確認"><span>REALITYの<a href="https://reality.app/legal/terms_of_use.html" target="_blank" rel="noopener">利用規約</a>を確認しました。</span></label>
             <label><input type="checkbox" name="realityRightsCheck" value="禁止例確認">3Dモデルの直接抜き出し、REALITY画像セットを使ったグッズ制作、第三者が権利を持つコラボレーションアバター・ギフト等の利用など、ガイドライン上認められない例を確認しました。</label>
             <label><input type="checkbox" name="realityRightsCheck" value="利用範囲確認">今回使用するものと利用方法が、確認したガイドライン・利用規約の範囲内であることを確認しました。</label>
             <label><input type="checkbox" name="realityRightsCheck" value="第三者権利確認">第三者が権利を有するアバター・衣装・ギフト・素材等が含まれる場合、その権利者の利用条件・必要な許可を確認しました。</label>
