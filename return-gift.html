@@ -171,6 +171,28 @@ main{width:min(980px,calc(100% - 48px));margin:0 auto}
 .return-other{display:none}
 .return-other.is-visible{display:grid}
 .return-submit{display:block;width:fit-content;margin:4px auto 0;padding:12px 28px;border:1px solid rgba(180,205,255,.24);border-radius:999px;background:rgba(120,160,255,.05);color:#edf3ff;font:inherit;font-size:.84rem;letter-spacing:.08em;cursor:pointer}
+.return-submit{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .35s ease,border-color .35s ease;background:linear-gradient(180deg,rgba(150,185,255,.09),rgba(90,120,210,.035));box-shadow:0 0 0 rgba(145,190,255,0)}
+.return-submit::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle,rgba(210,225,255,.35) 0 2px,transparent 3px);opacity:0;transform:scale(.7);transition:opacity .35s ease,transform .45s ease;pointer-events:none}
+.return-submit:hover{transform:translateY(-1px);border-color:rgba(200,220,255,.48);box-shadow:0 0 22px rgba(125,175,255,.18),0 0 55px rgba(145,115,255,.08)}
+.return-submit:hover::before{opacity:.9;transform:scale(1)}
+.return-submit:active{transform:translateY(0) scale(.985);box-shadow:0 0 30px rgba(160,195,255,.28)}
+.confirm-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(2,7,20,.72);backdrop-filter:blur(8px)}
+.confirm-modal.is-open{display:flex}
+.confirm-modal-box{width:min(760px,100%);max-height:min(86vh,900px);overflow:auto;padding:28px;border:1px solid rgba(190,215,255,.22);border-radius:16px;background:linear-gradient(145deg,rgba(13,27,57,.97),rgba(7,15,34,.98));box-shadow:0 0 45px rgba(100,145,255,.12),0 0 90px rgba(120,90,190,.08)}
+.confirm-modal-label{margin:0 0 7px;color:#9fc5ff;font-size:.67rem;letter-spacing:.2em}
+.confirm-modal h3{margin:0 0 10px;font-weight:400;letter-spacing:.08em}
+.confirm-modal-intro{margin:0 0 20px;color:#b9c7db;line-height:1.8;font-size:.9rem}
+.confirm-preview{display:grid;gap:8px;margin:0 0 22px}
+.confirm-preview-row{padding:11px 13px;border:1px solid rgba(180,205,255,.1);border-radius:9px;background:rgba(120,160,255,.035)}
+.confirm-preview-label{display:block;color:#8fbfff;font-size:.7rem;letter-spacing:.06em;margin-bottom:4px}
+.confirm-preview-value{display:block;color:#edf3ff;line-height:1.65;white-space:pre-wrap;word-break:break-word;font-size:.88rem}
+.confirm-modal-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.confirm-modal-actions button{font:inherit;cursor:pointer;border-radius:999px;padding:11px 22px;letter-spacing:.07em}
+.confirm-edit{border:1px solid rgba(180,205,255,.18);background:rgba(120,160,255,.035);color:#dce7fa}
+.confirm-send{border:1px solid rgba(190,215,255,.3);background:rgba(130,170,255,.1);color:#fff;box-shadow:0 0 18px rgba(130,170,255,.1);transition:box-shadow .3s ease,transform .2s ease}
+.confirm-send:hover{box-shadow:0 0 26px rgba(145,190,255,.25),0 0 55px rgba(145,115,255,.08);transform:translateY(-1px)}
+.confirm-note{margin:14px 0 0;text-align:center;color:#8fa0b9;font-size:.75rem;line-height:1.7}
+@media(max-width:640px){.confirm-modal-box{padding:22px 17px}.confirm-modal-actions button{width:100%}}
 .return-submit:hover{background:rgba(120,160,255,.1)}
 .return-form-status{text-align:center;min-height:1.4em;margin:0;color:#b8c6da;font-size:.88rem;line-height:1.7}
 
@@ -476,108 +498,6 @@ body.return-gift-soft::after{
     radial-gradient(circle at 52% 88%, rgba(221,208,255,.55) 0 1px, transparent 1.8px);
 }
 </style>
-
-<style id="active-input-glow">
-/* 入力中の場所だけ、星明かりが少し漏れる */
-.return-gift-form input:not([type="checkbox"]):not([type="radio"]):focus,
-.return-gift-form select:focus,
-.return-gift-form textarea:focus {
-  border-color:rgba(177,164,255,.62) !important;
-  background:
-    linear-gradient(135deg,rgba(125,104,205,.10),rgba(88,116,210,.055)) !important;
-  box-shadow:
-    0 0 0 1px rgba(180,165,255,.12),
-    0 0 18px rgba(143,120,235,.16),
-    0 0 34px rgba(105,118,220,.08) !important;
-  outline:none;
-  transition:border-color .25s ease, background .25s ease, box-shadow .25s ease;
-}
-
-/* チェック・ラジオを選んだ項目も淡く光らせる */
-.return-gift-form .check-grid label:has(input:checked),
-.return-gift-form .check-stack label:has(input:checked),
-.return-gift-form .confirm-list label:has(input:checked) {
-  border-color:rgba(180,165,255,.34) !important;
-  background:rgba(123,103,205,.075) !important;
-  box-shadow:0 0 16px rgba(140,118,230,.09);
-}
-
-.return-gift-form input[type="checkbox"]:focus,
-.return-gift-form input[type="radio"]:focus {
-  outline:2px solid rgba(183,169,255,.42);
-  outline-offset:3px;
-}
-</style>
-
-<style id="softer-return-gift-text">
-/* 返礼品フォーム：文字を少しやさしく、柔らかく */
-.return-gift-form,
-.return-gift-form h1,
-.return-gift-form h2,
-.return-gift-form h3,
-.return-gift-form p,
-.return-gift-form label,
-.return-gift-form .section-label {
-  font-family:
-    "Zen Maru Gothic",
-    "Hiragino Maru Gothic ProN",
-    "Yu Gothic",
-    "Meiryo",
-    sans-serif !important;
-}
-
-.return-gift-form {
-  color:#e5e8f4;
-}
-
-.return-gift-form h1,
-.return-gift-form h2,
-.return-gift-form h3 {
-  font-weight:500 !important;
-  letter-spacing:.075em !important;
-}
-
-.return-gift-form p,
-.return-gift-form label {
-  font-weight:400 !important;
-  letter-spacing:.035em !important;
-  line-height:1.9 !important;
-}
-
-.return-gift-form .section-label {
-  font-weight:400 !important;
-  letter-spacing:.16em !important;
-  opacity:.86;
-}
-
-.return-gift-form input,
-.return-gift-form select,
-.return-gift-form textarea,
-.return-gift-form button {
-  font-family:
-    "Zen Maru Gothic",
-    "Hiragino Maru Gothic ProN",
-    "Yu Gothic",
-    "Meiryo",
-    sans-serif !important;
-}
-
-/* 説明文は白くしすぎず、夜空になじませる */
-.return-gift-form .form-rule-note,
-.return-gift-form .price-note,
-.return-gift-form .field-note,
-.return-gift-form small {
-  color:#cbd3e8 !important;
-  font-weight:400 !important;
-}
-
-/* 重要箇所だけは、以前の星明かりを残す */
-.return-gift-form .important-note,
-.return-gift-form .required-important {
-  font-weight:500 !important;
-  letter-spacing:.05em !important;
-}
-</style>
 </head>
 <body class="return-gift-soft">
 <div class="page">
@@ -766,7 +686,7 @@ body.return-gift-soft::after{
   <div class="return-form-wrap">
     <div class="return-form-heading">
       <p class="form-label">SEND YOUR GIFT STAR</p>
-      <h3>返礼品のかけらを入力する</h3>
+      <h3>返礼品の星を託す</h3>
       <p>あなたを支えてくれた人へ届ける、一つの星について教えてください。</p>
     </div>
 
@@ -774,7 +694,7 @@ body.return-gift-soft::after{
       <div class="return-form-section-title">01｜あなたについて</div>
       <div class="return-field"><label for="returnName">お名前<span>必須</span></label><input id="returnName" name="name" type="text" required></div>
       <div class="return-field"><label for="returnCallName">呼ばれたいお名前<span>必須</span></label><input id="returnCallName" name="callName" type="text" required></div>
-      <div class="return-field"><label for="returnEmail">メールアドレス<span>必須</span></label><input id="returnEmail" name="email" type="email" required></div>
+      <div class="return-field"><label for="returnEmail">返信用メールアドレス<span>必須</span></label><input id="returnEmail" name="email" type="email" required></div>
 
       <div class="return-form-section-title">02｜星詠を知ったきっかけ</div>
       <div class="return-field"><label for="returnDiscovery">星詠をどのように知りましたか？<span>必須</span></label>
@@ -1026,7 +946,7 @@ body.return-gift-soft::after{
           </div>
         </div>
       </div>
-      <button class="return-submit" type="submit">返礼品のかけらを送る →</button>
+      <button class="return-submit" type="submit">返礼品の星を託す →</button>
       <p class="return-form-status" id="returnGiftStatus" aria-live="polite"></p>
     </form>
   </div>
@@ -1198,7 +1118,7 @@ renderGiftDetails();
 
 function artCard(index){
   const card=document.createElement("div"); card.className="art-detail-card";
-  card.innerHTML=`<h4 class="dynamic-card-title">🎨 絵${index+1}</h4>
+  card.innerHTML=`<h4 class="dynamic-card-title">絵${index+1}</h4>
     <div class="return-field"><label>絵の名称・呼び方</label><input type="text" name="art_${index}_name" placeholder="例：周年衣装"></div>
     <div class="return-field"><label>使用するキャラクター・姿など</label><input type="text" name="art_${index}_character"></div>
     <div class="return-field"><label>衣装・髪型など</label><textarea name="art_${index}_appearance"></textarea></div>
@@ -1210,7 +1130,7 @@ function artCard(index){
   if(index>0) card.querySelector(".dynamic-remove").addEventListener("click",()=>{card.remove();renumberArtCards();});
   return card;
 }
-function renumberArtCards(){ [...artDetailsContainer.children].forEach((c,i)=>{c.querySelector(".dynamic-card-title").textContent=`🎨 絵${i+1}`;}); }
+function renumberArtCards(){ [...artDetailsContainer.children].forEach((c,i)=>{c.querySelector(".dynamic-card-title").textContent=`絵${i+1}`;}); }
 function addArt(){ artDetailsContainer.appendChild(artCard(artDetailsContainer.children.length)); }
 addArtButton.addEventListener("click",addArt); addArt();
 
@@ -1245,32 +1165,94 @@ async function collectFiles(){
   return Promise.all(all.map(fileToData));
 }
 
-form.addEventListener("submit", async e=>{
+const returnConfirmModal = document.getElementById("returnConfirmModal");
+const returnConfirmPreview = document.getElementById("returnConfirmPreview");
+const returnConfirmEdit = document.getElementById("returnConfirmEdit");
+const returnConfirmSend = document.getElementById("returnConfirmSend");
+let confirmSnapshot = null;
+
+function buildConfirmPreview(){
+  returnConfirmPreview.innerHTML="";
+  const fd=new FormData(form);
+  const skip=new Set(["confirm","realityRightsCheck","rightsCheck","thirdPartyRightsCheck","referenceImages","realityPermissionProof","thirdPartyPermissionProof"]);
+  const grouped={};
+  for(const [key,value] of fd.entries()){
+    if(skip.has(key) || !String(value).trim()) continue;
+    if(value instanceof File) continue;
+    if(!grouped[key]) grouped[key]=[];
+    grouped[key].push(value);
+  }
+  const labels={name:"お名前",callName:"呼ばれたいお名前",email:"返信用メールアドレス",discovery:"星詠を知ったきっかけ",introducer:"紹介者",orderCount:"ご依頼回数",coCreators:"一緒に制作される方",coCreatorNames:"一緒に制作される方のお名前",eventName:"イベント・企画名",eventDetail:"イベント・企画の内容",distributionDate:"配布予定日",desiredDeadline:"希望納期",purpose:"返礼品の目的",formats:"制作する返礼品",commonMessage:"返礼品全体のメッセージ",messageMethod:"メッセージの作り方",deliveryMethod:"配布方法",deliveryDetail:"配布方法の詳細",commercialUse:"商用利用",credit:"クレジット表記",reference:"参考URL",hope:"希望する雰囲気・入れてほしいもの",avoid:"入れてほしくないもの",goodsUse:"グッズとしての使用",realityPermission:"REALITY等の許可状況",realityUse:"REALITY関連素材の使用",thirdPartyUse:"第三者コンテンツの使用",thirdPartyContent:"第三者コンテンツ",thirdPartyRightsholder:"権利者・企業・サービス名",thirdPartyPermission:"第三者コンテンツの許可状況",budget:"ご予算",note:"その他・相談したいこと",undecided:"まだ決まっていないこと",rightsReference:"確認した規約・許可・権利情報"};
+  Object.keys(grouped).forEach(key=>{
+    const row=document.createElement("div"); row.className="confirm-preview-row";
+    const label=document.createElement("span"); label.className="confirm-preview-label"; label.textContent=labels[key]||key;
+    const value=document.createElement("span"); value.className="confirm-preview-value"; value.textContent=grouped[key].join(" / ");
+    row.append(label,value); returnConfirmPreview.appendChild(row);
+  });
+  const files=[];
+  [...referenceImages.files].forEach(f=>files.push(f.name));
+  document.querySelectorAll('.art-image').forEach(input=>[...input.files].forEach(f=>files.push(f.name)));
+  if(returnRealityProof.files.length) files.push(returnRealityProof.files[0].name);
+  if(returnThirdPartyProof.files.length) files.push(returnThirdPartyProof.files[0].name);
+  if(files.length){
+    const row=document.createElement("div"); row.className="confirm-preview-row";
+    row.innerHTML='<span class="confirm-preview-label">添付ファイル</span><span class="confirm-preview-value"></span>';
+    row.querySelector('.confirm-preview-value').textContent=files.join(" / "); returnConfirmPreview.appendChild(row);
+  }
+}
+
+function openConfirmModal(){
+  buildConfirmPreview();
+  returnConfirmModal.classList.add("is-open"); returnConfirmModal.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden";
+}
+function closeConfirmModal(){
+  returnConfirmModal.classList.remove("is-open"); returnConfirmModal.setAttribute("aria-hidden","true"); document.body.style.overflow="";
+}
+returnConfirmEdit.addEventListener("click",closeConfirmModal);
+returnConfirmModal.addEventListener("click",e=>{if(e.target===returnConfirmModal) closeConfirmModal();});
+
+form.addEventListener("submit", e=>{
   e.preventDefault();
   if(!form.checkValidity()){form.reportValidity();return;}
   if(checkedValues("purpose").length===0){status.textContent="返礼品の目的を1つ以上選択してください。";return;}
   if(checkedValues("formats").length===0){status.textContent="制作する返礼品を1つ以上選択してください。";return;}
-  if(returnGoodsUse.value === "グッズとして使用する" && returnRealityPermission.value === "許可を取得済み" && !returnRealityProof.files.length){
-    status.textContent="許可取得済みを選択した場合は、許可確認用のスクリーンショットを添付してください。";
-    return;
-  }
-  if(returnThirdPartyUse.value === "使用する" && returnThirdPartyPermission.value === "許可を取得済み" && !returnThirdPartyProof.files.length){
-    status.textContent="第三者コンテンツの許可取得済みを選択した場合は、許可確認用の資料を添付してください。";
-    return;
-  }
+  if(returnGoodsUse.value === "グッズとして使用する" && returnRealityPermission.value === "許可を取得済み" && !returnRealityProof.files.length){status.textContent="許可取得済みを選択した場合は、許可確認用のスクリーンショットを添付してください。";return;}
+  if(returnThirdPartyUse.value === "使用する" && returnThirdPartyPermission.value === "許可を取得済み" && !returnThirdPartyProof.files.length){status.textContent="第三者コンテンツの許可取得済みを選択した場合は、許可確認用の資料を添付してください。";return;}
   if(RETURN_GIFT_ENDPOINT.includes("YOUR_RETURN_GIFT")){status.textContent="送信先の設定がまだ完了していません。";return;}
-  status.textContent="画像と入力内容を送信しています…";
+  openConfirmModal();
+});
+
+returnConfirmSend.addEventListener("click", async ()=>{
+  returnConfirmSend.disabled=true; returnConfirmEdit.disabled=true; status.textContent="画像と入力内容を送信しています…";
   try{
     const data=Object.fromEntries(new FormData(form).entries());
     data.purpose=checkedValues("purpose"); data.formats=checkedValues("formats"); data.messageMethod=checkedValues("messageMethod"); data.confirm=checkedValues("confirm"); data.rightsCheck=checkedValues("rightsCheck"); data.realityRightsCheck=checkedValues("realityRightsCheck"); data.realityUse=returnRealityUse.value; data.thirdPartyRightsCheck=checkedValues("thirdPartyRightsCheck"); data.thirdPartyUse=returnThirdPartyUse.value;
     data.referenceImageLabels=[...document.querySelectorAll('[data-image-label]')].map(x=>x.value);
     data.images=await collectFiles();
     data.realityPermissionProofFile = returnRealityProof.files.length ? returnRealityProof.files[0].name : "";
+    data.thirdPartyPermissionProofFile = returnThirdPartyProof.files.length ? returnThirdPartyProof.files[0].name : "";
     await fetch(RETURN_GIFT_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
-    form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; status.textContent="ありがとうございます。返礼品のかけらを受け取りました。内容を確認のうえ、ご連絡します。";
+    closeConfirmModal(); form.reset(); giftDetailsContainer.innerHTML=""; artDetailsContainer.innerHTML=""; addArt(); updateDiscovery(); updateCoCreators(); updateOtherFormat(); updateMessageFields(); updateRealityGuidelineChecks(); updateRealityPermission(); updateThirdPartyFields(); referenceImageLabels.innerHTML=""; status.textContent="ありがとうございます。返礼品の星を受け取りました。内容を確認のうえ、ご連絡します。";
   }catch(error){status.textContent=error.message||"送信できませんでした。時間を置いて、もう一度お試しください。";}
+  finally{returnConfirmSend.disabled=false; returnConfirmEdit.disabled=false;}
 });
+
+document.addEventListener("keydown",e=>{if(e.key==="Escape" && returnConfirmModal.classList.contains("is-open")) closeConfirmModal();});
 </script>
 
+
+<div class="confirm-modal" id="returnConfirmModal" aria-hidden="true">
+  <div class="confirm-modal-box" role="dialog" aria-modal="true" aria-labelledby="returnConfirmTitle">
+    <p class="confirm-modal-label">CONFIRM YOUR STAR</p>
+    <h3 id="returnConfirmTitle">返礼品の星を託す前に</h3>
+    <p class="confirm-modal-intro">入力した内容をご確認ください。内容に間違いがなければ「この内容で送信する」を押してください。まだ修正したい場合は「入力内容を修正する」から戻れます。</p>
+    <div class="confirm-preview" id="returnConfirmPreview"></div>
+    <div class="confirm-modal-actions">
+      <button class="confirm-edit" id="returnConfirmEdit" type="button">入力内容を修正する</button>
+      <button class="confirm-send" id="returnConfirmSend" type="button">この内容で送信する →</button>
+    </div>
+    <p class="confirm-note">送信後、入力された返信用メールアドレスへ星詠からご連絡します。</p>
+  </div>
+</div>
 </body>
 </html>
