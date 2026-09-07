@@ -708,6 +708,144 @@
 }
 </style>
 
+
+<style id="delivery-mobile-dedicated-layout">
+/* 星を届ける｜スマホ専用レイアウト。PC版には影響しない */
+.delivery-mobile-only{display:none;}
+
+@media screen and (max-width:760px){
+  section#delivery.delivery-overview{
+    overflow:hidden !important;
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+  }
+
+  section#delivery .delivery-desktop{display:none !important;}
+  section#delivery .delivery-mobile-only{
+    display:block !important;
+    width:100% !important;
+    writing-mode:horizontal-tb !important;
+    text-orientation:mixed !important;
+    box-sizing:border-box !important;
+  }
+
+  section#delivery .delivery-mobile-inner{
+    width:calc(100% - 36px) !important;
+    max-width:560px !important;
+    margin:0 auto !important;
+    padding:0 0 72px !important;
+    text-align:center !important;
+    writing-mode:horizontal-tb !important;
+    box-sizing:border-box !important;
+  }
+
+  section#delivery .delivery-mobile-inner *{
+    writing-mode:horizontal-tb !important;
+    text-orientation:mixed !important;
+    max-height:none !important;
+  }
+
+  section#delivery .delivery-mobile-inner .section-label{
+    margin:0 0 20px !important;
+    font-size:.68rem !important;
+    letter-spacing:.22em !important;
+    line-height:1.8 !important;
+    opacity:.58 !important;
+  }
+
+  section#delivery .delivery-mobile-inner h2{
+    margin:0 !important;
+    width:auto !important;
+    font-size:clamp(2rem,8vw,2.8rem) !important;
+    font-weight:400 !important;
+    letter-spacing:.12em !important;
+    line-height:1.4 !important;
+    text-align:center !important;
+  }
+
+  section#delivery .delivery-mobile-inner .about-line{
+    width:48px !important;
+    height:1px !important;
+    margin:24px auto !important;
+  }
+
+  section#delivery .delivery-mobile-inner .about-lead{
+    margin:0 !important;
+    font-size:1rem !important;
+    line-height:2.2 !important;
+    text-align:center !important;
+  }
+
+  section#delivery .delivery-mobile-inner .delivery-message{
+    width:100% !important;
+    margin:28px auto 0 !important;
+    font-size:.9rem !important;
+    line-height:2 !important;
+    text-align:center !important;
+  }
+
+  section#delivery .delivery-mobile-inner .delivery-benefits-link{
+    margin:30px auto 12px !important;
+    text-align:center !important;
+  }
+
+  section#delivery .delivery-mobile-inner .delivery-benefits-link a{
+    display:inline-block !important;
+    width:auto !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    padding:11px 20px !important;
+    border:1px solid rgba(180,205,245,.28) !important;
+    border-radius:999px !important;
+    background:rgba(120,160,255,.04) !important;
+    color:#edf3ff !important;
+    text-decoration:none !important;
+    font-size:.82rem !important;
+    line-height:1.5 !important;
+    white-space:nowrap !important;
+    box-sizing:border-box !important;
+  }
+
+  section#delivery .delivery-mobile-points{
+    width:100% !important;
+    margin:36px auto 0 !important;
+    display:block !important;
+    text-align:left !important;
+  }
+
+  section#delivery .delivery-mobile-points article{
+    width:100% !important;
+    margin:0 !important;
+    padding:25px 6px 27px !important;
+    border-top:1px solid rgba(180,205,255,.14) !important;
+    box-sizing:border-box !important;
+    text-align:center !important;
+  }
+
+  section#delivery .delivery-mobile-points article:last-child{
+    border-bottom:1px solid rgba(180,205,255,.10) !important;
+  }
+
+  section#delivery .delivery-mobile-points h3{
+    margin:0 0 10px !important;
+    font-size:1.05rem !important;
+    font-weight:400 !important;
+    letter-spacing:.1em !important;
+    line-height:1.5 !important;
+  }
+
+  section#delivery .delivery-mobile-points p{
+    margin:0 !important;
+    font-size:.86rem !important;
+    line-height:2 !important;
+    opacity:.72 !important;
+  }
+
+  section#delivery .delivery-mobile-points br{display:none !important;}
+}
+</style>
+
 </head>
 
 <body>
@@ -1167,46 +1305,92 @@
          02｜星を届ける
     ========================= -->
     <section class="delivery-overview about" id="delivery">
-      <div class="about-content">
-        <p class="section-label">02｜DELIVER THE STAR</p>
-        <h2>星を届ける</h2>
-        <div class="about-line"></div>
+      <!-- PC：既存デザイン -->
+      <div class="delivery-desktop">
+            <div class="about-content">
+              <p class="section-label">02｜DELIVER THE STAR</p>
+              <h2>星を届ける</h2>
+              <div class="about-line"></div>
 
-        <p class="about-lead">
-          自分のために。<br>
-          そして、大切な人へ。
-        </p>
+              <p class="about-lead">
+                自分のために。<br>
+                そして、大切な人へ。
+              </p>
 
-        <p class="delivery-message">
-          配信活動やイベント、記念日、誕生日。<br>
-          あなたが大切にしてきた時間を、<br>
-          誰かへ届ける作品にもできます。
-        </p>
+              <p class="delivery-message">
+                配信活動やイベント、記念日、誕生日。<br>
+                あなたが大切にしてきた時間を、<br>
+                誰かへ届ける作品にもできます。
+              </p>
+            </div>
+
+            <div class="delivery-benefits-link" style="text-align:center;margin:36px 0 8px;">
+              <a href="benefits.html" style="display:inline-block !important;width:max-content !important;max-width:100% !important;min-width:max-content !important;white-space:nowrap !important;word-break:keep-all !important;overflow-wrap:normal !important;line-break:strict !important;color:#edf3ff;text-decoration:none;border:1px solid rgba(180,205,245,.22);padding:10px 22px;border-radius:999px;background:rgba(120,160,255,.04);box-sizing:border-box;">活用・特典を詳しく見る →</a>
+            </div>
+
+            <div class="delivery-points">
+              <div class="delivery-point">
+                <h3>返礼品</h3>
+                <p>応援してくれる人へ<br>感謝を届ける作品に。</p>
+              </div>
+
+              <div class="delivery-point">
+                <h3>イベント達成</h3>
+                <p>順位や記録など、<br>大切な瞬間を残すために。</p>
+              </div>
+
+              <div class="delivery-point">
+                <h3>記念日</h3>
+                <p>活動の積み重ねを、<br>一枚の記録として。</p>
+              </div>
+
+              <div class="delivery-point">
+                <h3>誕生日</h3>
+                <p>その人自身を祝う、<br>特別な一枚に。</p>
+              </div>
+            </div>
       </div>
 
-      <div class="delivery-benefits-link" style="text-align:center;margin:36px 0 8px;">
-        <a href="benefits.html" style="display:inline-block !important;width:max-content !important;max-width:100% !important;min-width:max-content !important;white-space:nowrap !important;word-break:keep-all !important;overflow-wrap:normal !important;line-break:strict !important;color:#edf3ff;text-decoration:none;border:1px solid rgba(180,205,245,.22);padding:10px 22px;border-radius:999px;background:rgba(120,160,255,.04);box-sizing:border-box;">活用・特典を詳しく見る →</a>
-      </div>
+      <!-- スマホ：専用の読みやすいレイアウト -->
+      <div class="delivery-mobile-only">
+        <div class="delivery-mobile-inner">
+          <p class="section-label">02｜DELIVER THE STAR</p>
+          <h2>星を届ける</h2>
+          <div class="about-line"></div>
 
-      <div class="delivery-points">
-        <div class="delivery-point">
-          <h3>返礼品</h3>
-          <p>応援してくれる人へ<br>感謝を届ける作品に。</p>
-        </div>
+          <p class="about-lead">
+            自分のために。<br>
+            そして、大切な人へ。
+          </p>
 
-        <div class="delivery-point">
-          <h3>イベント達成</h3>
-          <p>順位や記録など、<br>大切な瞬間を残すために。</p>
-        </div>
+          <p class="delivery-message">
+            配信活動やイベント、記念日、誕生日。<br>
+            あなたが大切にしてきた時間を、<br>
+            誰かへ届ける作品にもできます。
+          </p>
 
-        <div class="delivery-point">
-          <h3>記念日</h3>
-          <p>活動の積み重ねを、<br>一枚の記録として。</p>
-        </div>
+          <div class="delivery-benefits-link">
+            <a href="benefits.html">活用・特典を詳しく見る →</a>
+          </div>
 
-        <div class="delivery-point">
-          <h3>誕生日</h3>
-          <p>その人自身を祝う、<br>特別な一枚に。</p>
+          <div class="delivery-mobile-points">
+            <article>
+              <h3>返礼品</h3>
+              <p>応援してくれる人へ<br>感謝を届ける作品に。</p>
+            </article>
+            <article>
+              <h3>イベント達成</h3>
+              <p>順位や記録など、<br>大切な瞬間を残すために。</p>
+            </article>
+            <article>
+              <h3>記念日</h3>
+              <p>活動の積み重ねを、<br>一枚の記録として。</p>
+            </article>
+            <article>
+              <h3>誕生日</h3>
+              <p>その人自身を祝う、<br>特別な一枚に。</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
