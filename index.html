@@ -18,14 +18,31 @@ body{
   height:100svh;
   min-height:560px;
   overflow:hidden;
-  background:#020817 url("opening-bg.png") center center/cover no-repeat;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(67,83,150,.24),transparent 34%),
+    radial-gradient(circle at 18% 25%,rgba(150,135,220,.12),transparent 20%),
+    linear-gradient(180deg,#020817 0%,#0b1231 46%,#08051d 100%);
+}
+.opening:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.8;
+  background-image:
+    radial-gradient(circle at 12% 18%,rgba(255,255,255,.8) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 24% 68%,rgba(190,210,255,.7) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 42% 27%,rgba(255,255,255,.75) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 64% 72%,rgba(210,220,255,.65) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 81% 31%,rgba(255,255,255,.8) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 91% 76%,rgba(190,205,255,.65) 0 1px,transparent 1.8px);
+  background-size:240px 240px,310px 310px,280px 280px,350px 350px,270px 270px,330px 330px;
 }
 .opening:after{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  background:radial-gradient(circle at 50% 45%,transparent 0 35%,rgba(1,6,18,.08) 65%,rgba(1,5,15,.38) 100%);
+  background:radial-gradient(circle at 50% 45%,transparent 0 35%,rgba(1,6,18,.08) 65%,rgba(1,5,15,.42) 100%);
 }
 .center{
   position:absolute;
@@ -35,26 +52,36 @@ body{
   width:min(90%,760px);
   transform:translate(-50%,-50%);
   text-align:center;
-  animation:openingIn 1.8s ease both;
+  animation:openingIn 1.5s ease both;
 }
-.logo{
-  margin:0;
-  font-size:clamp(4.5rem,10vw,8rem);
+.logo-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.logo-image{
+  display:block;
+  width:min(72vw,520px);
+  max-height:300px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 22px rgba(220,235,255,.32));
+}
+.logo-fallback{
+  display:none;
+  font-size:clamp(4rem,10vw,8rem);
   font-weight:400;
-  line-height:1;
   letter-spacing:.16em;
-  text-shadow:0 0 28px rgba(220,235,255,.38);
 }
 .en{
-  margin-top:18px;
+  margin-top:10px;
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp:.8rem,1.5vw,1.1rem);
+  font-size:clamp:.75rem,1.5vw,1.05rem);
   letter-spacing:.62em;
   padding-left:.62em;
-  opacity:.94;
+  opacity:.92;
 }
 .message{
-  margin:52px 0 0;
+  margin:42px 0 0;
   font-size:clamp(.9rem,1.6vw,1.12rem);
   letter-spacing:.14em;
   line-height:2;
@@ -64,7 +91,7 @@ body{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  margin-top:38px;
+  margin-top:34px;
   min-width:150px;
   padding:12px 28px 12px 33px;
   border:1px solid rgba(235,242,255,.62);
@@ -74,8 +101,7 @@ body{
   font-family:Georgia,"Times New Roman",serif;
   font-size:.78rem;
   letter-spacing:.34em;
-  background:rgba(2,8,22,.2);
-  backdrop-filter:blur(7px);
+  background:rgba(2,8,22,.22);
   transition:.3s ease;
 }
 .enter:hover{
@@ -109,36 +135,16 @@ body{
   to{opacity:1;transform:translate(-50%,-50%)}
 }
 @media(max-width:600px){
-  .opening{min-height:520px;background-position:center center}
+  .opening{min-height:520px}
+  .logo-image{width:min(82vw,430px);max-height:230px}
   .corner{font-size:.56rem}
   .left{left:6%;top:5%}
   .right{right:6%;top:5%}
-  .message{margin-top:40px;letter-spacing:.08em}
-  .enter{margin-top:30px}
+  .message{margin-top:32px;letter-spacing:.08em}
+  .enter{margin-top:28px}
   .bottom{right:6%;bottom:4%;font-size:.55rem}
 }
-@media(prefers-reduced-motion:reduce){
-  .center{animation:none}
-}
-
-.logo-wrap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:clamp(90px,12vw,150px);
-}
-.logo-image{
-  display:block;
-  width:min(70vw,520px);
-  max-height:210px;
-  object-fit:contain;
-  filter:drop-shadow(0 0 22px rgba(220,235,255,.3));
-}
-.logo-wrap .logo{
-  margin:0;
-}
-#logoFallback{display:none;}
-
+@media(prefers-reduced-motion:reduce){.center{animation:none}}
 </style>
 </head>
 <body>
@@ -148,12 +154,13 @@ body{
 
   <div class="center">
     <div class="logo-wrap">
-      <img class="logo-image" src="logo.png" alt="星詠" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';">
-      <h1 class="logo" id="logoFallback">星詠</h1>
+      <img class="logo-image" src="logo.png" alt="星詠"
+           onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';">
+      <div class="logo-fallback" id="logoFallback">星詠</div>
     </div>
     <div class="en">H O S H I Y O M I</div>
     <p class="message">無限に広がる夜空から、あなただけの星を。</p>
-    <a class="enter" href="../index_星詠_紹介からプランへ版.html">ENTER</a>
+    <a class="enter" href="home.html">ENTER</a>
   </div>
 
   <div class="bottom">A STAR FOR YOU.</div>
