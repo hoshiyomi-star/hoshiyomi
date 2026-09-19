@@ -1,22 +1,38 @@
-<div class="logo-area">
+<body>
 
-  <img
-    src="logo.png"
-    alt="星詠"
-    class="logo-image"
-  >
+<main class="opening">
 
-  <!-- ロゴが表示できない場合の予備 -->
-  <div id="logoFallback">
-    星詠
+  <div class="center">
+
+    <div class="logo-wrap">
+
+      <img
+        class="logo-image"
+        src="logo.png"
+        alt="星詠"
+        onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';"
+      >
+
+      <h1 class="logo" id="logoFallback">
+        星詠
+      </h1>
+
+    </div>
+
+    <p class="message">
+      無限に広がる夜空から、あなただけの星を。
+    </p>
+
+    <a class="enter" href="../index_星詠_紹介からプランへ版.html">
+      ENTER
+    </a>
+
   </div>
 
-</div>
+  <div class="bottom">
+    A STAR FOR YOU.
+  </div>
 
-<p class="message">
-  無限に広がる夜空から、あなただけの星を。
-</p>
+</main>
 
-<a class="enter" href="index.html">
-  ENTER
-</a>
+</body>
