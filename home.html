@@ -51,31 +51,50 @@ body{
   z-index:2;
   left:50%;
   top:50%;
-  width:min(90%,760px);
+  width:min(94%,900px);
   transform:translate(-50%,-50%);
   text-align:center;
   animation:openingIn 1.8s ease both;
 }
 
 /* ロゴ */
-
 .logo-wrap{
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height:clamp(90px,12vw,150px);
+  width:100%;
+  min-height:clamp(150px,20vw,240px);
 }
 
 .logo-image{
   display:block;
   width:min(82vw,700px);
-  max-height:280px;
+  height:auto;
+  max-width:700px;
+  max-height:none;
+  object-fit:contain;
+  filter:drop-shadow(0 0 22px rgba(220,235,255,.3));
 }
 
-/* 英字 */
+/* ロゴ画像が読み込めなかった場合 */
+.logo-wrap .logo{
+  margin:0;
+}
+
+.logo{
+  font-size:clamp(4.5rem,10vw,8rem);
+  font-weight:400;
+  line-height:1;
+  letter-spacing:.16em;
+  text-shadow:0 0 28px rgba(220,235,255,.38);
+}
+
+#logoFallback{
+  display:none;
+}
 
 .en{
-  margin-top:18px;
+  margin-top:8px;
   font-family:Georgia,"Times New Roman",serif;
   font-size:clamp(.8rem,1.5vw,1.1rem);
   letter-spacing:.62em;
@@ -83,23 +102,19 @@ body{
   opacity:.94;
 }
 
-/* メッセージ */
-
 .message{
-  margin:52px 0 0;
+  margin:42px 0 0;
   font-size:clamp(.9rem,1.6vw,1.12rem);
   letter-spacing:.14em;
   line-height:2;
   text-shadow:0 2px 14px rgba(0,0,0,.75);
 }
 
-/* ENTER */
-
 .enter{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  margin-top:38px;
+  margin-top:34px;
   min-width:150px;
   padding:12px 28px 12px 33px;
   border:1px solid rgba(235,242,255,.62);
@@ -119,8 +134,6 @@ body{
   background:rgba(235,242,255,.1);
   box-shadow:0 0 28px rgba(190,215,255,.25);
 }
-
-/* 左右の文章 */
 
 .corner{
   position:absolute;
@@ -143,8 +156,6 @@ body{
   text-align:right;
 }
 
-/* 右下 */
-
 .bottom{
   position:absolute;
   z-index:2;
@@ -155,8 +166,6 @@ body{
   letter-spacing:.3em;
   opacity:.58;
 }
-
-/* アニメーション */
 
 @keyframes openingIn{
   from{
@@ -171,12 +180,24 @@ body{
 }
 
 /* スマホ */
-
 @media(max-width:600px){
 
   .opening{
     min-height:520px;
     background-position:center center;
+  }
+
+  .center{
+    width:94%;
+  }
+
+  .logo-wrap{
+    min-height:130px;
+  }
+
+  .logo-image{
+    width:min(90vw,600px);
+    max-width:600px;
   }
 
   .corner{
@@ -194,12 +215,12 @@ body{
   }
 
   .message{
-    margin-top:40px;
+    margin-top:32px;
     letter-spacing:.08em;
   }
 
   .enter{
-    margin-top:30px;
+    margin-top:28px;
   }
 
   .bottom{
@@ -207,17 +228,14 @@ body{
     bottom:4%;
     font-size:.55rem;
   }
-
 }
 
-/* 動きを減らす設定 */
-
+/* アニメーションを減らす設定 */
 @media(prefers-reduced-motion:reduce){
 
   .center{
     animation:none;
   }
-
 }
 </style>
 </head>
@@ -226,44 +244,41 @@ body{
 
 <main class="opening">
 
-  <!-- 左上 -->
   <div class="corner left">
     言葉にならない想いを、<br>
     一枚の作品に。
   </div>
 
-  <!-- 右上 -->
   <div class="corner right">
     きっと、どこかで、<br>
     あなたの星が待っている。
   </div>
 
-
   <div class="center">
 
-    <!-- ロゴ -->
     <div class="logo-wrap">
+
       <img
         class="logo-image"
-        src="/hoshiyomi/logo.png?v=2"
+        src="logo.png"
         alt="星詠"
+        onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';"
       >
+
+      <h1 class="logo" id="logoFallback">
+        星詠
+      </h1>
+
     </div>
 
-
-    <!-- 英字 -->
     <div class="en">
       H O S H I Y O M I
     </div>
 
-
-    <!-- メッセージ -->
     <p class="message">
       無限に広がる夜空から、あなただけの星を。
     </p>
 
-
-    <!-- ENTER -->
     <a
       class="enter"
       href="../index_星詠_紹介からプランへ版.html"
@@ -273,8 +288,6 @@ body{
 
   </div>
 
-
-  <!-- 右下 -->
   <div class="bottom">
     A STAR FOR YOU.
   </div>
