@@ -1040,6 +1040,135 @@
 }
 </style>
 
+
+<style id="hoshiyomi-subtle-decoration">
+/* 星詠｜静かな装飾 */
+.opening,
+.home,
+main{
+  position:relative;
+}
+
+/* 背景に控えめな星 */
+.opening::before{
+  content:"✦   ·        ✧             ·   ✦        ·        ✧";
+  position:absolute;
+  top:12%;
+  left:4%;
+  width:92%;
+  color:rgba(220,235,255,.28);
+  font-family:Georgia,serif;
+  font-size:14px;
+  letter-spacing:1.2em;
+  pointer-events:none;
+  z-index:0;
+  white-space:nowrap;
+}
+
+/* 見出しの左右に細い光 */
+.service-content h2::before,
+.flow-content h2::before{
+  content:"✦";
+  display:inline-block;
+  margin-right:18px;
+  font-size:.55em;
+  vertical-align:middle;
+  opacity:.65;
+}
+
+.service-content h2::after,
+.flow-content h2::after{
+  content:"✦";
+  display:inline-block;
+  margin-left:18px;
+  font-size:.55em;
+  vertical-align:middle;
+  opacity:.65;
+}
+
+/* カードを少しだけ上品に */
+.plan-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(190,215,255,.14)!important;
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(235,245,255,.05)!important;
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease!important;
+}
+
+.plan-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:12%;
+  width:76%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(205,225,255,.5),
+    transparent
+  );
+}
+
+.plan-card::after{
+  content:"✧";
+  position:absolute;
+  right:20px;
+  top:16px;
+  font-family:Georgia,serif;
+  font-size:18px;
+  color:rgba(220,235,255,.28);
+}
+
+.plan-card:hover{
+  transform:translateY(-4px)!important;
+  border-color:rgba(200,225,255,.3)!important;
+  box-shadow:
+    0 16px 42px rgba(0,0,0,.25),
+    0 0 25px rgba(150,190,255,.08),
+    inset 0 1px 0 rgba(235,245,255,.08)!important;
+}
+
+/* 小さな区切り線 */
+.plan-link::before{
+  content:"";
+  display:inline-block;
+  width:28px;
+  height:1px;
+  margin:0 12px 4px 0;
+  background:rgba(210,230,255,.4);
+}
+
+/* スマホでは装飾を控えめに */
+@media(max-width:760px){
+  .opening::before{
+    font-size:11px;
+    letter-spacing:.7em;
+    top:9%;
+  }
+
+  .service-content h2::before,
+  .flow-content h2::before{
+    margin-right:10px;
+  }
+
+  .service-content h2::after,
+  .flow-content h2::after{
+    margin-left:10px;
+  }
+
+  .plan-card::after{
+    right:15px;
+    top:13px;
+  }
+}
+</style>
+
 </head>
 
 <body>
