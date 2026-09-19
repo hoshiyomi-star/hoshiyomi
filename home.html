@@ -51,7 +51,7 @@ body{
   z-index:2;
   left:50%;
   top:50%;
-  width:min(94%,900px);
+  width:min(90%,760px);
   transform:translate(-50%,-50%);
   text-align:center;
   animation:openingIn 1.8s ease both;
@@ -62,29 +62,30 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  width:100%;
-  min-height:clamp(150px,20vw,240px);
+  min-height:clamp(110px,15vw,180px);
 }
 
 .logo-image{
   display:block;
-  width:min(85vw,680px);
-  max-height:300px;
+
+  /* 今までより少し大きめ */
+  width:min(78vw,620px);
+
+  max-height:250px;
   object-fit:contain;
-  filter:drop-shadow(0 0 22px rgba(220,235,255,.3));
+
+  /* 白っぽさを抑えて青を少し強くする */
+  filter:
+    brightness(.78)
+    contrast(1.18)
+    saturate(1.35)
+    drop-shadow(0 0 20px rgba(90,145,255,.28));
+
+  transition:filter .3s ease;
 }
 
-/* ロゴ画像が読み込めなかった場合 */
 .logo-wrap .logo{
   margin:0;
-}
-
-.logo{
-  font-size:clamp(4.5rem,10vw,8rem);
-  font-weight:400;
-  line-height:1;
-  letter-spacing:.16em;
-  text-shadow:0 0 28px rgba(220,235,255,.38);
 }
 
 #logoFallback{
@@ -92,7 +93,7 @@ body{
 }
 
 .en{
-  margin-top:8px;
+  margin-top:12px;
   font-family:Georgia,"Times New Roman",serif;
   font-size:clamp(.8rem,1.5vw,1.1rem);
   letter-spacing:.62em;
@@ -101,7 +102,7 @@ body{
 }
 
 .message{
-  margin:42px 0 0;
+  margin:46px 0 0;
   font-size:clamp(.9rem,1.6vw,1.12rem);
   letter-spacing:.14em;
   line-height:2;
@@ -112,18 +113,23 @@ body{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  margin-top:34px;
+  margin-top:38px;
   min-width:150px;
   padding:12px 28px 12px 33px;
+
   border:1px solid rgba(235,242,255,.62);
   border-radius:999px;
+
   color:#fff;
   text-decoration:none;
+
   font-family:Georgia,"Times New Roman",serif;
   font-size:.78rem;
   letter-spacing:.34em;
+
   background:rgba(2,8,22,.2);
   backdrop-filter:blur(7px);
+
   transition:.3s ease;
 }
 
@@ -159,6 +165,7 @@ body{
   z-index:2;
   right:4%;
   bottom:5%;
+
   font-family:Georgia,"Times New Roman",serif;
   font-size:.62rem;
   letter-spacing:.3em;
@@ -177,25 +184,11 @@ body{
   }
 }
 
-/* スマホ */
 @media(max-width:600px){
 
   .opening{
     min-height:520px;
     background-position:center center;
-  }
-
-  .center{
-    width:94%;
-  }
-
-  .logo-wrap{
-    min-height:130px;
-  }
-
-  .logo-image{
-    width:min(90vw,600px);
-    max-width:600px;
   }
 
   .corner{
@@ -212,13 +205,18 @@ body{
     top:5%;
   }
 
+  .logo-image{
+    width:min(82vw,500px);
+    max-height:200px;
+  }
+
   .message{
-    margin-top:32px;
+    margin-top:40px;
     letter-spacing:.08em;
   }
 
   .enter{
-    margin-top:28px;
+    margin-top:30px;
   }
 
   .bottom{
@@ -228,7 +226,6 @@ body{
   }
 }
 
-/* アニメーションを減らす設定 */
 @media(prefers-reduced-motion:reduce){
 
   .center{
