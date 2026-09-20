@@ -1026,6 +1026,76 @@ body{
   }
 }
 
+
+/* ===== 初めての星：一目で分かるレイアウト ===== */
+.first-star-hero{
+  text-align:center;
+  padding-top:20px;
+  padding-bottom:30px;
+}
+.first-star-catch{
+  font-size:clamp(1.15rem,2.5vw,1.55rem)!important;
+  line-height:1.9!important;
+  letter-spacing:.08em!important;
+  margin:16px auto 28px!important;
+}
+.first-star-summary{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  max-width:760px;
+  margin:0 auto;
+  border-top:1px solid rgba(220,225,240,.14);
+  border-bottom:1px solid rgba(220,225,240,.14);
+}
+.first-star-summary div{
+  padding:18px 10px;
+  border-right:1px solid rgba(220,225,240,.10);
+}
+.first-star-summary div:last-child{border-right:0}
+.first-star-summary small{
+  display:block;
+  font-size:.65rem;
+  letter-spacing:.15em;
+  opacity:.65;
+  margin-bottom:6px;
+}
+.first-star-summary strong{
+  font-size:.98rem;
+  font-weight:600;
+}
+.first-star-price-main{
+  text-align:center;
+  font-size:clamp(2rem,5vw,3rem);
+  font-weight:600;
+  letter-spacing:.06em;
+  margin:8px 0 14px;
+}
+.first-star-price-note{
+  text-align:center;
+  font-size:.92rem!important;
+  line-height:1.9!important;
+  opacity:.82;
+}
+.first-star-flow .simple-flow-item{
+  padding-top:16px;
+  padding-bottom:16px;
+}
+
+@media(max-width:700px){
+  .first-star-summary{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .first-star-summary div:nth-child(2){
+    border-right:0;
+  }
+  .first-star-summary div:nth-child(-n+2){
+    border-bottom:1px solid rgba(220,225,240,.10);
+  }
+  .first-star-catch{
+    font-size:1.08rem!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1047,92 +1117,99 @@ body{
       <p class="simple-price">3,000円〜</p>
     </section>
 
-    <section class="simple-section simple-intro">
-      <p>
-        「初めての星」は、星詠を初めて利用する方のための色紙作品です。<br>
-        あなたの姿を上半身で描き、背景には、あなたを象徴する花を咲かせます。
+    <section class="simple-section simple-intro first-star-hero">
+      <p class="simple-section-label">HAJIMETE NO HOSHI</p>
+      <h2>初めての星</h2>
+      <p class="first-star-catch">
+        あなたの姿と、あなたを象徴する花を、<br>
+        一枚の色紙に。
       </p>
+      <div class="first-star-summary">
+        <div><small>PORTRAIT</small><strong>上半身</strong></div>
+        <div><small>FLOWER</small><strong>象徴する花</strong></div>
+        <div><small>ARTWORK</small><strong>色紙</strong></div>
+        <div><small>PRICE</small><strong>3,000円〜</strong></div>
+      </div>
     </section>
 
     <section class="simple-section">
-      <p class="simple-section-label">ABOUT THE PLAN</p>
-      <h2>一枚の色紙に</h2>
+      <p class="simple-section-label">ABOUT THE WORK</p>
+      <h2>どんな作品？</h2>
+      <p class="simple-section-lead">
+        あなたの姿を上半身で描き、背景にあなたを象徴する花を添えます。
+      </p>
       <div class="simple-points">
         <div class="simple-point">
-          <small>PORTRAIT</small>
-          <strong>あなたの姿<br>上半身</strong>
+          <small>01 / PORTRAIT</small>
+          <strong>あなたの姿<br>上半身で描画</strong>
         </div>
         <div class="simple-point">
-          <small>FLOWER</small>
+          <small>02 / FLOWER</small>
           <strong>あなたを象徴する花<br>背景に描画</strong>
         </div>
         <div class="simple-point">
-          <small>ARTWORK</small>
-          <strong>色紙作品<br>一枚仕立て</strong>
+          <small>03 / PAPER</small>
+          <strong>色紙に仕立てる<br>一枚の作品</strong>
         </div>
       </div>
     </section>
 
-    <section class="simple-section">
-      <p class="simple-section-label">PLAN DETAILS</p>
-      <h2>料金と内容</h2>
+    <section class="simple-section first-star-price">
+      <p class="simple-section-label">PRICE</p>
+      <h2>料金</h2>
+      <div class="first-star-price-main">3,000円〜</div>
+      <p class="first-star-price-note">
+        初回のご依頼時のみご利用いただけます。<br>
+        内容やご希望によって追加料金が発生する場合があります。
+      </p>
       <dl class="simple-specs">
-        <div class="simple-spec"><dt>料金</dt><dd>3,000円〜</dd></div>
-        <div class="simple-spec"><dt>ご利用</dt><dd>初回のご依頼時のみ</dd></div>
-        <div class="simple-spec"><dt>作品</dt><dd>上半身＋あなたを象徴する花</dd></div>
+        <div class="simple-spec"><dt>作品</dt><dd>上半身＋象徴する花</dd></div>
         <div class="simple-spec"><dt>用紙</dt><dd>色紙</dd></div>
         <div class="simple-spec"><dt>修正</dt><dd>ラフ段階で1回</dd></div>
       </dl>
-      <div class="simple-note">
-        内容やご希望によって追加料金が発生する場合があります。<br>
-        詳細はお申し込み後にご案内します。
-      </div>
     </section>
 
     <section class="simple-section">
       <p class="simple-section-label">ORDER FLOW</p>
       <h2>ご依頼の流れ</h2>
-      <div class="simple-flow">
-        <div class="simple-flow-item"><small>01</small><strong>申し込み</strong><p>フォームから内容を送信</p></div>
-        <div class="simple-flow-item"><small>02</small><strong>内容確認・料金確定</strong><p>作品内容・料金・納期を確認</p></div>
-        <div class="simple-flow-item"><small>03</small><strong>お支払い・制作</strong><p>確認後、制作を開始</p></div>
-        <div class="simple-flow-item"><small>04</small><strong>完成・お届け</strong><p>仕上げた色紙をお届け</p></div>
+      <div class="simple-flow first-star-flow">
+        <div class="simple-flow-item"><small>01</small><strong>申し込み</strong><p>フォームから送信</p></div>
+        <div class="simple-flow-item"><small>02</small><strong>内容確認</strong><p>作品内容・料金・納期を確認</p></div>
+        <div class="simple-flow-item"><small>03</small><strong>お支払い・制作</strong><p>確認後、制作開始</p></div>
+        <div class="simple-flow-item"><small>04</small><strong>完成・お届け</strong><p>色紙をお届け</p></div>
       </div>
     </section>
 
     <section class="simple-section simple-sheet-section">
-      <p class="simple-section-label">YOUR FRAGMENTS</p>
-      <h2>星のかけら</h2>
+      <p class="simple-section-label">YOUR FRAGMENTS / ORDER FORM</p>
+      <h2>あなたの星のかけら</h2>
       <p class="simple-section-lead">
-        あなたを象徴する花を見つけるために、あなたのことを少しだけ教えてください。
+        <strong>「初めての星」をご依頼いただくための記入項目です。</strong><br>
+        あなたのことや、好きなもの、大切な記憶を教えてください。<br>
+        いただいた言葉から、あなたを象徴する花を見つけます。
       </p>
-
       <div class="simple-mini-sheet">
         <div class="simple-mini-item">
-          <span>01</span>
-          <div><small>ABOUT YOU</small><strong>あなたについて</strong><p>名前・髪型・髪色・服装など</p></div>
+          <span>01</span><div><small>ABOUT YOU</small><strong>あなたについて</strong><p>名前・髪型・髪色・服装など</p></div>
         </div>
         <div class="simple-mini-item">
-          <span>02</span>
-          <div><small>YOUR FRAGMENTS</small><strong>あなたのこと</strong><p>好きな色・好きなもの・記憶・憧れ・好きな雰囲気</p></div>
+          <span>02</span><div><small>FRAGMENTS</small><strong>あなたのこと</strong><p>好きな色・もの・記憶・憧れ・雰囲気</p></div>
         </div>
         <div class="simple-mini-item">
-          <span>03</span>
-          <div><small>THE FLOWER</small><strong>象徴する花</strong><p>好きな花があれば記入。おまかせでも大丈夫です。</p></div>
+          <span>03</span><div><small>FLOWER</small><strong>象徴する花</strong><p>好きな花があれば記入。おまかせも可能です。</p></div>
         </div>
         <div class="simple-mini-item">
-          <span>04</span>
-          <div><small>THIS PIECE</small><strong>今回の作品</strong><p>入れてほしいもの・避けたいもの・参考画像など</p></div>
+          <span>04</span><div><small>PIECE</small><strong>作品について</strong><p>入れてほしいもの・避けたいもの・参考画像など</p></div>
         </div>
       </div>
 
       <div class="simple-form-heading">
-        <p class="simple-section-label">SEND YOUR FRAGMENT</p>
-        <h3>星のかけらを送る</h3>
+        <p class="simple-section-label">HAJIMETE NO HOSHI / ORDER</p>
+        <h3>星のかけらを記入する</h3>
       </div>
 
       <form class="simple-order-form" id="simplePlanForm">
-        <p class="simple-form-note">必要な項目を入力して送信してください。<br><span>※「必須」の項目は入力が必要です。</span></p>
+        <p class="simple-form-note"><strong>初めての星｜ご依頼用フォーム</strong><br>必要な項目を入力して送信してください。<br><span>※「必須」の項目は入力が必要です。</span></p>
         <div class="simple-form-grid">
           <div class="simple-form-field">
             <label for="sp-name">お名前 <span>必須</span></label>
@@ -1184,7 +1261,7 @@ body{
           </div>
         </div>
         <div class="simple-form-submit-wrap">
-          <button class="simple-form-submit" type="submit">星のかけらを送る →</button>
+          <button class="simple-form-submit" type="submit">星のかけらを記入する →</button>
           <p class="simple-form-status" id="simplePlanStatus" aria-live="polite"></p>
         </div>
       </form>
