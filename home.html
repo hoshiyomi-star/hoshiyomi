@@ -1204,6 +1204,60 @@
 }
 </style>
 
+
+<style id="plan-readable-final">
+/* ===== PLAN：ご依頼はこちらの見出しを基準に、流し見でも拾えるサイズ ===== */
+#service .plan-card h3{
+  font-size:clamp(1.35rem,2.2vw,1.6rem) !important;
+  line-height:1.5 !important;
+  font-weight:500 !important;
+  letter-spacing:.08em !important;
+}
+
+#service .plan-card p{
+  font-size:clamp(1.02rem,1.6vw,1.16rem) !important;
+  line-height:1.9 !important;
+}
+
+#service .plan-card .plan-subtitle{
+  font-size:clamp(1.08rem,1.7vw,1.22rem) !important;
+  line-height:1.75 !important;
+}
+
+#service .plan-card .plan-price{
+  font-size:clamp(1.5rem,2.5vw,1.85rem) !important;
+  line-height:1.4 !important;
+  font-weight:500 !important;
+  margin-top:18px !important;
+}
+
+#service .plan-card .plan-link{
+  font-size:1rem !important;
+  line-height:1.5 !important;
+}
+</style>
+
+
+<style id="service-lead-readable-final">
+/* 「プランを選ぶ」の直下：流し見でも読めるサイズへ */
+#service .service-lead{
+  font-size:clamp(1.08rem,1.8vw,1.28rem) !important;
+  line-height:2.05 !important;
+  letter-spacing:.035em !important;
+  max-width:900px !important;
+  margin:18px auto 34px !important;
+  opacity:.92 !important;
+}
+
+@media(max-width:760px){
+  #service .service-lead{
+    font-size:1.05rem !important;
+    line-height:1.95 !important;
+    margin-bottom:28px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
