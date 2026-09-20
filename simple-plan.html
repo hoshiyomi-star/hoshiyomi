@@ -401,7 +401,310 @@
       .simple-mini-item{grid-template-columns:42px 1fr;gap:14px;padding:24px 20px;}
       .simple-sheet-note{padding:20px 16px;}
     }
-  </style>
+  
+/* ===== 読みやすさ改善 ===== */
+.simple-page{
+  padding-bottom:80px;
+}
+
+.simple-hero{
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.simple-hero .hero-sub{
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.simple-section{
+  line-height:1.9;
+}
+
+.simple-section-lead{
+  max-width:780px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.simple-intro p{
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:2.15;
+}
+
+.simple-points{
+  margin-top:36px;
+}
+
+.simple-point{
+  padding:30px 24px;
+}
+
+.simple-point strong{
+  display:block;
+  margin-top:10px;
+  line-height:1.8;
+}
+
+.simple-specs{
+  max-width:820px;
+  margin:34px auto 0;
+}
+
+.simple-spec{
+  padding:20px 10px;
+  line-height:1.8;
+}
+
+.simple-spec dt{
+  font-weight:600;
+}
+
+.simple-spec dd{
+  margin:0;
+}
+
+.simple-note{
+  max-width:820px;
+  margin:28px auto 0;
+  line-height:1.9;
+}
+
+.simple-flow{
+  max-width:820px;
+  margin:36px auto 0;
+}
+
+.simple-flow-item{
+  padding-top:22px;
+  padding-bottom:22px;
+}
+
+.simple-flow-item strong{
+  display:block;
+  margin:5px 0 6px;
+  line-height:1.7;
+}
+
+.simple-flow-item p{
+  margin:0;
+  line-height:1.9;
+}
+
+.simple-mini-sheet{
+  max-width:820px;
+  margin:36px auto 0;
+}
+
+.simple-mini-item{
+  min-height:110px;
+}
+
+.simple-mini-item strong{
+  display:block;
+  margin:5px 0 7px;
+  line-height:1.7;
+}
+
+.simple-mini-item p{
+  margin:0;
+  line-height:1.85;
+}
+
+.simple-sheet-note{
+  max-width:820px;
+  margin:24px auto 0;
+  line-height:1.9;
+}
+
+.simple-form-heading{
+  max-width:820px;
+  margin:58px auto 24px;
+  text-align:center;
+}
+
+.simple-form-heading h3{
+  margin:8px 0 10px;
+}
+
+.simple-form-heading p{
+  line-height:1.9;
+}
+
+.simple-order-form{
+  max-width:820px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.simple-form-note{
+  line-height:1.8;
+  margin-bottom:28px;
+}
+
+.simple-form-field label{
+  line-height:1.6;
+}
+
+.simple-form-field input,
+.simple-form-field textarea{
+  line-height:1.7;
+}
+
+.simple-form-field textarea{
+  min-height:120px;
+}
+
+.simple-form-submit-wrap{
+  margin-top:30px;
+}
+
+.simple-final{
+  line-height:2;
+}
+
+@media(max-width:700px){
+  .simple-hero{
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  .simple-intro p{
+    line-height:2;
+    text-align:left;
+  }
+
+  .simple-section-lead{
+    text-align:left;
+  }
+
+  .simple-point{
+    padding:25px 20px;
+  }
+
+  .simple-spec{
+    padding:17px 4px;
+  }
+
+  .simple-flow{
+    margin-top:28px;
+  }
+
+  .simple-flow-item{
+    padding-top:18px;
+    padding-bottom:18px;
+  }
+
+  .simple-mini-item{
+    min-height:auto;
+  }
+
+  .simple-form-heading{
+    margin-top:44px;
+  }
+}
+
+
+
+/* ===== First Star / floral atmosphere ===== */
+.simple-page{
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(80,112,190,.10), transparent 34%),
+    radial-gradient(circle at 8% 48%, rgba(120,145,205,.055), transparent 25%),
+    radial-gradient(circle at 92% 72%, rgba(120,105,180,.05), transparent 25%);
+}
+
+.simple-page::before,
+.simple-page::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  width:420px;
+  height:700px;
+  opacity:.18;
+  background-repeat:no-repeat;
+  background-size:contain;
+  filter:drop-shadow(0 0 18px rgba(150,180,255,.08));
+}
+
+.simple-page::before{
+  left:-155px;
+  top:110px;
+  transform:rotate(-7deg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 700'%3E%3Cg fill='none' stroke='%239bbcff' stroke-width='1.2' opacity='.9'%3E%3Cpath d='M330 680C295 570 260 470 205 390C145 302 92 205 54 24'/%3E%3Cpath d='M205 390C158 374 112 345 70 305'/%3E%3Cpath d='M260 475C309 438 350 396 381 342'/%3E%3Cpath d='M145 288C108 259 79 222 59 180'/%3E%3Cpath d='M105 222C150 215 184 192 209 154'/%3E%3C/g%3E%3Cg fill='%23aebfff' stroke='%23c8d7ff' stroke-width='1'%3E%3Cpath d='M47 18c-25 17-29 43-8 59 22-14 28-36 8-59z'/%3E%3Cpath d='M68 182c-28-2-43 15-39 38 24 6 42-9 39-38z'/%3E%3Cpath d='M204 150c-13-25-37-30-53-14 10 22 31 31 53 14z'/%3E%3Cpath d='M382 338c-25-13-47-4-53 17 21 13 42 6 53-17z'/%3E%3Cpath d='M73 301c-18-20-41-19-53-1 15 18 35 21 53 1z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23c6d7ff' stroke-width='1.3'%3E%3Ccircle cx='80' cy='118' r='22'/%3E%3Cpath d='M80 90v56M52 118h56'/%3E%3Ccircle cx='321' cy='260' r='18'/%3E%3Cpath d='M321 238v44M299 260h44'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.simple-page::after{
+  right:-170px;
+  top:650px;
+  transform:scaleX(-1) rotate(5deg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 700'%3E%3Cg fill='none' stroke='%239bbcff' stroke-width='1.2' opacity='.9'%3E%3Cpath d='M330 680C295 570 260 470 205 390C145 302 92 205 54 24'/%3E%3Cpath d='M205 390C158 374 112 345 70 305'/%3E%3Cpath d='M260 475C309 438 350 396 381 342'/%3E%3Cpath d='M145 288C108 259 79 222 59 180'/%3E%3Cpath d='M105 222C150 215 184 192 209 154'/%3E%3C/g%3E%3Cg fill='%23aebfff' stroke='%23c8d7ff' stroke-width='1'%3E%3Cpath d='M47 18c-25 17-29 43-8 59 22-14 28-36 8-59z'/%3E%3Cpath d='M68 182c-28-2-43 15-39 38 24 6 42-9 39-38z'/%3E%3Cpath d='M204 150c-13-25-37-30-53-14 10 22 31 31 53 14z'/%3E%3Cpath d='M382 338c-25-13-47-4-53 17 21 13 42 6 53-17z'/%3E%3Cpath d='M73 301c-18-20-41-19-53-1 15 18 35 21 53 1z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23c6d7ff' stroke-width='1.3'%3E%3Ccircle cx='80' cy='118' r='22'/%3E%3Cpath d='M80 90v56M52 118h56'/%3E%3Ccircle cx='321' cy='260' r='18'/%3E%3Cpath d='M321 238v44M299 260h44'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.simple-hero{
+  position:relative;
+}
+
+.simple-hero::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  bottom:34px;
+  transform:translateX(-50%);
+  font-size:12px;
+  color:rgba(205,220,255,.72);
+  text-shadow:0 0 14px rgba(160,190,255,.45);
+}
+
+.simple-section{
+  position:relative;
+}
+
+.simple-section::after{
+  content:"✧";
+  position:absolute;
+  right:4px;
+  top:68px;
+  font-size:15px;
+  color:rgba(170,195,245,.28);
+}
+
+.simple-points,
+.simple-note,
+.simple-mini-sheet,
+.simple-order-form{
+  backdrop-filter:blur(8px);
+  box-shadow:0 18px 50px rgba(0,0,0,.12), inset 0 1px 0 rgba(220,230,255,.025);
+}
+
+.simple-point,
+.simple-spec,
+.simple-flow-item,
+.simple-mini-item{
+  transition:background .25s ease, border-color .25s ease;
+}
+
+.simple-point:hover{
+  background:rgba(145,170,230,.035);
+}
+
+@media(max-width:700px){
+  .simple-page::before,
+  .simple-page::after{
+    width:270px;
+    height:520px;
+    opacity:.11;
+  }
+  .simple-page::before{left:-170px;top:140px;}
+  .simple-page::after{right:-175px;top:900px;}
+}
+
+</style>
 </head>
 <body>
 
@@ -416,20 +719,20 @@
       <p class="simple-label">01｜FIRST STAR</p>
       <h1>初めての星</h1>
       <p class="hero-sub">
-        まずは星詠の制作を、ひとつ体験してみたい方へ。<br>
-        小さな一歩から、あなたの星を形にします。
+        星詠を初めてご依頼いただく方へ。<br>
+        あなたの姿と、あなたを象徴する花を、一枚の色紙に。
       </p>
       <p class="simple-price">3,000円〜</p>
     </section>
 
     <section class="simple-section simple-intro">
       <p>
-        高額な料金でのご依頼を、いきなりお願いするのは<br>
-        少し不安に感じる方もいると思います。<br><br>
-        そこで星詠では、まずは星詠の制作を体験していただける<br>
-        「初めての星」をご用意しました。<br><br>
-        内容は一部となりますが、星詠がどのようにあなたの想いを受け取り、<br>
-        一枚の作品へと形にしていくのかを、実際に体験していただけます。
+        「いきなり大きな作品をお願いするのは少し不安」<br>
+        そんな方へ向けた、星詠の最初の一枚です。<br><br>
+        あなたの姿を上半身で描き、<br>
+        その背景には、あなたを象徴する花を咲かせます。<br><br>
+        あなたからいただいた「星のかけら」をもとに、<br>
+        その人らしさを一輪の花として見つけ、色紙に残します。
       </p>
     </section>
 
@@ -437,23 +740,22 @@
       <p class="simple-section-label">ABOUT THE PLAN</p>
       <h2>初めての星について</h2>
       <p class="simple-section-lead">
-        「いきなり大きな依頼をするのは少し不安」<br>
-        「まず星詠がどんな制作をするのか知りたい」<br>
-        そんな方のための、最初の星です。
+        「初めての星」は、星詠を初めて利用する方のための色紙作品です。<br>
+        あなたの姿を上半身で描き、背景には、あなたを象徴する花を描きます。
       </p>
 
       <div class="simple-points">
         <div class="simple-point">
-          <small>HEARING</small>
-          <strong>ヒアリング<br>30分</strong>
+          <small>PORTRAIT</small>
+          <strong>あなたの姿<br>上半身</strong>
         </div>
         <div class="simple-point">
-          <small>REVISION</small>
-          <strong>修正<br>1回のみ</strong>
+          <small>FLOWER</small>
+          <strong>象徴する花<br>背景に描画</strong>
         </div>
         <div class="simple-point">
-          <small>DELIVERY</small>
-          <strong>データのみ<br>納品</strong>
+          <small>ARTWORK</small>
+          <strong>色紙作品<br>一枚仕立て</strong>
         </div>
       </div>
     </section>
@@ -472,16 +774,16 @@
           <dd>初回のご依頼時のみ</dd>
         </div>
         <div class="simple-spec">
-          <dt>ヒアリング</dt>
-          <dd>30分</dd>
+          <dt>作品</dt>
+          <dd>上半身＋あなたを象徴する花</dd>
+        </div>
+        <div class="simple-spec">
+          <dt>用紙</dt>
+          <dd>色紙</dd>
         </div>
         <div class="simple-spec">
           <dt>修正</dt>
           <dd>ラフ段階で1回のみ</dd>
-        </div>
-        <div class="simple-spec">
-          <dt>納品</dt>
-          <dd>データのみ</dd>
         </div>
       </dl>
 
@@ -505,17 +807,17 @@
         <div class="simple-flow-item">
           <small>02</small>
           <strong>「星のかけら」を記入</strong>
-          <p>あなたについて、好きなもの、記憶、憧れなどをお聞かせください。</p>
+          <p>あなたについて、好きなものや大切な記憶などをお聞かせください。</p>
         </div>
         <div class="simple-flow-item">
           <small>03</small>
           <strong>内容確認</strong>
-          <p>制作内容や参考資料、納期などを確認します。</p>
+          <p>描く内容や参考資料、納期などを確認します。</p>
         </div>
         <div class="simple-flow-item">
           <small>04</small>
-          <strong>ヒアリング</strong>
-          <p>必要に応じて、30分のヒアリングを行います。</p>
+          <strong>あなたを象徴する花を決める</strong>
+          <p>いただいた「星のかけら」から、あなたを象徴する花を考えます。</p>
         </div>
         <div class="simple-flow-item">
           <small>05</small>
@@ -530,12 +832,12 @@
         <div class="simple-flow-item">
           <small>07</small>
           <strong>制作・ラフ確認</strong>
-          <p>ラフ段階で方向性を確認し、修正は1回までお受けします。</p>
+          <p>上半身と花の構図を確認し、修正は1回までお受けします。</p>
         </div>
         <div class="simple-flow-item">
           <small>08</small>
-          <strong>仕上げ・納品</strong>
-          <p>ラフ確認後は星詠におまかせで仕上げ、データで納品します。</p>
+          <strong>仕上げ・お届け</strong>
+          <p>ラフ確認後は仕上げを行い、色紙としてお届けします。</p>
         </div>
       </div>
     </section>
@@ -544,10 +846,9 @@
       <p class="simple-section-label">YOUR FIRST STAR</p>
       <h2>初めての星の「星のかけら」</h2>
       <p class="simple-section-lead">
-        初めての星では、星詠をはじめて体験していただくために、
-        本編よりも少しだけ簡単な「星のかけら」をご用意しています。<br>
+        あなたの姿と、あなたを象徴する花を描くために、<br>
+        あなたのことを少しだけ教えてください。<br>
         すべてをきれいに言葉にする必要はありません。
-        あなたが伝えたいことを、できるところからお聞かせください。
       </p>
 
       <div class="simple-mini-sheet">
@@ -556,30 +857,38 @@
           <div>
             <small>ABOUT YOU</small>
             <strong>あなたについて</strong>
-            <p>お名前・呼ばれたい名前／今回描いてほしいもの／髪型・髪色・服装など</p>
+            <p>お名前・呼ばれたい名前／髪型・髪色・服装など、描くために必要な情報</p>
           </div>
         </div>
         <div class="simple-mini-item">
           <span>02</span>
           <div>
-            <small>LIKES</small>
-            <strong>好きなもの</strong>
-            <p>好きな色／好きなもの・場所／好きな雰囲気</p>
+            <small>YOUR FRAGMENTS</small>
+            <strong>あなたの星のかけら</strong>
+            <p>好きな色／好きなもの・場所／大切な記憶／憧れているもの／好きな雰囲気</p>
           </div>
         </div>
         <div class="simple-mini-item">
           <span>03</span>
           <div>
+            <small>THE FLOWER</small>
+            <strong>あなたを象徴する花</strong>
+            <p>花そのものに希望があればお聞かせください。おまかせの場合はこちらで考えます。</p>
+          </div>
+        </div>
+        <div class="simple-mini-item">
+          <span>04</span>
+          <div>
             <small>THIS PIECE</small>
             <strong>今回の作品について</strong>
-            <p>どんな雰囲気にしたいか／入れてほしいもの／入れてほしくないもの／参考画像など</p>
+            <p>入れてほしいもの／入れてほしくないもの／参考画像など</p>
           </div>
         </div>
       </div>
 
       <div class="simple-sheet-note">
-        <strong>あなたからもらった小さな「かけら」を集めて、ひとつの作品にします。</strong><br>
-        うまく言葉にできなくても大丈夫です。
+        <strong>あなたからもらった小さな「かけら」から、一輪の花を見つけます。</strong><br>
+        その花とあなたの姿を、一枚の色紙に残します。
       </div>
 
       <div class="simple-form-heading">
@@ -604,12 +913,8 @@
             <input id="sp-callname" name="callName" type="text">
           </div>
           <div class="simple-form-field full">
-            <label for="sp-draw">今回描いてほしいもの <span>必須</span></label>
-            <input id="sp-draw" name="draw" type="text" required>
-          </div>
-          <div class="simple-form-field full">
-            <label for="sp-appearance">髪型・髪色・服装など</label>
-            <textarea id="sp-appearance" name="appearance" placeholder="必要な外見情報を自由に書いてください。"></textarea>
+            <label for="sp-appearance">髪型・髪色・服装など <span>必須</span></label>
+            <textarea id="sp-appearance" name="appearance" placeholder="上半身を描くために必要な外見情報を書いてください。" required></textarea>
           </div>
           <div class="simple-form-field">
             <label for="sp-color">好きな色</label>
@@ -620,12 +925,20 @@
             <input id="sp-place" name="favoriteThingPlace" type="text">
           </div>
           <div class="simple-form-field full">
+            <label for="sp-memory">大切な記憶・憧れているもの</label>
+            <textarea id="sp-memory" name="memory" placeholder="あなたらしいと思うことや、大切にしていることなど。"></textarea>
+          </div>
+          <div class="simple-form-field full">
             <label for="sp-mood">好きな雰囲気</label>
             <textarea id="sp-mood" name="favoriteMood" placeholder="静か、透明感、あたたかい、夜っぽい…など自由にどうぞ。"></textarea>
           </div>
           <div class="simple-form-field full">
+            <label for="sp-flower">花について</label>
+            <textarea id="sp-flower" name="flower" placeholder="好きな花や、描いてほしい花があれば書いてください。おまかせでも大丈夫です。"></textarea>
+          </div>
+          <div class="simple-form-field full">
             <label for="sp-piece">今回の作品について</label>
-            <textarea id="sp-piece" name="piece" placeholder="どんな雰囲気にしたいか、入れてほしいものなどを書いてください。"></textarea>
+            <textarea id="sp-piece" name="piece" placeholder="入れてほしいもの、色紙の雰囲気などを書いてください。"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-avoid">入れてほしくないもの</label>
@@ -633,7 +946,7 @@
           </div>
           <div class="simple-form-field full">
             <label for="sp-reference">参考画像・参考URL</label>
-            <textarea id="sp-reference" name="reference" placeholder="画像そのものは送れないため、参考画像の共有URLなどがあれば記入してください。"></textarea>
+            <textarea id="sp-reference" name="reference" placeholder="参考画像の共有URLなどがあれば記入してください。"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-contact">連絡先（メールアドレス） <span>必須</span></label>
@@ -651,7 +964,7 @@
     <section class="simple-final">
       <p>
         はじめての星から、ゆっくりと。<br>
-        あなたの中にあるものを、一緒に形にしてみませんか。
+        あなたの姿と、あなたを象徴する花を、一枚の色紙に。
       </p>
       <div class="simple-back">
         <a href="index.html#services">星詠のサービス一覧へ →</a>
