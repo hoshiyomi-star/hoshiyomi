@@ -1461,6 +1461,39 @@
 }
 </style>
 
+
+<style id="final-service-heading-fix">
+/* ===== PLAN見出し：左寄りになる上書きを最後に固定 ===== */
+#service{
+  width:100% !important;
+}
+
+#service .service-content{
+  width:min(100%,920px) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+}
+
+#service .service-content > .section-label,
+#service .service-content > h2,
+#service .service-content > .service-lead{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+}
+
+#service .service-content > h2{
+  width:max-content !important;
+  max-width:100% !important;
+}
+
+/* カードだけは従来どおり左揃え */
+#service .plan-card{
+  text-align:left !important;
+}
+</style>
+
 </head>
 
 <body>
