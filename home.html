@@ -1273,6 +1273,72 @@
 }
 </style>
 
+<style id="hoshiyomi-request-final-fix">
+#contact-guide{
+  padding:22px 0 34px!important;
+  margin:0!important;
+  display:block!important;
+  min-height:0!important;
+  height:auto!important;
+}
+#contact-guide .request-row{
+  width:min(92%,1000px);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:36px;
+}
+#contact-guide .request-text{
+  display:flex;
+  align-items:baseline;
+  gap:24px;
+  margin:0;
+}
+#contact-guide .request-text h2{
+  margin:0!important;
+  font-size:clamp(1.45rem,2.6vw,2rem)!important;
+  line-height:1.4!important;
+  letter-spacing:.1em!important;
+  white-space:nowrap;
+}
+#contact-guide .request-text p{
+  margin:0!important;
+  font-size:clamp(1rem,1.5vw,1.12rem)!important;
+  line-height:1.8!important;
+}
+#contact-guide .request-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:56px;
+  padding:0 28px;
+  border:1px solid rgba(170,200,255,.45);
+  border-radius:999px;
+  color:inherit;
+  text-decoration:none;
+  white-space:nowrap;
+  background:rgba(5,12,30,.28);
+  font-size:1rem;
+  letter-spacing:.08em;
+  flex:0 0 auto;
+}
+#contact-guide + .flow{padding-top:28px!important;}
+@media(max-width:900px){
+  #contact-guide .request-row{gap:22px;}
+  #contact-guide .request-text{gap:16px;}
+}
+@media(max-width:760px){
+  #contact-guide{padding:18px 0 26px!important;}
+  #contact-guide .request-row{flex-direction:column;gap:16px;text-align:center;}
+  #contact-guide .request-text{flex-direction:column;align-items:center;gap:6px;}
+  #contact-guide .request-text h2{font-size:1.45rem!important;}
+  #contact-guide .request-text p{font-size:1rem!important;line-height:1.8!important;text-align:center;}
+  #contact-guide .request-button{min-height:54px;font-size:1rem;}
+  #contact-guide + .flow{padding-top:22px!important;}
+}
+</style>
+
 </head>
 
 <body>
@@ -1331,25 +1397,17 @@
 
 
 <section class="top-final about" id="contact-guide">
-      <div class="top-final-message">
-        <p>
-          ご依頼について
-        </p>
-        <p>
-          料金・注意事項をご確認のうえ、<br>
-          お申し込みください。
-        </p>
-      </div>
-
-      
-    </section>
-<section class="simple-cta">
-  <div class="simple-cta-inner">
-    <a href="star-sheet.html">お申し込みへ進む →</a>
+  <div class="request-row">
+    <div class="request-text">
+      <h2>ご依頼について</h2>
+      <p>料金・注意事項をご確認のうえ、お申し込みください。</p>
+    </div>
+    <a class="request-button" href="star-sheet.html">お申し込みへ進む →</a>
   </div>
 </section>
 
 <section class="flow" id="flow">
+
   <div class="flow-content">
     <p class="section-label">FLOW</p>
     <h2>ご依頼の流れ</h2>
