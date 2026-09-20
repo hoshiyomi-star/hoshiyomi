@@ -1512,6 +1512,84 @@
 }
 </style>
 
+
+<style id="request-frame-exact-center">
+/* ===== ご依頼枠：セクションではなく中身そのものを中央に囲む ===== */
+#contact-guide{
+  display:block !important;
+  width:100% !important;
+  text-align:center !important;
+}
+
+/* これまでの疑似要素の枠を完全に無効化 */
+#contact-guide::before,
+#contact-guide::after{
+  content:none !important;
+}
+
+/* 枠そのものを request-row に付けるので、左右ズレが出ない */
+#contact-guide .request-row{
+  position:relative !important;
+  width:min(92%,1080px) !important;
+  margin:0 auto !important;
+  padding:22px 30px !important;
+  min-height:82px;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:36px !important;
+  border:1px solid rgba(170,205,255,.38) !important;
+  border-radius:18px !important;
+  background:
+    radial-gradient(circle at 8% 50%,rgba(150,195,255,.12),transparent 18%),
+    linear-gradient(90deg,rgba(20,45,105,.22),rgba(5,15,45,.16),rgba(25,55,120,.20)) !important;
+  box-shadow:
+    inset 0 0 30px rgba(130,175,255,.045),
+    0 0 24px rgba(100,150,255,.08) !important;
+}
+
+/* 中身は枠の中央ラインに揃える */
+#contact-guide .request-text{
+  margin:0 !important;
+}
+
+#contact-guide .request-button{
+  flex:0 0 auto !important;
+}
+
+/* 枠の中央に小さな星 */
+#contact-guide .request-row::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  bottom:-10px;
+  transform:translateX(-50%);
+  padding:0 14px;
+  color:rgba(220,235,255,.9);
+  background:#020817;
+  font-size:1rem;
+  text-shadow:0 0 12px rgba(180,215,255,.8);
+}
+
+@media(max-width:900px){
+  #contact-guide .request-row{
+    gap:22px !important;
+    padding-left:24px !important;
+    padding-right:24px !important;
+  }
+}
+
+@media(max-width:760px){
+  #contact-guide .request-row{
+    width:94% !important;
+    padding:18px 18px 22px !important;
+    flex-direction:column !important;
+    gap:16px !important;
+    border-radius:14px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
