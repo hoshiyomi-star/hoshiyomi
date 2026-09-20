@@ -1384,6 +1384,82 @@
 }
 </style>
 
+
+<style id="request-celestial-design">
+/* ===== ご依頼エリア：星詠らしい特別枠 ===== */
+.request-section,
+#contact-guide{
+  position:relative;
+}
+
+.request-section::before,
+#contact-guide::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(94%,1100px);
+  height:calc(100% - 18px);
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(170,205,255,.38);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 8% 50%,rgba(150,195,255,.12),transparent 18%),
+    linear-gradient(90deg,rgba(20,45,105,.22),rgba(5,15,45,.16),rgba(25,55,120,.20));
+  box-shadow:
+    inset 0 0 30px rgba(130,175,255,.045),
+    0 0 24px rgba(100,150,255,.08);
+  pointer-events:none;
+  z-index:0;
+}
+
+.request-section > *,
+#contact-guide > *{
+  position:relative;
+  z-index:1;
+}
+
+/* 小さな星のアクセント */
+.request-section::after,
+#contact-guide::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  bottom:-10px;
+  transform:translateX(-50%);
+  padding:0 14px;
+  color:rgba(220,235,255,.9);
+  background:#020817;
+  font-size:1rem;
+  text-shadow:0 0 12px rgba(180,215,255,.8);
+  z-index:2;
+}
+
+.request-title,
+#contact-guide h2{
+  text-shadow:0 0 16px rgba(185,215,255,.18);
+}
+
+/* 既存の説明・ボタンを枠内で自然に見せる */
+.request-text,
+.request-copy{
+  position:relative;
+}
+
+.request-button{
+  border-color:rgba(190,220,255,.65) !important;
+  box-shadow:0 0 16px rgba(110,165,255,.08);
+}
+
+@media(max-width:760px){
+  .request-section::before,
+  #contact-guide::before{
+    width:94%;
+    border-radius:14px;
+  }
+}
+</style>
+
 </head>
 
 <body>
