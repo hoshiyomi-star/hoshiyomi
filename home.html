@@ -1258,6 +1258,107 @@
 }
 </style>
 
+
+<style id="plan-order-flow-spacing-final">
+/* ===== PLAN → ご依頼 → FLOW：空きすぎる余白を整理 ===== */
+#service{
+  padding-bottom:42px !important;
+}
+
+#contact-guide{
+  margin-top:0 !important;
+  padding:0 !important;
+}
+
+#contact-guide .top-final-message{
+  padding-top:24px !important;
+  padding-bottom:10px !important;
+}
+
+.simple-cta{
+  padding-top:0 !important;
+  padding-bottom:34px !important;
+  margin:0 !important;
+}
+
+.simple-cta-inner{
+  padding-bottom:22px !important;
+}
+
+#flow{
+  padding-top:38px !important;
+  margin-top:0 !important;
+}
+
+#flow .flow-content{
+  margin-top:0 !important;
+}
+
+@media(max-width:760px){
+  #service{
+    padding-bottom:32px !important;
+  }
+
+  .simple-cta{
+    padding-bottom:26px !important;
+  }
+
+  #flow{
+    padding-top:30px !important;
+  }
+}
+</style>
+
+
+<style id="japanese-linebreak-final">
+/* ===== 改行調整：日本語が不自然な位置で分断されないように ===== */
+#service .service-lead{
+  max-width:820px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-wrap:pretty;
+}
+
+#service .plan-card{
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+}
+
+#service .plan-card h3,
+#service .plan-card .plan-subtitle,
+#service .plan-card p{
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+  text-wrap:pretty;
+}
+
+#contact-guide .top-final-message{
+  text-wrap:pretty;
+}
+
+#contact-guide .top-final-message p{
+  text-wrap:pretty;
+  word-break:normal !important;
+  overflow-wrap:normal !important;
+}
+
+@media(min-width:761px){
+  #service .plan-card p{
+    max-width:30em;
+  }
+}
+
+@media(max-width:760px){
+  #service .service-lead{
+    max-width:94% !important;
+  }
+
+  #service .plan-card p{
+    max-width:none;
+  }
+}
+</style>
+
 </head>
 
 <body>
