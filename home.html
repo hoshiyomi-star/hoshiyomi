@@ -1460,6 +1460,58 @@
 }
 </style>
 
+
+<style id="request-centered-frame">
+/* ===== ご依頼エリア：枠を中央に完全揃え ===== */
+#contact-guide,
+.request-section{
+  position:relative;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+/* 以前の枠がずれて見えないよう、既存の装飾をリセット */
+#contact-guide::before,
+.request-section::before{
+  left:50% !important;
+  right:auto !important;
+  width:min(92%,1080px) !important;
+  height:calc(100% - 12px) !important;
+  transform:translate(-50%,-50%) !important;
+  top:50% !important;
+  margin:0 !important;
+}
+
+/* 中の要素も中央基準 */
+#contact-guide > *,
+.request-section > *{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* 星アクセントも枠の中央 */
+#contact-guide::after,
+.request-section::after{
+  left:50% !important;
+  right:auto !important;
+  transform:translateX(-50%) !important;
+}
+
+/* スマホ */
+@media(max-width:760px){
+  #contact-guide::before,
+  .request-section::before{
+    width:94% !important;
+    height:calc(100% - 10px) !important;
+    border-radius:14px;
+  }
+}
+</style>
+
 </head>
 
 <body>
