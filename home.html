@@ -1238,6 +1238,41 @@
 }
 </style>
 
+
+<style id="hoshiyomi-request-horizontal">
+#contact-guide{padding:20px 0 0!important;margin:0!important}
+#contact-guide .top-final-message{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:28px!important;width:min(92%,1000px)!important;margin:0 auto!important;
+  text-align:left!important;
+}
+#contact-guide .top-final-message p{margin:0!important}
+#contact-guide .top-final-message p:first-child{
+  flex:0 0 auto!important;font-size:clamp(1.45rem,2.6vw,2rem)!important;
+  line-height:1.4!important;font-weight:600!important;letter-spacing:.1em!important;
+}
+#contact-guide .top-final-message p:last-child{
+  flex:0 1 auto!important;font-size:clamp(1rem,1.5vw,1.12rem)!important;
+  line-height:1.8!important;max-width:560px!important;
+}
+#contact-guide + .simple-cta{
+  padding:0 0 30px!important;margin:0!important;text-align:center!important;
+}
+#contact-guide + .simple-cta .simple-cta-inner{margin:0!important}
+#contact-guide + .simple-cta a{
+  min-height:56px!important;padding:0 32px!important;font-size:1.05rem!important;
+}
+@media(max-width:760px){
+  #contact-guide{padding-top:14px!important}
+  #contact-guide .top-final-message{
+    flex-direction:column!important;align-items:center!important;gap:8px!important;text-align:center!important;
+  }
+  #contact-guide .top-final-message p:first-child{font-size:1.45rem!important}
+  #contact-guide .top-final-message p:last-child{font-size:1rem!important;max-width:100%!important}
+  #contact-guide + .simple-cta{padding-bottom:22px!important}
+}
+</style>
+
 </head>
 
 <body>
@@ -1298,7 +1333,7 @@
 <section class="top-final about" id="contact-guide">
       <div class="top-final-message">
         <p>
-          ご依頼はこちらから。
+          ご依頼について
         </p>
         <p>
           料金・注意事項をご確認のうえ、<br>
@@ -1310,7 +1345,7 @@
     </section>
 <section class="simple-cta">
   <div class="simple-cta-inner">
-    <a href="star-sheet.html">ご依頼はこちらから →</a>
+    <a href="star-sheet.html">お申し込みへ進む →</a>
   </div>
 </section>
 
