@@ -1319,7 +1319,7 @@
   text-decoration:none;
   white-space:nowrap;
   background:rgba(5,12,30,.28);
-  font-size:1rem;
+  font-size:clamp(.9rem,1.3vw,1.05rem);
   letter-spacing:.08em;
   flex:0 0 auto;
 }
@@ -1334,8 +1334,53 @@
   #contact-guide .request-text{flex-direction:column;align-items:center;gap:6px;}
   #contact-guide .request-text h2{font-size:1.45rem!important;}
   #contact-guide .request-text p{font-size:1rem!important;line-height:1.8!important;text-align:center;}
-  #contact-guide .request-button{min-height:54px;font-size:1rem;}
+  #contact-guide .request-button{min-height:54px;font-size:clamp(.9rem,1.3vw,1.05rem);}
   #contact-guide + .flow{padding-top:22px!important;}
+}
+</style>
+
+
+<style id="request-readable-size">
+/* ご依頼エリア：見やすさ優先 */
+.request-title{
+  font-size:clamp(1.35rem,2.2vw,1.8rem) !important;
+}
+.request-text,
+.request-copy{
+  font-size:clamp(1rem,1.5vw,1.2rem) !important;
+  line-height:1.8 !important;
+}
+.request-button{
+  font-size:clamp(.9rem,1.3vw,1.05rem) !important;
+}
+@media(max-width:600px){
+  .request-title{font-size:1.3rem !important;}
+  .request-text,
+  .request-copy{font-size:1rem !important;}
+}
+</style>
+
+
+<style id="request-linebreak-final">
+/* PCでは説明文を1行で表示。狭い画面では自然に折り返す。 */
+#contact-guide .request-text p,
+#contact-guide .request-copy{
+  white-space:nowrap !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+}
+
+#contact-guide .request-text h2{
+  white-space:nowrap !important;
+}
+
+@media(max-width:760px){
+  #contact-guide .request-text p,
+  #contact-guide .request-copy{
+    white-space:normal !important;
+    word-break:keep-all !important;
+    overflow-wrap:anywhere !important;
+  }
 }
 </style>
 
