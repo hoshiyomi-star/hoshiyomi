@@ -1126,6 +1126,42 @@
 }
 </style>
 
+
+<style id="hoshiyomi-request-before-flow">
+/* PLAN → ご依頼 → FLOW の順で、導線を短く */
+#contact-guide{
+  padding-top:18px!important;
+  padding-bottom:0!important;
+  margin-bottom:0!important;
+}
+#contact-guide .top-final-message{
+  margin-top:12px!important;
+  margin-bottom:0!important;
+}
+#contact-guide .top-final-message p{
+  margin-bottom:8px!important;
+}
+#contact-guide + .simple-cta{
+  padding-top:8px!important;
+  padding-bottom:24px!important;
+  margin-top:0!important;
+}
+#contact-guide + .simple-cta .simple-cta-inner{
+  margin-top:0!important;
+}
+#contact-guide + .simple-cta + .flow{
+  padding-top:28px!important;
+}
+@media(max-width:760px){
+  #contact-guide{padding-top:12px!important;}
+  #contact-guide + .simple-cta{
+    padding-top:6px!important;
+    padding-bottom:18px!important;
+  }
+  #contact-guide + .simple-cta + .flow{padding-top:22px!important;}
+}
+</style>
+
 </head>
 
 <body>
@@ -1181,6 +1217,39 @@
       </a>
     </div>
   </div>
+
+
+<section class="top-final about" id="contact-guide">
+      <div class="top-final-message">
+        <p>
+          ご依頼はこちらから。
+        </p>
+        <p>
+          料金・注意事項をご確認のうえ、<br>
+          お申し込みください。
+        </p>
+      </div>
+
+      
+    </section>
+<section class="simple-cta">
+  <div class="simple-cta-inner">
+    <a href="star-sheet.html">ご依頼はこちらから →</a>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <div class="flow-content">
+    <p class="section-label">FLOW</p>
+    <h2>ご依頼の流れ</h2>
+    <div class="simple-flow">
+      <div class="simple-flow-item"><span>01</span><strong>申し込み</strong><p>フォームから内容を送信</p></div>
+      <div class="simple-flow-item"><span>02</span><strong>確認・お見積り</strong><p>料金・納期をご案内</p></div>
+      <div class="simple-flow-item"><span>03</span><strong>お支払い・制作</strong><p>確認後、制作を開始</p></div>
+      <div class="simple-flow-item"><span>04</span><strong>納品</strong><p>完成した作品をお届け</p></div>
+    </div>
+  </div>
+</section>
 </section>
 
 
@@ -1197,18 +1266,7 @@
     
 
 
-<section class="flow" id="flow">
-  <div class="flow-content">
-    <p class="section-label">FLOW</p>
-    <h2>ご依頼の流れ</h2>
-    <div class="simple-flow">
-      <div class="simple-flow-item"><span>01</span><strong>申し込み</strong><p>フォームから内容を送信</p></div>
-      <div class="simple-flow-item"><span>02</span><strong>確認・お見積り</strong><p>料金・納期をご案内</p></div>
-      <div class="simple-flow-item"><span>03</span><strong>お支払い・制作</strong><p>確認後、制作を開始</p></div>
-      <div class="simple-flow-item"><span>04</span><strong>納品</strong><p>完成した作品をお届け</p></div>
-    </div>
-  </div>
-</section>
+
 
 
 
@@ -1216,26 +1274,10 @@
     <!-- =========================
          04｜ご依頼
     ========================= -->
-    <section class="top-final about" id="contact-guide">
-      <div class="top-final-message">
-        <p>
-          ご依頼はこちらから。
-        </p>
-        <p>
-          料金・注意事項をご確認のうえ、<br>
-          お申し込みください。
-        </p>
-      </div>
-
-      
-    </section>
+    
 
   
-<section class="simple-cta">
-  <div class="simple-cta-inner">
-    <a href="star-sheet.html">ご依頼はこちらから →</a>
-  </div>
-</section>
+
 
 </main>
 
@@ -1256,5 +1298,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-home_見やすさ優先デザイン版.html
-HTML
