@@ -1359,6 +1359,108 @@
 }
 </style>
 
+
+<style id="service-lead-natural-break">
+/* PLAN説明文：固定改行をやめ、画面幅に合わせて自然に折り返す */
+#service .service-lead{
+  width:min(92%,780px) !important;
+  max-width:780px !important;
+  margin:18px auto 34px !important;
+  font-size:clamp(1.08rem,1.8vw,1.28rem) !important;
+  line-height:2.05 !important;
+  letter-spacing:.035em !important;
+  text-align:center !important;
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+  text-wrap:pretty !important;
+}
+
+@media(max-width:760px){
+  #service .service-lead{
+    width:92% !important;
+    max-width:none !important;
+    font-size:1.05rem !important;
+    line-height:1.95 !important;
+    text-align:left !important;
+  }
+}
+</style>
+
+
+<style id="final-layout-polish">
+/* ===== PLAN全体：見出しからカードまでの流れを整理 ===== */
+#service{
+  padding-top:clamp(48px,7vw,82px) !important;
+  padding-bottom:42px !important;
+}
+
+#service .section-title{
+  margin-bottom:16px !important;
+}
+
+#service .service-lead{
+  margin-top:12px !important;
+  margin-bottom:30px !important;
+}
+
+/* カード間の余白を一定に */
+#service .plan-grid{
+  gap:20px !important;
+}
+
+/* カード内：タイトル→本文→価格→リンクの視線を整える */
+#service .plan-card h3{
+  margin-bottom:12px !important;
+}
+
+#service .plan-card p{
+  margin-bottom:12px !important;
+}
+
+#service .plan-card .plan-price{
+  margin-top:14px !important;
+  margin-bottom:12px !important;
+}
+
+/* ===== ご依頼：カード直後から自然につなげる ===== */
+#contact-guide{
+  margin-top:0 !important;
+}
+
+#contact-guide .top-final-message{
+  padding-top:24px !important;
+}
+
+/* ===== FLOW：ご依頼CTAの直後に空白を作りすぎない ===== */
+.simple-cta{
+  padding-bottom:28px !important;
+}
+
+#flow{
+  padding-top:34px !important;
+}
+
+/* 小さい画面ではカードの縦方向だけ少し呼吸させる */
+@media(max-width:760px){
+  #service{
+    padding-top:44px !important;
+    padding-bottom:32px !important;
+  }
+
+  #service .service-lead{
+    margin-bottom:26px !important;
+  }
+
+  #service .plan-grid{
+    gap:16px !important;
+  }
+
+  #flow{
+    padding-top:28px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -1381,8 +1483,7 @@
   <div class="service-content">
     <p class="section-label">PLAN</p>
     <h2>プランを選ぶ</h2>
-    <p class="service-lead">星詠は、あなたの「好き」や大切な想いを、一枚の作品として形にするイラスト制作サービスです。<br>
-あなた自身を描く「あなたの姿」や、世界観を描く「あなたの世界」、返礼品など、目的に合わせた作品を制作しています。</p>
+    <p class="service-lead">星詠は、あなたの「好き」や大切な想いを、一枚の作品として形にするイラスト制作サービスです。あなた自身を描く「あなたの姿」や、世界観を描く「あなたの世界」、返礼品など、目的に合わせた作品を制作しています。</p>
 
     <div class="plan-grid">
       <a class="plan-card" href="simple-plan.html">
