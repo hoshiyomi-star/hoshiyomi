@@ -811,6 +811,221 @@ body{
   }
 }
 
+
+/* ===== 花の装飾を少し増やした背景 ===== */
+.simple-page{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 7% 12%, rgba(137,45,67,.18), transparent 30%),
+    radial-gradient(circle at 93% 20%, rgba(151,55,76,.16), transparent 31%),
+    radial-gradient(circle at 5% 58%, rgba(126,42,63,.13), transparent 28%),
+    radial-gradient(circle at 96% 67%, rgba(144,48,69,.14), transparent 29%),
+    radial-gradient(circle at 12% 94%, rgba(125,40,60,.15), transparent 25%),
+    radial-gradient(circle at 90% 94%, rgba(145,48,70,.15), transparent 25%),
+    #020817;
+}
+
+/* 左右に散らした花びら */
+.simple-page::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.72;
+  background:
+    /* 左上の花 */
+    radial-gradient(ellipse 34px 15px at 5% 10%, rgba(188,105,119,.28) 0 48%, transparent 51%),
+    radial-gradient(ellipse 34px 15px at 9% 14%, rgba(158,68,88,.25) 0 48%, transparent 51%),
+    radial-gradient(ellipse 30px 14px at 3% 17%, rgba(214,137,143,.20) 0 48%, transparent 51%),
+
+    /* 右上 */
+    radial-gradient(ellipse 38px 16px at 94% 8%, rgba(188,105,119,.24) 0 48%, transparent 51%),
+    radial-gradient(ellipse 31px 14px at 97% 13%, rgba(157,67,87,.25) 0 48%, transparent 51%),
+    radial-gradient(ellipse 28px 13px at 91% 16%, rgba(215,139,144,.18) 0 48%, transparent 51%),
+
+    /* 左中央 */
+    radial-gradient(ellipse 31px 14px at 4% 43%, rgba(168,77,96,.22) 0 48%, transparent 51%),
+    radial-gradient(ellipse 27px 13px at 8% 47%, rgba(210,130,137,.18) 0 48%, transparent 51%),
+    radial-gradient(ellipse 34px 15px at 3% 51%, rgba(143,56,77,.20) 0 48%, transparent 51%),
+
+    /* 右中央 */
+    radial-gradient(ellipse 33px 15px at 96% 48%, rgba(185,93,109,.23) 0 48%, transparent 51%),
+    radial-gradient(ellipse 29px 13px at 92% 52%, rgba(214,133,140,.18) 0 48%, transparent 51%),
+    radial-gradient(ellipse 35px 15px at 98% 55%, rgba(145,57,78,.21) 0 48%, transparent 51%),
+
+    /* 左下 */
+    radial-gradient(ellipse 36px 16px at 6% 88%, rgba(190,99,113,.25) 0 48%, transparent 51%),
+    radial-gradient(ellipse 31px 14px at 10% 92%, rgba(151,61,81,.23) 0 48%, transparent 51%),
+
+    /* 右下 */
+    radial-gradient(ellipse 37px 16px at 94% 88%, rgba(190,100,114,.24) 0 48%, transparent 51%),
+    radial-gradient(ellipse 30px 14px at 90% 93%, rgba(153,62,82,.23) 0 48%, transparent 51%);
+  filter:blur(.15px);
+}
+
+/* 花の中心＋細かな花びら */
+.simple-page::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.8;
+  background:
+    radial-gradient(circle at 6.5% 13.5%, rgba(238,183,170,.52) 0 3px, transparent 4px),
+    radial-gradient(circle at 95% 11.5%, rgba(238,183,170,.48) 0 3px, transparent 4px),
+    radial-gradient(circle at 5% 46%, rgba(231,169,159,.42) 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 95% 51%, rgba(235,177,166,.45) 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 8% 90%, rgba(236,181,169,.45) 0 3px, transparent 4px),
+    radial-gradient(circle at 92% 91%, rgba(237,181,169,.45) 0 3px, transparent 4px),
+
+    /* 花から離れた小さな花びら */
+    radial-gradient(ellipse 12px 5px at 14% 8%, rgba(198,112,123,.23) 0 48%, transparent 52%),
+    radial-gradient(ellipse 10px 5px at 18% 20%, rgba(222,145,145,.16) 0 48%, transparent 52%),
+    radial-gradient(ellipse 11px 5px at 86% 12%, rgba(198,112,123,.19) 0 48%, transparent 52%),
+    radial-gradient(ellipse 10px 5px at 82% 24%, rgba(222,145,145,.15) 0 48%, transparent 52%),
+    radial-gradient(ellipse 11px 5px at 13% 62%, rgba(198,112,123,.16) 0 48%, transparent 52%),
+    radial-gradient(ellipse 10px 5px at 87% 61%, rgba(222,145,145,.16) 0 48%, transparent 52%),
+    radial-gradient(ellipse 12px 5px at 15% 82%, rgba(198,112,123,.18) 0 48%, transparent 52%),
+    radial-gradient(ellipse 11px 5px at 85% 80%, rgba(222,145,145,.16) 0 48%, transparent 52%);
+}
+
+/* 花を「背景の額縁」のように見せるため、本文の可読性を確保 */
+.simple-section,
+.simple-hero,
+.simple-final{
+  position:relative;
+  z-index:1;
+}
+
+@media(max-width:700px){
+  .simple-page::before{
+    opacity:.48;
+  }
+  .simple-page::after{
+    opacity:.52;
+  }
+}
+
+
+/* ===== フォントを少し大きくして、さらに読みやすく ===== */
+.simple-section p,
+.simple-section-lead,
+.simple-intro p,
+.simple-flow-item p,
+.simple-mini-item p,
+.simple-note,
+.simple-sheet-note,
+.simple-form-note{
+  font-size:1.06rem;
+  line-height:2.05;
+}
+
+.simple-section h2{
+  font-size:clamp(1.55rem, 3vw, 2rem);
+}
+
+.simple-section h3{
+  font-size:clamp(1.25rem, 2.5vw, 1.55rem);
+}
+
+.simple-point strong,
+.simple-spec dt,
+.simple-spec dd,
+.simple-flow-item strong,
+.simple-mini-item strong{
+  font-size:1.02rem;
+}
+
+.simple-form-field label{
+  font-size:1rem;
+}
+
+.simple-form-field input,
+.simple-form-field textarea{
+  font-size:1.02rem;
+}
+
+@media(max-width:700px){
+  .simple-section p,
+  .simple-section-lead,
+  .simple-intro p,
+  .simple-flow-item p,
+  .simple-mini-item p,
+  .simple-note,
+  .simple-sheet-note,
+  .simple-form-note{
+    font-size:.99rem;
+    line-height:2;
+  }
+
+  .simple-form-field input,
+  .simple-form-field textarea{
+    font-size:1rem;
+  }
+}
+
+
+/* ===== ファーストビューの背景を静かに調整 ===== */
+.simple-page{
+  background:
+    radial-gradient(circle at 7% 12%, rgba(125,40,58,.09), transparent 30%),
+    radial-gradient(circle at 93% 20%, rgba(140,48,68,.08), transparent 31%),
+    radial-gradient(circle at 5% 58%, rgba(115,38,58,.06), transparent 28%),
+    radial-gradient(circle at 96% 67%, rgba(130,43,62,.07), transparent 29%),
+    #020817;
+}
+
+/* 花は「見える」けど「気にならない」濃さへ */
+.simple-page::before{
+  opacity:.38;
+  filter:blur(.25px);
+}
+
+.simple-page::after{
+  opacity:.48;
+}
+
+/* 最初に見える範囲はさらに静かに */
+.simple-hero{
+  background:
+    radial-gradient(circle at 50% 48%,
+      rgba(7,20,45,.10),
+      transparent 58%);
+}
+
+/* スクロール後のコンテンツ側で花を少しだけ感じられるように */
+.simple-section{
+  background:transparent;
+}
+
+/* 赤のアクセントも控えめに */
+.simple-section-label{
+  color:#c28d94;
+}
+
+.simple-note,
+.simple-sheet-note{
+  background:rgba(70,24,37,.08);
+  border-color:rgba(174,91,103,.20);
+}
+
+.simple-form-submit{
+  box-shadow:0 0 20px rgba(125,42,60,.10);
+}
+
+@media(max-width:700px){
+  .simple-page::before{
+    opacity:.24;
+  }
+  .simple-page::after{
+    opacity:.32;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -834,23 +1049,14 @@ body{
 
     <section class="simple-section simple-intro">
       <p>
-        「いきなり大きな作品をお願いするのは少し不安」<br>
-        そんな方へ向けた、星詠の最初の一枚です。<br><br>
-        あなたの姿を上半身で描き、<br>
-        その背景には、あなたを象徴する花を咲かせます。<br><br>
-        あなたからいただいた「星のかけら」をもとに、<br>
-        その人らしさを一輪の花として見つけ、色紙に残します。
+        「初めての星」は、星詠を初めて利用する方のための色紙作品です。<br>
+        あなたの姿を上半身で描き、背景には、あなたを象徴する花を咲かせます。
       </p>
     </section>
 
     <section class="simple-section">
       <p class="simple-section-label">ABOUT THE PLAN</p>
-      <h2>初めての星について</h2>
-      <p class="simple-section-lead">
-        「初めての星」は、星詠を初めて利用する方のための色紙作品です。<br>
-        あなたの姿を上半身で描き、背景には、あなたを象徴する花を描きます。
-      </p>
-
+      <h2>一枚の色紙に</h2>
       <div class="simple-points">
         <div class="simple-point">
           <small>PORTRAIT</small>
@@ -858,7 +1064,7 @@ body{
         </div>
         <div class="simple-point">
           <small>FLOWER</small>
-          <strong>象徴する花<br>背景に描画</strong>
+          <strong>あなたを象徴する花<br>背景に描画</strong>
         </div>
         <div class="simple-point">
           <small>ARTWORK</small>
@@ -870,146 +1076,63 @@ body{
     <section class="simple-section">
       <p class="simple-section-label">PLAN DETAILS</p>
       <h2>料金と内容</h2>
-
       <dl class="simple-specs">
-        <div class="simple-spec">
-          <dt>料金</dt>
-          <dd>3,000円〜</dd>
-        </div>
-        <div class="simple-spec">
-          <dt>ご利用</dt>
-          <dd>初回のご依頼時のみ</dd>
-        </div>
-        <div class="simple-spec">
-          <dt>作品</dt>
-          <dd>上半身＋あなたを象徴する花</dd>
-        </div>
-        <div class="simple-spec">
-          <dt>用紙</dt>
-          <dd>色紙</dd>
-        </div>
-        <div class="simple-spec">
-          <dt>修正</dt>
-          <dd>ラフ段階で1回のみ</dd>
-        </div>
+        <div class="simple-spec"><dt>料金</dt><dd>3,000円〜</dd></div>
+        <div class="simple-spec"><dt>ご利用</dt><dd>初回のご依頼時のみ</dd></div>
+        <div class="simple-spec"><dt>作品</dt><dd>上半身＋あなたを象徴する花</dd></div>
+        <div class="simple-spec"><dt>用紙</dt><dd>色紙</dd></div>
+        <div class="simple-spec"><dt>修正</dt><dd>ラフ段階で1回</dd></div>
       </dl>
-
       <div class="simple-note">
-        <strong>※初めての星のご利用は、初回のご依頼時のみとなります。</strong><br>
-        内容やご希望によって、追加料金が発生する場合があります。<br>
-        詳細はお申し込み後の内容確認でご案内します。
+        内容やご希望によって追加料金が発生する場合があります。<br>
+        詳細はお申し込み後にご案内します。
       </div>
     </section>
 
     <section class="simple-section">
       <p class="simple-section-label">ORDER FLOW</p>
-      <h2>初めての星の流れ</h2>
-
+      <h2>ご依頼の流れ</h2>
       <div class="simple-flow">
-        <div class="simple-flow-item">
-          <small>01</small>
-          <strong>申し込み</strong>
-          <p>初めての星を選んでお申し込みください。</p>
-        </div>
-        <div class="simple-flow-item">
-          <small>02</small>
-          <strong>「星のかけら」を記入</strong>
-          <p>あなたについて、好きなものや大切な記憶などをお聞かせください。</p>
-        </div>
-        <div class="simple-flow-item">
-          <small>03</small>
-          <strong>内容確認</strong>
-          <p>描く内容や参考資料、納期などを確認します。</p>
-        </div>
-        <div class="simple-flow-item">
-          <small>04</small>
-          <strong>あなたを象徴する花を決める</strong>
-          <p>いただいた「星のかけら」から、あなたを象徴する花を考えます。</p>
-        </div>
-        <div class="simple-flow-item">
-          <small>05</small>
-          <strong>料金・納期確定</strong>
-          <p>内容をもとに料金と納期を確定します。</p>
-        </div>
-        <div class="simple-flow-item">
-          <small>06</small>
-          <strong>お支払い</strong>
-          <p>お支払い確認後、制作を開始します。</p>
-        </div>
-        <div class="simple-flow-item">
-          <small>07</small>
-          <strong>制作・ラフ確認</strong>
-          <p>上半身と花の構図を確認し、修正は1回までお受けします。</p>
-        </div>
-        <div class="simple-flow-item">
-          <small>08</small>
-          <strong>仕上げ・お届け</strong>
-          <p>ラフ確認後は仕上げを行い、色紙としてお届けします。</p>
-        </div>
+        <div class="simple-flow-item"><small>01</small><strong>申し込み</strong><p>フォームから内容を送信</p></div>
+        <div class="simple-flow-item"><small>02</small><strong>内容確認・料金確定</strong><p>作品内容・料金・納期を確認</p></div>
+        <div class="simple-flow-item"><small>03</small><strong>お支払い・制作</strong><p>確認後、制作を開始</p></div>
+        <div class="simple-flow-item"><small>04</small><strong>完成・お届け</strong><p>仕上げた色紙をお届け</p></div>
       </div>
     </section>
 
     <section class="simple-section simple-sheet-section">
-      <p class="simple-section-label">YOUR FIRST STAR</p>
-      <h2>初めての星の「星のかけら」</h2>
+      <p class="simple-section-label">YOUR FRAGMENTS</p>
+      <h2>星のかけら</h2>
       <p class="simple-section-lead">
-        あなたの姿と、あなたを象徴する花を描くために、<br>
-        あなたのことを少しだけ教えてください。<br>
-        すべてをきれいに言葉にする必要はありません。
+        あなたを象徴する花を見つけるために、あなたのことを少しだけ教えてください。
       </p>
 
       <div class="simple-mini-sheet">
         <div class="simple-mini-item">
           <span>01</span>
-          <div>
-            <small>ABOUT YOU</small>
-            <strong>あなたについて</strong>
-            <p>お名前・呼ばれたい名前／髪型・髪色・服装など、描くために必要な情報</p>
-          </div>
+          <div><small>ABOUT YOU</small><strong>あなたについて</strong><p>名前・髪型・髪色・服装など</p></div>
         </div>
         <div class="simple-mini-item">
           <span>02</span>
-          <div>
-            <small>YOUR FRAGMENTS</small>
-            <strong>あなたの星のかけら</strong>
-            <p>好きな色／好きなもの・場所／大切な記憶／憧れているもの／好きな雰囲気</p>
-          </div>
+          <div><small>YOUR FRAGMENTS</small><strong>あなたのこと</strong><p>好きな色・好きなもの・記憶・憧れ・好きな雰囲気</p></div>
         </div>
         <div class="simple-mini-item">
           <span>03</span>
-          <div>
-            <small>THE FLOWER</small>
-            <strong>あなたを象徴する花</strong>
-            <p>花そのものに希望があればお聞かせください。おまかせの場合はこちらで考えます。</p>
-          </div>
+          <div><small>THE FLOWER</small><strong>象徴する花</strong><p>好きな花があれば記入。おまかせでも大丈夫です。</p></div>
         </div>
         <div class="simple-mini-item">
           <span>04</span>
-          <div>
-            <small>THIS PIECE</small>
-            <strong>今回の作品について</strong>
-            <p>入れてほしいもの／入れてほしくないもの／参考画像など</p>
-          </div>
+          <div><small>THIS PIECE</small><strong>今回の作品</strong><p>入れてほしいもの・避けたいもの・参考画像など</p></div>
         </div>
-      </div>
-
-      <div class="simple-sheet-note">
-        <strong>あなたからもらった小さな「かけら」から、一輪の花を見つけます。</strong><br>
-        その花とあなたの姿を、一枚の色紙に残します。
       </div>
 
       <div class="simple-form-heading">
         <p class="simple-section-label">SEND YOUR FRAGMENT</p>
-        <h3>星のかけらを入力する</h3>
-        <p>ここから、あなたのことを少しずつ教えてください。<br>すべてをきれいに言葉にする必要はありません。</p>
+        <h3>星のかけらを送る</h3>
       </div>
 
       <form class="simple-order-form" id="simplePlanForm">
-        <p class="simple-form-note">
-          下の項目を入力して送信してください。<br>
-          <span>※「必須」とある項目は入力が必要です。</span>
-        </p>
-
+        <p class="simple-form-note">必要な項目を入力して送信してください。<br><span>※「必須」の項目は入力が必要です。</span></p>
         <div class="simple-form-grid">
           <div class="simple-form-field">
             <label for="sp-name">お名前 <span>必須</span></label>
@@ -1021,7 +1144,7 @@ body{
           </div>
           <div class="simple-form-field full">
             <label for="sp-appearance">髪型・髪色・服装など <span>必須</span></label>
-            <textarea id="sp-appearance" name="appearance" placeholder="上半身を描くために必要な外見情報を書いてください。" required></textarea>
+            <textarea id="sp-appearance" name="appearance" placeholder="上半身を描くために必要な外見情報" required></textarea>
           </div>
           <div class="simple-form-field">
             <label for="sp-color">好きな色</label>
@@ -1033,34 +1156,33 @@ body{
           </div>
           <div class="simple-form-field full">
             <label for="sp-memory">大切な記憶・憧れているもの</label>
-            <textarea id="sp-memory" name="memory" placeholder="あなたらしいと思うことや、大切にしていることなど。"></textarea>
+            <textarea id="sp-memory" name="memory"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-mood">好きな雰囲気</label>
-            <textarea id="sp-mood" name="favoriteMood" placeholder="静か、透明感、あたたかい、夜っぽい…など自由にどうぞ。"></textarea>
+            <textarea id="sp-mood" name="favoriteMood"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-flower">花について</label>
-            <textarea id="sp-flower" name="flower" placeholder="好きな花や、描いてほしい花があれば書いてください。おまかせでも大丈夫です。"></textarea>
+            <textarea id="sp-flower" name="flower" placeholder="好きな花や、描いてほしい花。おまかせでも大丈夫です。"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-piece">今回の作品について</label>
-            <textarea id="sp-piece" name="piece" placeholder="入れてほしいもの、色紙の雰囲気などを書いてください。"></textarea>
+            <textarea id="sp-piece" name="piece"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-avoid">入れてほしくないもの</label>
-            <textarea id="sp-avoid" name="avoid" placeholder="苦手なモチーフ・色などがあれば書いてください。"></textarea>
+            <textarea id="sp-avoid" name="avoid"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-reference">参考画像・参考URL</label>
-            <textarea id="sp-reference" name="reference" placeholder="参考画像の共有URLなどがあれば記入してください。"></textarea>
+            <textarea id="sp-reference" name="reference"></textarea>
           </div>
           <div class="simple-form-field full">
             <label for="sp-contact">連絡先（メールアドレス） <span>必須</span></label>
             <input id="sp-contact" name="email" type="email" autocomplete="email" required>
           </div>
         </div>
-
         <div class="simple-form-submit-wrap">
           <button class="simple-form-submit" type="submit">星のかけらを送る →</button>
           <p class="simple-form-status" id="simplePlanStatus" aria-live="polite"></p>
@@ -1069,13 +1191,8 @@ body{
     </section>
 
     <section class="simple-final">
-      <p>
-        はじめての星から、ゆっくりと。<br>
-        あなたの姿と、あなたを象徴する花を、一枚の色紙に。
-      </p>
-      <div class="simple-back">
-        <a href="index.html#services">星詠のサービス一覧へ →</a>
-      </div>
+      <p>あなたの姿と、あなたを象徴する花を、一枚の色紙に。</p>
+      <div class="simple-back"><a href="index.html#services">星詠のサービス一覧へ →</a></div>
     </section>
   </main>
 
