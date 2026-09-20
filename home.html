@@ -1494,6 +1494,51 @@
 }
 </style>
 
+
+<style id="service-empty-space-fix">
+/* ===== PLAN：不要な「1画面分」の空白を除去 ===== */
+#service{
+  min-height:0 !important;
+  height:auto !important;
+  box-sizing:border-box !important;
+}
+
+#service .service-content{
+  min-height:0 !important;
+  height:auto !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+}
+
+#service .service-content > .section-label{
+  margin-top:0 !important;
+  margin-bottom:10px !important;
+}
+
+#service .service-content > h2{
+  margin-top:0 !important;
+  margin-bottom:12px !important;
+}
+
+#service .service-content > .service-lead{
+  margin-top:0 !important;
+  margin-bottom:28px !important;
+}
+
+#service .plan-grid{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+
+@media(max-width:760px){
+  #service .service-content > .service-lead{
+    margin-bottom:24px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
