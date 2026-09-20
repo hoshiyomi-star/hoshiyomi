@@ -14,45 +14,21 @@
   --text:#edf3ff;
   --muted:#b8c4da;
   --line:rgba(180,205,255,.16);
-  --line-strong:rgba(180,205,255,.24);
   --soft:rgba(7,16,36,.28);
-  --soft-strong:rgba(7,16,36,.38);
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
   color:var(--text);
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(72,105,170,.15),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 15% 45%,
-      rgba(95,72,150,.07),
-      transparent 28%
-    ),
-    linear-gradient(
-      180deg,
-      #030713 0%,
-      var(--bg) 48%,
-      #06132b 100%
-    );
-  font-family:
-    "Yu Gothic",
-    YuGothic,
-    "Hiragino Kaku Gothic ProN",
-    Meiryo,
-    sans-serif;
+    radial-gradient(circle at 50% 0%,rgba(72,105,170,.15),transparent 34%),
+    radial-gradient(circle at 15% 45%,rgba(95,72,150,.07),transparent 28%),
+    linear-gradient(180deg,#030713 0%,var(--bg) 48%,#06132b 100%);
+  font-family:"Yu Gothic",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
   line-height:2;
   letter-spacing:.04em;
 }
@@ -65,6 +41,109 @@ a{
 .page{
   min-height:100vh;
   padding-bottom:100px;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu-toggle{
+  position:fixed;
+  top:24px;
+  left:24px;
+  z-index:1000;
+
+  padding:10px 15px;
+
+  border:1px solid rgba(180,205,255,.18);
+  background:rgba(4,9,22,.72);
+
+  backdrop-filter:blur(10px);
+
+  color:var(--text);
+  font-family:inherit;
+  font-size:.78rem;
+  letter-spacing:.08em;
+
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.menu-toggle:hover{
+  background:rgba(120,160,230,.08);
+  border-color:rgba(180,205,255,.3);
+}
+
+.menu-panel{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:999;
+
+  width:min(310px,86vw);
+  height:100vh;
+
+  padding:92px 34px 40px;
+
+  background:rgba(3,8,20,.96);
+  border-right:1px solid var(--line);
+
+  backdrop-filter:blur(18px);
+
+  transform:translateX(-100%);
+  transition:transform .3s ease;
+
+  overflow-y:auto;
+}
+
+.menu-panel.open{
+  transform:translateX(0);
+}
+
+.menu-title{
+  margin:0 0 34px;
+
+  color:#dce7fa;
+  font-size:1.15rem;
+  font-weight:400;
+  letter-spacing:.14em;
+}
+
+.menu-link{
+  display:block;
+
+  padding:11px 0;
+
+  color:var(--muted);
+  font-size:.88rem;
+  letter-spacing:.08em;
+
+  border-bottom:1px solid rgba(180,205,255,.08);
+
+  transition:.2s ease;
+}
+
+.menu-link:hover{
+  color:var(--text);
+  padding-left:5px;
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  z-index:998;
+
+  background:rgba(0,0,0,.35);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.3s ease;
+}
+
+.menu-overlay.open{
+  opacity:1;
+  visibility:visible;
 }
 
 /* =========================
@@ -111,12 +190,11 @@ h1{
   margin:28px auto 0;
   max-width:680px;
   font-size:.9rem;
-  line-height:2.1;
   color:var(--muted);
 }
 
 /* =========================
-   MAIN / SECTION
+   CONTENT
 ========================= */
 
 main{
@@ -125,28 +203,15 @@ main{
 }
 
 .section{
-  padding:66px 0;
+  padding:64px 0;
   border-top:1px solid var(--line);
 }
 
 .section h2{
-  position:relative;
   margin:0 0 22px;
-  padding-left:16px;
   font-size:1.45rem;
   font-weight:400;
   letter-spacing:.12em;
-  line-height:1.7;
-}
-
-.section h2::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:.28em;
-  width:2px;
-  height:1.15em;
-  background:rgba(143,191,255,.48);
 }
 
 .section-intro{
@@ -156,7 +221,7 @@ main{
 }
 
 /* =========================
-   CARD
+   CARDS
 ========================= */
 
 .card-grid{
@@ -171,18 +236,9 @@ main{
   border:1px solid var(--line);
   background:var(--soft);
   border-radius:5px;
-  transition:
-    border-color .25s ease,
-    background .25s ease;
-}
-
-.card:hover{
-  border-color:var(--line-strong);
-  background:rgba(7,16,36,.36);
 }
 
 .card .num{
-  display:block;
   font-size:.7rem;
   letter-spacing:.16em;
   color:var(--blue);
@@ -194,7 +250,6 @@ main{
   font-size:1.02rem;
   font-weight:400;
   letter-spacing:.08em;
-  line-height:1.7;
 }
 
 .card p{
@@ -221,19 +276,16 @@ main{
   margin:0;
   font-size:1.45rem;
   letter-spacing:.12em;
-  line-height:1.7;
 }
 
 .price-note{
-  margin:10px 0 0!important;
+  margin:8px 0 0!important;
   font-size:.82rem;
-  line-height:1.8;
-  color:var(--muted);
-  opacity:.82;
+  opacity:.72;
 }
 
 /* =========================
-   TABLE / INFORMATION
+   TABLE
 ========================= */
 
 .table-wrap{
@@ -245,20 +297,19 @@ main{
   display:grid;
   grid-template-columns:200px 1fr;
   gap:24px;
-  align-items:center;
-  padding:20px 4px;
+
+  padding:20px 0;
+
   border-bottom:1px solid var(--line);
 }
 
 .row strong{
   font-weight:400;
   color:#dce7fa;
-  line-height:1.7;
 }
 
 .row span{
   color:var(--muted);
-  line-height:1.9;
 }
 
 /* =========================
@@ -266,12 +317,14 @@ main{
 ========================= */
 
 .note{
-  margin-top:26px;
-  padding:20px 24px;
+  margin-top:28px;
+  padding:22px 24px;
+
   border-left:1px solid rgba(180,205,255,.3);
+
   background:rgba(7,16,36,.18);
-  font-size:.84rem;
-  line-height:2;
+
+  font-size:.86rem;
   color:var(--muted);
 }
 
@@ -281,38 +334,31 @@ main{
 
 .feature{
   margin-top:34px;
+
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:18px;
 }
 
 .feature-card{
-  padding:28px 30px;
+  padding:30px;
+
   border:1px solid var(--line);
   background:rgba(7,16,36,.22);
-  border-radius:5px;
-  transition:
-    border-color .25s ease,
-    background .25s ease;
-}
 
-.feature-card:hover{
-  border-color:var(--line-strong);
-  background:rgba(7,16,36,.32);
+  border-radius:5px;
 }
 
 .feature-card h3{
-  margin:0 0 10px;
+  margin:0 0 12px;
   font-weight:400;
   font-size:1rem;
-  line-height:1.7;
 }
 
 .feature-card p{
   margin:0;
   color:var(--muted);
   font-size:.88rem;
-  line-height:2;
 }
 
 /* =========================
@@ -321,13 +367,15 @@ main{
 
 .flow{
   margin-top:30px;
+
   border-left:1px solid rgba(180,205,255,.22);
+
   padding-left:28px;
 }
 
 .flow-item{
   position:relative;
-  padding:10px 0 24px;
+  padding:10px 0 22px;
 }
 
 .flow-item:last-child{
@@ -336,39 +384,45 @@ main{
 
 .flow-item::before{
   content:"";
+
   position:absolute;
   left:-33px;
   top:19px;
+
   width:7px;
   height:7px;
+
   border-radius:50%;
+
   background:var(--blue);
-  box-shadow:
-    0 0 12px rgba(143,191,255,.35);
+
+  box-shadow:0 0 12px rgba(143,191,255,.35);
 }
 
 .flow-num{
   display:block;
-  margin-bottom:2px;
+
   font-size:.68rem;
   letter-spacing:.16em;
+
   color:var(--blue);
   opacity:.72;
 }
 
 .flow-title{
   display:block;
-  margin:0 0 4px;
+
+  margin:2px 0 4px;
+
   color:#dce7fa;
   font-size:.98rem;
-  line-height:1.7;
 }
 
 .flow-text{
   display:block;
+
   color:var(--muted);
   font-size:.86rem;
-  line-height:1.95;
 }
 
 /* =========================
@@ -377,39 +431,46 @@ main{
 
 .cta{
   text-align:center;
+
   padding:78px 0 20px;
+
   border-top:1px solid var(--line);
+
   margin-top:10px;
 }
 
 .cta p{
   margin:0;
+
   color:var(--muted);
   font-size:.92rem;
-  line-height:2.1;
 }
 
 .cta-main{
   display:inline-block;
+
   margin-top:28px;
-  padding:13px 30px;
+  padding:13px 28px;
+
   border:1px solid rgba(180,205,255,.25);
+
   font-size:.88rem;
   letter-spacing:.1em;
+
   background:rgba(7,16,36,.2);
-  transition:
-    background .25s ease,
-    border-color .25s ease;
+
+  transition:.25s ease;
 }
 
 .cta-main:hover{
   background:rgba(120,160,230,.08);
-  border-color:rgba(180,205,255,.38);
 }
 
 .back{
   display:inline-block;
+
   margin:22px 10px 0;
+
   font-size:.78rem;
   opacity:.65;
   letter-spacing:.1em;
@@ -421,95 +482,76 @@ main{
 
 @media(max-width:760px){
 
+  .menu-toggle{
+    top:16px;
+    left:16px;
+  }
+
+  .menu-panel{
+    width:min(310px,88vw);
+    padding:82px 28px 35px;
+  }
+
   .hero{
-    width:min(100% - 32px,980px);
-    padding:78px 16px 64px;
+    padding-top:78px;
   }
 
   h1{
     font-size:2rem;
-    letter-spacing:.12em;
-  }
-
-  .hero-lead{
-    font-size:1rem;
-  }
-
-  .hero-copy{
-    font-size:.84rem;
-  }
-
-  main{
-    width:min(100% - 32px,980px);
-  }
-
-  .section{
-    padding:54px 0;
-  }
-
-  .section h2{
-    font-size:1.25rem;
-    margin-bottom:18px;
-  }
-
-  .section-intro{
-    font-size:.86rem;
   }
 
   .card-grid,
   .feature{
     grid-template-columns:1fr;
-    gap:14px;
-  }
-
-  .card,
-  .feature-card{
-    padding:24px 22px;
   }
 
   .row{
     grid-template-columns:1fr;
-    gap:6px;
-    padding:17px 2px;
-  }
-
-  .row strong{
-    font-size:.9rem;
-  }
-
-  .row span{
-    font-size:.84rem;
+    gap:4px;
   }
 
   .price-box{
     padding:28px 20px;
-  }
-
-  .price{
-    font-size:1.25rem;
-  }
-
-  .note{
-    padding:18px 18px;
-    font-size:.8rem;
-  }
-
-  .flow{
-    padding-left:24px;
-  }
-
-  .flow-item::before{
-    left:-29px;
-  }
-
-  .cta{
-    padding-top:62px;
   }
 }
 </style>
 </head>
 
 <body>
+
+<!-- =========================
+     MENU
+========================= -->
+
+<button
+  class="menu-toggle"
+  id="menuToggle"
+  type="button"
+  aria-label="メニューを開く"
+  aria-expanded="false"
+>
+  ☰ メニューを開く
+</button>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<nav class="menu-panel" id="menuPanel" aria-label="サイトメニュー">
+
+  <h2 class="menu-title">星詠</h2>
+
+  <a class="menu-link" href="index.html">
+    ホーム
+  </a>
+
+  <a class="menu-link" href="index.html#services">
+    ご依頼について
+  </a>
+
+  <a class="menu-link" href="notes.html">
+    注意事項
+  </a>
+
+</nav>
 
 <div class="page">
 
@@ -533,12 +575,7 @@ main{
 
 </header>
 
-
 <main>
-
-<!-- =========================
-     INTRO
-========================= -->
 
 <section class="section">
 
@@ -550,11 +587,6 @@ main{
   </p>
 
 </section>
-
-
-<!-- =========================
-     SCENE
-========================= -->
 
 <section class="section">
 
@@ -570,8 +602,7 @@ main{
       <span class="num">01｜EVENT</span>
       <h3>イベントの返礼品</h3>
       <p>
-        ランキングイベントや達成企画など、
-        応援してくれた方へのお礼に。
+        ランキングイベントや達成企画など、応援してくれた方へのお礼に。
       </p>
     </article>
 
@@ -579,8 +610,7 @@ main{
       <span class="num">02｜ANNIVERSARY</span>
       <h3>記念日の贈り物</h3>
       <p>
-        活動記念日や周年など、
-        その日に合わせた特別な一枚に。
+        活動記念日や周年など、その日に合わせた特別な一枚に。
       </p>
     </article>
 
@@ -588,19 +618,13 @@ main{
       <span class="num">03｜SUPPORT</span>
       <h3>支えてくれる人へ</h3>
       <p>
-        いつも応援してくれる方へ、
-        感謝を形にして届けたいときに。
+        いつも応援してくれる方へ、感謝を形にして届けたいときに。
       </p>
     </article>
 
   </div>
 
 </section>
-
-
-<!-- =========================
-     FEATURE
-========================= -->
 
 <section class="section">
 
@@ -615,32 +639,28 @@ main{
     <article class="feature-card">
       <h3>ミニイラスト</h3>
       <p>
-        応援してくれた方へ贈る、
-        小さな記念作品として。
+        応援してくれた方へ贈る、小さな記念作品として。
       </p>
     </article>
 
     <article class="feature-card">
       <h3>スマートフォン壁紙</h3>
       <p>
-        日常の中でも使ってもらえる、
-        デジタル作品として。
+        日常の中でも使ってもらえる、デジタル作品として。
       </p>
     </article>
 
     <article class="feature-card">
       <h3>デジタルカード</h3>
       <p>
-        名前やメッセージなどを添えた、
-        記念の一枚として。
+        名前やメッセージなどを添えた、記念の一枚として。
       </p>
     </article>
 
     <article class="feature-card">
       <h3>その他の仕様</h3>
       <p>
-        企画内容や配布方法に合わせた制作も、
-        まずはご相談ください。
+        企画内容や配布方法に合わせた制作も、まずはご相談ください。
       </p>
     </article>
 
@@ -653,25 +673,15 @@ main{
 
 </section>
 
-
-<!-- =========================
-     PRICE
-========================= -->
-
 <section class="section">
 
   <h2>料金</h2>
 
   <div class="price-box">
-
-    <p class="price">
-      5,000円〜｜1点
-    </p>
-
+    <p class="price">5,000円〜｜1点</p>
     <p class="price-note">
       内容・数量・仕様などによって個別にご相談いただけます。
     </p>
-
   </div>
 
   <div class="table-wrap">
@@ -700,11 +710,6 @@ main{
   </div>
 
 </section>
-
-
-<!-- =========================
-     CONTENT
-========================= -->
 
 <section class="section">
 
@@ -746,11 +751,6 @@ main{
 
 </section>
 
-
-<!-- =========================
-     CHECK
-========================= -->
-
 <section class="section">
 
   <h2>ご依頼前に確認すること</h2>
@@ -790,11 +790,6 @@ main{
   </div>
 
 </section>
-
-
-<!-- =========================
-     FLOW
-========================= -->
 
 <section class="section">
 
@@ -858,27 +853,16 @@ main{
 
 </section>
 
-
-<!-- =========================
-     MESSAGE
-========================= -->
-
 <section class="section">
 
   <h2>返礼品も、ひとつの星として</h2>
 
   <p class="section-intro">
     イベントが終わったあとに残るのは、順位や数字だけではありません。<br>
-    一緒に走ってくれた人がいたこと、その時間を大切に残すことも、
-    ひとつの活動の形だと星詠は考えています。
+    一緒に走ってくれた人がいたこと、その時間を大切に残すことも、ひとつの活動の形だと星詠は考えています。
   </p>
 
 </section>
-
-
-<!-- =========================
-     CTA
-========================= -->
 
 <section class="cta">
 
@@ -901,6 +885,44 @@ main{
 
 </main>
 </div>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const menuPanel = document.getElementById("menuPanel");
+const menuOverlay = document.getElementById("menuOverlay");
+
+function openMenu(){
+  menuPanel.classList.add("open");
+  menuOverlay.classList.add("open");
+  menuToggle.setAttribute("aria-expanded","true");
+}
+
+function closeMenu(){
+  menuPanel.classList.remove("open");
+  menuOverlay.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded","false");
+}
+
+menuToggle.addEventListener("click", () => {
+  if(menuPanel.classList.contains("open")){
+    closeMenu();
+  }else{
+    openMenu();
+  }
+});
+
+menuOverlay.addEventListener("click", closeMenu);
+
+document.querySelectorAll(".menu-link").forEach(link => {
+  link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", (event) => {
+  if(event.key === "Escape"){
+    closeMenu();
+  }
+});
+</script>
 
 </body>
 </html>
