@@ -608,100 +608,207 @@
 }
 
 
-
-/* ===== First Star / floral atmosphere ===== */
-.simple-page{
-  isolation:isolate;
+/* ===== 深い夜空＋温かな赤系の花の背景 ===== */
+.simple-page,
+body {
   background:
-    radial-gradient(circle at 50% 8%, rgba(80,112,190,.10), transparent 34%),
-    radial-gradient(circle at 8% 48%, rgba(120,145,205,.055), transparent 25%),
-    radial-gradient(circle at 92% 72%, rgba(120,105,180,.05), transparent 25%);
+    radial-gradient(circle at 8% 12%,
+      rgba(125, 38, 58, .20) 0,
+      rgba(125, 38, 58, .10) 18%,
+      transparent 38%),
+    radial-gradient(circle at 92% 28%,
+      rgba(145, 48, 70, .17) 0,
+      rgba(145, 48, 70, .08) 19%,
+      transparent 40%),
+    radial-gradient(circle at 15% 78%,
+      rgba(112, 39, 61, .15) 0,
+      transparent 34%),
+    radial-gradient(circle at 88% 86%,
+      rgba(126, 43, 63, .16) 0,
+      transparent 36%),
+    #020817;
 }
 
-.simple-page::before,
-.simple-page::after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  pointer-events:none;
-  width:420px;
-  height:700px;
-  opacity:.18;
-  background-repeat:no-repeat;
-  background-size:contain;
-  filter:drop-shadow(0 0 18px rgba(150,180,255,.08));
+/* 背景に薄い花影を置く */
+.simple-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .72;
+  background:
+    radial-gradient(ellipse 95px 45px at 4% 18%,
+      rgba(143, 62, 76, .20) 0 35%,
+      transparent 36%),
+    radial-gradient(ellipse 75px 38px at 7% 24%,
+      rgba(177, 91, 103, .13) 0 35%,
+      transparent 36%),
+    radial-gradient(ellipse 100px 48px at 96% 34%,
+      rgba(137, 52, 72, .18) 0 35%,
+      transparent 36%),
+    radial-gradient(ellipse 70px 36px at 93% 40%,
+      rgba(184, 91, 105, .12) 0 35%,
+      transparent 36%),
+    radial-gradient(ellipse 90px 44px at 5% 88%,
+      rgba(126, 42, 64, .15) 0 35%,
+      transparent 36%),
+    radial-gradient(ellipse 85px 42px at 96% 88%,
+      rgba(142, 49, 69, .15) 0 35%,
+      transparent 36%);
 }
 
-.simple-page::before{
-  left:-155px;
-  top:110px;
-  transform:rotate(-7deg);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 700'%3E%3Cg fill='none' stroke='%239bbcff' stroke-width='1.2' opacity='.9'%3E%3Cpath d='M330 680C295 570 260 470 205 390C145 302 92 205 54 24'/%3E%3Cpath d='M205 390C158 374 112 345 70 305'/%3E%3Cpath d='M260 475C309 438 350 396 381 342'/%3E%3Cpath d='M145 288C108 259 79 222 59 180'/%3E%3Cpath d='M105 222C150 215 184 192 209 154'/%3E%3C/g%3E%3Cg fill='%23aebfff' stroke='%23c8d7ff' stroke-width='1'%3E%3Cpath d='M47 18c-25 17-29 43-8 59 22-14 28-36 8-59z'/%3E%3Cpath d='M68 182c-28-2-43 15-39 38 24 6 42-9 39-38z'/%3E%3Cpath d='M204 150c-13-25-37-30-53-14 10 22 31 31 53 14z'/%3E%3Cpath d='M382 338c-25-13-47-4-53 17 21 13 42 6 53-17z'/%3E%3Cpath d='M73 301c-18-20-41-19-53-1 15 18 35 21 53 1z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23c6d7ff' stroke-width='1.3'%3E%3Ccircle cx='80' cy='118' r='22'/%3E%3Cpath d='M80 90v56M52 118h56'/%3E%3Ccircle cx='321' cy='260' r='18'/%3E%3Cpath d='M321 238v44M299 260h44'/%3E%3C/g%3E%3C/svg%3E");
+/* 細い花枝・星屑のような光 */
+.simple-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 10% 31%, rgba(236, 188, 167, .65) 0 1px, transparent 2px),
+    radial-gradient(circle at 88% 18%, rgba(236, 188, 167, .55) 0 1px, transparent 2px),
+    radial-gradient(circle at 93% 63%, rgba(236, 188, 167, .45) 0 1px, transparent 2px),
+    radial-gradient(circle at 6% 69%, rgba(236, 188, 167, .42) 0 1px, transparent 2px);
 }
 
-.simple-page::after{
-  right:-170px;
-  top:650px;
-  transform:scaleX(-1) rotate(5deg);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 700'%3E%3Cg fill='none' stroke='%239bbcff' stroke-width='1.2' opacity='.9'%3E%3Cpath d='M330 680C295 570 260 470 205 390C145 302 92 205 54 24'/%3E%3Cpath d='M205 390C158 374 112 345 70 305'/%3E%3Cpath d='M260 475C309 438 350 396 381 342'/%3E%3Cpath d='M145 288C108 259 79 222 59 180'/%3E%3Cpath d='M105 222C150 215 184 192 209 154'/%3E%3C/g%3E%3Cg fill='%23aebfff' stroke='%23c8d7ff' stroke-width='1'%3E%3Cpath d='M47 18c-25 17-29 43-8 59 22-14 28-36 8-59z'/%3E%3Cpath d='M68 182c-28-2-43 15-39 38 24 6 42-9 39-38z'/%3E%3Cpath d='M204 150c-13-25-37-30-53-14 10 22 31 31 53 14z'/%3E%3Cpath d='M382 338c-25-13-47-4-53 17 21 13 42 6 53-17z'/%3E%3Cpath d='M73 301c-18-20-41-19-53-1 15 18 35 21 53 1z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23c6d7ff' stroke-width='1.3'%3E%3Ccircle cx='80' cy='118' r='22'/%3E%3Cpath d='M80 90v56M52 118h56'/%3E%3Ccircle cx='321' cy='260' r='18'/%3E%3Cpath d='M321 238v44M299 260h44'/%3E%3C/g%3E%3C/svg%3E");
+/* 背景より本文を前面へ */
+.simple-page > * {
+  position: relative;
+  z-index: 1;
 }
 
-.simple-hero{
-  position:relative;
+/* 花色を少しだけ暖かく見せるアクセント */
+.simple-section-label {
+  color: #d6a4a5;
 }
 
-.simple-hero::after{
-  content:"✦";
-  position:absolute;
-  left:50%;
-  bottom:34px;
-  transform:translateX(-50%);
-  font-size:12px;
-  color:rgba(205,220,255,.72);
-  text-shadow:0 0 14px rgba(160,190,255,.45);
-}
-
-.simple-section{
-  position:relative;
-}
-
-.simple-section::after{
-  content:"✧";
-  position:absolute;
-  right:4px;
-  top:68px;
-  font-size:15px;
-  color:rgba(170,195,245,.28);
-}
-
-.simple-points,
 .simple-note,
-.simple-mini-sheet,
-.simple-order-form{
-  backdrop-filter:blur(8px);
-  box-shadow:0 18px 50px rgba(0,0,0,.12), inset 0 1px 0 rgba(220,230,255,.025);
+.simple-sheet-note {
+  border-color: rgba(184, 104, 111, .28);
+  background: rgba(83, 27, 40, .13);
 }
 
-.simple-point,
-.simple-spec,
-.simple-flow-item,
-.simple-mini-item{
-  transition:background .25s ease, border-color .25s ease;
+.simple-form-submit {
+  box-shadow: 0 0 24px rgba(130, 45, 64, .16);
 }
 
-.simple-point:hover{
-  background:rgba(145,170,230,.035);
+/* スマホでは花影をさらに控えめに */
+@media (max-width: 700px) {
+  .simple-page::before {
+    opacity: .42;
+  }
+
+  .simple-page {
+    background:
+      radial-gradient(circle at 8% 14%,
+        rgba(125, 38, 58, .15),
+        transparent 35%),
+      radial-gradient(circle at 92% 36%,
+        rgba(145, 48, 70, .12),
+        transparent 36%),
+      #020817;
+  }
+}
+
+
+/* ===== ぱっと見で読みやすい文字組み ===== */
+body{
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    sans-serif;
+  font-weight:400;
+  letter-spacing:.045em;
+}
+
+.simple-section h1,
+.simple-section h2,
+.simple-section h3,
+.simple-hero h1,
+.simple-section-label{
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    sans-serif;
+}
+
+.simple-section h2{
+  font-weight:600;
+  letter-spacing:.08em;
+}
+
+.simple-section h3{
+  font-weight:600;
+  letter-spacing:.06em;
+}
+
+.simple-section p,
+.simple-section-lead,
+.simple-intro p,
+.simple-flow-item p,
+.simple-mini-item p,
+.simple-note,
+.simple-sheet-note,
+.simple-form-note{
+  font-size:1rem;
+  line-height:2;
+  letter-spacing:.035em;
+}
+
+.simple-point strong,
+.simple-spec dt,
+.simple-spec dd,
+.simple-flow-item strong,
+.simple-mini-item strong{
+  letter-spacing:.045em;
+}
+
+.simple-section-label{
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.2em;
+}
+
+.simple-form-field label{
+  font-weight:600;
+  letter-spacing:.05em;
+}
+
+.simple-form-field input,
+.simple-form-field textarea{
+  font-family:inherit;
+  font-size:.98rem;
+  letter-spacing:.025em;
+}
+
+.simple-menu,
+.star-menu{
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    sans-serif;
 }
 
 @media(max-width:700px){
-  .simple-page::before,
-  .simple-page::after{
-    width:270px;
-    height:520px;
-    opacity:.11;
+  .simple-section p,
+  .simple-section-lead,
+  .simple-intro p,
+  .simple-flow-item p,
+  .simple-mini-item p,
+  .simple-note,
+  .simple-sheet-note,
+  .simple-form-note{
+    font-size:.94rem;
+    line-height:1.95;
+    letter-spacing:.025em;
   }
-  .simple-page::before{left:-170px;top:140px;}
-  .simple-page::after{right:-175px;top:900px;}
 }
 
 </style>
@@ -972,24 +1079,19 @@
     </section>
   </main>
 
-  <button class="star-menu-button" id="starMenuButton">星の海を開く</button>
+  <button class="star-menu-button" id="starMenuButton">メニューを開く</button>
 
   <nav class="star-menu" id="starMenu">
     <div class="star-menu-inner">
       <p class="star-menu-label">HOSHIYOMI</p>
-      <h2>星の海</h2>
+      <h2>メニュー</h2>
       <div class="star-menu-line"></div>
-      <a href="index.html#services">01｜星をつくる　｜ サービス一覧</a>
-      <a href="index.html#delivery">02｜星を届ける　｜ 活用・特典</a>
-      <a href="index.html#flow">03｜ご依頼の流れ　｜ お申し込みの手順</a>
-      <a href="index.html#contact-guide">04｜最後の案内　｜ はじめての方へ</a>
-      <div class="star-menu-line"></div>
-      <a href="star-sheet.html">05｜星のかけら　｜ 依頼内容を記入</a>
-      <a href="price.html">06｜料金について</a>
-      <a href="notes.html">07｜ご依頼について</a>
-      <a href="rights.html">08｜権利について</a>
-      <a href="contact.html">09｜お問い合わせ</a>
-      <button class="star-menu-close" id="starMenuClose">星の海を閉じる</button>
+
+      <a href="index.html#services">サービス</a>
+      <a href="price.html">料金・ご依頼について</a>
+      <a href="notes.html">注意事項</a>
+
+      <button class="star-menu-close" id="starMenuClose">メニューを閉じる</button>
     </div>
   </nav>
 
