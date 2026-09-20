@@ -1539,6 +1539,186 @@
 }
 </style>
 
+<style id="hoshiyomi-final-layout-cleanup">
+/* =========================================
+   星詠 PLAN｜最終レイアウト整理
+   既存の重複CSSより後ろで適用する
+   ========================================= */
+
+/* セクション自体に「1画面分」の高さを持たせない */
+#service,
+#contact-guide,
+#flow{
+  min-height:0 !important;
+  height:auto !important;
+  box-sizing:border-box !important;
+}
+
+/* PLAN */
+#service{
+  padding:72px 0 64px !important;
+  margin:0 !important;
+}
+#service .service-content{
+  width:min(92%,1000px) !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 auto !important;
+  display:block !important;
+  box-sizing:border-box !important;
+}
+#service .section-label{
+  margin:0 0 10px !important;
+  text-align:center !important;
+}
+#service h2{
+  width:auto !important;
+  margin:0 0 18px !important;
+  text-align:center !important;
+}
+#service .service-lead{
+  width:min(100%,760px) !important;
+  margin:0 auto 30px !important;
+  text-align:center !important;
+  line-height:2 !important;
+}
+#service .plan-grid{
+  width:100% !important;
+  max-width:900px !important;
+  margin:0 auto !important;
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:20px !important;
+  box-sizing:border-box !important;
+}
+#service .plan-card{
+  width:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:28px 28px 26px !important;
+  box-sizing:border-box !important;
+}
+
+/* PLAN直後 → ご依頼案内 */
+#contact-guide{
+  padding:8px 0 0 !important;
+  margin:0 !important;
+}
+#contact-guide .top-final-message{
+  width:min(92%,760px) !important;
+  max-width:none !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 auto !important;
+  padding:0 !important;
+  text-align:center !important;
+  line-height:1.9 !important;
+}
+#contact-guide .top-final-message p{
+  margin:0 0 8px !important;
+}
+#contact-guide .top-final-message p:last-child{
+  margin-bottom:0 !important;
+}
+
+/* ご依頼ボタン */
+#contact-guide + .simple-cta{
+  padding:14px 0 34px !important;
+  margin:0 !important;
+}
+#contact-guide + .simple-cta .simple-cta-inner{
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* FLOW */
+#flow{
+  padding:38px 0 70px !important;
+  margin:0 !important;
+}
+#flow .flow-content{
+  width:min(92%,1000px) !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 auto !important;
+}
+#flow .section-label{
+  margin:0 0 10px !important;
+  text-align:center !important;
+}
+#flow h2{
+  width:auto !important;
+  margin:0 0 22px !important;
+  text-align:center !important;
+}
+#flow .simple-flow{
+  width:100% !important;
+  max-width:900px !important;
+  margin:0 auto !important;
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:12px !important;
+}
+#flow .simple-flow-item{
+  min-width:0 !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:22px 16px !important;
+  box-sizing:border-box !important;
+}
+
+/* 古い縦書き・横スクロール指定を無効化 */
+#service *,
+#contact-guide *,
+#flow *{
+  writing-mode:horizontal-tb !important;
+  text-orientation:mixed !important;
+  max-height:none !important;
+}
+
+@media(max-width:760px){
+  #service{
+    padding:52px 0 44px !important;
+  }
+  #service .service-content,
+  #flow .flow-content{
+    width:min(92%,620px) !important;
+  }
+  #service .service-lead{
+    margin-bottom:24px !important;
+    text-align:left !important;
+  }
+  #service .plan-grid{
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+  #service .plan-card{
+    padding:24px 22px !important;
+  }
+  #contact-guide{
+    padding-top:4px !important;
+  }
+  #contact-guide + .simple-cta{
+    padding:10px 0 24px !important;
+  }
+  #flow{
+    padding:28px 0 52px !important;
+  }
+  #flow .simple-flow{
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+  }
+}
+
+@media(max-width:460px){
+  #flow .simple-flow{
+    grid-template-columns:1fr !important;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -1604,15 +1784,8 @@
 </section>
 
 
-
     <!-- =========================
-         02｜活用例
-    ========================= -->
-    
-
-
-    <!-- =========================
-         03｜ご依頼の流れ
+         02｜ご依頼
     ========================= -->
 <section class="top-final about" id="contact-guide">
       <div class="top-final-message">
@@ -1652,12 +1825,6 @@
   </div>
 </section>
 
-
-
-
-    <!-- =========================
-         04｜ご依頼
-    ========================= -->
 </main>
 
 
