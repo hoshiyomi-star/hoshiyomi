@@ -891,6 +891,108 @@
 }
 </style>
 
+
+<style id="readable-text-size">
+/* ===== 読みやすさ調整：文章を一目で読めるサイズへ ===== */
+
+/* プランカード */
+.plan-card p,
+.plan-card .description,
+.plan-card .plan-description,
+.plan-card .desc{
+  font-size:16px !important;
+  line-height:1.9 !important;
+}
+
+.plan-card h3,
+.plan-card h4{
+  font-size:24px !important;
+}
+
+.plan-card .price,
+.plan-card .price-line,
+.plan-card .amount{
+  font-size:19px !important;
+}
+
+/* 4カード内の一般的な本文要素にも適用 */
+.plans p{
+  font-size:16px !important;
+  line-height:1.9 !important;
+}
+
+/* ご依頼はこちらから */
+#contact-guide .top-final-message{
+  font-size:16px !important;
+  line-height:1.95 !important;
+}
+
+#contact-guide .top-final-message p{
+  font-size:16px !important;
+  line-height:1.95 !important;
+}
+
+#contact-guide .top-final-message strong{
+  font-size:21px !important;
+}
+
+#contact-guide .btn,
+#contact-guide a.btn,
+.simple-cta a{
+  font-size:15px !important;
+}
+
+/* ご依頼の流れ */
+#flow p{
+  font-size:16px !important;
+  line-height:1.9 !important;
+}
+
+#flow .flow-text,
+#flow .flow-description{
+  font-size:16px !important;
+  line-height:1.9 !important;
+}
+
+/* 小さな画面でも読みやすさを維持 */
+@media(max-width:760px){
+  .plan-card p,
+  .plan-card .description,
+  .plan-card .plan-description,
+  .plan-card .desc,
+  .plans p,
+  #contact-guide .top-final-message,
+  #contact-guide .top-final-message p,
+  #flow p,
+  #flow .flow-text,
+  #flow .flow-description{
+    font-size:15.5px !important;
+    line-height:1.85 !important;
+  }
+
+  .plan-card h3,
+  .plan-card h4{
+    font-size:22px !important;
+  }
+
+  .plan-card .price,
+  .plan-card .price-line,
+  .plan-card .amount{
+    font-size:18px !important;
+  }
+
+  #contact-guide .top-final-message strong{
+    font-size:20px !important;
+  }
+
+  #contact-guide .btn,
+  #contact-guide a.btn,
+  .simple-cta a{
+    font-size:14px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
