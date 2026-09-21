@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>はじめての方へ｜星詠</title>
+<title>あなたの星を見つける｜星詠</title>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
@@ -33,45 +34,65 @@ body{
    共通
 ========================= */
 
-.page{
-  width:min(900px,calc(100% - 40px));
+.screen{
+  min-height:100vh;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:50px 20px;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(120,160,255,.12),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #020817 0%,
+      #07152e 55%,
+      #020817 100%
+    );
+}
+
+.screen.active{
+  display:flex;
+}
+
+.inner{
+  width:min(900px,100%);
   margin:auto;
-}
-
-.fade{
-  animation:fadeIn 1.2s ease forwards;
-}
-
-@keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(15px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
 }
 
 
 /* =========================
-   ヘッダー
+   ロゴ
 ========================= */
 
-header{
-  min-height:100vh;
+.logo{
+  width:min(230px,65vw);
+  height:auto;
 
-  display:flex;
-  flex-direction:column;
+  display:block;
 
-  justify-content:center;
-  align-items:center;
+  margin:0 auto 35px;
 
-  text-align:center;
-
-  position:relative;
+  filter:
+    drop-shadow(
+      0 0 25px
+      rgba(150,190,255,.25)
+    );
 }
+
+
+/* =========================
+   テキスト
+========================= */
 
 .system{
   color:#8fbfff;
@@ -81,34 +102,33 @@ header{
     "Times New Roman",
     serif;
 
-  font-size:.75rem;
+  font-size:.72rem;
 
   letter-spacing:.3em;
 
-  margin-bottom:35px;
-}
-
-.logo{
-  width:min(240px,65vw);
-  height:auto;
-
-  margin-bottom:35px;
-
-  filter:
-    drop-shadow(
-      0 0 25px
-      rgba(150,190,255,.25)
-    );
+  margin-bottom:25px;
 }
 
 h1{
-  font-size:clamp(2rem,6vw,3.5rem);
+  font-size:
+    clamp(2rem,6vw,3.4rem);
 
   font-weight:400;
 
   letter-spacing:.12em;
 
-  margin:0;
+  margin:0 0 25px;
+}
+
+h2{
+  font-size:
+    clamp(1.5rem,4vw,2.2rem);
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+
+  margin:0 0 20px;
 }
 
 .lead{
@@ -116,18 +136,23 @@ h1{
 
   line-height:2;
 
-  margin:25px 0 55px;
+  margin:0 auto 45px;
 }
 
 
 /* =========================
-   START
+   ボタン
 ========================= */
 
-.enter{
-  display:inline-block;
+.button{
+  display:inline-flex;
 
-  padding:14px 35px;
+  align-items:center;
+  justify-content:center;
+
+  min-width:190px;
+
+  padding:14px 32px;
 
   border:
     1px solid
@@ -135,16 +160,23 @@ h1{
 
   border-radius:999px;
 
+  background:
+    rgba(255,255,255,.03);
+
   color:#edf3ff;
 
   text-decoration:none;
 
-  letter-spacing:.25em;
+  cursor:pointer;
+
+  font-family:inherit;
+
+  letter-spacing:.18em;
 
   transition:.35s ease;
 }
 
-.enter:hover{
+.button:hover{
   background:
     rgba(180,210,255,.08);
 
@@ -157,24 +189,10 @@ h1{
 
 
 /* =========================
-   体験本編
+   質問画面
 ========================= */
 
-main{
-  padding:100px 0 120px;
-}
-
-.section{
-  padding:65px 0;
-
-  border-top:
-    1px solid
-    rgba(180,205,245,.16);
-
-  text-align:center;
-}
-
-.number{
+.question-number{
   color:#8fbfff;
 
   font-family:
@@ -182,243 +200,214 @@ main{
     "Times New Roman",
     serif;
 
-  font-size:.72rem;
+  font-size:.75rem;
 
   letter-spacing:.25em;
 
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
-h2{
-  font-size:clamp(1.6rem,4vw,2.3rem);
-
-  font-weight:400;
-
-  letter-spacing:.1em;
-
-  margin:0 0 30px;
-}
-
-.text{
-  max-width:650px;
-
-  margin:auto;
-
+.question-text{
   color:#aab8d2;
 
-  line-height:2.1;
+  line-height:1.9;
+
+  margin-bottom:40px;
+}
+
+.options{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:15px;
+
+  width:min(700px,100%);
+
+  margin:auto;
+}
+
+.option{
+  min-height:85px;
+
+  padding:18px 20px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:16px;
+
+  background:
+    rgba(10,24,52,.58);
+
+  color:#edf3ff;
+
+  font-family:inherit;
 
   font-size:.95rem;
+
+  letter-spacing:.05em;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+}
+
+.option:hover{
+  transform:translateY(-3px);
+
+  border-color:
+    rgba(143,191,255,.55);
+
+  background:
+    rgba(20,40,78,.7);
+
+  box-shadow:
+    0 10px 30px
+    rgba(50,90,170,.12);
 }
 
 
 /* =========================
-   星
+   星の生成
 ========================= */
 
-.star-field{
-  margin:50px auto;
-
-  width:100%;
-  max-width:650px;
-
-  min-height:260px;
-
+#starGenerate{
   position:relative;
 
   overflow:hidden;
+}
+
+.star-area{
+  width:min(500px,90vw);
+  height:300px;
+
+  margin:0 auto 35px;
+
+  position:relative;
 
   border:
     1px solid
-    rgba(180,205,245,.15);
+    rgba(180,205,245,.12);
 
   border-radius:25px;
 
   background:
     radial-gradient(
-      circle at 50% 50%,
-      rgba(120,160,255,.12),
+      circle at center,
+      rgba(130,170,255,.15),
       transparent 55%
     ),
     #030b1d;
 }
 
-.star{
+.generated-star{
   position:absolute;
 
-  width:4px;
-  height:4px;
+  width:18px;
+  height:18px;
+
+  left:50%;
+  top:50%;
+
+  margin:-9px;
 
   border-radius:50%;
 
-  background:#dceaff;
+  background:#edf6ff;
 
   box-shadow:
-    0 0 10px
-    rgba(180,210,255,.8);
+    0 0 15px #dceaff,
+    0 0 40px rgba(150,200,255,.8),
+    0 0 80px rgba(120,160,255,.45);
 
   animation:
-    twinkle 3s infinite alternate;
+    starAppear 2s ease forwards,
+    starPulse 3s ease-in-out infinite 2s;
 }
 
-.star:nth-child(1){
-  top:20%;
-  left:18%;
-}
+@keyframes starAppear{
 
-.star:nth-child(2){
-  top:35%;
-  left:72%;
-
-  animation-delay:.8s;
-}
-
-.star:nth-child(3){
-  top:65%;
-  left:30%;
-
-  animation-delay:1.4s;
-}
-
-.star:nth-child(4){
-  top:25%;
-  left:50%;
-
-  animation-delay:.5s;
-}
-
-.star:nth-child(5){
-  top:75%;
-  left:78%;
-
-  animation-delay:2s;
-}
-
-.star:nth-child(6){
-  top:55%;
-  left:60%;
-
-  animation-delay:1s;
-}
-
-@keyframes twinkle{
-  from{
-    opacity:.25;
-    transform:scale(.8);
+  0%{
+    opacity:0;
+    transform:scale(.1);
   }
 
-  to{
+  60%{
     opacity:1;
     transform:scale(1.5);
   }
+
+  100%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+}
+
+@keyframes starPulse{
+
+  0%,100%{
+    box-shadow:
+      0 0 15px #dceaff,
+      0 0 40px rgba(150,200,255,.8),
+      0 0 80px rgba(120,160,255,.45);
+  }
+
+  50%{
+    box-shadow:
+      0 0 25px #ffffff,
+      0 0 60px rgba(150,200,255,.95),
+      0 0 110px rgba(120,160,255,.55);
+  }
+
 }
 
 
 /* =========================
-   体験カード
+   結果
 ========================= */
 
-.experience{
-  display:grid;
+.result-name{
+  font-size:
+    clamp(2rem,7vw,4rem);
 
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:18px;
-
-  margin-top:45px;
-}
-
-.experience-card{
-  padding:30px 20px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.16);
-
-  border-radius:18px;
-
-  background:
-    rgba(10,24,52,.5);
-}
-
-.experience-card span{
-  display:block;
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.7rem;
-
-  letter-spacing:.2em;
-
-  margin-bottom:15px;
-}
-
-.experience-card h3{
   font-weight:400;
 
-  font-size:1.05rem;
+  letter-spacing:.15em;
 
-  letter-spacing:.08em;
+  margin:15px 0 25px;
 
-  margin:0 0 12px;
+  text-shadow:
+    0 0 25px
+    rgba(170,200,255,.35);
 }
 
-.experience-card p{
+.result-text{
+  width:min(650px,100%);
+
+  margin:0 auto 40px;
+
   color:#aab8d2;
 
-  font-size:.85rem;
-
-  line-height:1.8;
-
-  margin:0;
+  line-height:2.1;
 }
 
 
 /* =========================
-   最後
+   結果ボタン
 ========================= */
 
-.final{
-  padding:80px 0;
+.result-buttons{
+  display:flex;
 
-  text-align:center;
-}
+  justify-content:center;
 
-.final p{
-  color:#aab8d2;
+  flex-wrap:wrap;
 
-  line-height:2;
-
-  margin-bottom:35px;
-}
-
-.back{
-  display:inline-block;
-
-  padding:11px 25px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.2);
-
-  border-radius:999px;
-
-  color:#dce8ff;
-
-  text-decoration:none;
-
-  transition:.3s ease;
-}
-
-.back:hover{
-  background:
-    rgba(180,210,255,.08);
+  gap:15px;
 }
 
 
@@ -428,26 +417,20 @@ h2{
 
 @media(max-width:700px){
 
-  .page{
-    width:min(
-      100% - 28px,
-      900px
-    );
-  }
-
-  .experience{
+  .options{
     grid-template-columns:1fr;
   }
 
-  .experience-card{
-    padding:28px 20px;
+  .option{
+    min-height:70px;
   }
 
-  main{
-    padding-top:60px;
+  .star-area{
+    height:240px;
   }
 
 }
+
 </style>
 </head>
 
@@ -456,205 +439,552 @@ h2{
 
 
 <!-- =========================
-     はじまり
+     入口
 ========================= -->
 
-<header class="fade">
+<section
+  class="screen active"
+  id="welcome"
+>
 
-  <div class="system">
-    HOSHIYOMI｜FIRST VISIT
+  <div class="inner">
+
+    <div class="system">
+      HOSHIYOMI｜FIRST VISIT
+    </div>
+
+    <img
+      src="logo.png"
+      alt="星詠"
+      class="logo"
+    >
+
+    <h1>
+      あなたの星を見つける
+    </h1>
+
+    <p class="lead">
+      初めての方へ。<br>
+      少しだけ、あなた自身のことを<br>
+      星詠に教えてください。
+    </p>
+
+    <button
+      class="button"
+      onclick="startExperience()"
+    >
+      はじめる
+    </button>
+
   </div>
 
-  <img
-    src="logo.png"
-    alt="星詠"
-    class="logo"
-  >
-
-  <h1>
-    はじめての方へ
-  </h1>
-
-  <p class="lead">
-    初めて依頼する前に、<br>
-    少しだけ星詠を体験してみませんか。
-  </p>
-
-  <a
-    href="#experience"
-    class="enter"
-  >
-    ENTER
-  </a>
-
-</header>
+</section>
 
 
 
 <!-- =========================
-     本編
+     質問1
 ========================= -->
 
-<main
-  class="page"
-  id="experience"
+<section
+  class="screen"
+  id="question1"
 >
 
+  <div class="inner">
 
-  <!-- 01 -->
-
-  <section class="section">
-
-    <div class="number">
-      01｜WELCOME
+    <div class="question-number">
+      01｜YOUR FAVORITE
     </div>
 
     <h2>
-      星詠へようこそ
+      あなたが、自然と惹かれるものは？
     </h2>
 
-    <p class="text">
-      星詠は、作品をただ制作する場所ではありません。<br>
-      あなたの中にあるものを見つけ、
-      ひとつの作品へつないでいく場所です。
+    <p class="question-text">
+      直感でひとつ選んでください。
     </p>
 
-  </section>
+    <div class="options">
+
+      <button class="option" onclick="answer(1,'月')">
+        月
+      </button>
+
+      <button class="option" onclick="answer(1,'星')">
+        星
+      </button>
+
+      <button class="option" onclick="answer(1,'花')">
+        花
+      </button>
+
+      <button class="option" onclick="answer(1,'海')">
+        海
+      </button>
+
+      <button class="option" onclick="answer(1,'音')">
+        音
+      </button>
+
+      <button class="option" onclick="answer(1,'物語')">
+        物語
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 
-  <!-- 02 -->
+<!-- =========================
+     質問2
+========================= -->
 
-  <section class="section">
+<section
+  class="screen"
+  id="question2"
+>
 
-    <div class="number">
-      02｜STAR
+  <div class="inner">
+
+    <div class="question-number">
+      02｜YOUR MEMORY
     </div>
 
     <h2>
-      あなたの星を探す
+      あなたの心に残っているものは？
     </h2>
 
-    <div class="star-field">
+    <p class="question-text">
+      ひとつだけ、選んでください。
+    </p>
 
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
+    <div class="options">
+
+      <button class="option" onclick="answer(2,'あの日の景色')">
+        あの日の景色
+      </button>
+
+      <button class="option" onclick="answer(2,'誰かからもらった言葉')">
+        誰かからもらった言葉
+      </button>
+
+      <button class="option" onclick="answer(2,'忘れられない声や音')">
+        忘れられない声や音
+      </button>
+
+      <button class="option" onclick="answer(2,'大切な人との時間')">
+        大切な人との時間
+      </button>
+
+      <button class="option" onclick="answer(2,'心に残った作品')">
+        心に残った作品
+      </button>
+
+      <button class="option" onclick="answer(2,'まだ名前のない記憶')">
+        まだ名前のない記憶
+      </button>
 
     </div>
 
-    <p class="text">
-      好きなもの。<br>
-      大切な記憶。<br>
-      憧れているもの。<br><br>
+  </div>
 
-      まだ言葉になっていないものも、
-      あなたの中にはきっとあります。
-    </p>
-
-  </section>
+</section>
 
 
 
-  <!-- 03 -->
+<!-- =========================
+     質問3
+========================= -->
 
-  <section class="section">
+<section
+  class="screen"
+  id="question3"
+>
 
-    <div class="number">
-      03｜PROCESS
+  <div class="inner">
+
+    <div class="question-number">
+      03｜YOUR DREAM
     </div>
 
     <h2>
-      星詠でできること
+      あなたが、いつか触れてみたいものは？
     </h2>
 
-    <div class="experience">
+    <p class="question-text">
+      まだ決まっていなくても大丈夫です。
+    </p>
 
+    <div class="options">
 
-      <div class="experience-card">
+      <button class="option" onclick="answer(3,'まだ見たことのない世界')">
+        まだ見たことのない世界
+      </button>
 
-        <span>
-          DISCOVER
-        </span>
+      <button class="option" onclick="answer(3,'自分だけの居場所')">
+        自分だけの居場所
+      </button>
 
-        <h3>
-          知る
-        </h3>
+      <button class="option" onclick="answer(3,'誰かと分かち合えるもの')">
+        誰かと分かち合えるもの
+      </button>
 
-        <p>
-          あなた自身のことを
-          少しずつ整理していきます。
-        </p>
+      <button class="option" onclick="answer(3,'今の自分にはないもの')">
+        今の自分にはないもの
+      </button>
 
-      </div>
+      <button class="option" onclick="answer(3,'いつか叶えたいもの')">
+        いつか叶えたいもの
+      </button>
 
-
-      <div class="experience-card">
-
-        <span>
-          CREATE
-        </span>
-
-        <h3>
-          描く
-        </h3>
-
-        <p>
-          見つけたものを
-          作品へと形にしていきます。
-        </p>
-
-      </div>
-
-
-      <div class="experience-card">
-
-        <span>
-          CONNECT
-        </span>
-
-        <h3>
-          届ける
-        </h3>
-
-        <p>
-          完成した作品を、
-          あなたのもとへ届けます。
-        </p>
-
-      </div>
-
+      <button class="option" onclick="answer(3,'まだ分からない未来')">
+        まだ分からない未来
+      </button>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
 
-  <!-- 最後 -->
+<!-- =========================
+     質問4
+========================= -->
 
-  <section class="final">
+<section
+  class="screen"
+  id="question4"
+>
 
-    <p>
-      ここまで見て、<br>
-      もう少し星詠を見てみたいと思ったら。
+  <div class="inner">
+
+    <div class="question-number">
+      04｜YOUR UNNAMED STAR
+    </div>
+
+    <h2>
+      まだ、うまく言葉にできないものはありますか？
+    </h2>
+
+    <p class="question-text">
+      無理に答えなくても大丈夫です。
     </p>
 
-    <a
-      href="index.html"
-      class="back"
+    <div class="options">
+
+      <button class="option" onclick="answer(4,'なんとなく惹かれるもの')">
+        なんとなく惹かれるもの
+      </button>
+
+      <button class="option" onclick="answer(4,'まだ分からない')">
+        まだ分からない
+      </button>
+
+      <button class="option" onclick="answer(4,'うまく言葉にできない')">
+        うまく言葉にできない
+      </button>
+
+      <button class="option" onclick="answer(4,'今は答えたくない')">
+        今は答えたくない
+      </button>
+
+      <button class="option" onclick="answer(4,'少しだけなら話せる')">
+        少しだけなら話せる
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     星生成
+========================= -->
+
+<section
+  class="screen"
+  id="starGenerate"
+>
+
+  <div class="inner">
+
+    <div class="system">
+      HOSHIYOMI SYSTEM
+    </div>
+
+    <div class="star-area">
+
+      <div
+        class="generated-star"
+        id="generatedStar"
+      ></div>
+
+    </div>
+
+    <h2>
+      あなたの星が生まれています
+    </h2>
+
+    <p class="lead">
+      あなたが選んだものを、<br>
+      ひとつの星へつないでいます。
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     結果
+========================= -->
+
+<section
+  class="screen"
+  id="result"
+>
+
+  <div class="inner">
+
+    <div class="system">
+      YOUR STAR
+    </div>
+
+    <div class="result-name" id="resultName">
+      宵星
+    </div>
+
+    <p
+      class="result-text"
+      id="resultText"
     >
-      星詠の入口へ戻る
-    </a>
+    </p>
 
-  </section>
+    <div class="result-buttons">
+
+      <a
+        href="request.html"
+        class="button"
+      >
+        星詠で依頼する
+      </a>
+
+      <a
+        href="index.html"
+        class="button"
+      >
+        星詠の入口へ戻る
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-</main>
 
+<script>
+
+
+/* =========================
+   選択した答え
+========================= */
+
+let answers = {
+  1:"",
+  2:"",
+  3:"",
+  4:""
+};
+
+
+/* =========================
+   画面切り替え
+========================= */
+
+function showScreen(id){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen => {
+
+      screen.classList.remove("active");
+
+    });
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
+}
+
+
+/* =========================
+   スタート
+========================= */
+
+function startExperience(){
+
+  showScreen("question1");
+
+}
+
+
+/* =========================
+   回答
+========================= */
+
+function answer(question, value){
+
+  answers[question] = value;
+
+
+  if(question === 1){
+
+    showScreen("question2");
+
+  }
+
+  else if(question === 2){
+
+    showScreen("question3");
+
+  }
+
+  else if(question === 3){
+
+    showScreen("question4");
+
+  }
+
+  else if(question === 4){
+
+    createStar();
+
+  }
+
+}
+
+
+/* =========================
+   星を作る
+========================= */
+
+function createStar(){
+
+  showScreen("starGenerate");
+
+
+  setTimeout(function(){
+
+    createResult();
+
+  },3000);
+
+}
+
+
+/* =========================
+   結果を作る
+========================= */
+
+function createResult(){
+
+  let name = "宵星";
+
+  let text =
+    "あなたが選んだものから生まれた、" +
+    "あなただけの小さな星です。";
+
+
+  /*
+   * ④の答えによって
+   * 星の名前を変える
+   */
+
+  if(
+    answers[4] === "まだ分からない"
+  ){
+
+    name = "未明";
+
+    text =
+      "まだ名前のない未来を抱えながら、" +
+      "静かに光を探している星です。";
+
+  }
+
+  else if(
+    answers[4] === "うまく言葉にできない"
+  ){
+
+    name = "幽星";
+
+    text =
+      "まだ言葉にならない想いを抱え、" +
+      "静かにそこに在る星です。";
+
+  }
+
+  else if(
+    answers[4] === "今は答えたくない"
+  ){
+
+    name = "余白";
+
+    text =
+      "まだ何も決めなくていい。 " +
+      "余白の中で、ゆっくり光る星です。";
+
+  }
+
+  else if(
+    answers[4] === "少しだけなら話せる"
+  ){
+
+    name = "灯星";
+
+    text =
+      "小さな言葉から光を生み、" +
+      "少しずつ世界を照らしていく星です。";
+
+  }
+
+
+  /*
+   * 結果表示
+   */
+
+  document
+    .getElementById("resultName")
+    .textContent = name;
+
+  document
+    .getElementById("resultText")
+    .textContent = text;
+
+
+  showScreen("result");
+
+}
+
+</script>
 
 </body>
 </html>
