@@ -808,6 +808,14 @@ let answers = {
   4:""
 };
 
+  const starColors = {
+  "月":"#9fc5ff",
+  "星":"#edf3ff",
+  "花":"#c8a9e8",
+  "海":"#78d7f5",
+  "音":"#9d8cff",
+  "物語":"#536aa8"
+};
 
 /* =========================
    画面切り替え
@@ -905,6 +913,10 @@ function createStar(){
 ========================= */
 
 function createResult(){
+
+const color = starColors[answers[1]] || "#edf3ff";
+
+document.getElementById("generatedStar").style.background = color;
 
   let name = "宵星";
 
