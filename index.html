@@ -23,7 +23,10 @@ body{
   font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
 }
 
-/* START画面 */
+/* =========================
+   START画面
+========================= */
+
 .start-screen{
   width:100%;
   min-height:100vh;
@@ -33,6 +36,7 @@ body{
   text-align:center;
   position:relative;
   overflow:hidden;
+
   background:
     radial-gradient(
       circle at 50% 45%,
@@ -57,23 +61,22 @@ body{
   font-size:.75rem;
   letter-spacing:.35em;
   color:#8fbfff;
-  margin-bottom:35px;
+  margin-bottom:30px;
 }
 
-/* 星詠ロゴ */
-.hoshiyomi-logo{
+/* ロゴ画像 */
+.logo-image{
+  display:block;
   width:min(320px,70vw);
   height:auto;
-  display:block;
   margin:0 auto;
-  object-fit:contain;
   filter:
-    drop-shadow(0 0 18px rgba(170,200,255,.28))
-    drop-shadow(0 0 40px rgba(120,150,255,.12));
+    drop-shadow(0 0 20px rgba(170,200,255,.35))
+    drop-shadow(0 0 50px rgba(120,150,255,.15));
 }
 
 .subtitle{
-  margin:24px 0 65px;
+  margin:25px 0 60px;
   color:#aab8d2;
   letter-spacing:.3em;
   font-size:.85rem;
@@ -83,15 +86,21 @@ body{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+
   min-width:190px;
   padding:15px 38px;
+
   border:1px solid rgba(210,225,255,.55);
   border-radius:999px;
+
   background:rgba(255,255,255,.03);
   color:#fff;
+
   text-decoration:none;
   letter-spacing:.35em;
+
   font-family:Georgia,"Times New Roman",serif;
+
   transition:.35s ease;
 }
 
@@ -101,11 +110,16 @@ body{
   transform:translateY(-2px);
 }
 
-/* 選択画面 */
+
+/* =========================
+   選択画面
+========================= */
+
 .choice-screen{
   display:none;
   min-height:100vh;
-  padding:80px 20px;
+  padding:90px 25px;
+
   background:
     radial-gradient(
       circle at 50% 0%,
@@ -116,7 +130,7 @@ body{
 }
 
 .choice-inner{
-  width:min(1000px,100%);
+  width:min(1100px,100%);
   margin:auto;
   text-align:center;
 }
@@ -141,72 +155,146 @@ body{
   margin:25px auto 55px;
 }
 
+
+/* =========================
+   5つの選択肢
+========================= */
+
 .choices{
+  width:100%;
   display:grid;
+
+  /* PCでは3列 */
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+
+  gap:22px;
+
+  margin:0 auto;
 }
 
+
+/* 5枚目まで同じデザイン */
 .choice{
-  min-height:240px;
+  min-height:250px;
+
   padding:35px 25px;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+
   border:1px solid rgba(180,205,245,.18);
   border-radius:20px;
+
   background:rgba(10,24,52,.58);
+
   color:#edf3ff;
   text-decoration:none;
+
   transition:.35s ease;
 }
 
 .choice:hover{
   transform:translateY(-5px);
+
   border-color:rgba(143,191,255,.55);
+
   background:rgba(20,40,78,.7);
-  box-shadow:0 15px 40px rgba(50,90,170,.12);
+
+  box-shadow:
+    0 15px 40px rgba(50,90,170,.12);
 }
 
 .choice-number{
   color:#8fbfff;
+
   font-family:Georgia,"Times New Roman",serif;
+
   font-size:.75rem;
+
   letter-spacing:.2em;
+
   margin-bottom:22px;
 }
 
 .choice h2{
-  font-size:1.25rem;
+  font-size:1.15rem;
   font-weight:400;
+
   letter-spacing:.08em;
+
   margin:0 0 15px;
+
+  line-height:1.7;
 }
 
 .choice p{
   margin:0;
+
   color:#aab8d2;
-  font-size:.9rem;
+
+  font-size:.85rem;
+
   line-height:1.8;
 }
 
-/* スマホ */
+
+/* =========================
+   4番・5番を中央寄せ
+========================= */
+
+/*
+   5個なので、
+   1 2 3
+    4 5
+   という形にする
+*/
+
+.choice:nth-child(4){
+  grid-column:1 / 2;
+  margin-left:50%;
+  width:100%;
+}
+
+.choice:nth-child(5){
+  grid-column:2 / 3;
+  width:100%;
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
 @media(max-width:700px){
+
+  .choice-screen{
+    padding:70px 18px;
+  }
 
   .choices{
     grid-template-columns:1fr;
+    gap:16px;
   }
 
   .choice{
-    min-height:180px;
+    min-height:190px;
+  }
+
+  /* スマホでは全部普通に縦並び */
+  .choice:nth-child(4),
+  .choice:nth-child(5){
+    grid-column:auto;
+    margin-left:0;
+    width:100%;
   }
 
   .start-inner{
     padding:40px 15px;
   }
 
-  .hoshiyomi-logo{
+  .logo-image{
     width:min(280px,75vw);
   }
 
@@ -214,12 +302,17 @@ body{
     margin-bottom:50px;
   }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- START画面 -->
+
+<!-- =========================
+     START画面
+========================= -->
 
 <main class="start-screen" id="startScreen">
 
@@ -229,18 +322,22 @@ body{
       SYSTEM : HOSHIYOMI
     </div>
 
-    <!-- 星詠のロゴ画像 -->
+    <!-- 星詠ロゴ -->
     <img
       src="logo.png"
-      alt="星詠"
-      class="hoshiyomi-logo"
+      alt="星詠 HOSHIYOMI"
+      class="logo-image"
     >
 
     <p class="subtitle">
       HOSHIYOMI
     </p>
 
-    <a href="#choice" class="start-button" id="startButton">
+    <a
+      href="#choice"
+      class="start-button"
+      id="startButton"
+    >
       START
     </a>
 
@@ -249,9 +346,14 @@ body{
 </main>
 
 
-<!-- 選択画面 -->
+<!-- =========================
+     選択画面
+========================= -->
 
-<section class="choice-screen" id="choice">
+<section
+  class="choice-screen"
+  id="choice"
+>
 
   <div class="choice-inner">
 
@@ -267,113 +369,104 @@ body{
       星詠での行き先を選んでください。
     </p>
 
+
     <div class="choices">
 
-     <a href="request.html" class="choice">
-        <div class="choice-number">01</div>
-        <h2>今すぐ依頼したい</h2>
-        <p>作品の制作を依頼する</p>
-      </a>
+
+      <!-- 01 -->
 
       <a href="#" class="choice">
-        <div class="choice-number">02</div>
-        <h2>星詠をのぞいてみる</h2>
-        <p>星詠の作品や世界を覗く</p>
+
+        <div class="choice-number">
+          01
+        </div>
+
+        <h2>
+          今すぐ依頼したい
+        </h2>
+
+        <p>
+          作品の制作を依頼する
+        </p>
+
       </a>
+
+
+      <!-- 02 -->
 
       <a href="#" class="choice">
-        <div class="choice-number">03</div>
-        <h2>依頼について相談する</h2>
-        <p>まずは相談してみる</p>
+
+        <div class="choice-number">
+          02
+        </div>
+
+        <h2>
+          星詠をのぞいてみる
+        </h2>
+
+        <p>
+          星詠の作品や世界を覗く
+        </p>
+
       </a>
 
-      <div class="choices">
 
-  <a href="request.html" class="choice">
+      <!-- 03 -->
 
-    <div class="choice-number">
-      01
-    </div>
+      <a href="#" class="choice">
 
-    <h2>
-      今すぐ依頼したい
-    </h2>
+        <div class="choice-number">
+          03
+        </div>
 
-    <p>
-      作品の制作を依頼する
-    </p>
+        <h2>
+          依頼について相談したい
+        </h2>
 
-  </a>
+        <p>
+          まずは相談してみる
+        </p>
 
-
-  <a href="#" class="choice">
-
-    <div class="choice-number">
-      02
-    </div>
-
-    <h2>
-      星詠をのぞいてみる
-    </h2>
-
-    <p>
-      星詠の作品や世界を覗く
-    </p>
-
-  </a>
+      </a>
 
 
-  <a href="#" class="choice">
+      <!-- 04 -->
 
-    <div class="choice-number">
-      03
-    </div>
+      <a href="#" class="choice">
 
-    <h2>
-      依頼について相談したい
-    </h2>
+        <div class="choice-number">
+          04
+        </div>
 
-    <p>
-      まずは相談してみる
-    </p>
+        <h2>
+          返礼品を見てみる
+        </h2>
 
-  </a>
+        <p>
+          星詠から届くものを覗いてみる
+        </p>
 
-
-  <a href="#" class="choice">
-
-    <div class="choice-number">
-      04
-    </div>
-
-    <h2>
-      返礼品を見てみる
-    </h2>
-
-    <p>
-      星詠からのお返しを見る
-    </p>
-
-  </a>
+      </a>
 
 
-  <a href="#" class="choice">
+      <!-- 05 -->
 
-    <div class="choice-number">
-      05
-    </div>
+      <a href="#" class="choice">
 
-    <h2>
-      星詠の世界を体験する
-    </h2>
+        <div class="choice-number">
+          05
+        </div>
 
-    <p>
-      星詠の世界へ入ってみる
-    </p>
+        <h2>
+          星詠の世界を体験する
+        </h2>
 
-  </a>
+        <p>
+          星詠そのものを楽しんでみる
+        </p>
 
-</div>
+      </a>
+
 
     </div>
 
@@ -384,25 +477,36 @@ body{
 
 <script>
 
-const startButton = document.getElementById("startButton");
-const startScreen = document.getElementById("startScreen");
-const choiceScreen = document.getElementById("choice");
+const startButton =
+  document.getElementById("startButton");
 
-startButton.addEventListener("click", function(event){
+const startScreen =
+  document.getElementById("startScreen");
 
-  event.preventDefault();
+const choiceScreen =
+  document.getElementById("choice");
 
-  startScreen.style.display = "none";
-  choiceScreen.style.display = "block";
 
-  window.scrollTo({
-    top:0,
-    behavior:"instant"
-  });
+startButton.addEventListener(
+  "click",
+  function(event){
 
-});
+    event.preventDefault();
+
+    startScreen.style.display = "none";
+
+    choiceScreen.style.display = "block";
+
+    window.scrollTo({
+      top:0,
+      behavior:"instant"
+    });
+
+  }
+);
 
 </script>
+
 
 </body>
 </html>
