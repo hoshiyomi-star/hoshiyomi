@@ -76,7 +76,6 @@ body{
 
 .logo{
   width:min(230px,65vw);
-
   height:auto;
 
   display:block;
@@ -305,11 +304,8 @@ h2{
   justify-content:center;
 }
 
-
 .generated-star{
-
   width:20px;
-
   height:20px;
 
   border-radius:50%;
@@ -330,23 +326,17 @@ h2{
 
   0%{
     opacity:0;
-
-    transform:
-      scale(.1);
+    transform:scale(.1);
   }
 
   60%{
     opacity:1;
-
-    transform:
-      scale(1.5);
+    transform:scale(1.5);
   }
 
   100%{
     opacity:1;
-
-    transform:
-      scale(1);
+    transform:scale(1);
   }
 
 }
@@ -357,9 +347,7 @@ h2{
 ========================= */
 
 .result-star-area{
-
   width:280px;
-
   height:230px;
 
   margin:0 auto;
@@ -369,14 +357,11 @@ h2{
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 }
 
 .result-star{
-
   width:27px;
-
   height:27px;
 
   border-radius:50%;
@@ -388,7 +373,6 @@ h2{
     0 0 35px #bcd8ff,
     0 0 70px rgba(140,190,255,.8),
     0 0 120px rgba(100,150,255,.35);
-
 }
 
 
@@ -397,7 +381,6 @@ h2{
 ========================= */
 
 .glow-slow{
-
   animation:
     glowSlow 4s
     ease-in-out
@@ -422,7 +405,6 @@ h2{
 
 
 .glow-soft{
-
   animation:
     glowSoft 2.5s
     ease-in-out
@@ -445,7 +427,6 @@ h2{
 
 
 .glow-wave{
-
   animation:
     glowWave 2s
     ease-in-out
@@ -478,7 +459,6 @@ h2{
 
 
 .glow-warm{
-
   animation:
     glowWarm 3.5s
     ease-in-out
@@ -501,7 +481,6 @@ h2{
 
 
 .glow-flash{
-
   animation:
     glowFlash 2.8s
     ease-in-out
@@ -529,7 +508,6 @@ h2{
 
 
 .glow-silent{
-
   animation:
     glowSilent 5s
     ease-in-out
@@ -562,7 +540,6 @@ h2{
 ========================= */
 
 .move-orbit{
-
   animation:
     moveOrbit 8s
     linear
@@ -572,28 +549,23 @@ h2{
 @keyframes moveOrbit{
 
   from{
-
     transform:
       rotate(0deg)
       translateX(35px)
       rotate(0deg);
-
   }
 
   to{
-
     transform:
       rotate(360deg)
       translateX(35px)
       rotate(-360deg);
-
   }
 
 }
 
 
 .move-still{
-
   animation:
     moveStill 4s
     ease-in-out
@@ -603,24 +575,19 @@ h2{
 @keyframes moveStill{
 
   0%,100%{
-
     transform:
       translate(0,0);
-
   }
 
   50%{
-
     transform:
       translate(0,-5px);
-
   }
 
 }
 
 
 .move-circle{
-
   animation:
     moveCircle 5s
     linear
@@ -630,26 +597,21 @@ h2{
 @keyframes moveCircle{
 
   from{
-
     transform:
       rotate(0deg)
       translateX(22px);
-
   }
 
   to{
-
     transform:
       rotate(360deg)
       translateX(22px);
-
   }
 
 }
 
 
 .move-away{
-
   animation:
     moveAway 5s
     ease-in-out
@@ -659,31 +621,24 @@ h2{
 @keyframes moveAway{
 
   0%{
-
     transform:
       translate(0,0);
-
   }
 
   50%{
-
     transform:
       translate(45px,-12px);
-
   }
 
   100%{
-
     transform:
       translate(0,0);
-
   }
 
 }
 
 
 .move-forward{
-
   animation:
     moveForward 4s
     ease-in-out
@@ -693,24 +648,19 @@ h2{
 @keyframes moveForward{
 
   0%,100%{
-
     transform:
       translateX(-18px);
-
   }
 
   50%{
-
     transform:
       translateX(25px);
-
   }
 
 }
 
 
 .move-unknown{
-
   animation:
     moveUnknown 4s
     ease-in-out
@@ -720,38 +670,28 @@ h2{
 @keyframes moveUnknown{
 
   0%{
-
     transform:
       translate(0,0);
-
   }
 
   25%{
-
     transform:
       translate(12px,-8px);
-
   }
 
   50%{
-
     transform:
       translate(-8px,10px);
-
   }
 
   75%{
-
     transform:
       translate(-15px,-5px);
-
   }
 
   100%{
-
     transform:
       translate(0,0);
-
   }
 
 }
@@ -781,12 +721,49 @@ h2{
 
   width:min(650px,100%);
 
-  margin:0 auto 40px;
+  margin:0 auto 30px;
 
   color:#aab8d2;
 
   line-height:2.1;
 }
+
+
+/* =========================
+   星が生まれた理由
+========================= */
+
+.result-story{
+
+  width:min(650px,100%);
+
+  margin:0 auto 40px;
+
+  padding:25px 20px;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.14);
+
+  border-bottom:
+    1px solid
+    rgba(180,205,245,.14);
+
+  color:#9eacc7;
+
+  font-size:.9rem;
+
+  line-height:2.2;
+
+  letter-spacing:.04em;
+}
+
+.result-story span{
+
+  color:#dbe8ff;
+
+}
+
 
 .result-buttons{
 
@@ -807,27 +784,19 @@ h2{
 @media(max-width:700px){
 
   .options{
-
     grid-template-columns:1fr;
-
   }
 
   .option{
-
     min-height:70px;
-
   }
 
   .star-area{
-
     height:240px;
-
   }
 
   .result-star-area{
-
     height:180px;
-
   }
 
 }
@@ -908,45 +877,33 @@ h2{
 
     <div class="options">
 
-      <button
-        class="option"
-        onclick="answer(1,'月')"
-      >
+      <button class="option"
+        onclick="answer(1,'月')">
         月
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'星')"
-      >
+      <button class="option"
+        onclick="answer(1,'星')">
         星
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'花')"
-      >
+      <button class="option"
+        onclick="answer(1,'花')">
         花
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'海')"
-      >
+      <button class="option"
+        onclick="answer(1,'海')">
         海
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'音')"
-      >
+      <button class="option"
+        onclick="answer(1,'音')">
         音
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'物語')"
-      >
+      <button class="option"
+        onclick="answer(1,'物語')">
         物語
       </button>
 
@@ -983,45 +940,33 @@ h2{
 
     <div class="options">
 
-      <button
-        class="option"
-        onclick="answer(2,'あの日の景色')"
-      >
+      <button class="option"
+        onclick="answer(2,'あの日の景色')">
         あの日の景色
       </button>
 
-      <button
-        class="option"
-        onclick="answer(2,'誰かからもらった言葉')"
-      >
+      <button class="option"
+        onclick="answer(2,'誰かからもらった言葉')">
         誰かからもらった言葉
       </button>
 
-      <button
-        class="option"
-        onclick="answer(2,'忘れられない声や音')"
-      >
+      <button class="option"
+        onclick="answer(2,'忘れられない声や音')">
         忘れられない声や音
       </button>
 
-      <button
-        class="option"
-        onclick="answer(2,'大切な人との時間')"
-      >
+      <button class="option"
+        onclick="answer(2,'大切な人との時間')">
         大切な人との時間
       </button>
 
-      <button
-        class="option"
-        onclick="answer(2,'心に残った作品')"
-      >
+      <button class="option"
+        onclick="answer(2,'心に残った作品')">
         心に残った作品
       </button>
 
-      <button
-        class="option"
-        onclick="answer(2,'まだ名前のない記憶')"
-      >
+      <button class="option"
+        onclick="answer(2,'まだ名前のない記憶')">
         まだ名前のない記憶
       </button>
 
@@ -1058,45 +1003,33 @@ h2{
 
     <div class="options">
 
-      <button
-        class="option"
-        onclick="answer(3,'まだ見たことのない世界')"
-      >
+      <button class="option"
+        onclick="answer(3,'まだ見たことのない世界')">
         まだ見たことのない世界
       </button>
 
-      <button
-        class="option"
-        onclick="answer(3,'自分だけの居場所')"
-      >
+      <button class="option"
+        onclick="answer(3,'自分だけの居場所')">
         自分だけの居場所
       </button>
 
-      <button
-        class="option"
-        onclick="answer(3,'誰かと分かち合えるもの')"
-      >
+      <button class="option"
+        onclick="answer(3,'誰かと分かち合えるもの')">
         誰かと分かち合えるもの
       </button>
 
-      <button
-        class="option"
-        onclick="answer(3,'今の自分にはないもの')"
-      >
+      <button class="option"
+        onclick="answer(3,'今の自分にはないもの')">
         今の自分にはないもの
       </button>
 
-      <button
-        class="option"
-        onclick="answer(3,'いつか叶えたいもの')"
-      >
+      <button class="option"
+        onclick="answer(3,'いつか叶えたいもの')">
         いつか叶えたいもの
       </button>
 
-      <button
-        class="option"
-        onclick="answer(3,'まだ分からない未来')"
-      >
+      <button class="option"
+        onclick="answer(3,'まだ分からない未来')">
         まだ分からない未来
       </button>
 
@@ -1133,38 +1066,28 @@ h2{
 
     <div class="options">
 
-      <button
-        class="option"
-        onclick="answer(4,'なんとなく惹かれるもの')"
-      >
+      <button class="option"
+        onclick="answer(4,'なんとなく惹かれるもの')">
         なんとなく惹かれるもの
       </button>
 
-      <button
-        class="option"
-        onclick="answer(4,'まだ分からない')"
-      >
+      <button class="option"
+        onclick="answer(4,'まだ分からない')">
         まだ分からない
       </button>
 
-      <button
-        class="option"
-        onclick="answer(4,'うまく言葉にできない')"
-      >
+      <button class="option"
+        onclick="answer(4,'うまく言葉にできない')">
         うまく言葉にできない
       </button>
 
-      <button
-        class="option"
-        onclick="answer(4,'今は答えたくない')"
-      >
+      <button class="option"
+        onclick="answer(4,'今は答えたくない')">
         今は答えたくない
       </button>
 
-      <button
-        class="option"
-        onclick="answer(4,'少しだけなら話せる')"
-      >
+      <button class="option"
+        onclick="answer(4,'少しだけなら話せる')">
         少しだけなら話せる
       </button>
 
@@ -1230,6 +1153,7 @@ h2{
       YOUR STAR
     </div>
 
+
     <div class="result-star-area">
 
       <div
@@ -1239,6 +1163,7 @@ h2{
 
     </div>
 
+
     <div
       class="result-name"
       id="resultName"
@@ -1246,11 +1171,20 @@ h2{
       宵星
     </div>
 
+
     <p
       class="result-text"
       id="resultText"
-    >
-    </p>
+    ></p>
+
+
+    <!-- 星が生まれた理由 -->
+
+    <div
+      class="result-story"
+      id="resultStory"
+    ></div>
+
 
     <div class="result-buttons">
 
@@ -1294,7 +1228,7 @@ let answers = {
 
 
 /* =========================
-   ① 星の色
+   ① 色
 ========================= */
 
 const starColors = {
@@ -1315,7 +1249,7 @@ const starColors = {
 
 
 /* =========================
-   ② 輝き方
+   ② 輝き
 ========================= */
 
 const glowStyles = {
@@ -1461,7 +1395,7 @@ function answer(
 
 
 /* =========================
-   星を生成
+   星生成
 ========================= */
 
 function createStar(){
@@ -1539,7 +1473,7 @@ function createResult(){
     `;
 
 
-  /* 輝き方 */
+  /* 輝き */
 
   const glowClass =
     glowStyles[answers[2]]
@@ -1638,7 +1572,26 @@ function createResult(){
 
 
   /* =========================
-     結果表示
+     星が生まれた理由
+  ========================= */
+
+  const story =
+
+    "惹かれるものは、" +
+    "<span>星の色</span>になりました。<br>" +
+
+    "心に残っているものは、" +
+    "<span>星の輝き</span>になりました。<br>" +
+
+    "これから触れてみたいものは、" +
+    "<span>星の動き</span>になりました。<br>" +
+
+    "そして、まだ言葉にならないものが、" +
+    "<span>この星に名前</span>を与えました。";
+
+
+  /* =========================
+     表示
   ========================= */
 
   document
@@ -1655,6 +1608,14 @@ function createResult(){
     )
     .textContent =
     text;
+
+
+  document
+    .getElementById(
+      "resultStory"
+    )
+    .innerHTML =
+    story;
 
 
   showScreen(
