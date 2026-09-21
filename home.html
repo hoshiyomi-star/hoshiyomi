@@ -141,24 +141,6 @@
       opacity: .7;
     }
 
-<section class="request-section">
-  <div class="wrap">
-    <div class="section-title">
-      <span>REQUEST</span>
-      <h2>ご依頼はこちらから</h2>
-    </div>
-    <div class="message">
-      <strong>あなたの星を、ここから。</strong>
-      ご依頼を検討されている方は、まず依頼についてをご確認ください。
-      ご不明な点やご相談がある場合は、お問い合わせからお気軽にご連絡ください。
-      <div>
-        <a class="btn" href="request.html">依頼についてを見る</a>
-        <a class="btn" href="contact.html">お問い合わせ</a>
-      </div>
-    </div>
-  </div>
-</section>
-
     /* 09｜ご依頼の流れ */
     .flow-overview {
       width: 100%;
@@ -835,33 +817,32 @@
 </style>
 
 
-<style id="hoshiyomi-order-friendly-home">
-/* 依頼しやすさ・読みやすさのための最終調整（既存内容は変更しない） */
-.service{padding-top:56px !important;padding-bottom:68px !important;}
-.service-content{max-width:920px !important;margin:0 auto !important;}
-.service-lead{max-width:760px !important;margin:0 auto 34px !important;line-height:2 !important;}
-.plan-grid{gap:16px !important;}
-.plan-card{min-height:190px !important;padding:28px 30px !important;border-radius:18px !important;border:1px solid rgba(180,205,255,.16) !important;background:rgba(255,255,255,.018) !important;display:flex !important;flex-direction:column !important;align-items:flex-start !important;}
-.plan-card:hover{transform:translateY(-2px) !important;background:rgba(255,255,255,.035) !important;border-color:rgba(180,205,255,.30) !important;opacity:1 !important;}
-.plan-card h3{margin:7px 0 10px !important;}
-.plan-card p{line-height:1.85 !important;margin:0 !important;}
-.plan-link{margin-top:auto !important;padding-top:18px !important;}
-#flow{padding-top:58px !important;padding-bottom:54px !important;}
-#flow .flow-content{max-width:920px !important;margin:0 auto !important;}
-.simple-flow{gap:12px !important;}
-.simple-flow-item{padding:22px 18px !important;border-radius:14px !important;}
-#contact-guide{padding-top:48px !important;padding-bottom:20px !important;}
-#contact-guide .top-final-message{text-align:center !important;}
-.simple-cta{padding:12px 0 70px !important;}
-.simple-cta-inner a{min-width:230px !important;min-height:52px !important;font-size:14px !important;letter-spacing:.08em !important;}
-.star-menu{gap:12px !important;}
-.star-menu a{padding:10px 14px !important;}
-@media(max-width:760px){
-  .service{padding-top:42px !important;padding-bottom:48px !important;}
-  .service-lead{font-size:14px !important;margin-bottom:26px !important;}
-  .plan-grid{grid-template-columns:1fr !important;gap:14px !important;}
-  .plan-card{min-height:0 !important;padding:24px !important;}
-  #flow{padding-top:44px !important;}
+<style id="fix-request-spacing">
+/* ご依頼案内とボタンの間に不要な空白を作らない */
+#contact-guide{
+  min-height:0 !important;
+  height:auto !important;
+  padding-top:52px !important;
+  padding-bottom:10px !important;
+}
+
+#contact-guide .top-final-message{
+  margin:0 auto !important;
+  max-height:none !important;
+  height:auto !important;
+}
+
+#contact-guide .top-final-message p{
+  margin:0 0 16px !important;
+}
+
+#contact-guide .top-final-message p:last-child{
+  margin-bottom:0 !important;
+}
+
+.simple-cta{
+  padding-top:18px !important;
+  padding-bottom:48px !important;
 }
 </style>
 
@@ -988,9 +969,8 @@
 
   <nav class="star-menu" id="starMenu">
       <a href="#service">サービス</a>
-      <a href="request.html">依頼について</a>
+      <a href="price.html">料金・ご依頼について</a>
       <a href="notes.html">注意事項</a>
-      <a href="contact.html">お問い合わせ</a>
     </nav>
 
   <script src="script.js"></script>
