@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>はじめての方へ｜星詠</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  background:#020817;
+  color:#edf3ff;
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
+}
+
+
+/* =========================
+   共通
+========================= */
+
+.page{
+  width:min(900px,calc(100% - 40px));
+  margin:auto;
+}
+
+.fade{
+  animation:fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* =========================
+   ヘッダー
+========================= */
+
+header{
+  min-height:100vh;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  position:relative;
+}
+
+.system{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.75rem;
+
+  letter-spacing:.3em;
+
+  margin-bottom:35px;
+}
+
+.logo{
+  width:min(240px,65vw);
+  height:auto;
+
+  margin-bottom:35px;
+
+  filter:
+    drop-shadow(
+      0 0 25px
+      rgba(150,190,255,.25)
+    );
+}
+
+h1{
+  font-size:clamp(2rem,6vw,3.5rem);
+
+  font-weight:400;
+
+  letter-spacing:.12em;
+
+  margin:0;
+}
+
+.lead{
+  color:#aab8d2;
+
+  line-height:2;
+
+  margin:25px 0 55px;
+}
+
+
+/* =========================
+   START
+========================= */
+
+.enter{
+  display:inline-block;
+
+  padding:14px 35px;
+
+  border:
+    1px solid
+    rgba(210,225,255,.45);
+
+  border-radius:999px;
+
+  color:#edf3ff;
+
+  text-decoration:none;
+
+  letter-spacing:.25em;
+
+  transition:.35s ease;
+}
+
+.enter:hover{
+  background:
+    rgba(180,210,255,.08);
+
+  box-shadow:
+    0 0 30px
+    rgba(150,190,255,.15);
+
+  transform:translateY(-2px);
+}
+
+
+/* =========================
+   体験本編
+========================= */
+
+main{
+  padding:100px 0 120px;
+}
+
+.section{
+  padding:65px 0;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.16);
+
+  text-align:center;
+}
+
+.number{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:20px;
+}
+
+h2{
+  font-size:clamp(1.6rem,4vw,2.3rem);
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+
+  margin:0 0 30px;
+}
+
+.text{
+  max-width:650px;
+
+  margin:auto;
+
+  color:#aab8d2;
+
+  line-height:2.1;
+
+  font-size:.95rem;
+}
+
+
+/* =========================
+   星
+========================= */
+
+.star-field{
+  margin:50px auto;
+
+  width:100%;
+  max-width:650px;
+
+  min-height:260px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    rgba(180,205,245,.15);
+
+  border-radius:25px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(120,160,255,.12),
+      transparent 55%
+    ),
+    #030b1d;
+}
+
+.star{
+  position:absolute;
+
+  width:4px;
+  height:4px;
+
+  border-radius:50%;
+
+  background:#dceaff;
+
+  box-shadow:
+    0 0 10px
+    rgba(180,210,255,.8);
+
+  animation:
+    twinkle 3s infinite alternate;
+}
+
+.star:nth-child(1){
+  top:20%;
+  left:18%;
+}
+
+.star:nth-child(2){
+  top:35%;
+  left:72%;
+
+  animation-delay:.8s;
+}
+
+.star:nth-child(3){
+  top:65%;
+  left:30%;
+
+  animation-delay:1.4s;
+}
+
+.star:nth-child(4){
+  top:25%;
+  left:50%;
+
+  animation-delay:.5s;
+}
+
+.star:nth-child(5){
+  top:75%;
+  left:78%;
+
+  animation-delay:2s;
+}
+
+.star:nth-child(6){
+  top:55%;
+  left:60%;
+
+  animation-delay:1s;
+}
+
+@keyframes twinkle{
+  from{
+    opacity:.25;
+    transform:scale(.8);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1.5);
+  }
+}
+
+
+/* =========================
+   体験カード
+========================= */
+
+.experience{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:18px;
+
+  margin-top:45px;
+}
+
+.experience-card{
+  padding:30px 20px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.16);
+
+  border-radius:18px;
+
+  background:
+    rgba(10,24,52,.5);
+}
+
+.experience-card span{
+  display:block;
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.7rem;
+
+  letter-spacing:.2em;
+
+  margin-bottom:15px;
+}
+
+.experience-card h3{
+  font-weight:400;
+
+  font-size:1.05rem;
+
+  letter-spacing:.08em;
+
+  margin:0 0 12px;
+}
+
+.experience-card p{
+  color:#aab8d2;
+
+  font-size:.85rem;
+
+  line-height:1.8;
+
+  margin:0;
+}
+
+
+/* =========================
+   最後
+========================= */
+
+.final{
+  padding:80px 0;
+
+  text-align:center;
+}
+
+.final p{
+  color:#aab8d2;
+
+  line-height:2;
+
+  margin-bottom:35px;
+}
+
+.back{
+  display:inline-block;
+
+  padding:11px 25px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  border-radius:999px;
+
+  color:#dce8ff;
+
+  text-decoration:none;
+
+  transition:.3s ease;
+}
+
+.back:hover{
+  background:
+    rgba(180,210,255,.08);
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
+@media(max-width:700px){
+
+  .page{
+    width:min(
+      100% - 28px,
+      900px
+    );
+  }
+
+  .experience{
+    grid-template-columns:1fr;
+  }
+
+  .experience-card{
+    padding:28px 20px;
+  }
+
+  main{
+    padding-top:60px;
+  }
+
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     はじまり
+========================= -->
+
+<header class="fade">
+
+  <div class="system">
+    HOSHIYOMI｜FIRST VISIT
+  </div>
+
+  <img
+    src="logo.png"
+    alt="星詠"
+    class="logo"
+  >
+
+  <h1>
+    はじめての方へ
+  </h1>
+
+  <p class="lead">
+    初めて依頼する前に、<br>
+    少しだけ星詠を体験してみませんか。
+  </p>
+
+  <a
+    href="#experience"
+    class="enter"
+  >
+    ENTER
+  </a>
+
+</header>
+
+
+
+<!-- =========================
+     本編
+========================= -->
+
+<main
+  class="page"
+  id="experience"
+>
+
+
+  <!-- 01 -->
+
+  <section class="section">
+
+    <div class="number">
+      01｜WELCOME
+    </div>
+
+    <h2>
+      星詠へようこそ
+    </h2>
+
+    <p class="text">
+      星詠は、作品をただ制作する場所ではありません。<br>
+      あなたの中にあるものを見つけ、
+      ひとつの作品へつないでいく場所です。
+    </p>
+
+  </section>
+
+
+
+  <!-- 02 -->
+
+  <section class="section">
+
+    <div class="number">
+      02｜STAR
+    </div>
+
+    <h2>
+      あなたの星を探す
+    </h2>
+
+    <div class="star-field">
+
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+
+    </div>
+
+    <p class="text">
+      好きなもの。<br>
+      大切な記憶。<br>
+      憧れているもの。<br><br>
+
+      まだ言葉になっていないものも、
+      あなたの中にはきっとあります。
+    </p>
+
+  </section>
+
+
+
+  <!-- 03 -->
+
+  <section class="section">
+
+    <div class="number">
+      03｜PROCESS
+    </div>
+
+    <h2>
+      星詠でできること
+    </h2>
+
+    <div class="experience">
+
+
+      <div class="experience-card">
+
+        <span>
+          DISCOVER
+        </span>
+
+        <h3>
+          知る
+        </h3>
+
+        <p>
+          あなた自身のことを
+          少しずつ整理していきます。
+        </p>
+
+      </div>
+
+
+      <div class="experience-card">
+
+        <span>
+          CREATE
+        </span>
+
+        <h3>
+          描く
+        </h3>
+
+        <p>
+          見つけたものを
+          作品へと形にしていきます。
+        </p>
+
+      </div>
+
+
+      <div class="experience-card">
+
+        <span>
+          CONNECT
+        </span>
+
+        <h3>
+          届ける
+        </h3>
+
+        <p>
+          完成した作品を、
+          あなたのもとへ届けます。
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- 最後 -->
+
+  <section class="final">
+
+    <p>
+      ここまで見て、<br>
+      もう少し星詠を見てみたいと思ったら。
+    </p>
+
+    <a
+      href="index.html"
+      class="back"
+    >
+      星詠の入口へ戻る
+    </a>
+
+  </section>
+
+
+</main>
+
+
+</body>
+</html>
