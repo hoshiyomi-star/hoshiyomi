@@ -688,19 +688,19 @@
 }
 .plan-card h3{
   margin:0 0 12px;
-  font-size:1.50rem;
+  font-size:1.65rem;
   font-weight:500;
 }
 .plan-card p{
   margin:0;
   line-height:1.85;
   opacity:.82;
-  font-size:1.08rem;
+  font-size:1.20rem;
 }
 .plan-link{
   display:inline-block;
   margin-top:18px;
-  font-size:1.00rem;
+  font-size:1.08rem;
   opacity:.78;
 }
 @media(max-width:760px){
@@ -828,6 +828,81 @@
 }
 </style>
 
+
+<style id="four-card-readable-final">
+/* 4つのカード：読みやすさ調整のみ */
+.plan-grid .plan-card h3{
+  font-size:1.65rem !important;
+  line-height:1.5 !important;
+}
+.plan-grid .plan-card p{
+  font-size:1.20rem !important;
+  line-height:1.9 !important;
+}
+.plan-grid .plan-card .plan-link{
+  font-size:1.08rem !important;
+}
+@media(max-width:760px){
+  .plan-grid .plan-card h3{
+    font-size:1.45rem !important;
+  }
+  .plan-grid .plan-card p{
+    font-size:1.08rem !important;
+    line-height:1.9 !important;
+  }
+  .plan-grid .plan-card .plan-link{
+    font-size:1rem !important;
+  }
+}
+</style>
+
+
+<style id="four-card-empty-space-fix">
+/* 4カード：文字を大きくしたことによる不要な固定余白を抑える */
+.plan-grid .plan-card{
+  height:auto !important;
+  min-height:0 !important;
+  align-self:start !important;
+}
+
+.plan-grid{
+  align-items:start !important;
+}
+
+.plan-grid .plan-card p{
+  height:auto !important;
+  min-height:0 !important;
+  margin-bottom:0 !important;
+}
+
+@media(max-width:760px){
+  .plan-grid .plan-card{
+    height:auto !important;
+    min-height:0 !important;
+  }
+}
+</style>
+
+
+<style id="plan-intro-readable">
+/* 「プランを選ぶ」の直後にある説明文を読みやすく */
+.plan-section > p,
+.plans-intro,
+.plan-intro{
+  font-size:1.08rem !important;
+  line-height:1.9 !important;
+}
+
+@media(max-width:760px){
+  .plan-section > p,
+  .plans-intro,
+  .plan-intro{
+    font-size:1rem !important;
+    line-height:1.9 !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -939,7 +1014,7 @@
   </div>
 </section>
 
-</main>
+  </main>
 
 
   <!-- =========================
