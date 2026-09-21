@@ -21,6 +21,7 @@ html,body{
 body{
   background:#020817;
   color:#edf3ff;
+
   font-family:
     "Yu Mincho",
     "Hiragino Mincho ProN",
@@ -30,15 +31,19 @@ body{
 
 
 /* =========================
-   画面共通
+   画面
 ========================= */
 
 .screen{
   min-height:100vh;
+
   display:none;
+
   align-items:center;
   justify-content:center;
+
   padding:50px 20px;
+
   text-align:center;
 
   background:
@@ -71,8 +76,11 @@ body{
 
 .logo{
   width:min(230px,65vw);
+
   height:auto;
+
   display:block;
+
   margin:0 auto 35px;
 
   filter:
@@ -96,7 +104,9 @@ body{
     serif;
 
   font-size:.72rem;
+
   letter-spacing:.3em;
+
   margin-bottom:25px;
 }
 
@@ -105,7 +115,9 @@ h1{
     clamp(2rem,6vw,3.4rem);
 
   font-weight:400;
+
   letter-spacing:.12em;
+
   margin:0 0 25px;
 }
 
@@ -114,13 +126,17 @@ h2{
     clamp(1.5rem,4vw,2.2rem);
 
   font-weight:400;
+
   letter-spacing:.1em;
+
   margin:0 0 20px;
 }
 
 .lead{
   color:#aab8d2;
+
   line-height:2;
+
   margin:0 auto 45px;
 }
 
@@ -131,10 +147,12 @@ h2{
 
 .button{
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
   min-width:190px;
+
   padding:14px 32px;
 
   border:
@@ -147,10 +165,13 @@ h2{
     rgba(255,255,255,.03);
 
   color:#edf3ff;
+
   text-decoration:none;
+
   cursor:pointer;
 
   font-family:inherit;
+
   letter-spacing:.18em;
 
   transition:.35s ease;
@@ -181,27 +202,36 @@ h2{
     serif;
 
   font-size:.75rem;
+
   letter-spacing:.25em;
+
   margin-bottom:18px;
 }
 
 .question-text{
   color:#aab8d2;
+
   line-height:1.9;
+
   margin-bottom:40px;
 }
 
 .options{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:15px;
 
   width:min(700px,100%);
+
   margin:auto;
 }
 
 .option{
   min-height:85px;
+
   padding:18px 20px;
 
   border:
@@ -216,7 +246,9 @@ h2{
   color:#edf3ff;
 
   font-family:inherit;
+
   font-size:.95rem;
+
   letter-spacing:.05em;
 
   cursor:pointer;
@@ -240,11 +272,12 @@ h2{
 
 
 /* =========================
-   星生成画面
+   星生成
 ========================= */
 
 .star-area{
   width:min(500px,90vw);
+
   height:300px;
 
   margin:0 auto 35px;
@@ -266,17 +299,17 @@ h2{
     #030b1d;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 }
 
 
-/* =========================
-   生成中の星
-========================= */
-
 .generated-star{
+
   width:20px;
+
   height:20px;
 
   border-radius:50%;
@@ -297,38 +330,24 @@ h2{
 
   0%{
     opacity:0;
-    transform:scale(.1);
+
+    transform:
+      scale(.1);
   }
 
   60%{
     opacity:1;
-    transform:scale(1.5);
+
+    transform:
+      scale(1.5);
   }
 
   100%{
     opacity:1;
-    transform:scale(1);
+
+    transform:
+      scale(1);
   }
-
-}
-
-
-/* =========================
-   結果画面の星
-========================= */
-
-.result-star-area{
-
-  width:280px;
-  height:230px;
-
-  margin:0 auto;
-
-  position:relative;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
 
 }
 
@@ -337,9 +356,27 @@ h2{
    結果の星
 ========================= */
 
+.result-star-area{
+
+  width:280px;
+
+  height:230px;
+
+  margin:0 auto;
+
+  position:relative;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
 .result-star{
 
   width:27px;
+
   height:27px;
 
   border-radius:50%;
@@ -356,8 +393,7 @@ h2{
 
 
 /* =========================
-   輝き方①
-   ゆっくり明滅
+   ② 輝き方
 ========================= */
 
 .glow-slow{
@@ -366,7 +402,6 @@ h2{
     glowSlow 4s
     ease-in-out
     infinite;
-
 }
 
 @keyframes glowSlow{
@@ -386,18 +421,12 @@ h2{
 }
 
 
-/* =========================
-   輝き方②
-   やわらかく瞬く
-========================= */
-
 .glow-soft{
 
   animation:
     glowSoft 2.5s
     ease-in-out
     infinite;
-
 }
 
 @keyframes glowSoft{
@@ -415,18 +444,12 @@ h2{
 }
 
 
-/* =========================
-   輝き方③
-   波打つ
-========================= */
-
 .glow-wave{
 
   animation:
     glowWave 2s
     ease-in-out
     infinite;
-
 }
 
 @keyframes glowWave{
@@ -454,18 +477,12 @@ h2{
 }
 
 
-/* =========================
-   輝き方④
-   温かく輝く
-========================= */
-
 .glow-warm{
 
   animation:
     glowWarm 3.5s
     ease-in-out
     infinite;
-
 }
 
 @keyframes glowWarm{
@@ -483,18 +500,12 @@ h2{
 }
 
 
-/* =========================
-   輝き方⑤
-   一瞬強く輝く
-========================= */
-
 .glow-flash{
 
   animation:
     glowFlash 2.8s
     ease-in-out
     infinite;
-
 }
 
 @keyframes glowFlash{
@@ -517,18 +528,12 @@ h2{
 }
 
 
-/* =========================
-   輝き方⑥
-   静かに揺れる
-========================= */
-
 .glow-silent{
 
   animation:
     glowSilent 5s
     ease-in-out
     infinite;
-
 }
 
 @keyframes glowSilent{
@@ -537,6 +542,7 @@ h2{
     transform:
       scale(.9)
       translateY(0);
+
     opacity:.7;
   }
 
@@ -544,7 +550,208 @@ h2{
     transform:
       scale(1.05)
       translateY(-4px);
+
     opacity:.9;
+  }
+
+}
+
+
+/* =========================
+   ③ 星の動き
+========================= */
+
+.move-orbit{
+
+  animation:
+    moveOrbit 8s
+    linear
+    infinite;
+}
+
+@keyframes moveOrbit{
+
+  from{
+
+    transform:
+      rotate(0deg)
+      translateX(35px)
+      rotate(0deg);
+
+  }
+
+  to{
+
+    transform:
+      rotate(360deg)
+      translateX(35px)
+      rotate(-360deg);
+
+  }
+
+}
+
+
+.move-still{
+
+  animation:
+    moveStill 4s
+    ease-in-out
+    infinite;
+}
+
+@keyframes moveStill{
+
+  0%,100%{
+
+    transform:
+      translate(0,0);
+
+  }
+
+  50%{
+
+    transform:
+      translate(0,-5px);
+
+  }
+
+}
+
+
+.move-circle{
+
+  animation:
+    moveCircle 5s
+    linear
+    infinite;
+}
+
+@keyframes moveCircle{
+
+  from{
+
+    transform:
+      rotate(0deg)
+      translateX(22px);
+
+  }
+
+  to{
+
+    transform:
+      rotate(360deg)
+      translateX(22px);
+
+  }
+
+}
+
+
+.move-away{
+
+  animation:
+    moveAway 5s
+    ease-in-out
+    infinite;
+}
+
+@keyframes moveAway{
+
+  0%{
+
+    transform:
+      translate(0,0);
+
+  }
+
+  50%{
+
+    transform:
+      translate(45px,-12px);
+
+  }
+
+  100%{
+
+    transform:
+      translate(0,0);
+
+  }
+
+}
+
+
+.move-forward{
+
+  animation:
+    moveForward 4s
+    ease-in-out
+    infinite;
+}
+
+@keyframes moveForward{
+
+  0%,100%{
+
+    transform:
+      translateX(-18px);
+
+  }
+
+  50%{
+
+    transform:
+      translateX(25px);
+
+  }
+
+}
+
+
+.move-unknown{
+
+  animation:
+    moveUnknown 4s
+    ease-in-out
+    infinite;
+}
+
+@keyframes moveUnknown{
+
+  0%{
+
+    transform:
+      translate(0,0);
+
+  }
+
+  25%{
+
+    transform:
+      translate(12px,-8px);
+
+  }
+
+  50%{
+
+    transform:
+      translate(-8px,10px);
+
+  }
+
+  75%{
+
+    transform:
+      translate(-15px,-5px);
+
+  }
+
+  100%{
+
+    transform:
+      translate(0,0);
+
   }
 
 }
@@ -560,6 +767,7 @@ h2{
     clamp(2rem,7vw,4rem);
 
   font-weight:400;
+
   letter-spacing:.15em;
 
   margin:0 0 25px;
@@ -567,7 +775,6 @@ h2{
   text-shadow:
     0 0 25px
     rgba(170,200,255,.35);
-
 }
 
 .result-text{
@@ -579,13 +786,7 @@ h2{
   color:#aab8d2;
 
   line-height:2.1;
-
 }
-
-
-/* =========================
-   結果ボタン
-========================= */
 
 .result-buttons{
 
@@ -596,7 +797,6 @@ h2{
   flex-wrap:wrap;
 
   gap:15px;
-
 }
 
 
@@ -607,19 +807,27 @@ h2{
 @media(max-width:700px){
 
   .options{
+
     grid-template-columns:1fr;
+
   }
 
   .option{
+
     min-height:70px;
+
   }
 
   .star-area{
+
     height:240px;
+
   }
 
   .result-star-area{
+
     height:180px;
+
   }
 
 }
@@ -676,7 +884,7 @@ h2{
 
 
 <!-- =========================
-     質問1
+     ①
 ========================= -->
 
 <section
@@ -700,27 +908,45 @@ h2{
 
     <div class="options">
 
-      <button class="option" onclick="answer(1,'月')">
+      <button
+        class="option"
+        onclick="answer(1,'月')"
+      >
         月
       </button>
 
-      <button class="option" onclick="answer(1,'星')">
+      <button
+        class="option"
+        onclick="answer(1,'星')"
+      >
         星
       </button>
 
-      <button class="option" onclick="answer(1,'花')">
+      <button
+        class="option"
+        onclick="answer(1,'花')"
+      >
         花
       </button>
 
-      <button class="option" onclick="answer(1,'海')">
+      <button
+        class="option"
+        onclick="answer(1,'海')"
+      >
         海
       </button>
 
-      <button class="option" onclick="answer(1,'音')">
+      <button
+        class="option"
+        onclick="answer(1,'音')"
+      >
         音
       </button>
 
-      <button class="option" onclick="answer(1,'物語')">
+      <button
+        class="option"
+        onclick="answer(1,'物語')"
+      >
         物語
       </button>
 
@@ -733,7 +959,7 @@ h2{
 
 
 <!-- =========================
-     質問2
+     ②
 ========================= -->
 
 <section
@@ -808,7 +1034,7 @@ h2{
 
 
 <!-- =========================
-     質問3
+     ③
 ========================= -->
 
 <section
@@ -819,7 +1045,7 @@ h2{
   <div class="inner">
 
     <div class="question-number">
-      03｜YOUR DREAM
+      03｜YOUR FUTURE
     </div>
 
     <h2>
@@ -883,7 +1109,7 @@ h2{
 
 
 <!-- =========================
-     質問4
+     ④
 ========================= -->
 
 <section
@@ -1004,7 +1230,6 @@ h2{
       YOUR STAR
     </div>
 
-
     <div class="result-star-area">
 
       <div
@@ -1014,7 +1239,6 @@ h2{
 
     </div>
 
-
     <div
       class="result-name"
       id="resultName"
@@ -1022,13 +1246,11 @@ h2{
       宵星
     </div>
 
-
     <p
       class="result-text"
       id="resultText"
     >
     </p>
-
 
     <div class="result-buttons">
 
@@ -1072,7 +1294,7 @@ let answers = {
 
 
 /* =========================
-   星の色
+   ① 星の色
 ========================= */
 
 const starColors = {
@@ -1093,7 +1315,7 @@ const starColors = {
 
 
 /* =========================
-   輝き方
+   ② 輝き方
 ========================= */
 
 const glowStyles = {
@@ -1120,6 +1342,33 @@ const glowStyles = {
 
 
 /* =========================
+   ③ 動き
+========================= */
+
+const moveStyles = {
+
+  "まだ見たことのない世界":
+    "move-orbit",
+
+  "自分だけの居場所":
+    "move-still",
+
+  "誰かと分かち合えるもの":
+    "move-circle",
+
+  "今の自分にはないもの":
+    "move-away",
+
+  "いつか叶えたいもの":
+    "move-forward",
+
+  "まだ分からない未来":
+    "move-unknown"
+
+};
+
+
+/* =========================
    画面切り替え
 ========================= */
 
@@ -1129,7 +1378,9 @@ function showScreen(id){
     .querySelectorAll(".screen")
     .forEach(screen => {
 
-      screen.classList.remove("active");
+      screen.classList.remove(
+        "active"
+      );
 
     });
 
@@ -1156,7 +1407,9 @@ function showScreen(id){
 
 function startExperience(){
 
-  showScreen("question1");
+  showScreen(
+    "question1"
+  );
 
 }
 
@@ -1165,26 +1418,36 @@ function startExperience(){
    回答
 ========================= */
 
-function answer(question,value){
+function answer(
+  question,
+  value
+){
 
-  answers[question] = value;
+  answers[question] =
+    value;
 
 
   if(question === 1){
 
-    showScreen("question2");
+    showScreen(
+      "question2"
+    );
 
   }
 
   else if(question === 2){
 
-    showScreen("question3");
+    showScreen(
+      "question3"
+    );
 
   }
 
   else if(question === 3){
 
-    showScreen("question4");
+    showScreen(
+      "question4"
+    );
 
   }
 
@@ -1198,7 +1461,7 @@ function answer(question,value){
 
 
 /* =========================
-   星生成
+   星を生成
 ========================= */
 
 function createStar(){
@@ -1227,14 +1490,19 @@ function createStar(){
     `;
 
 
-  showScreen("starGenerate");
+  showScreen(
+    "starGenerate"
+  );
 
 
-  setTimeout(function(){
+  setTimeout(
+    function(){
 
-    createResult();
+      createResult();
 
-  },3000);
+    },
+    3000
+  );
 
 }
 
@@ -1256,9 +1524,7 @@ function createResult(){
     );
 
 
-  /*
-   * 星の色
-   */
+  /* 色 */
 
   resultStar.style.background =
     color;
@@ -1273,23 +1539,30 @@ function createResult(){
     `;
 
 
-  /*
-   * 輝き方
-   */
+  /* 輝き方 */
 
   const glowClass =
     glowStyles[answers[2]]
     || "glow-slow";
 
 
+  /* 動き */
+
+  const moveClass =
+    moveStyles[answers[3]]
+    || "move-still";
+
+
   resultStar.className =
     "result-star " +
-    glowClass;
+    glowClass +
+    " " +
+    moveClass;
 
 
-  /*
-   * 初期値
-   */
+  /* =========================
+     星の名前
+  ========================= */
 
   let name =
     "宵星";
@@ -1299,10 +1572,6 @@ function createResult(){
     "あなたが選んだものから生まれた、" +
     "あなただけの小さな星です。";
 
-
-  /*
-   * ④による名前
-   */
 
   if(
     answers[4] ===
@@ -1368,23 +1637,29 @@ function createResult(){
   }
 
 
-  /*
-   * 結果表示
-   */
+  /* =========================
+     結果表示
+  ========================= */
 
   document
-    .getElementById("resultName")
+    .getElementById(
+      "resultName"
+    )
     .textContent =
     name;
 
 
   document
-    .getElementById("resultText")
+    .getElementById(
+      "resultText"
+    )
     .textContent =
     text;
 
 
-  showScreen("result");
+  showScreen(
+    "result"
+  );
 
 }
 
