@@ -240,81 +240,6 @@
       .delivery-point:last-child { border-bottom: 1px solid rgba(180,205,255,.10); }
     }
 
-
-    /* ===== ご依頼案内：自然な余白で整理 ===== */
-    #contact-guide{
-      position:relative;
-      min-height:0;
-      height:auto;
-      margin:0;
-      padding:58px 0 20px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-    }
-
-    #contact-guide .top-final-message{
-      width:min(680px,calc(100% - 40px));
-      max-width:680px;
-      min-height:0;
-      max-height:none;
-      height:auto;
-      margin:0 auto;
-      padding:30px 28px 26px;
-      text-align:center;
-      line-height:2;
-      border:1px solid rgba(180,205,255,.14);
-      background:rgba(8,20,43,.28);
-      border-radius:18px;
-    }
-
-    #contact-guide .top-final-message p{
-      margin:0 0 12px;
-    }
-
-    #contact-guide .top-final-message p:last-child{
-      margin-bottom:0;
-    }
-
-    .simple-cta{
-      min-height:0;
-      height:auto;
-      margin:0;
-      padding:16px 0 42px;
-    }
-
-    .simple-cta-inner{
-      margin:0;
-      padding:0;
-      text-align:center;
-    }
-
-    #flow{
-      min-height:0;
-      height:auto;
-      margin-top:0;
-      padding-top:42px;
-    }
-
-    @media (max-width:760px){
-      #contact-guide{
-        padding:42px 0 14px;
-      }
-
-      #contact-guide .top-final-message{
-        width:calc(100% - 28px);
-        padding:25px 20px 22px;
-      }
-
-      .simple-cta{
-        padding:12px 0 32px;
-      }
-
-      #flow{
-        padding-top:34px;
-      }
-    }
-
     /* 07〜10｜星詠の後半は、縦に流れる夜空として見せる */
     #services,
     #delivery,
@@ -763,19 +688,19 @@
 }
 .plan-card h3{
   margin:0 0 12px;
-  font-size:1.18rem;
+  font-size:1.45rem;
   font-weight:500;
 }
 .plan-card p{
   margin:0;
   line-height:1.85;
   opacity:.82;
-  font-size:.92rem;
+  font-size:1.05rem;
 }
 .plan-link{
   display:inline-block;
   margin-top:18px;
-  font-size:.84rem;
+  font-size:.96rem;
   opacity:.78;
 }
 @media(max-width:760px){
@@ -892,188 +817,11 @@
 </style>
 
 
-<style id="readable-text-size">
-/* ===== 読みやすさ調整：文章を一目で読めるサイズへ ===== */
-
-/* プランカード */
-.plan-card p,
-.plan-card .description,
-.plan-card .plan-description,
-.plan-card .desc{
-  font-size:16px !important;
-  line-height:1.9 !important;
-}
-
-.plan-card h3,
-.plan-card h4{
-  font-size:24px !important;
-}
-
-.plan-card .price,
-.plan-card .price-line,
-.plan-card .amount{
-  font-size:19px !important;
-}
-
-/* 4カード内の一般的な本文要素にも適用 */
-.plans p{
-  font-size:16px !important;
-  line-height:1.9 !important;
-}
-
-/* ご依頼はこちらから */
-#contact-guide .top-final-message{
-  font-size:16px !important;
-  line-height:1.95 !important;
-}
-
-#contact-guide .top-final-message p{
-  font-size:16px !important;
-  line-height:1.95 !important;
-}
-
-#contact-guide .top-final-message strong{
-  font-size:21px !important;
-}
-
-#contact-guide .btn,
-#contact-guide a.btn,
-.simple-cta a{
-  font-size:15px !important;
-}
-
-/* ご依頼の流れ */
-#flow p{
-  font-size:16px !important;
-  line-height:1.9 !important;
-}
-
-#flow .flow-text,
-#flow .flow-description{
-  font-size:16px !important;
-  line-height:1.9 !important;
-}
-
-/* 小さな画面でも読みやすさを維持 */
+<style id="plan-readable-mobile">
 @media(max-width:760px){
-  .plan-card p,
-  .plan-card .description,
-  .plan-card .plan-description,
-  .plan-card .desc,
-  .plans p,
-  #contact-guide .top-final-message,
-  #contact-guide .top-final-message p,
-  #flow p,
-  #flow .flow-text,
-  #flow .flow-description{
-    font-size:15.5px !important;
-    line-height:1.85 !important;
-  }
-
-  .plan-card h3,
-  .plan-card h4{
-    font-size:22px !important;
-  }
-
-  .plan-card .price,
-  .plan-card .price-line,
-  .plan-card .amount{
-    font-size:18px !important;
-  }
-
-  #contact-guide .top-final-message strong{
-    font-size:20px !important;
-  }
-
-  #contact-guide .btn,
-  #contact-guide a.btn,
-  .simple-cta a{
-    font-size:14px !important;
-  }
-}
-</style>
-
-
-<style id="readable-text-size-larger">
-/* ===== もう一段階、ぱっと読めるサイズへ ===== */
-.plan-card p,
-.plan-card .description,
-.plan-card .plan-description,
-.plan-card .desc,
-.plans p{
-  font-size:18px !important;
-  line-height:1.9 !important;
-}
-
-.plan-card h3,
-.plan-card h4{
-  font-size:27px !important;
-}
-
-.plan-card .price,
-.plan-card .price-line,
-.plan-card .amount{
-  font-size:21px !important;
-}
-
-#contact-guide .top-final-message,
-#contact-guide .top-final-message p{
-  font-size:18px !important;
-  line-height:1.95 !important;
-}
-
-#contact-guide .top-final-message strong{
-  font-size:23px !important;
-}
-
-#contact-guide .btn,
-#contact-guide a.btn,
-.simple-cta a{
-  font-size:16px !important;
-}
-
-#flow p,
-#flow .flow-text,
-#flow .flow-description{
-  font-size:18px !important;
-  line-height:1.9 !important;
-}
-
-@media(max-width:760px){
-  .plan-card p,
-  .plan-card .description,
-  .plan-card .plan-description,
-  .plan-card .desc,
-  .plans p,
-  #contact-guide .top-final-message,
-  #contact-guide .top-final-message p,
-  #flow p,
-  #flow .flow-text,
-  #flow .flow-description{
-    font-size:17px !important;
-    line-height:1.85 !important;
-  }
-
-  .plan-card h3,
-  .plan-card h4{
-    font-size:24px !important;
-  }
-
-  .plan-card .price,
-  .plan-card .price-line,
-  .plan-card .amount{
-    font-size:20px !important;
-  }
-
-  #contact-guide .top-final-message strong{
-    font-size:21px !important;
-  }
-
-  #contact-guide .btn,
-  #contact-guide a.btn,
-  .simple-cta a{
-    font-size:15px !important;
-  }
+  .plan-card h3{font-size:1.3rem !important;}
+  .plan-card p{font-size:1rem !important;line-height:1.85 !important;}
+  .plan-link{font-size:.92rem !important;}
 }
 </style>
 
