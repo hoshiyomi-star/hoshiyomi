@@ -21,7 +21,6 @@ html,body{
 body{
   background:#020817;
   color:#edf3ff;
-
   font-family:
     "Yu Mincho",
     "Hiragino Mincho ProN",
@@ -31,7 +30,7 @@ body{
 
 
 /* =========================
-   共通
+   画面共通
 ========================= */
 
 .screen{
@@ -189,7 +188,7 @@ h2{
 
 
 /* =========================
-   質問画面
+   質問
 ========================= */
 
 .question-number{
@@ -271,17 +270,12 @@ h2{
 
 
 /* =========================
-   星の生成
+   星生成画面
 ========================= */
-
-#starGenerate{
-  position:relative;
-
-  overflow:hidden;
-}
 
 .star-area{
   width:min(500px,90vw);
+
   height:300px;
 
   margin:0 auto 35px;
@@ -301,27 +295,32 @@ h2{
       transparent 55%
     ),
     #030b1d;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
 }
 
+
+/* =========================
+   生成中の星
+========================= */
+
 .generated-star{
-  position:absolute;
-
-  width:18px;
-  height:18px;
-
-  left:50%;
-  top:50%;
-
-  margin:-9px;
+  width:20px;
+  height:20px;
 
   border-radius:50%;
 
-  background:#edf6ff;
+  background:#edf3ff;
 
   box-shadow:
-    0 0 15px #dceaff,
-    0 0 40px rgba(150,200,255,.8),
-    0 0 80px rgba(120,160,255,.45);
+    0 0 15px #edf3ff,
+    0 0 40px #bcd8ff,
+    0 0 80px rgba(140,190,255,.8),
+    0 0 120px rgba(100,150,255,.35);
 
   animation:
     starAppear 2s ease forwards,
@@ -350,17 +349,89 @@ h2{
 @keyframes starPulse{
 
   0%,100%{
-    box-shadow:
-      0 0 15px #dceaff,
-      0 0 40px rgba(150,200,255,.8),
-      0 0 80px rgba(120,160,255,.45);
+    transform:scale(.9);
+    opacity:.8;
   }
 
   50%{
-    box-shadow:
-      0 0 25px #ffffff,
-      0 0 60px rgba(150,200,255,.95),
-      0 0 110px rgba(120,160,255,.55);
+    transform:scale(1.3);
+    opacity:1;
+  }
+
+}
+
+
+/* =========================
+   結果画面の星
+========================= */
+
+.result-star-area{
+
+  width:260px;
+  height:220px;
+
+  margin:0 auto 5px;
+
+  position:relative;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+
+/* 星の光 */
+
+.result-star{
+
+  width:26px;
+  height:26px;
+
+  border-radius:50%;
+
+  background:#edf3ff;
+
+  box-shadow:
+    0 0 15px #edf3ff,
+    0 0 35px #bcd8ff,
+    0 0 70px rgba(140,190,255,.8),
+    0 0 120px rgba(100,150,255,.35);
+
+  animation:
+    resultStarGlow 3s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* 輝き */
+
+@keyframes resultStarGlow{
+
+  0%,100%{
+
+    transform:scale(.85);
+
+    opacity:.8;
+
+    filter:
+      brightness(.9);
+
+  }
+
+  50%{
+
+    transform:scale(1.3);
+
+    opacity:1;
+
+    filter:
+      brightness(1.3);
+
   }
 
 }
@@ -371,6 +442,7 @@ h2{
 ========================= */
 
 .result-name{
+
   font-size:
     clamp(2rem,7vw,4rem);
 
@@ -378,14 +450,16 @@ h2{
 
   letter-spacing:.15em;
 
-  margin:15px 0 25px;
+  margin:5px 0 25px;
 
   text-shadow:
     0 0 25px
     rgba(170,200,255,.35);
+
 }
 
 .result-text{
+
   width:min(650px,100%);
 
   margin:0 auto 40px;
@@ -393,6 +467,7 @@ h2{
   color:#aab8d2;
 
   line-height:2.1;
+
 }
 
 
@@ -401,6 +476,7 @@ h2{
 ========================= */
 
 .result-buttons{
+
   display:flex;
 
   justify-content:center;
@@ -408,6 +484,7 @@ h2{
   flex-wrap:wrap;
 
   gap:15px;
+
 }
 
 
@@ -418,15 +495,27 @@ h2{
 @media(max-width:700px){
 
   .options{
+
     grid-template-columns:1fr;
+
   }
 
   .option{
+
     min-height:70px;
+
   }
 
   .star-area{
+
     height:240px;
+
+  }
+
+  .result-star-area{
+
+    height:180px;
+
   }
 
 }
@@ -507,27 +596,45 @@ h2{
 
     <div class="options">
 
-      <button class="option" onclick="answer(1,'月')">
+      <button
+        class="option"
+        onclick="answer(1,'月')"
+      >
         月
       </button>
 
-      <button class="option" onclick="answer(1,'星')">
+      <button
+        class="option"
+        onclick="answer(1,'星')"
+      >
         星
       </button>
 
-      <button class="option" onclick="answer(1,'花')">
+      <button
+        class="option"
+        onclick="answer(1,'花')"
+      >
         花
       </button>
 
-      <button class="option" onclick="answer(1,'海')">
+      <button
+        class="option"
+        onclick="answer(1,'海')"
+      >
         海
       </button>
 
-      <button class="option" onclick="answer(1,'音')">
+      <button
+        class="option"
+        onclick="answer(1,'音')"
+      >
         音
       </button>
 
-      <button class="option" onclick="answer(1,'物語')">
+      <button
+        class="option"
+        onclick="answer(1,'物語')"
+      >
         物語
       </button>
 
@@ -564,27 +671,45 @@ h2{
 
     <div class="options">
 
-      <button class="option" onclick="answer(2,'あの日の景色')">
+      <button
+        class="option"
+        onclick="answer(2,'あの日の景色')"
+      >
         あの日の景色
       </button>
 
-      <button class="option" onclick="answer(2,'誰かからもらった言葉')">
+      <button
+        class="option"
+        onclick="answer(2,'誰かからもらった言葉')"
+      >
         誰かからもらった言葉
       </button>
 
-      <button class="option" onclick="answer(2,'忘れられない声や音')">
+      <button
+        class="option"
+        onclick="answer(2,'忘れられない声や音')"
+      >
         忘れられない声や音
       </button>
 
-      <button class="option" onclick="answer(2,'大切な人との時間')">
+      <button
+        class="option"
+        onclick="answer(2,'大切な人との時間')"
+      >
         大切な人との時間
       </button>
 
-      <button class="option" onclick="answer(2,'心に残った作品')">
+      <button
+        class="option"
+        onclick="answer(2,'心に残った作品')"
+      >
         心に残った作品
       </button>
 
-      <button class="option" onclick="answer(2,'まだ名前のない記憶')">
+      <button
+        class="option"
+        onclick="answer(2,'まだ名前のない記憶')"
+      >
         まだ名前のない記憶
       </button>
 
@@ -621,27 +746,45 @@ h2{
 
     <div class="options">
 
-      <button class="option" onclick="answer(3,'まだ見たことのない世界')">
+      <button
+        class="option"
+        onclick="answer(3,'まだ見たことのない世界')"
+      >
         まだ見たことのない世界
       </button>
 
-      <button class="option" onclick="answer(3,'自分だけの居場所')">
+      <button
+        class="option"
+        onclick="answer(3,'自分だけの居場所')"
+      >
         自分だけの居場所
       </button>
 
-      <button class="option" onclick="answer(3,'誰かと分かち合えるもの')">
+      <button
+        class="option"
+        onclick="answer(3,'誰かと分かち合えるもの')"
+      >
         誰かと分かち合えるもの
       </button>
 
-      <button class="option" onclick="answer(3,'今の自分にはないもの')">
+      <button
+        class="option"
+        onclick="answer(3,'今の自分にはないもの')"
+      >
         今の自分にはないもの
       </button>
 
-      <button class="option" onclick="answer(3,'いつか叶えたいもの')">
+      <button
+        class="option"
+        onclick="answer(3,'いつか叶えたいもの')"
+      >
         いつか叶えたいもの
       </button>
 
-      <button class="option" onclick="answer(3,'まだ分からない未来')">
+      <button
+        class="option"
+        onclick="answer(3,'まだ分からない未来')"
+      >
         まだ分からない未来
       </button>
 
@@ -678,23 +821,38 @@ h2{
 
     <div class="options">
 
-      <button class="option" onclick="answer(4,'なんとなく惹かれるもの')">
+      <button
+        class="option"
+        onclick="answer(4,'なんとなく惹かれるもの')"
+      >
         なんとなく惹かれるもの
       </button>
 
-      <button class="option" onclick="answer(4,'まだ分からない')">
+      <button
+        class="option"
+        onclick="answer(4,'まだ分からない')"
+      >
         まだ分からない
       </button>
 
-      <button class="option" onclick="answer(4,'うまく言葉にできない')">
+      <button
+        class="option"
+        onclick="answer(4,'うまく言葉にできない')"
+      >
         うまく言葉にできない
       </button>
 
-      <button class="option" onclick="answer(4,'今は答えたくない')">
+      <button
+        class="option"
+        onclick="answer(4,'今は答えたくない')"
+      >
         今は答えたくない
       </button>
 
-      <button class="option" onclick="answer(4,'少しだけなら話せる')">
+      <button
+        class="option"
+        onclick="answer(4,'少しだけなら話せる')"
+      >
         少しだけなら話せる
       </button>
 
@@ -760,15 +918,33 @@ h2{
       YOUR STAR
     </div>
 
-    <div class="result-name" id="resultName">
+
+    <!-- 結果の星 -->
+
+    <div class="result-star-area">
+
+      <div
+        class="result-star"
+        id="resultStar"
+      ></div>
+
+    </div>
+
+
+    <div
+      class="result-name"
+      id="resultName"
+    >
       宵星
     </div>
+
 
     <p
       class="result-text"
       id="resultText"
     >
     </p>
+
 
     <div class="result-buttons">
 
@@ -798,24 +974,39 @@ h2{
 
 
 /* =========================
-   選択した答え
+   回答
 ========================= */
 
 let answers = {
+
   1:"",
   2:"",
   3:"",
   4:""
+
 };
 
-  const starColors = {
+
+/* =========================
+   星の色
+========================= */
+
+const starColors = {
+
   "月":"#9fc5ff",
+
   "星":"#edf3ff",
+
   "花":"#c8a9e8",
+
   "海":"#78d7f5",
+
   "音":"#9d8cff",
+
   "物語":"#536aa8"
+
 };
+
 
 /* =========================
    画面切り替え
@@ -831,13 +1022,18 @@ function showScreen(id){
 
     });
 
+
   document
     .getElementById(id)
     .classList.add("active");
 
+
   window.scrollTo({
+
     top:0,
+
     behavior:"instant"
+
   });
 
 }
@@ -858,7 +1054,7 @@ function startExperience(){
    回答
 ========================= */
 
-function answer(question, value){
+function answer(question,value){
 
   answers[question] = value;
 
@@ -891,10 +1087,36 @@ function answer(question, value){
 
 
 /* =========================
-   星を作る
+   星生成
 ========================= */
 
 function createStar(){
+
+  const color =
+    starColors[answers[1]]
+    || "#edf3ff";
+
+
+  /* 生成画面の星 */
+
+  const generatedStar =
+    document.getElementById(
+      "generatedStar"
+    );
+
+
+  generatedStar.style.background =
+    color;
+
+
+  generatedStar.style.boxShadow =
+    `
+      0 0 15px ${color},
+      0 0 40px ${color},
+      0 0 80px ${color},
+      0 0 120px ${color}
+    `;
+
 
   showScreen("starGenerate");
 
@@ -909,32 +1131,60 @@ function createStar(){
 
 
 /* =========================
-   結果を作る
+   結果
 ========================= */
 
 function createResult(){
 
-const color = starColors[answers[1]] || "#edf3ff";
+  const color =
+    starColors[answers[1]]
+    || "#edf3ff";
 
-document.getElementById("generatedStar").style.background = color;
 
-  let name = "宵星";
+  /* 結果画面の星 */
+
+  const resultStar =
+    document.getElementById(
+      "resultStar"
+    );
+
+
+  resultStar.style.background =
+    color;
+
+
+  resultStar.style.boxShadow =
+    `
+      0 0 15px ${color},
+      0 0 35px ${color},
+      0 0 70px ${color},
+      0 0 120px ${color}
+    `;
+
+
+  /* 初期値 */
+
+  let name =
+    "宵星";
+
 
   let text =
     "あなたが選んだものから生まれた、" +
     "あなただけの小さな星です。";
 
 
-  /*
-   * ④の答えによって
-   * 星の名前を変える
-   */
+  /* =========================
+     ④による名前
+  ========================= */
 
   if(
-    answers[4] === "まだ分からない"
+    answers[4] ===
+    "まだ分からない"
   ){
 
-    name = "未明";
+    name =
+      "未明";
+
 
     text =
       "まだ名前のない未来を抱えながら、" +
@@ -942,11 +1192,15 @@ document.getElementById("generatedStar").style.background = color;
 
   }
 
+
   else if(
-    answers[4] === "うまく言葉にできない"
+    answers[4] ===
+    "うまく言葉にできない"
   ){
 
-    name = "幽星";
+    name =
+      "幽星";
+
 
     text =
       "まだ言葉にならない想いを抱え、" +
@@ -954,23 +1208,31 @@ document.getElementById("generatedStar").style.background = color;
 
   }
 
+
   else if(
-    answers[4] === "今は答えたくない"
+    answers[4] ===
+    "今は答えたくない"
   ){
 
-    name = "余白";
+    name =
+      "余白";
+
 
     text =
-      "まだ何も決めなくていい。 " +
+      "まだ何も決めなくていい。" +
       "余白の中で、ゆっくり光る星です。";
 
   }
 
+
   else if(
-    answers[4] === "少しだけなら話せる"
+    answers[4] ===
+    "少しだけなら話せる"
   ){
 
-    name = "灯星";
+    name =
+      "灯星";
+
 
     text =
       "小さな言葉から光を生み、" +
@@ -979,17 +1241,20 @@ document.getElementById("generatedStar").style.background = color;
   }
 
 
-  /*
-   * 結果表示
-   */
+  /* =========================
+     結果を表示
+  ========================= */
 
   document
     .getElementById("resultName")
-    .textContent = name;
+    .textContent =
+    name;
+
 
   document
     .getElementById("resultText")
-    .textContent = text;
+    .textContent =
+    text;
 
 
   showScreen("result");
