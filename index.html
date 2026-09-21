@@ -23,10 +23,7 @@ body{
   font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
 }
 
-/* =========================
-   START画面
-========================= */
-
+/* START画面 */
 .start-screen{
   width:100%;
   min-height:100vh;
@@ -63,18 +60,20 @@ body{
   margin-bottom:35px;
 }
 
-.logo{
-  font-size:clamp(3rem,9vw,6rem);
-  font-weight:400;
-  letter-spacing:.25em;
-  margin:0;
-  text-shadow:
-    0 0 20px rgba(170,200,255,.35),
-    0 0 50px rgba(120,150,255,.15);
+/* 星詠ロゴ */
+.hoshiyomi-logo{
+  width:min(320px,70vw);
+  height:auto;
+  display:block;
+  margin:0 auto;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 0 18px rgba(170,200,255,.28))
+    drop-shadow(0 0 40px rgba(120,150,255,.12));
 }
 
 .subtitle{
-  margin:18px 0 65px;
+  margin:24px 0 65px;
   color:#aab8d2;
   letter-spacing:.3em;
   font-size:.85rem;
@@ -102,10 +101,7 @@ body{
   transform:translateY(-2px);
 }
 
-/* =========================
-   選択画面
-========================= */
-
+/* 選択画面 */
 .choice-screen{
   display:none;
   min-height:100vh;
@@ -195,10 +191,7 @@ body{
   line-height:1.8;
 }
 
-/* =========================
-   スマホ
-========================= */
-
+/* スマホ */
 @media(max-width:700px){
 
   .choices{
@@ -213,6 +206,10 @@ body{
     padding:40px 15px;
   }
 
+  .hoshiyomi-logo{
+    width:min(280px,75vw);
+  }
+
   .subtitle{
     margin-bottom:50px;
   }
@@ -222,9 +219,7 @@ body{
 
 <body>
 
-<!-- =========================
-     START画面
-========================= -->
+<!-- START画面 -->
 
 <main class="start-screen" id="startScreen">
 
@@ -234,9 +229,12 @@ body{
       SYSTEM : HOSHIYOMI
     </div>
 
-    <h1 class="logo">
-      星詠
-    </h1>
+    <!-- 星詠のロゴ画像 -->
+    <img
+      src="logo.png"
+      alt="星詠"
+      class="hoshiyomi-logo"
+    >
 
     <p class="subtitle">
       HOSHIYOMI
@@ -251,9 +249,7 @@ body{
 </main>
 
 
-<!-- =========================
-     選択画面
-========================= -->
+<!-- 選択画面 -->
 
 <section class="choice-screen" id="choice">
 
@@ -274,53 +270,21 @@ body{
     <div class="choices">
 
       <a href="#" class="choice">
-
-        <div class="choice-number">
-          01
-        </div>
-
-        <h2>
-          今すぐ依頼したい
-        </h2>
-
-        <p>
-          作品の制作を依頼する
-        </p>
-
+        <div class="choice-number">01</div>
+        <h2>今すぐ依頼したい</h2>
+        <p>作品の制作を依頼する</p>
       </a>
 
-
       <a href="#" class="choice">
-
-        <div class="choice-number">
-          02
-        </div>
-
-        <h2>
-          星詠をのぞいてみる
-        </h2>
-
-        <p>
-          星詠の作品や世界を覗く
-        </p>
-
+        <div class="choice-number">02</div>
+        <h2>星詠をのぞいてみる</h2>
+        <p>星詠の作品や世界を覗く</p>
       </a>
 
-
       <a href="#" class="choice">
-
-        <div class="choice-number">
-          03
-        </div>
-
-        <h2>
-          依頼について相談する
-        </h2>
-
-        <p>
-          まずは相談してみる
-        </p>
-
+        <div class="choice-number">03</div>
+        <h2>依頼について相談する</h2>
+        <p>まずは相談してみる</p>
       </a>
 
     </div>
