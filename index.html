@@ -1,35 +1,356 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>星詠｜HOSHIYOMI</title>
+
 <style>
-*{box-sizing:border-box;}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;}
-body{background:#020817;color:#f5f7ff;font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;}
-.opening{position:relative;width:100%;height:100svh;min-height:560px;overflow:hidden;background:#020817 url("opening-bg.png") center center/cover no-repeat;}
-.opening:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 45%,transparent 0 35%,rgba(1,6,18,.08) 65%,rgba(1,5,15,.38) 100%);}
-.center{position:absolute;z-index:2;left:50%;top:50%;width:96%;max-width:1100px;transform:translate(-50%,-50%);text-align:center;animation:openingIn 1.8s ease both;}
-.logo-wrap{display:flex;justify-content:center;align-items:center;width:100%;}
-.logo-image{display:block;width:min(96vw,950px);height:auto;max-height:420px;object-fit:contain;filter:drop-shadow(0 0 28px rgba(220,235,255,.34));}
-.message{margin:42px 0 0;font-size:clamp(.95rem,1.7vw,1.2rem);letter-spacing:.16em;line-height:2;text-shadow:0 2px 14px rgba(0,0,0,.75);}
-.enter{display:inline-flex;align-items:center;justify-content:center;margin-top:34px;min-width:155px;padding:13px 30px 13px 35px;border:1px solid rgba(235,242,255,.62);border-radius:999px;color:#fff;text-decoration:none;font-family:Georgia,"Times New Roman",serif;font-size:.8rem;letter-spacing:.34em;background:rgba(2,8,22,.2);backdrop-filter:blur(7px);transition:.3s ease;}
-.enter:hover{transform:translateY(-2px);background:rgba(235,242,255,.1);box-shadow:0 0 28px rgba(190,215,255,.25);}
-@keyframes openingIn{from{opacity:0;transform:translate(-50%,-47%);}to{opacity:1;transform:translate(-50%,-50%);}}
-@media(max-width:600px){.opening{min-height:520px;background-position:center center;}.center{width:94%;}.logo-image{width:96vw;max-height:330px;}.message{margin-top:34px;font-size:.9rem;letter-spacing:.1em;}.enter{margin-top:26px;}}
-@media(prefers-reduced-motion:reduce){.center{animation:none;}}
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  background:#020817;
+  color:#edf3ff;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+}
+
+/* =========================
+   START画面
+========================= */
+
+.start-screen{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(120,160,255,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #020817 0%,
+      #07152e 55%,
+      #020817 100%
+    );
+}
+
+.start-inner{
+  width:min(90%,900px);
+  padding:60px 20px;
+}
+
+.system{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:.75rem;
+  letter-spacing:.35em;
+  color:#8fbfff;
+  margin-bottom:35px;
+}
+
+.logo{
+  font-size:clamp(3rem,9vw,6rem);
+  font-weight:400;
+  letter-spacing:.25em;
+  margin:0;
+  text-shadow:
+    0 0 20px rgba(170,200,255,.35),
+    0 0 50px rgba(120,150,255,.15);
+}
+
+.subtitle{
+  margin:18px 0 65px;
+  color:#aab8d2;
+  letter-spacing:.3em;
+  font-size:.85rem;
+}
+
+.start-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:190px;
+  padding:15px 38px;
+  border:1px solid rgba(210,225,255,.55);
+  border-radius:999px;
+  background:rgba(255,255,255,.03);
+  color:#fff;
+  text-decoration:none;
+  letter-spacing:.35em;
+  font-family:Georgia,"Times New Roman",serif;
+  transition:.35s ease;
+}
+
+.start-button:hover{
+  background:rgba(180,210,255,.1);
+  box-shadow:0 0 35px rgba(150,190,255,.2);
+  transform:translateY(-2px);
+}
+
+/* =========================
+   選択画面
+========================= */
+
+.choice-screen{
+  display:none;
+  min-height:100vh;
+  padding:80px 20px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(90,130,210,.1),
+      transparent 35%
+    ),
+    #040916;
+}
+
+.choice-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  text-align:center;
+}
+
+.choice-label{
+  color:#8fbfff;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:.75rem;
+  letter-spacing:.25em;
+  margin-bottom:15px;
+}
+
+.choice-title{
+  font-size:clamp(1.8rem,5vw,3rem);
+  font-weight:400;
+  letter-spacing:.12em;
+  margin:0;
+}
+
+.choice-text{
+  color:#aab8d2;
+  margin:25px auto 55px;
+}
+
+.choices{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.choice{
+  min-height:240px;
+  padding:35px 25px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border:1px solid rgba(180,205,245,.18);
+  border-radius:20px;
+  background:rgba(10,24,52,.58);
+  color:#edf3ff;
+  text-decoration:none;
+  transition:.35s ease;
+}
+
+.choice:hover{
+  transform:translateY(-5px);
+  border-color:rgba(143,191,255,.55);
+  background:rgba(20,40,78,.7);
+  box-shadow:0 15px 40px rgba(50,90,170,.12);
+}
+
+.choice-number{
+  color:#8fbfff;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:.75rem;
+  letter-spacing:.2em;
+  margin-bottom:22px;
+}
+
+.choice h2{
+  font-size:1.25rem;
+  font-weight:400;
+  letter-spacing:.08em;
+  margin:0 0 15px;
+}
+
+.choice p{
+  margin:0;
+  color:#aab8d2;
+  font-size:.9rem;
+  line-height:1.8;
+}
+
+/* =========================
+   スマホ
+========================= */
+
+@media(max-width:700px){
+
+  .choices{
+    grid-template-columns:1fr;
+  }
+
+  .choice{
+    min-height:180px;
+  }
+
+  .start-inner{
+    padding:40px 15px;
+  }
+
+  .subtitle{
+    margin-bottom:50px;
+  }
+}
 </style>
 </head>
+
 <body>
-<main class="opening">
-<div class="center">
-<div class="logo-wrap">
-<img class="logo-image" src="logo.png" alt="星詠">
-</div>
-<p class="message">あなたの星を、詠む。</p>
-<a class="enter" href="home.html">ENTER</a>
-</div>
+
+<!-- =========================
+     START画面
+========================= -->
+
+<main class="start-screen" id="startScreen">
+
+  <div class="start-inner">
+
+    <div class="system">
+      SYSTEM : HOSHIYOMI
+    </div>
+
+    <h1 class="logo">
+      星詠
+    </h1>
+
+    <p class="subtitle">
+      HOSHIYOMI
+    </p>
+
+    <a href="#choice" class="start-button" id="startButton">
+      START
+    </a>
+
+  </div>
+
 </main>
+
+
+<!-- =========================
+     選択画面
+========================= -->
+
+<section class="choice-screen" id="choice">
+
+  <div class="choice-inner">
+
+    <div class="choice-label">
+      HOSHIYOMI SYSTEM
+    </div>
+
+    <h1 class="choice-title">
+      あなたは、どこから見ますか？
+    </h1>
+
+    <p class="choice-text">
+      星詠での行き先を選んでください。
+    </p>
+
+    <div class="choices">
+
+      <a href="#" class="choice">
+
+        <div class="choice-number">
+          01
+        </div>
+
+        <h2>
+          今すぐ依頼したい
+        </h2>
+
+        <p>
+          作品の制作を依頼する
+        </p>
+
+      </a>
+
+
+      <a href="#" class="choice">
+
+        <div class="choice-number">
+          02
+        </div>
+
+        <h2>
+          星詠をのぞいてみる
+        </h2>
+
+        <p>
+          星詠の作品や世界を覗く
+        </p>
+
+      </a>
+
+
+      <a href="#" class="choice">
+
+        <div class="choice-number">
+          03
+        </div>
+
+        <h2>
+          依頼について相談する
+        </h2>
+
+        <p>
+          まずは相談してみる
+        </p>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+
+const startButton = document.getElementById("startButton");
+const startScreen = document.getElementById("startScreen");
+const choiceScreen = document.getElementById("choice");
+
+startButton.addEventListener("click", function(event){
+
+  event.preventDefault();
+
+  startScreen.style.display = "none";
+  choiceScreen.style.display = "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
+});
+
+</script>
+
 </body>
 </html>
