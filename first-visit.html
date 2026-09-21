@@ -35,14 +35,10 @@ body{
 
 .screen{
   min-height:100vh;
-
   display:none;
-
   align-items:center;
   justify-content:center;
-
   padding:50px 20px;
-
   text-align:center;
 
   background:
@@ -76,9 +72,7 @@ body{
 .logo{
   width:min(230px,65vw);
   height:auto;
-
   display:block;
-
   margin:0 auto 35px;
 
   filter:
@@ -102,9 +96,7 @@ body{
     serif;
 
   font-size:.72rem;
-
   letter-spacing:.3em;
-
   margin-bottom:25px;
 }
 
@@ -113,9 +105,7 @@ h1{
     clamp(2rem,6vw,3.4rem);
 
   font-weight:400;
-
   letter-spacing:.12em;
-
   margin:0 0 25px;
 }
 
@@ -124,17 +114,13 @@ h2{
     clamp(1.5rem,4vw,2.2rem);
 
   font-weight:400;
-
   letter-spacing:.1em;
-
   margin:0 0 20px;
 }
 
 .lead{
   color:#aab8d2;
-
   line-height:2;
-
   margin:0 auto 45px;
 }
 
@@ -145,12 +131,10 @@ h2{
 
 .button{
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
 
   min-width:190px;
-
   padding:14px 32px;
 
   border:
@@ -163,13 +147,10 @@ h2{
     rgba(255,255,255,.03);
 
   color:#edf3ff;
-
   text-decoration:none;
-
   cursor:pointer;
 
   font-family:inherit;
-
   letter-spacing:.18em;
 
   transition:.35s ease;
@@ -200,36 +181,27 @@ h2{
     serif;
 
   font-size:.75rem;
-
   letter-spacing:.25em;
-
   margin-bottom:18px;
 }
 
 .question-text{
   color:#aab8d2;
-
   line-height:1.9;
-
   margin-bottom:40px;
 }
 
 .options{
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
 
   width:min(700px,100%);
-
   margin:auto;
 }
 
 .option{
   min-height:85px;
-
   padding:18px 20px;
 
   border:
@@ -244,9 +216,7 @@ h2{
   color:#edf3ff;
 
   font-family:inherit;
-
   font-size:.95rem;
-
   letter-spacing:.05em;
 
   cursor:pointer;
@@ -275,7 +245,6 @@ h2{
 
 .star-area{
   width:min(500px,90vw);
-
   height:300px;
 
   margin:0 auto 35px;
@@ -297,9 +266,7 @@ h2{
     #030b1d;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 }
 
@@ -323,8 +290,7 @@ h2{
     0 0 120px rgba(100,150,255,.35);
 
   animation:
-    starAppear 2s ease forwards,
-    starPulse 3s ease-in-out infinite 2s;
+    starAppear 2s ease forwards;
 }
 
 @keyframes starAppear{
@@ -346,20 +312,6 @@ h2{
 
 }
 
-@keyframes starPulse{
-
-  0%,100%{
-    transform:scale(.9);
-    opacity:.8;
-  }
-
-  50%{
-    transform:scale(1.3);
-    opacity:1;
-  }
-
-}
-
 
 /* =========================
    結果画面の星
@@ -367,28 +319,28 @@ h2{
 
 .result-star-area{
 
-  width:260px;
-  height:220px;
+  width:280px;
+  height:230px;
 
-  margin:0 auto 5px;
+  margin:0 auto;
 
   position:relative;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
 }
 
 
-/* 星の光 */
+/* =========================
+   結果の星
+========================= */
 
 .result-star{
 
-  width:26px;
-  height:26px;
+  width:27px;
+  height:27px;
 
   border-radius:50%;
 
@@ -400,38 +352,199 @@ h2{
     0 0 70px rgba(140,190,255,.8),
     0 0 120px rgba(100,150,255,.35);
 
+}
+
+
+/* =========================
+   輝き方①
+   ゆっくり明滅
+========================= */
+
+.glow-slow{
+
   animation:
-    resultStarGlow 3s
+    glowSlow 4s
     ease-in-out
     infinite;
 
 }
 
-
-/* 輝き */
-
-@keyframes resultStarGlow{
+@keyframes glowSlow{
 
   0%,100%{
-
     transform:scale(.85);
-
-    opacity:.8;
-
-    filter:
-      brightness(.9);
-
+    opacity:.65;
+    filter:brightness(.85);
   }
 
   50%{
-
-    transform:scale(1.3);
-
+    transform:scale(1.25);
     opacity:1;
+    filter:brightness(1.3);
+  }
 
-    filter:
-      brightness(1.3);
+}
 
+
+/* =========================
+   輝き方②
+   やわらかく瞬く
+========================= */
+
+.glow-soft{
+
+  animation:
+    glowSoft 2.5s
+    ease-in-out
+    infinite;
+
+}
+
+@keyframes glowSoft{
+
+  0%,100%{
+    transform:scale(.95);
+    opacity:.8;
+  }
+
+  50%{
+    transform:scale(1.15);
+    opacity:1;
+  }
+
+}
+
+
+/* =========================
+   輝き方③
+   波打つ
+========================= */
+
+.glow-wave{
+
+  animation:
+    glowWave 2s
+    ease-in-out
+    infinite;
+
+}
+
+@keyframes glowWave{
+
+  0%,100%{
+    transform:scale(.8);
+    opacity:.7;
+  }
+
+  25%{
+    transform:scale(1.2);
+    opacity:1;
+  }
+
+  50%{
+    transform:scale(.9);
+    opacity:.8;
+  }
+
+  75%{
+    transform:scale(1.3);
+    opacity:1;
+  }
+
+}
+
+
+/* =========================
+   輝き方④
+   温かく輝く
+========================= */
+
+.glow-warm{
+
+  animation:
+    glowWarm 3.5s
+    ease-in-out
+    infinite;
+
+}
+
+@keyframes glowWarm{
+
+  0%,100%{
+    transform:scale(.9);
+    opacity:.75;
+  }
+
+  50%{
+    transform:scale(1.2);
+    opacity:1;
+  }
+
+}
+
+
+/* =========================
+   輝き方⑤
+   一瞬強く輝く
+========================= */
+
+.glow-flash{
+
+  animation:
+    glowFlash 2.8s
+    ease-in-out
+    infinite;
+
+}
+
+@keyframes glowFlash{
+
+  0%,70%,100%{
+    transform:scale(.85);
+    opacity:.7;
+  }
+
+  76%{
+    transform:scale(1.5);
+    opacity:1;
+  }
+
+  82%{
+    transform:scale(.95);
+    opacity:.85;
+  }
+
+}
+
+
+/* =========================
+   輝き方⑥
+   静かに揺れる
+========================= */
+
+.glow-silent{
+
+  animation:
+    glowSilent 5s
+    ease-in-out
+    infinite;
+
+}
+
+@keyframes glowSilent{
+
+  0%,100%{
+    transform:
+      scale(.9)
+      translateY(0);
+    opacity:.7;
+  }
+
+  50%{
+    transform:
+      scale(1.05)
+      translateY(-4px);
+    opacity:.9;
   }
 
 }
@@ -447,10 +560,9 @@ h2{
     clamp(2rem,7vw,4rem);
 
   font-weight:400;
-
   letter-spacing:.15em;
 
-  margin:5px 0 25px;
+  margin:0 0 25px;
 
   text-shadow:
     0 0 25px
@@ -495,27 +607,19 @@ h2{
 @media(max-width:700px){
 
   .options{
-
     grid-template-columns:1fr;
-
   }
 
   .option{
-
     min-height:70px;
-
   }
 
   .star-area{
-
     height:240px;
-
   }
 
   .result-star-area{
-
     height:180px;
-
   }
 
 }
@@ -596,45 +700,27 @@ h2{
 
     <div class="options">
 
-      <button
-        class="option"
-        onclick="answer(1,'月')"
-      >
+      <button class="option" onclick="answer(1,'月')">
         月
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'星')"
-      >
+      <button class="option" onclick="answer(1,'星')">
         星
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'花')"
-      >
+      <button class="option" onclick="answer(1,'花')">
         花
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'海')"
-      >
+      <button class="option" onclick="answer(1,'海')">
         海
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'音')"
-      >
+      <button class="option" onclick="answer(1,'音')">
         音
       </button>
 
-      <button
-        class="option"
-        onclick="answer(1,'物語')"
-      >
+      <button class="option" onclick="answer(1,'物語')">
         物語
       </button>
 
@@ -919,8 +1005,6 @@ h2{
     </div>
 
 
-    <!-- 結果の星 -->
-
     <div class="result-star-area">
 
       <div
@@ -1004,6 +1088,33 @@ const starColors = {
   "音":"#9d8cff",
 
   "物語":"#536aa8"
+
+};
+
+
+/* =========================
+   輝き方
+========================= */
+
+const glowStyles = {
+
+  "あの日の景色":
+    "glow-slow",
+
+  "誰かからもらった言葉":
+    "glow-soft",
+
+  "忘れられない声や音":
+    "glow-wave",
+
+  "大切な人との時間":
+    "glow-warm",
+
+  "心に残った作品":
+    "glow-flash",
+
+  "まだ名前のない記憶":
+    "glow-silent"
 
 };
 
@@ -1097,8 +1208,6 @@ function createStar(){
     || "#edf3ff";
 
 
-  /* 生成画面の星 */
-
   const generatedStar =
     document.getElementById(
       "generatedStar"
@@ -1141,13 +1250,15 @@ function createResult(){
     || "#edf3ff";
 
 
-  /* 結果画面の星 */
-
   const resultStar =
     document.getElementById(
       "resultStar"
     );
 
+
+  /*
+   * 星の色
+   */
 
   resultStar.style.background =
     color;
@@ -1162,7 +1273,23 @@ function createResult(){
     `;
 
 
-  /* 初期値 */
+  /*
+   * 輝き方
+   */
+
+  const glowClass =
+    glowStyles[answers[2]]
+    || "glow-slow";
+
+
+  resultStar.className =
+    "result-star " +
+    glowClass;
+
+
+  /*
+   * 初期値
+   */
 
   let name =
     "宵星";
@@ -1173,9 +1300,9 @@ function createResult(){
     "あなただけの小さな星です。";
 
 
-  /* =========================
-     ④による名前
-  ========================= */
+  /*
+   * ④による名前
+   */
 
   if(
     answers[4] ===
@@ -1241,9 +1368,9 @@ function createResult(){
   }
 
 
-  /* =========================
-     結果を表示
-  ========================= */
+  /*
+   * 結果表示
+   */
 
   document
     .getElementById("resultName")
