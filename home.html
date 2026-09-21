@@ -816,123 +816,6 @@
 }
 </style>
 
-
-<style id="current-home-layout-fix">
-/* ===== 現在の home.html 専用：空欄を作らない基本レイアウト ===== */
-#service,
-#flow,
-#contact-guide{
-  display:block !important;
-  position:relative !important;
-  width:100% !important;
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-  margin:0 !important;
-}
-
-#service .service-content,
-#flow .flow-content{
-  display:block !important;
-  width:min(100% - 40px, 900px) !important;
-  max-width:900px !important;
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-  margin:0 auto !important;
-  padding:72px 0 0 !important;
-}
-
-#service .service-lead{
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-  margin-bottom:28px !important;
-}
-
-#service .plan-grid{
-  display:grid !important;
-  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  gap:18px !important;
-  width:100% !important;
-  height:auto !important;
-  min-height:0 !important;
-  margin:32px 0 0 !important;
-}
-
-#service .plan-card{
-  display:block !important;
-  width:auto !important;
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-}
-
-#flow .flow-content{
-  padding-top:72px !important;
-}
-
-#flow .simple-flow{
-  display:grid !important;
-  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-  gap:12px !important;
-  width:100% !important;
-  height:auto !important;
-  min-height:0 !important;
-  margin:28px 0 0 !important;
-}
-
-#flow .simple-flow-item{
-  display:block !important;
-  width:auto !important;
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-}
-
-#contact-guide{
-  padding:0 !important;
-}
-
-#contact-guide .top-final-message{
-  width:min(100% - 40px,680px) !important;
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-  margin:72px auto 0 !important;
-  padding:0 !important;
-}
-
-.simple-cta{
-  height:auto !important;
-  min-height:0 !important;
-  margin:0 !important;
-  padding:32px 0 48px !important;
-}
-
-@media(max-width:760px){
-  #service .service-content,
-  #flow .flow-content{
-    width:calc(100% - 28px) !important;
-    padding-top:48px !important;
-  }
-
-  #service .plan-grid{
-    grid-template-columns:1fr !important;
-    gap:12px !important;
-  }
-
-  #flow .simple-flow{
-    grid-template-columns:1fr !important;
-  }
-
-  #contact-guide .top-final-message{
-    width:calc(100% - 28px) !important;
-    margin-top:48px !important;
-  }
-}
-</style>
-
 </head>
 
 <body>
@@ -980,7 +863,7 @@
         <span class="plan-link">詳しく見る →</span>
       </a>
 
-      <a class="plan-card" href="return-gift.html">
+      <a class="plan-card" href="return-gift-new.html">
         <span class="plan-number">04</span>
         <h3>返礼品制作</h3>
         <p>イベントや活動で、誰かに届ける<br>作品を制作します。</p>
