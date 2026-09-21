@@ -68,14 +68,21 @@ body{
 }
 
 .logo{
-  font-size:clamp(3rem,9vw,6rem);
-  font-weight:400;
-  letter-spacing:.25em;
   margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-  text-shadow:
-    0 0 20px rgba(170,200,255,.35),
-    0 0 50px rgba(120,150,255,.15);
+.logo img{
+  width:min(420px,75vw);
+  height:auto;
+  display:block;
+  object-fit:contain;
+
+  filter:
+    drop-shadow(0 0 20px rgba(170,200,255,.35))
+    drop-shadow(0 0 45px rgba(120,150,255,.15));
 }
 
 .subtitle{
@@ -361,9 +368,9 @@ body{
       SYSTEM : HOSHIYOMI
     </div>
 
-    <h1 class="logo">
-      星詠
-    </h1>
+    <div class="logo">
+  <img src="logo.png" alt="星詠">
+</div>
 
     <p class="subtitle">
       HOSHIYOMI
