@@ -1,465 +1,322 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>星は、確かに届きました。｜星詠</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-
-      font-family:
-        "Noto Sans JP",
-        "Yu Gothic",
-        sans-serif;
-
-      color: #dcecff;
-
-      background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(65, 105, 180, 0.20),
-          transparent 42%
-        ),
-        radial-gradient(
-          circle at 80% 65%,
-          rgba(75, 95, 180, 0.10),
-          transparent 35%
-        ),
-        linear-gradient(
-          180deg,
-          #071225 0%,
-          #050b18 55%,
-          #030711 100%
-        );
-
-      overflow-x: hidden;
-    }
-
-
-    /* =========================
-       星
-    ========================== */
-
-    .stars {
-      position: fixed;
-      inset: 0;
-
-      pointer-events: none;
-
-      overflow: hidden;
-
-      z-index: 0;
-    }
-
-    .star {
-      position: absolute;
-
-      width: 2px;
-      height: 2px;
-
-      background: rgba(225, 240, 255, 0.75);
-
-      border-radius: 50%;
-
-      box-shadow:
-        0 0 7px rgba(170, 215, 255, 0.45);
-
-      animation:
-        twinkle 4s ease-in-out infinite;
-    }
-
-    .star:nth-child(1) {
-      top: 12%;
-      left: 15%;
-      animation-delay: 0s;
-    }
 
-    .star:nth-child(2) {
-      top: 20%;
-      left: 72%;
-      animation-delay: 1.2s;
-    }
+<meta charset="UTF-8">
 
-    .star:nth-child(3) {
-      top: 31%;
-      left: 42%;
-      animation-delay: 2.1s;
-    }
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-    .star:nth-child(4) {
-      top: 44%;
-      left: 84%;
-      animation-delay: 0.8s;
-    }
+<title>送信完了｜星詠</title>
 
-    .star:nth-child(5) {
-      top: 56%;
-      left: 18%;
-      animation-delay: 1.8s;
-    }
+<style>
 
-    .star:nth-child(6) {
-      top: 68%;
-      left: 63%;
-      animation-delay: 2.7s;
-    }
+*{
+  box-sizing:border-box;
+}
 
-    .star:nth-child(7) {
-      top: 78%;
-      left: 34%;
-      animation-delay: 1s;
-    }
+html,body{
+  margin:0;
+  min-height:100%;
+}
 
-    .star:nth-child(8) {
-      top: 88%;
-      left: 78%;
-      animation-delay: 2.4s;
-    }
+body{
 
-    .star:nth-child(9) {
-      top: 36%;
-      left: 8%;
-      animation-delay: 3s;
-    }
+  min-height:100vh;
 
-    .star:nth-child(10) {
-      top: 73%;
-      left: 91%;
-      animation-delay: 1.5s;
-    }
+  display:flex;
 
-    @keyframes twinkle {
-      0%,
-      100% {
-        opacity: 0.25;
-        transform: scale(0.8);
-      }
+  align-items:center;
 
-      50% {
-        opacity: 1;
-        transform: scale(1.4);
-      }
-    }
+  justify-content:center;
 
+  color:#edf3ff;
 
-    /* =========================
-       メイン
-    ========================== */
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(90,130,210,.14),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #040916 0%,
+      #07142d 55%,
+      #040916 100%
+    );
 
-    .thanks-page {
-      position: relative;
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
 
-      z-index: 1;
+  line-height:1.9;
+}
 
-      width: min(900px, calc(100% - 32px));
+.wrap{
 
-      min-height: 100vh;
+  width:min(
+    680px,
+    calc(100% - 40px)
+  );
 
-      margin: 0 auto;
+  text-align:center;
+}
 
-      padding:
-        80px 0
-        100px;
 
-      display: flex;
+/* SYSTEM */
 
-      flex-direction: column;
+.system{
 
-      justify-content: center;
+  color:#8fbfff;
 
-      align-items: center;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-      text-align: center;
-    }
+  font-size:.72rem;
 
+  letter-spacing:.3em;
 
-    /* =========================
-       上部ラベル
-    ========================== */
+  margin-bottom:30px;
+}
 
-    .label {
-      margin-bottom: 22px;
 
-      color:
-        rgba(160, 205, 255, 0.55);
+/* LOGO */
 
-      font-size: 0.75rem;
+.logo{
 
-      letter-spacing: 0.3em;
-    }
+  width:min(
+    190px,
+    55vw
+  );
 
+  height:auto;
 
-    /* =========================
-       タイトル
-    ========================== */
+  display:block;
 
-    h1 {
-      margin: 0;
+  margin:0 auto 35px;
 
-      color: #eaf6ff;
+  filter:
+    drop-shadow(
+      0 0 20px
+      rgba(150,190,255,.18)
+    );
+}
 
-      font-family:
-        "Yu Mincho",
-        "Hiragino Mincho ProN",
-        serif;
 
-      font-size:
-        clamp(2rem, 7vw, 3.5rem);
+/* MESSAGE */
 
-      font-weight: 400;
+.message{
 
-      line-height: 1.7;
+  padding:50px 35px;
 
-      letter-spacing: 0.12em;
+  border:
+    1px solid
+    rgba(180,205,245,.18);
 
-      text-shadow:
-        0 0 20px rgba(110, 180, 255, 0.18);
-    }
+  border-radius:24px;
 
+  background:
+    rgba(10,24,52,.58);
 
-    /* =========================
-       区切り
-    ========================== */
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.15);
+}
 
-    .divider {
-      width: 80px;
+.label{
 
-      height: 1px;
+  color:#8fbfff;
 
-      margin: 34px 0;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-      background:
-        rgba(180, 220, 255, 0.45);
+  font-size:.7rem;
 
-      box-shadow:
-        0 0 12px rgba(120, 190, 255, 0.2);
-    }
+  letter-spacing:.25em;
 
+  margin-bottom:18px;
+}
 
-    /* =========================
-       メッセージ
-    ========================== */
+h1{
 
-    .message {
-      color:
-        rgba(215, 230, 245, 0.75);
+  font-size:
+    clamp(
+      1.8rem,
+      5vw,
+      2.5rem
+    );
 
-      font-family:
-        "Yu Mincho",
-        "Hiragino Mincho ProN",
-        serif;
+  font-weight:400;
 
-      font-size:
-        clamp(0.9rem, 3vw, 1rem);
+  letter-spacing:.12em;
 
-      line-height: 2.4;
+  margin:0 0 25px;
+}
 
-      letter-spacing: 0.08em;
-    }
+.text{
 
-    .message .emphasis {
-      display: block;
+  color:#aab8d2;
 
-      margin-bottom: 20px;
+  font-size:.9rem;
 
-      color: #dcecff;
+  line-height:2.1;
 
-      font-size: 1.05em;
-    }
+  margin:0;
+}
 
+.small{
 
-    /* =========================
-       戻るボタン
-    ========================== */
+  margin-top:25px;
 
-    .back-button {
-      display: inline-block;
+  color:#74839d;
 
-      margin-top: 50px;
+  font-size:.75rem;
 
-      padding: 13px 30px;
+  line-height:1.9;
+}
 
-      color: #eaf7ff;
 
-      text-decoration: none;
+/* BUTTON */
 
-      font-size: 0.85rem;
+.back{
 
-      letter-spacing: 0.1em;
+  display:inline-block;
 
-      background:
-        rgba(35, 80, 140, 0.35);
+  margin-top:35px;
 
-      border:
-        1px solid rgba(155, 215, 255, 0.32);
+  padding:11px 25px;
 
-      border-radius: 999px;
+  border:
+    1px solid
+    rgba(180,205,245,.2);
 
-      transition:
-        0.3s ease;
-    }
+  border-radius:999px;
 
-    .back-button:hover {
-      background:
-        rgba(70, 130, 210, 0.45);
+  color:#dce8ff;
 
-      border-color:
-        rgba(190, 230, 255, 0.65);
+  text-decoration:none;
 
-      box-shadow:
-        0 0 22px rgba(100, 190, 255, 0.18);
+  font-size:.82rem;
 
-      transform:
-        translateY(-2px);
-    }
+  letter-spacing:.08em;
 
+  transition:.35s ease;
+}
 
-    /* =========================
-       フッター
-    ========================== */
+.back:hover{
 
-    .footer-note {
-      position: absolute;
+  transform:translateY(-2px);
 
-      bottom: 28px;
+  background:
+    rgba(180,210,255,.08);
 
-      color:
-        rgba(180, 205, 230, 0.3);
+  border-color:
+    rgba(143,191,255,.5);
 
-      font-size: 0.7rem;
+  box-shadow:
+    0 0 25px
+    rgba(143,191,255,.1);
+}
 
-      letter-spacing: 0.18em;
-    }
 
+/* MOBILE */
 
-    /* =========================
-       スマホ
-    ========================== */
+@media(max-width:700px){
 
-    @media (max-width: 600px) {
+  .wrap{
 
-      .thanks-page {
-        width:
-          calc(100% - 28px);
+    width:min(
+      100% - 28px,
+      680px
+    );
 
-        padding:
-          60px 0
-          80px;
-      }
+  }
 
-      h1 {
-        font-size:
-          clamp(1.8rem, 9vw, 2.5rem);
-      }
+  .message{
 
-      .message {
-        font-size: 0.85rem;
+    padding:40px 22px;
 
-        line-height: 2.2;
-      }
+  }
 
-      .back-button {
-        margin-top: 40px;
+}
 
-        padding:
-          12px 25px;
-      }
+</style>
 
-    }
-
-  </style>
 </head>
 
 
 <body>
 
 
-  <!-- =========================
-       星
-  ========================== -->
+<main class="wrap">
 
-  <div class="stars">
 
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-    <span class="star"></span>
-
+  <div class="system">
+    HOSHIYOMI REQUEST SYSTEM
   </div>
 
 
-  <!-- =========================
-       完了ページ
-  ========================== -->
+  <img
+    src="logo.png"
+    alt="星詠"
+    class="logo"
+  >
 
-  <main class="thanks-page">
+
+  <div class="message">
 
 
     <div class="label">
-      MESSAGE RECEIVED
+      REQUEST RECEIVED
     </div>
 
 
     <h1>
-      星は、確かに届きました。
+      あなたの星を、<br>
+      受け取りました。
     </h1>
 
 
-    <div class="divider"></div>
+    <p class="text">
+
+      ご依頼内容の送信が完了しました。<br><br>
+
+      お送りいただいた内容を確認のうえ、<br>
+      ご入力いただいたメールアドレスへ<br>
+      ご連絡いたします。
+
+    </p>
 
 
-    <div class="message">
+    <p class="small">
 
-      <span class="emphasis">
-        お問い合わせをお預かりしました。
-      </span>
+      ※この時点では、まだ正式なご依頼確定ではありません。<br>
+      内容を確認後、制作についてご案内いたします。
 
-      内容を確認のうえ、<br>
-      順次お返事いたします。
-
-      <br><br>
-
-      夜空のどこかで、<br>
-      あなたから届いた言葉を受け取りました。
-
-    </div>
+    </p>
 
 
     <a
       href="index.html"
-      class="back-button"
+      class="back"
     >
-      ✦ 星詠へ戻る
+      星詠の入口へ戻る
     </a>
 
 
-    <div class="footer-note">
-      HOSHIYOMI
-    </div>
+  </div>
 
 
-  </main>
+</main>
 
 
 </body>
-
 </html>
