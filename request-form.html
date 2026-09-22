@@ -317,7 +317,7 @@ textarea{
 
 
 /* =========================
-   IMAGE NOTE
+   IMAGE
 ========================= */
 
 .image-note{
@@ -522,6 +522,10 @@ textarea{
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
   <div class="wrap">
@@ -598,10 +602,19 @@ textarea{
   </h2>
 
 
-  <div class="form-card">
+  <!-- ★ Formspree -->
+
+  <form
+    class="form-card"
+    action="https://formspree.io/f/mjykwovq"
+    method="POST"
+    enctype="multipart/form-data"
+  >
 
 
-    <!-- お名前 -->
+    <!-- =========================
+         NAME
+    ========================= -->
 
     <div class="form-item">
 
@@ -624,7 +637,9 @@ textarea{
 
 
 
-    <!-- メール -->
+    <!-- =========================
+         EMAIL
+    ========================= -->
 
     <div class="form-item">
 
@@ -647,7 +662,9 @@ textarea{
 
 
 
-    <!-- REALITY -->
+    <!-- =========================
+         REALITY
+    ========================= -->
 
     <div class="form-item">
 
@@ -665,7 +682,7 @@ textarea{
           <input
             type="radio"
             name="reality"
-            value="yes"
+            value="使用する"
             required
           >
 
@@ -681,7 +698,7 @@ textarea{
           <input
             type="radio"
             name="reality"
-            value="no"
+            value="使用しない"
           >
 
           <span>
@@ -696,7 +713,9 @@ textarea{
 
 
 
-    <!-- あなたの姿 -->
+    <!-- =========================
+         APPEARANCE
+    ========================= -->
 
     <div class="form-item">
 
@@ -718,7 +737,9 @@ textarea{
 
 
 
-    <!-- 参考画像 -->
+    <!-- =========================
+         IMAGE
+    ========================= -->
 
     <div class="form-item">
 
@@ -743,7 +764,9 @@ textarea{
         複数枚添付できます。<br>
 
         全身・顔・衣装・小物など、
-        必要な資料をお送りください。
+        必要な資料をお送りください。<br>
+
+        ※参考画像は5枚までを目安としてください。
 
       </p>
 
@@ -751,7 +774,9 @@ textarea{
 
 
 
-    <!-- 希望 -->
+    <!-- =========================
+         REQUEST
+    ========================= -->
 
     <div class="form-item">
 
@@ -769,7 +794,9 @@ textarea{
 
 
 
-    <!-- その他 -->
+    <!-- =========================
+         MESSAGE
+    ========================= -->
 
     <div class="form-item">
 
@@ -851,13 +878,14 @@ textarea{
       </div>
 
 
-      <!-- 基本同意 -->
+      <!-- BASIC -->
 
       <label class="check">
 
         <input
           type="checkbox"
           name="agreement_basic"
+          value="同意する"
           required
         >
 
@@ -875,6 +903,7 @@ textarea{
         <input
           type="checkbox"
           name="agreement_reality"
+          value="確認した"
           required
         >
 
@@ -885,13 +914,14 @@ textarea{
       </label>
 
 
-      <!-- 第三者 -->
+      <!-- THIRD PARTY -->
 
       <label class="check">
 
         <input
           type="checkbox"
           name="agreement_third_party"
+          value="確認した"
           required
         >
 
@@ -910,7 +940,10 @@ textarea{
          PORTFOLIO
     ========================= -->
 
-    <div class="form-item" style="margin-top:35px;">
+    <div
+      class="form-item"
+      style="margin-top:35px;"
+    >
 
       <label>
         制作実績としての掲載
@@ -926,7 +959,7 @@ textarea{
           <input
             type="radio"
             name="portfolio"
-            value="yes"
+            value="掲載を許可する"
             required
           >
 
@@ -942,7 +975,7 @@ textarea{
           <input
             type="radio"
             name="portfolio"
-            value="no"
+            value="掲載を許可しない"
           >
 
           <span>
@@ -981,7 +1014,7 @@ textarea{
     </div>
 
 
-  </div>
+  </form>
 
 </section>
 
