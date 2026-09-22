@@ -145,6 +145,31 @@ h2{
 
 
 /* =========================
+   NOTICE
+========================= */
+
+.notice{
+
+  margin-bottom:35px;
+
+  padding:22px;
+
+  border-left:
+    2px solid
+    rgba(143,191,255,.45);
+
+  background:
+    rgba(120,160,255,.035);
+
+  color:#aebbd0;
+
+  font-size:.82rem;
+
+  line-height:2;
+}
+
+
+/* =========================
    FORM
 ========================= */
 
@@ -163,7 +188,7 @@ h2{
 }
 
 .form-item{
-  margin-bottom:28px;
+  margin-bottom:30px;
 }
 
 .form-item:last-child{
@@ -192,7 +217,9 @@ label{
   margin-left:6px;
 }
 
-input,
+input[type="text"],
+input[type="email"],
+input[type="file"],
 textarea,
 select{
 
@@ -220,7 +247,8 @@ select{
   transition:.3s ease;
 }
 
-input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
 textarea:focus,
 select:focus{
 
@@ -232,15 +260,15 @@ select:focus{
     rgba(143,191,255,.08);
 }
 
+input[type="file"]{
+  padding:11px;
+}
+
 textarea{
 
   min-height:150px;
 
   resize:vertical;
-}
-
-select{
-  appearance:auto;
 }
 
 ::placeholder{
@@ -249,37 +277,68 @@ select{
 
 
 /* =========================
-   NOTICE
+   RADIO
 ========================= */
 
-.notice{
+.radio-group{
 
-  margin-bottom:35px;
+  display:flex;
 
-  padding:22px;
+  flex-direction:column;
 
-  border-left:
-    2px solid
-    rgba(143,191,255,.45);
+  gap:12px;
 
-  background:
-    rgba(120,160,255,.035);
+  padding:5px 0;
+}
 
-  color:#aebbd0;
+.radio-option{
 
-  font-size:.82rem;
+  display:flex;
 
-  line-height:2;
+  align-items:center;
+
+  gap:10px;
+
+  color:#c8d4ea;
+
+  font-size:.86rem;
+
+  cursor:pointer;
+}
+
+.radio-option input{
+
+  width:auto;
+
+  margin:0;
+
+  accent-color:#8fbfff;
 }
 
 
 /* =========================
-   RIGHTS CHECK
+   IMAGE NOTE
+========================= */
+
+.image-note{
+
+  color:#8291aa;
+
+  font-size:.78rem;
+
+  margin:8px 0 0;
+
+  line-height:1.8;
+}
+
+
+/* =========================
+   AGREEMENT
 ========================= */
 
 .agreement{
 
-  margin-top:35px;
+  margin-top:40px;
 
   padding:25px;
 
@@ -301,7 +360,7 @@ select{
 
   letter-spacing:.15em;
 
-  margin-bottom:12px;
+  margin-bottom:15px;
 }
 
 .agreement-text{
@@ -310,7 +369,17 @@ select{
 
   font-size:.82rem;
 
-  line-height:2;
+  line-height:2.05;
+}
+
+.agreement-text p{
+
+  margin:0 0 15px;
+}
+
+.agreement-text p:last-child{
+
+  margin-bottom:0;
 }
 
 .check{
@@ -341,7 +410,7 @@ select{
 
 
 /* =========================
-   BUTTON
+   SUBMIT
 ========================= */
 
 .submit-area{
@@ -453,10 +522,6 @@ select{
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
   <div class="wrap">
@@ -489,7 +554,7 @@ select{
 
 
 <!-- =========================
-     NOTICE
+     01 BEFORE ORDER
 ========================= -->
 
 <section>
@@ -508,6 +573,7 @@ select{
     初回依頼フォームです。<br><br>
 
     内容を確認後、制作についてご連絡いたします。<br>
+
     このフォームを送信した時点では、
     依頼の確定・制作開始とはなりません。
 
@@ -518,7 +584,7 @@ select{
 
 
 <!-- =========================
-     FORM
+     02 FORM
 ========================= -->
 
 <section>
@@ -535,7 +601,7 @@ select{
   <div class="form-card">
 
 
-    <!-- 名前 -->
+    <!-- お名前 -->
 
     <div class="form-item">
 
@@ -581,7 +647,56 @@ select{
 
 
 
-    <!-- 姿 -->
+    <!-- REALITY -->
+
+    <div class="form-item">
+
+      <label>
+        REALITYアバターの使用
+        <span class="required">
+          必須
+        </span>
+      </label>
+
+      <div class="radio-group">
+
+        <label class="radio-option">
+
+          <input
+            type="radio"
+            name="reality"
+            value="yes"
+            required
+          >
+
+          <span>
+            使用する
+          </span>
+
+        </label>
+
+
+        <label class="radio-option">
+
+          <input
+            type="radio"
+            name="reality"
+            value="no"
+          >
+
+          <span>
+            使用しない
+          </span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- あなたの姿 -->
 
     <div class="form-item">
 
@@ -603,6 +718,39 @@ select{
 
 
 
+    <!-- 参考画像 -->
+
+    <div class="form-item">
+
+      <label for="image">
+        参考画像
+        <span class="required">
+          任意
+        </span>
+      </label>
+
+      <input
+        type="file"
+        id="image"
+        name="image"
+        accept="image/png,image/jpeg,image/webp"
+        multiple
+      >
+
+      <p class="image-note">
+
+        描いてほしい姿の参考画像がある場合は、
+        複数枚添付できます。<br>
+
+        全身・顔・衣装・小物など、
+        必要な資料をお送りください。
+
+      </p>
+
+    </div>
+
+
+
     <!-- 希望 -->
 
     <div class="form-item">
@@ -614,7 +762,7 @@ select{
       <textarea
         id="request"
         name="request"
-        placeholder="表情・ポーズ・雰囲気など、ご希望があればご記入ください。"
+        placeholder="表情・ポーズ・雰囲気・色など、ご希望があればご記入ください。"
       ></textarea>
 
     </div>
@@ -639,7 +787,9 @@ select{
 
 
 
-    <!-- 権利 -->
+    <!-- =========================
+         RIGHTS
+    ========================= -->
 
     <div class="agreement">
 
@@ -647,27 +797,107 @@ select{
         RIGHTS & USE
       </div>
 
+
       <div class="agreement-text">
 
-        作品の著作権は制作者（星詠）に帰属します。<br>
-        納品物は個人利用の範囲でご利用いただけます。<br>
-        無断での販売・グッズ化・再配布・自作発言・商用利用は禁止しています。<br>
-        商用利用やグッズ化をご希望の場合は、事前にご相談ください。<br>
-        また、納品物をAI学習・AI生成等の目的で利用することは禁止しています。
+        <p>
+          作品の著作権は制作者（星詠）に帰属します。
+          納品物は個人利用の範囲でご利用いただけます。
+        </p>
+
+        <p>
+          無断での販売・グッズ化・再配布・自作発言・
+          商用利用は禁止しています。
+          商用利用やグッズ化をご希望の場合は、
+          事前にご相談ください。
+        </p>
+
+        <p>
+          納品物をAI学習・AI生成等の目的で
+          利用することは禁止しています。
+        </p>
+
+
+        <p>
+          【REALITYアバターを使用する場合】<br>
+
+          REALITY上でご自身が使用しているアバターを
+          参考資料として使用する場合、
+          依頼者ご本人が使用するアバターであることを
+          ご確認ください。
+        </p>
+
+        <p>
+          REALITYの3Dモデルデータそのものを
+          抽出・複製することを目的とした制作は行いません。
+        </p>
+
+
+        <p>
+          【第三者が権利を有するものについて】<br>
+
+          ご提出いただく画像・キャラクター・ロゴ・
+          衣装・デザイン等について、
+          第三者が著作権その他の権利を有する場合は、
+          制作・利用に必要な許可を得ていることを
+          ご確認ください。
+        </p>
+
+        <p>
+          第三者の権利を侵害するおそれがあると判断した場合、
+          制作をお断りする場合があります。
+        </p>
 
       </div>
 
+
+      <!-- 基本同意 -->
 
       <label class="check">
 
         <input
           type="checkbox"
-          name="agreement"
+          name="agreement_basic"
           required
         >
 
         <span>
-          上記の権利・利用条件を確認し、同意します。
+          基本的な権利・利用条件を確認し、同意します。
+        </span>
+
+      </label>
+
+
+      <!-- REALITY -->
+
+      <label class="check">
+
+        <input
+          type="checkbox"
+          name="agreement_reality"
+          required
+        >
+
+        <span>
+          REALITYアバターに関する注意事項を確認しました。
+        </span>
+
+      </label>
+
+
+      <!-- 第三者 -->
+
+      <label class="check">
+
+        <input
+          type="checkbox"
+          name="agreement_third_party"
+          required
+        >
+
+        <span>
+          第三者が権利を有する素材について、
+          必要な許可を得ていることを確認しました。
         </span>
 
       </label>
@@ -676,7 +906,68 @@ select{
 
 
 
-    <!-- 送信 -->
+    <!-- =========================
+         PORTFOLIO
+    ========================= -->
+
+    <div class="form-item" style="margin-top:35px;">
+
+      <label>
+        制作実績としての掲載
+        <span class="required">
+          必須
+        </span>
+      </label>
+
+      <div class="radio-group">
+
+        <label class="radio-option">
+
+          <input
+            type="radio"
+            name="portfolio"
+            value="yes"
+            required
+          >
+
+          <span>
+            掲載を許可する
+          </span>
+
+        </label>
+
+
+        <label class="radio-option">
+
+          <input
+            type="radio"
+            name="portfolio"
+            value="no"
+          >
+
+          <span>
+            掲載を許可しない
+          </span>
+
+        </label>
+
+      </div>
+
+      <p class="image-note">
+
+        ※掲載を許可いただいた場合、
+        星詠のWebサイト・SNS・ポートフォリオ等で
+        制作実績として紹介する場合があります。
+
+      </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         SUBMIT
+    ========================= -->
 
     <div class="submit-area">
 
