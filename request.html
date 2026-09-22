@@ -42,9 +42,8 @@ body{
   line-height:1.9;
 }
 
-
 .wrap{
-  width:min(1000px,calc(100% - 40px));
+  width:min(900px,calc(100% - 40px));
   margin:auto;
 }
 
@@ -55,10 +54,8 @@ body{
 
 header{
   text-align:center;
-
-  padding:100px 0 65px;
+  padding:100px 0 70px;
 }
-
 
 .system{
   color:#8fbfff;
@@ -74,7 +71,6 @@ header{
 
   margin-bottom:25px;
 }
-
 
 .logo{
   width:min(220px,60vw);
@@ -92,7 +88,6 @@ header{
     );
 }
 
-
 h1{
   font-size:
     clamp(2rem,5vw,3rem);
@@ -104,7 +99,6 @@ h1{
   margin:0;
 }
 
-
 .lead{
   color:#aab8d2;
 
@@ -113,17 +107,16 @@ h1{
 
 
 /* =========================
-   SECTION
+   MAIN
 ========================= */
 
 section{
-  padding:70px 0;
+  padding:65px 0;
 
   border-top:
     1px solid
     rgba(180,205,245,.18);
 }
-
 
 .section-label{
   color:#8fbfff;
@@ -138,8 +131,9 @@ section{
   letter-spacing:.22em;
 
   margin:0 0 10px;
-}
 
+  text-align:center;
+}
 
 h2{
   font-size:1.6rem;
@@ -148,228 +142,30 @@ h2{
 
   letter-spacing:.08em;
 
-  margin:0 0 35px;
-}
-
-
-/* =========================
-   初回のみ
-========================= */
-
-.first-order{
-  width:min(720px,100%);
-
-  margin:0 auto;
-}
-
-
-.first-order-intro{
-  color:#aab8d2;
+  margin:0 0 45px;
 
   text-align:center;
-
-  line-height:2.1;
-
-  margin:0 auto 40px;
-}
-
-
-.first-order-card{
-
-  padding:45px 35px;
-
-  text-align:center;
-
-  border:
-    1px solid
-    rgba(180,205,245,.22);
-
-  border-radius:22px;
-
-  background:
-    rgba(10,24,52,.58);
-
-  box-shadow:
-    0 20px 60px
-    rgba(0,0,0,.15);
-}
-
-
-.first-order-label{
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.7rem;
-
-  letter-spacing:.25em;
-
-  margin-bottom:15px;
-}
-
-
-.first-order-title{
-
-  font-size:1.7rem;
-
-  font-weight:400;
-
-  letter-spacing:.1em;
-
-  margin:0 0 20px;
-}
-
-
-.first-order-description{
-
-  color:#aab8d2;
-
-  margin:0 auto 35px;
-
-  line-height:2;
 }
 
 
 /* =========================
-   価格
+   CHOICE
 ========================= */
 
-.price{
-
-  margin:0 0 30px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  gap:5px;
-}
-
-
-.price-label{
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.68rem;
-
-  letter-spacing:.25em;
-}
-
-
-.price-value{
-
-  font-size:2rem;
-
-  letter-spacing:.08em;
-}
-
-
-/* =========================
-   注意
-========================= */
-
-.order-notes{
-
-  padding-top:25px;
-
-  border-top:
-    1px solid
-    rgba(180,205,245,.12);
-
-  color:#8291aa;
-
-  font-size:.8rem;
-
-  line-height:2;
-
-  margin-bottom:35px;
-}
-
-
-.order-notes p{
-  margin:3px 0;
-}
-
-
-/* =========================
-   BUTTON
-========================= */
-
-.button{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  min-width:220px;
-
-  padding:14px 30px;
-
-  border:
-    1px solid
-    rgba(210,225,255,.4);
-
-  border-radius:999px;
-
-  color:#edf3ff;
-
-  background:
-    rgba(255,255,255,.03);
-
-  text-decoration:none;
-
-  letter-spacing:.15em;
-
-  transition:.35s ease;
-}
-
-
-.button:hover{
-
-  transform:translateY(-2px);
-
-  background:
-    rgba(180,210,255,.08);
-
-  box-shadow:
-    0 0 30px
-    rgba(150,190,255,.15);
-}
-
-
-/* =========================
-   通常依頼
-========================= */
-
-.cards{
-
+.choices{
   display:grid;
 
   grid-template-columns:
     repeat(2,1fr);
 
-  gap:20px;
+  gap:24px;
 }
 
+.choice{
 
-.card{
+  min-height:310px;
 
-  min-height:220px;
-
-  padding:35px 28px;
+  padding:45px 30px;
 
   display:flex;
 
@@ -387,34 +183,33 @@ h2{
 
   border:
     1px solid
-    rgba(180,205,245,.18);
+    rgba(180,205,245,.2);
 
-  border-radius:20px;
+  border-radius:24px;
 
   background:
     rgba(10,24,52,.58);
 
-  transition:.35s ease;
+  transition:
+    .4s ease;
 }
 
+.choice:hover{
 
-.card:hover{
-
-  transform:translateY(-5px);
+  transform:translateY(-6px);
 
   border-color:
     rgba(143,191,255,.55);
 
   background:
-    rgba(20,40,78,.7);
+    rgba(20,40,78,.72);
 
   box-shadow:
-    0 15px 40px
-    rgba(50,90,170,.12);
+    0 18px 50px
+    rgba(50,90,170,.14);
 }
 
-
-.number{
+.choice-number{
 
   color:#8fbfff;
 
@@ -423,56 +218,64 @@ h2{
     "Times New Roman",
     serif;
 
-  font-size:.75rem;
+  font-size:.72rem;
 
-  letter-spacing:.2em;
+  letter-spacing:.25em;
 
-  margin-bottom:18px;
+  margin-bottom:22px;
 }
 
+.choice h3{
 
-.card h3{
-
-  font-size:1.25rem;
+  font-size:1.45rem;
 
   font-weight:400;
 
-  letter-spacing:.08em;
+  letter-spacing:.1em;
 
-  margin:0 0 12px;
+  margin:0 0 18px;
 }
 
-
-.card p{
+.choice p{
 
   color:#aab8d2;
 
   font-size:.9rem;
 
   margin:0;
+
+  line-height:2;
+}
+
+.choice-arrow{
+
+  margin-top:30px;
+
+  color:#8fbfff;
+
+  font-size:.9rem;
+
+  letter-spacing:.12em;
+
+  opacity:.8;
 }
 
 
 /* =========================
-   FLOW / NOTE
+   FOOT NOTE
 ========================= */
 
-.note{
+.message{
 
-  margin-top:30px;
+  margin-top:45px;
 
-  padding:22px 24px;
+  text-align:center;
 
-  border-left:
-    2px solid
-    rgba(143,191,255,.45);
+  color:#8291aa;
 
-  background:
-    rgba(120,160,255,.035);
+  font-size:.82rem;
 
-  color:#c8d4ea;
-
-  font-size:.9rem;
+  line-height:2;
 }
 
 
@@ -503,7 +306,6 @@ h2{
   transition:.3s ease;
 }
 
-
 .back:hover{
 
   background:
@@ -518,32 +320,23 @@ h2{
 @media(max-width:700px){
 
   .wrap{
-    width:min(100% - 28px,1000px);
+    width:min(100% - 28px,900px);
   }
-
 
   header{
     padding:75px 0 50px;
   }
 
-
   section{
     padding:55px 0;
   }
 
-
-  .cards{
+  .choices{
     grid-template-columns:1fr;
   }
 
-
-  .card{
-    min-height:180px;
-  }
-
-
-  .first-order-card{
-    padding:35px 22px;
+  .choice{
+    min-height:240px;
   }
 
 }
@@ -590,224 +383,84 @@ h2{
 <main class="wrap">
 
 
-<!-- =========================
-     01 初回のみ
-========================= -->
-
 <section>
 
   <p class="section-label">
-    01｜FIRST ORDER
+    REQUEST
   </p>
 
   <h2>
-    初回のみのご案内
+    どちらから始めますか？
   </h2>
 
 
-  <div class="first-order">
-
-    <p class="first-order-intro">
-
-      星詠をはじめてご利用になる方へ。<br>
-
-      最初の一枚は、あなたの姿を<br>
-      ミニ色紙に描きます。
-
-    </p>
+  <div class="choices">
 
 
-    <div class="first-order-card">
-
-
-      <div class="first-order-label">
-        FIRST ORDER ONLY
-      </div>
-
-
-      <h3 class="first-order-title">
-        あなたの姿
-      </h3>
-
-
-      <p class="first-order-description">
-
-        あなた自身の姿をもとに、<br>
-        小さなミニ色紙へ作品を描きます。<br><br>
-
-        星詠を初めて知る方のための、<br>
-        最初の一枚です。
-
-      </p>
-
-
-      <div class="price">
-
-        <div class="price-label">
-          PRICE
-        </div>
-
-        <div class="price-value">
-          3,000円
-        </div>
-
-      </div>
-
-
-      <div class="order-notes">
-
-        <p>
-          ※初回のみご利用いただけます。
-        </p>
-
-        <p>
-          ※送料は別途となります。
-        </p>
-
-        <p>
-          ※発送にはヤマト運輸の匿名配送を利用します。
-        </p>
-
-      </div>
-
-
-      <a
-        href="request-form.html"
-        class="button"
-      >
-        初回の依頼をする
-      </a>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     02 通常依頼
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    02｜REQUEST
-  </p>
-
-  <h2>
-    星詠でできること
-  </h2>
-
-
-  <p class="lead">
-
-    あなたの姿を描くことも。<br>
-    あなたの世界を描くことも。
-
-  </p>
-
-
-  <div class="cards">
-
+    <!-- 初回 -->
 
     <a
-      href="#"
-      class="card"
+      href="first-order.html"
+      class="choice"
     >
 
-      <div class="number">
+      <div class="choice-number">
         01
       </div>
 
       <h3>
-        あなたの姿
+        初回のみのご案内
       </h3>
 
       <p>
-        あなた自身をもとにした作品を依頼する
+        はじめて星詠をご利用になる方へ。<br>
+        あなたの姿を、ミニ色紙に。
       </p>
+
+      <div class="choice-arrow">
+        初回の依頼を見る　→
+      </div>
 
     </a>
 
 
+
+    <!-- 通常 -->
+
     <a
-      href="#"
-      class="card"
+      href="request-normal.html"
+      class="choice"
     >
 
-      <div class="number">
+      <div class="choice-number">
         02
       </div>
 
       <h3>
-        あなたの世界
+        通常のご依頼
       </h3>
 
       <p>
-        あなたの世界観や物語をもとに依頼する
+        あなたの姿、あなたの世界を<br>
+        一枚の作品へ。
       </p>
+
+      <div class="choice-arrow">
+        通常の依頼を見る　→
+      </div>
 
     </a>
 
 
   </div>
 
-</section>
 
+  <p class="message">
 
+    はじめての方は「初回のみのご案内」から。<br>
+    すでに星詠をご利用いただいた方は「通常のご依頼」へ。
 
-<!-- =========================
-     03 FLOW
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    03｜FLOW
   </p>
-
-  <h2>
-    ご依頼の流れ
-  </h2>
-
-
-  <div class="note">
-
-    内容を選択したあと、必要な情報をお伺いします。<br>
-
-    詳細を確認しながら、あなたの依頼に合わせて
-    制作内容を決定します。
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     04 NOTE
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    04｜NOTE
-  </p>
-
-  <h2>
-    ご依頼の前に
-  </h2>
-
-
-  <div class="note">
-
-    制作内容・料金・納期・利用範囲などについては、<br>
-    ご依頼前に必ずご確認ください。
-
-  </div>
 
 </section>
 
