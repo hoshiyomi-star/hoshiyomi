@@ -522,10 +522,6 @@ textarea{
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
   <div class="wrap">
@@ -557,10 +553,6 @@ textarea{
 <main class="wrap">
 
 
-<!-- =========================
-     01 BEFORE ORDER
-========================= -->
-
 <section>
 
   <p class="section-label">
@@ -587,10 +579,6 @@ textarea{
 
 
 
-<!-- =========================
-     02 FORM
-========================= -->
-
 <section>
 
   <p class="section-label">
@@ -602,8 +590,6 @@ textarea{
   </h2>
 
 
-  <!-- ★ Formspree -->
-
   <form
     class="form-card"
     action="https://formspree.io/f/mjykwovq"
@@ -612,9 +598,16 @@ textarea{
   >
 
 
-    <!-- =========================
-         NAME
-    ========================= -->
+    <!-- 件名 -->
+
+    <input
+      type="hidden"
+      name="_subject"
+      value="【星詠】初回依頼フォーム"
+    >
+
+
+    <!-- お名前 -->
 
     <div class="form-item">
 
@@ -637,9 +630,7 @@ textarea{
 
 
 
-    <!-- =========================
-         EMAIL
-    ========================= -->
+    <!-- メール -->
 
     <div class="form-item">
 
@@ -662,9 +653,7 @@ textarea{
 
 
 
-    <!-- =========================
-         REALITY
-    ========================= -->
+    <!-- REALITY -->
 
     <div class="form-item">
 
@@ -681,7 +670,7 @@ textarea{
 
           <input
             type="radio"
-            name="reality"
+            name="REALITYアバターの使用"
             value="使用する"
             required
           >
@@ -697,7 +686,7 @@ textarea{
 
           <input
             type="radio"
-            name="reality"
+            name="REALITYアバターの使用"
             value="使用しない"
           >
 
@@ -713,9 +702,7 @@ textarea{
 
 
 
-    <!-- =========================
-         APPEARANCE
-    ========================= -->
+    <!-- あなたの姿 -->
 
     <div class="form-item">
 
@@ -728,7 +715,7 @@ textarea{
 
       <textarea
         id="appearance"
-        name="appearance"
+        name="あなたの姿について"
         placeholder="髪型・服装・色・雰囲気など、描いてほしい姿についてご記入ください。"
         required
       ></textarea>
@@ -737,9 +724,7 @@ textarea{
 
 
 
-    <!-- =========================
-         IMAGE
-    ========================= -->
+    <!-- 参考画像 -->
 
     <div class="form-item">
 
@@ -753,7 +738,7 @@ textarea{
       <input
         type="file"
         id="image"
-        name="image"
+        name="参考画像"
         accept="image/png,image/jpeg,image/webp"
         multiple
       >
@@ -774,9 +759,7 @@ textarea{
 
 
 
-    <!-- =========================
-         REQUEST
-    ========================= -->
+    <!-- 希望 -->
 
     <div class="form-item">
 
@@ -786,7 +769,7 @@ textarea{
 
       <textarea
         id="request"
-        name="request"
+        name="ご希望・イメージ"
         placeholder="表情・ポーズ・雰囲気・色など、ご希望があればご記入ください。"
       ></textarea>
 
@@ -794,9 +777,7 @@ textarea{
 
 
 
-    <!-- =========================
-         MESSAGE
-    ========================= -->
+    <!-- その他 -->
 
     <div class="form-item">
 
@@ -806,7 +787,7 @@ textarea{
 
       <textarea
         id="message"
-        name="message"
+        name="その他・伝えておきたいこと"
         placeholder="その他、事前に伝えておきたいことがあればご記入ください。"
       ></textarea>
 
@@ -878,13 +859,14 @@ textarea{
       </div>
 
 
-      <!-- BASIC -->
+
+      <!-- 基本同意 -->
 
       <label class="check">
 
         <input
           type="checkbox"
-          name="agreement_basic"
+          name="基本的な権利・利用条件への同意"
           value="同意する"
           required
         >
@@ -896,13 +878,14 @@ textarea{
       </label>
 
 
-      <!-- REALITY -->
+
+      <!-- REALITY同意 -->
 
       <label class="check">
 
         <input
           type="checkbox"
-          name="agreement_reality"
+          name="REALITYアバターに関する確認"
           value="確認した"
           required
         >
@@ -914,13 +897,14 @@ textarea{
       </label>
 
 
-      <!-- THIRD PARTY -->
+
+      <!-- 第三者 -->
 
       <label class="check">
 
         <input
           type="checkbox"
-          name="agreement_third_party"
+          name="第三者の権利に関する確認"
           value="確認した"
           required
         >
@@ -958,7 +942,7 @@ textarea{
 
           <input
             type="radio"
-            name="portfolio"
+            name="制作実績としての掲載"
             value="掲載を許可する"
             required
           >
@@ -974,7 +958,7 @@ textarea{
 
           <input
             type="radio"
-            name="portfolio"
+            name="制作実績としての掲載"
             value="掲載を許可しない"
           >
 
