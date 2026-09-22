@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>初回のみのご案内｜星詠</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+}
+
+body{
+  color:#edf3ff;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(90,130,210,.14),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #040916 0%,
+      #07142d 55%,
+      #040916 100%
+    );
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
+
+  line-height:1.9;
+}
+
+.wrap{
+  width:min(850px,calc(100% - 40px));
+  margin:auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  text-align:center;
+  padding:100px 0 70px;
+}
+
+.system{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.75rem;
+
+  letter-spacing:.3em;
+
+  margin-bottom:25px;
+}
+
+.logo{
+  width:min(220px,60vw);
+
+  height:auto;
+
+  display:block;
+
+  margin:0 auto 28px;
+
+  filter:
+    drop-shadow(
+      0 0 20px
+      rgba(150,190,255,.18)
+    );
+}
+
+h1{
+  font-size:
+    clamp(2rem,5vw,3rem);
+
+  font-weight:400;
+
+  letter-spacing:.12em;
+
+  margin:0;
+}
+
+.lead{
+  color:#aab8d2;
+
+  margin:22px auto 0;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:65px 0;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.18);
+}
+
+.section-label{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.22em;
+
+  margin:0 0 10px;
+}
+
+h2{
+  font-size:1.55rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  margin:0 0 30px;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+  text-align:center;
+
+  color:#aab8d2;
+
+  line-height:2.3;
+
+  margin:0 auto;
+}
+
+
+/* =========================
+   WORK
+========================= */
+
+.work-card{
+
+  padding:45px 35px;
+
+  text-align:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  border-radius:22px;
+
+  background:
+    rgba(10,24,52,.58);
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.15);
+}
+
+.work-label{
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.7rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:15px;
+}
+
+.work-title{
+
+  font-size:1.7rem;
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+
+  margin:0 0 20px;
+}
+
+.work-text{
+
+  color:#aab8d2;
+
+  line-height:2.2;
+
+  margin:0;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.price-area{
+
+  text-align:center;
+
+  padding:45px 0 10px;
+}
+
+.price-label{
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.7rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:8px;
+}
+
+.price{
+
+  font-size:2.2rem;
+
+  letter-spacing:.08em;
+}
+
+.price-note{
+
+  color:#8291aa;
+
+  font-size:.8rem;
+
+  margin-top:8px;
+}
+
+
+/* =========================
+   DETAILS
+========================= */
+
+.details{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:16px;
+
+  margin-top:35px;
+}
+
+.detail{
+
+  padding:24px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.14);
+
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.02);
+}
+
+.detail-title{
+
+  color:#8fbfff;
+
+  font-size:.75rem;
+
+  letter-spacing:.15em;
+
+  margin-bottom:8px;
+}
+
+.detail-text{
+
+  color:#c8d4ea;
+
+  font-size:.88rem;
+
+  margin:0;
+}
+
+
+/* =========================
+   FLOW
+========================= */
+
+.flow{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:16px;
+}
+
+.flow-item{
+
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:20px;
+
+  padding:20px 22px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.13);
+
+  border-radius:15px;
+
+  background:
+    rgba(255,255,255,.02);
+}
+
+.flow-number{
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.75rem;
+
+  letter-spacing:.1em;
+
+  min-width:30px;
+}
+
+.flow-text{
+
+  color:#c8d4ea;
+
+  font-size:.9rem;
+}
+
+
+/* =========================
+   RIGHTS
+========================= */
+
+.rights{
+
+  padding:28px;
+
+  border-left:
+    2px solid
+    rgba(143,191,255,.4);
+
+  background:
+    rgba(120,160,255,.035);
+
+  color:#c8d4ea;
+
+  font-size:.88rem;
+
+  line-height:2.1;
+}
+
+.rights p{
+  margin:0 0 12px;
+}
+
+.rights p:last-child{
+  margin-bottom:0;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.button-area{
+
+  text-align:center;
+
+  padding:20px 0 70px;
+}
+
+.button{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-width:240px;
+
+  padding:15px 32px;
+
+  border:
+    1px solid
+    rgba(210,225,255,.4);
+
+  border-radius:999px;
+
+  color:#edf3ff;
+
+  background:
+    rgba(255,255,255,.03);
+
+  text-decoration:none;
+
+  letter-spacing:.15em;
+
+  transition:.35s ease;
+}
+
+.button:hover{
+
+  transform:translateY(-2px);
+
+  background:
+    rgba(180,210,255,.08);
+
+  box-shadow:
+    0 0 30px
+    rgba(150,190,255,.15);
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+.back{
+
+  display:block;
+
+  width:max-content;
+
+  margin:0 auto 80px;
+
+  padding:10px 22px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:999px;
+
+  color:#dce8ff;
+
+  text-decoration:none;
+
+  transition:.3s ease;
+}
+
+.back:hover{
+
+  background:
+    rgba(180,210,255,.08);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .wrap{
+    width:min(100% - 28px,850px);
+  }
+
+  header{
+    padding:75px 0 50px;
+  }
+
+  section{
+    padding:50px 0;
+  }
+
+  .work-card{
+    padding:35px 22px;
+  }
+
+  .details{
+    grid-template-columns:1fr;
+  }
+
+  .flow-item{
+    gap:12px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <div class="wrap">
+
+    <div class="system">
+      HOSHIYOMI FIRST ORDER
+    </div>
+
+    <img
+      src="logo.png"
+      alt="星詠"
+      class="logo"
+    >
+
+    <h1>
+      初回のみのご案内
+    </h1>
+
+    <p class="lead">
+      小さな一枚から、あなたの星を。
+    </p>
+
+  </div>
+
+</header>
+
+
+
+<main class="wrap">
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    FIRST ORDER
+  </p>
+
+  <h2>
+    はじめて星詠をご利用になる方へ
+  </h2>
+
+  <p class="intro">
+
+    星詠をはじめてご利用になる方には、<br>
+    最初の一枚として「あなたの姿」を<br>
+    ミニ色紙に描きます。<br><br>
+
+    大きな作品を依頼する前に、<br>
+    まずは小さな一枚から。<br>
+    星詠で作品が生まれる時間をお楽しみください。
+
+  </p>
+
+</section>
+
+
+
+<!-- =========================
+     WORK
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    01｜WORK
+  </p>
+
+  <h2>
+    今回描くもの
+  </h2>
+
+
+  <div class="work-card">
+
+    <div class="work-label">
+      FIRST ORDER ONLY
+    </div>
+
+    <h3 class="work-title">
+      あなたの姿
+    </h3>
+
+    <p class="work-text">
+
+      あなた自身の姿をもとに、<br>
+      ミニ色紙へ一枚の作品として描きます。<br><br>
+
+      表情や雰囲気など、希望があれば<br>
+      依頼時にお聞かせください。
+
+    </p>
+
+  </div>
+
+
+  <div class="price-area">
+
+    <div class="price-label">
+      PRICE
+    </div>
+
+    <div class="price">
+      3,000円
+    </div>
+
+    <div class="price-note">
+      ※送料は別途となります。
+    </div>
+
+  </div>
+
+
+  <div class="details">
+
+    <div class="detail">
+
+      <div class="detail-title">
+        FORMAT
+      </div>
+
+      <p class="detail-text">
+        ミニ色紙
+      </p>
+
+    </div>
+
+
+    <div class="detail">
+
+      <div class="detail-title">
+        DELIVERY
+      </div>
+
+      <p class="detail-text">
+        ヤマト運輸の匿名配送
+      </p>
+
+    </div>
+
+
+    <div class="detail">
+
+      <div class="detail-title">
+        USE
+      </div>
+
+      <p class="detail-text">
+        初回のみご利用いただけます。
+      </p>
+
+    </div>
+
+
+    <div class="detail">
+
+      <div class="detail-title">
+        AI
+      </div>
+
+      <p class="detail-text">
+        AIによる画像生成・着色等は使用しません。
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     FLOW
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    02｜FLOW
+  </p>
+
+  <h2>
+    ご依頼の流れ
+  </h2>
+
+
+  <div class="flow">
+
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        01
+      </div>
+
+      <div class="flow-text">
+        依頼フォームから必要事項を送信します。
+      </div>
+
+    </div>
+
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        02
+      </div>
+
+      <div class="flow-text">
+        内容を確認し、制作についてご連絡します。
+      </div>
+
+    </div>
+
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        03
+      </div>
+
+      <div class="flow-text">
+        内容・料金等を確認したうえで制作を開始します。
+      </div>
+
+    </div>
+
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        04
+      </div>
+
+      <div class="flow-text">
+        完成後、ヤマト運輸の匿名配送でお届けします。
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     RIGHTS
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    03｜RIGHTS
+  </p>
+
+  <h2>
+    権利・利用について
+  </h2>
+
+
+  <div class="rights">
+
+    <p>
+      制作した作品の著作権は、原則として制作者（星詠）に帰属します。
+    </p>
+
+    <p>
+      納品された作品は、個人で楽しむ範囲でご利用いただけます。
+    </p>
+
+    <p>
+      無断での販売・グッズ化・再配布・自作発言・商用利用は禁止しています。
+    </p>
+
+    <p>
+      商用利用やグッズ化をご希望の場合は、事前に星詠へご相談ください。
+    </p>
+
+    <p>
+      納品物をAI学習・AI生成等の目的で利用することは禁止しています。
+    </p>
+
+    <p>
+      制作物を星詠のWebサイト・SNS・ポートフォリオ等で
+      実績として紹介する場合があります。
+      公開を希望されない場合は、依頼時にお知らせください。
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     NOTE
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    04｜NOTE
+  </p>
+
+  <h2>
+    ご依頼の前に
+  </h2>
+
+
+  <div class="rights">
+
+    <p>
+      初回のみのご案内は、星詠をはじめてご利用になる方が対象です。
+    </p>
+
+    <p>
+      作品の内容によっては、ご希望に添えない場合があります。
+    </p>
+
+    <p>
+      ご依頼前に、権利・利用条件およびその他の注意事項をご確認ください。
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     BUTTON
+========================= -->
+
+<div class="button-area">
+
+  <a
+    href="request-form.html"
+    class="button"
+  >
+    初回の依頼をする
+  </a>
+
+</div>
+
+
+</main>
+
+
+
+<a
+  href="request.html"
+  class="back"
+>
+  ← 依頼の入口へ戻る
+</a>
+
+
+</body>
+</html>
