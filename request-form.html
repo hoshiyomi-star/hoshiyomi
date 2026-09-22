@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>初回依頼フォーム｜星詠</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+}
+
+body{
+  color:#edf3ff;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(90,130,210,.14),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #040916 0%,
+      #07142d 55%,
+      #040916 100%
+    );
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
+
+  line-height:1.9;
+}
+
+.wrap{
+  width:min(760px,calc(100% - 40px));
+  margin:auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  text-align:center;
+  padding:100px 0 65px;
+}
+
+.system{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.75rem;
+
+  letter-spacing:.3em;
+
+  margin-bottom:25px;
+}
+
+.logo{
+  width:min(200px,55vw);
+
+  height:auto;
+
+  display:block;
+
+  margin:0 auto 28px;
+
+  filter:
+    drop-shadow(
+      0 0 20px
+      rgba(150,190,255,.18)
+    );
+}
+
+h1{
+  font-size:
+    clamp(1.8rem,5vw,2.7rem);
+
+  font-weight:400;
+
+  letter-spacing:.12em;
+
+  margin:0;
+}
+
+.lead{
+  color:#aab8d2;
+
+  margin:22px auto 0;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:55px 0;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.18);
+}
+
+.section-label{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.22em;
+
+  margin:0 0 10px;
+}
+
+h2{
+  font-size:1.45rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  margin:0 0 30px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-card{
+
+  padding:35px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:20px;
+
+  background:
+    rgba(10,24,52,.58);
+}
+
+.form-item{
+  margin-bottom:28px;
+}
+
+.form-item:last-child{
+  margin-bottom:0;
+}
+
+label{
+
+  display:block;
+
+  color:#dce8ff;
+
+  font-size:.9rem;
+
+  letter-spacing:.06em;
+
+  margin-bottom:9px;
+}
+
+.required{
+
+  color:#8fbfff;
+
+  font-size:.7rem;
+
+  margin-left:6px;
+}
+
+input,
+textarea,
+select{
+
+  width:100%;
+
+  padding:13px 15px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.22);
+
+  border-radius:10px;
+
+  outline:none;
+
+  color:#edf3ff;
+
+  background:
+    rgba(3,10,25,.65);
+
+  font-family:inherit;
+
+  font-size:.9rem;
+
+  transition:.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+  border-color:
+    rgba(143,191,255,.6);
+
+  box-shadow:
+    0 0 20px
+    rgba(143,191,255,.08);
+}
+
+textarea{
+
+  min-height:150px;
+
+  resize:vertical;
+}
+
+select{
+  appearance:auto;
+}
+
+::placeholder{
+  color:#687791;
+}
+
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+
+  margin-bottom:35px;
+
+  padding:22px;
+
+  border-left:
+    2px solid
+    rgba(143,191,255,.45);
+
+  background:
+    rgba(120,160,255,.035);
+
+  color:#aebbd0;
+
+  font-size:.82rem;
+
+  line-height:2;
+}
+
+
+/* =========================
+   RIGHTS CHECK
+========================= */
+
+.agreement{
+
+  margin-top:35px;
+
+  padding:25px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.14);
+
+  border-radius:15px;
+
+  background:
+    rgba(255,255,255,.02);
+}
+
+.agreement-title{
+
+  color:#8fbfff;
+
+  font-size:.75rem;
+
+  letter-spacing:.15em;
+
+  margin-bottom:12px;
+}
+
+.agreement-text{
+
+  color:#aab8d2;
+
+  font-size:.82rem;
+
+  line-height:2;
+}
+
+.check{
+
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:10px;
+
+  margin-top:18px;
+
+  color:#dce8ff;
+
+  font-size:.82rem;
+
+  cursor:pointer;
+}
+
+.check input{
+
+  width:auto;
+
+  margin-top:7px;
+
+  accent-color:#8fbfff;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.submit-area{
+
+  text-align:center;
+
+  padding:45px 0 20px;
+}
+
+.submit-button{
+
+  min-width:240px;
+
+  padding:15px 32px;
+
+  border:
+    1px solid
+    rgba(210,225,255,.4);
+
+  border-radius:999px;
+
+  color:#edf3ff;
+
+  background:
+    rgba(255,255,255,.03);
+
+  font-family:inherit;
+
+  font-size:.9rem;
+
+  letter-spacing:.15em;
+
+  cursor:pointer;
+
+  transition:.35s ease;
+}
+
+.submit-button:hover{
+
+  transform:translateY(-2px);
+
+  background:
+    rgba(180,210,255,.08);
+
+  box-shadow:
+    0 0 30px
+    rgba(150,190,255,.15);
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+.back{
+
+  display:block;
+
+  width:max-content;
+
+  margin:35px auto 80px;
+
+  padding:10px 22px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:999px;
+
+  color:#dce8ff;
+
+  text-decoration:none;
+
+  transition:.3s ease;
+}
+
+.back:hover{
+
+  background:
+    rgba(180,210,255,.08);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .wrap{
+    width:min(100% - 28px,760px);
+  }
+
+  header{
+    padding:75px 0 50px;
+  }
+
+  .form-card{
+    padding:25px 20px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <div class="wrap">
+
+    <div class="system">
+      HOSHIYOMI FIRST ORDER FORM
+    </div>
+
+    <img
+      src="logo.png"
+      alt="星詠"
+      class="logo"
+    >
+
+    <h1>
+      初回依頼フォーム
+    </h1>
+
+    <p class="lead">
+      あなたの姿を、ミニ色紙に。
+    </p>
+
+  </div>
+
+</header>
+
+
+
+<main class="wrap">
+
+
+<!-- =========================
+     NOTICE
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    01｜BEFORE ORDER
+  </p>
+
+  <h2>
+    ご依頼前に
+  </h2>
+
+  <div class="notice">
+
+    こちらは、星詠をはじめてご利用になる方のための
+    初回依頼フォームです。<br><br>
+
+    内容を確認後、制作についてご連絡いたします。<br>
+    このフォームを送信した時点では、
+    依頼の確定・制作開始とはなりません。
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     FORM
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    02｜FORM
+  </p>
+
+  <h2>
+    必要事項を入力してください
+  </h2>
+
+
+  <div class="form-card">
+
+
+    <!-- 名前 -->
+
+    <div class="form-item">
+
+      <label for="name">
+        お名前
+        <span class="required">
+          必須
+        </span>
+      </label>
+
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="お名前をご入力ください"
+        required
+      >
+
+    </div>
+
+
+
+    <!-- メール -->
+
+    <div class="form-item">
+
+      <label for="email">
+        メールアドレス
+        <span class="required">
+          必須
+        </span>
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="example@example.com"
+        required
+      >
+
+    </div>
+
+
+
+    <!-- 姿 -->
+
+    <div class="form-item">
+
+      <label for="appearance">
+        あなたの姿について
+        <span class="required">
+          必須
+        </span>
+      </label>
+
+      <textarea
+        id="appearance"
+        name="appearance"
+        placeholder="髪型・服装・色・雰囲気など、描いてほしい姿についてご記入ください。"
+        required
+      ></textarea>
+
+    </div>
+
+
+
+    <!-- 希望 -->
+
+    <div class="form-item">
+
+      <label for="request">
+        ご希望・イメージ
+      </label>
+
+      <textarea
+        id="request"
+        name="request"
+        placeholder="表情・ポーズ・雰囲気など、ご希望があればご記入ください。"
+      ></textarea>
+
+    </div>
+
+
+
+    <!-- その他 -->
+
+    <div class="form-item">
+
+      <label for="message">
+        その他・伝えておきたいこと
+      </label>
+
+      <textarea
+        id="message"
+        name="message"
+        placeholder="その他、事前に伝えておきたいことがあればご記入ください。"
+      ></textarea>
+
+    </div>
+
+
+
+    <!-- 権利 -->
+
+    <div class="agreement">
+
+      <div class="agreement-title">
+        RIGHTS & USE
+      </div>
+
+      <div class="agreement-text">
+
+        作品の著作権は制作者（星詠）に帰属します。<br>
+        納品物は個人利用の範囲でご利用いただけます。<br>
+        無断での販売・グッズ化・再配布・自作発言・商用利用は禁止しています。<br>
+        商用利用やグッズ化をご希望の場合は、事前にご相談ください。<br>
+        また、納品物をAI学習・AI生成等の目的で利用することは禁止しています。
+
+      </div>
+
+
+      <label class="check">
+
+        <input
+          type="checkbox"
+          name="agreement"
+          required
+        >
+
+        <span>
+          上記の権利・利用条件を確認し、同意します。
+        </span>
+
+      </label>
+
+    </div>
+
+
+
+    <!-- 送信 -->
+
+    <div class="submit-area">
+
+      <button
+        type="submit"
+        class="submit-button"
+      >
+        依頼内容を送信する
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<a
+  href="first-order.html"
+  class="back"
+>
+  ← 初回のみのご案内へ戻る
+</a>
+
+
+</body>
+</html>
