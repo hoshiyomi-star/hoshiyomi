@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記念品｜星詠</title>
+
+<style>
+:root{
+  --bg:#040916;
+  --deep:#081936;
+  --blue:#8fbfff;
+  --violet:#a992d2;
+  --text:#edf3ff;
+  --muted:#b8c4da;
+  --line:rgba(180,205,255,.16);
+  --soft:rgba(7,16,36,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--text);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(72,105,170,.15),transparent 34%),
+    radial-gradient(circle at 15% 45%,rgba(95,72,150,.07),transparent 28%),
+    linear-gradient(180deg,#030713 0%,var(--bg) 48%,#06132b 100%);
+  font-family:"Yu Gothic",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  line-height:2;letter-spacing:.04em;
+}
+a{color:inherit;text-decoration:none}
+.page{min-height:100vh;padding-bottom:100px}
+.hero{
+  width:min(980px,calc(100% - 48px));
+  margin:0 auto;padding:110px 24px 86px;text-align:center;
+}
+.label{
+  margin:0 0 14px;font-size:.76rem;letter-spacing:.22em;
+  color:var(--blue);opacity:.82
+}
+h1{margin:0;font-size:2.55rem;font-weight:400;letter-spacing:.16em}
+.hero-line{width:42px;height:1px;background:rgba(200,220,255,.35);margin:30px auto}
+.hero-lead{margin:0;font-size:1.08rem;line-height:2.2;color:#dce7fa}
+.hero-copy{margin:28px auto 0;max-width:680px;font-size:.9rem;color:var(--muted)}
+main{width:min(980px,calc(100% - 48px));margin:0 auto}
+.section{padding:64px 0;border-top:1px solid var(--line)}
+.section h2{
+  margin:0 0 22px;font-size:1.45rem;font-weight:400;letter-spacing:.12em
+}
+.section-intro{margin:0;color:var(--muted);line-height:2.15}
+.card-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;margin-top:34px
+}
+.card{
+  padding:30px 26px;border:1px solid var(--line);
+  background:var(--soft);border-radius:5px;
+}
+.card .num{font-size:.7rem;letter-spacing:.16em;color:var(--blue);opacity:.75}
+.card h3{margin:8px 0 12px;font-size:1.02rem;font-weight:400;letter-spacing:.08em}
+.card p{margin:0;font-size:.88rem;color:var(--muted);line-height:2.05}
+.price-box{
+  margin-top:34px;padding:34px 38px;
+  border:1px solid rgba(180,205,255,.2);
+  background:rgba(7,16,36,.32);text-align:center;border-radius:5px;
+}
+.price{margin:0;font-size:1.45rem;letter-spacing:.12em}
+.price-note{margin:8px 0 0!important;font-size:.82rem;opacity:.72}
+.table-wrap{margin-top:30px;border-top:1px solid var(--line)}
+.row{
+  display:grid;grid-template-columns:200px 1fr;gap:24px;
+  padding:20px 0;border-bottom:1px solid var(--line)
+}
+.row strong{font-weight:400;color:#dce7fa}
+.row span{color:var(--muted)}
+.note{
+  margin-top:28px;padding:22px 24px;border-left:1px solid rgba(180,205,255,.3);
+  background:rgba(7,16,36,.18);font-size:.86rem;color:var(--muted)
+}
+.feature{
+  margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px
+}
+.feature-card{
+  padding:30px;border:1px solid var(--line);
+  background:rgba(7,16,36,.22);border-radius:5px
+}
+.feature-card h3{margin:0 0 12px;font-weight:400;font-size:1rem}
+.feature-card p{margin:0;color:var(--muted);font-size:.88rem}
+.flow{
+  margin-top:30px;border-left:1px solid rgba(180,205,255,.22);
+  padding-left:28px
+}
+.flow-item{position:relative;padding:10px 0 22px}
+.flow-item:last-child{padding-bottom:0}
+.flow-item::before{
+  content:"";position:absolute;left:-33px;top:19px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--blue);box-shadow:0 0 12px rgba(143,191,255,.35)
+}
+.flow-num{display:block;font-size:.68rem;letter-spacing:.16em;color:var(--blue);opacity:.72}
+.flow-title{display:block;margin:2px 0 4px;color:#dce7fa;font-size:.98rem}
+.flow-text{display:block;color:var(--muted);font-size:.86rem}
+.cta{
+  text-align:center;padding:78px 0 20px;
+  border-top:1px solid var(--line);margin-top:10px
+}
+.cta p{margin:0;color:var(--muted);font-size:.92rem}
+.cta-main{
+  display:inline-block;margin-top:28px;padding:13px 28px;
+  border:1px solid rgba(180,205,255,.25);
+  font-size:.88rem;letter-spacing:.1em;background:rgba(7,16,36,.2);
+  transition:.25s ease
+}
+.cta-main:hover{background:rgba(120,160,230,.08)}
+.back{
+  display:inline-block;margin:22px 10px 0;
+  font-size:.78rem;opacity:.65;letter-spacing:.1em
+}
+@media(max-width:760px){
+  .hero{padding-top:78px}
+  h1{font-size:2rem}
+  .card-grid,.feature{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:4px}
+  .price-box{padding:28px 20px}
+}
+
+/* 星の海メニュー */
+.star-menu-button{
+  position:fixed;right:22px;bottom:22px;z-index:1000;
+  padding:10px 18px;border:1px solid rgba(180,205,255,.24);
+  border-radius:999px;background:rgba(4,9,22,.82);backdrop-filter:blur(10px);
+  color:#edf3ff;font:inherit;font-size:.82rem;letter-spacing:.08em;cursor:pointer;
+}
+.star-menu{
+  position:fixed;inset:0;z-index:1100;display:none;
+  background:rgba(2,6,16,.72);backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.star-menu.is-open{display:flex}
+.star-menu-inner{
+  width:min(620px,100%);max-height:calc(100vh - 48px);overflow:auto;
+  padding:42px 34px;border:1px solid rgba(180,205,255,.18);
+  border-radius:8px;background:rgba(5,12,29,.96);
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+}
+.star-menu-label{margin:0 0 6px;text-align:center;font-size:.7rem;letter-spacing:.24em;color:#8fbfff;opacity:.75}
+.star-menu-inner h2{margin:0;text-align:center;font-size:1.5rem;font-weight:400;letter-spacing:.14em}
+.star-menu-line{height:1px;background:rgba(180,205,255,.14);margin:24px 0}
+.star-menu-inner>a{display:block;padding:12px 4px;color:#dce7fa;font-size:.9rem;letter-spacing:.05em;border-bottom:1px solid rgba(180,205,255,.07);transition:opacity .2s,transform .2s}
+.star-menu-inner>a:hover{opacity:.7;transform:translateX(3px)}
+.star-menu-close{display:block;margin:28px auto 0;padding:9px 18px;border:1px solid rgba(180,205,255,.18);border-radius:999px;background:transparent;color:#b8c4da;font:inherit;font-size:.78rem;letter-spacing:.08em;cursor:pointer}
+@media(max-width:640px){
+  .star-menu-button{right:14px;bottom:14px}
+  .star-menu-inner{padding:32px 22px}
+  .star-menu-inner>a{font-size:.82rem}
+}
+
+
+/* 返礼品フォーム */
+.return-form-wrap{margin-top:24px;padding:34px;border:1px solid rgba(180,205,255,.16);border-radius:10px;background:rgba(8,18,40,.34)}
+.return-form-heading{text-align:center;margin-bottom:28px}
+.return-form-heading .form-label{margin:0 0 8px;color:#8fbfff;font-size:.68rem;letter-spacing:.22em;opacity:.8}
+.return-form-heading h3{margin:0 0 12px;font-size:1.25rem;font-weight:400;letter-spacing:.1em}
+.return-form-heading p{margin:0;color:#b8c6da;font-size:.92rem;line-height:1.9}
+.return-form{display:grid;gap:20px}
+.return-field{display:grid;gap:8px}
+.return-field label{font-size:.90rem;color:#dce7fa;letter-spacing:.04em}
+.return-field label span{color:#8fbfff;font-size:.76rem;margin-left:6px}
+.return-field input,.return-field select,.return-field textarea{width:100%;box-sizing:border-box;padding:12px 13px;border:1px solid rgba(180,205,255,.18);border-radius:7px;background:rgba(3,9,22,.72);color:#edf3ff;font:inherit;font-size:.88rem;outline:none}
+.return-field textarea{min-height:110px;resize:vertical;line-height:1.7}
+.return-field input:focus,.return-field select:focus,.return-field textarea:focus{border-color:rgba(143,191,255,.5)}
+.return-field small{color:#a7b5ca;font-size:.80rem;line-height:1.7}
+.return-other{display:none}
+.return-other.is-visible{display:grid}
+.return-submit{display:block;width:fit-content;margin:4px auto 0;padding:12px 28px;border:1px solid rgba(180,205,255,.24);border-radius:999px;background:rgba(120,160,255,.05);color:#edf3ff;font:inherit;font-size:.84rem;letter-spacing:.08em;cursor:pointer}
+.return-submit{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .35s ease,border-color .35s ease;background:linear-gradient(180deg,rgba(150,185,255,.09),rgba(90,120,210,.035));box-shadow:0 0 0 rgba(145,190,255,0)}
+.return-submit::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle,rgba(210,225,255,.35) 0 2px,transparent 3px);opacity:0;transform:scale(.7);transition:opacity .35s ease,transform .45s ease;pointer-events:none}
+.return-submit:hover{transform:translateY(-1px);border-color:rgba(200,220,255,.48);box-shadow:0 0 22px rgba(125,175,255,.18),0 0 55px rgba(145,115,255,.08)}
+.return-submit:hover::before{opacity:.9;transform:scale(1)}
+.return-submit:active{transform:translateY(0) scale(.985);box-shadow:0 0 30px rgba(160,195,255,.28)}
+.confirm-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(2,7,20,.72);backdrop-filter:blur(8px)}
+.confirm-modal.is-open{display:flex}
+.confirm-modal-box{width:min(820px,100%);max-height:min(90vh,920px);overflow:auto;padding:28px;border:1px solid rgba(190,215,255,.22);border-radius:16px;background:linear-gradient(145deg,rgba(13,27,57,.97),rgba(7,15,34,.98));box-shadow:0 0 45px rgba(100,145,255,.12),0 0 90px rgba(120,90,190,.08)}
+.confirm-modal-label{margin:0 0 7px;color:#9fc5ff;font-size:.67rem;letter-spacing:.2em}
+.confirm-modal h3{margin:0 0 10px;font-weight:400;letter-spacing:.08em;font-size:1.25rem}.confirm-final-check{margin:18px 0 20px;padding:13px 15px;border:1px solid rgba(180,205,255,.14);border-radius:10px;background:rgba(120,160,255,.035)}.confirm-final-check label{display:flex;align-items:flex-start;gap:10px;color:#dce7f5;font-size:.84rem;line-height:1.7;cursor:pointer}.confirm-final-check input{width:20px;height:20px;margin:1px 0 0;flex:0 0 20px;accent-color:#8fbfff}
+.confirm-modal-intro{margin:0 0 20px;color:#b9c7db;line-height:1.8;font-size:.9rem}
+.confirm-preview{display:grid;gap:8px;margin:0 0 22px}
+.confirm-preview-row{padding:11px 13px;border:1px solid rgba(180,205,255,.1);border-radius:9px;background:rgba(120,160,255,.035)}
+.confirm-preview-label{display:block;color:#8fbfff;font-size:.7rem;letter-spacing:.06em;margin-bottom:4px}
+.confirm-preview-value{display:block;color:#edf3ff;line-height:1.65;white-space:pre-wrap;word-break:break-word;font-size:.88rem}
+.confirm-modal-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.confirm-modal-actions button{font:inherit;cursor:pointer;border-radius:999px;padding:11px 22px;letter-spacing:.07em}
+.confirm-edit{border:1px solid rgba(180,205,255,.18);background:rgba(120,160,255,.035);color:#dce7fa}
+.confirm-send{border:1px solid rgba(190,215,255,.3);background:rgba(130,170,255,.1);color:#fff;box-shadow:0 0 18px rgba(130,170,255,.1);transition:box-shadow .3s ease,transform .2s ease}
+.confirm-send:hover{box-shadow:0 0 26px rgba(145,190,255,.25),0 0 55px rgba(145,115,255,.08);transform:translateY(-1px)}
+.confirm-note{margin:14px 0 0;text-align:center;color:#8fa0b9;font-size:.75rem;line-height:1.7}
+@media(max-width:640px){.confirm-modal-box{padding:22px 17px}.confirm-modal-actions button{width:100%}}
+.return-submit:hover{background:rgba(120,160,255,.1)}
+.return-form-status{text-align:center;min-height:1.4em;margin:0;color:#b8c6da;font-size:.88rem;line-height:1.7}
+
+.return-form-section-title{margin-top:18px;padding:12px 0 9px;border-bottom:1px solid rgba(180,205,255,.12);color:#dce7fa;font-size:.92rem;letter-spacing:.08em}
+.form-help{margin:-4px 0 2px;color:#b8c6da;font-size:.88rem;line-height:1.8}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.check-stack,.confirm-list{display:grid;gap:9px;margin-top:8px}
+.check-grid label,.check-stack label,.confirm-list label{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:10px;padding:11px 13px;border:1px solid rgba(180,205,255,.1);border-radius:8px;background:rgba(120,160,255,.025);color:#d7e1f0;font-size:.88rem;line-height:1.65;cursor:pointer}
+.check-grid input,.check-stack input,.confirm-list input{width:20px;height:20px;margin:0;accent-color:#8fbfff;justify-self:center;flex:none}
+.check-grid label:hover,.check-stack label:hover,.confirm-list label:hover{border-color:rgba(180,205,255,.22);background:rgba(120,160,255,.045)}
+
+.conditional-field{display:none}
+.conditional-field.is-visible{display:block}
+.gift-detail-card,.art-detail-card{padding:22px;margin-top:12px;border:1px solid rgba(180,205,255,.12);border-radius:9px;background:rgba(4,12,28,.32)}
+.dynamic-card-title{margin:0 0 16px;color:#dce7fa;font-size:.95rem;letter-spacing:.06em}
+.secondary-add-button{display:block;margin:14px auto 4px;padding:9px 18px;border:1px solid rgba(180,205,255,.18);border-radius:999px;background:rgba(120,160,255,.04);color:#dce7fa;cursor:pointer}
+.secondary-add-button:hover{background:rgba(120,160,255,.08)}
+.image-label-list{display:grid;gap:8px;margin-top:8px}
+.image-label-item{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center;color:#aebbd0;font-size:.78rem}
+.image-label-item input{margin:0!important}
+.dynamic-remove{margin-top:8px;border:0;background:none;color:#9fb1ca;text-decoration:underline;cursor:pointer;font-size:.76rem}
+@media(max-width:640px){.return-form-wrap{padding:25px 18px}.check-grid{grid-template-columns:1fr}.image-label-item{grid-template-columns:1fr}}
+
+
+/* 返礼品ページ専用：やわらかな星明かり */
+.return-gift-soft,
+.return-gift-soft h1,
+.return-gift-soft h2,
+.return-gift-soft h3,
+.return-gift-soft p,
+.return-gift-soft label,
+.return-gift-soft input,
+.return-gift-soft select,
+.return-gift-soft textarea,
+.return-gift-soft button{
+  font-family:"Hiragino Maru Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+}
+.return-gift-soft h1,
+.return-gift-soft .return-form-heading h3,
+.return-gift-soft .return-form-section-title{
+  font-weight:400;
+}
+.return-gift-soft h1{
+  text-shadow:0 0 10px rgba(210,225,255,.18),0 0 28px rgba(143,191,255,.10);
+}
+.return-gift-soft .hero{
+  position:relative;
+}
+.return-gift-soft .hero::before,
+.return-gift-soft .hero::after{
+  content:"✦";
+  position:absolute;
+  color:rgba(235,244,255,.75);
+  pointer-events:none;
+  text-shadow:0 0 8px rgba(170,210,255,.75),0 0 22px rgba(143,191,255,.35);
+  animation:returnGiftTwinkle 4.5s ease-in-out infinite;
+}
+.return-gift-soft .hero::before{left:8%;top:34%;font-size:.75rem;}
+.return-gift-soft .hero::after{right:9%;top:20%;font-size:.58rem;animation-delay:1.8s;}
+.return-gift-soft .section{
+  position:relative;
+}
+.return-gift-soft .section::after{
+  content:"";
+  position:absolute;
+  width:120px;height:120px;
+  right:-35px;top:18px;
+  background:radial-gradient(circle,rgba(143,191,255,.10) 0,rgba(143,191,255,.035) 25%,transparent 70%);
+  filter:blur(5px);
+  pointer-events:none;
+}
+.return-gift-soft .section h2,
+.return-gift-soft .return-form-section-title{
+  text-shadow:0 0 12px rgba(170,205,255,.13);
+}
+.return-gift-soft .return-form-wrap{
+  position:relative;
+  overflow:hidden;
+  border-color:rgba(190,215,255,.20);
+  background:linear-gradient(145deg,rgba(12,27,57,.42),rgba(5,13,30,.36));
+  box-shadow:0 0 28px rgba(74,112,180,.07),inset 0 0 32px rgba(143,191,255,.025);
+}
+.return-gift-soft .return-form-wrap::before{
+  content:"";
+  position:absolute;
+  width:190px;height:190px;
+  left:-85px;top:-95px;
+  background:radial-gradient(circle,rgba(180,215,255,.11) 0,rgba(143,191,255,.035) 30%,transparent 72%);
+  filter:blur(7px);
+  pointer-events:none;
+}
+.return-gift-soft .return-form-wrap::after{
+  content:"✦  ·  ˚  ✧";
+  position:absolute;
+  right:24px;top:20px;
+  color:rgba(210,230,255,.42);
+  font-size:.65rem;letter-spacing:.35em;
+  text-shadow:0 0 10px rgba(170,210,255,.65);
+  pointer-events:none;
+}
+.return-gift-soft .return-form-heading h3{
+  text-shadow:0 0 12px rgba(210,230,255,.18),0 0 26px rgba(143,191,255,.10);
+}
+.return-gift-soft .return-form-section-title::before{
+  content:"✦";
+  display:inline-block;
+  margin-right:9px;
+  color:rgba(205,228,255,.75);
+  font-size:.72em;
+  text-shadow:0 0 9px rgba(143,191,255,.75);
+  transform:translateY(-1px);
+}
+.return-gift-soft .return-field input:focus,
+.return-gift-soft .return-field select:focus,
+.return-gift-soft .return-field textarea:focus{
+  border-color:rgba(160,205,255,.58);
+  box-shadow:0 0 0 2px rgba(143,191,255,.035),0 0 16px rgba(143,191,255,.09);
+}
+.return-gift-soft .return-submit{
+  position:relative;
+  box-shadow:0 0 18px rgba(143,191,255,.07);
+  text-shadow:0 0 9px rgba(220,235,255,.18);
+}
+.return-gift-soft .return-submit::before{
+  content:"✦";
+  position:absolute;
+  left:11px;top:50%;
+  transform:translateY(-50%);
+  opacity:.45;font-size:.65rem;
+  text-shadow:0 0 9px rgba(143,191,255,.8);
+}
+@keyframes returnGiftTwinkle{
+  0%,100%{opacity:.30;transform:scale(.82)}
+  50%{opacity:.95;transform:scale(1.08)}
+}
+@media(max-width:640px){
+  .return-gift-soft .hero::before{left:3%;top:31%;}
+  .return-gift-soft .hero::after{right:4%;top:17%;}
+  .return-gift-soft .return-form-wrap::after{right:14px;top:15px;}
+}
+
+</style>
+
+<style id="important-form-highlights">
+/* 重要項目だけ、星の光を少し強めて視認性を上げる */
+.return-gift-form .important-note,
+.return-gift-form .required-important {
+  color:#f4e8c8 !important;
+  font-size:1.04em !important;
+  font-weight:600 !important;
+  text-shadow:0 0 12px rgba(255,232,174,.20);
+}
+
+.return-gift-form .important-note strong,
+.return-gift-form .required-important strong {
+  color:#fff1c7 !important;
+}
+
+.return-gift-form .important-note {
+  border-left:2px solid rgba(255,226,158,.48);
+  padding-left:14px;
+}
+
+.return-gift-form .deadline-note,
+.return-gift-form .physical-goods-note {
+  color:#dce6f7;
+}
+
+.return-gift-form .deadline-note h3,
+.return-gift-form .physical-goods-note h3 {
+  color:#f1e4c3;
+  font-size:1.06rem;
+  text-shadow:0 0 14px rgba(255,225,160,.18);
+}
+
+/* 必須マークを少し見やすく */
+.return-gift-form .required,
+.return-gift-form .req,
+.return-gift-form label .asterisk {
+  color:#f0cfa0 !important;
+  font-size:1.05em;
+}
+</style>
+
+<style id="important-warning-style">
+.return-gift-soft .important-warning{
+  margin:24px 0 6px; padding:22px; border:1px solid rgba(255,205,135,.48);
+  border-radius:16px; background:linear-gradient(145deg,rgba(92,52,30,.30),rgba(44,24,24,.22));
+  box-shadow:0 0 24px rgba(255,198,120,.08),inset 0 0 28px rgba(255,210,150,.025);
+}
+.return-gift-soft .important-warning-head{display:flex;align-items:center;gap:13px;margin-bottom:16px;color:#f5dfb8;}
+.return-gift-soft .important-warning-mark{width:31px;height:31px;display:grid;place-items:center;flex:none;border:1px solid rgba(255,214,150,.65);border-radius:50%;font-size:1.05rem;font-weight:600;color:#ffe4ae;text-shadow:0 0 12px rgba(255,208,130,.55);box-shadow:0 0 15px rgba(255,203,130,.14);}
+.return-gift-soft .important-warning-head strong{display:block;font-size:1.10rem;letter-spacing:.12em;font-weight:500;}
+.return-gift-soft .important-warning-head span:last-child{display:block;margin-top:3px;color:#cbbba4;font-size:.82rem;line-height:1.6;}
+.return-gift-soft .important-warning-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.return-gift-soft .important-warning-card{padding:14px 15px;border:1px solid rgba(255,207,145,.20);border-radius:11px;background:rgba(16,13,18,.30);}
+.return-gift-soft .important-warning-card b{display:block;margin-bottom:6px;color:#f0d5a7;font-size:.86rem;letter-spacing:.05em;}
+.return-gift-soft .important-warning-card p{margin:0;color:#d7d0c7;font-size:.84rem;line-height:1.75;}
+.return-gift-soft .important-warning-card strong{color:#ffe3ac;font-size:1.02em;}
+@media(max-width:640px){.return-gift-soft .important-warning-grid{grid-template-columns:1fr;}.return-gift-soft .important-warning{padding:18px;}}
+</style>
+
+<style id="required-mark-and-readability">
+/* 必須項目：赤い米印を統一 */
+.required-mark {
+  display:inline-block;
+  margin-left:.22em;
+  color:#ff6b7a !important;
+  font-size:1.12em;
+  font-weight:700;
+  line-height:1;
+  text-shadow:0 0 8px rgba(255,80,105,.22);
+  vertical-align:baseline;
+}
+
+/* 小さくなりすぎている説明・ラベルを読みやすく */
+.return-gift-form label {
+  font-size: .92rem;
+  line-height: 1.75;
+}
+
+.return-gift-form .check-grid label,
+.return-gift-form .check-stack label,
+.return-gift-form .confirm-list label {
+  font-size: .94rem;
+  line-height: 1.75;
+  min-height: 44px;
+}
+
+.return-gift-form .form-rule-note,
+.return-gift-form .deadline-note,
+.return-gift-form .physical-goods-note {
+  font-size: .93rem;
+  line-height: 1.9;
+}
+
+.return-gift-form input,
+.return-gift-form select,
+.return-gift-form textarea {
+  font-size: .94rem;
+}
+
+/* 長い権利・規約確認文は横幅をしっかり使う */
+.return-gift-form .confirm-list label {
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items:start;
+}
+
+.return-gift-form .confirm-list label input {
+  margin-top:.28em;
+}
+
+.return-gift-form .rights-note,
+.return-gift-form .rights-box,
+.return-gift-form .notice-box {
+  font-size:.94rem;
+  line-height:1.9;
+}
+</style>
+
+<style id="milky-way-background">
+/* 返礼品ページ：天の川が夜空を横切るような背景 */
+body.return-gift-soft{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(ellipse 48% 24% at 78% 23%, rgba(157,112,220,.16), transparent 72%),
+    radial-gradient(ellipse 58% 30% at 24% 56%, rgba(113,83,190,.13), transparent 72%),
+    radial-gradient(ellipse 50% 25% at 67% 78%, rgba(170,113,211,.13), transparent 74%),
+    radial-gradient(circle at 52% 38%, rgba(96,108,210,.10), transparent 38%),
+    linear-gradient(180deg,#030814 0%,#07132d 42%,#0a1633 72%,#050b1d 100%);
+}
+
+body.return-gift-soft::before{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  inset:-18%;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 13% 48% at 55% 52%, rgba(219,173,255,.16), transparent 72%),
+    radial-gradient(ellipse 9% 42% at 60% 55%, rgba(164,126,231,.13), transparent 72%),
+    radial-gradient(ellipse 7% 34% at 47% 43%, rgba(117,119,223,.10), transparent 72%);
+  transform:rotate(-18deg);
+  filter:blur(18px);
+  opacity:.9;
+}
+
+body.return-gift-soft::after{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  opacity:.55;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.72) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 31% 27%, rgba(195,207,255,.65) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 73% 16%, rgba(255,228,255,.65) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 88% 34%, rgba(220,203,255,.65) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 19% 69%, rgba(205,222,255,.55) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 82% 72%, rgba(255,220,255,.55) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 52% 88%, rgba(221,208,255,.55) 0 1px, transparent 1.8px);
+}
+</style>
+</head>
+<<body class="return-gift-soft">
+<div class="page">
+
+<header class="hero">
+  <p class="label">MEMORIAL STAR</p>
+  <h1>記念品</h1>
+  <div class="hero-line"></div>
+  <p class="hero-lead">その瞬間の喜びを、<br>一枚の作品に。</p>
+  <p class="hero-copy">
+    誕生日、周年、イベント達成。<br>
+    大切な出来事や、忘れたくない瞬間を、一枚の作品として残します。
+  </p>
+</header>
+
+<main>
+
+<section class="section">
+  <h2>大切な時間を、一枚に。</h2>
+  <p class="section-intro">
+    星詠の記念品は、ただ記念日を描くだけではありません。<br>
+    その日に感じたこと、そこまで積み重ねてきた時間、
+    一緒に過ごしてきた人との思い出。<br>
+    その人にとって大切なものを、一枚の作品に込めて制作します。
+  </p>
+</section>
+
+<section class="section">
+  <h2>こんな記念に</h2>
+  <p class="section-intro">大切な出来事を、作品として残したいときに。</p>
+
+  <div class="card-grid">
+    <article class="card">
+      <span class="num">01｜BIRTHDAY</span>
+      <h3>誕生日</h3>
+      <p>その人だけの特別な一日を、一枚の作品に。普段とは少し違う姿や、好きなものを取り入れた作品など、誕生日を迎えた記念として残します。</p>
+    </article>
+
+    <article class="card">
+      <span class="num">02｜ANNIVERSARY</span>
+      <h3>周年・活動記念</h3>
+      <p>活動を始めてからの節目や、大切な記念日を作品として残します。これまでの時間や、積み重ねてきたものを一枚に込めます。</p>
+    </article>
+
+    <article class="card">
+      <span class="num">03｜ACHIEVEMENT</span>
+      <h3>イベント達成</h3>
+      <p>ランキング入り、目標達成、特別なイベントなど。「ここまで来た」という瞬間を、あとから振り返ることのできる作品として残します。</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>記念品としてできること</h2>
+  <p class="section-intro">残したい出来事や想いに合わせて、一枚の形を考えていきます。</p>
+
+  <div class="feature">
+    <article class="feature-card">
+      <h3>あなたの姿を中心に</h3>
+      <p>人物を主役として、その人らしさや雰囲気を一枚にします。</p>
+    </article>
+
+    <article class="feature-card">
+      <h3>思い出のものを加えて</h3>
+      <p>思い出の場所、好きなもの、イベントに関するものなど、記念に残したい要素を作品へ取り入れます。</p>
+    </article>
+
+    <article class="feature-card">
+      <h3>その日の空気を残す</h3>
+      <p>色や背景、構図などを通して、そのときの喜びや雰囲気まで一枚に込めます。</p>
+    </article>
+
+    <article class="feature-card">
+      <h3>まだ決まっていなくても</h3>
+      <p>どんな記念にするか決まっていない場合も、内容を一緒に整理していきます。</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>料金</h2>
+
+  <div class="price-box">
+    <p class="price">18,000円〜｜1点</p>
+    <p class="price-note">記念品の基本料金です。</p>
+  </div>
+
+  <p class="price-note">
+    ※構図や描き込み量、人数、衣装・装飾、背景などによって料金が変わる場合があります。
+  </p>
+
+  <div class="note">
+    正式な料金は、ご依頼内容を確認したうえでご案内します。<br>
+    追加料金が発生する場合は、制作前に必ずお知らせします。
+  </div>
+</section>
+
+<section class="section">
+  <h2>制作内容を決める</h2>
+
+  <div class="table-wrap">
+    <div class="row">
+      <strong>何の記念か</strong>
+      <span>誕生日・周年・イベント達成など</span>
+    </div>
+    <div class="row">
+      <strong>描いてほしい人物</strong>
+      <span>人物資料や、描きたい姿について</span>
+    </div>
+    <div class="row">
+      <strong>取り入れたいもの</strong>
+      <span>思い出の場所・好きなもの・記念となるものなど</span>
+    </div>
+    <div class="row">
+      <strong>希望する雰囲気</strong>
+      <span>色・空気感・イメージなど</span>
+    </div>
+    <div class="row">
+      <strong>参考資料</strong>
+      <span>制作に必要な資料</span>
+    </div>
+  </div>
+
+  <div class="note">
+    「どんな記念にしたいのか」を確認しながら、作品全体の構成を決めていきます。
+  </div>
+</section>
+
+<section class="section">
+  <h2>制作期間</h2>
+
+  <div class="price-box">
+    <p class="price">1ヶ月〜3ヶ月程度</p>
+    <p class="price-note">ご依頼内容や現在の制作状況によって前後します。</p>
+  </div>
+
+  <div class="note">
+    確認・ご返信のタイミングなどによっても前後する場合があります。
+    ご依頼をお受けする際に、現在の制作状況を踏まえた納期の目安をお伝えします。
+  </div>
+</section>
+
+<section class="section">
+  <h2>ラフ・修正について</h2>
+  <p class="section-intro">ラフの段階で内容を確認しながら制作を進めます。</p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <span class="flow-num">01</span>
+      <span class="flow-title">アイデアラフ・ラフ</span>
+      <span class="flow-text">記念品の内容や構図を確認しながら制作を進めます。</span>
+    </div>
+
+    <div class="flow-item">
+      <span class="flow-num">02</span>
+      <span class="flow-title">2回まで無料</span>
+      <span class="flow-text">構図・ポーズ・表情・記念品として取り入れる要素を確認できます。</span>
+    </div>
+
+    <div class="flow-item">
+      <span class="flow-num">03</span>
+      <span class="flow-title">ラフ確定</span>
+      <span class="flow-text">ラフ確定後の大幅な変更・描き直しは、内容に応じて追加料金または納期変更となる場合があります。</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>ご依頼の際に</h2>
+
+  <div class="table-wrap">
+    <div class="row">
+      <strong>何の記念か</strong>
+      <span>記念する出来事</span>
+    </div>
+    <div class="row">
+      <strong>記念日・達成日などの日付</strong>
+      <span>分かる範囲でお知らせください</span>
+    </div>
+    <div class="row">
+      <strong>描いてほしい人物</strong>
+      <span>人物資料など</span>
+    </div>
+    <div class="row">
+      <strong>取り入れたいもの</strong>
+      <span>思い出の場所・好きなものなど</span>
+    </div>
+    <div class="row">
+      <strong>参考資料</strong>
+      <span>制作に必要な資料</span>
+    </div>
+    <div class="row">
+      <strong>希望する雰囲気</strong>
+      <span>色・空気感・イメージなど</span>
+    </div>
+    <div class="row">
+      <strong>その他のご希望</strong>
+      <span>まだ決まっていないことも相談可能です</span>
+    </div>
+  </div>
+
+  <div class="note">
+    「こういう記念にしたい」という想いから、一緒に作品の形を考えていきます。
+  </div>
+</section>
+
+<section class="section">
+  <h2>記念を、一枚に。</h2>
+  <p class="section-intro">
+    大切な日は、その瞬間が過ぎれば終わってしまいます。<br>
+    けれど、その日に感じた喜びや、そこまで積み重ねてきた時間まで消えてしまうわけではありません。<br>
+    その瞬間を、あとから見返せる一枚へ。
+  </p>
+</section>
+
+<section class="cta">
+  <p>
+    内容がまだ決まっていなくても大丈夫です。<br>
+    まずは、どんな記念を残したいのか聞かせてください。
+  </p>
+
+  <a class="return-submit" href="contact.html"
+     style="display:inline-block;padding:14px 30px;text-decoration:none;margin-top:28px;">
+    記念品について相談する →
+  </a>
+
+  <br>
+
+  <a class="back" href="return-gift.html">← 返礼品を見る</a>
+  <a class="back" href="index.html#choice">← カード一覧へ戻る</a>
+</section>
+
+</main>
+
+<button class="star-menu-button" id="starMenuButton" type="button">星の海を開く</button>
+
+<nav class="star-menu" id="starMenu" aria-hidden="true">
+  <div class="star-menu-inner">
+    <p class="star-menu-label">HOSHIYOMI</p>
+    <h2>星の海</h2>
+
+    <div class="star-menu-line"></div>
+
+    <a href="index.html#services">01｜星をつくる　｜ サービス一覧</a>
+    <a href="benefits.html">02｜星を届ける　｜ 活用・特典</a>
+    <a href="index.html#flow">03｜ご依頼の流れ　｜ お申し込みの手順</a>
+    <a href="index.html#contact-guide">04｜最後の案内　｜ はじめての方へ</a>
+
+    <div class="star-menu-line"></div>
+
+    <a href="contact.html">記念品について相談する</a>
+
+    <button class="star-menu-close" id="starMenuClose" type="button">
+      星の海を閉じる
+    </button>
+  </div>
+</nav>
+
+<script>
+(function(){
+  const button=document.getElementById('starMenuButton');
+  const menu=document.getElementById('starMenu');
+  const close=document.getElementById('starMenuClose');
+  if(!button||!menu||!close) return;
+
+  function openMenu(){
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+
+  function closeMenu(){
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  button.addEventListener('click',openMenu);
+  close.addEventListener('click',closeMenu);
+
+  menu.addEventListener('click',e=>{
+    if(e.target===menu) closeMenu();
+  });
+
+  menu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',closeMenu);
+  });
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape') closeMenu();
+  });
+})();
+</script>
+
+</div>
+</body>
