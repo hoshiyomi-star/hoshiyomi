@@ -151,7 +151,7 @@ h2{
 }
 
 .gift{
-  min-height:220px;
+  min-height:250px;
 
   padding:35px 28px;
 
@@ -203,7 +203,22 @@ h2{
 
   letter-spacing:.08em;
 
-  margin:0 0 12px;
+  margin:0 0 15px;
+}
+
+.price{
+  color:#edf3ff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:1.05rem;
+
+  letter-spacing:.08em;
+
+  margin-bottom:18px;
 }
 
 .gift p{
@@ -214,6 +229,25 @@ h2{
   line-height:1.9;
 
   margin:0;
+}
+
+
+/* =========================
+   本文
+========================= */
+
+.description{
+  color:#c8d4ea;
+
+  text-align:center;
+
+  font-size:.95rem;
+
+  line-height:2.1;
+
+  max-width:720px;
+
+  margin:0 auto;
 }
 
 
@@ -236,6 +270,59 @@ h2{
   font-size:.9rem;
 
   line-height:1.9;
+}
+
+
+/* =========================
+   流れ
+========================= */
+
+.flow{
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:18px;
+
+  flex-wrap:wrap;
+
+  margin-top:35px;
+}
+
+.flow-item{
+  min-width:180px;
+
+  padding:20px;
+
+  text-align:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.15);
+
+  border-radius:16px;
+
+  background:
+    rgba(10,24,52,.4);
+
+  color:#c8d4ea;
+
+  font-size:.85rem;
+
+  line-height:1.8;
+}
+
+.flow-arrow{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:1.1rem;
 }
 
 
@@ -293,7 +380,15 @@ h2{
   }
 
   .gift{
-    min-height:180px;
+    min-height:200px;
+  }
+
+  .flow{
+    flex-direction:column;
+  }
+
+  .flow-arrow{
+    transform:rotate(90deg);
   }
 
 }
@@ -327,8 +422,8 @@ h2{
   </h1>
 
   <p class="lead">
-    星詠と出会ってくださった方へ。<br>
-    その時間に、ひとつのお返しを。
+    誰かに届けるための、一枚を。<br>
+    大切な想いを、作品として残します。
   </p>
 
 </header>
@@ -345,7 +440,7 @@ h2{
   </div>
 
   <h2>
-    星詠からのお届けもの
+    誰かへ届ける、一枚
   </h2>
 
   <div class="gifts">
@@ -354,16 +449,22 @@ h2{
     <div class="gift">
 
       <div class="gift-number">
-        REWARD 01
+        REWARD
       </div>
 
       <h3>
         返礼品
       </h3>
 
+      <div class="price">
+        10,000円〜
+      </div>
+
       <p>
-        星詠でのご依頼や活動を通して、
-        お届けする返礼品です。
+        イベントや活動、記念日など、
+        大切な人へ届けるための作品を制作します。
+        誰かへの「ありがとう」や「おめでとう」を、
+        一枚の作品として形にします。
       </p>
 
     </div>
@@ -372,16 +473,18 @@ h2{
     <div class="gift">
 
       <div class="gift-number">
-        REWARD 02
+        FOR SOMEONE
       </div>
 
       <h3>
-        特典
+        届けたい想いを、一枚に
       </h3>
 
       <p>
-        条件に応じて受け取ることができる
-        特典をご案内します。
+        贈る相手や出来事に合わせて、
+        作品の内容を一緒に考えていきます。
+        まだ形になっていない想いでも、
+        ご相談いただけます。
       </p>
 
     </div>
@@ -393,25 +496,81 @@ h2{
 
 
 <!-- =========================
-     詳細
+     返礼品の内容
 ========================= -->
 
 <section>
 
   <div class="label">
-    02｜DETAIL
+    02｜CONTENTS
   </div>
 
   <h2>
-    返礼品について
+    どんな一枚にするか
   </h2>
 
-  <div class="note">
+  <p class="description">
 
-    返礼品の内容は、時期や企画によって
-    変更される場合があります。<br>
+    誕生日や周年、イベント達成など、
+    大切な出来事を作品として残したり、
+    誰かへの感謝やお祝いを一枚にしたり。<br><br>
 
-    詳細については、それぞれの案内をご確認ください。
+    その人へ届けたい気持ちや、
+    残しておきたい瞬間をもとに、
+    星詠ならではの一枚へ仕上げます。
+
+  </p>
+
+</section>
+
+
+<!-- =========================
+     ご依頼の流れ
+========================= -->
+
+<section>
+
+  <div class="label">
+    03｜FLOW
+  </div>
+
+  <h2>
+    ご依頼から制作まで
+  </h2>
+
+  <div class="flow">
+
+    <div class="flow-item">
+      返礼品について<br>
+      ご相談
+    </div>
+
+    <div class="flow-arrow">
+      →
+    </div>
+
+    <div class="flow-item">
+      内容・描き込み量などを<br>
+      確認
+    </div>
+
+    <div class="flow-arrow">
+      →
+    </div>
+
+    <div class="flow-item">
+      正式な料金・納期を<br>
+      ご案内
+    </div>
+
+    <div class="flow-arrow">
+      →
+    </div>
+
+    <div class="flow-item">
+      ご了承後<br>
+      制作開始
+    </div>
 
   </div>
 
@@ -425,7 +584,7 @@ h2{
 <section>
 
   <div class="label">
-    03｜NOTE
+    04｜NOTE
   </div>
 
   <h2>
@@ -434,13 +593,44 @@ h2{
 
   <div class="note">
 
-    返礼品は、すべての方に同じ内容が
-    提供されるものではありません。<br>
+    返礼品は、贈る相手やご希望の内容によって
+    料金や制作期間が変わる場合があります。<br>
 
-    対象となる条件や内容をご確認のうえ、
-    お楽しみください。
+    サイトに掲載している
+    <strong>10,000円〜</strong> は基本料金です。<br>
+
+    構図や描き込み量、人数、衣装・装飾、
+    小物などの内容によって追加料金が発生する場合があります。<br>
+
+    追加料金が発生する場合は、
+    <strong>制作前に必ずご案内します。</strong>
 
   </div>
+
+</section>
+
+
+<!-- =========================
+     最後
+========================= -->
+
+<section>
+
+  <div class="label">
+    05｜MESSAGE
+  </div>
+
+  <h2>
+    想いを、誰かのもとへ。
+  </h2>
+
+  <p class="description">
+
+    あなたが届けたい「ありがとう」や「おめでとう」。<br>
+    その瞬間にしかない想いを、
+    一枚の作品として残してみませんか。
+
+  </p>
 
 </section>
 
