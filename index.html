@@ -44,7 +44,7 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 <p class="choice-text">星詠での行き先を選んでください。</p>
 <div class="choices">
 
-<a href="request.html" class="choice"><div class="choice-number">01</div><h2>今すぐ依頼したい</h2><p>作品の制作を依頼する</p></a>
+<a href="request-choice.html" class="choice"><div class="choice-number">01</div><h2>今すぐ依頼したい</h2><p>作品の制作を依頼する</p></a>
 
 <a href="about.html" class="choice"><div class="choice-number">02</div><h2>星詠をのぞいてみる</h2><p>作品や星詠について見る</p></a>
 
@@ -66,12 +66,22 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 const startButton=document.getElementById("startButton");
 const startScreen=document.getElementById("startScreen");
 const choiceScreen=document.getElementById("choice");
-startButton.addEventListener("click",function(event){
-event.preventDefault();
+
+function showChoice(){
 startScreen.style.display="none";
 choiceScreen.style.display="block";
+}
+
+startButton.addEventListener("click",function(event){
+event.preventDefault();
+showChoice();
 window.scrollTo({top:0,behavior:"instant"});
 });
+
+/* 他のページから index.html#choice で戻ってきた場合 */
+if(window.location.hash==="#choice"){
+showChoice();
+}
 </script>
 </body>
 </html>
