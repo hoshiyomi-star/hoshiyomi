@@ -509,7 +509,36 @@
 
     }
 
-  </style>
+  
+.card-return{
+  display:block;
+  width:max-content;
+  margin:32px auto 70px;
+  padding:12px 30px;
+  border:1px solid rgba(180,205,245,.28);
+  border-radius:999px;
+  color:#cbd9ef;
+  text-decoration:none;
+  letter-spacing:.12em;
+  font-size:.85rem;
+  background:rgba(8,22,48,.25);
+  transition:.3s ease;
+}
+.card-return:hover{
+  background:rgba(90,130,210,.12);
+  border-color:rgba(205,225,255,.55);
+  color:#edf4ff;
+  transform:translateY(-2px);
+}
+@media(max-width:700px){
+  .card-return{
+    width:calc(100% - 30px);
+    text-align:center;
+    margin:25px auto 50px;
+  }
+}
+
+</style>
 
 <style id="hoshiyomi-contact-night-design">
   /* 星詠｜お問い合わせ：星のかけらと同じ夜空 */
@@ -1043,6 +1072,11 @@
 
     </div>
 
+
+  
+    <a href="index.html#choice" class="card-return">
+      ← カード一覧へ戻る
+    </a>
 
   </main>
 
