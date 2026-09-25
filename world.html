@@ -14,6 +14,7 @@
 
 html,body{
   margin:0;
+  padding:0;
   min-height:100%;
 }
 
@@ -23,14 +24,14 @@ body{
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(90,130,210,.12),
-      transparent 35%
+      rgba(100,145,230,.16),
+      transparent 32%
     ),
     linear-gradient(
       180deg,
-      #040916 0%,
-      #07142d 55%,
-      #040916 100%
+      #020817 0%,
+      #07152e 45%,
+      #030916 100%
     );
 
   font-family:
@@ -42,9 +43,58 @@ body{
   line-height:1.9;
 }
 
+
+/* =========================
+   共通
+========================= */
+
 .wrap{
-  width:min(1050px,calc(100% - 40px));
+  width:min(1100px, calc(100% - 40px));
   margin:auto;
+}
+
+.section{
+  padding:90px 0;
+  border-top:1px solid rgba(180,205,245,.16);
+}
+
+.section-label{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+  letter-spacing:.28em;
+
+  text-align:center;
+
+  margin:0 0 12px;
+}
+
+.section-title{
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:400;
+
+  letter-spacing:.12em;
+
+  text-align:center;
+
+  margin:0;
+}
+
+.section-lead{
+  color:#aab8d2;
+
+  text-align:center;
+
+  font-size:.9rem;
+
+  line-height:2;
+
+  margin:22px auto 55px;
 }
 
 
@@ -53,18 +103,33 @@ body{
 ========================= */
 
 header{
-  padding:95px 0 80px;
+  position:relative;
+
+  padding:90px 0 80px;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(120,165,255,.18),
+      transparent 35%
+    );
 }
 
 .header-inner{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:55px;
+
+  grid-template-columns:
+    1fr 1.15fr;
+
   align-items:center;
+
+  gap:50px;
 }
 
-.header-copy{
-  text-align:left;
+.header-text{
+  text-align:center;
 }
 
 .system{
@@ -82,71 +147,61 @@ header{
   margin-bottom:25px;
 }
 
-h1{
-  font-size:
-    clamp(2.3rem,5vw,3.5rem);
+.title-frame{
+  position:relative;
 
-  font-weight:400;
-
-  letter-spacing:.1em;
-
-  margin:0 0 25px;
-
-  line-height:1.35;
-}
-
-.subtitle{
-  color:#aab8d2;
-
-  font-size:.95rem;
-
-  line-height:2;
-
-  margin:0;
-}
-
-
-/* =========================
-   HERO CARD
-========================= */
-
-.hero-card{
-
-  min-height:420px;
-
-  padding:55px 42px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
-
-  align-items:center;
-
-  text-align:center;
+  padding:35px 25px;
 
   border:
     1px solid
-    rgba(180,205,245,.28);
+    rgba(190,215,255,.4);
 
-  border-radius:26px;
+  border-radius:80px;
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(35,72,130,.55),
-      rgba(10,24,52,.45)
-    );
+    rgba(4,15,35,.35);
 
   box-shadow:
-    0 20px 70px
-    rgba(20,60,130,.12);
+    0 0 40px rgba(100,150,255,.06);
 }
 
-.hero-label{
+.title-frame::before,
+.title-frame::after{
+  content:"✦";
 
-  color:#dce8ff;
+  position:absolute;
+
+  color:#dbe8ff;
+
+  font-size:1rem;
+}
+
+.title-frame::before{
+  left:15px;
+  top:50%;
+
+  transform:translateY(-50%);
+}
+
+.title-frame::after{
+  right:15px;
+  top:50%;
+
+  transform:translateY(-50%);
+}
+
+.title-frame h1{
+  margin:0;
+
+  font-size:clamp(2rem,5vw,3.5rem);
+
+  font-weight:400;
+
+  letter-spacing:.16em;
+}
+
+.title-en{
+  margin-top:8px;
 
   font-family:
     Georgia,
@@ -155,60 +210,408 @@ h1{
 
   font-size:.72rem;
 
-  letter-spacing:.25em;
+  letter-spacing:.28em;
 
-  margin-bottom:30px;
+  color:#c4d4ee;
 }
 
-.hero-card h2{
+.header-message{
+  margin:35px auto 0;
 
-  font-size:2rem;
+  font-size:1.15rem;
 
-  font-weight:400;
+  line-height:2.1;
 
   letter-spacing:.12em;
-
-  margin:0 0 28px;
 }
 
-.hero-line{
+.header-message span{
+  display:block;
 
-  width:55px;
+  margin-top:15px;
 
-  height:1px;
+  color:#aab8d2;
 
-  background:
-    rgba(180,210,255,.5);
+  font-size:.82rem;
 
-  margin:0 auto 28px;
-}
-
-.hero-card p{
-
-  color:#c5d2e8;
-
-  font-size:.9rem;
-
-  line-height:2.2;
-
-  margin:0;
+  letter-spacing:.04em;
 }
 
 
 /* =========================
-   SECTION
+   メインビジュアル
 ========================= */
 
-section{
+.visual{
+  position:relative;
 
-  padding:75px 0;
+  min-height:480px;
 
-  border-top:
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+  border-radius:4px;
+}
+
+.visual::before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(150,190,255,.18),
+      transparent 55%
+    );
+}
+
+.visual-placeholder{
+  position:relative;
+
+  width:100%;
+  min-height:480px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30,55,95,.55),
+      rgba(5,15,35,.8)
+    );
+
+  overflow:hidden;
+}
+
+.visual-placeholder::before{
+  content:"";
+
+  position:absolute;
+
+  width:400px;
+  height:400px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(160,195,255,.2),
+      transparent 65%
+    );
+}
+
+.visual-text{
+  position:relative;
+
+  text-align:center;
+
+  color:#cbd9ef;
+
+  letter-spacing:.2em;
+
+  font-size:.8rem;
+}
+
+
+/* =========================
+   PLAN
+========================= */
+
+.plan-box{
+  display:grid;
+
+  grid-template-columns:
+    .9fr 1.1fr;
+
+  gap:45px;
+
+  align-items:stretch;
+}
+
+.plan-image{
+  min-height:420px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(160,195,255,.18),
+      transparent 55%
+    ),
+    rgba(8,22,48,.6);
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.plan-image::before{
+  content:"";
+
+  width:230px;
+  height:320px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(150,180,230,.13),
+      rgba(10,25,55,.4)
+    );
+
+  box-shadow:
+    0 0 60px rgba(120,170,255,.08);
+
+  transform:rotate(-3deg);
+}
+
+.plan-content{
+  padding:25px 0;
+}
+
+.plan-small{
+  color:#8fbfff;
+
+  font-size:.78rem;
+
+  letter-spacing:.2em;
+
+  margin-bottom:15px;
+}
+
+.plan-name{
+  font-size:1.7rem;
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+
+  margin:0 0 12px;
+}
+
+.price{
+  margin:15px 0 25px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:3rem;
+
+  letter-spacing:.05em;
+
+  color:#f0e3c5;
+}
+
+.price span{
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    serif;
+
+  font-size:1rem;
+
+  margin-left:5px;
+}
+
+.plan-description{
+  color:#b9c7dd;
+
+  line-height:2;
+
+  margin-bottom:30px;
+}
+
+
+/* =========================
+   POINTS
+========================= */
+
+.points{
+  display:grid;
+
+  gap:0;
+
+  border:
     1px solid
     rgba(180,205,245,.18);
 }
 
-.section-label{
+.point{
+  padding:18px 22px;
+
+  border-bottom:
+    1px solid
+    rgba(180,205,245,.12);
+}
+
+.point:last-child{
+  border-bottom:0;
+}
+
+.point-title{
+  color:#e7edf8;
+
+  margin-bottom:4px;
+
+  letter-spacing:.05em;
+}
+
+.point-title::before{
+  content:"✦";
+
+  color:#8fbfff;
+
+  margin-right:12px;
+}
+
+.point-text{
+  color:#8999b4;
+
+  font-size:.82rem;
+}
+
+
+/* =========================
+   INFO GRID
+========================= */
+
+.info-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:1px;
+
+  background:
+    rgba(180,205,245,.18);
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+}
+
+.info-card{
+  padding:35px;
+
+  background:
+    rgba(5,17,39,.8);
+}
+
+.info-icon{
+  width:42px;
+  height:42px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.25);
+
+  border-radius:10px;
+
+  color:#dce8ff;
+
+  margin-bottom:20px;
+}
+
+.info-card h3{
+  font-size:1.1rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  margin:0 0 15px;
+}
+
+.info-card p{
+  color:#9caeca;
+
+  font-size:.84rem;
+
+  line-height:2;
+}
+
+.info-card ul{
+  margin:0;
+  padding-left:1.2em;
+
+  color:#9caeca;
+
+  font-size:.82rem;
+
+  line-height:2;
+}
+
+
+/* =========================
+   料金・流れ
+========================= */
+
+.flow{
+  max-width:850px;
+
+  margin:auto;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+}
+
+.flow-item{
+  display:grid;
+
+  grid-template-columns:80px 1fr;
+
+  border-bottom:
+    1px solid
+    rgba(180,205,245,.14);
+}
+
+.flow-item:last-child{
+  border-bottom:0;
+}
+
+.flow-number{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
 
   color:#8fbfff;
 
@@ -217,203 +620,107 @@ section{
     "Times New Roman",
     serif;
 
-  font-size:.72rem;
-
-  letter-spacing:.22em;
-
-  margin:0 0 12px;
-
-  text-align:center;
+  border-right:
+    1px solid
+    rgba(180,205,245,.14);
 }
 
-h3{
+.flow-content{
+  padding:22px 25px;
+}
 
-  font-size:1.65rem;
+.flow-content strong{
+  display:block;
 
   font-weight:400;
 
-  letter-spacing:.08em;
+  letter-spacing:.06em;
 
-  text-align:center;
-
-  margin:0 0 22px;
+  margin-bottom:5px;
 }
 
-.section-lead{
+.flow-content span{
+  color:#8f9fba;
 
-  color:#aab8d2;
-
-  max-width:720px;
-
-  margin:0 auto;
-
-  text-align:center;
-
-  font-size:.9rem;
-
-  line-height:2.2;
+  font-size:.8rem;
 }
 
 
 /* =========================
-   CONTENT
+   CTA
 ========================= */
 
-.world-content{
+.cta{
+  text-align:center;
 
-  max-width:820px;
+  padding:100px 20px;
+}
 
-  margin:55px auto 0;
+.cta-message{
+  color:#dce7f7;
 
-  padding:45px 50px;
+  font-size:1.1rem;
+
+  letter-spacing:.1em;
+
+  line-height:2;
+}
+
+.cta-button{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  min-width:220px;
+
+  margin-top:30px;
+
+  padding:15px 35px;
 
   border:
     1px solid
-    rgba(180,205,245,.16);
-
-  border-radius:22px;
-
-  background:
-    rgba(10,24,52,.42);
-}
-
-.world-content p{
-
-  color:#b9c7df;
-
-  font-size:.88rem;
-
-  line-height:2.2;
-
-  margin:0;
-
-  text-align:center;
-}
-
-
-/* =========================
-   PLAN
-========================= */
-
-.price-section{
-
-  text-align:center;
-
-  padding-top:65px;
-}
-
-.price{
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:1.9rem;
-
-  letter-spacing:.08em;
-
-  margin:10px 0 25px;
-
-  color:#edf3ff;
-}
-
-.price-note{
-
-  color:#8291aa;
-
-  font-size:.78rem;
-
-  line-height:2;
-
-  margin:0 auto;
-
-  max-width:650px;
-}
-
-
-/* =========================
-   REQUEST
-========================= */
-
-.request{
-
-  text-align:center;
-
-  padding:80px 0 40px;
-}
-
-.request p{
-
-  color:#aab8d2;
-
-  font-size:.85rem;
-
-  line-height:2;
-
-  margin:0 0 30px;
-}
-
-.request-button{
-
-  display:inline-block;
-
-  padding:13px 30px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.28);
+    rgba(210,225,255,.5);
 
   border-radius:999px;
 
-  color:#dce8ff;
+  color:#fff;
 
   text-decoration:none;
 
-  transition:.3s ease;
-}
-
-.request-button:hover{
+  letter-spacing:.2em;
 
   background:
-    rgba(180,210,255,.08);
+    rgba(255,255,255,.03);
 
-  border-color:
-    rgba(143,191,255,.55);
+  transition:.35s ease;
 }
 
+.cta-button:hover{
+  background:
+    rgba(150,190,255,.1);
 
-/* =========================
-   BACK
-========================= */
+  box-shadow:
+    0 0 35px
+    rgba(150,190,255,.16);
+
+  transform:translateY(-2px);
+}
 
 .back{
-
   display:block;
 
   width:max-content;
 
-  margin:25px auto 75px;
+  margin:0 auto 80px;
 
-  padding:10px 22px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:999px;
-
-  color:#dce8ff;
+  color:#9caeca;
 
   text-decoration:none;
 
-  transition:.3s ease;
-}
+  font-size:.8rem;
 
-.back:hover{
-
-  background:
-    rgba(180,210,255,.08);
+  letter-spacing:.08em;
 }
 
 
@@ -423,42 +730,72 @@ h3{
 
 @media(max-width:800px){
 
-  .header-inner{
+  .wrap{
+    width:min(100% - 28px,1100px);
+  }
 
+  header{
+    padding:65px 0 60px;
+  }
+
+  .header-inner{
     grid-template-columns:1fr;
 
-    gap:45px;
+    gap:35px;
   }
 
-  .header-copy{
-
-    text-align:center;
+  .visual{
+    min-height:330px;
   }
 
-  .hero-card{
+  .visual-placeholder{
+    min-height:330px;
+  }
 
-    min-height:350px;
+  .plan-box{
+    grid-template-columns:1fr;
 
-    padding:45px 30px;
+    gap:25px;
+  }
+
+  .plan-image{
+    min-height:300px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    padding:65px 0;
   }
 
 }
 
-@media(max-width:700px){
+@media(max-width:500px){
 
-  .wrap{
-
-    width:min(100% - 28px,1050px);
+  .title-frame{
+    padding:28px 18px;
   }
 
-  header{
-
-    padding:70px 0 55px;
+  .title-frame h1{
+    font-size:2rem;
   }
 
-  .world-content{
+  .header-message{
+    font-size:1rem;
+  }
 
-    padding:35px 25px;
+  .price{
+    font-size:2.5rem;
+  }
+
+  .info-card{
+    padding:27px 22px;
+  }
+
+  .flow-item{
+    grid-template-columns:60px 1fr;
   }
 
 }
@@ -480,46 +817,51 @@ h3{
 
     <div class="header-inner">
 
-      <div class="header-copy">
+      <div class="header-text">
 
         <div class="system">
           HOSHIYOMI / COMMISSION
         </div>
 
-        <h1>
-          あなたの世界
-        </h1>
+        <div class="title-frame">
 
-        <p class="subtitle">
-          あなたの中にある世界を、<br>
+          <h1>
+            あなたの世界
+          </h1>
+
+          <div class="title-en">
+            YOUR WORLD
+          </div>
+
+        </div>
+
+        <p class="header-message">
+
+          あなた自身を、<br>
           一枚の作品に。
+
+          <span>
+            あなたらしさや雰囲気、<br>
+            大切にしている想いを丁寧に描き、<br>
+            あなたの世界を主役とした一枚を制作します。
+          </span>
+
         </p>
 
       </div>
 
 
-      <!-- =========================
-           HERO
-      ========================= -->
+      <div class="visual">
 
-      <div class="hero-card">
+        <div class="visual-placeholder">
 
-        <div class="hero-label">
-          YOUR WORLD
+          <div class="visual-text">
+            YOUR WORLD<br><br>
+            あなたの世界を、<br>
+            一枚の星へ。
+          </div>
+
         </div>
-
-        <h2>
-          あなたの世界を、<br>
-          一枚の星へ。
-        </h2>
-
-        <div class="hero-line"></div>
-
-        <p>
-          記憶、物語、好きなもの。<br>
-          あなたの中にある世界を<br>
-          一枚の作品に。
-        </p>
 
       </div>
 
@@ -530,42 +872,242 @@ h3{
 </header>
 
 
-<main>
-
 
 <!-- =========================
-     CONCEPT
+     PLAN
 ========================= -->
 
-<section>
+<section class="section">
 
   <div class="wrap">
 
     <p class="section-label">
-      CONCEPT
+      PLAN
     </p>
 
-    <h3>
-      あなたの中にある「世界」を描く
-    </h3>
+    <h2 class="section-title">
+      プラン・料金
+    </h2>
+
+    <div class="plan-box">
+
+      <div class="plan-image">
+
+        <div class="visual-text">
+          YOUR<br>
+          PORTRAIT
+        </div>
+
+      </div>
+
+
+      <div class="plan-content">
+
+        <div class="plan-small">
+          BASIC PLAN
+        </div>
+
+        <h3 class="plan-name">
+          あなたの世界
+        </h3>
+
+        <div class="price">
+          20,000<span>円〜</span>
+        </div>
+
+        <p class="plan-description">
+          あなたの中にある世界を、一枚の作品に。<br>
+          人物を主役として、その人らしさや雰囲気を描きます。
+        </p>
+
+
+        <div class="points">
+
+          <div class="point">
+
+            <div class="point-title">
+              自分の中にある世界を作品にしたい
+            </div>
+
+            <div class="point-text">
+              あなたの好きなものや記憶、憧れを、一枚の作品として形にします。
+            </div>
+
+          </div>
+
+
+          <div class="point">
+
+            <div class="point-title">
+              頭の中にある景色や物語を作品にしたい
+            </div>
+
+            <div class="point-text">
+              言葉になっていないイメージも含めて、世界観を一枚に仕上げます。
+            </div>
+
+          </div>
+
+
+          <div class="point">
+
+            <div class="point-title">
+              自分だけの世界を大切にしたい
+            </div>
+
+            <div class="point-text">
+              お話や参考資料をもとに、あなたの世界を一緒に組み立てます。
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     制作について
+========================= -->
+
+<section class="section">
+
+  <div class="wrap">
+
+    <p class="section-label">
+      DETAILS
+    </p>
+
+    <h2 class="section-title">
+      制作について
+    </h2>
 
     <p class="section-lead">
-      あなたの好きなものや記憶、憧れ、<br>
-      頭の中にある景色や物語まで受け取りながら、<br>
-      あなたの中にある「世界」を一枚の作品へ仕上げます。
+      ご依頼内容を確認したうえで、あなたに合わせた作品を制作します。
     </p>
 
 
-    <div class="world-content">
+    <div class="info-grid">
 
-      <p>
-        目に見えるものだけではなく、<br>
-        これまでの記憶や大切にしているもの、<br>
-        好きなもの、憧れ、想像している景色。<br><br>
 
-        まだ言葉になっていないイメージも含めて、<br>
-        お話を伺いながら一つずつ形にしていきます。
-      </p>
+      <!-- 納期 -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ✦
+        </div>
+
+        <h3>
+          納期の目安
+        </h3>
+
+        <p>
+          1ヶ月〜3ヶ月程度。
+          ご依頼内容や現在の制作状況、
+          確認・ご返信のタイミングなどによって前後します。
+          正式な納期は、ご依頼内容を確認したうえでご案内します。
+        </p>
+
+      </div>
+
+
+
+      <!-- ラフ -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ✎
+        </div>
+
+        <h3>
+          ラフ・修正について
+        </h3>
+
+        <p>
+          アイデアラフ・ラフの段階で修正を行います。
+          あなたの世界では、2回まで無料で修正できます。
+        </p>
+
+        <p>
+          ラフ確定後の大幅な変更・描き直しについては、
+          内容に応じて追加料金または納期の変更をお願いする場合があります。
+        </p>
+
+      </div>
+
+
+
+      <!-- 追加料金 -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ＋
+        </div>
+
+        <h3>
+          追加料金について
+        </h3>
+
+        <p>
+          基本内容を大きく超えるご希望がある場合は、
+          内容に応じて追加料金をご案内します。
+        </p>
+
+        <ul>
+
+          <li>人数の追加</li>
+          <li>複雑な衣装や装飾</li>
+          <li>大量の小物</li>
+          <li>複雑な建物・街並み</li>
+          <li>機械などの細かな描写</li>
+          <li>大幅な構図変更</li>
+          <li>特別な加工・展開</li>
+
+        </ul>
+
+        <p>
+          ※追加料金が発生する場合は、
+          制作前に必ずご案内します。
+        </p>
+
+      </div>
+
+
+
+      <!-- 正式料金 -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ▤
+        </div>
+
+        <h3>
+          正式な料金について
+        </h3>
+
+        <p>
+          サイトに掲載している金額は、
+          各プランの基本料金です。
+        </p>
+
+        <p>
+          実際の料金は、ご依頼内容や描き込み量などを
+          確認したうえで正式にご案内します。
+        </p>
+
+      </div>
+
 
     </div>
 
@@ -574,68 +1116,153 @@ h3{
 </section>
 
 
+
 <!-- =========================
-     PRICE
+     ご依頼の流れ
 ========================= -->
 
-<section class="price-section">
+<section class="section">
 
   <div class="wrap">
 
     <p class="section-label">
-      PLAN / PRICE
+      PROCESS
     </p>
 
-    <h3>
-      プラン・料金
-    </h3>
+    <h2 class="section-title">
+      ご依頼の流れ
+    </h2>
 
-    <div class="price">
-      20,000円〜
+    <p class="section-lead">
+      内容を確認し、料金・納期をご案内してから制作を開始します。
+    </p>
+
+
+    <div class="flow">
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          01
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            ご依頼内容の確認
+          </strong>
+
+          <span>
+            描いてほしい内容や参考資料などを確認します。
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          02
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            内容・描き込み量などを確認
+          </strong>
+
+          <span>
+            構図や資料、追加内容などを確認します。
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          03
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            正式な料金・納期をご案内
+          </strong>
+
+          <span>
+            ご依頼内容に合わせた正式な料金と納期をお伝えします。
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          04
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            ご了承いただいてから制作開始
+          </strong>
+
+          <span>
+            内容をご確認いただき、ご了承後に制作を開始します。
+          </span>
+
+        </div>
+
+      </div>
+
+
     </div>
 
-    <p class="price-note">
-      基本料金です。<br>
-      構図や描き込み量、追加のご希望などによって<br>
-      料金が変わる場合があります。<br>
-      正式な料金は、ご依頼内容を確認したうえでご案内します。
-    </p>
-
   </div>
 
 </section>
+
 
 
 <!-- =========================
-     REQUEST
+     CTA
 ========================= -->
 
-<section class="request">
+<section class="cta">
 
-  <div class="wrap">
+  <p class="cta-message">
 
-    <p class="section-label">
-      REQUEST
-    </p>
+    あなたの想いが、<br>
+    どんな一枚になるのか。
 
-    <p>
-      あなたの中にある世界を、<br>
-      一緒に一枚の作品へ。
-    </p>
+    <br><br>
 
-    <a
-      href="request-form.html"
-      class="request-button"
-    >
-      ご依頼はこちら →
-    </a>
+    星詠と一緒に、<br>
+    その形を探してみませんか。
 
-  </div>
+  </p>
+
+
+  <a
+    href="request-form.html"
+    class="cta-button"
+  >
+    あなたの世界を依頼する →
+  </a>
 
 </section>
-
-
-</main>
 
 
 <a
