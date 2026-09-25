@@ -28,7 +28,6 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 </style>
 </head>
 <body>
-
 <main class="start-screen" id="startScreen">
 <div class="start-inner">
 <div class="system">SYSTEM : HOSHIYOMI</div>
@@ -49,7 +48,7 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 
 <a href="about.html" class="choice"><div class="choice-number">02</div><h2>星詠をのぞいてみる</h2><p>作品や星詠について見る</p></a>
 
-<a href="#" class="choice"><div class="choice-number">03</div><h2>依頼について相談したい</h2><p>まずは依頼について相談する</p></a>
+<a href="contact.html" class="choice"><div class="choice-number">03</div><h2>依頼について相談したい</h2><p>まずは依頼について相談する</p></a>
 
 <a href="return-gift.html" class="choice"><div class="choice-number">04</div><h2>返礼品を見てみる</h2><p>星詠からのお届けものを見る</p></a>
 
@@ -67,30 +66,11 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 const startButton=document.getElementById("startButton");
 const startScreen=document.getElementById("startScreen");
 const choiceScreen=document.getElementById("choice");
-
-function showChoiceScreen(){
-  startScreen.style.display="none";
-  choiceScreen.style.display="block";
-
-  if(window.location.hash === "#choice"){
-    requestAnimationFrame(function(){
-      choiceScreen.scrollIntoView({behavior:"instant",block:"start"});
-    });
-  }else{
-    window.scrollTo({top:0,behavior:"instant"});
-  }
-}
-
 startButton.addEventListener("click",function(event){
-  event.preventDefault();
-  history.replaceState(null,"","#choice");
-  showChoiceScreen();
-});
-
-window.addEventListener("DOMContentLoaded",function(){
-  if(window.location.hash === "#choice"){
-    showChoiceScreen();
-  }
+event.preventDefault();
+startScreen.style.display="none";
+choiceScreen.style.display="block";
+window.scrollTo({top:0,behavior:"instant"});
 });
 </script>
 </body>
