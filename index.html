@@ -3,75 +3,630 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>星詠｜HOSHIYOMI</title>
+
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%}
-body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif}
-.start-screen{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(120,160,255,.12),transparent 35%),linear-gradient(180deg,#020817 0%,#07152e 55%,#020817 100%)}
-.start-inner{width:min(90%,900px);padding:60px 20px}.system{font-family:Georgia,"Times New Roman",serif;font-size:.75rem;letter-spacing:.35em;color:#8fbfff;margin-bottom:35px}
-.logo{margin:0;display:flex;justify-content:center;align-items:center}.logo img{width:min(420px,75vw);height:auto;display:block;object-fit:contain;filter:drop-shadow(0 0 20px rgba(170,200,255,.35)) drop-shadow(0 0 45px rgba(120,150,255,.15))}
-.subtitle{margin:18px 0 65px;color:#aab8d2;letter-spacing:.3em;font-size:.85rem}
-.start-button{display:inline-flex;align-items:center;justify-content:center;min-width:190px;padding:15px 38px;border:1px solid rgba(210,225,255,.55);border-radius:999px;background:rgba(255,255,255,.03);color:#fff;text-decoration:none;letter-spacing:.35em;font-family:Georgia,"Times New Roman",serif;transition:.35s ease}
-.start-button:hover{background:rgba(180,210,255,.1);box-shadow:0 0 35px rgba(150,190,255,.2);transform:translateY(-2px)}
-.choice-screen{display:none;min-height:100vh;padding:80px 20px 100px;background:radial-gradient(circle at 50% 0%,rgba(90,130,210,.1),transparent 35%),#040916}
-.choice-inner{width:min(1100px,100%);margin:auto;text-align:center}.choice-label{color:#8fbfff;font-family:Georgia,"Times New Roman",serif;font-size:.75rem;letter-spacing:.25em;margin-bottom:15px}
-.choice-title{font-size:clamp(1.8rem,5vw,3rem);font-weight:400;letter-spacing:.12em;margin:0}.choice-text{color:#aab8d2;margin:25px auto 55px;line-height:1.8}
-.choices{width:100%;display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-.choice:nth-child(1){grid-column:1 / 5}.choice:nth-child(2){grid-column:5 / 9}.choice:nth-child(3){grid-column:9 / 13}
-.choice:nth-child(4){grid-column:1 / 4}.choice:nth-child(5){grid-column:4 / 7}.choice:nth-child(6){grid-column:7 / 10}.choice:nth-child(7){grid-column:10 / 13}
-.choice{min-height:240px;padding:35px 25px;display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid rgba(180,205,245,.18);border-radius:20px;background:rgba(10,24,52,.58);color:#edf3ff;text-decoration:none;transition:.35s ease}
-.choice:hover{transform:translateY(-5px);border-color:rgba(143,191,255,.55);background:rgba(20,40,78,.7);box-shadow:0 15px 40px rgba(50,90,170,.12)}
-.choice-number{color:#8fbfff;font-family:Georgia,"Times New Roman",serif;font-size:.75rem;letter-spacing:.2em;margin-bottom:22px}
-.choice h2{font-size:1.15rem;font-weight:400;letter-spacing:.06em;line-height:1.7;margin:0 0 15px}.choice p{margin:0;color:#aab8d2;font-size:.9rem;line-height:1.8}
-@media(max-width:800px){.choices{grid-template-columns:1fr;gap:16px}.choice:nth-child(1),.choice:nth-child(2),.choice:nth-child(3),.choice:nth-child(4),.choice:nth-child(5),.choice:nth-child(6),.choice:nth-child(7){grid-column:1}.choice{min-height:180px;padding:30px 20px}.start-inner{padding:40px 15px}.subtitle{margin-bottom:50px}}
-@media(max-width:450px){.choice-screen{padding:60px 15px 80px}.choice-title{font-size:1.7rem;letter-spacing:.08em}.choice-text{margin-bottom:40px}.choice{min-height:170px}}
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  background:#020817;
+  color:#edf3ff;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+}
+
+
+/* =========================
+   START画面
+========================= */
+
+.start-screen{
+  width:100%;
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(120,160,255,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #020817 0%,
+      #07152e 55%,
+      #020817 100%
+    );
+}
+
+.start-inner{
+  width:min(90%,900px);
+  padding:60px 20px;
+}
+
+.system{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:.75rem;
+  letter-spacing:.35em;
+  color:#8fbfff;
+  margin-bottom:35px;
+}
+
+.logo{
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.logo img{
+  width:min(420px,75vw);
+  height:auto;
+  display:block;
+  object-fit:contain;
+
+  filter:
+    drop-shadow(0 0 20px rgba(170,200,255,.35))
+    drop-shadow(0 0 45px rgba(120,150,255,.15));
+}
+
+.subtitle{
+  margin:18px 0 65px;
+  color:#aab8d2;
+  letter-spacing:.3em;
+  font-size:.85rem;
+}
+
+.start-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:190px;
+  padding:15px 38px;
+
+  border:1px solid rgba(210,225,255,.55);
+  border-radius:999px;
+
+  background:rgba(255,255,255,.03);
+
+  color:#fff;
+  text-decoration:none;
+
+  letter-spacing:.35em;
+
+  font-family:Georgia,"Times New Roman",serif;
+
+  transition:.35s ease;
+}
+
+.start-button:hover{
+  background:rgba(180,210,255,.1);
+
+  box-shadow:
+    0 0 35px rgba(150,190,255,.2);
+
+  transform:translateY(-2px);
+}
+
+
+/* =========================
+   選択画面
+========================= */
+
+.choice-screen{
+  display:none;
+
+  min-height:100vh;
+  padding:80px 20px 100px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(90,130,210,.1),
+      transparent 35%
+    ),
+    #040916;
+}
+
+.choice-inner{
+  width:min(1100px,100%);
+  margin:auto;
+  text-align:center;
+}
+
+.choice-label{
+  color:#8fbfff;
+
+  font-family:Georgia,"Times New Roman",serif;
+
+  font-size:.75rem;
+  letter-spacing:.25em;
+
+  margin-bottom:15px;
+}
+
+.choice-title{
+  font-size:clamp(1.8rem,5vw,3rem);
+  font-weight:400;
+
+  letter-spacing:.12em;
+
+  margin:0;
+}
+
+.choice-text{
+  color:#aab8d2;
+
+  margin:25px auto 55px;
+
+  line-height:1.8;
+}
+
+
+/* =========================
+   選択カード
+========================= */
+
+.choices{
+  width:100%;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(12,1fr);
+
+  gap:20px;
+}
+
+
+/* 上段3枚 */
+
+.choice:nth-child(1){
+  grid-column:1 / 5;
+}
+
+.choice:nth-child(2){
+  grid-column:5 / 9;
+}
+
+.choice:nth-child(3){
+  grid-column:9 / 13;
+}
+
+
+/* 下段4枚 */
+
+.choice:nth-child(4){
+  grid-column:1 / 4;
+}
+
+.choice:nth-child(5){
+  grid-column:4 / 7;
+}
+
+.choice:nth-child(6){
+  grid-column:7 / 10;
+}
+
+.choice:nth-child(7){
+  grid-column:10 / 13;
+}
+
+
+/* =========================
+   カード本体
+========================= */
+
+.choice{
+  min-height:240px;
+
+  padding:35px 25px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  border:1px solid rgba(180,205,245,.18);
+
+  border-radius:20px;
+
+  background:rgba(10,24,52,.58);
+
+  color:#edf3ff;
+
+  text-decoration:none;
+
+  transition:.35s ease;
+}
+
+.choice:hover{
+  transform:translateY(-5px);
+
+  border-color:rgba(143,191,255,.55);
+
+  background:rgba(20,40,78,.7);
+
+  box-shadow:
+    0 15px 40px rgba(50,90,170,.12);
+}
+
+.choice-number{
+  color:#8fbfff;
+
+  font-family:Georgia,"Times New Roman",serif;
+
+  font-size:.75rem;
+  letter-spacing:.2em;
+
+  margin-bottom:22px;
+}
+
+.choice h2{
+  font-size:1.15rem;
+
+  font-weight:400;
+
+  letter-spacing:.06em;
+
+  line-height:1.7;
+
+  margin:0 0 15px;
+}
+
+.choice p{
+  margin:0;
+
+  color:#aab8d2;
+
+  font-size:.9rem;
+
+  line-height:1.8;
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
+@media(max-width:800px){
+
+  .choices{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .choice:nth-child(1),
+  .choice:nth-child(2),
+  .choice:nth-child(3),
+  .choice:nth-child(4),
+  .choice:nth-child(5),
+  .choice:nth-child(6),
+  .choice:nth-child(7){
+
+    grid-column:1;
+  }
+
+  .choice{
+    min-height:180px;
+    padding:30px 20px;
+  }
+
+  .start-inner{
+    padding:40px 15px;
+  }
+
+  .subtitle{
+    margin-bottom:50px;
+  }
+
+}
+
+
+/* =========================
+   小さいスマホ
+========================= */
+
+@media(max-width:450px){
+
+  .choice-screen{
+    padding:60px 15px 80px;
+  }
+
+  .choice-title{
+    font-size:1.7rem;
+    letter-spacing:.08em;
+  }
+
+  .choice-text{
+    margin-bottom:40px;
+  }
+
+  .choice{
+    min-height:170px;
+  }
+
+}
 </style>
 </head>
+
+
 <body>
+
+
+<!-- =========================
+     START画面
+========================= -->
+
 <main class="start-screen" id="startScreen">
-<div class="start-inner">
-<div class="system">SYSTEM : HOSHIYOMI</div>
-<div class="logo"><img src="logo.png" alt="星詠"></div>
-<p class="subtitle">HOSHIYOMI</p>
-<a href="#choice" class="start-button" id="startButton">START</a>
-</div>
+
+  <div class="start-inner">
+
+    <div class="system">
+      SYSTEM : HOSHIYOMI
+    </div>
+
+    <div class="logo">
+      <img src="logo.png" alt="星詠">
+    </div>
+
+    <p class="subtitle">
+      HOSHIYOMI
+    </p>
+
+    <a
+      href="#choice"
+      class="start-button"
+      id="startButton"
+    >
+      START
+    </a>
+
+  </div>
+
 </main>
 
-<section class="choice-screen" id="choice">
-<div class="choice-inner">
-<div class="choice-label">HOSHIYOMI SYSTEM</div>
-<h1 class="choice-title">あなたは、どこから見ますか？</h1>
-<p class="choice-text">星詠での行き先を選んでください。</p>
-<div class="choices">
 
-<a href="request.html" class="choice"><div class="choice-number">01</div><h2>今すぐ依頼したい</h2><p>作品の制作を依頼する</p></a>
 
-<a href="about.html" class="choice"><div class="choice-number">02</div><h2>星詠をのぞいてみる</h2><p>作品や星詠について見る</p></a>
+<!-- =========================
+     選択画面
+========================= -->
 
-<a href="contact.html" class="choice"><div class="choice-number">03</div><h2>依頼について相談したい</h2><p>まずは依頼について相談する</p></a>
+<section
+  class="choice-screen"
+  id="choice"
+>
 
-<a href="gift-hub.html" class="choice"><div class="choice-number">04</div><h2>記念品・返礼品を見てみる</h2><p>大切な時間を、一枚の作品に</p></a>
+  <div class="choice-inner">
 
-<a href="first-visit.html" class="choice"><div class="choice-number">05</div><h2>初めての方限定<br>星詠を体験する</h2><p>初めての方だけが楽しめる体験</p></a>
+    <div class="choice-label">
+      HOSHIYOMI SYSTEM
+    </div>
 
-<a href="notes.html" class="choice"><div class="choice-number">06</div><h2>ご依頼前に確認する</h2><p>注意事項やご依頼前の確認事項を見る</p></a>
+    <h1 class="choice-title">
+      あなたは、どこから見ますか？
+    </h1>
 
-<a href="price.html" class="choice"><div class="choice-number">07</div><h2>料金・ご依頼について</h2><p>プランや料金、制作について詳しく見る</p></a>
+    <p class="choice-text">
+      星詠での行き先を選んでください。
+    </p>
 
-</div>
-</div>
+
+    <div class="choices">
+
+
+      <!-- 01 -->
+
+      <a
+        href="request-choice.html"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          01
+        </div>
+
+        <h2>
+          今すぐ依頼したい
+        </h2>
+
+        <p>
+          作品の制作を依頼する
+        </p>
+
+      </a>
+
+
+
+      <!-- 02 -->
+
+      <a
+        href="#"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          02
+        </div>
+
+        <h2>
+          星詠をのぞいてみる
+        </h2>
+
+        <p>
+          作品や星詠について見る
+        </p>
+
+      </a>
+
+
+
+      <!-- 03 -->
+
+      <a
+        href="#"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          03
+        </div>
+
+        <h2>
+          依頼について相談したい
+        </h2>
+
+        <p>
+          まずは依頼について相談する
+        </p>
+
+      </a>
+
+
+
+      <!-- 04 -->
+
+      <a
+        href="return-gift.html"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          04
+        </div>
+
+        <h2>
+          返礼品を見てみる
+        </h2>
+
+        <p>
+          星詠からのお届けものを見る
+        </p>
+
+      </a>
+
+
+
+      <!-- 05 -->
+
+      <a
+        href="first-visit.html"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          05
+        </div>
+
+        <h2>
+          初めての方限定<br>
+          星詠を体験する
+        </h2>
+
+        <p>
+          初めての方だけが楽しめる体験
+        </p>
+
+      </a>
+
+
+
+      <!-- 06 -->
+
+      <a
+        href="notes.html"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          06
+        </div>
+
+        <h2>
+          ご依頼前に確認する
+        </h2>
+
+        <p>
+          注意事項やご依頼前の確認事項を見る
+        </p>
+
+      </a>
+
+
+
+      <!-- 07 -->
+
+      <a
+        href="price.html"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          07
+        </div>
+
+        <h2>
+          料金・ご依頼について
+        </h2>
+
+        <p>
+          プランや料金、制作について詳しく見る
+        </p>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
 </section>
+
+
 
 <script>
 const startButton=document.getElementById("startButton");
 const startScreen=document.getElementById("startScreen");
 const choiceScreen=document.getElementById("choice");
+
+function showChoice(){
+  startScreen.style.display="none";
+  choiceScreen.style.display="block";
+}
+
 startButton.addEventListener("click",function(event){
-event.preventDefault();
-startScreen.style.display="none";
-choiceScreen.style.display="block";
-window.scrollTo({top:0,behavior:"instant"});
+  event.preventDefault();
+
+  showChoice();
+
+  history.replaceState(null,"","#choice");
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
 });
+
+/* 他のページから index.html#choice で戻ってきた場合 */
+if(window.location.hash === "#choice"){
+  showChoice();
+}
 </script>
 </body>
 </html>
