@@ -1,832 +1,1277 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>あなたの姿｜星詠 HOSHIYOMI</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    :root{
-      --ys-bg:#040916;
-      --ys-deep:#081936;
-      --ys-blue:#8fbfff;
-      --ys-violet:#a992d2;
-      --ys-text:#edf3ff;
-      --ys-muted:rgba(237,243,255,.72);
-      --ys-line:rgba(180,205,255,.15);
-    }
-
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      margin:0;
-      background:
-        radial-gradient(
-          circle at 50% 8%,
-          rgba(76,104,165,.14),
-          transparent 34%
-        ),
-        linear-gradient(
-          180deg,
-          #040916 0%,
-          #061127 48%,
-          #040916 100%
-        );
-      color:var(--ys-text);
-      font-family:
-        "Yu Gothic",
-        "Hiragino Kaku Gothic ProN",
-        sans-serif;
-      line-height:2;
-    }
-
-    a{
-      color:inherit;
-    }
-
-    .your-page{
-      width:100%;
-      min-height:100vh;
-      padding:0 0 120px;
-      position:relative;
-      z-index:1;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .your-hero{
-      width:min(920px,calc(100% - 48px));
-      margin:0 auto;
-      padding:150px 0 100px;
-      text-align:center;
-    }
-
-    .your-label{
-      margin:0 0 18px;
-      font-size:.82rem;
-      letter-spacing:.2em;
-      opacity:.62;
-    }
-
-    .your-hero h1{
-      margin:0;
-      font-size:clamp(2.2rem,5vw,3.5rem);
-      font-weight:400;
-      letter-spacing:.12em;
-      line-height:1.45;
-    }
-
-    .your-hero .hero-sub{
-      margin:26px 0 0;
-      font-size:1.05rem;
-      line-height:2.1;
-      color:var(--ys-muted);
-    }
-
-    .your-price{
-      margin:34px 0 0;
-      font-size:1.15rem;
-      letter-spacing:.1em;
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    .your-section{
-      width:min(900px,calc(100% - 48px));
-      margin:0 auto;
-      padding:74px 0;
-      border-top:1px solid var(--ys-line);
-    }
-
-    .your-section-label{
-      margin:0 0 12px;
-      font-size:.76rem;
-      letter-spacing:.18em;
-      opacity:.55;
-    }
-
-    .your-section h2{
-      margin:0;
-      font-size:1.7rem;
-      font-weight:400;
-      letter-spacing:.1em;
-      line-height:1.6;
-    }
-
-    .your-lead{
-      margin:24px 0 0;
-      font-size:1rem;
-      line-height:2.15;
-      color:var(--ys-muted);
-    }
-
-    /* =========================
-       INTRO
-    ========================= */
-
-    .your-intro{
-      text-align:center;
-      border-top:0;
-      padding-top:0;
-    }
-
-    .your-intro p{
-      margin:0;
-      font-size:1.05rem;
-      line-height:2.25;
-      color:var(--ys-muted);
-    }
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .your-cards{
-      margin-top:42px;
-      display:grid;
-      grid-template-columns:
-        repeat(2,minmax(0,1fr));
-      gap:20px;
-    }
-
-    .your-card{
-      padding:32px 30px;
-      border:1px solid var(--ys-line);
-      background:rgba(7,16,36,.14);
-    }
-
-    .your-card small{
-      display:block;
-      margin-bottom:12px;
-      font-size:.72rem;
-      letter-spacing:.16em;
-      opacity:.5;
-    }
-
-    .your-card strong{
-      display:block;
-      font-size:1.05rem;
-      font-weight:400;
-      line-height:1.8;
-      letter-spacing:.05em;
-    }
-
-    .your-card p{
-      margin:12px 0 0;
-      font-size:.9rem;
-      line-height:1.95;
-      color:var(--ys-muted);
-    }
-
-    /* =========================
-       SPEC
-    ========================= */
-
-    .your-specs{
-      margin-top:40px;
-      border-top:1px solid var(--ys-line);
-    }
-
-    .your-spec{
-      display:grid;
-      grid-template-columns:190px 1fr;
-      gap:30px;
-      padding:22px 10px;
-      border-bottom:1px solid var(--ys-line);
-      align-items:center;
-    }
-
-    .your-spec dt{
-      font-size:.86rem;
-      letter-spacing:.1em;
-      opacity:.62;
-    }
-
-    .your-spec dd{
-      margin:0;
-      font-size:1rem;
-      line-height:1.9;
-    }
-
-    /* =========================
-       NOTE
-    ========================= */
-
-    .your-note{
-      margin-top:38px;
-      padding:28px 30px;
-      border:1px solid rgba(180,205,255,.13);
-      background:rgba(7,16,36,.14);
-      line-height:2;
-      color:var(--ys-muted);
-      font-size:.9rem;
-    }
-
-    .your-note strong{
-      font-weight:400;
-      color:var(--ys-text);
-    }
-
-    /* =========================
-       PRICE
-    ========================= */
-
-    .price-main{
-      margin-top:34px;
-      text-align:center;
-      padding:38px 30px;
-      border:1px solid var(--ys-line);
-      background:rgba(7,16,36,.18);
-    }
-
-    .price-main strong{
-      display:block;
-      font-size:1.8rem;
-      font-weight:400;
-      letter-spacing:.08em;
-    }
-
-    .price-main span{
-      display:block;
-      margin-top:10px;
-      font-size:.82rem;
-      color:var(--ys-muted);
-    }
-
-    /* =========================
-       PROCESS
-    ========================= */
-
-    .process-list{
-      margin-top:40px;
-      border-top:1px solid var(--ys-line);
-    }
-
-    .process-item{
-      display:grid;
-      grid-template-columns:70px 1fr;
-      gap:24px;
-      padding:25px 10px;
-      border-bottom:1px solid var(--ys-line);
-    }
-
-    .process-number{
-      font-size:.72rem;
-      letter-spacing:.14em;
-      opacity:.48;
-    }
-
-    .process-item strong{
-      display:block;
-      font-weight:400;
-      letter-spacing:.06em;
-    }
-
-    .process-item p{
-      margin:7px 0 0;
-      font-size:.88rem;
-      line-height:1.9;
-      color:var(--ys-muted);
-    }
-
-    /* =========================
-       RIGHTS
-    ========================= */
-
-    .rights-list{
-      margin-top:38px;
-      display:grid;
-      gap:14px;
-    }
-
-    .rights-item{
-      padding:22px 24px;
-      border:1px solid var(--ys-line);
-      background:rgba(7,16,36,.12);
-    }
-
-    .rights-item strong{
-      display:block;
-      font-weight:400;
-      margin-bottom:7px;
-    }
-
-    .rights-item p{
-      margin:0;
-      font-size:.88rem;
-      line-height:1.9;
-      color:var(--ys-muted);
-    }
-
-    /* =========================
-       FINAL
-    ========================= */
-
-    .your-final{
-      width:min(900px,calc(100% - 48px));
-      margin:0 auto;
-      padding:76px 30px 30px;
-      text-align:center;
-      border-top:1px solid var(--ys-line);
-    }
-
-    .your-final p{
-      margin:0;
-      font-size:1.05rem;
-      line-height:2.2;
-      color:var(--ys-muted);
-    }
-
-    .your-back{
-      margin-top:32px;
-    }
-
-    .your-back a{
-      display:inline-block;
-      padding:12px 22px;
-      border-bottom:1px solid rgba(200,220,255,.35);
-      color:inherit;
-      text-decoration:none;
-      letter-spacing:.08em;
-      transition:opacity .25s ease;
-    }
-
-    .your-back a:hover{
-      opacity:.65;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media(max-width:700px){
-
-      .your-hero{
-        padding:110px 0 76px;
-        width:calc(100% - 32px);
-      }
-
-      .your-section,
-      .your-final{
-        width:calc(100% - 32px);
-      }
-
-      .your-cards{
-        grid-template-columns:1fr;
-      }
-
-      .your-spec{
-        grid-template-columns:1fr;
-        gap:8px;
-        padding:20px 6px;
-      }
-
-      .process-item{
-        grid-template-columns:50px 1fr;
-        gap:16px;
-      }
-
-      .your-final{
-        padding-left:0;
-        padding-right:0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>あなたの姿｜星詠</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+}
+
+body{
+  color:#edf3ff;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(100,145,230,.16),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #020817 0%,
+      #07152e 45%,
+      #030916 100%
+    );
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
+
+  line-height:1.9;
+}
+
+
+/* =========================
+   共通
+========================= */
+
+.wrap{
+  width:min(1100px, calc(100% - 40px));
+  margin:auto;
+}
+
+.section{
+  padding:90px 0;
+  border-top:1px solid rgba(180,205,245,.16);
+}
+
+.section-label{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+  letter-spacing:.28em;
+
+  text-align:center;
+
+  margin:0 0 12px;
+}
+
+.section-title{
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:400;
+
+  letter-spacing:.12em;
+
+  text-align:center;
+
+  margin:0;
+}
+
+.section-lead{
+  color:#aab8d2;
+
+  text-align:center;
+
+  font-size:.9rem;
+
+  line-height:2;
+
+  margin:22px auto 55px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:relative;
+
+  padding:90px 0 80px;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(120,165,255,.18),
+      transparent 35%
+    );
+}
+
+.header-inner{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1.15fr;
+
+  align-items:center;
+
+  gap:50px;
+}
+
+.header-text{
+  text-align:center;
+}
+
+.system{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.3em;
+
+  margin-bottom:25px;
+}
+
+.title-frame{
+  position:relative;
+
+  padding:35px 25px;
+
+  border:
+    1px solid
+    rgba(190,215,255,.4);
+
+  border-radius:80px;
+
+  background:
+    rgba(4,15,35,.35);
+
+  box-shadow:
+    0 0 40px rgba(100,150,255,.06);
+}
+
+.title-frame::before,
+.title-frame::after{
+  content:"✦";
+
+  position:absolute;
+
+  color:#dbe8ff;
+
+  font-size:1rem;
+}
+
+.title-frame::before{
+  left:15px;
+  top:50%;
+
+  transform:translateY(-50%);
+}
+
+.title-frame::after{
+  right:15px;
+  top:50%;
+
+  transform:translateY(-50%);
+}
+
+.title-frame h1{
+  margin:0;
+
+  font-size:clamp(2rem,5vw,3.5rem);
+
+  font-weight:400;
+
+  letter-spacing:.16em;
+}
+
+.title-en{
+  margin-top:8px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.28em;
+
+  color:#c4d4ee;
+}
+
+.header-message{
+  margin:35px auto 0;
+
+  font-size:1.15rem;
+
+  line-height:2.1;
+
+  letter-spacing:.12em;
+}
+
+.header-message span{
+  display:block;
+
+  margin-top:15px;
+
+  color:#aab8d2;
+
+  font-size:.82rem;
+
+  letter-spacing:.04em;
+}
+
+
+/* =========================
+   メインビジュアル
+========================= */
+
+.visual{
+  position:relative;
+
+  min-height:480px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+  border-radius:4px;
+}
+
+.visual::before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(150,190,255,.18),
+      transparent 55%
+    );
+}
+
+.visual-placeholder{
+  position:relative;
+
+  width:100%;
+  min-height:480px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30,55,95,.55),
+      rgba(5,15,35,.8)
+    );
+
+  overflow:hidden;
+}
+
+.visual-placeholder::before{
+  content:"";
+
+  position:absolute;
+
+  width:400px;
+  height:400px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(160,195,255,.2),
+      transparent 65%
+    );
+}
+
+.visual-text{
+  position:relative;
+
+  text-align:center;
+
+  color:#cbd9ef;
+
+  letter-spacing:.2em;
+
+  font-size:.8rem;
+}
+
+
+/* =========================
+   PLAN
+========================= */
+
+.plan-box{
+  display:grid;
+
+  grid-template-columns:
+    .9fr 1.1fr;
+
+  gap:45px;
+
+  align-items:stretch;
+}
+
+.plan-image{
+  min-height:420px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(160,195,255,.18),
+      transparent 55%
+    ),
+    rgba(8,22,48,.6);
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.plan-image::before{
+  content:"";
+
+  width:230px;
+  height:320px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(150,180,230,.13),
+      rgba(10,25,55,.4)
+    );
+
+  box-shadow:
+    0 0 60px rgba(120,170,255,.08);
+
+  transform:rotate(-3deg);
+}
+
+.plan-content{
+  padding:25px 0;
+}
+
+.plan-small{
+  color:#8fbfff;
+
+  font-size:.78rem;
+
+  letter-spacing:.2em;
+
+  margin-bottom:15px;
+}
+
+.plan-name{
+  font-size:1.7rem;
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+
+  margin:0 0 12px;
+}
+
+.price{
+  margin:15px 0 25px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:3rem;
+
+  letter-spacing:.05em;
+
+  color:#f0e3c5;
+}
+
+.price span{
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    serif;
+
+  font-size:1rem;
+
+  margin-left:5px;
+}
+
+.plan-description{
+  color:#b9c7dd;
+
+  line-height:2;
+
+  margin-bottom:30px;
+}
+
+
+/* =========================
+   POINTS
+========================= */
+
+.points{
+  display:grid;
+
+  gap:0;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+}
+
+.point{
+  padding:18px 22px;
+
+  border-bottom:
+    1px solid
+    rgba(180,205,245,.12);
+}
+
+.point:last-child{
+  border-bottom:0;
+}
+
+.point-title{
+  color:#e7edf8;
+
+  margin-bottom:4px;
+
+  letter-spacing:.05em;
+}
+
+.point-title::before{
+  content:"✦";
+
+  color:#8fbfff;
+
+  margin-right:12px;
+}
+
+.point-text{
+  color:#8999b4;
+
+  font-size:.82rem;
+}
+
+
+/* =========================
+   INFO GRID
+========================= */
+
+.info-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:1px;
+
+  background:
+    rgba(180,205,245,.18);
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+}
+
+.info-card{
+  padding:35px;
+
+  background:
+    rgba(5,17,39,.8);
+}
+
+.info-icon{
+  width:42px;
+  height:42px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(180,205,245,.25);
+
+  border-radius:10px;
+
+  color:#dce8ff;
+
+  margin-bottom:20px;
+}
+
+.info-card h3{
+  font-size:1.1rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  margin:0 0 15px;
+}
+
+.info-card p{
+  color:#9caeca;
+
+  font-size:.84rem;
+
+  line-height:2;
+}
+
+.info-card ul{
+  margin:0;
+  padding-left:1.2em;
+
+  color:#9caeca;
+
+  font-size:.82rem;
+
+  line-height:2;
+}
+
+
+/* =========================
+   料金・流れ
+========================= */
+
+.flow{
+  max-width:850px;
+
+  margin:auto;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+}
+
+.flow-item{
+  display:grid;
+
+  grid-template-columns:80px 1fr;
+
+  border-bottom:
+    1px solid
+    rgba(180,205,245,.14);
+}
+
+.flow-item:last-child{
+  border-bottom:0;
+}
+
+.flow-number{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  border-right:
+    1px solid
+    rgba(180,205,245,.14);
+}
+
+.flow-content{
+  padding:22px 25px;
+}
+
+.flow-content strong{
+  display:block;
+
+  font-weight:400;
+
+  letter-spacing:.06em;
+
+  margin-bottom:5px;
+}
+
+.flow-content span{
+  color:#8f9fba;
+
+  font-size:.8rem;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+  text-align:center;
+
+  padding:100px 20px;
+}
+
+.cta-message{
+  color:#dce7f7;
+
+  font-size:1.1rem;
+
+  letter-spacing:.1em;
+
+  line-height:2;
+}
+
+.cta-button{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  min-width:220px;
+
+  margin-top:30px;
+
+  padding:15px 35px;
+
+  border:
+    1px solid
+    rgba(210,225,255,.5);
+
+  border-radius:999px;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  letter-spacing:.2em;
+
+  background:
+    rgba(255,255,255,.03);
+
+  transition:.35s ease;
+}
+
+.cta-button:hover{
+  background:
+    rgba(150,190,255,.1);
+
+  box-shadow:
+    0 0 35px
+    rgba(150,190,255,.16);
+
+  transform:translateY(-2px);
+}
+
+.back{
+  display:block;
+
+  width:max-content;
+
+  margin:0 auto 80px;
+
+  color:#9caeca;
+
+  text-decoration:none;
+
+  font-size:.8rem;
+
+  letter-spacing:.08em;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .wrap{
+    width:min(100% - 28px,1100px);
+  }
+
+  header{
+    padding:65px 0 60px;
+  }
+
+  .header-inner{
+    grid-template-columns:1fr;
+
+    gap:35px;
+  }
+
+  .visual{
+    min-height:330px;
+  }
+
+  .visual-placeholder{
+    min-height:330px;
+  }
+
+  .plan-box{
+    grid-template-columns:1fr;
+
+    gap:25px;
+  }
+
+  .plan-image{
+    min-height:300px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    padding:65px 0;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .title-frame{
+    padding:28px 18px;
+  }
+
+  .title-frame h1{
+    font-size:2rem;
+  }
+
+  .header-message{
+    font-size:1rem;
+  }
+
+  .price{
+    font-size:2.5rem;
+  }
+
+  .info-card{
+    padding:27px 22px;
+  }
+
+  .flow-item{
+    grid-template-columns:60px 1fr;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-<main class="your-page">
 
-  <!-- HERO -->
+<!-- =========================
+     HEADER
+========================= -->
 
-  <header class="your-hero">
+<header>
 
-    <p class="your-label">
-      02｜YOUR STAR
-    </p>
+  <div class="wrap">
 
-    <h1>
-      あなたの姿
-    </h1>
+    <div class="header-inner">
 
-    <p class="hero-sub">
-      自分自身を、<br>
-      一枚の作品に。
-    </p>
+      <div class="header-text">
 
-    <p class="your-price">
-      15,000円〜
-    </p>
+        <div class="system">
+          HOSHIYOMI / COMMISSION
+        </div>
 
-  </header>
+        <div class="title-frame">
 
+          <h1>
+            あなたの姿
+          </h1>
 
-  <!-- INTRO -->
+          <div class="title-en">
+            YOUR PORTRAIT
+          </div>
 
-  <section class="your-section your-intro">
+        </div>
 
-    <p>
-      あなた自身を中心に、好きなものや雰囲気、<br>
-      そこに込めたい想いまで受け取りながら、<br>
-      あなたらしい一枚の作品へ仕上げます。
-    </p>
+        <p class="header-message">
 
-  </section>
+          あなた自身を、<br>
+          一枚の作品に。
 
+          <span>
+            あなたらしさや雰囲気、<br>
+            大切にしている想いを丁寧に描き、<br>
+            あなた自身を主役とした一枚を制作します。
+          </span>
 
-  <!-- FOR YOU -->
-
-  <section class="your-section">
-
-    <p class="your-section-label">
-      FOR YOU
-    </p>
-
-    <h2>
-      こんな方へ
-    </h2>
-
-    <div class="your-cards">
-
-      <article class="your-card">
-        <small>01</small>
-        <strong>
-          自分自身を作品として残したい
-        </strong>
-        <p>
-          今の自分や、活動している姿を、
-          一枚の作品として残したい方へ。
         </p>
-      </article>
+
+      </div>
 
 
-      <article class="your-card">
-        <small>02</small>
-        <strong>
-          いつもの姿とは少し違う自分を描きたい
-        </strong>
-        <p>
-          好きな世界観や憧れを重ねて、
-          「こんな自分」を形にできます。
-        </p>
-      </article>
+      <div class="visual">
 
+        <div class="visual-placeholder">
 
-      <article class="your-card">
-        <small>03</small>
-        <strong>
-          記念になる一枚をつくりたい
-        </strong>
-        <p>
-          誕生日や記念日、活動の節目など、
-          大切な時間を作品として残したい方へ。
-        </p>
-      </article>
+          <div class="visual-text">
+            YOUR STAR<br><br>
+            あなたの姿を、<br>
+            一枚の星へ。
+          </div>
 
+        </div>
 
-      <article class="your-card">
-        <small>04</small>
-        <strong>
-          言葉だけでは伝えきれないものを残したい
-        </strong>
-        <p>
-          うまく説明できなくても大丈夫。
-          小さな「星のかけら」から一緒に形を探します。
-        </p>
-      </article>
+      </div>
 
     </div>
 
-  </section>
+  </div>
+
+</header>
 
 
-  <!-- WHAT WE MAKE -->
 
-  <section class="your-section">
+<!-- =========================
+     PLAN
+========================= -->
 
-    <p class="your-section-label">
-      WHAT WE MAKE
+<section class="section">
+
+  <div class="wrap">
+
+    <p class="section-label">
+      PLAN
     </p>
 
-    <h2>
-      作品に込めるもの
+    <h2 class="section-title">
+      プラン・料金
     </h2>
 
-    <p class="your-lead">
-      髪型や服装などの外見だけではなく、<br>
-      あなたの好きな色、好きな場所、思い出、憧れ、<br>
-      作品に残したい雰囲気まで受け取ります。
+    <div class="plan-box">
+
+      <div class="plan-image">
+
+        <div class="visual-text">
+          YOUR<br>
+          PORTRAIT
+        </div>
+
+      </div>
+
+
+      <div class="plan-content">
+
+        <div class="plan-small">
+          BASIC PLAN
+        </div>
+
+        <h3 class="plan-name">
+          あなたの姿
+        </h3>
+
+        <div class="price">
+          15,000<span>円〜</span>
+        </div>
+
+        <p class="plan-description">
+          あなた自身を、一枚の作品に。<br>
+          人物を主役として、その人らしさや雰囲気を描きます。
+        </p>
+
+
+        <div class="points">
+
+          <div class="point">
+
+            <div class="point-title">
+              自分自身をテーマにした作品がほしい
+            </div>
+
+            <div class="point-text">
+              あなたらしさを大切に、一枚の作品として残します。
+            </div>
+
+          </div>
+
+
+          <div class="point">
+
+            <div class="point-title">
+              大切な記念を作品にしたい
+            </div>
+
+            <div class="point-text">
+              誕生日や周年、活動の記念などにもご利用いただけます。
+            </div>
+
+          </div>
+
+
+          <div class="point">
+
+            <div class="point-title">
+              雰囲気や世界観を大切にしたい
+            </div>
+
+            <div class="point-text">
+              参考資料やお話をもとに、作品全体の雰囲気を組み立てます。
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     制作について
+========================= -->
+
+<section class="section">
+
+  <div class="wrap">
+
+    <p class="section-label">
+      DETAILS
     </p>
 
-    <dl class="your-specs">
+    <h2 class="section-title">
+      制作について
+    </h2>
 
-      <div class="your-spec">
-        <dt>あなたについて</dt>
-        <dd>
-          お名前・呼ばれたい名前、描いてほしい姿、
-          必要な外見情報など
-        </dd>
+    <p class="section-lead">
+      ご依頼内容を確認したうえで、あなたに合わせた作品を制作します。
+    </p>
+
+
+    <div class="info-grid">
+
+
+      <!-- 納期 -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ✦
+        </div>
+
+        <h3>
+          納期の目安
+        </h3>
+
+        <p>
+          1ヶ月〜3ヶ月程度。
+          ご依頼内容や現在の制作状況、
+          確認・ご返信のタイミングなどによって前後します。
+          正式な納期は、ご依頼内容を確認したうえでご案内します。
+        </p>
+
       </div>
 
-      <div class="your-spec">
-        <dt>好きなもの</dt>
-        <dd>
-          好きな色・場所・季節・動物・雰囲気など
-        </dd>
+
+
+      <!-- ラフ -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ✎
+        </div>
+
+        <h3>
+          ラフ・修正について
+        </h3>
+
+        <p>
+          アイデアラフ・ラフの段階で修正を行います。
+          あなたの姿では、2回まで無料で修正できます。
+        </p>
+
+        <p>
+          ラフ確定後の大幅な変更・描き直しについては、
+          内容に応じて追加料金または納期の変更をお願いする場合があります。
+        </p>
+
       </div>
 
-      <div class="your-spec">
-        <dt>記憶</dt>
-        <dd>
-          大切な思い出や風景、
-          作品に残したい出来事など
-        </dd>
+
+
+      <!-- 追加料金 -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ＋
+        </div>
+
+        <h3>
+          追加料金について
+        </h3>
+
+        <p>
+          基本内容を大きく超えるご希望がある場合は、
+          内容に応じて追加料金をご案内します。
+        </p>
+
+        <ul>
+
+          <li>人数の追加</li>
+          <li>複雑な衣装や装飾</li>
+          <li>大量の小物</li>
+          <li>複雑な建物・街並み</li>
+          <li>機械などの細かな描写</li>
+          <li>大幅な構図変更</li>
+          <li>特別な加工・展開</li>
+
+        </ul>
+
+        <p>
+          ※追加料金が発生する場合は、
+          制作前に必ずご案内します。
+        </p>
+
       </div>
 
-      <div class="your-spec">
-        <dt>憧れ</dt>
-        <dd>
-          こんな自分を描いてほしい、
-          こんな雰囲気にしたい、という想い
-        </dd>
+
+
+      <!-- 正式料金 -->
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          ▤
+        </div>
+
+        <h3>
+          正式な料金について
+        </h3>
+
+        <p>
+          サイトに掲載している金額は、
+          各プランの基本料金です。
+        </p>
+
+        <p>
+          実際の料金は、ご依頼内容や描き込み量などを
+          確認したうえで正式にご案内します。
+        </p>
+
       </div>
 
-      <div class="your-spec">
-        <dt>作品について</dt>
-        <dd>
-          色・雰囲気、必ず入れてほしいもの、
-          入れてほしくないもの、参考画像など
-        </dd>
-      </div>
 
-    </dl>
+    </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- PROCESS -->
 
-  <section class="your-section">
+<!-- =========================
+     ご依頼の流れ
+========================= -->
 
-    <p class="your-section-label">
+<section class="section">
+
+  <div class="wrap">
+
+    <p class="section-label">
       PROCESS
     </p>
 
-    <h2>
-      制作の流れ
+    <h2 class="section-title">
+      ご依頼の流れ
     </h2>
 
-    <div class="process-list">
-
-      <div class="process-item">
-        <div class="process-number">01</div>
-        <div>
-          <strong>星のかけらを届ける</strong>
-          <p>
-            あなたについて、描いてほしい姿、
-            好きなものや想いなどをお聞かせください。
-          </p>
-        </div>
-      </div>
-
-
-      <div class="process-item">
-        <div class="process-number">02</div>
-        <div>
-          <strong>内容を確認する</strong>
-          <p>
-            いただいた内容を確認し、
-            必要に応じてヒアリングを行います。
-          </p>
-        </div>
-      </div>
-
-
-      <div class="process-item">
-        <div class="process-number">03</div>
-        <div>
-          <strong>お見積り・内容の確認</strong>
-          <p>
-            内容や描画量などを確認したうえで、
-            正式な料金・制作内容をご案内します。
-          </p>
-        </div>
-      </div>
-
-
-      <div class="process-item">
-        <div class="process-number">04</div>
-        <div>
-          <strong>同意・お支払い</strong>
-          <p>
-            内容・料金・条件をご確認いただき、
-            同意とお支払いを確認したあと正式な制作へ進みます。
-          </p>
-        </div>
-      </div>
-
-
-      <div class="process-item">
-        <div class="process-number">05</div>
-        <div>
-          <strong>ラフ制作</strong>
-          <p>
-            構図や全体の方向性を確認できるよう、
-            ラフ段階で一度ご確認いただきます。
-          </p>
-        </div>
-      </div>
-
-
-      <div class="process-item">
-        <div class="process-number">06</div>
-        <div>
-          <strong>仕上げ・納品</strong>
-          <p>
-            確認した方向性をもとに仕上げ、
-            完成した作品を納品します。
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="your-note">
-
-      <strong>
-        制作目安：1〜3ヶ月
-      </strong>
-
-      <br>
-
-      制作内容や確認状況によって前後する場合があります。
-      大きな方向転換や追加のご希望については、
-      内容に応じて追加料金をご案内する場合があります。
-
-    </div>
-
-  </section>
-
-
-  <!-- PRICE -->
-
-  <section class="your-section">
-
-    <p class="your-section-label">
-      PRICE
+    <p class="section-lead">
+      内容を確認し、料金・納期をご案内してから制作を開始します。
     </p>
 
-    <h2>
-      料金について
-    </h2>
 
-    <div class="price-main">
+    <div class="flow">
 
-      <strong>
-        15,000円〜
-      </strong>
 
-      <span>
-        基本料金
-      </span>
+      <div class="flow-item">
+
+        <div class="flow-number">
+          01
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            ご依頼内容の確認
+          </strong>
+
+          <span>
+            描いてほしい内容や参考資料などを確認します。
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          02
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            内容・描き込み量などを確認
+          </strong>
+
+          <span>
+            構図や資料、追加内容などを確認します。
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          03
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            正式な料金・納期をご案内
+          </strong>
+
+          <span>
+            ご依頼内容に合わせた正式な料金と納期をお伝えします。
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          04
+        </div>
+
+        <div class="flow-content">
+
+          <strong>
+            ご了承いただいてから制作開始
+          </strong>
+
+          <span>
+            内容をご確認いただき、ご了承後に制作を開始します。
+          </span>
+
+        </div>
+
+      </div>
+
 
     </div>
 
-    <p class="your-lead">
-      描画内容・構図・背景・描き込み量・
-      追加のご希望などによって料金が変動します。<br>
-      内容を確認したうえで、正式な料金をご案内します。
-    </p>
+  </div>
 
-  </section>
+</section>
 
 
-  <!-- RIGHTS -->
 
-  <section class="your-section">
+<!-- =========================
+     CTA
+========================= -->
 
-    <p class="your-section-label">
-      RIGHTS & USE
-    </p>
+<section class="cta">
 
-    <h2>
-      権利・利用について
-    </h2>
+  <p class="cta-message">
 
-    <div class="rights-list">
+    あなたの想いが、<br>
+    どんな一枚になるのか。
 
-      <div class="rights-item">
-        <strong>著作権について</strong>
-        <p>
-          制作した作品の著作権は、原則として星詠に帰属します。
-        </p>
-      </div>
+    <br><br>
+
+    星詠と一緒に、<br>
+    その形を探してみませんか。
+
+  </p>
 
 
-      <div class="rights-item">
-        <strong>個人利用について</strong>
-        <p>
-          納品物は、個人で楽しむ範囲でご利用いただけます。
-        </p>
-      </div>
+  <a
+    href="request-form.html"
+    class="cta-button"
+  >
+    あなたの姿を依頼する →
+  </a>
+
+</section>
 
 
-      <div class="rights-item">
-        <strong>商用利用・グッズ化について</strong>
-        <p>
-          商用利用やグッズ化などをご希望の場合は、
-          事前にご相談ください。
-          内容に応じて別途条件・料金をご案内します。
-        </p>
-      </div>
+<a
+  href="request-normal.html"
+  class="back"
+>
+  ← 通常のご依頼へ戻る
+</a>
 
-
-      <div class="rights-item">
-        <strong>二次利用について</strong>
-        <p>
-          納品物の二次利用については、
-          利用内容を確認したうえでご案内します。
-        </p>
-      </div>
-
-
-      <div class="rights-item">
-        <strong>AI利用について</strong>
-        <p>
-          星詠では制作にAIを使用しません。
-          また、納品物をAI学習などに利用することもお断りしています。
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CANCELLATION -->
-
-  <section class="your-section">
-
-    <p class="your-section-label">
-      CANCELLATION
-    </p>
-
-    <h2>
-      キャンセルについて
-    </h2>
-
-    <div class="your-note">
-
-      制作開始後のキャンセルについては、
-      制作段階に応じて対応が異なります。<br>
-
-      制作内容の確認・同意後に正式な制作へ進むため、
-      キャンセルをご希望の場合は、できるだけ早めにご連絡ください。
-
-      <br><br>
-
-      詳細な条件については、
-      ご依頼前にご案内する注意事項をご確認ください。
-
-    </div>
-
-  </section>
-
-
-  <!-- FINAL -->
-
-  <footer class="your-final">
-
-    <p>
-      あなたの姿を、あなたの星として。<br>
-      言葉にならないものまで、一枚に残してみませんか。
-    </p>
-
-    <div class="your-back">
-
-      <a href="index.html#service">
-        サービス一覧へ →
-      </a>
-
-    </div>
-
-  </footer>
-
-</main>
 
 </body>
 </html>
