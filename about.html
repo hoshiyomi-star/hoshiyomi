@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星詠をのぞいてみる｜星詠</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%}
+body{
+background:radial-gradient(circle at 50% 0%,rgba(90,130,210,.12),transparent 35%),#040916;
+color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif
+}
+.page{width:min(1000px,calc(100% - 40px));margin:auto}
+header{text-align:center;padding:90px 0 65px}
+.system{color:#8fbfff;font-family:Georgia,"Times New Roman",serif;font-size:.75rem;letter-spacing:.3em;margin-bottom:28px}
+.title-frame{display:inline-block;padding:0 20px 24px;border-bottom:1px solid rgba(180,205,245,.18)}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:400;letter-spacing:.12em;margin:0}
+.subtitle{color:#aab8d2;margin:18px 0 0;line-height:1.9;letter-spacing:.08em}
+.lead{color:#aab8d2;margin:28px auto 0;line-height:2;max-width:760px}
+section{padding:55px 0;border-top:1px solid rgba(180,205,245,.18)}
+.label{color:#8fbfff;font-family:Georgia,"Times New Roman",serif;font-size:.72rem;letter-spacing:.22em;margin-bottom:12px}
+h2{font-size:1.6rem;font-weight:400;letter-spacing:.08em;margin:0 0 30px}
+.note{padding:30px;border:1px solid rgba(180,205,245,.18);border-radius:20px;background:rgba(10,24,52,.58)}
+.note p{color:#c8d4ea;font-size:.92rem;line-height:2.05;margin:0}
+.note p+p{margin-top:18px}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.work-card{min-height:230px;padding:32px 26px;border:1px solid rgba(180,205,245,.18);border-radius:20px;background:rgba(10,24,52,.58);transition:.35s ease}
+.work-card:hover{transform:translateY(-4px);border-color:rgba(143,191,255,.5);background:rgba(20,40,78,.7);box-shadow:0 15px 40px rgba(50,90,170,.12)}
+.work-number{color:#8fbfff;font-family:Georgia,"Times New Roman",serif;font-size:.72rem;letter-spacing:.2em;margin-bottom:18px}
+.work-card h3{font-size:1.15rem;font-weight:400;letter-spacing:.08em;margin:0 0 14px}
+.work-card p{color:#aab8d2;font-size:.9rem;line-height:1.9;margin:0}
+.message{text-align:center}
+.message .note{padding:42px 30px}
+.message strong{display:block;color:#edf3ff;font-size:1.15rem;font-weight:400;letter-spacing:.08em;margin-bottom:18px}
+.back{display:block;width:max-content;margin:45px auto 80px;padding:10px 24px;border:1px solid rgba(180,205,245,.2);border-radius:999px;color:#dce8ff;text-decoration:none;transition:.3s ease}
+.back:hover{background:rgba(180,210,255,.08)}
+@media(max-width:700px){
+.page{width:min(100% - 28px,1000px)}
+header{padding:70px 0 50px}
+.work-grid{grid-template-columns:1fr}
+.work-card{min-height:180px}
+.note{padding:25px 22px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+<div class="system">HOSHIYOMI / ABOUT</div>
+<div class="title-frame">
+<h1>星詠をのぞいてみる</h1>
+<div class="subtitle">― ここにあるのは、誰かのための一枚。―</div>
+</div>
+<p class="lead">星詠は、誰かの姿や記憶、想いをもとに、<br>一枚の作品として形にしていく場所です。<br>ただ綺麗な絵を描くのではなく、その人だからこそ生まれるものを、一枚の中に残します。</p>
+</header>
+
+<section>
+<div class="label">01｜HOSHIYOMI</div><h2>星詠とは</h2>
+<div class="note">
+<p>星詠では、一人ひとりの中にある「その人だけのもの」を大切にしています。</p>
+<p>好きなもの。<br>大切な記憶。<br>忘れたくない瞬間。<br>まだ言葉になっていない想い。</p>
+<p>そうしたものをお聞きしながら、その人にしかない一枚を一緒につくっていきます。</p>
+</div>
+</section>
+
+<section>
+<div class="label">02｜VALUES</div><h2>大切にしていること</h2>
+<div class="note">
+<p>星詠が大切にしているのは、「その人らしさ」を置き去りにしないこと。</p>
+<p>流行っているから。人気があるから。誰かに似ているから。</p>
+<p>そんな理由だけで作品をつくるのではなく、あなた自身が大切にしているものを中心に考えます。</p>
+<p>正解を決めるのではなく、一緒に探していく。</p>
+<p>それが星詠の制作です。</p>
+</div>
+</section>
+
+<section>
+<div class="label">03｜WORKS</div><h2>作品について</h2>
+<div class="work-grid">
+<div class="work-card"><div class="work-number">WORK 01</div><h3>あなたの姿</h3><p>あなた自身を、一枚の作品へ。姿だけではなく、その人らしさや雰囲気まで含めて描きます。</p></div>
+<div class="work-card"><div class="work-number">WORK 02</div><h3>記念品</h3><p>大切な出来事を、一枚の作品へ。誕生日や周年、イベント達成など、その瞬間を思い出せる作品として残します。</p></div>
+<div class="work-card"><div class="work-number">WORK 03</div><h3>あなたの世界</h3><p>あなたの中にある世界を、一枚の作品へ。記憶や思い出、想像している世界など、まだ形になっていないものも作品へと変えていきます。</p></div>
+</div>
+</section>
+
+<section>
+<div class="label">04｜PROCESS</div><h2>制作について</h2>
+<div class="note">
+<p>ご依頼をいただいたら、まずはあなたのことを知るところから始まります。</p>
+<p>好きなもの。大切にしていること。思い出。憧れているもの。そして、まだ言葉になっていないもの。</p>
+<p>いただいたお話や資料をもとに、構図や雰囲気を考え、ラフを制作します。</p>
+<p>そこから確認や修正を重ねながら、少しずつ一枚の作品へと仕上げていきます。</p>
+</div>
+</section>
+
+<section>
+<div class="label">05｜MESSAGE</div><h2>星詠が届けたいもの</h2>
+<div class="note">
+<p>完成した作品を見たときに、「自分のための作品だ」と思ってもらえること。</p>
+<p>そして、時間が経ったあとに見返したとき、「あのとき、こんなことを考えていたな」と思い出せること。</p>
+<p>星詠が届けたいのは、ただの一枚の絵ではありません。</p>
+<p>そのときのあなたを残すための、ひとつの記録です。</p>
+</div>
+</section>
+
+<section class="message">
+<div class="label">06｜TO YOU</div><h2>星詠からあなたへ</h2>
+<div class="note">
+<strong>あなたの中にある星を、一枚の作品へ。</strong>
+<p>まだ、何を描いてほしいのか決まっていなくても大丈夫です。</p>
+<p>うまく言葉にできなくても大丈夫。</p>
+<p>あなたの中にあるものを、一緒に探していきます。</p>
+<p>夜空にある星のように、まだ見つけられていないものがあるかもしれません。</p>
+<p>そのひとつを見つけるところから、星詠は始まります。</p>
+</div>
+</section>
+
+<a href="index.html" class="back">← 星詠の入口へ戻る</a>
+</div>
+</body>
+</html>
