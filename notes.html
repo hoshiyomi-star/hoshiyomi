@@ -1,273 +1,932 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>注意事項｜星詠</title>
 <style>
-:root{
-  --bg:#040916;--deep:#081936;--blue:#8fbfff;--violet:#a992d2;
-  --text:#edf3ff;--muted:#c5d0e2;--line:rgba(151,190,235,.15);
+
+
+
+*{
+  box-sizing:border-box;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  margin:0;min-height:100vh;color:var(--text);
+  margin:0;
+
   background:
-    radial-gradient(ellipse 52% 26% at 16% 8%,rgba(72,125,225,.22),transparent 72%),
-    radial-gradient(ellipse 48% 30% at 86% 18%,rgba(126,99,201,.19),transparent 72%),
-    radial-gradient(ellipse 70% 18% at 50% 50%,rgba(105,157,236,.18),transparent 70%),
-    radial-gradient(ellipse 48% 10% at 50% 50%,rgba(160,143,226,.11),transparent 68%),
-    radial-gradient(ellipse 50% 28% at 20% 90%,rgba(88,72,159,.10),transparent 72%),
-    radial-gradient(ellipse 46% 25% at 88% 82%,rgba(49,91,164,.10),transparent 72%),
-    linear-gradient(145deg,#030713 0%,#07152e 45%,#090b20 100%);
-  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Noto Sans JP",sans-serif;
-  font-weight:400;letter-spacing:.045em;line-height:2.35;overflow-x:hidden;
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(70,110,190,.13),
+      transparent 38%
+    ),
+    #030a18;
+
+  color:#edf3ff;
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
+
+  letter-spacing:.05em;
 }
-body:before{
-  content:"✦   ·    ✧       ·    ✦       ·       ✧";
-  position:fixed;inset:4% 3% auto;height:92vh;color:rgba(224,235,255,.38);
-  font-size:12px;letter-spacing:2em;line-height:7;pointer-events:none;z-index:0;
+
+.page{
+  width:min(1100px, calc(100% - 40px));
+  margin:auto;
 }
-body:after{
-  content:"";position:fixed;width:500px;height:500px;right:-190px;top:5%;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(91,137,218,.12),rgba(113,82,172,.07) 44%,transparent 70%);
-  filter:blur(14px);pointer-events:none;
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  text-align:center;
+  padding:90px 0 70px;
 }
-.notes-page{position:relative;z-index:1;width:min(860px,calc(100% - 48px));margin:0 auto;padding:90px 0 80px}
-.page-header{
-  position:relative;padding:46px 52px 52px;border:1px solid rgba(165,192,232,.18);
-  border-radius:28px;
-  background:radial-gradient(circle at 82% 18%,rgba(125,83,166,.14),transparent 38%),
-             radial-gradient(circle at 15% 88%,rgba(180,63,75,.07),transparent 35%),
-             linear-gradient(145deg,rgba(17,40,86,.29),rgba(75,47,91,.18));
-  box-shadow:0 25px 70px rgba(0,0,0,.22);backdrop-filter:blur(8px);
+
+.system{
+  color:#9bbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.38em;
+
+  margin-bottom:28px;
 }
-.page-header:after{content:"✦";position:absolute;right:30px;top:25px;color:rgba(220,142,148,.62);text-shadow:0 0 14px rgba(190,76,89,.48)}
-.eyebrow,.section-label{margin:0 0 12px;color:rgba(174,202,238,.68);font-size:.67rem;letter-spacing:.20em}
-.page-header h1{margin:0;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:400;letter-spacing:.07em;line-height:1.7;text-shadow:0 0 22px rgba(130,96,188,.10),0 0 12px rgba(190,91,101,.07)}
-.page-header h1::first-letter{color:rgba(214,117,123,.88)}
-.page-header>p:last-child{margin:26px 0 0;color:rgba(207,217,235,.78);line-height:2.4}
-.notes-section{
-  position:relative;margin-top:22px;padding:30px 46px 34px;border:1px solid var(--line);
-  border-radius:20px;
-  background:radial-gradient(circle at 88% 12%,rgba(105,148,221,.10),transparent 38%),
-             radial-gradient(circle at 12% 88%,rgba(171,61,77,.045),transparent 38%),rgba(5,17,39,.43);
-  box-shadow:0 14px 42px rgba(0,0,0,.10);backdrop-filter:blur(7px);
+
+.title-frame{
+  position:relative;
+
+  width:min(760px,100%);
+
+  margin:0 auto;
+
+  padding:25px 35px 22px;
+
+  border:
+    1px solid
+    rgba(210,225,255,.75);
+
+  border-radius:60px;
 }
-.notes-section:before{content:"✦";position:absolute;top:27px;right:27px;color:rgba(178,207,245,.48);font-size:10px;text-shadow:0 0 12px rgba(112,165,225,.55)}
-.notes-section .section-label{margin-bottom:8px}
-.notes-section h2{margin:0 0 24px;font-size:1.35rem;font-weight:400;letter-spacing:.065em;line-height:1.8}
-.notes-section p{margin:0 0 21px;color:rgba(202,214,234,.79);font-size:.88rem;letter-spacing:.065em;line-height:2.5}
-.notes-section p:last-of-type{margin-bottom:0}
-.notes-section ul{margin:8px 0 0;padding:20px 26px 18px 1.55em;border:1px solid rgba(193,112,119,.16);border-radius:16px;background:radial-gradient(circle at 85% 15%,rgba(184,72,86,.07),transparent 42%),rgba(11,28,56,.34)}
-.notes-section li{margin-bottom:11px;padding-left:5px;color:rgba(202,214,234,.79);font-size:.88rem;letter-spacing:.065em;line-height:2.35}
-.notes-section li:last-child{margin-bottom:0}
-.notes-section li::marker{color:rgba(205,112,119,.82)}
-.caution-box{
-  margin-top:22px;padding:24px 28px;border:1px solid rgba(211,135,143,.28);border-radius:18px;
-  background:radial-gradient(circle at 88% 15%,rgba(184,72,86,.11),transparent 45%),rgba(42,18,31,.28);
-  box-shadow:0 0 28px rgba(184,72,86,.07);
+
+.title-frame::before,
+.title-frame::after{
+  content:"✦";
+
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#fff;
+
+  font-size:1.3rem;
 }
-.caution-box h3{margin:0 0 12px;color:rgba(232,166,171,.92);font-size:1rem;font-weight:400;letter-spacing:.07em}
-.caution-box p{margin:0;color:rgba(219,208,218,.82);font-size:.84rem;line-height:2.35}
-.page-back{margin:58px 0 0;text-align:center}
-.page-back a{display:inline-block;padding:12px 24px;border:1px solid rgba(151,190,235,.18);border-radius:999px;color:rgba(207,219,239,.78);text-decoration:none;font-size:.78rem;letter-spacing:.09em;background:rgba(255,255,255,.018);transition:.25s ease}
-.page-back a:hover{border-color:rgba(177,205,242,.36);color:rgba(235,241,250,.95);box-shadow:0 0 24px rgba(92,141,207,.12);transform:translateY(-1px)}
-@media(max-width:650px){
-  .notes-page{width:calc(100% - 24px);padding:42px 0 58px}
-  .page-header{padding:30px 22px 36px;border-radius:24px}
-  .page-header h1{font-size:1.62rem;line-height:1.8}
-  .page-header>p:last-child{margin-top:22px;font-size:.85rem;line-height:2.45}
-  .notes-section{margin-top:18px;padding:27px 22px 32px;border-radius:19px}
-  .notes-section h2{font-size:1.18rem;line-height:1.85;margin-bottom:23px}
-  .notes-section p,.notes-section li{font-size:.83rem;letter-spacing:.055em;line-height:2.6}
-  .notes-section p{margin-bottom:23px}
-  .notes-section ul{padding:19px 18px 18px 1.45em}
-  .notes-section li{margin-bottom:13px}
-  .caution-box{padding:21px 20px}
-  .caution-box h3{font-size:.93rem}
-  .caution-box p{font-size:.81rem;line-height:2.5}
-  .page-back{margin-top:48px}
+
+.title-frame::before{
+  left:25px;
 }
-</style>
-<style id="hoshiyomi-night-galaxy">
-/* 静かな銀河の帯：注意事項ページでも星詠の夜空を保つ */
-body{
-  isolation:isolate;
+
+.title-frame::after{
+  right:25px;
 }
-body .notes-page{
-  filter:drop-shadow(0 10px 35px rgba(0,0,0,.08));
+
+h1{
+  margin:0;
+
+  font-size:clamp(2rem,5vw,3.1rem);
+
+  font-weight:400;
+
+  letter-spacing:.25em;
 }
-body:after{
-  z-index:-1;
+
+.subtitle{
+  margin:10px 0 0;
+
+  font-size:.85rem;
+
+  color:#cbd7ec;
+
+  letter-spacing:.2em;
 }
-body:before{
-  text-shadow:
-    120px 80px 0 rgba(214,228,250,.18),
-    330px 210px 0 rgba(143,191,255,.12),
-    620px 420px 0 rgba(214,228,250,.16),
-    180px 620px 0 rgba(169,146,210,.12);
+
+.lead{
+  margin:35px auto 0;
+
+  max-width:720px;
+
+  color:#d1dbea;
+
+  font-size:.95rem;
+
+  line-height:2.2;
 }
-.notes-page:before{
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:65px 0;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.2);
+}
+
+.section-head{
+  text-align:center;
+
+  margin-bottom:38px;
+}
+
+.label{
+  color:#9bbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.4em;
+
+  margin-bottom:10px;
+}
+
+.section-head h2{
+  margin:0;
+
+  font-size:1.25rem;
+
+  font-weight:400;
+
+  letter-spacing:.25em;
+}
+
+.section-head h2::before,
+.section-head h2::after{
   content:"";
-  position:fixed;
-  left:-18vw;
-  top:36%;
-  width:136vw;
-  height:30vh;
-  transform:rotate(-9deg);
+
+  display:inline-block;
+
+  width:90px;
+
+  height:1px;
+
+  vertical-align:middle;
+
+  margin:0 18px;
+
   background:
-    radial-gradient(ellipse at center,
-      rgba(132,177,245,.16) 0%,
-      rgba(126,160,231,.12) 22%,
-      rgba(143,126,213,.085) 42%,
-      rgba(100,125,201,.035) 58%,
-      transparent 74%);
-  filter:blur(18px);
-  pointer-events:none;
-  z-index:-1;
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(170,200,245,.5)
+    );
 }
-</style>
 
-<style id="hoshiyomi-clear-galaxy">
-.notes-page:after{
-  content:"✦      ·             ✧              ·        ✦";
-  position:fixed;
-  left:7%;
-  top:18%;
-  width:86%;
-  height:64%;
-  color:rgba(225,237,255,.32);
-  font-size:10px;
-  letter-spacing:2.6em;
-  line-height:8;
-  pointer-events:none;
-  z-index:-1;
-  transform:rotate(-7deg);
-  text-shadow:0 0 10px rgba(139,181,238,.42);
+.section-head h2::after{
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(170,200,245,.5)
+    );
 }
-</style>
 
+
+/* =========================
+   DETAIL
+========================= */
+
+.reward-detail{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:55px;
+
+  align-items:center;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.reward-image{
+  position:relative;
+
+  padding:10px;
+
+  border:
+    1px solid
+    rgba(190,215,255,.5);
+
+  background:
+    rgba(8,22,48,.35);
+}
+
+.reward-image::before,
+.reward-image::after{
+  content:"";
+
+  position:absolute;
+
+  width:35px;
+  height:35px;
+
+  border-color:
+    rgba(190,215,255,.7);
+
+  pointer-events:none;
+}
+
+.reward-image::before{
+  left:-5px;
+  top:-5px;
+
+  border-left:1px solid;
+  border-top:1px solid;
+}
+
+.reward-image::after{
+  right:-5px;
+  bottom:-5px;
+
+  border-right:1px solid;
+  border-bottom:1px solid;
+}
+
+.reward-image img{
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:1 / 1;
+
+  object-fit:cover;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.reward-content{
+  padding:10px 15px;
+}
+
+.reward-en{
+  text-align:center;
+
+  color:#9bbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.35em;
+
+  margin-bottom:15px;
+}
+
+.reward-content h3{
+  text-align:center;
+
+  margin:0;
+
+  font-size:2rem;
+
+  font-weight:400;
+
+  letter-spacing:.2em;
+}
+
+.price{
+  text-align:center;
+
+  margin:20px 0 25px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:1.8rem;
+
+  letter-spacing:.12em;
+
+  color:#f0e6d8;
+}
+
+.divider{
+  width:70%;
+
+  height:1px;
+
+  margin:0 auto 25px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(180,210,255,.65),
+      transparent
+    );
+}
+
+.reward-description{
+  color:#d0d9ea;
+
+  line-height:2.1;
+
+  font-size:.92rem;
+
+  text-align:center;
+}
+
+
+/* =========================
+   SCENE
+========================= */
+
+.scene-box{
+  margin-top:30px;
+
+  padding:25px 28px;
+
+  border:
+    1px solid
+    rgba(170,200,245,.28);
+
+  background:
+    rgba(12,28,58,.35);
+}
+
+.scene-title{
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  margin-bottom:15px;
+
+  font-size:.95rem;
+
+  letter-spacing:.18em;
+}
+
+.scene-title span{
+  font-size:1.4rem;
+
+  color:#dceaff;
+}
+
+.scene-box ul{
+  list-style:none;
+
+  padding:0;
+
+  margin:0;
+}
+
+.scene-box li{
+  position:relative;
+
+  padding-left:22px;
+
+  margin:9px 0;
+
+  color:#cbd6e8;
+
+  font-size:.84rem;
+
+  line-height:1.7;
+}
+
+.scene-box li::before{
+  content:"✦";
+
+  position:absolute;
+
+  left:0;
+
+  color:#a9c8ff;
+}
+
+
+/* =========================
+   FLOW
+========================= */
+
+.flow{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
+}
+
+.flow-card{
+  position:relative;
+
+  min-height:175px;
+
+  padding:25px 20px;
+
+  border:
+    1px solid
+    rgba(175,205,250,.28);
+
+  background:
+    rgba(8,22,48,.35);
+}
+
+.flow-number{
+  color:#9bbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.7rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:22px;
+}
+
+.flow-icon{
+  font-size:1.5rem;
+
+  margin-bottom:12px;
+}
+
+.flow-card h3{
+  margin:0 0 13px;
+
+  font-size:1rem;
+
+  font-weight:400;
+
+  letter-spacing:.12em;
+}
+
+.flow-card p{
+  margin:0;
+
+  color:#aebbd0;
+
+  font-size:.8rem;
+
+  line-height:1.8;
+}
+
+
+/* =========================
+   NOTE
+========================= */
+
+.note{
+  padding:28px 35px;
+
+  border:
+    1px solid
+    rgba(175,205,250,.28);
+
+  background:
+    rgba(8,22,48,.35);
+}
+
+.note ul{
+  margin:0;
+
+  padding-left:22px;
+}
+
+.note li{
+  margin:12px 0;
+
+  color:#cbd6e8;
+
+  font-size:.84rem;
+
+  line-height:1.9;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.request-button{
+  display:block;
+
+  width:max-content;
+
+  margin:65px auto 90px;
+
+  padding:15px 60px;
+
+  border:
+    1px solid
+    rgba(205,225,255,.75);
+
+  border-radius:999px;
+
+  color:#edf4ff;
+
+  text-decoration:none;
+
+  letter-spacing:.18em;
+
+  background:
+    rgba(15,35,70,.45);
+
+  box-shadow:
+    0 0 20px
+    rgba(100,150,255,.08);
+
+  transition:.3s ease;
+}
+
+.request-button:hover{
+  background:
+    rgba(90,130,210,.18);
+
+  box-shadow:
+    0 0 30px
+    rgba(100,150,255,.18);
+
+  transform:translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .page{
+    width:min(
+      100% - 28px,
+      1100px
+    );
+  }
+
+  header{
+    padding:65px 0 50px;
+  }
+
+  .title-frame{
+    padding:22px 25px;
+  }
+
+  .title-frame::before{
+    left:12px;
+  }
+
+  .title-frame::after{
+    right:12px;
+  }
+
+  .reward-detail{
+    grid-template-columns:1fr;
+
+    gap:35px;
+  }
+
+  .reward-content{
+    padding:0;
+  }
+
+  .flow{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:520px){
+
+  .flow{
+    grid-template-columns:1fr;
+  }
+
+  .section-head h2::before,
+  .section-head h2::after{
+    width:30px;
+
+    margin:0 8px;
+  }
+
+  .note{
+    padding:22px;
+  }
+
+  .request-button{
+    width:100%;
+
+    text-align:center;
+
+    padding:14px 20px;
+  }
+
+}
+
+
+
+.price-page .flow{grid-template-columns:repeat(3,1fr)}
+.price-page .flow-card{min-height:210px}
+.price-page .flow-card h3{line-height:1.7}
+.price-page .flow-card p{line-height:1.9}
+.price-page .flow-card p strong{color:#edf4ff;font-family:Georgia,"Times New Roman",serif;font-size:1.15rem;font-weight:400}
+.price-page .note p{color:#cbd6e8;line-height:2}
+.price-page .note > p + p{margin-top:18px}
+.price-page .scene-box p{margin:0;color:#cbd6e8;line-height:2;font-size:.84rem}
+@media(max-width:800px){.price-page .flow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.price-page .flow{grid-template-columns:1fr}}
+
+
+.price-page .flow-card{
+  min-height:240px;
+}
+.price-page .flow-card p{
+  line-height:1.9;
+}
+.price-page .flow-card p strong{
+  color:#edf4ff;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.15rem;
+  font-weight:400;
+}
+.price-page .note p{
+  color:#cbd6e8;
+  line-height:2;
+}
+.price-page .note > p + p{
+  margin-top:18px;
+}
+.price-page .scene-box p{
+  margin:0;
+  color:#cbd6e8;
+  line-height:2;
+  font-size:.84rem;
+}
+
+
+
+.notes-page .note p{
+  color:#cbd6e8;
+  line-height:2;
+}
+.notes-page .note p + p{
+  margin-top:18px;
+}
+.notes-page .note ul{
+  margin:0;
+  padding-left:1.4em;
+  color:#cbd6e8;
+  line-height:2;
+}
+.notes-page .scene-box p{
+  margin:0;
+  color:#cbd6e8;
+  line-height:2;
+  font-size:.84rem;
+}
+.notes-page .closing-note{
+  text-align:center;
+}
+.notes-page .closing-note strong{
+  color:#edf4ff;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+  font-size:1.05rem;
+  font-weight:400;
+}
+
+</style>
 </head>
+
 <body>
-<main class="notes-page">
-<section class="page-header">
-<p class="eyebrow">NOTES</p>
-<h1>⚠ 注意事項</h1>
-<p>星詠へご依頼いただく前に、<br/>以下の内容をご確認ください。</p>
-</section>
+<div class="page notes-page">
 
-<section class="notes-section">
-<p class="section-label">CONTACT</p><h2>連絡について</h2>
-<p>制作に必要な確認や連絡には、できる限り早めのご返信をお願いいたします。</p>
-<p>依頼者様からの返信が必要な状態で一定期間ご連絡がない場合、制作を一時停止することがあります。</p>
-<p>1週間以上ご連絡が取れない場合は、状況に応じて依頼をキャンセル扱いとする場合があります。</p>
-<p>キャンセル扱いとする場合は、事前に一度こちらから確認のご連絡をします。</p>
-</section>
+<header>
+  <div class="system">HOSHIYOMI / NOTES</div>
 
-<section class="notes-section">
-<p class="section-label">CANCEL</p><h2>キャンセル・返金について</h2>
-<p>ご依頼確定後のキャンセルについては、料金・ご依頼についてのページに記載している条件に基づいて対応します。</p>
-<p>制作の進行状況によっては、キャンセル料が発生する場合があります。</p>
-<p>お支払い後の返金についても、制作状況やキャンセル理由などを確認したうえで判断します。</p>
-<div class="caution-box">
-<h3>ご依頼前にご確認ください</h3>
-<p>キャンセルや返金に関する具体的な条件は、制作を開始する前に必ずご確認ください。</p>
+  <div class="title-frame">
+    <h1>注意事項</h1>
+    <div class="subtitle">― ご依頼いただく前に、ご確認ください。―</div>
+  </div>
+
+  <p class="lead">
+    星詠で作品をご依頼いただく前に、以下の内容をご確認ください。<br>
+    作品を気持ちよくお届けするために、制作・利用・納品についていくつかお願いがあります。
+  </p>
+</header>
+
+
+<section>
+  <div class="section-head">
+    <div class="label">01｜ORDER</div>
+    <h2>ご依頼について</h2>
+  </div>
+  <div class="note">
+<p>星詠では、ご依頼内容を確認したうえで制作を開始します。</p>
+<p>ご依頼内容によっては、制作が難しいものや、内容の確認が必要となる場合があります。</p>
+<p>参考資料や希望する内容がある場合は、できるだけ具体的にお知らせください。</p>
+<p>内容が決まっていない場合でも、ご相談いただけます。</p>
 </div>
 </section>
 
-<section class="notes-section">
-<p class="section-label">CHANGES</p><h2>依頼内容の変更</h2>
-<p>制作開始後の大幅な内容変更は、追加料金または納期変更となる場合があります。</p>
-<p>特にラフ確定後の大幅な変更については、それまでの制作状況を確認したうえで対応を判断します。</p>
-<p>変更内容によっては、対応できない場合があります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">SCHEDULE</p><h2>納期について</h2>
-<p>制作期間は、ご依頼内容や制作状況によって変動する場合があります。</p>
-<p>依頼者様からのご返信や確認が必要な場合、その遅れによって納期が延びることがあります。</p>
-<p>制作途中で大幅な内容変更があった場合も、納期を変更させていただく場合があります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">CONFIRMATION</p><h2>制作中の確認について</h2>
-<p>ラフなど、制作の途中で確認をお願いする場合があります。</p>
-<p>確認が必要な段階では、内容をご確認のうえご返信をお願いいたします。</p>
-<p>確認が長期間行われない場合、制作スケジュールに影響することがあります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">REVISION</p><h2>完成後の修正について</h2>
-<p>完成後の大幅な変更は、対応できない場合があります。</p>
-<p>修正可能な範囲や回数については、料金・ご依頼についてのページに記載している内容をご確認ください。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">COLOR</p><h2>色味・仕上がりについて</h2>
-<p>使用する端末やモニターの設定によって、実際の色味と表示される色味が異なる場合があります。</p>
-<p>印刷物やグッズとして使用する場合は、印刷環境・素材・製造工程などによって、画面上の色味や仕上がりと差が生じる場合があります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">RIGHTS</p><h2>権利・利用について</h2>
-<p>制作に使用する画像・イラスト・キャラクター・衣装・ロゴ・素材などについて、必要な権利や利用条件の確認は依頼者様ご自身でお願いいたします。</p>
-<p>第三者が権利を有する素材を使用する場合は、今回の制作・利用に必要な許可やライセンスを取得したうえでご依頼ください。</p>
-<p>REALITYなど、各サービスに関係する素材を使用する場合は、最新の公式ガイドライン・利用規約をご確認ください。</p>
-<p>権利関係や利用条件を確認できない場合、星詠が制作・納品をお断りすることがあります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">USE</p><h2>無断転載・二次配布について</h2>
-<p>納品した作品の無断転載、無断配布、第三者への譲渡、許可のない二次利用はご遠慮ください。</p>
-<p>商用利用、グッズ化、販売などについては、料金・ご依頼についてのページに記載している利用条件をご確認ください。</p>
-<p>許可されていない用途での利用が確認された場合は、利用停止などの対応をお願いする場合があります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">REFUSAL</p><h2>制作をお断りする場合</h2>
-<p>内容を確認した結果、星詠の制作方針や利用条件に合わないと判断した場合、制作をお断りすることがあります。</p>
-<ul>
-<li>権利関係や利用許可を確認できないもの</li>
-<li>各サービスの利用規約・ガイドラインに抵触するおそれがあるもの</li>
-<li>第三者の権利を侵害するおそれがあるもの</li>
-<li>星詠での制作が難しいと判断したもの</li>
-</ul>
-</section>
-
-<section class="notes-section">
-<p class="section-label">GOODS</p><h2>印刷・グッズ制作について</h2>
-<p>印刷物やアクリルグッズなど、実物として使用する場合は、制作内容や仕様について事前にご相談ください。</p>
-<p>印刷・製造による色味、サイズ、素材、仕上がりなどの個体差については、あらかじめご了承ください。</p>
-<p>実物グッズの制作や発送が必要な場合、送料その他の実費が別途必要となる場合があります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">CONTINUATION</p><h2>制作の継続について</h2>
-<p>やむを得ない事情により制作の継続が困難と判断した場合は、依頼者様へご連絡のうえ、今後の対応についてご相談させていただく場合があります。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">QUESTIONS</p><h2>分からないことがある場合</h2>
-<p>「こんな依頼でも大丈夫かな？」</p>
-<p>その段階から、ご相談いただけます。</p>
-<p>何を用意したらいいか分からない場合も大丈夫です。</p>
-<p>一緒に考えながら、あなたの星を探していきます。</p>
-</section>
-
-<section class="notes-section">
-<p class="section-label">BEFORE START</p><h2>制作を始める前に</h2>
-<p>依頼内容や確認事項について、分からないことがあれば、制作を始める前にお気軽にご相談ください。</p>
-<p>内容を確認しながら、無理のない形で制作を進めていきます。</p>
-<div class="caution-box">
-<h3>⚠ ご依頼前の最終確認</h3>
-<p>料金・ご依頼についての案内、注意事項、権利関係、各サービスの利用規約・ガイドラインなどを、必ずご確認ください。</p>
+<section>
+  <div class="section-head">
+    <div class="label">02｜PRODUCTION</div>
+    <h2>制作について</h2>
+  </div>
+  <div class="note">
+<p>作品は、ご依頼いただいた内容をもとに一枚ずつ制作します。</p>
+<p>そのため、完成した作品が参考画像と完全に同じものになるとは限りません。</p>
+<p>色味・構図・描写などについて、制作上の都合により調整を行う場合があります。</p>
+<p>また、制作途中の作品を第三者へ無断で共有・公開することはお控えください。</p>
 </div>
 </section>
 
-<div class="page-back"><a href="index.html">星の海へ戻る</a></div>
-</main>
+<section>
+  <div class="section-head">
+    <div class="label">03｜REVISION</div>
+    <h2>修正について</h2>
+  </div>
+  <div class="note">
+<p>修正は、ラフ・アイデアラフの段階で行います。</p>
+<p>ラフ確定後の大幅な変更や描き直しについては、追加料金または納期の変更をお願いする場合があります。</p>
+<p>完成後の大幅な描き直しには対応できない場合があります。</p>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">04｜DEADLINE</div>
+    <h2>納期について</h2>
+  </div>
+  <div class="note">
+<p>制作期間は、ご依頼内容や制作状況によって異なります。</p>
+<p>サイトに記載している制作期間は目安となります。</p>
+<p>ご依頼をお受けする際に、現在の制作状況を踏まえて納期の目安をご案内します。</p>
+<p>また、確認事項へのご返信が遅れた場合、その分納期が延びる場合があります。</p>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">05｜CANCELLATION</div>
+    <h2>キャンセルについて</h2>
+  </div>
+  <div class="note">
+<p>制作開始前のキャンセルについては、状況を確認したうえで対応します。</p>
+<p>制作開始後のキャンセルについては、制作状況に応じてキャンセル料が発生する場合があります。</p>
+<p>キャンセルに関する具体的な条件については、ご依頼内容の確認時にご案内します。</p>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">06｜PAYMENT</div>
+    <h2>お支払いについて</h2>
+  </div>
+  <div class="note">
+<p>お支払い方法・お支払いのタイミングについては、正式なご依頼内容を確認したうえでご案内します。</p>
+<p>お支払いに関する確認が取れない場合、制作を開始できない場合があります。</p>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">07｜COPYRIGHT / USE</div>
+    <h2>著作権・利用について</h2>
+  </div>
+  <div class="note">
+<p>制作した作品の著作権は、原則として星詠に帰属します。</p>
+<p>ご依頼者様には、納品した作品を個人で利用する権利を許諾します。</p>
+<p>商用利用・グッズ化・販売などをご希望の場合は、事前にご相談ください。</p>
+<p>また、作品の無断転載・再配布・自作発言・著作権を侵害する行為は禁止します。</p>
+<div class="scene-box">
+  <div class="scene-title"><span>✦</span>詳しい利用範囲</div>
+  <p>詳しい利用範囲については、「権利・利用について」をご確認ください。</p>
+</div>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">08｜AI POLICY</div>
+    <h2>AIについて</h2>
+  </div>
+  <div class="note">
+<p>星詠では、制作する作品に<strong>生成AIを使用しません。</strong></p>
+<p>また、納品した作品を生成AIの学習・生成素材として使用することはお控えください。</p>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">09｜DELIVERY</div>
+    <h2>納品について</h2>
+  </div>
+  <div class="note">
+<p>データ作品は、指定された方法でオンライン納品します。</p>
+<p>原画をご希望の場合は、適切に梱包したうえで発送します。</p>
+<p>配送中の事故・破損などについては、配送業者の規定に基づき対応します。</p>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">10｜REFERENCE MATERIALS</div>
+    <h2>参考資料について</h2>
+  </div>
+  <div class="note">
+<p>ご提供いただいた参考資料について、第三者の著作物を使用する場合は、依頼者様ご自身で利用許可などをご確認ください。</p>
+<p>他者の作品をそのまま模倣することを目的としたご依頼には対応できない場合があります。</p>
+</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">11｜PROHIBITED</div>
+    <h2>禁止事項</h2>
+  </div>
+  <div class="note">
+    <ul>
+      <li>無断転載</li>
+      <li>無断再配布</li>
+      <li>自作発言</li>
+      <li>無断での商用利用</li>
+      <li>無断でのグッズ化・販売</li>
+      <li>納品物を第三者へ譲渡する行為</li>
+      <li>制作者を偽る行為</li>
+      <li>作品を利用した第三者への迷惑行為</li>
+      <li>生成AIへの無断利用</li>
+    </ul>
+    <p>その他、星詠が不適切と判断した利用については、お断りする場合があります。</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="label">12｜OTHER</div>
+    <h2>その他</h2>
+  </div>
+  <div class="note">
+    <p>上記に記載されていない内容については、ご依頼内容を確認したうえで個別にご案内します。</p>
+    <p>内容について不明な点がある場合は、ご依頼前にお気軽にご相談ください。</p>
+    <p>星詠では、ご依頼いただいた方に安心して作品を受け取っていただけるよう、一件ずつ内容を確認して制作しています。</p>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="section-head">
+    <div class="label">MESSAGE</div>
+    <h2>最後に</h2>
+  </div>
+  <div class="note closing-note">
+    <p><strong>一枚の作品を、最後まで大切に。</strong></p>
+    <p>ご依頼いただく前に、内容をご確認いただけますと幸いです。</p>
+  </div>
+</section>
+
+
+<a href="request-form.html" class="request-button">ご依頼はこちらから　›</a>
+
+</div>
 </body>
 </html>
