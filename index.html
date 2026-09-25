@@ -210,16 +210,24 @@ body{
 }
 
 
-/* 下段2枚 */
+/* 下段3枚 */
 
 .choice:nth-child(4){
-  grid-column:2 / 4;
+  grid-column:1 / 3;
 }
 
 .choice:nth-child(5){
-  grid-column:4 / 6;
+  grid-column:3 / 5;
 }
 
+.choice:nth-child(6){
+  grid-column:5 / 7;
+}
+
+
+/* =========================
+   カード本体
+========================= */
 
 .choice{
   min-height:240px;
@@ -304,7 +312,8 @@ body{
   .choice:nth-child(2),
   .choice:nth-child(3),
   .choice:nth-child(4),
-  .choice:nth-child(5){
+  .choice:nth-child(5),
+  .choice:nth-child(6){
 
     grid-column:1;
   }
@@ -369,8 +378,8 @@ body{
     </div>
 
     <div class="logo">
-  <img src="logo.png" alt="星詠">
-</div>
+      <img src="logo.png" alt="星詠">
+    </div>
 
     <p class="subtitle">
       HOSHIYOMI
@@ -419,7 +428,10 @@ body{
 
       <!-- 01 -->
 
-     <a href="request.html" class="choice">
+      <a
+        href="request.html"
+        class="choice"
+      >
 
         <div class="choice-number">
           01
@@ -486,9 +498,9 @@ body{
       <!-- 04 -->
 
       <a
-  href="return-gift.html"
-  class="choice"
->
+        href="return-gift.html"
+        class="choice"
+      >
 
         <div class="choice-number">
           04
@@ -508,10 +520,10 @@ body{
 
       <!-- 05 -->
 
-    <a
-  href="first-visit.html"
-  class="choice"
->
+      <a
+        href="first-visit.html"
+        class="choice"
+      >
 
         <div class="choice-number">
           05
@@ -524,6 +536,29 @@ body{
 
         <p>
           初めての方だけが楽しめる体験
+        </p>
+
+      </a>
+
+
+
+      <!-- 06 -->
+
+      <a
+        href="price.html"
+        class="choice"
+      >
+
+        <div class="choice-number">
+          06
+        </div>
+
+        <h2>
+          料金・ご依頼について
+        </h2>
+
+        <p>
+          プランや料金、制作について詳しく見る
         </p>
 
       </a>
