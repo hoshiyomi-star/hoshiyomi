@@ -1,0 +1,1550 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>作品ガイド｜星詠</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+}
+
+body{
+  color:#edf3ff;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(90,130,210,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #040916 0%,
+      #07142d 55%,
+      #040916 100%
+    );
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
+
+  line-height:1.9;
+}
+
+.wrap{
+  width:min(900px,calc(100% - 40px));
+  margin:auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  text-align:center;
+  padding:95px 0 65px;
+}
+
+.system{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.75rem;
+  letter-spacing:.3em;
+
+  margin-bottom:25px;
+}
+
+.logo{
+  width:min(220px,60vw);
+  height:auto;
+
+  display:block;
+
+  margin:0 auto 28px;
+
+  filter:
+    drop-shadow(
+      0 0 20px
+      rgba(150,190,255,.18)
+    );
+}
+
+h1{
+  font-size:
+    clamp(2rem,5vw,3rem);
+
+  font-weight:400;
+  letter-spacing:.12em;
+
+  margin:0;
+}
+
+.lead{
+  color:#aab8d2;
+
+  margin:22px auto 0;
+
+  line-height:2;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:65px 0;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.18);
+}
+
+.section-label{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+  letter-spacing:.22em;
+
+  margin:0 0 10px;
+
+  text-align:center;
+}
+
+h2{
+  font-size:1.6rem;
+
+  font-weight:400;
+  letter-spacing:.08em;
+
+  margin:0 0 30px;
+
+  text-align:center;
+}
+
+.section-text{
+  color:#aab8d2;
+
+  text-align:center;
+
+  line-height:2;
+
+  margin:0 auto 45px;
+
+  max-width:760px;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+  padding:32px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:20px;
+
+  background:
+    rgba(10,24,52,.58);
+}
+
+.intro p{
+  margin:0;
+
+  color:#c8d4ea;
+
+  line-height:2.1;
+}
+
+.intro p+p{
+  margin-top:18px;
+}
+
+
+/* =========================
+   WORK GUIDE
+========================= */
+
+.guide-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:24px;
+}
+
+.guide-card{
+  padding:38px 30px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  border-radius:22px;
+
+  background:
+    rgba(10,24,52,.58);
+
+  text-align:center;
+
+  transition:.35s ease;
+}
+
+.guide-card:hover{
+  transform:translateY(-5px);
+
+  border-color:
+    rgba(143,191,255,.55);
+
+  background:
+    rgba(20,40,78,.7);
+
+  box-shadow:
+    0 18px 45px
+    rgba(50,90,170,.12);
+}
+
+.number{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:18px;
+}
+
+.guide-card h3{
+  font-size:1.4rem;
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+
+  margin:0 0 18px;
+}
+
+.en{
+  color:#91b9f5;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.68rem;
+
+  letter-spacing:.2em;
+
+  margin-bottom:20px;
+}
+
+.guide-card p{
+  color:#aab8d2;
+
+  font-size:.88rem;
+
+  line-height:2;
+
+  margin:0;
+}
+
+
+/* =========================
+   DIAGNOSIS
+========================= */
+
+.diagnosis{
+  max-width:760px;
+
+  margin:0 auto;
+}
+
+.question{
+  display:none;
+
+  padding:38px 30px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  border-radius:22px;
+
+  background:
+    rgba(10,24,52,.58);
+
+  text-align:center;
+}
+
+.question.active{
+  display:block;
+}
+
+.question-number{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:18px;
+}
+
+.question h3{
+  margin:0 0 30px;
+
+  font-size:1.25rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  line-height:1.8;
+}
+
+.answers{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:15px;
+}
+
+.answer{
+  width:100%;
+
+  padding:22px 20px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  border-radius:16px;
+
+  background:
+    rgba(7,19,42,.6);
+
+  color:#edf3ff;
+
+  font-family:inherit;
+
+  font-size:.9rem;
+
+  line-height:1.8;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+}
+
+.answer:hover{
+  transform:translateY(-3px);
+
+  border-color:
+    rgba(143,191,255,.6);
+
+  background:
+    rgba(25,48,88,.7);
+}
+
+.progress{
+  margin-top:18px;
+
+  color:#8291aa;
+
+  font-size:.75rem;
+
+  letter-spacing:.1em;
+
+  text-align:center;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+  display:none;
+
+  padding:45px 32px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.25);
+
+  border-radius:24px;
+
+  background:
+    rgba(10,24,52,.68);
+
+  text-align:center;
+}
+
+.result.show{
+  display:block;
+}
+
+.result-label{
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:18px;
+}
+
+.result h3{
+  margin:0 0 25px;
+
+  font-size:1.7rem;
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+}
+
+.result-message{
+  color:#c8d4ea;
+
+  line-height:2.1;
+
+  margin:0 auto 30px;
+
+  max-width:620px;
+}
+
+.result-buttons{
+  display:flex;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+}
+
+.result-button{
+  display:inline-block;
+
+  padding:12px 25px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.3);
+
+  border-radius:999px;
+
+  color:#edf3ff;
+
+  text-decoration:none;
+
+  font-size:.82rem;
+
+  letter-spacing:.06em;
+
+  transition:.3s ease;
+}
+
+.result-button:hover{
+  background:
+    rgba(180,210,255,.1);
+
+  border-color:
+    rgba(143,191,255,.65);
+}
+
+.retry{
+  display:block;
+
+  margin:25px auto 0;
+
+  padding:0;
+
+  border:0;
+
+  background:none;
+
+  color:#8291aa;
+
+  font-family:inherit;
+
+  font-size:.75rem;
+
+  cursor:pointer;
+
+  text-decoration:underline;
+}
+
+
+/* =========================
+   COMPARISON
+========================= */
+
+.compare{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:20px;
+}
+
+.compare-box{
+  padding:28px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.15);
+
+  border-radius:18px;
+
+  background:
+    rgba(7,19,42,.55);
+}
+
+.compare-box h3{
+  margin:0 0 18px;
+
+  font-size:1.05rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+}
+
+.compare-box ul{
+  margin:0;
+  padding-left:1.2em;
+
+  color:#aab8d2;
+
+  line-height:2;
+}
+
+.compare-box li+li{
+  margin-top:6px;
+}
+
+
+/* =========================
+   FLOW
+========================= */
+
+.flow{
+  display:grid;
+
+  gap:14px;
+
+  max-width:700px;
+
+  margin:0 auto;
+}
+
+.flow-item{
+  display:flex;
+
+  align-items:center;
+
+  gap:20px;
+
+  padding:20px 24px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.16);
+
+  border-radius:16px;
+
+  background:
+    rgba(10,24,52,.48);
+}
+
+.flow-number{
+  flex:0 0 42px;
+
+  width:42px;
+  height:42px;
+
+  display:grid;
+  place-items:center;
+
+  border:
+    1px solid
+    rgba(143,191,255,.35);
+
+  border-radius:50%;
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+}
+
+.flow-text strong{
+  display:block;
+
+  font-weight:400;
+
+  color:#edf3ff;
+
+  margin-bottom:3px;
+}
+
+.flow-text span{
+  color:#9eacc4;
+
+  font-size:.82rem;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+  text-align:center;
+}
+
+.cta-box{
+  padding:40px 30px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:22px;
+
+  background:
+    rgba(10,24,52,.58);
+}
+
+.cta-box p{
+  color:#aab8d2;
+
+  margin:0 0 25px;
+
+  line-height:2;
+}
+
+.cta-button{
+  display:inline-block;
+
+  padding:13px 30px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.35);
+
+  border-radius:999px;
+
+  color:#edf3ff;
+
+  text-decoration:none;
+
+  letter-spacing:.08em;
+
+  transition:.3s ease;
+}
+
+.cta-button:hover{
+  background:
+    rgba(180,210,255,.1);
+
+  border-color:
+    rgba(143,191,255,.65);
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+.back{
+  display:block;
+
+  width:max-content;
+
+  margin:45px auto 80px;
+
+  padding:10px 22px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:999px;
+
+  color:#dce8ff;
+
+  text-decoration:none;
+
+  transition:.3s ease;
+}
+
+.back:hover{
+  background:
+    rgba(180,210,255,.08);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .wrap{
+    width:min(100% - 28px,900px);
+  }
+
+  header{
+    padding:70px 0 50px;
+  }
+
+  section{
+    padding:55px 0;
+  }
+
+  .guide-grid,
+  .compare,
+  .answers{
+    grid-template-columns:1fr;
+  }
+
+  .intro{
+    padding:25px 22px;
+  }
+
+  .guide-card{
+    padding:32px 24px;
+  }
+
+  .question{
+    padding:32px 22px;
+  }
+
+  .result{
+    padding:35px 22px;
+  }
+
+  .flow-item{
+    padding:18px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+  <div class="wrap">
+
+    <div class="system">
+      HOSHIYOMI / WORK GUIDE
+    </div>
+
+    <img
+      src="logo.png"
+      alt="星詠"
+      class="logo"
+    >
+
+    <h1>
+      作品ガイド
+    </h1>
+
+    <p class="lead">
+      あなたの想いを、どの形で残しますか。
+    </p>
+
+  </div>
+
+</header>
+
+
+<main class="wrap">
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    01｜GUIDE
+  </p>
+
+  <h2>
+    星詠の作品について
+  </h2>
+
+  <div class="intro">
+
+    <p>
+      星詠では、あなた自身を描く「あなたの姿」と、
+      あなたの中にある景色や物語を描く「あなたの世界」の
+      二つの形をご用意しています。
+    </p>
+
+    <p>
+      どちらが正解というものではありません。
+      残したいもの、伝えたいものに合わせて、
+      あなたに合う形をお選びください。
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TWO WORKS
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    02｜WORKS
+  </p>
+
+  <h2>
+    二つの作品
+  </h2>
+
+  <div class="guide-grid">
+
+    <div class="guide-card">
+
+      <div class="number">
+        01｜YOUR FORM
+      </div>
+
+      <h3>
+        あなたの姿
+      </h3>
+
+      <div class="en">
+        YOUR FORM
+      </div>
+
+      <p>
+        あなた自身の姿を中心に、
+        好きなものや雰囲気、あなたらしさを重ねて、
+        一枚の作品として描きます。
+      </p>
+
+    </div>
+
+
+    <div class="guide-card">
+
+      <div class="number">
+        02｜YOUR WORLD
+      </div>
+
+      <h3>
+        あなたの世界
+      </h3>
+
+      <div class="en">
+        YOUR WORLD
+      </div>
+
+      <p>
+        あなたの記憶や想像、頭の中にある景色や物語をもとに、
+        まだ形になっていない世界を一枚の作品として描きます。
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DIAGNOSIS
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    03｜DIAGNOSIS
+  </p>
+
+  <h2>
+    あなたに残したい星は、どちらですか？
+  </h2>
+
+  <p class="section-text">
+    いくつかの質問に答えるだけで、<br>
+    あなたが残したいものに近い作品をご案内します。
+  </p>
+
+
+  <div class="diagnosis">
+
+
+    <!-- QUESTION 1 -->
+
+    <div class="question active" data-question="1">
+
+      <div class="question-number">
+        QUESTION 01
+      </div>
+
+      <h3>
+        作品に残したいものに近いのは？
+      </h3>
+
+      <div class="answers">
+
+        <button class="answer" data-type="form">
+          自分自身の姿や表情
+        </button>
+
+        <button class="answer" data-type="world">
+          自分が見てきた景色や記憶
+        </button>
+
+      </div>
+
+      <div class="progress">
+        1 / 6
+      </div>
+
+    </div>
+
+
+    <!-- QUESTION 2 -->
+
+    <div class="question" data-question="2">
+
+      <div class="question-number">
+        QUESTION 02
+      </div>
+
+      <h3>
+        絵を見返したときに、<br>
+        思い出したいのは？
+      </h3>
+
+      <div class="answers">
+
+        <button class="answer" data-type="form">
+          その頃の自分
+        </button>
+
+        <button class="answer" data-type="world">
+          その頃に感じていた世界
+        </button>
+
+      </div>
+
+      <div class="progress">
+        2 / 6
+      </div>
+
+    </div>
+
+
+    <!-- QUESTION 3 -->
+
+    <div class="question" data-question="3">
+
+      <div class="question-number">
+        QUESTION 03
+      </div>
+
+      <h3>
+        描いてほしいものに近いのは？
+      </h3>
+
+      <div class="answers">
+
+        <button class="answer" data-type="form">
+          姿・服装・表情・雰囲気
+        </button>
+
+        <button class="answer" data-type="world">
+          場所・季節・色・空気感
+        </button>
+
+      </div>
+
+      <div class="progress">
+        3 / 6
+      </div>
+
+    </div>
+
+
+    <!-- QUESTION 4 -->
+
+    <div class="question" data-question="4">
+
+      <div class="question-number">
+        QUESTION 04
+      </div>
+
+      <h3>
+        自分を作品の中に入れるなら？
+      </h3>
+
+      <div class="answers">
+
+        <button class="answer" data-type="form">
+          自分自身として登場したい
+        </button>
+
+        <button class="answer" data-type="world">
+          自分がいなくても世界が伝わればいい
+        </button>
+
+      </div>
+
+      <div class="progress">
+        4 / 6
+      </div>
+
+    </div>
+
+
+    <!-- QUESTION 5 -->
+
+    <div class="question" data-question="5">
+
+      <div class="question-number">
+        QUESTION 05
+      </div>
+
+      <h3>
+        「自分らしさ」と聞いて近いのは？
+      </h3>
+
+      <div class="answers">
+
+        <button class="answer" data-type="form">
+          姿や雰囲気
+        </button>
+
+        <button class="answer" data-type="world">
+          考え方や記憶、物語
+        </button>
+
+      </div>
+
+      <div class="progress">
+        5 / 6
+      </div>
+
+    </div>
+
+
+    <!-- QUESTION 6 -->
+
+    <div class="question" data-question="6">
+
+      <div class="question-number">
+        QUESTION 06
+      </div>
+
+      <h3>
+        最後に、一番残したいものは？
+      </h3>
+
+      <div class="answers">
+
+        <button class="answer" data-type="form">
+          今の自分
+        </button>
+
+        <button class="answer" data-type="world">
+          今まで見てきた世界
+        </button>
+
+      </div>
+
+      <div class="progress">
+        6 / 6
+      </div>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div class="result" id="result">
+
+      <div class="result-label">
+        YOUR RESULT
+      </div>
+
+      <h3 id="resultTitle"></h3>
+
+      <p
+        class="result-message"
+        id="resultMessage"
+      ></p>
+
+      <div
+        class="result-buttons"
+        id="resultButtons"
+      ></div>
+
+      <button
+        class="retry"
+        id="retry"
+      >
+        もう一度診断する
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COMPARISON
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    04｜SELECT
+  </p>
+
+  <h2>
+    二つの作品の違い
+  </h2>
+
+  <div class="compare">
+
+    <div class="compare-box">
+
+      <h3>
+        「あなたの姿」
+      </h3>
+
+      <ul>
+        <li>自分自身を作品として残したい</li>
+        <li>自分の姿や雰囲気を大切にしたい</li>
+        <li>好きなものを自分自身と一緒に描きたい</li>
+        <li>活動している姿を一枚に残したい</li>
+      </ul>
+
+    </div>
+
+
+    <div class="compare-box">
+
+      <h3>
+        「あなたの世界」
+      </h3>
+
+      <ul>
+        <li>頭の中にある景色を作品にしたい</li>
+        <li>思い出や記憶を一枚に残したい</li>
+        <li>物語や世界観を描いてほしい</li>
+        <li>人物そのものではなく、世界を中心にしたい</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MATERIAL
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    05｜MATERIAL
+  </p>
+
+  <h2>
+    ご依頼前に考えておくこと
+  </h2>
+
+  <p class="section-text">
+    完璧に決めておく必要はありません。<br>
+    分かる範囲で大丈夫です。
+  </p>
+
+  <div class="intro">
+
+    <p>
+      「あなたの姿」の場合は、姿や服装、好きなもの、
+      表情、雰囲気など、あなたらしさが分かる資料があると制作しやすくなります。
+    </p>
+
+    <p>
+      「あなたの世界」の場合は、描いてほしい景色、
+      記憶、物語、色、季節、場所など、
+      頭の中にあるものを自由に教えてください。
+    </p>
+
+    <p>
+      まだ何を伝えればいいか分からない場合も、
+      ご相談いただけます。
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FLOW
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    06｜FLOW
+  </p>
+
+  <h2>
+    ご依頼の流れ
+  </h2>
+
+  <div class="flow">
+
+    <div class="flow-item">
+      <div class="flow-number">01</div>
+
+      <div class="flow-text">
+        <strong>作品を選ぶ</strong>
+        <span>
+          「あなたの姿」または「あなたの世界」を選択します。
+        </span>
+      </div>
+    </div>
+
+
+    <div class="flow-item">
+      <div class="flow-number">02</div>
+
+      <div class="flow-text">
+        <strong>詳細を確認する</strong>
+        <span>
+          それぞれのページで制作内容をご確認ください。
+        </span>
+      </div>
+    </div>
+
+
+    <div class="flow-item">
+      <div class="flow-number">03</div>
+
+      <div class="flow-text">
+        <strong>フォームから依頼する</strong>
+        <span>
+          必要事項を入力して、制作内容をお聞かせください。
+        </span>
+      </div>
+    </div>
+
+
+    <div class="flow-item">
+      <div class="flow-number">04</div>
+
+      <div class="flow-text">
+        <strong>制作開始</strong>
+        <span>
+          内容を確認したうえで、作品制作へ進みます。
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+  <p class="section-label">
+    07｜NEXT
+  </p>
+
+  <h2>
+    それぞれの作品を詳しく見る
+  </h2>
+
+  <div class="cta-box">
+
+    <p>
+      診断結果を参考にしながら、<br>
+      それぞれの作品について詳しくご覧いただけます。
+    </p>
+
+    <a
+      href="yourself.html"
+      class="cta-button"
+    >
+      あなたの姿を見る →
+    </a>
+
+    <a
+      href="world.html"
+      class="cta-button"
+      style="margin-left:10px;"
+    >
+      あなたの世界を見る →
+    </a>
+
+  </div>
+
+</section>
+
+
+<a
+  href="index.html#choice"
+  class="back"
+>
+  ← カード一覧へ戻る
+</a>
+
+
+</main>
+
+
+<script>
+
+const questions =
+  document.querySelectorAll(".question");
+
+const result =
+  document.getElementById("result");
+
+const resultTitle =
+  document.getElementById("resultTitle");
+
+const resultMessage =
+  document.getElementById("resultMessage");
+
+const resultButtons =
+  document.getElementById("resultButtons");
+
+const retry =
+  document.getElementById("retry");
+
+let currentQuestion = 0;
+
+let formScore = 0;
+let worldScore = 0;
+
+
+/* =========================
+   ANSWER
+========================= */
+
+document.querySelectorAll(".answer").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const type =
+      button.dataset.type;
+
+    if(type === "form"){
+      formScore++;
+    }
+
+    if(type === "world"){
+      worldScore++;
+    }
+
+    questions[currentQuestion]
+      .classList.remove("active");
+
+    currentQuestion++;
+
+    if(currentQuestion < questions.length){
+
+      questions[currentQuestion]
+        .classList.add("active");
+
+    }else{
+
+      showResult();
+
+    }
+
+  });
+
+});
+
+
+/* =========================
+   RESULT
+========================= */
+
+function showResult(){
+
+  result.classList.add("show");
+
+  let title = "";
+  let message = "";
+  let buttons = "";
+
+  if(formScore > worldScore){
+
+    title =
+      "あなたの姿";
+
+    message =
+      "あなたが残したいのは、" +
+      "「そのときのあなた」なのかもしれません。<br>" +
+      "姿や表情、雰囲気など、" +
+      "あなた自身を中心にした一枚がおすすめです。";
+
+    buttons =
+      '<a href="yourself.html" class="result-button">' +
+      'あなたの姿を詳しく見る →' +
+      '</a>';
+
+  }else if(worldScore > formScore){
+
+    title =
+      "あなたの世界";
+
+    message =
+      "あなたが残したいのは、" +
+      "「そのとき、あなたが見ていた世界」なのかもしれません。<br>" +
+      "記憶や景色、物語などを中心にした一枚がおすすめです。";
+
+    buttons =
+      '<a href="world.html" class="result-button">' +
+      'あなたの世界を詳しく見る →' +
+      '</a>';
+
+  }else{
+
+    title =
+      "どちらにも星があります";
+
+    message =
+      "あなた自身と、あなたの世界。<br>" +
+      "どちらか一方を選ぶ必要はありません。<br>" +
+      "それぞれの作品を見ながら、" +
+      "今のあなたが残したいものを探してみてください。";
+
+    buttons =
+      '<a href="yourself.html" class="result-button">' +
+      'あなたの姿を見る →' +
+      '</a>' +
+
+      '<a href="world.html" class="result-button">' +
+      'あなたの世界を見る →' +
+      '</a>';
+
+  }
+
+  resultTitle.innerHTML = title;
+
+  resultMessage.innerHTML = message;
+
+  resultButtons.innerHTML = buttons;
+
+}
+
+
+/* =========================
+   RETRY
+========================= */
+
+retry.addEventListener("click", () => {
+
+  currentQuestion = 0;
+
+  formScore = 0;
+  worldScore = 0;
+
+  result.classList.remove("show");
+
+  questions.forEach((question,index) => {
+
+    question.classList.toggle(
+      "active",
+      index === 0
+    );
+
+  });
+
+});
+
+</script>
+
+
+</body>
+</html>
+```
