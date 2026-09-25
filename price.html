@@ -1,1218 +1,1055 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料金・ご依頼について｜星詠</title>
+<style>
 
-  <title>料金・ご依頼について｜星詠</title>
 
-  <link rel="stylesheet" href="style.css">
-
-<style id="hoshiyomi-price-redesign-v1">
-:root{
-  --night:#030817;
-  --deep:#071633;
-  --blue:#9fc7ff;
-  --lav:#c8b6ef;
-  --text:#edf3ff;
-  --muted:#b8c7df;
-  --line:rgba(167,198,245,.16);
+*{
+  box-sizing:border-box;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
-  min-height:100vh;
-  color:var(--text);
+
   background:
-    radial-gradient(ellipse 38% 25% at 14% 12%,rgba(54,103,205,.18),transparent 72%),
-    radial-gradient(ellipse 40% 28% at 88% 30%,rgba(102,67,174,.15),transparent 72%),
-    radial-gradient(ellipse 45% 28% at 70% 82%,rgba(47,105,204,.12),transparent 72%),
-    linear-gradient(145deg,var(--night),var(--deep) 52%,#020713);
-  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
-  overflow-x:hidden;
-}
-body::before{
-  content:"✦   ·   ✧       ·   ✦      ·       ✧";
-  position:fixed;
-  inset:5% 4% auto;
-  height:90vh;
-  color:rgba(208,227,255,.38);
-  font-family:serif;
-  font-size:12px;
-  letter-spacing:2.2em;
-  line-height:7;
-  pointer-events:none;
-  z-index:0;
-}
-body::after{
-  content:"";
-  position:fixed;
-  width:420px;height:420px;
-  right:-170px;top:7%;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(150,125,224,.09),transparent 68%);
-  filter:blur(12px);
-  pointer-events:none;
-}
-.price-page{
-  position:relative;
-  z-index:1;
-  width:min(900px,calc(100% - 40px));
-  margin:0 auto;
-  padding:100px 0 90px;
-}
-.page-header{
-  position:relative;
-  padding:42px 44px 48px;
-  border:1px solid var(--line);
-  border-radius:28px;
-  background:linear-gradient(145deg,rgba(17,39,86,.28),rgba(66,45,110,.12));
-  backdrop-filter:blur(8px);
-  box-shadow:0 25px 70px rgba(0,0,0,.2);
-}
-.page-header::after{
-  content:"✦";
-  position:absolute;
-  right:30px;top:26px;
-  color:rgba(202,224,255,.62);
-  text-shadow:0 0 12px rgba(112,179,255,.55);
-}
-.section-label{
-  margin:0 0 12px;
-  color:rgba(170,202,244,.68);
-  font-size:.68rem;
-  letter-spacing:.25em;
-}
-.page-header h1{
-  margin:0;
-  font-weight:400;
-  letter-spacing:.12em;
-  line-height:1.5;
-  font-size:clamp(1.9rem,4vw,2.7rem);
-}
-.page-lead{
-  margin:26px 0 0;
-  color:var(--muted);
-  line-height:2;
-  font-size:.92rem;
-}
-.price-section{
-  position:relative;
-  margin-top:88px;
-  padding:44px 44px 48px;
-  border:1px solid rgba(167,198,245,.11);
-  border-radius:24px;
-  background:rgba(5,16,39,.42);
-  backdrop-filter:blur(7px);
-}
-.price-section h2{
-  margin:0 0 34px;
-  font-size:1.65rem;
-  font-weight:400;
-  letter-spacing:.10em;
-}
-.price-list{margin:0}
-.price-item{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
-  padding:19px 4px;
-  border-bottom:1px solid rgba(167,198,245,.10);
-}
-.price-item:last-child{border-bottom:0}
-.price-item span{
-  color:rgba(226,235,249,.86);
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(70,110,190,.13),
+      transparent 38%
+    ),
+    #030a18;
+
+  color:#edf3ff;
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Noto Serif JP",
+    serif;
+
   letter-spacing:.05em;
 }
-.price-item strong{
-  color:rgba(231,241,255,.95);
-  font-size:1.05rem;
-  font-weight:500;
-  white-space:nowrap;
-  text-shadow:0 0 12px rgba(118,176,255,.12);
+
+.page{
+  width:min(1100px, calc(100% - 40px));
+  margin:auto;
 }
-.price-combination{
-  background:
-    radial-gradient(circle at 80% 15%,rgba(104,75,174,.08),transparent 38%),
-    rgba(5,16,39,.42);
-}
-.price-combination > p{
-  color:var(--muted);
-  line-height:2;
-}
-.price-example{
-  margin:38px 0 0;
-  padding:28px 30px;
-  border:1px solid rgba(171,202,247,.15);
-  border-radius:18px;
-  background:linear-gradient(145deg,rgba(24,55,116,.14),rgba(96,66,153,.07));
-}
-.price-example p{line-height:1.9}
-.price-example .price-total{
-  padding-top:22px;
-  border-top:1px solid rgba(167,198,245,.12);
-}
-.price-example .price-total strong{
-  color:var(--blue);
-  text-shadow:0 0 14px rgba(118,184,255,.22);
-}
-.price-section::before{
-  content:"✦";
-  position:absolute;
-  top:25px;right:28px;
-  color:rgba(189,216,255,.35);
-  font-size:10px;
-}
-@media(max-width:650px){
-  .price-page{width:min(100% - 24px,900px);padding:50px 0 60px}
-  .page-header,.price-section{padding:30px 22px}
-  .price-section{margin-top:54px}
-  .price-item{gap:15px;padding:16px 2px}
-  .price-item strong{font-size:.95rem}
-  .page-lead{font-size:.86rem}
-}
-</style>
 
 
-<style id="hoshiyomi-price-font-soft-v2">
-/* 文字だけを少し柔らかく。内容・料金・レイアウトは変更しない */
-body,
-.price-page,
-.price-page button,
-.price-page input,
-.price-page select,
-.price-page textarea{
+/* =========================
+   HEADER
+========================= */
+
+header{
+  text-align:center;
+  padding:90px 0 70px;
+}
+
+.system{
+  color:#9bbfff;
+
   font-family:
-    "Hiragino Mincho ProN",
-    "Yu Mincho",
-    "YuMincho",
-    "Noto Serif JP",
-    serif!important;
-  font-weight:400!important;
-  letter-spacing:.035em!important;
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.38em;
+
+  margin-bottom:28px;
 }
 
-.page-header h1{
-  font-weight:400!important;
-  letter-spacing:.075em!important;
-  line-height:1.65!important;
+.title-frame{
+  position:relative;
+
+  width:min(760px,100%);
+
+  margin:0 auto;
+
+  padding:25px 35px 22px;
+
+  border:
+    1px solid
+    rgba(210,225,255,.75);
+
+  border-radius:60px;
 }
 
-.page-lead{
-  color:rgba(205,216,235,.76)!important;
-  letter-spacing:.045em!important;
-  line-height:2.15!important;
+.title-frame::before,
+.title-frame::after{
+  content:"✦";
+
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#fff;
+
+  font-size:1.3rem;
 }
 
-.section-label{
-  font-weight:400!important;
-  letter-spacing:.20em!important;
-  color:rgba(178,202,235,.60)!important;
+.title-frame::before{
+  left:25px;
 }
 
-.price-section h2{
-  font-weight:400!important;
-  letter-spacing:.075em!important;
-  line-height:1.65!important;
+.title-frame::after{
+  right:25px;
 }
 
-.price-item span{
-  font-weight:400!important;
-  letter-spacing:.045em!important;
-  color:rgba(226,235,249,.82)!important;
-}
+h1{
+  margin:0;
 
-.price-item strong{
-  font-weight:400!important;
-  letter-spacing:.025em!important;
-}
+  font-size:clamp(2rem,5vw,3.1rem);
 
-.price-combination > p,
-.price-example p{
-  font-weight:400!important;
-  letter-spacing:.035em!important;
-  line-height:2.05!important;
-  color:rgba(201,213,233,.75)!important;
-}
-
-.price-example .price-total{
-  color:rgba(221,232,248,.86)!important;
-}
-
-.price-example .price-total strong{
-  font-weight:400!important;
-}
-
-@media(max-width:650px){
-  .page-header h1{
-    letter-spacing:.055em!important;
-    line-height:1.6!important;
-  }
-  .page-lead,
-  .price-combination > p,
-  .price-example p{
-    line-height:2!important;
-  }
-}
-</style>
-
-
-<style id="hoshiyomi-price-purple-v3">
-/* 青を残したまま、夜空に紫を少し重ねる */
-body{
-  background:
-    radial-gradient(ellipse 34% 23% at 12% 12%,
-      rgba(63,105,205,.18),transparent 72%),
-    radial-gradient(ellipse 42% 30% at 86% 25%,
-      rgba(126,83,187,.19),transparent 72%),
-    radial-gradient(ellipse 40% 27% at 72% 78%,
-      rgba(82,61,171,.14),transparent 72%),
-    radial-gradient(ellipse 32% 22% at 20% 84%,
-      rgba(121,72,174,.11),transparent 72%),
-    linear-gradient(145deg,#030817 0%,#071633 48%,#08051b 100%)!important;
-}
-
-body::after{
-  background:
-    radial-gradient(circle at 35% 40%,
-      rgba(151,112,211,.13),
-      rgba(82,92,191,.055) 38%,
-      transparent 70%)!important;
-}
-
-/* ヘッダーに淡い紫 */
-.page-header{
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(132,86,190,.09),transparent 35%),
-    linear-gradient(145deg,
-      rgba(17,39,86,.28),
-      rgba(82,52,121,.14))!important;
-  border-color:rgba(174,151,220,.15)!important;
-}
-
-/* セクションにもごく薄い紫 */
-.price-section{
-  background:
-    radial-gradient(circle at 88% 12%,
-      rgba(121,78,179,.075),transparent 34%),
-    rgba(5,16,39,.42)!important;
-  border-color:rgba(174,151,220,.11)!important;
-}
-
-.price-combination{
-  background:
-    radial-gradient(circle at 80% 15%,
-      rgba(135,89,194,.13),transparent 38%),
-    radial-gradient(circle at 15% 85%,
-      rgba(69,91,183,.06),transparent 34%),
-    rgba(5,16,39,.42)!important;
-}
-
-/* ラベルに少し紫 */
-.section-label{
-  color:rgba(195,178,232,.66)!important;
-}
-
-/* 見出しは青白さを保ちながら紫の余韻 */
-.page-header h1,
-.price-section h2{
-  text-shadow:0 0 22px rgba(139,103,193,.08)!important;
-}
-
-/* 星の光もほんの少し紫へ */
-.page-header::after,
-.price-section::before{
-  color:rgba(211,192,244,.58)!important;
-  text-shadow:0 0 12px rgba(150,103,211,.48)!important;
-}
-
-/* 料金の強調部分 */
-.price-item strong{
-  text-shadow:
-    0 0 12px rgba(118,176,255,.10),
-    0 0 20px rgba(148,103,207,.08)!important;
-}
-
-.price-example{
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(139,89,194,.10),transparent 42%),
-    linear-gradient(145deg,
-      rgba(24,55,116,.14),
-      rgba(103,67,154,.10))!important;
-  border-color:rgba(181,157,222,.16)!important;
-}
-
-.price-example .price-total strong{
-  color:rgba(210,194,239,.94)!important;
-  text-shadow:0 0 16px rgba(145,97,206,.20)!important;
-}
-</style>
-
-
-<style id="hoshiyomi-price-purple-strong-v4">
-/* 紫をもう一段しっかり。青との境界は残す */
-body{
-  background:
-    radial-gradient(ellipse 36% 26% at 10% 10%,
-      rgba(61,104,212,.20),transparent 70%),
-    radial-gradient(ellipse 45% 34% at 88% 24%,
-      rgba(143,82,205,.27),transparent 70%),
-    radial-gradient(ellipse 44% 30% at 72% 78%,
-      rgba(100,61,194,.21),transparent 70%),
-    radial-gradient(ellipse 36% 25% at 18% 86%,
-      rgba(139,72,190,.17),transparent 70%),
-    linear-gradient(145deg,#030817 0%,#071633 42%,#0b0620 100%)!important;
-}
-
-body::after{
-  width:520px!important;
-  height:520px!important;
-  right:-190px!important;
-  top:4%!important;
-  background:
-    radial-gradient(circle,
-      rgba(165,108,221,.18),
-      rgba(112,79,190,.08) 42%,
-      transparent 70%)!important;
-  filter:blur(14px)!important;
-}
-
-.page-header{
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(151,91,207,.16),transparent 38%),
-    linear-gradient(145deg,
-      rgba(17,39,86,.30),
-      rgba(91,55,139,.20))!important;
-  border-color:rgba(185,157,226,.20)!important;
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.22),
-    0 0 38px rgba(127,78,187,.06)!important;
-}
-
-.section-label{
-  color:rgba(205,181,239,.76)!important;
-}
-
-.page-header h1,
-.price-section h2{
-  text-shadow:0 0 28px rgba(145,91,205,.14)!important;
-}
-
-.price-section{
-  background:
-    radial-gradient(circle at 88% 12%,
-      rgba(139,83,198,.13),transparent 38%),
-    radial-gradient(circle at 12% 88%,
-      rgba(72,91,185,.07),transparent 35%),
-    rgba(5,16,39,.43)!important;
-  border-color:rgba(181,153,224,.16)!important;
-}
-
-.price-combination{
-  background:
-    radial-gradient(circle at 80% 15%,
-      rgba(151,89,210,.20),transparent 40%),
-    radial-gradient(circle at 15% 85%,
-      rgba(74,91,190,.09),transparent 36%),
-    rgba(5,16,39,.43)!important;
-}
-
-.price-item strong{
-  color:rgba(226,215,246,.96)!important;
-  text-shadow:
-    0 0 12px rgba(118,176,255,.10),
-    0 0 22px rgba(157,101,217,.16)!important;
-}
-
-.price-example{
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(155,91,211,.17),transparent 44%),
-    linear-gradient(145deg,
-      rgba(24,55,116,.15),
-      rgba(111,67,166,.15))!important;
-  border-color:rgba(190,159,231,.21)!important;
-  box-shadow:0 0 30px rgba(125,76,182,.05)!important;
-}
-
-.price-example .price-total strong{
-  color:rgba(220,201,244,.98)!important;
-  text-shadow:
-    0 0 14px rgba(145,97,206,.20),
-    0 0 25px rgba(163,107,219,.12)!important;
-}
-
-.page-header::after,
-.price-section::before{
-  color:rgba(220,197,247,.72)!important;
-  text-shadow:0 0 14px rgba(160,103,218,.70)!important;
-}
-</style>
-
-
-<style id="hoshiyomi-price-purple-final-v5">
-/* 紫をもう一滴だけ。全体のバランスは第4版のまま */
-body{
-  background:
-    radial-gradient(ellipse 36% 26% at 10% 10%,
-      rgba(61,104,212,.20),transparent 70%),
-    radial-gradient(ellipse 46% 35% at 88% 23%,
-      rgba(153,87,215,.30),transparent 69%),
-    radial-gradient(ellipse 45% 31% at 72% 78%,
-      rgba(111,65,202,.24),transparent 69%),
-    radial-gradient(ellipse 38% 26% at 18% 86%,
-      rgba(151,77,202,.19),transparent 70%),
-    linear-gradient(145deg,#030817 0%,#071633 40%,#0c0622 100%)!important;
-}
-
-body::after{
-  background:
-    radial-gradient(circle,
-      rgba(178,116,229,.20),
-      rgba(121,82,198,.09) 42%,
-      transparent 70%)!important;
-}
-
-.page-header{
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(163,96,216,.19),transparent 38%),
-    linear-gradient(145deg,
-      rgba(17,39,86,.30),
-      rgba(96,57,147,.22))!important;
-}
-
-.price-section{
-  background:
-    radial-gradient(circle at 88% 12%,
-      rgba(150,88,211,.15),transparent 38%),
-    radial-gradient(circle at 12% 88%,
-      rgba(78,92,190,.07),transparent 35%),
-    rgba(5,16,39,.43)!important;
-}
-
-.price-example{
-  background:
-    radial-gradient(circle at 82% 18%,
-      rgba(164,96,218,.20),transparent 44%),
-    linear-gradient(145deg,
-      rgba(24,55,116,.15),
-      rgba(118,70,174,.17))!important;
-}
-</style>
-
-
-<style id="hoshiyomi-price-clarity-v1">
-.price-section h3{
-  margin:28px 0 12px;
-  color:rgba(219,228,245,.88);
-  font-size:1rem;
   font-weight:400;
-  letter-spacing:.06em;
+
+  letter-spacing:.25em;
 }
-.price-note,
-.payment-list,
-.delivery-block,
-.cancel-table{
-  margin-top:22px;
+
+.subtitle{
+  margin:10px 0 0;
+
+  font-size:.85rem;
+
+  color:#cbd7ec;
+
+  letter-spacing:.2em;
 }
-.price-note{
-  padding:22px 24px;
-  border:1px solid rgba(171,198,239,.12);
-  border-radius:16px;
-  background:rgba(9,27,58,.28);
+
+.lead{
+  margin:35px auto 0;
+
+  max-width:720px;
+
+  color:#d1dbea;
+
+  font-size:.95rem;
+
+  line-height:2.2;
 }
-.price-note h3{margin:0 0 10px}
-.price-note p{margin:0;color:rgba(201,213,233,.75);line-height:2.05}
-.preorder-list{
-  margin:22px 0 0;
-  padding:18px 24px 18px 1.55em;
-  border:1px solid rgba(174,151,220,.13);
-  border-radius:16px;
-  background:rgba(10,25,53,.30);
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:65px 0;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.2);
 }
-.preorder-list li{
-  margin-bottom:9px;
-  color:rgba(205,216,235,.78);
-  line-height:2.15;
+
+.section-head{
+  text-align:center;
+
+  margin-bottom:38px;
 }
-.preorder-list li:last-child{margin-bottom:0}
-.price-cta{
-  margin:54px 0 0;
+
+.label{
+  color:#9bbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.4em;
+
+  margin-bottom:10px;
+}
+
+.section-head h2{
+  margin:0;
+
+  font-size:1.25rem;
+
+  font-weight:400;
+
+  letter-spacing:.25em;
+}
+
+.section-head h2::before,
+.section-head h2::after{
+  content:"";
+
+  display:inline-block;
+
+  width:90px;
+
+  height:1px;
+
+  vertical-align:middle;
+
+  margin:0 18px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(170,200,245,.5)
+    );
+}
+
+.section-head h2::after{
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(170,200,245,.5)
+    );
+}
+
+
+/* =========================
+   DETAIL
+========================= */
+
+.reward-detail{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:55px;
+
+  align-items:center;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.reward-image{
+  position:relative;
+
+  padding:10px;
+
+  border:
+    1px solid
+    rgba(190,215,255,.5);
+
+  background:
+    rgba(8,22,48,.35);
+}
+
+.reward-image::before,
+.reward-image::after{
+  content:"";
+
+  position:absolute;
+
+  width:35px;
+  height:35px;
+
+  border-color:
+    rgba(190,215,255,.7);
+
+  pointer-events:none;
+}
+
+.reward-image::before{
+  left:-5px;
+  top:-5px;
+
+  border-left:1px solid;
+  border-top:1px solid;
+}
+
+.reward-image::after{
+  right:-5px;
+  bottom:-5px;
+
+  border-right:1px solid;
+  border-bottom:1px solid;
+}
+
+.reward-image img{
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:1 / 1;
+
+  object-fit:cover;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.reward-content{
+  padding:10px 15px;
+}
+
+.reward-en{
+  text-align:center;
+
+  color:#9bbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.35em;
+
+  margin-bottom:15px;
+}
+
+.reward-content h3{
+  text-align:center;
+
+  margin:0;
+
+  font-size:2rem;
+
+  font-weight:400;
+
+  letter-spacing:.2em;
+}
+
+.price{
+  text-align:center;
+
+  margin:20px 0 25px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:1.8rem;
+
+  letter-spacing:.12em;
+
+  color:#f0e6d8;
+}
+
+.divider{
+  width:70%;
+
+  height:1px;
+
+  margin:0 auto 25px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(180,210,255,.65),
+      transparent
+    );
+}
+
+.reward-description{
+  color:#d0d9ea;
+
+  line-height:2.1;
+
+  font-size:.92rem;
+
   text-align:center;
 }
-.price-cta a{
-  display:inline-block;
-  padding:13px 26px;
-  border:1px solid rgba(181,157,224,.20);
-  border-radius:999px;
-  color:rgba(222,232,248,.88);
-  text-decoration:none;
-  background:rgba(255,255,255,.018);
-  letter-spacing:.08em;
-  transition:.25s ease;
-}
-.price-cta a:hover{
-  border-color:rgba(202,180,239,.40);
-  box-shadow:0 0 26px rgba(139,89,194,.12);
-  transform:translateY(-1px);
-}
-.combination-limit-note{
-  border-color:rgba(202,174,229,.20);
+
+
+/* =========================
+   SCENE
+========================= */
+
+.scene-box{
+  margin-top:30px;
+
+  padding:25px 28px;
+
+  border:
+    1px solid
+    rgba(170,200,245,.28);
+
   background:
-    radial-gradient(circle at 88% 12%,rgba(150,88,211,.10),transparent 42%),
-    rgba(10,24,52,.32);
+    rgba(12,28,58,.35);
 }
-.combination-limit-note h3{
-  color:rgba(218,199,239,.90);
-}
-.combination-limit-note strong{
-  color:rgba(226,217,243,.96);
-}
-@media(max-width:650px){
-  .price-note{padding:20px 18px}
-  .preorder-list{padding:17px 16px 17px 1.4em}
-  .price-cta{margin-top:44px}
-}
-</style>
 
+.scene-title{
+  display:flex;
 
-<style id="hoshiyomi-deep-space-background">
-html, body { background:#020713 !important; }
-body {
+  align-items:center;
+
+  gap:15px;
+
+  margin-bottom:15px;
+
+  font-size:.95rem;
+
+  letter-spacing:.18em;
+}
+
+.scene-title span{
+  font-size:1.4rem;
+
+  color:#dceaff;
+}
+
+.scene-box ul{
+  list-style:none;
+
+  padding:0;
+
+  margin:0;
+}
+
+.scene-box li{
   position:relative;
-  overflow-x:hidden;
-  background:
-    radial-gradient(ellipse at 72% 16%, rgba(123,155,255,.24), transparent 34%),
-    radial-gradient(ellipse at 20% 70%, rgba(92,104,220,.18), transparent 38%),
-    linear-gradient(180deg,#010611 0%,#06122c 52%,#071a35 100%) !important;
-}
-body::before {
-  content:"";
-  position:fixed;
-  inset:-12%;
-  z-index:-2;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 7% 12%, #dce7ff 0 1.3px, transparent 2px),
-    radial-gradient(circle at 15% 30%, #b8d1ff 0 1px, transparent 1.8px),
-    radial-gradient(circle at 25% 18%, #f1f5ff 0 1.2px, transparent 2px),
-    radial-gradient(circle at 36% 39%, #aac7ff 0 1.1px, transparent 1.9px),
-    radial-gradient(circle at 48% 10%, #e5edff 0 1.3px, transparent 2px),
-    radial-gradient(circle at 58% 31%, #b9d1ff 0 1px, transparent 1.8px),
-    radial-gradient(circle at 69% 12%, #f0f4ff 0 1.2px, transparent 2px),
-    radial-gradient(circle at 82% 28%, #b9cfff 0 1.1px, transparent 1.9px),
-    radial-gradient(circle at 94% 15%, #e8efff 0 1.2px, transparent 2px),
-    radial-gradient(circle at 11% 62%, #b9d0ff 0 1px, transparent 1.8px),
-    radial-gradient(circle at 29% 78%, #eef3ff 0 1.2px, transparent 2px),
-    radial-gradient(circle at 44% 62%, #b6cfff 0 1px, transparent 1.8px),
-    radial-gradient(circle at 63% 76%, #e4ecff 0 1.2px, transparent 2px),
-    radial-gradient(circle at 78% 60%, #afc9ff 0 1px, transparent 1.8px),
-    radial-gradient(circle at 91% 82%, #e9f0ff 0 1.2px, transparent 2px);
-  opacity:.78;
-}
-body::after {
-  content:"";
-  position:fixed;
-  width:150vw;
-  height:72vh;
-  left:-25vw;
-  top:22vh;
-  z-index:-1;
-  pointer-events:none;
-  transform:rotate(-17deg);
-  background:
-    radial-gradient(ellipse at center,
-      rgba(117,151,255,.32) 0%,
-      rgba(112,125,225,.24) 22%,
-      rgba(96,103,200,.15) 42%,
-      rgba(68,83,166,.08) 58%,
-      transparent 72%);
-  filter:blur(14px);
-}
-.hoshiyomi-star-sea {
-  position:fixed;
-  left:0; right:0; bottom:-5vh;
-  height:38vh;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(66,160,225,.28), transparent 62%),
-    radial-gradient(ellipse at 50% 80%, rgba(89,116,224,.12), transparent 65%),
-    linear-gradient(180deg,transparent,rgba(44,106,181,.13));
-  filter:blur(8px);
-}
-.hoshiyomi-meteor {
-  position:fixed;
-  top:21%; right:9%;
-  width:150px; height:2px;
-  z-index:-1;
-  pointer-events:none;
-  transform:rotate(-28deg);
-  background:linear-gradient(90deg,transparent,rgba(207,225,255,.78),rgba(151,190,255,.22),transparent);
-  box-shadow:0 0 9px rgba(160,200,255,.35);
-  opacity:.55;
-}
-</style>>
 
-<style id="hoshiyomi-sea-return-style">
-.hoshiyomi-sea-return{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:.65em !important;
-  box-sizing:border-box !important;
-  width:max-content !important;
-  max-width:calc(100% - 32px) !important;
-  min-height:46px !important;
-  padding:11px 22px !important;
-  margin:22px auto !important;
-  border:1px solid rgba(160,196,255,.55) !important;
-  border-radius:999px !important;
-  background:rgba(7,20,48,.78) !important;
-  color:#eaf2ff !important;
-  text-decoration:none !important;
-  font-size:.95rem !important;
-  font-weight:500 !important;
-  letter-spacing:.04em !important;
-  line-height:1.35 !important;
-  white-space:nowrap !important;
-  box-shadow:0 0 18px rgba(92,139,225,.12), inset 0 0 12px rgba(115,160,235,.05) !important;
-  backdrop-filter:blur(8px) !important;
-  -webkit-backdrop-filter:blur(8px) !important;
-  transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease !important;
-}
-.hoshiyomi-sea-return:hover,
-.hoshiyomi-sea-return:focus-visible{
-  transform:translateY(-2px) !important;
-  border-color:rgba(181,211,255,.9) !important;
-  background:rgba(10,29,64,.9) !important;
-  box-shadow:0 0 24px rgba(103,158,244,.24), inset 0 0 14px rgba(132,179,255,.08) !important;
-  outline:none !important;
-}
-.hoshiyomi-sea-return span{
-  display:inline-block;
-  font-size:1.05em;
-  transition:transform .22s ease;
-}
-.hoshiyomi-sea-return:hover span,
-.hoshiyomi-sea-return:focus-visible span{
-  transform:translateX(3px);
-}
-@media (max-width:560px){
-  .hoshiyomi-sea-return{
-    min-height:44px !important;
-    padding:10px 18px !important;
-    font-size:.9rem !important;
-    max-width:calc(100% - 24px) !important;
-  }
-}
-</style>
+  padding-left:22px;
 
-<style id="hoshiyomi-real-galaxy-background">
-html,body{
-  background:#020713 !important;
-}
-body{
-  position:relative;
-  overflow-x:hidden;
-  background:
-    radial-gradient(ellipse 65% 42% at 76% 23%, rgba(118,132,235,.30), transparent 68%),
-    radial-gradient(ellipse 58% 35% at 24% 55%, rgba(73,105,205,.20), transparent 70%),
-    radial-gradient(ellipse 70% 30% at 50% 91%, rgba(42,116,190,.22), transparent 72%),
-    linear-gradient(180deg,#010611 0%,#041027 42%,#071735 72%,#06182f 100%) !important;
+  margin:9px 0;
+
+  color:#cbd6e8;
+
+  font-size:.84rem;
+
+  line-height:1.7;
 }
 
-/* 銀河の帯 */
-body::before{
-  content:"";
-  position:fixed;
-  z-index:-3;
-  pointer-events:none;
-  width:145vw;
-  height:70vh;
-  left:-22vw;
-  top:18vh;
-  transform:rotate(-17deg);
-  background:
-    radial-gradient(ellipse 55% 28% at 50% 50%,
-      rgba(146,151,245,.27) 0%,
-      rgba(93,117,224,.23) 28%,
-      rgba(73,87,187,.13) 52%,
-      transparent 76%);
-  filter:blur(18px);
-}
+.scene-box li::before{
+  content:"✦";
 
-/* 銀河中心の淡い光 */
-body::after{
-  content:"";
-  position:fixed;
-  z-index:-2;
-  pointer-events:none;
-  width:75vw;
-  height:75vw;
-  max-width:1000px;
-  max-height:1000px;
-  right:-12vw;
-  top:2vh;
-  background:
-    radial-gradient(circle,
-      rgba(209,198,255,.15) 0%,
-      rgba(143,157,245,.12) 18%,
-      rgba(76,103,207,.07) 38%,
-      transparent 67%);
-  filter:blur(20px);
-}
+  position:absolute;
 
-/* 星の海 */
-.hoshiyomi-star-sea{
-  position:fixed;
-  z-index:-1;
   left:0;
-  right:0;
-  bottom:-4vh;
-  height:34vh;
-  pointer-events:none;
+
+  color:#a9c8ff;
+}
+
+
+/* =========================
+   FLOW
+========================= */
+
+.flow{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
+}
+
+.flow-card{
+  position:relative;
+
+  min-height:175px;
+
+  padding:25px 20px;
+
+  border:
+    1px solid
+    rgba(175,205,250,.28);
+
   background:
-    radial-gradient(ellipse 60% 50% at 50% 100%,
-      rgba(86,170,230,.30),
-      rgba(55,119,194,.15) 38%,
-      transparent 72%),
-    linear-gradient(180deg,transparent 0%,rgba(23,73,132,.08) 42%,rgba(31,91,150,.20) 100%);
-  filter:blur(7px);
+    rgba(8,22,48,.35);
 }
 
-/* 控えめな星 */
-.hoshiyomi-real-stars{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  opacity:.8;
-  background-image:
-    radial-gradient(circle at 8% 12%,rgba(225,235,255,.95) 0 1.3px,transparent 2.4px),
-    radial-gradient(circle at 17% 27%,rgba(180,211,255,.8) 0 1px,transparent 2px),
-    radial-gradient(circle at 28% 9%,rgba(240,244,255,.9) 0 1.2px,transparent 2.2px),
-    radial-gradient(circle at 39% 34%,rgba(174,202,255,.7) 0 1px,transparent 2px),
-    radial-gradient(circle at 52% 14%,rgba(230,239,255,.9) 0 1.2px,transparent 2.2px),
-    radial-gradient(circle at 63% 30%,rgba(190,213,255,.75) 0 1px,transparent 2px),
-    radial-gradient(circle at 75% 10%,rgba(236,243,255,.95) 0 1.2px,transparent 2.2px),
-    radial-gradient(circle at 88% 25%,rgba(175,204,255,.72) 0 1px,transparent 2px),
-    radial-gradient(circle at 95% 46%,rgba(229,238,255,.88) 0 1.2px,transparent 2.2px),
-    radial-gradient(circle at 12% 58%,rgba(184,212,255,.7) 0 1px,transparent 2px),
-    radial-gradient(circle at 25% 73%,rgba(228,238,255,.82) 0 1.2px,transparent 2.2px),
-    radial-gradient(circle at 44% 66%,rgba(175,204,255,.68) 0 1px,transparent 2px),
-    radial-gradient(circle at 59% 78%,rgba(226,237,255,.8) 0 1.1px,transparent 2.1px),
-    radial-gradient(circle at 79% 64%,rgba(180,209,255,.72) 0 1px,transparent 2px),
-    radial-gradient(circle at 91% 84%,rgba(235,242,255,.9) 0 1.2px,transparent 2.2px);
+.flow-number{
+  color:#9bbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.7rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:22px;
 }
 
-/* ごく薄い流星 */
-.hoshiyomi-real-meteor{
-  position:fixed;
-  z-index:-1;
-  top:22%;
-  right:12%;
-  width:135px;
-  height:1px;
-  transform:rotate(-30deg);
-  pointer-events:none;
-  background:linear-gradient(90deg,transparent,rgba(211,228,255,.72),transparent);
-  box-shadow:0 0 8px rgba(153,195,255,.32);
-  opacity:.52;
+.flow-icon{
+  font-size:1.5rem;
+
+  margin-bottom:12px;
 }
 
-/* 水面の光 */
-.hoshiyomi-waterline{
-  position:fixed;
-  z-index:-1;
-  left:8%;
-  right:8%;
-  bottom:13vh;
-  height:1px;
-  pointer-events:none;
-  background:linear-gradient(90deg,transparent,rgba(145,204,255,.18),rgba(220,237,255,.7),rgba(145,204,255,.18),transparent);
-  box-shadow:0 0 18px rgba(103,184,255,.18);
-  opacity:.7;
-}
-</style>
+.flow-card h3{
+  margin:0 0 13px;
 
-<style id="hoshiyomi-linebreak-fix">
-/* 日本語の見出し・ボタン・料金名が意図せず途中で折れないようにする */
-h1, h2, h3,
-button,
-a.hoshiyomi-sea-return,
-.price-name,
-.price-value,
-.section-title,
-.section-heading,
-.card-title {
-  overflow-wrap: normal !important;
-  word-break: keep-all !important;
+  font-size:1rem;
+
+  font-weight:400;
+
+  letter-spacing:.12em;
 }
 
-/* 料金・説明文は画面幅に合わせて自然に折り返す */
-p, li, td, .price-note, .description, .lead {
-  overflow-wrap: anywhere;
+.flow-card p{
+  margin:0;
+
+  color:#aebbd0;
+
+  font-size:.8rem;
+
+  line-height:1.8;
 }
 
-/* ボタンは常に一行 */
-.hoshiyomi-sea-return {
-  white-space: nowrap !important;
+
+/* =========================
+   NOTE
+========================= */
+
+.note{
+  padding:28px 35px;
+
+  border:
+    1px solid
+    rgba(175,205,250,.28);
+
+  background:
+    rgba(8,22,48,.35);
 }
 
-/* 小さい画面でも見出しが窮屈になりすぎない */
-@media (max-width: 560px) {
-  h1, h2 {
-    line-height: 1.55 !important;
-    word-break: keep-all !important;
+.note ul{
+  margin:0;
+
+  padding-left:22px;
+}
+
+.note li{
+  margin:12px 0;
+
+  color:#cbd6e8;
+
+  font-size:.84rem;
+
+  line-height:1.9;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.request-button{
+  display:block;
+
+  width:max-content;
+
+  margin:65px auto 90px;
+
+  padding:15px 60px;
+
+  border:
+    1px solid
+    rgba(205,225,255,.75);
+
+  border-radius:999px;
+
+  color:#edf4ff;
+
+  text-decoration:none;
+
+  letter-spacing:.18em;
+
+  background:
+    rgba(15,35,70,.45);
+
+  box-shadow:
+    0 0 20px
+    rgba(100,150,255,.08);
+
+  transition:.3s ease;
+}
+
+.request-button:hover{
+  background:
+    rgba(90,130,210,.18);
+
+  box-shadow:
+    0 0 30px
+    rgba(100,150,255,.18);
+
+  transform:translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .page{
+    width:min(
+      100% - 28px,
+      1100px
+    );
   }
+
+  header{
+    padding:65px 0 50px;
+  }
+
+  .title-frame{
+    padding:22px 25px;
+  }
+
+  .title-frame::before{
+    left:12px;
+  }
+
+  .title-frame::after{
+    right:12px;
+  }
+
+  .reward-detail{
+    grid-template-columns:1fr;
+
+    gap:35px;
+  }
+
+  .reward-content{
+    padding:0;
+  }
+
+  .flow{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
 }
+
+@media(max-width:520px){
+
+  .flow{
+    grid-template-columns:1fr;
+  }
+
+  .section-head h2::before,
+  .section-head h2::after{
+    width:30px;
+
+    margin:0 8px;
+  }
+
+  .note{
+    padding:22px;
+  }
+
+  .request-button{
+    width:100%;
+
+    text-align:center;
+
+    padding:14px 20px;
+  }
+
+}
+
+
+
+.price-page .flow{grid-template-columns:repeat(3,1fr)}
+.price-page .flow-card{min-height:210px}
+.price-page .flow-card h3{line-height:1.7}
+.price-page .flow-card p{line-height:1.9}
+.price-page .flow-card p strong{color:#edf4ff;font-family:Georgia,"Times New Roman",serif;font-size:1.15rem;font-weight:400}
+.price-page .note p{color:#cbd6e8;line-height:2}
+.price-page .note > p + p{margin-top:18px}
+.price-page .scene-box p{margin:0;color:#cbd6e8;line-height:2;font-size:.84rem}
+@media(max-width:800px){.price-page .flow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.price-page .flow{grid-template-columns:1fr}}
+
+
+.price-page .flow-card{
+  min-height:240px;
+}
+.price-page .flow-card p{
+  line-height:1.9;
+}
+.price-page .flow-card p strong{
+  color:#edf4ff;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.15rem;
+  font-weight:400;
+}
+.price-page .note p{
+  color:#cbd6e8;
+  line-height:2;
+}
+.price-page .note > p + p{
+  margin-top:18px;
+}
+.price-page .scene-box p{
+  margin:0;
+  color:#cbd6e8;
+  line-height:2;
+  font-size:.84rem;
+}
+
 </style>
 </head>
+<body>
+<div class="page price-page">
+<header>
+  <div class="system">HOSHIYOMI / COMMISSION</div>
+  <div class="title-frame">
+    <h1>料金・ご依頼について</h1>
+    <div class="subtitle">― あなたの想いを、一枚の作品へ。―</div>
+  </div>
+  <p class="lead">
+    星詠では、ご依頼内容に合わせて一枚ずつ作品を制作しています。<br>
+    作品の種類・仕様・制作内容によって料金が異なります。<br>
+    正式な料金は、ご依頼内容を確認したうえでご案内します。
+  </p>
+</header>
+<section>
 
-<body><div class="hoshiyomi-real-stars"></div><div class="hoshiyomi-star-sea"></div><div class="hoshiyomi-real-meteor"></div><div class="hoshiyomi-waterline"></div><div class="hoshiyomi-star-sea"></div><div class="hoshiyomi-meteor"></div>
+  <div class="section-head">
+    <div class="label">01｜PLAN / PRICE</div>
+    <h2>プラン・料金</h2>
+  </div>
 
-  <main class="price-page">
+  <div class="flow">
 
-    <header class="page-header">
-      <p class="section-label">PRICE & ORDER</p>
-      <h1>料金・ご依頼について</h1>
+    <div class="flow-card">
+      <div class="flow-number">PLAN 01</div>
+      <div class="flow-icon">✦</div>
+      <h3>お試しプラン</h3>
+      <p><strong>3,000円〜</strong></p>
+      <p>あなたの姿をミニ色紙に。<br>
+      星詠を初めてご依頼いただく方にも選んでいただきやすい、小さな一枚です。</p>
+    </div>
 
-      <p class="page-lead">
-        星詠では、2,000円から作品を制作しています。<br>
-        作品の種類・仕様・制作内容によって料金が異なります。<br>
-        正式な料金は、ご依頼内容を確認したうえでお見積もりいたします。
-      </p>
-    </header>
+    <div class="flow-card">
+      <div class="flow-number">PLAN 02</div>
+      <div class="flow-icon">◇</div>
+      <h3>あなたの姿</h3>
+      <p><strong>15,000円〜</strong></p>
+      <p>あなた自身を、一枚の作品に。<br>
+      人物を主役として、その人らしさや雰囲気を描きます。</p>
+    </div>
 
+    <div class="flow-card">
+      <div class="flow-number">PLAN 03</div>
+      <div class="flow-icon">✧</div>
+      <h3>記念品</h3>
+      <p><strong>18,000円〜</strong></p>
+      <p>その瞬間の喜びを、一枚の作品に。<br>
+      誕生日、周年、イベント達成など、大切な出来事を作品として残します。</p>
+    </div>
 
-    <!-- 料金 -->
-    <section class="price-section">
+    <div class="flow-card">
+      <div class="flow-number">PLAN 04</div>
+      <div class="flow-icon">✦</div>
+      <h3>あなたの世界</h3>
+      <p><strong>20,000円〜</strong></p>
+      <p>自分の中にある世界を、一枚の作品に。<br>
+      記憶や思い出、想像する世界を主役として描きます。</p>
+    </div>
 
-      <p class="section-label">PRICE</p>
-      <h2>料金</h2>
+    <div class="flow-card">
+      <div class="flow-number">PLAN 05</div>
+      <div class="flow-icon">♢</div>
+      <h3>返礼品</h3>
+      <p><strong>10,000円〜</strong></p>
+      <p>誰かに届けるための、一枚を。<br>
+      イベントや活動、記念日など、大切な人へ届けるための作品を制作します。</p>
+    </div>
 
-      <div class="price-list">
+  </div>
 
-        <div class="price-item">
-          <span>ミニ色紙</span>
-          <strong>2,000円</strong>
-        </div>
+</section>
+<section>
 
-        <div class="price-item">
-          <span>アクリルチャーム 小</span>
-          <strong>3,000円</strong>
-        </div>
+  <div class="section-head">
+    <div class="label">02｜ADDITIONAL</div>
+    <h2>追加料金について</h2>
+  </div>
 
-        <div class="price-item">
-          <span>アクリルチャーム 大</span>
-          <strong>4,000円</strong>
-        </div>
+  <div class="note">
 
-        <div class="price-item">
-          <span>A4サイズ一枚絵</span>
-          <strong>5,000円</strong>
-        </div>
+    <p>
+      基本内容を大きく超えるご希望がある場合は、
+      内容に応じて追加料金をご案内します。
+    </p>
 
-        <div class="price-item">
-          <span>あなたの姿</span>
-          <strong>12,000円～</strong>
-        </div>
-
-        <div class="price-item">
-          <span>あなたの世界</span>
-          <strong>15,000円～</strong>
-        </div>
-
+    <div class="scene-box">
+      <div class="scene-title">
+        <span>✦</span>
+        追加料金の対象となる例
       </div>
 
-    </section>
-
-
-    <!-- 料金の組み合わせ -->
-    <section class="price-section price-combination">
-
-      <p class="section-label">COMBINATION</p>
-      <h2>料金の組み合わせについて</h2>
-
-      <p>
-        作品によっては、複数の制作内容を組み合わせてご依頼いただけます。
-      </p>
-
-      <p>
-        それぞれの料金を合算した金額が、基本的な制作料金となります。
-      </p>
-
-      <div class="price-note combination-limit-note">
-        <h3>⚠ 料金の組み合わせについての注意</h3>
-        <p><strong>「料金の組み合わせ」という仕組み自体は、「あなたの姿」と「あなたの世界」のみ適用されます。</strong></p>
-        <p>ミニ色紙・アクリルチャーム・A4サイズ一枚絵などの作品については、この組み合わせ料金の対象外です。制作内容や仕様に応じて、別途お見積もりとなる場合があります。</p>
-      </div>
-
-      <div class="price-example">
-
-        <p><strong>例：</strong></p>
-
-        <p>
-          ミニ色紙　2,000円 ＋ あなたの姿　12,000円
-        </p>
-
-        <p class="price-total">
-          合計 <strong>14,000円</strong>
-        </p>
-
-      </div>
-
-      <p>
-        ※制作内容や仕様によって追加料金が発生する場合があります。<br>
-        正式な料金は、ご依頼内容を確認したうえでお見積もりいたします。
-      </p>
-
-    </section>
-
-
-    <!-- 制作期間 -->
-    <section class="price-section">
-
-      <p class="section-label">PRODUCTION PERIOD</p>
-      <h2>制作期間</h2>
-
-      <p>
-        <strong>基本納期：1～3か月</strong>
-      </p>
-
-      <p>
-        制作内容やご依頼状況によって前後する場合があります。
-      </p>
-
-      <p>
-        急ぎのご依頼については、対応可能かどうかを個別にご相談ください。
-      </p>
-
-      <div class="price-note">
-
-        <h3>制作開始日について</h3>
-
-        <p>
-          制作に必要な情報・資料が揃い、入金確認が完了した日を制作開始日とします。
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- 修正 -->
-    <section class="price-section">
-
-      <p class="section-label">REVISION</p>
-      <h2>修正</h2>
-
-      <p>
-        <strong>2回まで無料。</strong>
-      </p>
-
-      <p>
-        基本的な修正は、アイデアラフ・ラフの段階で行います。
-      </p>
-
-      <p>
-        大幅な変更や、確定後の大きな描き直しについては、
-        追加料金または納期変更となる場合があります。
-      </p>
-
-    </section>
-
-
-    <!-- 支払い -->
-    <section class="price-section">
-
-      <p class="section-label">PAYMENT</p>
-      <h2>お支払い</h2>
-
-      <p>
-        <strong>銀行振込のみ</strong>
-      </p>
-
-      <p>
-        制作費は2回に分けてお支払いいただきます。
-      </p>
-
-      <div class="payment-list">
-
-        <div class="payment-item">
-          <span>①</span>
-          <div>
-            <strong>線画制作時</strong>
-            <p>1回目のお支払い</p>
-          </div>
-        </div>
-
-        <div class="payment-item">
-          <span>②</span>
-          <div>
-            <strong>納品時</strong>
-            <p>残額のお支払い</p>
-          </div>
-        </div>
-
-      </div>
-
-      <p>
-        正式な依頼内容・見積もりを確認いただき、
-        入金確認後に制作を開始します。
-      </p>
-
-    </section>
-
-
-    <!-- キャンセル -->
-    <section class="price-section">
-
-      <p class="section-label">CANCELLATION</p>
-      <h2>キャンセル</h2>
-
-      <div class="cancel-table">
-
-        <div class="cancel-row cancel-head">
-          <span>制作段階</span>
-          <span>キャンセル料</span>
-        </div>
-
-        <div class="cancel-row">
-          <span>アイデア・ラフまで</span>
-          <strong>無料</strong>
-        </div>
-
-        <div class="cancel-row">
-          <span>線画以降</span>
-          <strong>代金の4分の1</strong>
-        </div>
-
-        <div class="cancel-row">
-          <span>着彩後</span>
-          <strong>代金の半分</strong>
-        </div>
-
-      </div>
-
-      <p>
-        キャンセル料は、キャンセル時点での制作状況を基準として計算します。
-      </p>
-
-    </section>
-
-
-    <!-- 返金 -->
-    <section class="price-section">
-
-      <p class="section-label">REFUND</p>
-      <h2>返金</h2>
-
-      <p>
-        キャンセルとなった場合、制作状況に応じて
-        キャンセル料を差し引いた金額を返金します。
-      </p>
-
-      <p>
-        すでに制作した内容に相当する料金を差し引く場合があります。
-      </p>
-
-      <p>
-        また、返金時に発生する振込手数料は依頼者様のご負担となります。
-      </p>
-
-      <p>
-        制作者側の都合により制作を継続できなくなった場合は、
-        未制作分を含め、状況に応じて適切に返金いたします。
-      </p>
-
-    </section>
-
-
-    <!-- 納品 -->
-    <section class="price-section">
-
-      <p class="section-label">DELIVERY</p>
-      <h2>納品</h2>
-
-      <div class="delivery-block">
-
-        <h3>データ作品</h3>
-
-        <p>基本：</p>
-
-        <ul>
-          <li>PNG</li>
-          <li>JPEG</li>
-        </ul>
-
-        <p>
-          その他の形式をご希望の場合は事前にご相談ください。
-        </p>
-
-        <p>
-          ギガファイル便を利用して納品します。
-        </p>
-
-      </div>
-
-
-      <div class="delivery-block">
-
-        <h3>実物作品</h3>
-
-        <p>
-          ヤマト運輸の匿名配送を基本とします。
-        </p>
-
-        <p>
-          送料については、ご依頼内容に応じて事前にご案内します。
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <section class="price-section">
-      <p class="section-label">BEFORE ORDER</p>
-      <h2>ご依頼前に</h2>
-      <p>正式にご依頼いただく前に、以下の内容をご確認ください。</p>
-      <ul class="preorder-list">
-        <li>料金・制作内容をご確認ください。</li>
-        <li>注意事項をご確認ください。</li>
-        <li>使用する画像・キャラクター・ロゴ・素材などの権利関係をご確認ください。</li>
-        <li>REALITYなどのサービスに関係する素材を使用する場合は、各サービスの最新の利用規約・ガイドラインをご確認ください。</li>
-        <li>ご希望の内容や納期について、不明な点があれば制作開始前にご相談ください。</li>
+      <ul>
+        <li>人数の追加</li>
+        <li>複雑な衣装や装飾</li>
+        <li>大量の小物</li>
+        <li>複雑な建物・街並み</li>
+        <li>機械などの細かな描写</li>
+        <li>大幅な構図変更</li>
+        <li>特別な加工・展開</li>
       </ul>
-      <div class="price-note">
-        <h3>正式な料金について</h3>
-        <p>掲載している料金は基本料金です。仕様・制作内容・追加作業などによって料金が変わる場合があります。ご依頼内容を確認したうえで、正式な料金と納期をご案内します。</p>
-      </div>
-    </section>
-
-    <div class="price-cta">
-      <a href="star-sheet.html">星のかけらへ →</a>
     </div>
 
-    <!-- 戻る -->
-    <div class="page-back">
+    <p>
+      <strong>追加料金が発生する場合は、制作前に必ずご案内します。</strong>
+    </p>
 
-      <a href="index.html" class="hoshiyomi-sea-return">
-        星の海へ戻る
-      </a>
+  </div>
+
+</section>
+<section>
+  <div class="section-head"><div class="label">DISCOUNT</div><h2>割引について</h2></div>
+  <div class="flow">
+    <div class="flow-card"><div class="flow-number">DISCOUNT 01</div><div class="flow-icon">♢</div><h3>まとめてのご依頼</h3><p>複数の作品をまとめてご依頼いただく場合、内容に応じて割引をご案内します。</p></div>
+    <div class="flow-card"><div class="flow-number">DISCOUNT 02</div><div class="flow-icon">◇</div><h3>ご紹介による割引</h3><p>星詠をご紹介いただいた方を対象に、条件に応じて割引をご案内します。</p></div>
+    <div class="flow-card"><div class="flow-number">DISCOUNT 03</div><div class="flow-icon">✧</div><h3>グループでのご依頼</h3><p>複数名でのご依頼など、まとめて制作する場合の特典をご用意することがあります。</p></div>
+    <div class="flow-card"><div class="flow-number">DISCOUNT 04</div><div class="flow-icon">✦</div><h3>ミニプレゼント</h3><p>企画やご依頼内容に応じて、割引とは別に小さなお届けものをご用意する場合があります。</p></div>
+  </div>
+  <div class="note" style="margin-top:30px;">
+    <p>割引の内容・適用条件は、ご依頼内容や企画によって変更される場合があります。<br>複数の割引を併用できない場合がありますので、正式な料金をご案内する際にあわせてお知らせします。</p>
+  </div>
+</section>
+<section>
+
+  <div class="section-head">
+    <div class="label">03｜PRODUCTION PERIOD</div>
+    <h2>制作期間</h2>
+  </div>
+
+  <div class="note">
+
+    <p><strong>1ヶ月〜3ヶ月程度</strong></p>
+
+    <p>
+      ご依頼内容や現在の制作状況、確認・ご返信のタイミングなどによって前後する場合があります。
+    </p>
+
+    <p>
+      ご依頼をお受けする際に、現在の制作状況を踏まえた納期の目安をお伝えします。
+    </p>
+
+  </div>
+
+</section>
+<section>
+
+  <div class="section-head">
+    <div class="label">04｜REVISION</div>
+    <h2>ラフ・修正について</h2>
+  </div>
+
+  <div class="note">
+
+    <p>
+      アイデアラフ・ラフの段階で修正を行います。
+    </p>
+
+    <div class="scene-box">
+      <div class="scene-title"><span>✦</span>メインプラン</div>
+      <p><strong>2回まで無料</strong></p>
+      <p>対象：あなたの姿・記念品・あなたの世界</p>
+    </div>
+
+    <div class="scene-box">
+      <div class="scene-title"><span>✦</span>お試しプラン</div>
+      <p><strong>1回まで無料</strong></p>
+    </div>
+
+    <p>
+      ラフ確定後の大幅な変更・描き直しについては、
+      内容に応じて追加料金または納期の変更をお願いする場合があります。
+    </p>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-head">
+    <div class="label">05｜PAYMENT</div>
+    <h2>お支払いについて</h2>
+  </div>
+
+  <div class="note">
+    <p>
+      お支払い方法やお支払いのタイミングについては、
+      正式なご依頼内容を確認したうえでご案内します。
+    </p>
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-head">
+    <div class="label">06｜CANCELLATION</div>
+    <h2>キャンセルについて</h2>
+  </div>
+
+  <div class="note">
+    <p>
+      制作開始後のキャンセルについては、制作状況に応じて対応が変わります。
+    </p>
+    <p>
+      キャンセル料などの具体的な条件については、
+      <strong>「注意事項」</strong>をご確認ください。
+    </p>
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-head">
+    <div class="label">07｜DELIVERY</div>
+    <h2>納品について</h2>
+  </div>
+
+  <div class="flow">
+
+    <div class="flow-card">
+      <div class="flow-number">DELIVERY 01</div>
+      <div class="flow-icon">✦</div>
+      <h3>データ作品</h3>
+      <p>
+        完成した作品をデータ化し、
+        オンラインでお渡しします。
+      </p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">DELIVERY 02</div>
+      <div class="flow-icon">◇</div>
+      <h3>原画</h3>
+      <p>
+        原画をご希望の場合は、作品を適切に梱包したうえで発送します。
+        配送方法・送料については、ご依頼内容に応じて事前にご案内します。
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-head">
+    <div class="label">08｜FORMAL PRICE</div>
+    <h2>正式な料金について</h2>
+  </div>
+
+  <div class="note">
+
+    <p>
+      サイトに掲載している金額は、各プランの<strong>基本料金</strong>です。
+    </p>
+
+    <div class="scene-box">
+
+      <div class="scene-title"><span>✦</span>正式な料金が決まるまで</div>
+
+      <ul>
+        <li>ご依頼内容の確認</li>
+        <li>内容・描き込み量などを確認</li>
+        <li>正式な料金・納期をご案内</li>
+        <li>ご了承いただいてから制作開始</li>
+      </ul>
 
     </div>
 
-  </main>
+  </div>
 
+</section>
+
+<section>
+
+  <div class="section-head">
+    <div class="label">09｜BEFORE ORDER</div>
+    <h2>ご依頼前に</h2>
+  </div>
+
+  <div class="note">
+
+    <p>ご依頼の際は、以下をお知らせください。</p>
+
+    <ul>
+      <li>希望するプラン</li>
+      <li>描いてほしい内容</li>
+      <li>参考資料</li>
+      <li>希望する利用方法</li>
+      <li>その他のご希望</li>
+    </ul>
+
+    <p>
+      内容がまだ完全に決まっていなくても大丈夫です。
+    </p>
+
+    <p>
+      ご相談いただいた内容をもとに、制作できる形を一緒に整理します。
+    </p>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-head">
+    <div class="label">10｜DISCOUNT</div>
+    <h2>割引について</h2>
+  </div>
+
+  <div class="flow">
+
+    <div class="flow-card">
+      <div class="flow-number">DISCOUNT 01</div>
+      <div class="flow-icon">♢</div>
+      <h3>まとめてのご依頼</h3>
+      <p>複数の作品をまとめてご依頼いただく場合、内容に応じて割引をご案内します。</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">DISCOUNT 02</div>
+      <div class="flow-icon">◇</div>
+      <h3>ご紹介による割引</h3>
+      <p>星詠をご紹介いただいた方を対象に、条件に応じて割引をご案内します。</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">DISCOUNT 03</div>
+      <div class="flow-icon">✧</div>
+      <h3>グループでのご依頼</h3>
+      <p>複数名でのご依頼など、まとめて制作する場合の特典をご用意することがあります。</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">DISCOUNT 04</div>
+      <div class="flow-icon">✦</div>
+      <h3>ミニプレゼント</h3>
+      <p>企画やご依頼内容に応じて、割引とは別に小さなお届けものをご用意する場合があります。</p>
+    </div>
+
+  </div>
+
+</section>
+<a href="request-form.html" class="request-button">ご依頼はこちらから　›</a>
+</div>
 </body>
 </html>
