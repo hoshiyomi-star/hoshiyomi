@@ -7,29 +7,28 @@
 <title>返礼品｜星詠</title>
 
 <style>
+
+/* =========================
+   BASE
+========================= */
+
 *{
   box-sizing:border-box;
 }
 
-html,body{
-  margin:0;
-  width:100%;
-  min-height:100%;
+html{
+  scroll-behavior:smooth;
 }
 
 body{
+  margin:0;
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(90,130,210,.14),
+      rgba(70,110,190,.13),
       transparent 38%
     ),
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(100,90,180,.08),
-      transparent 35%
-    ),
-    #040916;
+    #030a18;
 
   color:#edf3ff;
 
@@ -39,24 +38,11 @@ body{
     "Noto Serif JP",
     serif;
 
-  overflow-x:hidden;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,.65) 1px, transparent 1px);
-
-  background-size:130px 130px;
-  opacity:.16;
+  letter-spacing:.05em;
 }
 
 .page{
-  width:min(1000px,calc(100% - 40px));
+  width:min(1100px, calc(100% - 40px));
   margin:auto;
 }
 
@@ -71,7 +57,7 @@ header{
 }
 
 .system{
-  color:#8fbfff;
+  color:#9bbfff;
 
   font-family:
     Georgia,
@@ -79,7 +65,8 @@ header{
     serif;
 
   font-size:.72rem;
-  letter-spacing:.32em;
+
+  letter-spacing:.38em;
 
   margin-bottom:28px;
 }
@@ -87,7 +74,8 @@ header{
 .logo{
   display:block;
 
-  width:min(210px,58vw);
+  width:min(210px,55vw);
+
   height:auto;
 
   margin:0 auto 30px;
@@ -99,29 +87,80 @@ header{
     );
 }
 
+.title-frame{
+  position:relative;
+
+  width:min(760px,100%);
+
+  margin:0 auto;
+
+  padding:25px 35px 22px;
+
+  border:
+    1px solid
+    rgba(210,225,255,.75);
+
+  border-radius:60px;
+}
+
+.title-frame::before,
+.title-frame::after{
+  content:"✦";
+
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#fff;
+
+  font-size:1.3rem;
+}
+
+.title-frame::before{
+  left:25px;
+}
+
+.title-frame::after{
+  right:25px;
+}
+
 h1{
-  font-size:clamp(2.2rem,5vw,3.2rem);
+  margin:0;
+
+  font-size:clamp(2rem,5vw,3.1rem);
 
   font-weight:400;
 
-  letter-spacing:.16em;
+  letter-spacing:.25em;
+}
 
-  margin:0;
+.subtitle{
+  margin:10px 0 0;
+
+  font-size:.85rem;
+
+  color:#cbd7ec;
+
+  letter-spacing:.2em;
 }
 
 .lead{
-  color:#aab8d2;
+  margin:35px auto 0;
 
-  margin:25px auto 0;
+  max-width:720px;
 
-  line-height:2;
+  color:#d1dbea;
 
-  font-size:.92rem;
+  font-size:.95rem;
+
+  line-height:2.2;
 }
 
 
 /* =========================
-   共通セクション
+   SECTION
 ========================= */
 
 section{
@@ -129,112 +168,17 @@ section{
 
   border-top:
     1px solid
-    rgba(180,205,245,.16);
+    rgba(180,205,245,.2);
+}
+
+.section-head{
+  text-align:center;
+
+  margin-bottom:38px;
 }
 
 .label{
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.7rem;
-
-  letter-spacing:.25em;
-
-  margin-bottom:13px;
-
-  text-align:center;
-}
-
-h2{
-  font-size:1.7rem;
-
-  font-weight:400;
-
-  letter-spacing:.1em;
-
-  margin:0 0 38px;
-
-  text-align:center;
-}
-
-
-/* =========================
-   メインビジュアル
-========================= */
-
-.hero-gift{
-  position:relative;
-
-  min-height:360px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:55px 35px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.25);
-
-  border-radius:24px;
-
-  background:
-    radial-gradient(
-      circle at 50% 30%,
-      rgba(90,140,230,.18),
-      transparent 55%
-    ),
-    rgba(10,24,52,.48);
-
-  overflow:hidden;
-}
-
-.hero-gift::before{
-  content:"✦";
-
-  position:absolute;
-
-  top:25px;
-  left:30px;
-
-  color:#dce9ff;
-
-  font-size:1rem;
-
-  opacity:.8;
-}
-
-.hero-gift::after{
-  content:"✦";
-
-  position:absolute;
-
-  right:30px;
-  bottom:25px;
-
-  color:#dce9ff;
-
-  font-size:1rem;
-
-  opacity:.8;
-}
-
-.hero-inner{
-  text-align:center;
-
-  max-width:650px;
-
-  position:relative;
-  z-index:2;
-}
-
-.hero-number{
-  color:#8fbfff;
+  color:#9bbfff;
 
   font-family:
     Georgia,
@@ -243,128 +187,276 @@ h2{
 
   font-size:.72rem;
 
-  letter-spacing:.28em;
+  letter-spacing:.4em;
 
-  margin-bottom:22px;
+  margin-bottom:10px;
 }
 
-.hero-title{
-  font-size:clamp(2rem,5vw,3rem);
+.section-head h2{
+  margin:0;
+
+  font-size:1.25rem;
 
   font-weight:400;
 
-  letter-spacing:.16em;
-
-  margin-bottom:22px;
+  letter-spacing:.25em;
 }
 
-.hero-price{
-  color:#dce8ff;
+.section-head h2::before,
+.section-head h2::after{
+  content:"";
+
+  display:inline-block;
+
+  width:90px;
+
+  height:1px;
+
+  vertical-align:middle;
+
+  margin:0 18px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(170,200,245,.5)
+    );
+}
+
+.section-head h2::after{
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(170,200,245,.5)
+    );
+}
+
+
+/* =========================
+   DETAIL AREA
+========================= */
+
+.reward-detail{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:55px;
+
+  align-items:center;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.reward-image{
+  position:relative;
+
+  padding:10px;
+
+  border:
+    1px solid
+    rgba(190,215,255,.5);
+
+  background:
+    rgba(8,22,48,.35);
+}
+
+.reward-image::before,
+.reward-image::after{
+  content:"";
+
+  position:absolute;
+
+  width:35px;
+  height:35px;
+
+  border-color:
+    rgba(190,215,255,.7);
+
+  pointer-events:none;
+}
+
+.reward-image::before{
+  left:-5px;
+  top:-5px;
+
+  border-left:1px solid;
+  border-top:1px solid;
+}
+
+.reward-image::after{
+  right:-5px;
+  bottom:-5px;
+
+  border-right:1px solid;
+  border-bottom:1px solid;
+}
+
+.reward-image img{
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:1 / 1;
+
+  object-fit:cover;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.reward-content{
+  padding:10px 15px;
+}
+
+.reward-en{
+  text-align:center;
+
+  color:#9bbfff;
 
   font-family:
     Georgia,
     "Times New Roman",
     serif;
 
-  font-size:1.5rem;
+  font-size:.72rem;
 
-  letter-spacing:.08em;
+  letter-spacing:.35em;
 
-  margin-bottom:28px;
+  margin-bottom:15px;
 }
 
-.hero-copy{
-  color:#c3d0e6;
-
-  line-height:2;
-
-  font-size:.92rem;
-}
-
-
-/* =========================
-   INTRO
-========================= */
-
-.intro{
+.reward-content h3{
   text-align:center;
 
-  max-width:700px;
-
-  margin:auto;
-}
-
-.intro p{
-  color:#aab8d2;
-
-  font-size:.92rem;
-
-  line-height:2.2;
-
   margin:0;
-}
 
-
-/* =========================
-   DETAIL
-========================= */
-
-.detail-box{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:20px;
-}
-
-.detail-card{
-  padding:32px 28px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:18px;
-
-  background:
-    rgba(10,24,52,.45);
-
-  min-height:210px;
-}
-
-.detail-card h3{
-  font-size:1.1rem;
+  font-size:2rem;
 
   font-weight:400;
 
-  letter-spacing:.08em;
-
-  margin:0 0 20px;
-
-  color:#edf3ff;
+  letter-spacing:.2em;
 }
 
-.detail-card p{
-  color:#aab8d2;
+.price{
+  text-align:center;
 
-  font-size:.88rem;
+  margin:20px 0 25px;
 
-  line-height:2;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:1.8rem;
+
+  letter-spacing:.12em;
+
+  color:#f0e6d8;
+}
+
+.divider{
+  width:70%;
+
+  height:1px;
+
+  margin:0 auto 25px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(180,210,255,.65),
+      transparent
+    );
+}
+
+.reward-description{
+  color:#d0d9ea;
+
+  line-height:2.1;
+
+  font-size:.92rem;
+
+  text-align:center;
+}
+
+
+/* =========================
+   SCENE BOX
+========================= */
+
+.scene-box{
+  margin-top:30px;
+
+  padding:25px 28px;
+
+  border:
+    1px solid
+    rgba(170,200,245,.28);
+
+  background:
+    rgba(12,28,58,.35);
+}
+
+.scene-title{
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  margin-bottom:15px;
+
+  font-size:.95rem;
+
+  letter-spacing:.18em;
+}
+
+.scene-title span{
+  font-size:1.4rem;
+
+  color:#dceaff;
+}
+
+.scene-box ul{
+  list-style:none;
+
+  padding:0;
 
   margin:0;
 }
 
-.detail-card ul{
-  color:#aab8d2;
+.scene-box li{
+  position:relative;
 
-  font-size:.88rem;
+  padding-left:22px;
 
-  line-height:2;
+  margin:9px 0;
 
-  margin:0;
+  color:#cbd6e8;
 
-  padding-left:1.2em;
+  font-size:.84rem;
+
+  line-height:1.7;
+}
+
+.scene-box li::before{
+  content:"✦";
+
+  position:absolute;
+
+  left:0;
+
+  color:#a9c8ff;
 }
 
 
@@ -378,70 +470,63 @@ h2{
   grid-template-columns:
     repeat(4,1fr);
 
-  gap:15px;
-
-  position:relative;
+  gap:18px;
 }
 
-.flow-item{
-  text-align:center;
+.flow-card{
+  position:relative;
 
-  padding:25px 15px;
+  min-height:175px;
+
+  padding:25px 20px;
 
   border:
     1px solid
-    rgba(180,205,245,.16);
-
-  border-radius:18px;
+    rgba(175,205,250,.28);
 
   background:
-    rgba(10,24,52,.38);
+    rgba(8,22,48,.35);
 }
 
 .flow-number{
-  width:38px;
-  height:38px;
-
-  margin:0 auto 18px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border:
-    1px solid
-    rgba(143,191,255,.45);
-
-  border-radius:50%;
-
-  color:#8fbfff;
+  color:#9bbfff;
 
   font-family:
     Georgia,
     "Times New Roman",
     serif;
 
-  font-size:.75rem;
+  font-size:.7rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:22px;
 }
 
-.flow-item h3{
-  font-size:.95rem;
+.flow-icon{
+  font-size:1.5rem;
+
+  margin-bottom:12px;
+}
+
+.flow-card h3{
+  margin:0 0 13px;
+
+  font-size:1rem;
 
   font-weight:400;
 
-  margin:0 0 12px;
-
-  letter-spacing:.08em;
+  letter-spacing:.12em;
 }
 
-.flow-item p{
-  color:#9eacc5;
+.flow-card p{
+  margin:0;
 
-  font-size:.78rem;
+  color:#aebbd0;
+
+  font-size:.8rem;
 
   line-height:1.8;
-
-  margin:0;
 }
 
 
@@ -450,168 +535,117 @@ h2{
 ========================= */
 
 .note{
-  padding:28px 30px;
+  padding:28px 35px;
 
   border:
     1px solid
-    rgba(180,205,245,.16);
-
-  border-radius:18px;
+    rgba(175,205,250,.28);
 
   background:
-    rgba(120,160,255,.035);
-
-  color:#b8c6dd;
-
-  font-size:.88rem;
-
-  line-height:2;
-
-  text-align:left;
+    rgba(8,22,48,.35);
 }
 
-.note strong{
-  color:#edf3ff;
+.note ul{
+  margin:0;
 
-  font-weight:400;
+  padding-left:22px;
+}
+
+.note li{
+  margin:12px 0;
+
+  color:#cbd6e8;
+
+  font-size:.84rem;
+
+  line-height:1.9;
 }
 
 
 /* =========================
-   CTA
+   BUTTON
 ========================= */
 
-.cta{
-  text-align:center;
-
-  padding:75px 20px 100px;
-
-  border-top:
-    1px solid
-    rgba(180,205,245,.16);
-}
-
-.cta-title{
-  font-size:1.35rem;
-
-  font-weight:400;
-
-  letter-spacing:.1em;
-
-  line-height:2;
-
-  margin-bottom:15px;
-}
-
-.cta-text{
-  color:#9eacc5;
-
-  font-size:.88rem;
-
-  line-height:2;
-
-  margin-bottom:30px;
-}
-
-.cta-button{
-  display:inline-block;
-
-  padding:14px 38px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.35);
-
-  border-radius:999px;
-
-  color:#e5eeff;
-
-  text-decoration:none;
-
-  letter-spacing:.08em;
-
-  transition:.3s ease;
-
-  background:
-    rgba(100,145,220,.05);
-}
-
-.cta-button:hover{
-  background:
-    rgba(120,170,255,.12);
-
-  border-color:
-    rgba(143,191,255,.65);
-
-  box-shadow:
-    0 0 25px
-    rgba(100,150,240,.12);
-}
-
-
-/* =========================
-   戻る
-========================= */
-
-.back{
+.request-button{
   display:block;
 
   width:max-content;
 
-  margin:0 auto 80px;
+  margin:65px auto 90px;
 
-  padding:10px 24px;
+  padding:15px 60px;
 
   border:
     1px solid
-    rgba(180,205,245,.18);
+    rgba(205,225,255,.75);
 
   border-radius:999px;
 
-  color:#cbd8ed;
+  color:#edf4ff;
 
   text-decoration:none;
 
-  font-size:.82rem;
+  letter-spacing:.18em;
+
+  background:
+    rgba(15,35,70,.45);
+
+  box-shadow:
+    0 0 20px
+    rgba(100,150,255,.08);
 
   transition:.3s ease;
 }
 
-.back:hover{
+.request-button:hover{
   background:
-    rgba(180,210,255,.08);
+    rgba(90,130,210,.18);
+
+  box-shadow:
+    0 0 30px
+    rgba(100,150,255,.18);
+
+  transform:translateY(-2px);
 }
 
 
 /* =========================
-   スマホ
+   MOBILE
 ========================= */
 
-@media(max-width:700px){
+@media(max-width:800px){
 
   .page{
     width:min(
       100% - 28px,
-      1000px
+      1100px
     );
   }
 
   header{
-    padding:70px 0 55px;
+    padding:65px 0 50px;
   }
 
-  section{
-    padding:50px 0;
+  .title-frame{
+    padding:22px 25px;
   }
 
-  .hero-gift{
-    min-height:330px;
-
-    padding:45px 25px;
+  .title-frame::before{
+    left:12px;
   }
 
-  .detail-box{
+  .title-frame::after{
+    right:12px;
+  }
+
+  .reward-detail{
     grid-template-columns:1fr;
+
+    gap:35px;
+  }
+
+  .reward-content{
+    padding:0;
   }
 
   .flow{
@@ -619,23 +653,35 @@ h2{
       repeat(2,1fr);
   }
 
-  .detail-card{
-    min-height:auto;
-  }
-
 }
 
-@media(max-width:450px){
+@media(max-width:520px){
 
   .flow{
     grid-template-columns:1fr;
   }
 
-  .hero-title{
-    font-size:2rem;
+  .section-head h2::before,
+  .section-head h2::after{
+    width:30px;
+
+    margin:0 8px;
+  }
+
+  .note{
+    padding:22px;
+  }
+
+  .request-button{
+    width:100%;
+
+    text-align:center;
+
+    padding:14px 20px;
   }
 
 }
+
 </style>
 </head>
 
@@ -661,80 +707,29 @@ h2{
     class="logo"
   >
 
-  <h1>
-    返礼品
-  </h1>
+  <div class="title-frame">
 
-  <p class="lead">
-    誰かに届けるための、一枚を。
-  </p>
+    <h1>
+      返礼品
+    </h1>
 
-</header>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section>
-
-  <div class="hero-gift">
-
-    <div class="hero-inner">
-
-      <div class="hero-number">
-        REWARD
-      </div>
-
-      <div class="hero-title">
-        返礼品
-      </div>
-
-      <div class="hero-price">
-        10,000円〜
-      </div>
-
-      <div class="hero-copy">
-
-        イベントや活動、記念日など、<br>
-        大切な人へ届けるための作品を制作します。<br>
-        贈る相手や出来事に合わせて、<br>
-        一枚の作品として形にします。
-
-      </div>
-
+    <div class="subtitle">
+      ― 誰かに届けるための、一枚を。―
     </div>
 
   </div>
 
-</section>
+  <p class="lead">
 
+    イベントや活動、記念日など、<br>
+    大切な人へ届けるための作品を制作します。<br>
 
-<!-- =========================
-     INTRO
-========================= -->
+    「ありがとう」「おめでとう」など、<br>
+    その瞬間にしかない想いを、星詠ならではの一枚に。
 
-<section>
+  </p>
 
-  <div class="label">
-    01｜CONCEPT
-  </div>
-
-  <h2>
-    誰かに届けるための、一枚
-  </h2>
-
-  <div class="intro">
-
-    <p>
-      「ありがとう」や「おめでとう」など、<br>
-      言葉だけでは伝えきれない気持ちを、<br>
-      星詠ならではの一枚にします。
-    </p>
-
-  </div>
-
-</section>
+</header>
 
 
 <!-- =========================
@@ -743,74 +738,86 @@ h2{
 
 <section>
 
-  <div class="label">
-    02｜DETAIL
+  <div class="section-head">
+
+    <div class="label">
+      DETAIL
+    </div>
+
+    <h2>
+      詳細について
+    </h2>
+
   </div>
 
-  <h2>
-    こんなときに
-  </h2>
 
-  <div class="detail-box">
+  <div class="reward-detail">
 
 
-    <div class="detail-card">
+    <!-- IMAGE -->
 
-      <h3>
-        大切な人へ
-      </h3>
+    <div class="reward-image">
 
-      <p>
-        日頃の感謝や、伝えたい気持ちを
-        一枚の作品として残します。
-      </p>
+      <img
+        src="reward-main.jpg"
+        alt="返礼品イメージ"
+      >
 
     </div>
 
 
-    <div class="detail-card">
+    <!-- CONTENT -->
+
+    <div class="reward-content">
+
+      <div class="reward-en">
+        REWARD
+      </div>
 
       <h3>
-        記念日に
+        返礼品
       </h3>
 
-      <p>
-        誕生日や周年、イベント達成など、
-        大切な出来事を作品として形にします。
+      <div class="price">
+        10,000円〜
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="reward-description">
+
+        誰かに届けるための、一枚を。<br>
+
+        贈る相手や出来事に合わせて、<br>
+        大切な想いを作品として形にします。
+
       </p>
 
-    </div>
 
+      <div class="scene-box">
 
-    <div class="detail-card">
+        <div class="scene-title">
+          <span>✦</span>
+          こんなシーンに
+        </div>
 
-      <h3>
-        活動・イベントに
-      </h3>
+        <ul>
 
-      <p>
-        活動の節目やイベントなど、
-        応援してくれた方へ届ける一枚として
-        制作します。
-      </p>
+          <li>誕生日のお祝い</li>
 
-    </div>
+          <li>周年やイベント達成の記念</li>
 
+          <li>活動の節目や感謝の気持ち</li>
 
-    <div class="detail-card">
+          <li>ファンの方へのお礼</li>
 
-      <h3>
-        あなたが届けたい人へ
-      </h3>
+          <li>その他、大切な人へ贈るための一枚</li>
 
-      <p>
-        贈る相手や、その人との思い出、
-        伝えたい想いをもとに、
-        内容を一緒に考えていきます。
-      </p>
+        </ul>
+
+      </div>
 
     </div>
-
 
   </div>
 
@@ -823,21 +830,30 @@ h2{
 
 <section>
 
-  <div class="label">
-    03｜FLOW
+  <div class="section-head">
+
+    <div class="label">
+      FLOW
+    </div>
+
+    <h2>
+      ご依頼の流れ
+    </h2>
+
   </div>
 
-  <h2>
-    ご依頼の流れ
-  </h2>
 
   <div class="flow">
 
 
-    <div class="flow-item">
+    <div class="flow-card">
 
       <div class="flow-number">
         01
+      </div>
+
+      <div class="flow-icon">
+        ♢
       </div>
 
       <h3>
@@ -845,17 +861,21 @@ h2{
       </h3>
 
       <p>
-        返礼品について
-        ご希望をお聞かせください。
+        返礼品について<br>
+        ご相談ください。
       </p>
 
     </div>
 
 
-    <div class="flow-item">
+    <div class="flow-card">
 
       <div class="flow-number">
         02
+      </div>
+
+      <div class="flow-icon">
+        ◇
       </div>
 
       <h3>
@@ -863,17 +883,21 @@ h2{
       </h3>
 
       <p>
-        描き込み量や構図、
-        内容などを確認します。
+        描き込み量や構図などを<br>
+        確認します。
       </p>
 
     </div>
 
 
-    <div class="flow-item">
+    <div class="flow-card">
 
       <div class="flow-number">
         03
+      </div>
+
+      <div class="flow-icon">
+        ✧
       </div>
 
       <h3>
@@ -881,17 +905,21 @@ h2{
       </h3>
 
       <p>
-        正式な料金と
-        制作期間をご案内します。
+        正式な料金・納期を<br>
+        ご案内します。
       </p>
 
     </div>
 
 
-    <div class="flow-item">
+    <div class="flow-card">
 
       <div class="flow-number">
         04
+      </div>
+
+      <div class="flow-icon">
+        ✦
       </div>
 
       <h3>
@@ -899,8 +927,8 @@ h2{
       </h3>
 
       <p>
-        内容をご確認いただき、
-        ご了承後に制作を開始します。
+        ご了承いただいてから<br>
+        制作を開始します。
       </p>
 
     </div>
@@ -917,47 +945,40 @@ h2{
 
 <section>
 
-  <div class="label">
-    04｜NOTE
+  <div class="section-head">
+
+    <div class="label">
+      NOTE
+    </div>
+
+    <h2>
+      ご確認ください
+    </h2>
+
   </div>
 
-  <h2>
-    ご確認ください
-  </h2>
 
   <div class="note">
 
-    <strong>
-      基本料金について
-    </strong><br>
+    <ul>
 
-    掲載している金額は基本料金です。
-    構図や描き込み量、人数、衣装・装飾、小物などの
-    内容によって料金が変わる場合があります。
+      <li>
+        掲載している金額は基本料金です。構図や描き込み量、人数、衣装・装飾、小物などの内容によって料金が変わる場合があります。
+      </li>
 
-    <br><br>
+      <li>
+        追加料金が発生する場合は、制作前に必ずご案内します。
+      </li>
 
-    <strong>
-      追加料金について
-    </strong><br>
+      <li>
+        ご依頼内容や現在の制作状況、確認・ご返信のタイミングなどによって、制作期間が前後する場合があります。
+      </li>
 
-    追加料金が発生する場合は、
-    制作前に必ずご案内します。
+      <li>
+        その他の注意事項については、「注意事項」ページもあわせてご確認ください。
+      </li>
 
-    <br><br>
-
-    <strong>
-      制作期間について
-    </strong><br>
-
-    ご依頼内容や現在の制作状況、
-    確認・ご返信のタイミングなどによって
-    制作期間が前後する場合があります。
-
-    <br><br>
-
-    その他の注意事項については、
-    「注意事項」ページもあわせてご確認ください。
+    </ul>
 
   </div>
 
@@ -965,39 +986,14 @@ h2{
 
 
 <!-- =========================
-     CTA
-========================= -->
-
-<div class="cta">
-
-  <div class="cta-title">
-    あなたの想いを、<br>
-    誰かへ届ける一枚に。
-  </div>
-
-  <div class="cta-text">
-    星詠と一緒に、その形を探してみませんか。
-  </div>
-
-  <a
-    href="request-form.html"
-    class="cta-button"
-  >
-    ご依頼はこちらから　→
-  </a>
-
-</div>
-
-
-<!-- =========================
-     BACK
+     REQUEST
 ========================= -->
 
 <a
-  href="index.html"
-  class="back"
+  href="request-form.html"
+  class="request-button"
 >
-  ← 星詠の入口へ戻る
+  ご依頼はこちらから　›
 </a>
 
 
