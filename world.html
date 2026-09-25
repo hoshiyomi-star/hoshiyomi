@@ -2,805 +2,278 @@
 
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>あなたの世界｜星詠</title>
-
-<style>
-
-*{
-  box-sizing:border-box;
-}
-
-html,body{
-  margin:0;
-  min-height:100%;
-}
-
-body{
-  color:#edf3ff;
-
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(90,130,210,.12),
-      transparent 35%
-    ),
-    linear-gradient(
-      180deg,
-      #040916 0%,
-      #07142d 55%,
-      #040916 100%
-    );
-
-  font-family:
-    "Yu Mincho",
-    "Hiragino Mincho ProN",
-    "Noto Serif JP",
-    serif;
-
-  line-height:1.9;
-}
-
-.wrap{
-  width:min(950px,calc(100% - 40px));
-  margin:auto;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-  text-align:center;
-  padding:100px 0 70px;
-}
-
-.system{
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.75rem;
-
-  letter-spacing:.3em;
-
-  margin-bottom:25px;
-}
-
-.logo{
-  width:min(220px,60vw);
-
-  height:auto;
-
-  display:block;
-
-  margin:0 auto 28px;
-
-  filter:
-    drop-shadow(
-      0 0 20px
-      rgba(150,190,255,.18)
-    );
-}
-
-h1{
-  font-size:
-    clamp(2rem,5vw,3rem);
-
-  font-weight:400;
-
-  letter-spacing:.12em;
-
-  margin:0;
-}
-
-.lead{
-  color:#aab8d2;
-
-  margin:22px auto 0;
-
-  line-height:2;
-}
-
-
-/* =========================
-   SECTION
-========================= */
-
-section{
-  padding:65px 0;
-
-  border-top:
-    1px solid
-    rgba(180,205,245,.18);
-}
-
-.section-label{
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.72rem;
-
-  letter-spacing:.22em;
-
-  margin:0 0 10px;
-
-  text-align:center;
-}
-
-h2{
-  font-size:1.6rem;
-
-  font-weight:400;
-
-  letter-spacing:.08em;
-
-  margin:0 0 18px;
-
-  text-align:center;
-}
-
-.section-lead{
-  color:#aab8d2;
-
-  text-align:center;
-
-  font-size:.9rem;
-
-  line-height:2;
-
-  margin:0 auto 45px;
-
-  max-width:760px;
-}
-
-
-/* =========================
-   PRICE
-========================= */
-
-.price{
-  text-align:center;
-
-  margin:0 auto 50px;
-}
-
-.price-label{
-  color:#8291aa;
-
-  font-size:.75rem;
-
-  letter-spacing:.16em;
-
-  margin-bottom:8px;
-}
-
-.price-value{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:2rem;
-
-  letter-spacing:.08em;
-
-  color:#edf3ff;
-}
-
-.price-note{
-  color:#8291aa;
-
-  font-size:.78rem;
-
-  margin-top:5px;
-}
-
-
-/* =========================
-   CONTENT
-========================= */
-
-.content-block{
-  max-width:760px;
-
-  margin:0 auto;
-
-  padding:38px 0;
-
-  border-top:
-    1px solid
-    rgba(180,205,245,.12);
-}
-
-.content-block:first-child{
-  border-top:none;
-}
-
-.content-block h3{
-  font-size:1.15rem;
-
-  font-weight:400;
-
-  letter-spacing:.08em;
-
-  margin:0 0 18px;
-
-  text-align:center;
-}
-
-.content-block p{
-  color:#aab8d2;
-
-  font-size:.9rem;
-
-  line-height:2.1;
-
-  margin:0;
-
-  text-align:center;
-}
-
-
-/* =========================
-   LIST
-========================= */
-
-.detail-list{
-  max-width:680px;
-
-  margin:25px auto 0;
-
-  padding:0;
-
-  list-style:none;
-}
-
-.detail-list li{
-  color:#aab8d2;
-
-  font-size:.88rem;
-
-  line-height:2;
-
-  padding:8px 0;
-
-  border-bottom:
-    1px solid
-    rgba(180,205,245,.08);
-
-  text-align:center;
-}
-
-
-/* =========================
-   FLOW
-========================= */
-
-.flow{
-  max-width:650px;
-
-  margin:0 auto;
-}
-
-.flow-item{
-  text-align:center;
-
-  padding:18px 0;
-}
-
-.flow-number{
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.72rem;
-
-  letter-spacing:.18em;
-
-  margin-bottom:5px;
-}
-
-.flow-title{
-  font-size:.95rem;
-
-  letter-spacing:.08em;
-}
-
-.flow-text{
-  color:#8291aa;
-
-  font-size:.8rem;
-}
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-.message{
-
-  margin:45px auto 0;
-
-  max-width:700px;
-
-  text-align:center;
-
-  color:#8291aa;
-
-  font-size:.82rem;
-
-  line-height:2;
-}
-
-
-/* =========================
-   BUTTON
-========================= */
-
-.request-button{
-
-  display:block;
-
-  width:max-content;
-
-  margin:50px auto 0;
-
-  padding:13px 32px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.3);
-
-  border-radius:999px;
-
-  color:#edf3ff;
-
-  text-decoration:none;
-
-  letter-spacing:.1em;
-
-  transition:.3s ease;
-}
-
-.request-button:hover{
-
-  background:
-    rgba(180,210,255,.08);
-
-  border-color:
-    rgba(143,191,255,.55);
-
-  transform:translateY(-2px);
-}
-
-
-/* =========================
-   BACK
-========================= */
-
-.back{
-
-  display:block;
-
-  width:max-content;
-
-  margin:45px auto 80px;
-
-  padding:10px 22px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:999px;
-
-  color:#dce8ff;
-
-  text-decoration:none;
-
-  transition:.3s ease;
-}
-
-.back:hover{
-
-  background:
-    rgba(180,210,255,.08);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px){
-
-  .wrap{
-    width:min(100% - 28px,950px);
-  }
-
-  header{
-    padding:75px 0 50px;
-  }
-
-  section{
-    padding:55px 0;
-  }
-
-  .price-value{
-    font-size:1.7rem;
-  }
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header>
-
-  <div class="wrap">
-
-```
-<div class="system">
-  HOSHIYOMI WORLD
-</div>
-
-<img
-  src="logo.png"
-  alt="星詠"
-  class="logo"
->
-
-<h1>
-  あなたの世界
-</h1>
-
-<p class="lead">
-  あなたの中にある世界を、一枚の作品へ。
-</p>
-```
-
-  </div>
-
-</header>
-
-<main class="wrap">
-
-<!-- =========================
-     INTRO
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    YOUR WORLD
-  </p>
-
-  <h2>
-    あなたの世界を描く
-  </h2>
-
-  <p class="section-lead">
-    星詠では、あなた自身ではなく、<br>
-    あなたの記憶や好きなもの、物語、想像している景色などをもとに、<br>
-    あなたの中にある「世界」を一枚の作品として形にします。
-  </p>
-
-  <div class="price">
-
-```
-<div class="price-label">
-  BASIC PRICE
-</div>
-
-<div class="price-value">
-  20,000円〜
-</div>
-
-<div class="price-note">
-  ※内容や描き込み量によって変動します
-</div>
-```
-
-  </div>
-
-<!-- =========================
-     WHAT
-========================= -->
-
-  <div class="content-block">
-
-```
-<h3>
-  こんな作品を制作します
-</h3>
-
-<p>
-  頭の中にある景色や、忘れられない記憶。<br>
-  好きなものを詰め込んだ空間や、まだ存在しない世界。<br>
-  あなたが大切にしているものを、一枚の絵として形にします。
-</p>
-```
-
-  </div>
-
-<!-- =========================
-     ELEMENT
-========================= -->
-
-  <div class="content-block">
-
-```
-<h3>
-  描くもの
-</h3>
-
-<ul class="detail-list">
-
-  <li>
-    思い出や記憶
-  </li>
-
-  <li>
-    好きな場所・景色
-  </li>
-
-  <li>
-    好きなものや大切なもの
-  </li>
-
-  <li>
-    想像している世界
-  </li>
-
-  <li>
-    物語や世界観
-  </li>
-
-  <li>
-    その他、ご希望のイメージ
-  </li>
-
-</ul>
-```
-
-  </div>
-
-<!-- =========================
-     HEARING
-========================= -->
-
-  <div class="content-block">
-
-```
-<h3>
-  あなたの世界を知るために
-</h3>
-
-<p>
-  ご依頼の際には、あなたが思い描いている世界についてお聞きします。
-  <br>
-  まだうまく言葉にできないイメージでも構いません。
-</p>
-
-<p style="margin-top:22px;">
-  「こんな雰囲気が好き」<br>
-  「この景色を残したい」<br>
-  「こういう世界を見てみたい」
-</p>
-
-<p style="margin-top:22px;">
-  そんな小さなきっかけから、作品を一緒に形にしていきます。
-</p>
-```
-
-  </div>
-
-<!-- =========================
-     PERIOD
-========================= -->
-
-  <div class="content-block">
-
-```
-<h3>
-  制作期間
-</h3>
-
-<p>
-  1ヶ月〜3ヶ月程度
-</p>
-
-<p style="margin-top:12px;">
-  ご依頼内容や描き込み量、制作状況によって前後する場合があります。
-</p>
-```
-
-  </div>
-
-<!-- =========================
-     REVISION
-========================= -->
-
-  <div class="content-block">
-
-```
-<h3>
-  ラフ・修正について
-</h3>
-
-<p>
-  ラフの段階で構図や全体の方向性をご確認いただきます。
-</p>
-
-<p style="margin-top:12px;">
-  <strong>
-    修正は2回まで無料です。
-  </strong>
-</p>
-
-<p style="margin-top:12px;">
-  ラフ確定後の大幅な変更・描き直しについては、
-  内容に応じて追加料金または納期の変更をお願いする場合があります。
-</p>
-```
-
-  </div>
-
-<!-- =========================
-     FLOW
-========================= -->
-
-  <div class="content-block">
-
-```
-<h3>
-  ご依頼の流れ
-</h3>
-
-<div class="flow">
-
-  <div class="flow-item">
-
-    <div class="flow-number">
-      01
-    </div>
-
-    <div class="flow-title">
-      ご相談
-    </div>
-
-    <div class="flow-text">
-      描きたい世界やイメージをお聞きします。
-    </div>
-
-  </div>
-
-
-  <div class="flow-item">
-
-    <div class="flow-number">
-      02
-    </div>
-
-    <div class="flow-title">
-      内容確認・お見積り
-    </div>
-
-    <div class="flow-text">
-      内容や描き込み量を確認し、料金と納期をご案内します。
-    </div>
-
-  </div>
-
-
-  <div class="flow-item">
-
-    <div class="flow-number">
-      03
-    </div>
-
-    <div class="flow-title">
-      ラフ制作
-    </div>
-
-    <div class="flow-text">
-      作品全体の構図や方向性を制作します。
-    </div>
-
-  </div>
-
-
-  <div class="flow-item">
-
-    <div class="flow-number">
-      04
-    </div>
-
-    <div class="flow-title">
-      制作
-    </div>
-
-    <div class="flow-text">
-      ラフ確定後、本制作へ進みます。
-    </div>
-
-  </div>
-
-
-  <div class="flow-item">
-
-    <div class="flow-number">
-      05
-    </div>
-
-    <div class="flow-title">
-      納品
-    </div>
-
-    <div class="flow-text">
-      完成した作品をお渡しします。
-    </div>
-
-  </div>
-
-</div>
-```
-
-  </div>
-
-<!-- =========================
-     MESSAGE
-========================= -->
-
-  <p class="message">
-    世界観がまだ完全に決まっていなくても大丈夫です。<br>
-    あなたの中にある小さなイメージから、一緒に形を探していきます。
-  </p>
-
-<a
-href="request-form.html"
-class="request-button"
-
->
-
-```
-このプランを相談する →
-```
-
-  </a>
-
-</section>
-
-</main>
-
-<a
-href="request-normal.html"
-class="back"
-
->
-
-← 通常のご依頼へ戻る </a>
-
-</body>
-</html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>あなたの世界｜星詠 HOSHIYOMI</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root{
+      --ys-bg:#040916;
+      --ys-deep:#081936;
+      --ys-blue:#8fbfff;
+      --ys-violet:#a992d2;
+      --ys-text:#edf3ff;
+      --ys-muted:rgba(237,243,255,.72);
+      --ys-line:rgba(180,205,255,.15);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(
+          circle at 50% 8%,
+          rgba(76,104,165,.14),
+          transparent 34%
+        ),
+        linear-gradient(
+          180deg,
+          #040916 0%,
+          #061127 48%,
+          #040916 100%
+        );
+      color:var(--ys-text);
+      font-family:
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        sans-serif;
+      line-height:2;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    .your-page{
+      width:100%;
+      min-height:100vh;
+      padding:0 0 120px;
+      position:relative;
+      z-index:1;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .your-hero{
+      width:min(920px,calc(100% - 48px));
+      margin:0 auto;
+      padding:150px 0 100px;
+      text-align:center;
+    }
+
+    .your-label{
+      margin:0 0 18px;
+      font-size:.82rem;
+      letter-spacing:.2em;
+      opacity:.62;
+    }
+
+    .your-hero h1{
+      margin:0;
+      font-size:clamp(2.2rem,5vw,3.5rem);
+      font-weight:400;
+      letter-spacing:.12em;
+      line-height:1.45;
+    }
+
+    .your-hero .hero-sub{
+      margin:26px 0 0;
+      font-size:1.05rem;
+      line-height:2.1;
+      color:var(--ys-muted);
+    }
+
+    .your-price{
+      margin:34px 0 0;
+      font-size:1.15rem;
+      letter-spacing:.1em;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    .your-section{
+      width:min(900px,calc(100% - 48px));
+      margin:0 auto;
+      padding:74px 0;
+      border-top:1px solid var(--ys-line);
+    }
+
+    .your-section-label{
+      margin:0 0 12px;
+      font-size:.76rem;
+      letter-spacing:.18em;
+      opacity:.55;
+    }
+
+    .your-section h2{
+      margin:0;
+      font-size:1.7rem;
+      font-weight:400;
+      letter-spacing:.1em;
+      line-height:1.6;
+    }
+
+    .your-lead{
+      margin:24px 0 0;
+      font-size:1rem;
+      line-height:2.15;
+      color:var(--ys-muted);
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .your-intro{
+      text-align:center;
+      border-top:0;
+      padding-top:0;
+    }
+
+    .your-intro p{
+      margin:0;
+      font-size:1.05rem;
+      line-height:2.25;
+      color:var(--ys-muted);
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .your-cards{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:
+        repeat(2,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .your-card{
+      padding:32px 30px;
+      border:1px solid var(--ys-line);
+      background:rgba(7,16,36,.14);
+    }
+
+    .your-card small{
+      display:block;
+      margin-bottom:12px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      opacity:.5;
+    }
+
+    .your-card strong{
+      display:block;
+      font-size:1.05rem;
+      font-weight:400;
+      line-height:1.8;
+      letter-spacing:.05em;
+    }
+
+    .your-card p{
+      margin:12px 0 0;
+      font-size:.9rem;
+      line-height:1.95;
+      color:var(--ys-muted);
+    }
+
+    /* =========================
+       SPEC
+    ========================= */
+
+    .your-specs{
+      margin-top:40px;
+      border-top:1px solid var(--ys-line);
+    }
+
+    .your-spec{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:30px;
+      padding:22px 10px;
+      border-bottom:1px solid var(--ys-line);
+      align-items:center;
+    }
+
+    .your-spec dt{
+      font-size:.86rem;
+      letter-spacing:.1em;
+      opacity:.62;
+    }
+
+    .your-spec dd{
+      margin:0;
+      font-size:1rem;
+      line-height:1.9;
+    }
+
+    /* =========================
+       NOTE
+    ========================= */
+
+    .your-note{
+      margin-top:38px;
+      padding:28px 30px;
+      border:1px solid rgba(180,205,255,.13);
+      background:rgba(7,16,36,.14);
+      line-height:2;
+      color:var(--ys-muted);
+      font-size:.9rem;
+    }
+
+    .your-note strong{
+      font-weight:400;
+      color:var(--ys-text);
+    }
+
+    /* =========================
+       PRICE
+    ========================= */
+
+    .price-main{
+      margin-top:34px;
+      text-align:center;
+      padding:38px 30px;
+      border:1px solid var(--ys-line);
+      background:rgba(7,16,36,.18);
+    }
+
+    .price-main strong{
+      display:block;
+      font-size:1.8rem;
+      font-weight:400;
+      letter-spacing:.08em;
+    }
+
+    .price-main span{
+      display:block;
+      margin-top:10px;
+      font-size:.82rem;
+      color:var(--ys-muted);
+    }
+
+    /* =========================
+       PROCESS
+    ========================= */
+
+    .process-list{
+      margin-top:40px;
+      border-top:1px solid var(--ys-line);
+    }
+
+    .proc
