@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -14,13 +13,24 @@
 
 html,body{
   margin:0;
-  padding:0;
   width:100%;
   min-height:100%;
 }
 
 body{
-  background:#040916;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(90,130,210,.14),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(100,90,180,.08),
+      transparent 35%
+    ),
+    #040916;
+
   color:#edf3ff;
 
   font-family:
@@ -28,26 +38,36 @@ body{
     "Hiragino Mincho ProN",
     "Noto Serif JP",
     serif;
+
+  overflow-x:hidden;
 }
 
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
 
-/* =========================
-   全体
-========================= */
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.65) 1px, transparent 1px);
+
+  background-size:130px 130px;
+  opacity:.16;
+}
 
 .page{
-  width:min(1100px,calc(100% - 50px));
-  margin:0 auto;
+  width:min(1000px,calc(100% - 40px));
+  margin:auto;
 }
 
 
 /* =========================
-   ヘッダー
+   HEADER
 ========================= */
 
 header{
   text-align:center;
-  padding:90px 0 80px;
+  padding:90px 0 70px;
 }
 
 .system{
@@ -59,18 +79,18 @@ header{
     serif;
 
   font-size:.72rem;
-  letter-spacing:.3em;
+  letter-spacing:.32em;
 
   margin-bottom:28px;
 }
 
 .logo{
-  width:min(180px,50vw);
-  height:auto;
-
   display:block;
 
-  margin:0 auto 35px;
+  width:min(210px,58vw);
+  height:auto;
+
+  margin:0 auto 30px;
 
   filter:
     drop-shadow(
@@ -80,90 +100,39 @@ header{
 }
 
 h1{
-  margin:0;
-
-  font-size:
-    clamp(2.4rem,6vw,4.2rem);
+  font-size:clamp(2.2rem,5vw,3.2rem);
 
   font-weight:400;
 
-  letter-spacing:.12em;
+  letter-spacing:.16em;
+
+  margin:0;
 }
 
 .lead{
-  margin:28px auto 0;
-
   color:#aab8d2;
 
-  font-size:.95rem;
+  margin:25px auto 0;
 
   line-height:2;
+
+  font-size:.92rem;
 }
 
 
 /* =========================
-   メインカード
+   共通セクション
 ========================= */
 
-.main{
-  display:grid;
+section{
+  padding:65px 0;
 
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:35px;
-
-  align-items:stretch;
-
-  padding-bottom:100px;
-}
-
-.card{
-  min-height:460px;
-
-  padding:60px 50px;
-
-  border:
+  border-top:
     1px solid
-    rgba(180,205,245,.22);
-
-  background:
-    rgba(10,25,55,.38);
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
-
-  text-align:center;
-
-  transition:.35s ease;
+    rgba(180,205,245,.16);
 }
 
-.card:first-child{
-  border-radius:42px;
-}
-
-.card:last-child{
-  border-radius:22px;
-}
-
-.card:hover{
-  border-color:
-    rgba(143,191,255,.5);
-
-  background:
-    rgba(20,40,78,.5);
-
-  transform:translateY(-4px);
-
-  box-shadow:
-    0 20px 50px
-    rgba(50,90,170,.12);
-}
-
-.card-label{
+.label{
   color:#8fbfff;
 
   font-family:
@@ -175,81 +144,96 @@ h1{
 
   letter-spacing:.25em;
 
-  margin-bottom:30px;
+  margin-bottom:13px;
+
+  text-align:center;
 }
 
-.card h2{
-  margin:0;
-
-  font-size:
-    clamp(2rem,4vw,3rem);
+h2{
+  font-size:1.7rem;
 
   font-weight:400;
 
-  letter-spacing:.12em;
+  letter-spacing:.1em;
 
-  line-height:1.5;
-}
+  margin:0 0 38px;
 
-.card-en{
-  margin-top:18px;
-
-  color:#dce8ff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.8rem;
-
-  letter-spacing:.18em;
-}
-
-.card-line{
-  width:55px;
-  height:1px;
-
-  background:
-    rgba(180,205,245,.5);
-
-  margin:32px auto;
-}
-
-.card-main{
-  color:#edf3ff;
-
-  font-size:1.05rem;
-
-  line-height:2;
-
-  letter-spacing:.08em;
-}
-
-.card-sub{
-  color:#aab8d2;
-
-  font-size:.82rem;
-
-  line-height:2;
-
-  margin-top:25px;
+  text-align:center;
 }
 
 
 /* =========================
-   セクション
+   メインビジュアル
 ========================= */
 
-section{
-  padding:80px 0;
+.hero-gift{
+  position:relative;
 
-  border-top:
+  min-height:360px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:55px 35px;
+
+  border:
     1px solid
-    rgba(180,205,245,.16);
+    rgba(180,205,245,.25);
+
+  border-radius:24px;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(90,140,230,.18),
+      transparent 55%
+    ),
+    rgba(10,24,52,.48);
+
+  overflow:hidden;
 }
 
-.section-label{
+.hero-gift::before{
+  content:"✦";
+
+  position:absolute;
+
+  top:25px;
+  left:30px;
+
+  color:#dce9ff;
+
+  font-size:1rem;
+
+  opacity:.8;
+}
+
+.hero-gift::after{
+  content:"✦";
+
+  position:absolute;
+
+  right:30px;
+  bottom:25px;
+
+  color:#dce9ff;
+
+  font-size:1rem;
+
+  opacity:.8;
+}
+
+.hero-inner{
+  text-align:center;
+
+  max-width:650px;
+
+  position:relative;
+  z-index:2;
+}
+
+.hero-number{
   color:#8fbfff;
 
   font-family:
@@ -259,57 +243,177 @@ section{
 
   font-size:.72rem;
 
-  letter-spacing:.24em;
+  letter-spacing:.28em;
 
-  text-align:center;
-
-  margin-bottom:15px;
+  margin-bottom:22px;
 }
 
-section h2{
-  margin:0 0 45px;
-
-  text-align:center;
-
-  font-size:
-    clamp(1.7rem,4vw,2.4rem);
+.hero-title{
+  font-size:clamp(2rem,5vw,3rem);
 
   font-weight:400;
 
-  letter-spacing:.1em;
+  letter-spacing:.16em;
+
+  margin-bottom:22px;
+}
+
+.hero-price{
+  color:#dce8ff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:1.5rem;
+
+  letter-spacing:.08em;
+
+  margin-bottom:28px;
+}
+
+.hero-copy{
+  color:#c3d0e6;
+
+  line-height:2;
+
+  font-size:.92rem;
 }
 
 
 /* =========================
-   内容
+   INTRO
 ========================= */
 
-.content{
-  max-width:760px;
-
-  margin:0 auto;
-
+.intro{
   text-align:center;
 
-  color:#c8d4ea;
+  max-width:700px;
+
+  margin:auto;
+}
+
+.intro p{
+  color:#aab8d2;
 
   font-size:.92rem;
 
   line-height:2.2;
+
+  margin:0;
 }
 
 
 /* =========================
-   料金
+   DETAIL
 ========================= */
 
-.price{
-  text-align:center;
+.detail-box{
+  display:grid;
 
-  margin:45px 0;
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:20px;
 }
 
-.price-label{
+.detail-card{
+  padding:32px 28px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:18px;
+
+  background:
+    rgba(10,24,52,.45);
+
+  min-height:210px;
+}
+
+.detail-card h3{
+  font-size:1.1rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  margin:0 0 20px;
+
+  color:#edf3ff;
+}
+
+.detail-card p{
+  color:#aab8d2;
+
+  font-size:.88rem;
+
+  line-height:2;
+
+  margin:0;
+}
+
+.detail-card ul{
+  color:#aab8d2;
+
+  font-size:.88rem;
+
+  line-height:2;
+
+  margin:0;
+
+  padding-left:1.2em;
+}
+
+
+/* =========================
+   FLOW
+========================= */
+
+.flow{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+
+  position:relative;
+}
+
+.flow-item{
+  text-align:center;
+
+  padding:25px 15px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.16);
+
+  border-radius:18px;
+
+  background:
+    rgba(10,24,52,.38);
+}
+
+.flow-number{
+  width:38px;
+  height:38px;
+
+  margin:0 auto 18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(143,191,255,.45);
+
+  border-radius:50%;
+
   color:#8fbfff;
 
   font-family:
@@ -317,79 +421,131 @@ section h2{
     "Times New Roman",
     serif;
 
-  font-size:.7rem;
-
-  letter-spacing:.25em;
-
-  margin-bottom:12px;
+  font-size:.75rem;
 }
 
-.price-number{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+.flow-item h3{
+  font-size:.95rem;
 
-  font-size:
-    clamp(2rem,5vw,3rem);
+  font-weight:400;
+
+  margin:0 0 12px;
 
   letter-spacing:.08em;
 }
 
+.flow-item p{
+  color:#9eacc5;
+
+  font-size:.78rem;
+
+  line-height:1.8;
+
+  margin:0;
+}
+
 
 /* =========================
-   注意
+   NOTE
 ========================= */
 
 .note{
-  max-width:760px;
+  padding:28px 30px;
 
-  margin:0 auto;
+  border:
+    1px solid
+    rgba(180,205,245,.16);
 
-  padding:25px 30px;
-
-  border-left:
-    2px solid
-    rgba(143,191,255,.45);
+  border-radius:18px;
 
   background:
     rgba(120,160,255,.035);
 
-  color:#aab8d2;
+  color:#b8c6dd;
 
-  font-size:.85rem;
+  font-size:.88rem;
 
   line-height:2;
+
+  text-align:left;
+}
+
+.note strong{
+  color:#edf3ff;
+
+  font-weight:400;
 }
 
 
 /* =========================
-   最後
+   CTA
 ========================= */
 
-.message{
+.cta{
   text-align:center;
 
-  padding:100px 0 90px;
+  padding:75px 20px 100px;
+
+  border-top:
+    1px solid
+    rgba(180,205,245,.16);
 }
 
-.message-title{
-  font-size:
-    clamp(1.5rem,4vw,2.2rem);
+.cta-title{
+  font-size:1.35rem;
 
   font-weight:400;
 
-  letter-spacing:.12em;
+  letter-spacing:.1em;
 
-  margin-bottom:28px;
+  line-height:2;
+
+  margin-bottom:15px;
 }
 
-.message p{
-  color:#aab8d2;
+.cta-text{
+  color:#9eacc5;
 
-  font-size:.9rem;
+  font-size:.88rem;
 
-  line-height:2.1;
+  line-height:2;
+
+  margin-bottom:30px;
+}
+
+.cta-button{
+  display:inline-block;
+
+  padding:14px 38px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.35);
+
+  border-radius:999px;
+
+  color:#e5eeff;
+
+  text-decoration:none;
+
+  letter-spacing:.08em;
+
+  transition:.3s ease;
+
+  background:
+    rgba(100,145,220,.05);
+}
+
+.cta-button:hover{
+  background:
+    rgba(120,170,255,.12);
+
+  border-color:
+    rgba(143,191,255,.65);
+
+  box-shadow:
+    0 0 25px
+    rgba(100,150,240,.12);
 }
 
 
@@ -402,23 +558,21 @@ section h2{
 
   width:max-content;
 
-  margin:0 auto 90px;
+  margin:0 auto 80px;
 
-  padding:11px 28px;
+  padding:10px 24px;
 
   border:
     1px solid
-    rgba(180,205,245,.2);
+    rgba(180,205,245,.18);
 
   border-radius:999px;
 
-  color:#dce8ff;
+  color:#cbd8ed;
 
   text-decoration:none;
 
   font-size:.82rem;
-
-  letter-spacing:.08em;
 
   transition:.3s ease;
 }
@@ -436,40 +590,60 @@ section h2{
 @media(max-width:700px){
 
   .page{
-    width:
-      calc(100% - 28px);
+    width:min(
+      100% - 28px,
+      1000px
+    );
   }
 
   header{
-    padding:65px 0 55px;
-  }
-
-  .main{
-    grid-template-columns:1fr;
-
-    gap:20px;
-
-    padding-bottom:70px;
-  }
-
-  .card{
-    min-height:380px;
-
-    padding:45px 28px;
+    padding:70px 0 55px;
   }
 
   section{
-    padding:65px 0;
+    padding:50px 0;
+  }
+
+  .hero-gift{
+    min-height:330px;
+
+    padding:45px 25px;
+  }
+
+  .detail-box{
+    grid-template-columns:1fr;
+  }
+
+  .flow{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .detail-card{
+    min-height:auto;
+  }
+
+}
+
+@media(max-width:450px){
+
+  .flow{
+    grid-template-columns:1fr;
+  }
+
+  .hero-title{
+    font-size:2rem;
   }
 
 }
 </style>
-
 </head>
+
 
 <body>
 
 <div class="page">
+
 
 <!-- =========================
      HEADER
@@ -481,164 +655,167 @@ section h2{
     HOSHIYOMI / COMMISSION
   </div>
 
-<img
-src="logo.png"
-alt="星詠"
-class="logo"
-
->
+  <img
+    src="logo.png"
+    alt="星詠"
+    class="logo"
+  >
 
   <h1>
     返礼品
   </h1>
 
   <p class="lead">
-    誰かへ届けるための、一枚を。<br>
-    大切な想いを、作品として残します。
+    誰かに届けるための、一枚を。
   </p>
 
 </header>
 
-<!-- =========================
-     MAIN
-========================= -->
-
-<div class="main">
-
-  <div class="card">
-
-```
-<div class="card-label">
-  REWARD
-</div>
-
-<h2>
-  返礼品
-</h2>
-
-<div class="card-en">
-  YOUR GIFT
-</div>
-
-<div class="card-line"></div>
-
-<div class="card-main">
-  誰かに届けたい想いを、<br>
-  一枚の作品に。
-</div>
-
-<div class="card-sub">
-  イベントや活動、記念日など、<br>
-  大切な人へ届けるための作品を制作します。
-</div>
-```
-
-  </div>
-
-  <div class="card">
-
-```
-<div class="card-label">
-  FOR SOMEONE
-</div>
-
-<h2>
-  届ける一枚
-</h2>
-
-<div class="card-en">
-  FOR YOUR SOMEONE
-</div>
-
-<div class="card-line"></div>
-
-<div class="card-main">
-  「ありがとう」や「おめでとう」を、<br>
-  その人だけの一枚へ。
-</div>
-
-<div class="card-sub">
-  贈る相手や出来事に合わせて、<br>
-  作品の内容を一緒に考えていきます。
-</div>
-```
-
-  </div>
-
-</div>
 
 <!-- =========================
-     DETAILS
+     HERO
 ========================= -->
 
 <section>
 
-  <div class="section-label">
-    REWARD / DETAILS
-  </div>
+  <div class="hero-gift">
 
-  <h2>
-    返礼品について
-  </h2>
+    <div class="hero-inner">
 
-  <div class="content">
+      <div class="hero-number">
+        REWARD
+      </div>
 
-```
-イベントや活動、記念日など、
-大切な人へ届けるための一枚を制作します。<br>
+      <div class="hero-title">
+        返礼品
+      </div>
 
-<br>
+      <div class="hero-price">
+        10,000円〜
+      </div>
 
-誰かへの感謝やお祝い、
-その瞬間にしかない想いをもとに、
-星詠ならではの作品として形にします。
-```
+      <div class="hero-copy">
+
+        イベントや活動、記念日など、<br>
+        大切な人へ届けるための作品を制作します。<br>
+        贈る相手や出来事に合わせて、<br>
+        一枚の作品として形にします。
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
+
 <!-- =========================
-     PRICE
+     INTRO
 ========================= -->
 
 <section>
 
-  <div class="section-label">
-    PLAN / PRICE
+  <div class="label">
+    01｜CONCEPT
   </div>
 
   <h2>
-    プラン・料金
+    誰かに届けるための、一枚
   </h2>
 
-  <div class="price">
+  <div class="intro">
 
-```
-<div class="price-label">
-  REWARD
-</div>
-
-<div class="price-number">
-  10,000円〜
-</div>
-```
-
-  </div>
-
-  <div class="content">
-
-```
-掲載している金額は基本料金です。<br>
-
-構図や描き込み量、人数、
-衣装・装飾、小物などの内容によって
-料金が変わる場合があります。
-```
+    <p>
+      「ありがとう」や「おめでとう」など、<br>
+      言葉だけでは伝えきれない気持ちを、<br>
+      星詠ならではの一枚にします。
+    </p>
 
   </div>
 
 </section>
+
+
+<!-- =========================
+     DETAIL
+========================= -->
+
+<section>
+
+  <div class="label">
+    02｜DETAIL
+  </div>
+
+  <h2>
+    こんなときに
+  </h2>
+
+  <div class="detail-box">
+
+
+    <div class="detail-card">
+
+      <h3>
+        大切な人へ
+      </h3>
+
+      <p>
+        日頃の感謝や、伝えたい気持ちを
+        一枚の作品として残します。
+      </p>
+
+    </div>
+
+
+    <div class="detail-card">
+
+      <h3>
+        記念日に
+      </h3>
+
+      <p>
+        誕生日や周年、イベント達成など、
+        大切な出来事を作品として形にします。
+      </p>
+
+    </div>
+
+
+    <div class="detail-card">
+
+      <h3>
+        活動・イベントに
+      </h3>
+
+      <p>
+        活動の節目やイベントなど、
+        応援してくれた方へ届ける一枚として
+        制作します。
+      </p>
+
+    </div>
+
+
+    <div class="detail-card">
+
+      <h3>
+        あなたが届けたい人へ
+      </h3>
+
+      <p>
+        贈る相手や、その人との思い出、
+        伝えたい想いをもとに、
+        内容を一緒に考えていきます。
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
 
 <!-- =========================
      FLOW
@@ -646,29 +823,93 @@ class="logo"
 
 <section>
 
-  <div class="section-label">
-    FLOW
+  <div class="label">
+    03｜FLOW
   </div>
 
   <h2>
     ご依頼の流れ
   </h2>
 
-  <div class="content">
+  <div class="flow">
 
-```
-返礼品についてご相談<br>
-↓<br>
-内容・描き込み量などを確認<br>
-↓<br>
-正式な料金・納期をご案内<br>
-↓<br>
-ご了承いただいてから制作開始
-```
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        01
+      </div>
+
+      <h3>
+        ご相談
+      </h3>
+
+      <p>
+        返礼品について
+        ご希望をお聞かせください。
+      </p>
+
+    </div>
+
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        02
+      </div>
+
+      <h3>
+        内容の確認
+      </h3>
+
+      <p>
+        描き込み量や構図、
+        内容などを確認します。
+      </p>
+
+    </div>
+
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        03
+      </div>
+
+      <h3>
+        お見積り・納期
+      </h3>
+
+      <p>
+        正式な料金と
+        制作期間をご案内します。
+      </p>
+
+    </div>
+
+
+    <div class="flow-item">
+
+      <div class="flow-number">
+        04
+      </div>
+
+      <h3>
+        制作開始
+      </h3>
+
+      <p>
+        内容をご確認いただき、
+        ご了承後に制作を開始します。
+      </p>
+
+    </div>
+
 
   </div>
 
 </section>
+
 
 <!-- =========================
      NOTE
@@ -676,8 +917,8 @@ class="logo"
 
 <section>
 
-  <div class="section-label">
-    NOTE
+  <div class="label">
+    04｜NOTE
   </div>
 
   <h2>
@@ -686,42 +927,79 @@ class="logo"
 
   <div class="note">
 
-```
-追加料金が発生する場合は、
-制作前に必ずご案内します。<br>
+    <strong>
+      基本料金について
+    </strong><br>
 
-また、ご依頼内容や現在の制作状況によって、
-制作期間が前後する場合があります。
-```
+    掲載している金額は基本料金です。
+    構図や描き込み量、人数、衣装・装飾、小物などの
+    内容によって料金が変わる場合があります。
+
+    <br><br>
+
+    <strong>
+      追加料金について
+    </strong><br>
+
+    追加料金が発生する場合は、
+    制作前に必ずご案内します。
+
+    <br><br>
+
+    <strong>
+      制作期間について
+    </strong><br>
+
+    ご依頼内容や現在の制作状況、
+    確認・ご返信のタイミングなどによって
+    制作期間が前後する場合があります。
+
+    <br><br>
+
+    その他の注意事項については、
+    「注意事項」ページもあわせてご確認ください。
 
   </div>
 
 </section>
 
+
 <!-- =========================
-     MESSAGE
+     CTA
 ========================= -->
 
-<div class="message">
+<div class="cta">
 
-  <div class="message-title">
-    想いを、誰かのもとへ。
+  <div class="cta-title">
+    あなたの想いを、<br>
+    誰かへ届ける一枚に。
   </div>
 
-  <p>
-    あなたが届けたい「ありがとう」や「おめでとう」。<br>
-    その想いを、一枚の作品に。
-  </p>
+  <div class="cta-text">
+    星詠と一緒に、その形を探してみませんか。
+  </div>
+
+  <a
+    href="request-form.html"
+    class="cta-button"
+  >
+    ご依頼はこちらから　→
+  </a>
 
 </div>
 
+
+<!-- =========================
+     BACK
+========================= -->
+
 <a
-href="index.html"
-class="back"
-
+  href="index.html"
+  class="back"
 >
+  ← 星詠の入口へ戻る
+</a>
 
-← 星詠の入口へ戻る </a>
 
 </div>
 
