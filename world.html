@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -23,8 +24,8 @@ body{
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(90,130,210,.14),
-      transparent 38%
+      rgba(90,130,210,.12),
+      transparent 35%
     ),
     linear-gradient(
       180deg,
@@ -43,7 +44,7 @@ body{
 }
 
 .wrap{
-  width:min(1050px,calc(100% - 40px));
+  width:min(950px,calc(100% - 40px));
   margin:auto;
 }
 
@@ -66,13 +67,15 @@ header{
     serif;
 
   font-size:.75rem;
-  letter-spacing:.32em;
+
+  letter-spacing:.3em;
 
   margin-bottom:25px;
 }
 
 .logo{
   width:min(220px,60vw);
+
   height:auto;
 
   display:block;
@@ -92,30 +95,15 @@ h1{
 
   font-weight:400;
 
-  letter-spacing:.14em;
+  letter-spacing:.12em;
 
   margin:0;
-}
-
-.en-title{
-  margin-top:10px;
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.78rem;
-
-  letter-spacing:.32em;
 }
 
 .lead{
   color:#aab8d2;
 
-  margin:24px auto 0;
+  margin:22px auto 0;
 
   line-height:2;
 }
@@ -143,7 +131,7 @@ section{
 
   font-size:.72rem;
 
-  letter-spacing:.24em;
+  letter-spacing:.22em;
 
   margin:0 0 10px;
 
@@ -151,11 +139,11 @@ section{
 }
 
 h2{
-  font-size:1.65rem;
+  font-size:1.6rem;
 
   font-weight:400;
 
-  letter-spacing:.1em;
+  letter-spacing:.08em;
 
   margin:0 0 18px;
 
@@ -172,134 +160,146 @@ h2{
   line-height:2;
 
   margin:0 auto 45px;
-}
 
-
-/* =========================
-   INTRO
-========================= */
-
-.world-intro{
   max-width:760px;
-
-  margin:0 auto;
-
-  text-align:center;
-}
-
-.world-intro p{
-  margin:0;
-
-  color:#cbd8ee;
-
-  line-height:2.3;
-}
-
-.world-intro strong{
-  color:#edf3ff;
-
-  font-weight:400;
 }
 
 
 /* =========================
-   MAIN PLAN
+   PRICE
 ========================= */
 
-.plan-box{
+.price{
+  text-align:center;
 
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:0;
-
-  margin-top:45px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.22);
-
-  border-radius:22px;
-
-  overflow:hidden;
-
-  background:
-    rgba(10,24,52,.48);
+  margin:0 auto 50px;
 }
 
+.price-label{
+  color:#8291aa;
 
-/* 作品側 */
+  font-size:.75rem;
 
-.plan-image{
+  letter-spacing:.16em;
 
-  min-height:520px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:35px;
-
-  background:
-    radial-gradient(
-      circle at 50% 40%,
-      rgba(100,150,230,.15),
-      transparent 55%
-    );
+  margin-bottom:8px;
 }
 
-.plan-image-inner{
+.price-value{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-  width:100%;
+  font-size:2rem;
 
-  aspect-ratio:4 / 5;
+  letter-spacing:.08em;
 
-  max-width:390px;
+  color:#edf3ff;
+}
 
-  border:
-    1px solid
-    rgba(180,205,245,.2);
-
-  border-radius:8px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(30,60,105,.4),
-      rgba(5,15,35,.65)
-    );
-
+.price-note{
   color:#8291aa;
 
   font-size:.78rem;
 
-  letter-spacing:.12em;
+  margin-top:5px;
 }
 
 
-/* 料金・説明側 */
+/* =========================
+   CONTENT
+========================= */
 
-.plan-info{
+.content-block{
+  max-width:760px;
 
-  padding:55px 45px;
+  margin:0 auto;
 
-  border-left:
+  padding:38px 0;
+
+  border-top:
     1px solid
-    rgba(180,205,245,.16);
+    rgba(180,205,245,.12);
 }
 
-.plan-small{
+.content-block:first-child{
+  border-top:none;
+}
 
+.content-block h3{
+  font-size:1.15rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  margin:0 0 18px;
+
+  text-align:center;
+}
+
+.content-block p{
+  color:#aab8d2;
+
+  font-size:.9rem;
+
+  line-height:2.1;
+
+  margin:0;
+
+  text-align:center;
+}
+
+
+/* =========================
+   LIST
+========================= */
+
+.detail-list{
+  max-width:680px;
+
+  margin:25px auto 0;
+
+  padding:0;
+
+  list-style:none;
+}
+
+.detail-list li{
+  color:#aab8d2;
+
+  font-size:.88rem;
+
+  line-height:2;
+
+  padding:8px 0;
+
+  border-bottom:
+    1px solid
+    rgba(180,205,245,.08);
+
+  text-align:center;
+}
+
+
+/* =========================
+   FLOW
+========================= */
+
+.flow{
+  max-width:650px;
+
+  margin:0 auto;
+}
+
+.flow-item{
+  text-align:center;
+
+  padding:18px 0;
+}
+
+.flow-number{
   color:#8fbfff;
 
   font-family:
@@ -309,389 +309,82 @@ h2{
 
   font-size:.72rem;
 
-  letter-spacing:.22em;
+  letter-spacing:.18em;
 
-  margin-bottom:15px;
+  margin-bottom:5px;
 }
 
-.plan-info h3{
-
-  font-size:1.65rem;
-
-  font-weight:400;
-
-  letter-spacing:.1em;
-
-  margin:0 0 25px;
-}
-
-.price{
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:2.5rem;
-
-  letter-spacing:.06em;
-
-  margin:0 0 25px;
-}
-
-.price span{
-
-  font-size:1rem;
+.flow-title{
+  font-size:.95rem;
 
   letter-spacing:.08em;
-
-  margin-left:5px;
 }
 
-.plan-description{
-
-  color:#aab8d2;
-
-  font-size:.88rem;
-
-  line-height:2.1;
-
-  margin:0 0 30px;
-}
-
-
-/* =========================
-   RECOMMEND
-========================= */
-
-.recommend{
-
-  padding:25px 25px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:12px;
-
-  background:
-    rgba(5,16,38,.35);
-}
-
-.recommend-title{
-
-  font-size:.9rem;
-
-  letter-spacing:.08em;
-
-  margin:0 0 14px;
-}
-
-.recommend ul{
-
-  list-style:none;
-
-  padding:0;
-
-  margin:0;
-}
-
-.recommend li{
-
-  color:#b8c7df;
+.flow-text{
+  color:#8291aa;
 
   font-size:.8rem;
-
-  line-height:2;
-
-  padding-left:18px;
-
-  position:relative;
-}
-
-.recommend li::before{
-
-  content:"✦";
-
-  position:absolute;
-
-  left:0;
-
-  color:#8fbfff;
 }
 
 
 /* =========================
-   DETAILS
+   MESSAGE
 ========================= */
 
-.detail-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:1px;
-
-  margin-top:40px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:18px;
-
-  overflow:hidden;
-
-  background:
-    rgba(180,205,245,.15);
-}
-
-.detail-card{
-
-  padding:35px;
-
-  min-height:210px;
-
-  background:
-    rgba(7,20,45,.8);
-}
-
-.detail-number{
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.7rem;
-
-  letter-spacing:.22em;
-
-  margin-bottom:15px;
-}
-
-.detail-card h3{
-
-  font-size:1.05rem;
-
-  font-weight:400;
-
-  letter-spacing:.08em;
-
-  margin:0 0 13px;
-}
-
-.detail-card p{
-
-  color:#aab8d2;
-
-  font-size:.82rem;
-
-  line-height:2;
-
-  margin:0;
-}
-
-
-/* =========================
-   ADDITION
-========================= */
-
-.additional{
-
-  max-width:760px;
-
-  margin:40px auto 0;
-
-  padding:30px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:18px;
-
-  background:
-    rgba(10,24,52,.35);
-}
-
-.additional h3{
-
-  font-size:1rem;
-
-  font-weight:400;
-
-  letter-spacing:.08em;
-
-  margin:0 0 18px;
-}
-
-.additional p{
-
-  color:#aab8d2;
-
-  font-size:.82rem;
-
-  line-height:2;
-}
-
-.additional ul{
-
-  margin:15px 0 0;
-
-  padding-left:20px;
-
-  color:#aab8d2;
-
-  font-size:.82rem;
-
-  line-height:2;
-}
-
-
-/* =========================
-   PROCESS
-========================= */
-
-.process{
-
-  max-width:760px;
+.message{
 
   margin:45px auto 0;
-}
-
-.process-item{
-
-  position:relative;
-
-  padding:
-    0 0 35px
-    38px;
-
-  border-left:
-    1px solid
-    rgba(143,191,255,.25);
-}
-
-.process-item:last-child{
-
-  border-left:
-    1px solid
-    transparent;
-
-  padding-bottom:0;
-}
-
-.process-number{
-
-  position:absolute;
-
-  left:-8px;
-  top:0;
-
-  width:16px;
-  height:16px;
-
-  border-radius:50%;
-
-  background:#07142d;
-
-  border:
-    1px solid
-    rgba(143,191,255,.65);
-}
-
-.process-item h3{
-
-  margin:0 0 8px;
-
-  font-size:1rem;
-
-  font-weight:400;
-
-  letter-spacing:.08em;
-}
-
-.process-item p{
-
-  margin:0;
-
-  color:#aab8d2;
-
-  font-size:.84rem;
-
-  line-height:2;
-}
-
-
-/* =========================
-   REVISION
-========================= */
-
-.revision-box{
 
   max-width:700px;
-
-  margin:40px auto 0;
-
-  padding:35px;
-
-  text-align:center;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:18px;
-
-  background:
-    rgba(10,24,52,.4);
-}
-
-.revision-box h3{
-
-  margin:0 0 18px;
-
-  font-size:1.05rem;
-
-  font-weight:400;
-
-  letter-spacing:.08em;
-}
-
-.revision-box p{
-
-  margin:0;
-
-  color:#aab8d2;
-
-  font-size:.84rem;
-
-  line-height:2.1;
-}
-
-
-/* =========================
-   NOTE
-========================= */
-
-.note{
-
-  max-width:720px;
-
-  margin:35px auto 0;
 
   text-align:center;
 
   color:#8291aa;
 
-  font-size:.78rem;
+  font-size:.82rem;
 
   line-height:2;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.request-button{
+
+  display:block;
+
+  width:max-content;
+
+  margin:50px auto 0;
+
+  padding:13px 32px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.3);
+
+  border-radius:999px;
+
+  color:#edf3ff;
+
+  text-decoration:none;
+
+  letter-spacing:.1em;
+
+  transition:.3s ease;
+}
+
+.request-button:hover{
+
+  background:
+    rgba(180,210,255,.08);
+
+  border-color:
+    rgba(143,191,255,.55);
+
+  transform:translateY(-2px);
 }
 
 
@@ -726,9 +419,6 @@ h2{
 
   background:
     rgba(180,210,255,.08);
-
-  border-color:
-    rgba(143,191,255,.45);
 }
 
 
@@ -736,10 +426,10 @@ h2{
    MOBILE
 ========================= */
 
-@media(max-width:800px){
+@media(max-width:700px){
 
   .wrap{
-    width:min(100% - 28px,1050px);
+    width:min(100% - 28px,950px);
   }
 
   header{
@@ -750,58 +440,17 @@ h2{
     padding:55px 0;
   }
 
-  .plan-box{
-    grid-template-columns:1fr;
-  }
-
-  .plan-image{
-    min-height:360px;
-  }
-
-  .plan-info{
-    border-left:none;
-
-    border-top:
-      1px solid
-      rgba(180,205,245,.16);
-
-    padding:40px 28px;
-  }
-
-  .detail-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:500px){
-
-  .plan-image{
-    min-height:300px;
-
-    padding:20px;
-  }
-
-  .plan-info{
-    padding:35px 22px;
-  }
-
-  .price{
-    font-size:2rem;
-  }
-
-  .detail-card{
-    padding:28px 22px;
+  .price-value{
+    font-size:1.7rem;
   }
 
 }
 
 </style>
+
 </head>
 
-
 <body>
-
 
 <!-- =========================
      HEADER
@@ -811,35 +460,31 @@ h2{
 
   <div class="wrap">
 
-    <div class="system">
-      HOSHIYOMI WORLD
-    </div>
+```
+<div class="system">
+  HOSHIYOMI WORLD
+</div>
 
-    <img
-      src="logo.png"
-      alt="星詠"
-      class="logo"
-    >
+<img
+  src="logo.png"
+  alt="星詠"
+  class="logo"
+>
 
-    <h1>
-      あなたの世界
-    </h1>
+<h1>
+  あなたの世界
+</h1>
 
-    <div class="en-title">
-      YOUR WORLD
-    </div>
-
-    <p class="lead">
-      自分の中にある世界を、一枚の作品に。
-    </p>
+<p class="lead">
+  あなたの中にある世界を、一枚の作品へ。
+</p>
+```
 
   </div>
 
 </header>
 
-
 <main class="wrap">
-
 
 <!-- =========================
      INTRO
@@ -852,427 +497,310 @@ h2{
   </p>
 
   <h2>
-    世界を描く
-  </h2>
-
-  <div class="world-intro">
-
-    <p>
-      記憶や思い出、好きなもの、<br>
-      想像する物語や景色。<br>
-      <strong>あなたの中にある世界を主役として描きます。</strong>
-    </p>
-
-  </div>
-
-
-  <!-- =========================
-       PLAN
-  ========================= -->
-
-  <div class="plan-box">
-
-
-    <div class="plan-image">
-
-      <div class="plan-image-inner">
-        YOUR WORLD
-      </div>
-
-    </div>
-
-
-    <div class="plan-info">
-
-      <div class="plan-small">
-        BASIC PLAN
-      </div>
-
-      <h3>
-        あなたの世界
-      </h3>
-
-      <p class="price">
-        20,000<span>円〜</span>
-      </p>
-
-      <p class="plan-description">
-        自分の中にある世界を、一枚の作品に。<br>
-        記憶や思い出、好きなもの、想像する世界を<br>
-        主役として描きます。
-      </p>
-
-
-      <div class="recommend">
-
-        <p class="recommend-title">
-          こんな方におすすめ
-        </p>
-
-        <ul>
-
-          <li>
-            自分の世界観や物語を形にしたい
-          </li>
-
-          <li>
-            大切な記憶や思い出を作品として残したい
-          </li>
-
-          <li>
-            好きなものを詰め込んだ一枚を描いてほしい
-          </li>
-
-          <li>
-            キャラクターがいなくても世界だけを描いてほしい
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     DETAILS
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    CONTENT
-  </p>
-
-  <h2>
-    作品について
+    あなたの世界を描く
   </h2>
 
   <p class="section-lead">
-    あなたの中にあるものを、作品の中へ重ねていきます。
+    星詠では、あなた自身ではなく、<br>
+    あなたの記憶や好きなもの、物語、想像している景色などをもとに、<br>
+    あなたの中にある「世界」を一枚の作品として形にします。
   </p>
 
+  <div class="price">
 
-  <div class="detail-grid">
+```
+<div class="price-label">
+  BASIC PRICE
+</div>
 
+<div class="price-value">
+  20,000円〜
+</div>
 
-    <div class="detail-card">
-
-      <div class="detail-number">
-        01｜MEMORY
-      </div>
-
-      <h3>
-        記憶・思い出
-      </h3>
-
-      <p>
-        忘れたくない景色や出来事、<br>
-        大切な思い出などを<br>
-        作品の中に取り入れます。
-      </p>
-
-    </div>
-
-
-
-    <div class="detail-card">
-
-      <div class="detail-number">
-        02｜IMAGE
-      </div>
-
-      <h3>
-        想像する世界
-      </h3>
-
-      <p>
-        頭の中にある景色や物語、<br>
-        想像している世界を<br>
-        一枚の作品として形にします。
-      </p>
-
-    </div>
-
-
-
-    <div class="detail-card">
-
-      <div class="detail-number">
-        03｜FAVORITE
-      </div>
-
-      <h3>
-        好きなもの
-      </h3>
-
-      <p>
-        色、場所、季節、植物など、<br>
-        あなたを表すものを<br>
-        作品の中へ重ねていきます。
-      </p>
-
-    </div>
-
-
-
-    <div class="detail-card">
-
-      <div class="detail-number">
-        04｜STORY
-      </div>
-
-      <h3>
-        物語・世界観
-      </h3>
-
-      <p>
-        設定や物語、雰囲気など、<br>
-        あなたが大切にしている世界観を<br>
-        一枚の中にまとめます。
-      </p>
-
-    </div>
-
+<div class="price-note">
+  ※内容や描き込み量によって変動します
+</div>
+```
 
   </div>
-
-</section>
-
-
 
 <!-- =========================
-     ADDITION
+     WHAT
 ========================= -->
 
-<section>
+  <div class="content-block">
 
-  <p class="section-label">
-    ADDITIONAL
-  </p>
+```
+<h3>
+  こんな作品を制作します
+</h3>
 
-  <h2>
-    追加料金について
-  </h2>
-
-  <p class="section-lead">
-    基本内容を大きく超えるご希望がある場合は、<br>
-    内容に応じて追加料金をご案内します。
-  </p>
-
-
-  <div class="additional">
-
-    <h3>
-      追加料金の対象となる場合
-    </h3>
-
-    <ul>
-
-      <li>人数の追加</li>
-      <li>複雑な衣装や装飾</li>
-      <li>大量の小物</li>
-      <li>複雑な建物・街並み</li>
-      <li>機械などの細かな描写</li>
-      <li>大幅な構図変更</li>
-      <li>特別な加工・展開</li>
-
-    </ul>
-
-    <p>
-      ※追加料金が発生する場合は、制作前に必ずご案内します。
-    </p>
+<p>
+  頭の中にある景色や、忘れられない記憶。<br>
+  好きなものを詰め込んだ空間や、まだ存在しない世界。<br>
+  あなたが大切にしているものを、一枚の絵として形にします。
+</p>
+```
 
   </div>
-
-</section>
-
-
 
 <!-- =========================
-     PROCESS
+     ELEMENT
 ========================= -->
 
-<section>
+  <div class="content-block">
 
-  <p class="section-label">
-    PROCESS
-  </p>
+```
+<h3>
+  描くもの
+</h3>
 
-  <h2>
-    制作の流れ
-  </h2>
+<ul class="detail-list">
 
-  <p class="section-lead">
-    あなたの中にあるイメージを、少しずつ作品へ。
-  </p>
+  <li>
+    思い出や記憶
+  </li>
 
+  <li>
+    好きな場所・景色
+  </li>
 
-  <div class="process">
+  <li>
+    好きなものや大切なもの
+  </li>
 
+  <li>
+    想像している世界
+  </li>
 
-    <div class="process-item">
+  <li>
+    物語や世界観
+  </li>
 
-      <div class="process-number"></div>
+  <li>
+    その他、ご希望のイメージ
+  </li>
 
-      <h3>
-        01｜お話を聞く
-      </h3>
-
-      <p>
-        描きたい世界や好きなもの、<br>
-        思い出などをお聞きします。
-      </p>
-
-    </div>
-
-
-
-    <div class="process-item">
-
-      <div class="process-number"></div>
-
-      <h3>
-        02｜イメージを整理する
-      </h3>
-
-      <p>
-        お聞きした内容をもとに、<br>
-        構図や世界観を整理します。
-      </p>
-
-    </div>
-
-
-
-    <div class="process-item">
-
-      <div class="process-number"></div>
-
-      <h3>
-        03｜ラフ制作
-      </h3>
-
-      <p>
-        作品全体の構図や雰囲気を確認しながら、<br>
-        ラフを制作します。
-      </p>
-
-    </div>
-
-
-
-    <div class="process-item">
-
-      <div class="process-number"></div>
-
-      <h3>
-        04｜完成
-      </h3>
-
-      <p>
-        ラフ確定後、細部まで描き込み、<br>
-        一枚の作品として仕上げます。
-      </p>
-
-    </div>
-
+</ul>
+```
 
   </div>
 
-</section>
+<!-- =========================
+     HEARING
+========================= -->
 
+  <div class="content-block">
 
+```
+<h3>
+  あなたの世界を知るために
+</h3>
+
+<p>
+  ご依頼の際には、あなたが思い描いている世界についてお聞きします。
+  <br>
+  まだうまく言葉にできないイメージでも構いません。
+</p>
+
+<p style="margin-top:22px;">
+  「こんな雰囲気が好き」<br>
+  「この景色を残したい」<br>
+  「こういう世界を見てみたい」
+</p>
+
+<p style="margin-top:22px;">
+  そんな小さなきっかけから、作品を一緒に形にしていきます。
+</p>
+```
+
+  </div>
+
+<!-- =========================
+     PERIOD
+========================= -->
+
+  <div class="content-block">
+
+```
+<h3>
+  制作期間
+</h3>
+
+<p>
+  1ヶ月〜3ヶ月程度
+</p>
+
+<p style="margin-top:12px;">
+  ご依頼内容や描き込み量、制作状況によって前後する場合があります。
+</p>
+```
+
+  </div>
 
 <!-- =========================
      REVISION
 ========================= -->
 
-<section>
+  <div class="content-block">
 
-  <p class="section-label">
-    REVISION
-  </p>
+```
+<h3>
+  ラフ・修正について
+</h3>
 
-  <h2>
-    ラフ・修正について
-  </h2>
+<p>
+  ラフの段階で構図や全体の方向性をご確認いただきます。
+</p>
 
+<p style="margin-top:12px;">
+  <strong>
+    修正は2回まで無料です。
+  </strong>
+</p>
 
-  <div class="revision-box">
-
-    <h3>
-      2回まで無料
-    </h3>
-
-    <p>
-      アイデアラフ・ラフの段階で修正を行います。<br><br>
-
-      ラフ確定後の大幅な変更・描き直しについては、<br>
-      内容に応じて追加料金または納期の変更を<br>
-      お願いする場合があります。
-    </p>
+<p style="margin-top:12px;">
+  ラフ確定後の大幅な変更・描き直しについては、
+  内容に応じて追加料金または納期の変更をお願いする場合があります。
+</p>
+```
 
   </div>
-
-</section>
-
-
 
 <!-- =========================
-     DELIVERY
+     FLOW
 ========================= -->
 
-<section>
+  <div class="content-block">
 
-  <p class="section-label">
-    DELIVERY
-  </p>
+```
+<h3>
+  ご依頼の流れ
+</h3>
 
-  <h2>
-    制作期間・納品
-  </h2>
+<div class="flow">
 
+  <div class="flow-item">
 
-  <div class="revision-box">
+    <div class="flow-number">
+      01
+    </div>
 
-    <h3>
-      1ヶ月〜3ヶ月程度
-    </h3>
+    <div class="flow-title">
+      ご相談
+    </div>
 
-    <p>
-      ご依頼内容や現在の制作状況、<br>
-      確認・ご返信のタイミングなどによって<br>
-      前後する場合があります。<br><br>
-
-      正式な納期は、ご依頼内容を確認したうえでご案内します。
-    </p>
+    <div class="flow-text">
+      描きたい世界やイメージをお聞きします。
+    </div>
 
   </div>
 
+
+  <div class="flow-item">
+
+    <div class="flow-number">
+      02
+    </div>
+
+    <div class="flow-title">
+      内容確認・お見積り
+    </div>
+
+    <div class="flow-text">
+      内容や描き込み量を確認し、料金と納期をご案内します。
+    </div>
+
+  </div>
+
+
+  <div class="flow-item">
+
+    <div class="flow-number">
+      03
+    </div>
+
+    <div class="flow-title">
+      ラフ制作
+    </div>
+
+    <div class="flow-text">
+      作品全体の構図や方向性を制作します。
+    </div>
+
+  </div>
+
+
+  <div class="flow-item">
+
+    <div class="flow-number">
+      04
+    </div>
+
+    <div class="flow-title">
+      制作
+    </div>
+
+    <div class="flow-text">
+      ラフ確定後、本制作へ進みます。
+    </div>
+
+  </div>
+
+
+  <div class="flow-item">
+
+    <div class="flow-number">
+      05
+    </div>
+
+    <div class="flow-title">
+      納品
+    </div>
+
+    <div class="flow-text">
+      完成した作品をお渡しします。
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </div>
+
+<!-- =========================
+     MESSAGE
+========================= -->
+
+  <p class="message">
+    世界観がまだ完全に決まっていなくても大丈夫です。<br>
+    あなたの中にある小さなイメージから、一緒に形を探していきます。
+  </p>
+
+<a
+href="request-form.html"
+class="request-button"
+
+>
+
+```
+このプランを相談する →
+```
+
+  </a>
+
 </section>
-
-
 
 </main>
 
-
-<!-- =========================
-     BACK
-========================= -->
-
 <a
-  href="request-normal.html"
-  class="back"
->
-  ← 通常のご依頼へ戻る
-</a>
+href="request-normal.html"
+class="back"
 
+>
+
+← 通常のご依頼へ戻る </a>
 
 </body>
 </html>
