@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -24,8 +23,8 @@ body{
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(90,130,210,.12),
-      transparent 35%
+      rgba(90,130,210,.14),
+      transparent 38%
     ),
     linear-gradient(
       180deg,
@@ -44,7 +43,7 @@ body{
 }
 
 .wrap{
-  width:min(950px,calc(100% - 40px));
+  width:min(1050px,calc(100% - 40px));
   margin:auto;
 }
 
@@ -67,14 +66,17 @@ header{
     serif;
 
   font-size:.75rem;
-  letter-spacing:.3em;
+  letter-spacing:.32em;
+
   margin-bottom:25px;
 }
 
 .logo{
   width:min(220px,60vw);
   height:auto;
+
   display:block;
+
   margin:0 auto 28px;
 
   filter:
@@ -89,13 +91,32 @@ h1{
     clamp(2rem,5vw,3rem);
 
   font-weight:400;
-  letter-spacing:.12em;
+
+  letter-spacing:.14em;
+
   margin:0;
+}
+
+.en-title{
+  margin-top:10px;
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.78rem;
+
+  letter-spacing:.32em;
 }
 
 .lead{
   color:#aab8d2;
-  margin:22px auto 0;
+
+  margin:24px auto 0;
+
   line-height:2;
 }
 
@@ -121,18 +142,23 @@ section{
     serif;
 
   font-size:.72rem;
-  letter-spacing:.22em;
+
+  letter-spacing:.24em;
 
   margin:0 0 10px;
+
   text-align:center;
 }
 
 h2{
-  font-size:1.6rem;
+  font-size:1.65rem;
+
   font-weight:400;
-  letter-spacing:.08em;
+
+  letter-spacing:.1em;
 
   margin:0 0 18px;
+
   text-align:center;
 }
 
@@ -142,6 +168,7 @@ h2{
   text-align:center;
 
   font-size:.9rem;
+
   line-height:2;
 
   margin:0 auto 45px;
@@ -149,70 +176,290 @@ h2{
 
 
 /* =========================
-   WORLD MESSAGE
+   INTRO
 ========================= */
 
-.world-message{
-  max-width:720px;
+.world-intro{
+  max-width:760px;
 
-  margin:0 auto 50px;
-
-  padding:35px 30px;
+  margin:0 auto;
 
   text-align:center;
+}
+
+.world-intro p{
+  margin:0;
+
+  color:#cbd8ee;
+
+  line-height:2.3;
+}
+
+.world-intro strong{
+  color:#edf3ff;
+
+  font-weight:400;
+}
+
+
+/* =========================
+   MAIN PLAN
+========================= */
+
+.plan-box{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:0;
+
+  margin-top:45px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.22);
+
+  border-radius:22px;
+
+  overflow:hidden;
+
+  background:
+    rgba(10,24,52,.48);
+}
+
+
+/* 作品側 */
+
+.plan-image{
+
+  min-height:520px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:35px;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(100,150,230,.15),
+      transparent 55%
+    );
+}
+
+.plan-image-inner{
+
+  width:100%;
+
+  aspect-ratio:4 / 5;
+
+  max-width:390px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  border-radius:8px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30,60,105,.4),
+      rgba(5,15,35,.65)
+    );
+
+  color:#8291aa;
+
+  font-size:.78rem;
+
+  letter-spacing:.12em;
+}
+
+
+/* 料金・説明側 */
+
+.plan-info{
+
+  padding:55px 45px;
+
+  border-left:
+    1px solid
+    rgba(180,205,245,.16);
+}
+
+.plan-small{
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.72rem;
+
+  letter-spacing:.22em;
+
+  margin-bottom:15px;
+}
+
+.plan-info h3{
+
+  font-size:1.65rem;
+
+  font-weight:400;
+
+  letter-spacing:.1em;
+
+  margin:0 0 25px;
+}
+
+.price{
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:2.5rem;
+
+  letter-spacing:.06em;
+
+  margin:0 0 25px;
+}
+
+.price span{
+
+  font-size:1rem;
+
+  letter-spacing:.08em;
+
+  margin-left:5px;
+}
+
+.plan-description{
+
+  color:#aab8d2;
+
+  font-size:.88rem;
+
+  line-height:2.1;
+
+  margin:0 0 30px;
+}
+
+
+/* =========================
+   RECOMMEND
+========================= */
+
+.recommend{
+
+  padding:25px 25px;
 
   border:
     1px solid
     rgba(180,205,245,.18);
 
-  border-radius:20px;
+  border-radius:12px;
 
   background:
-    rgba(10,24,52,.38);
+    rgba(5,16,38,.35);
 }
 
-.world-message p{
-  margin:0;
-
-  color:#cbd8ee;
+.recommend-title{
 
   font-size:.9rem;
 
-  line-height:2.2;
+  letter-spacing:.08em;
+
+  margin:0 0 14px;
+}
+
+.recommend ul{
+
+  list-style:none;
+
+  padding:0;
+
+  margin:0;
+}
+
+.recommend li{
+
+  color:#b8c7df;
+
+  font-size:.8rem;
+
+  line-height:2;
+
+  padding-left:18px;
+
+  position:relative;
+}
+
+.recommend li::before{
+
+  content:"✦";
+
+  position:absolute;
+
+  left:0;
+
+  color:#8fbfff;
 }
 
 
 /* =========================
-   CONTENT
+   DETAILS
 ========================= */
 
-.content-list{
+.detail-grid{
+
   display:grid;
 
   grid-template-columns:
     repeat(2,1fr);
 
-  gap:20px;
-}
+  gap:1px;
 
-.content-item{
-  min-height:210px;
-
-  padding:35px 28px;
+  margin-top:40px;
 
   border:
     1px solid
     rgba(180,205,245,.18);
 
-  border-radius:20px;
+  border-radius:18px;
+
+  overflow:hidden;
 
   background:
-    rgba(10,24,52,.45);
-
-  text-align:center;
+    rgba(180,205,245,.15);
 }
 
-.content-number{
+.detail-card{
+
+  padding:35px;
+
+  min-height:210px;
+
+  background:
+    rgba(7,20,45,.8);
+}
+
+.detail-number{
+
   color:#8fbfff;
 
   font-family:
@@ -224,23 +471,25 @@ h2{
 
   letter-spacing:.22em;
 
-  margin-bottom:18px;
+  margin-bottom:15px;
 }
 
-.content-item h3{
-  font-size:1.15rem;
+.detail-card h3{
+
+  font-size:1.05rem;
 
   font-weight:400;
 
   letter-spacing:.08em;
 
-  margin:0 0 14px;
+  margin:0 0 13px;
 }
 
-.content-item p{
+.detail-card p{
+
   color:#aab8d2;
 
-  font-size:.86rem;
+  font-size:.82rem;
 
   line-height:2;
 
@@ -249,21 +498,79 @@ h2{
 
 
 /* =========================
+   ADDITION
+========================= */
+
+.additional{
+
+  max-width:760px;
+
+  margin:40px auto 0;
+
+  padding:30px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.18);
+
+  border-radius:18px;
+
+  background:
+    rgba(10,24,52,.35);
+}
+
+.additional h3{
+
+  font-size:1rem;
+
+  font-weight:400;
+
+  letter-spacing:.08em;
+
+  margin:0 0 18px;
+}
+
+.additional p{
+
+  color:#aab8d2;
+
+  font-size:.82rem;
+
+  line-height:2;
+}
+
+.additional ul{
+
+  margin:15px 0 0;
+
+  padding-left:20px;
+
+  color:#aab8d2;
+
+  font-size:.82rem;
+
+  line-height:2;
+}
+
+
+/* =========================
    PROCESS
 ========================= */
 
 .process{
-  max-width:700px;
 
-  margin:auto;
+  max-width:760px;
+
+  margin:45px auto 0;
 }
 
 .process-item{
+
   position:relative;
 
   padding:
     0 0 35px
-    35px;
+    38px;
 
   border-left:
     1px solid
@@ -271,6 +578,7 @@ h2{
 }
 
 .process-item:last-child{
+
   border-left:
     1px solid
     transparent;
@@ -279,6 +587,7 @@ h2{
 }
 
 .process-number{
+
   position:absolute;
 
   left:-8px;
@@ -297,6 +606,7 @@ h2{
 }
 
 .process-item h3{
+
   margin:0 0 8px;
 
   font-size:1rem;
@@ -307,73 +617,61 @@ h2{
 }
 
 .process-item p{
+
   margin:0;
 
   color:#aab8d2;
 
-  font-size:.86rem;
+  font-size:.84rem;
 
   line-height:2;
 }
 
 
 /* =========================
-   PRICE
+   REVISION
 ========================= */
 
-.price-box{
-  max-width:650px;
+.revision-box{
 
-  margin:0 auto;
+  max-width:700px;
 
-  padding:40px 30px;
+  margin:40px auto 0;
+
+  padding:35px;
 
   text-align:center;
 
   border:
     1px solid
-    rgba(180,205,245,.22);
+    rgba(180,205,245,.18);
 
-  border-radius:22px;
+  border-radius:18px;
 
   background:
-    rgba(10,24,52,.5);
+    rgba(10,24,52,.4);
 }
 
-.price-label{
-  color:#8fbfff;
+.revision-box h3{
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  margin:0 0 18px;
 
-  font-size:.72rem;
+  font-size:1.05rem;
 
-  letter-spacing:.2em;
-
-  margin-bottom:12px;
-}
-
-.price{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:2rem;
+  font-weight:400;
 
   letter-spacing:.08em;
-
-  margin:0 0 20px;
 }
 
-.price-note{
+.revision-box p{
+
+  margin:0;
+
   color:#aab8d2;
 
-  font-size:.82rem;
+  font-size:.84rem;
 
-  line-height:2;
+  line-height:2.1;
 }
 
 
@@ -382,15 +680,16 @@ h2{
 ========================= */
 
 .note{
-  max-width:700px;
 
-  margin:45px auto 0;
+  max-width:720px;
+
+  margin:35px auto 0;
 
   text-align:center;
 
   color:#8291aa;
 
-  font-size:.82rem;
+  font-size:.78rem;
 
   line-height:2;
 }
@@ -401,6 +700,7 @@ h2{
 ========================= */
 
 .back{
+
   display:block;
 
   width:max-content;
@@ -423,8 +723,12 @@ h2{
 }
 
 .back:hover{
+
   background:
     rgba(180,210,255,.08);
+
+  border-color:
+    rgba(143,191,255,.45);
 }
 
 
@@ -432,10 +736,10 @@ h2{
    MOBILE
 ========================= */
 
-@media(max-width:700px){
+@media(max-width:800px){
 
   .wrap{
-    width:min(100% - 28px,950px);
+    width:min(100% - 28px,1050px);
   }
 
   header{
@@ -446,25 +750,58 @@ h2{
     padding:55px 0;
   }
 
-  .content-list{
+  .plan-box{
     grid-template-columns:1fr;
   }
 
-  .world-message{
-    padding:30px 20px;
+  .plan-image{
+    min-height:360px;
   }
 
-  .price-box{
-    padding:35px 20px;
+  .plan-info{
+    border-left:none;
+
+    border-top:
+      1px solid
+      rgba(180,205,245,.16);
+
+    padding:40px 28px;
+  }
+
+  .detail-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .plan-image{
+    min-height:300px;
+
+    padding:20px;
+  }
+
+  .plan-info{
+    padding:35px 22px;
+  }
+
+  .price{
+    font-size:2rem;
+  }
+
+  .detail-card{
+    padding:28px 22px;
   }
 
 }
 
 </style>
-
 </head>
 
+
 <body>
+
 
 <!-- =========================
      HEADER
@@ -474,31 +811,35 @@ h2{
 
   <div class="wrap">
 
-```
-<div class="system">
-  HOSHIYOMI WORLD
-</div>
+    <div class="system">
+      HOSHIYOMI WORLD
+    </div>
 
-<img
-  src="logo.png"
-  alt="星詠"
-  class="logo"
->
+    <img
+      src="logo.png"
+      alt="星詠"
+      class="logo"
+    >
 
-<h1>
-  あなたの世界
-</h1>
+    <h1>
+      あなたの世界
+    </h1>
 
-<p class="lead">
-  あなたの中にある世界を、一枚の作品へ。
-</p>
-```
+    <div class="en-title">
+      YOUR WORLD
+    </div>
+
+    <p class="lead">
+      自分の中にある世界を、一枚の作品に。
+    </p>
 
   </div>
 
 </header>
 
+
 <main class="wrap">
+
 
 <!-- =========================
      INTRO
@@ -514,28 +855,92 @@ h2{
     世界を描く
   </h2>
 
-  <p class="section-lead">
-    頭の中にある景色や物語、<br>
-    大切な記憶や好きなものをもとに、<br>
-    あなたの世界を一枚の作品として形にします。
-  </p>
+  <div class="world-intro">
 
-  <div class="world-message">
+    <p>
+      記憶や思い出、好きなもの、<br>
+      想像する物語や景色。<br>
+      <strong>あなたの中にある世界を主役として描きます。</strong>
+    </p>
 
-```
-<p>
-  まだ言葉になっていないイメージでも大丈夫です。<br>
-  あなたの中にある「こういう世界が好き」という感覚を、<br>
-  一緒に整理しながら作品へと形にしていきます。
-</p>
-```
+  </div>
+
+
+  <!-- =========================
+       PLAN
+  ========================= -->
+
+  <div class="plan-box">
+
+
+    <div class="plan-image">
+
+      <div class="plan-image-inner">
+        YOUR WORLD
+      </div>
+
+    </div>
+
+
+    <div class="plan-info">
+
+      <div class="plan-small">
+        BASIC PLAN
+      </div>
+
+      <h3>
+        あなたの世界
+      </h3>
+
+      <p class="price">
+        20,000<span>円〜</span>
+      </p>
+
+      <p class="plan-description">
+        自分の中にある世界を、一枚の作品に。<br>
+        記憶や思い出、好きなもの、想像する世界を<br>
+        主役として描きます。
+      </p>
+
+
+      <div class="recommend">
+
+        <p class="recommend-title">
+          こんな方におすすめ
+        </p>
+
+        <ul>
+
+          <li>
+            自分の世界観や物語を形にしたい
+          </li>
+
+          <li>
+            大切な記憶や思い出を作品として残したい
+          </li>
+
+          <li>
+            好きなものを詰め込んだ一枚を描いてほしい
+          </li>
+
+          <li>
+            キャラクターがいなくても世界だけを描いてほしい
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
+
+
 <!-- =========================
-     CONTENT
+     DETAILS
 ========================= -->
 
 <section>
@@ -545,99 +950,149 @@ h2{
   </p>
 
   <h2>
-    描くものについて
+    作品について
   </h2>
 
   <p class="section-lead">
-    あなたの世界を形作るものをもとに、<br>
-    一枚の作品として構成していきます。
+    あなたの中にあるものを、作品の中へ重ねていきます。
   </p>
 
-  <div class="content-list">
 
-```
-<div class="content-item">
-
-  <div class="content-number">
-    01｜MEMORY
-  </div>
-
-  <h3>
-    記憶・思い出
-  </h3>
-
-  <p>
-    忘れたくない景色や出来事、<br>
-    大切な思い出などを<br>
-    作品の中に取り入れます。
-  </p>
-
-</div>
+  <div class="detail-grid">
 
 
+    <div class="detail-card">
 
-<div class="content-item">
+      <div class="detail-number">
+        01｜MEMORY
+      </div>
 
-  <div class="content-number">
-    02｜IMAGE
-  </div>
+      <h3>
+        記憶・思い出
+      </h3>
 
-  <h3>
-    想像する世界
-  </h3>
+      <p>
+        忘れたくない景色や出来事、<br>
+        大切な思い出などを<br>
+        作品の中に取り入れます。
+      </p>
 
-  <p>
-    頭の中にある景色や物語、<br>
-    想像している世界を<br>
-    一枚の作品として形にします。
-  </p>
-
-</div>
+    </div>
 
 
 
-<div class="content-item">
+    <div class="detail-card">
 
-  <div class="content-number">
-    03｜FAVORITE
-  </div>
+      <div class="detail-number">
+        02｜IMAGE
+      </div>
 
-  <h3>
-    好きなもの
-  </h3>
+      <h3>
+        想像する世界
+      </h3>
 
-  <p>
-    好きな色、場所、季節、植物など、<br>
-    あなたを表すものを<br>
-    作品の中へ重ねていきます。
-  </p>
+      <p>
+        頭の中にある景色や物語、<br>
+        想像している世界を<br>
+        一枚の作品として形にします。
+      </p>
 
-</div>
+    </div>
 
 
 
-<div class="content-item">
+    <div class="detail-card">
 
-  <div class="content-number">
-    04｜STORY
-  </div>
+      <div class="detail-number">
+        03｜FAVORITE
+      </div>
 
-  <h3>
-    物語・世界観
-  </h3>
+      <h3>
+        好きなもの
+      </h3>
 
-  <p>
-    設定や物語、雰囲気など、<br>
-    あなたが大切にしている世界観を<br>
-    一枚の中にまとめます。
-  </p>
+      <p>
+        色、場所、季節、植物など、<br>
+        あなたを表すものを<br>
+        作品の中へ重ねていきます。
+      </p>
 
-</div>
-```
+    </div>
+
+
+
+    <div class="detail-card">
+
+      <div class="detail-number">
+        04｜STORY
+      </div>
+
+      <h3>
+        物語・世界観
+      </h3>
+
+      <p>
+        設定や物語、雰囲気など、<br>
+        あなたが大切にしている世界観を<br>
+        一枚の中にまとめます。
+      </p>
+
+    </div>
+
 
   </div>
 
 </section>
+
+
+
+<!-- =========================
+     ADDITION
+========================= -->
+
+<section>
+
+  <p class="section-label">
+    ADDITIONAL
+  </p>
+
+  <h2>
+    追加料金について
+  </h2>
+
+  <p class="section-lead">
+    基本内容を大きく超えるご希望がある場合は、<br>
+    内容に応じて追加料金をご案内します。
+  </p>
+
+
+  <div class="additional">
+
+    <h3>
+      追加料金の対象となる場合
+    </h3>
+
+    <ul>
+
+      <li>人数の追加</li>
+      <li>複雑な衣装や装飾</li>
+      <li>大量の小物</li>
+      <li>複雑な建物・街並み</li>
+      <li>機械などの細かな描写</li>
+      <li>大幅な構図変更</li>
+      <li>特別な加工・展開</li>
+
+    </ul>
+
+    <p>
+      ※追加料金が発生する場合は、制作前に必ずご案内します。
+    </p>
+
+  </div>
+
+</section>
+
+
 
 <!-- =========================
      PROCESS
@@ -654,124 +1109,85 @@ h2{
   </h2>
 
   <p class="section-lead">
-    あなたの中にあるイメージを、<br>
-    少しずつ作品へと形にしていきます。
+    あなたの中にあるイメージを、少しずつ作品へ。
   </p>
+
 
   <div class="process">
 
-```
-<div class="process-item">
 
-  <div class="process-number"></div>
+    <div class="process-item">
 
-  <h3>
-    01｜お話を聞く
-  </h3>
+      <div class="process-number"></div>
 
-  <p>
-    描きたい世界や好きなもの、<br>
-    思い出などをお聞きします。
-  </p>
+      <h3>
+        01｜お話を聞く
+      </h3>
 
-</div>
+      <p>
+        描きたい世界や好きなもの、<br>
+        思い出などをお聞きします。
+      </p>
 
-
-
-<div class="process-item">
-
-  <div class="process-number"></div>
-
-  <h3>
-    02｜イメージを整理する
-  </h3>
-
-  <p>
-    お聞きした内容をもとに、<br>
-    構図や世界観を整理します。
-  </p>
-
-</div>
+    </div>
 
 
 
-<div class="process-item">
+    <div class="process-item">
 
-  <div class="process-number"></div>
+      <div class="process-number"></div>
 
-  <h3>
-    03｜ラフ制作
-  </h3>
+      <h3>
+        02｜イメージを整理する
+      </h3>
 
-  <p>
-    作品全体の構図や雰囲気を確認しながら、<br>
-    ラフを制作します。
-  </p>
+      <p>
+        お聞きした内容をもとに、<br>
+        構図や世界観を整理します。
+      </p>
 
-</div>
+    </div>
 
 
 
-<div class="process-item">
+    <div class="process-item">
 
-  <div class="process-number"></div>
+      <div class="process-number"></div>
 
-  <h3>
-    04｜完成
-  </h3>
+      <h3>
+        03｜ラフ制作
+      </h3>
 
-  <p>
-    ラフ確定後、細部まで描き込み、<br>
-    一枚の作品として仕上げます。
-  </p>
+      <p>
+        作品全体の構図や雰囲気を確認しながら、<br>
+        ラフを制作します。
+      </p>
 
-</div>
-```
+    </div>
+
+
+
+    <div class="process-item">
+
+      <div class="process-number"></div>
+
+      <h3>
+        04｜完成
+      </h3>
+
+      <p>
+        ラフ確定後、細部まで描き込み、<br>
+        一枚の作品として仕上げます。
+      </p>
+
+    </div>
+
 
   </div>
 
 </section>
 
-<!-- =========================
-     PRICE
-========================= -->
 
-<section>
-
-  <p class="section-label">
-    PRICE
-  </p>
-
-  <h2>
-    料金
-  </h2>
-
-  <div class="price-box">
-
-```
-<div class="price-label">
-  YOUR WORLD
-</div>
-
-<p class="price">
-  20,000円〜
-</p>
-
-<p class="price-note">
-  基本料金です。<br>
-  構図や描き込み量、追加のご希望などによって<br>
-  料金が変わる場合があります。
-</p>
-```
-
-  </div>
-
-  <p class="note">
-    正式な料金は、ご依頼内容を確認したうえでご案内します。<br>
-    追加料金が発生する場合は、制作前に必ずお伝えします。
-  </p>
-
-</section>
 
 <!-- =========================
      REVISION
@@ -787,25 +1203,26 @@ h2{
     ラフ・修正について
   </h2>
 
-  <p class="section-lead">
-    ラフの段階で作品の方向性を確認します。
-  </p>
 
-  <div class="world-message">
+  <div class="revision-box">
 
-```
-<p>
-  ラフの修正は<strong>2回まで無料</strong>です。<br><br>
+    <h3>
+      2回まで無料
+    </h3>
 
-  ラフ確定後の大幅な変更・描き直しについては、<br>
-  内容に応じて追加料金または納期の変更を<br>
-  お願いする場合があります。
-</p>
-```
+    <p>
+      アイデアラフ・ラフの段階で修正を行います。<br><br>
+
+      ラフ確定後の大幅な変更・描き直しについては、<br>
+      内容に応じて追加料金または納期の変更を<br>
+      お願いする場合があります。
+    </p>
 
   </div>
 
 </section>
+
+
 
 <!-- =========================
      DELIVERY
@@ -821,35 +1238,41 @@ h2{
     制作期間・納品
   </h2>
 
-  <p class="section-lead">
-    一枚ずつ時間をかけて制作します。
-  </p>
 
-  <div class="world-message">
+  <div class="revision-box">
 
-```
-<p>
-  制作期間は<strong>1ヶ月〜3ヶ月程度</strong>です。<br><br>
+    <h3>
+      1ヶ月〜3ヶ月程度
+    </h3>
 
-  ご依頼内容や現在の制作状況、<br>
-  確認・ご返信のタイミングなどによって<br>
-  前後する場合があります。
-</p>
-```
+    <p>
+      ご依頼内容や現在の制作状況、<br>
+      確認・ご返信のタイミングなどによって<br>
+      前後する場合があります。<br><br>
+
+      正式な納期は、ご依頼内容を確認したうえでご案内します。
+    </p>
 
   </div>
 
 </section>
 
+
+
 </main>
 
+
+<!-- =========================
+     BACK
+========================= -->
+
 <a
-href="request-normal.html"
-class="back"
-
+  href="request-normal.html"
+  class="back"
 >
+  ← 通常のご依頼へ戻る
+</a>
 
-← 通常のご依頼へ戻る </a>
 
 </body>
 </html>
