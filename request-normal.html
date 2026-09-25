@@ -167,8 +167,32 @@ h2{
   align-items:stretch;
 
   max-width:700px;
+
   margin:0 auto;
+
+  /* 不要な装飾を防止 */
+  position:relative;
 }
+
+
+/* 「…」などの疑似要素を完全に無効化 */
+
+.choices::before,
+.choices::after{
+  content:none !important;
+  display:none !important;
+}
+
+.choice::before,
+.choice::after{
+  content:none !important;
+  display:none !important;
+}
+
+
+/* =========================
+   CARD
+========================= */
 
 .choice{
   width:100%;
@@ -187,6 +211,7 @@ h2{
   text-align:center;
 
   text-decoration:none;
+
   color:#edf3ff;
 
   border:
@@ -201,6 +226,10 @@ h2{
   transition:.4s ease;
 
   margin:0;
+
+  position:relative;
+
+  overflow:hidden;
 }
 
 .choice:hover{
@@ -217,6 +246,11 @@ h2{
     rgba(50,90,170,.14);
 }
 
+
+/* =========================
+   CARD NUMBER
+========================= */
+
 .choice-number{
   color:#8fbfff;
 
@@ -232,6 +266,11 @@ h2{
   margin-bottom:22px;
 }
 
+
+/* =========================
+   CARD TITLE
+========================= */
+
 .choice h3{
   font-size:1.3rem;
 
@@ -242,6 +281,11 @@ h2{
   margin:0 0 18px;
 }
 
+
+/* =========================
+   CARD TEXT
+========================= */
+
 .choice p{
   color:#aab8d2;
 
@@ -251,6 +295,11 @@ h2{
 
   line-height:2;
 }
+
+
+/* =========================
+   CARD LINK
+========================= */
 
 .choice-arrow{
   margin-top:30px;
@@ -324,6 +373,7 @@ h2{
 
   .choices{
     grid-template-columns:1fr;
+
     gap:16px;
   }
 
@@ -387,6 +437,10 @@ h2{
 
 </header>
 
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="wrap">
 
 <section>
@@ -404,11 +458,15 @@ h2{
     それぞれの想いに合わせた作品を制作しています。
   </p>
 
+  <!-- =========================
+       2つの選択肢
+  ========================= -->
+
   <div class="choices">
 
 ```
 <!-- =========================
-     あなたの姿
+     01｜あなたの姿
 ========================= -->
 
 <a
@@ -438,7 +496,7 @@ h2{
 
 
 <!-- =========================
-     あなたの世界
+     02｜あなたの世界
 ========================= -->
 
 <a
@@ -469,6 +527,10 @@ h2{
 
   </div>
 
+  <!-- =========================
+       MESSAGE
+  ========================= -->
+
   <p class="message">
     それぞれのページで内容をご確認いただいたうえで、<br>
     ご希望の制作内容をお選びください。
@@ -477,6 +539,10 @@ h2{
 </section>
 
 </main>
+
+<!-- =========================
+     BACK
+========================= -->
 
 <a
 href="request.html"
