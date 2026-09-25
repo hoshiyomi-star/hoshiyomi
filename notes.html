@@ -589,6 +589,28 @@ section{
   transform:translateY(-2px);
 }
 
+.back-button{
+  display:block;
+  width:max-content;
+  margin:-55px auto 90px;
+  padding:12px 30px;
+  border:1px solid rgba(180,205,245,.28);
+  border-radius:999px;
+  color:#cbd9ef;
+  text-decoration:none;
+  letter-spacing:.12em;
+  font-size:.85rem;
+  background:rgba(8,22,48,.25);
+  transition:.3s ease;
+}
+
+.back-button:hover{
+  background:rgba(90,130,210,.12);
+  border-color:rgba(205,225,255,.55);
+  color:#edf4ff;
+  transform:translateY(-2px);
+}
+
 
 /* =========================
    MOBILE
@@ -659,6 +681,12 @@ section{
     text-align:center;
 
     padding:14px 20px;
+  }
+
+  .back-button{
+    width:100%;
+    text-align:center;
+    margin:-40px auto 50px;
   }
 
 }
@@ -926,6 +954,8 @@ section{
 
 
 <a href="request-form.html" class="request-button">ご依頼はこちらから　›</a>
+
+<a href="index.html#choice" class="back-button">← カード一覧へ戻る</a>
 
 </div>
 </body>
