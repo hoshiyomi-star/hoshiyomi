@@ -50,7 +50,7 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 
 <a href="contact.html" class="choice"><div class="choice-number">03</div><h2>依頼について相談したい</h2><p>まずは依頼について相談する</p></a>
 
-<a href="return-gift.html" class="choice"><div class="choice-number">04</div><h2>返礼品を見てみる</h2><p>星詠からのお届けものを見る</p></a>
+<a href="gift-hub.html" class="choice"><div class="choice-number">04</div><h2>記念品・返礼品を見てみる</h2><p>大切な時間を、一枚の作品に</p></a>
 
 <a href="first-visit.html" class="choice"><div class="choice-number">05</div><h2>初めての方限定<br>星詠を体験する</h2><p>初めての方だけが楽しめる体験</p></a>
 
@@ -66,22 +66,12 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 const startButton=document.getElementById("startButton");
 const startScreen=document.getElementById("startScreen");
 const choiceScreen=document.getElementById("choice");
-
-function showChoiceScreen(){
-  startScreen.style.display="none";
-  choiceScreen.style.display="block";
-  window.scrollTo({top:0,behavior:"instant"});
-}
-
 startButton.addEventListener("click",function(event){
-  event.preventDefault();
-  showChoiceScreen();
-  history.replaceState(null,"","#choice");
+event.preventDefault();
+startScreen.style.display="none";
+choiceScreen.style.display="block";
+window.scrollTo({top:0,behavior:"instant"});
 });
-
-if(window.location.hash === "#choice"){
-  showChoiceScreen();
-}
 </script>
 </body>
 </html>
