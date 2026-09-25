@@ -66,12 +66,22 @@ body{background:#020817;color:#edf3ff;font-family:"Yu Mincho","Hiragino Mincho P
 const startButton=document.getElementById("startButton");
 const startScreen=document.getElementById("startScreen");
 const choiceScreen=document.getElementById("choice");
+
+function showChoiceScreen(){
+  startScreen.style.display="none";
+  choiceScreen.style.display="block";
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
 startButton.addEventListener("click",function(event){
-event.preventDefault();
-startScreen.style.display="none";
-choiceScreen.style.display="block";
-window.scrollTo({top:0,behavior:"instant"});
+  event.preventDefault();
+  showChoiceScreen();
+  history.replaceState(null,"","#choice");
 });
+
+if(window.location.hash === "#choice"){
+  showChoiceScreen();
+}
 </script>
 </body>
 </html>
