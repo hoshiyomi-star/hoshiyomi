@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -6,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>作品ガイド｜星詠</title>
+<title>作品診断｜星詠</title>
 
 <style>
 
@@ -22,6 +23,7 @@ body{
 }
 
 body{
+
   color:#edf3ff;
 
   background:
@@ -46,9 +48,18 @@ body{
   line-height:1.9;
 }
 
+
+/* =========================
+   WRAP
+========================= */
+
 .wrap{
-  width:min(950px,calc(100% - 40px));
-  margin:auto;
+
+  width:
+    min(760px,calc(100% - 40px));
+
+  margin:
+    0 auto;
 }
 
 
@@ -57,11 +68,15 @@ body{
 ========================= */
 
 header{
+
   text-align:center;
-  padding:100px 0 70px;
+
+  padding:
+    90px 0 55px;
 }
 
 .system{
+
   color:#8fbfff;
 
   font-family:
@@ -69,19 +84,24 @@ header{
     "Times New Roman",
     serif;
 
-  font-size:.75rem;
+  font-size:.72rem;
+
   letter-spacing:.3em;
 
   margin-bottom:25px;
 }
 
 .logo{
-  width:min(220px,60vw);
+
+  width:
+    min(190px,55vw);
+
   height:auto;
 
   display:block;
 
-  margin:0 auto 28px;
+  margin:
+    0 auto 25px;
 
   filter:
     drop-shadow(
@@ -91,208 +111,27 @@ header{
 }
 
 h1{
+
   font-size:
-    clamp(2rem,5vw,3rem);
+    clamp(1.8rem,5vw,2.7rem);
 
   font-weight:400;
+
   letter-spacing:.12em;
 
   margin:0;
 }
 
 .lead{
+
   color:#aab8d2;
 
-  margin:22px auto 0;
+  margin:
+    20px auto 0;
+
+  font-size:.9rem;
 
   line-height:2;
-}
-
-
-/* =========================
-   SECTION
-========================= */
-
-section{
-  padding:65px 0;
-
-  border-top:
-    1px solid
-    rgba(180,205,245,.18);
-}
-
-.section-label{
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.72rem;
-  letter-spacing:.22em;
-
-  margin:0 0 10px;
-
-  text-align:center;
-}
-
-h2{
-  font-size:1.6rem;
-
-  font-weight:400;
-  letter-spacing:.08em;
-
-  margin:0 0 30px;
-
-  text-align:center;
-}
-
-.section-text{
-  color:#aab8d2;
-
-  text-align:center;
-
-  line-height:2;
-
-  margin:0 auto 45px;
-
-  max-width:760px;
-}
-
-
-/* =========================
-   INTRO
-========================= */
-
-.intro{
-  padding:32px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.2);
-
-  border-radius:22px;
-
-  background:
-    rgba(10,24,52,.58);
-}
-
-.intro p{
-  margin:0;
-
-  color:#c8d4ea;
-
-  line-height:2.1;
-}
-
-.intro p+p{
-  margin-top:18px;
-}
-
-
-/* =========================
-   WORK CARDS
-========================= */
-
-.guide-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:24px;
-}
-
-.guide-card{
-  min-height:270px;
-
-  padding:38px 30px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
-
-  align-items:center;
-
-  text-align:center;
-
-  border:
-    1px solid
-    rgba(180,205,245,.2);
-
-  border-radius:22px;
-
-  background:
-    rgba(10,24,52,.58);
-
-  transition:.35s ease;
-}
-
-.guide-card:hover{
-  transform:translateY(-5px);
-
-  border-color:
-    rgba(143,191,255,.55);
-
-  background:
-    rgba(20,40,78,.7);
-
-  box-shadow:
-    0 18px 45px
-    rgba(50,90,170,.12);
-}
-
-.number{
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.72rem;
-
-  letter-spacing:.25em;
-
-  margin-bottom:18px;
-}
-
-.guide-card h3{
-  font-size:1.4rem;
-
-  font-weight:400;
-
-  letter-spacing:.1em;
-
-  margin:0 0 12px;
-}
-
-.en{
-  color:#91b9f5;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.68rem;
-
-  letter-spacing:.2em;
-
-  margin-bottom:20px;
-}
-
-.guide-card p{
-  color:#aab8d2;
-
-  font-size:.88rem;
-
-  line-height:2;
-
-  margin:0;
 }
 
 
@@ -300,36 +139,18 @@ h2{
    DIAGNOSIS
 ========================= */
 
-.diagnosis{
-  width:100%;
+.diagnosis-section{
 
-  max-width:760px;
+  padding:
+    45px 0 80px;
 
-  margin:0 auto;
-}
-
-.question{
-  display:none;
-
-  padding:40px 30px;
-
-  border:
+  border-top:
     1px solid
-    rgba(180,205,245,.2);
-
-  border-radius:22px;
-
-  background:
-    rgba(10,24,52,.58);
-
-  text-align:center;
+    rgba(180,205,245,.18);
 }
 
-.question.active{
-  display:block;
-}
+.section-label{
 
-.question-number{
   color:#8fbfff;
 
   font-family:
@@ -339,24 +160,126 @@ h2{
 
   font-size:.72rem;
 
-  letter-spacing:.25em;
+  letter-spacing:.22em;
 
-  margin-bottom:18px;
+  text-align:center;
+
+  margin:
+    0 0 12px;
 }
 
-.question h3{
-  margin:0 0 30px;
+.section-title{
 
-  font-size:1.25rem;
+  font-size:
+    clamp(1.4rem,4vw,1.8rem);
 
   font-weight:400;
 
   letter-spacing:.08em;
 
-  line-height:1.8;
+  text-align:center;
+
+  margin:
+    0 0 18px;
 }
 
+.section-text{
+
+  color:#aab8d2;
+
+  text-align:center;
+
+  font-size:.88rem;
+
+  line-height:2;
+
+  margin:
+    0 auto 38px;
+}
+
+
+/* =========================
+   DIAGNOSIS BOX
+========================= */
+
+.diagnosis{
+
+  width:100%;
+
+  margin:0 auto;
+}
+
+
+/* =========================
+   QUESTION
+========================= */
+
+.question{
+
+  display:none;
+
+  padding:
+    45px 35px;
+
+  border:
+    1px solid
+    rgba(180,205,245,.2);
+
+  border-radius:24px;
+
+  background:
+    rgba(10,24,52,.58);
+
+  text-align:center;
+
+  box-shadow:
+    0 18px 50px
+    rgba(20,50,100,.08);
+}
+
+.question.active{
+
+  display:block;
+}
+
+.question-number{
+
+  color:#8fbfff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:.7rem;
+
+  letter-spacing:.25em;
+
+  margin-bottom:20px;
+}
+
+.question h2{
+
+  font-size:
+    clamp(1.15rem,3vw,1.4rem);
+
+  font-weight:400;
+
+  letter-spacing:.07em;
+
+  line-height:1.9;
+
+  margin:
+    0 0 32px;
+}
+
+
+/* =========================
+   ANSWERS
+========================= */
+
 .answers{
+
   display:grid;
 
   grid-template-columns:
@@ -366,11 +289,11 @@ h2{
 }
 
 .answer{
-  width:100%;
 
-  min-height:90px;
+  min-height:100px;
 
-  padding:20px;
+  padding:
+    22px 18px;
 
   border:
     1px solid
@@ -379,7 +302,7 @@ h2{
   border-radius:18px;
 
   background:
-    rgba(7,19,42,.6);
+    rgba(7,19,42,.62);
 
   color:#edf3ff;
 
@@ -391,31 +314,46 @@ h2{
 
   cursor:pointer;
 
-  transition:.3s ease;
+  transition:
+    .35s ease;
 }
 
 .answer:hover{
-  transform:translateY(-4px);
+
+  transform:
+    translateY(-5px);
 
   border-color:
     rgba(143,191,255,.6);
 
   background:
-    rgba(25,48,88,.7);
+    rgba(20,40,78,.72);
 
   box-shadow:
-    0 12px 30px
-    rgba(50,90,170,.1);
+    0 14px 35px
+    rgba(50,90,170,.12);
 }
 
+.answer:active{
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
 .progress{
-  margin-top:20px;
+
+  margin-top:25px;
 
   color:#8291aa;
 
-  font-size:.75rem;
+  font-size:.72rem;
 
-  letter-spacing:.1em;
+  letter-spacing:.15em;
 }
 
 
@@ -424,9 +362,11 @@ h2{
 ========================= */
 
 .result{
+
   display:none;
 
-  padding:45px 32px;
+  padding:
+    48px 32px;
 
   border:
     1px solid
@@ -438,13 +378,19 @@ h2{
     rgba(10,24,52,.68);
 
   text-align:center;
+
+  box-shadow:
+    0 18px 55px
+    rgba(20,50,100,.1);
 }
 
 .result.show{
+
   display:block;
 }
 
 .result-label{
+
   color:#8fbfff;
 
   font-family:
@@ -452,37 +398,50 @@ h2{
     "Times New Roman",
     serif;
 
-  font-size:.72rem;
+  font-size:.7rem;
 
   letter-spacing:.25em;
 
   margin-bottom:18px;
 }
 
-.result h3{
-  margin:0 0 25px;
+.result h2{
 
-  font-size:1.7rem;
+  font-size:
+    clamp(1.5rem,4vw,2rem);
 
   font-weight:400;
 
   letter-spacing:.1em;
+
+  margin:
+    0 0 25px;
 }
 
 .result-message{
+
   color:#c8d4ea;
 
   line-height:2.1;
 
-  margin:0 auto 30px;
+  margin:
+    0 auto 32px;
 
-  max-width:620px;
+  max-width:600px;
 }
 
+
+/* =========================
+   RESULT BUTTONS
+========================= */
+
 .result-buttons{
+
   display:flex;
 
   justify-content:center;
+
+  align-items:center;
 
   flex-wrap:wrap;
 
@@ -490,9 +449,11 @@ h2{
 }
 
 .result-button{
+
   display:inline-block;
 
-  padding:12px 25px;
+  padding:
+    12px 25px;
 
   border:
     1px solid
@@ -508,21 +469,33 @@ h2{
 
   letter-spacing:.06em;
 
-  transition:.3s ease;
+  transition:
+    .3s ease;
 }
 
 .result-button:hover{
+
   background:
     rgba(180,210,255,.1);
 
   border-color:
     rgba(143,191,255,.65);
+
+  transform:
+    translateY(-2px);
 }
 
+
+/* =========================
+   RETRY
+========================= */
+
 .retry{
+
   display:block;
 
-  margin:25px auto 0;
+  margin:
+    25px auto 0;
 
   padding:0;
 
@@ -541,213 +514,9 @@ h2{
   text-decoration:underline;
 }
 
+.retry:hover{
 
-/* =========================
-   COMPARISON
-========================= */
-
-.compare{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:20px;
-}
-
-.compare-box{
-  padding:30px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:20px;
-
-  background:
-    rgba(10,24,52,.58);
-
-  transition:.3s ease;
-}
-
-.compare-box:hover{
-  border-color:
-    rgba(143,191,255,.4);
-
-  background:
-    rgba(20,40,78,.65);
-}
-
-.compare-box h3{
-  margin:0 0 18px;
-
-  font-size:1.1rem;
-
-  font-weight:400;
-
-  letter-spacing:.08em;
-}
-
-.compare-box ul{
-  margin:0;
-
-  padding-left:1.2em;
-
-  color:#aab8d2;
-
-  line-height:2;
-}
-
-.compare-box li+li{
-  margin-top:6px;
-}
-
-
-/* =========================
-   FLOW
-========================= */
-
-.flow{
-  display:grid;
-
-  gap:14px;
-
-  max-width:700px;
-
-  margin:0 auto;
-}
-
-.flow-item{
-  display:flex;
-
-  align-items:center;
-
-  gap:20px;
-
-  padding:20px 24px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:18px;
-
-  background:
-    rgba(10,24,52,.58);
-
-  transition:.3s ease;
-}
-
-.flow-item:hover{
-  border-color:
-    rgba(143,191,255,.4);
-
-  background:
-    rgba(20,40,78,.65);
-
-  transform:translateY(-2px);
-}
-
-.flow-number{
-  flex:0 0 42px;
-
-  width:42px;
-  height:42px;
-
-  display:grid;
-
-  place-items:center;
-
-  border:
-    1px solid
-    rgba(143,191,255,.35);
-
-  border-radius:50%;
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.72rem;
-}
-
-.flow-text strong{
-  display:block;
-
-  font-weight:400;
-
-  color:#edf3ff;
-
-  margin-bottom:3px;
-}
-
-.flow-text span{
-  color:#9eacc4;
-
-  font-size:.82rem;
-}
-
-
-/* =========================
-   CTA
-========================= */
-
-.cta-box{
-  padding:40px 30px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:22px;
-
-  background:
-    rgba(10,24,52,.58);
-
-  text-align:center;
-}
-
-.cta-box p{
-  color:#aab8d2;
-
-  margin:0 0 25px;
-
-  line-height:2;
-}
-
-.cta-button{
-  display:inline-block;
-
-  padding:12px 28px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.3);
-
-  border-radius:999px;
-
-  color:#edf3ff;
-
-  text-decoration:none;
-
-  font-size:.82rem;
-
-  letter-spacing:.08em;
-
-  transition:.3s ease;
-}
-
-.cta-button:hover{
-  background:
-    rgba(180,210,255,.1);
-
-  border-color:
-    rgba(143,191,255,.65);
-
-  transform:translateY(-2px);
+  color:#b7c8e4;
 }
 
 
@@ -756,13 +525,16 @@ h2{
 ========================= */
 
 .back{
+
   display:block;
 
   width:max-content;
 
-  margin:45px auto 80px;
+  margin:
+    0 auto 70px;
 
-  padding:10px 22px;
+  padding:
+    10px 22px;
 
   border:
     1px solid
@@ -774,12 +546,19 @@ h2{
 
   text-decoration:none;
 
-  transition:.3s ease;
+  font-size:.8rem;
+
+  transition:
+    .3s ease;
 }
 
 .back:hover{
+
   background:
     rgba(180,210,255,.08);
+
+  border-color:
+    rgba(143,191,255,.35);
 }
 
 
@@ -790,55 +569,50 @@ h2{
 @media(max-width:700px){
 
   .wrap{
-    width:min(100% - 28px,950px);
+
+    width:
+      calc(100% - 28px);
   }
 
   header{
-    padding:75px 0 50px;
+
+    padding:
+      70px 0 45px;
   }
 
-  section{
-    padding:55px 0;
-  }
+  .diagnosis-section{
 
-  .guide-grid,
-  .compare,
-  .answers{
-    grid-template-columns:1fr;
-  }
-
-  .guide-card{
-    min-height:230px;
-
-    padding:32px 24px;
-  }
-
-  .intro{
-    padding:25px 22px;
+    padding:
+      40px 0 65px;
   }
 
   .question{
-    padding:32px 22px;
+
+    padding:
+      35px 20px;
+  }
+
+  .answers{
+
+    grid-template-columns:1fr;
+
+    gap:12px;
   }
 
   .answer{
+
     min-height:75px;
   }
 
   .result{
-    padding:35px 22px;
+
+    padding:
+      38px 20px;
   }
 
-  .flow-item{
-    padding:18px;
-  }
-
-  .cta-button{
-    display:block;
+  .result-button{
 
     width:100%;
-
-    margin:10px 0 0 !important;
   }
 
 }
@@ -851,12 +625,16 @@ h2{
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
   <div class="wrap">
 
     <div class="system">
-      HOSHIYOMI / WORK GUIDE
+      HOSHIYOMI / DIAGNOSIS
     </div>
 
     <img
@@ -866,11 +644,11 @@ h2{
     >
 
     <h1>
-      作品ガイド
+      作品診断
     </h1>
 
     <p class="lead">
-      あなたの想いを、どの形で残しますか。
+      あなたに残したい星は、どちらですか。
     </p>
 
   </div>
@@ -878,118 +656,20 @@ h2{
 </header>
 
 
-<main class="wrap">
-
-
-<!-- =========================
-     INTRO
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    01｜GUIDE
-  </p>
-
-  <h2>
-    星詠の作品について
-  </h2>
-
-  <div class="intro">
-
-    <p>
-      星詠では、あなた自身を描く「あなたの姿」と、
-      あなたの中にある景色や物語を描く「あなたの世界」の
-      二つの形をご用意しています。
-    </p>
-
-    <p>
-      どちらが正解というものではありません。
-      残したいもの、伝えたいものに合わせて、
-      あなたに合う形をお選びください。
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     TWO WORKS
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    02｜WORKS
-  </p>
-
-  <h2>
-    二つの作品
-  </h2>
-
-  <div class="guide-grid">
-
-    <div class="guide-card">
-
-      <div class="number">
-        01｜YOUR FORM
-      </div>
-
-      <h3>
-        あなたの姿
-      </h3>
-
-      <div class="en">
-        YOUR FORM
-      </div>
-
-      <p>
-        あなた自身の姿を中心に、
-        好きなものや雰囲気、あなたらしさを重ねて、
-        一枚の作品として描きます。
-      </p>
-
-    </div>
-
-
-    <div class="guide-card">
-
-      <div class="number">
-        02｜YOUR WORLD
-      </div>
-
-      <h3>
-        あなたの世界
-      </h3>
-
-      <div class="en">
-        YOUR WORLD
-      </div>
-
-      <p>
-        あなたの記憶や想像、頭の中にある景色や物語をもとに、
-        まだ形になっていない世界を一枚の作品として描きます。
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
 
 <!-- =========================
      DIAGNOSIS
 ========================= -->
 
-<section>
+<main class="wrap">
+
+<section class="diagnosis-section">
 
   <p class="section-label">
-    03｜DIAGNOSIS
+    WORK DIAGNOSIS
   </p>
 
-  <h2>
+  <h2 class="section-title">
     あなたに残したい星は、どちらですか？
   </h2>
 
@@ -1002,25 +682,36 @@ h2{
   <div class="diagnosis">
 
 
-    <!-- QUESTION 1 -->
+    <!-- =========================
+         QUESTION 01
+    ========================= -->
 
-    <div class="question active" data-question="1">
+    <div
+      class="question active"
+      data-question="1"
+    >
 
       <div class="question-number">
         QUESTION 01
       </div>
 
-      <h3>
+      <h2>
         作品に残したいものに近いのは？
-      </h3>
+      </h2>
 
       <div class="answers">
 
-        <button class="answer" data-type="form">
+        <button
+          class="answer"
+          data-type="form"
+        >
           自分自身の姿や表情
         </button>
 
-        <button class="answer" data-type="world">
+        <button
+          class="answer"
+          data-type="world"
+        >
           自分が見てきた景色や記憶
         </button>
 
@@ -1033,26 +724,37 @@ h2{
     </div>
 
 
-    <!-- QUESTION 2 -->
+    <!-- =========================
+         QUESTION 02
+    ========================= -->
 
-    <div class="question" data-question="2">
+    <div
+      class="question"
+      data-question="2"
+    >
 
       <div class="question-number">
         QUESTION 02
       </div>
 
-      <h3>
+      <h2>
         絵を見返したときに、<br>
         思い出したいのは？
-      </h3>
+      </h2>
 
       <div class="answers">
 
-        <button class="answer" data-type="form">
+        <button
+          class="answer"
+          data-type="form"
+        >
           その頃の自分
         </button>
 
-        <button class="answer" data-type="world">
+        <button
+          class="answer"
+          data-type="world"
+        >
           その頃に感じていた世界
         </button>
 
@@ -1065,25 +767,36 @@ h2{
     </div>
 
 
-    <!-- QUESTION 3 -->
+    <!-- =========================
+         QUESTION 03
+    ========================= -->
 
-    <div class="question" data-question="3">
+    <div
+      class="question"
+      data-question="3"
+    >
 
       <div class="question-number">
         QUESTION 03
       </div>
 
-      <h3>
+      <h2>
         描いてほしいものに近いのは？
-      </h3>
+      </h2>
 
       <div class="answers">
 
-        <button class="answer" data-type="form">
+        <button
+          class="answer"
+          data-type="form"
+        >
           姿・服装・表情・雰囲気
         </button>
 
-        <button class="answer" data-type="world">
+        <button
+          class="answer"
+          data-type="world"
+        >
           場所・季節・色・空気感
         </button>
 
@@ -1096,25 +809,36 @@ h2{
     </div>
 
 
-    <!-- QUESTION 4 -->
+    <!-- =========================
+         QUESTION 04
+    ========================= -->
 
-    <div class="question" data-question="4">
+    <div
+      class="question"
+      data-question="4"
+    >
 
       <div class="question-number">
         QUESTION 04
       </div>
 
-      <h3>
+      <h2>
         自分を作品の中に入れるなら？
-      </h3>
+      </h2>
 
       <div class="answers">
 
-        <button class="answer" data-type="form">
+        <button
+          class="answer"
+          data-type="form"
+        >
           自分自身として登場したい
         </button>
 
-        <button class="answer" data-type="world">
+        <button
+          class="answer"
+          data-type="world"
+        >
           自分がいなくても世界が伝わればいい
         </button>
 
@@ -1127,25 +851,36 @@ h2{
     </div>
 
 
-    <!-- QUESTION 5 -->
+    <!-- =========================
+         QUESTION 05
+    ========================= -->
 
-    <div class="question" data-question="5">
+    <div
+      class="question"
+      data-question="5"
+    >
 
       <div class="question-number">
         QUESTION 05
       </div>
 
-      <h3>
+      <h2>
         「自分らしさ」と聞いて近いのは？
-      </h3>
+      </h2>
 
       <div class="answers">
 
-        <button class="answer" data-type="form">
+        <button
+          class="answer"
+          data-type="form"
+        >
           姿や雰囲気
         </button>
 
-        <button class="answer" data-type="world">
+        <button
+          class="answer"
+          data-type="world"
+        >
           考え方や記憶、物語
         </button>
 
@@ -1158,25 +893,36 @@ h2{
     </div>
 
 
-    <!-- QUESTION 6 -->
+    <!-- =========================
+         QUESTION 06
+    ========================= -->
 
-    <div class="question" data-question="6">
+    <div
+      class="question"
+      data-question="6"
+    >
 
       <div class="question-number">
         QUESTION 06
       </div>
 
-      <h3>
+      <h2>
         最後に、一番残したいものは？
-      </h3>
+      </h2>
 
       <div class="answers">
 
-        <button class="answer" data-type="form">
+        <button
+          class="answer"
+          data-type="form"
+        >
           今の自分
         </button>
 
-        <button class="answer" data-type="world">
+        <button
+          class="answer"
+          data-type="world"
+        >
           今まで見てきた世界
         </button>
 
@@ -1189,15 +935,20 @@ h2{
     </div>
 
 
-    <!-- RESULT -->
+    <!-- =========================
+         RESULT
+    ========================= -->
 
-    <div class="result" id="result">
+    <div
+      class="result"
+      id="result"
+    >
 
       <div class="result-label">
         YOUR RESULT
       </div>
 
-      <h3 id="resultTitle"></h3>
+      <h2 id="resultTitle"></h2>
 
       <p
         class="result-message"
@@ -1224,245 +975,6 @@ h2{
 </section>
 
 
-<!-- =========================
-     COMPARISON
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    04｜SELECT
-  </p>
-
-  <h2>
-    二つの作品の違い
-  </h2>
-
-  <div class="compare">
-
-    <div class="compare-box">
-
-      <h3>
-        「あなたの姿」
-      </h3>
-
-      <ul>
-        <li>自分自身を作品として残したい</li>
-        <li>自分の姿や雰囲気を大切にしたい</li>
-        <li>好きなものを自分自身と一緒に描きたい</li>
-        <li>活動している姿を一枚に残したい</li>
-      </ul>
-
-    </div>
-
-
-    <div class="compare-box">
-
-      <h3>
-        「あなたの世界」
-      </h3>
-
-      <ul>
-        <li>頭の中にある景色を作品にしたい</li>
-        <li>思い出や記憶を一枚に残したい</li>
-        <li>物語や世界観を描いてほしい</li>
-        <li>人物そのものではなく、世界を中心にしたい</li>
-      </ul>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     MATERIAL
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    05｜MATERIAL
-  </p>
-
-  <h2>
-    ご依頼前に考えておくこと
-  </h2>
-
-  <p class="section-text">
-    完璧に決めておく必要はありません。<br>
-    分かる範囲で大丈夫です。
-  </p>
-
-  <div class="intro">
-
-    <p>
-      「あなたの姿」の場合は、姿や服装、好きなもの、
-      表情、雰囲気など、あなたらしさが分かる資料があると制作しやすくなります。
-    </p>
-
-    <p>
-      「あなたの世界」の場合は、描いてほしい景色、
-      記憶、物語、色、季節、場所など、
-      頭の中にあるものを自由に教えてください。
-    </p>
-
-    <p>
-      まだ何を伝えればいいか分からない場合も、
-      ご相談いただけます。
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     FLOW
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    06｜FLOW
-  </p>
-
-  <h2>
-    ご依頼の流れ
-  </h2>
-
-  <div class="flow">
-
-    <div class="flow-item">
-
-      <div class="flow-number">
-        01
-      </div>
-
-      <div class="flow-text">
-
-        <strong>
-          作品を選ぶ
-        </strong>
-
-        <span>
-          「あなたの姿」または「あなたの世界」を選択します。
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="flow-item">
-
-      <div class="flow-number">
-        02
-      </div>
-
-      <div class="flow-text">
-
-        <strong>
-          詳細を確認する
-        </strong>
-
-        <span>
-          それぞれのページで制作内容をご確認ください。
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="flow-item">
-
-      <div class="flow-number">
-        03
-      </div>
-
-      <div class="flow-text">
-
-        <strong>
-          フォームから依頼する
-        </strong>
-
-        <span>
-          必要事項を入力して、制作内容をお聞かせください。
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="flow-item">
-
-      <div class="flow-number">
-        04
-      </div>
-
-      <div class="flow-text">
-
-        <strong>
-          制作開始
-        </strong>
-
-        <span>
-          内容を確認したうえで、作品制作へ進みます。
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     CTA
-========================= -->
-
-<section>
-
-  <p class="section-label">
-    07｜NEXT
-  </p>
-
-  <h2>
-    それぞれの作品を詳しく見る
-  </h2>
-
-  <div class="cta-box">
-
-    <p>
-      診断結果を参考にしながら、<br>
-      それぞれの作品について詳しくご覧いただけます。
-    </p>
-
-    <a
-      href="yourself.html"
-      class="cta-button"
-    >
-      あなたの姿を見る →
-    </a>
-
-    <a
-      href="world.html"
-      class="cta-button"
-      style="margin-left:10px;"
-    >
-      あなたの世界を見る →
-    </a>
-
-  </div>
-
-</section>
-
-
 <a
   href="index.html#choice"
   class="back"
@@ -1470,11 +982,16 @@ h2{
   ← カード一覧へ戻る
 </a>
 
-
 </main>
 
 
+
 <script>
+
+
+/* =========================
+   ELEMENTS
+========================= */
 
 const questions =
   document.querySelectorAll(".question");
@@ -1493,6 +1010,11 @@ const resultButtons =
 
 const retry =
   document.getElementById("retry");
+
+
+/* =========================
+   SCORE
+========================= */
 
 let currentQuestion = 0;
 
@@ -1516,18 +1038,27 @@ document
         const type =
           button.dataset.type;
 
+
         if(type === "form"){
+
           formScore++;
+
         }
 
+
         if(type === "world"){
+
           worldScore++;
+
         }
+
 
         questions[currentQuestion]
           .classList.remove("active");
 
+
         currentQuestion++;
+
 
         if(
           currentQuestion <
@@ -1557,6 +1088,7 @@ function showResult(){
 
   result.classList.add("show");
 
+
   let title = "";
 
   let message = "";
@@ -1564,10 +1096,15 @@ function showResult(){
   let buttons = "";
 
 
+  /* =========================
+     YOUR FORM
+  ========================= */
+
   if(formScore > worldScore){
 
     title =
       "あなたの姿";
+
 
     message =
       "あなたが残したいのは、" +
@@ -1575,36 +1112,52 @@ function showResult(){
       "姿や表情、雰囲気など、" +
       "あなた自身を中心にした一枚がおすすめです。";
 
+
     buttons =
-      '<a href="yourself.html" class="result-button">' +
+      '<a ' +
+      'href="yourself.html" ' +
+      'class="result-button">' +
       'あなたの姿を詳しく見る →' +
       '</a>';
 
   }
 
 
+  /* =========================
+     YOUR WORLD
+  ========================= */
+
   else if(worldScore > formScore){
 
     title =
       "あなたの世界";
+
 
     message =
       "あなたが残したいのは、" +
       "「そのとき、あなたが見ていた世界」なのかもしれません。<br>" +
       "記憶や景色、物語などを中心にした一枚がおすすめです。";
 
+
     buttons =
-      '<a href="world.html" class="result-button">' +
+      '<a ' +
+      'href="world.html" ' +
+      'class="result-button">' +
       'あなたの世界を詳しく見る →' +
       '</a>';
 
   }
 
 
+  /* =========================
+     BOTH
+  ========================= */
+
   else{
 
     title =
       "どちらにも星があります";
+
 
     message =
       "あなた自身と、あなたの世界。<br>" +
@@ -1612,12 +1165,17 @@ function showResult(){
       "それぞれの作品を見ながら、" +
       "今のあなたが残したいものを探してみてください。";
 
+
     buttons =
-      '<a href="yourself.html" class="result-button">' +
+      '<a ' +
+      'href="yourself.html" ' +
+      'class="result-button">' +
       'あなたの姿を見る →' +
       '</a>' +
 
-      '<a href="world.html" class="result-button">' +
+      '<a ' +
+      'href="world.html" ' +
+      'class="result-button">' +
       'あなたの世界を見る →' +
       '</a>';
 
@@ -1650,7 +1208,11 @@ retry.addEventListener(
 
     worldScore = 0;
 
-    result.classList.remove("show");
+
+    result.classList.remove(
+      "show"
+    );
+
 
     questions.forEach(
       (question,index) => {
@@ -1663,11 +1225,9 @@ retry.addEventListener(
       }
     );
 
+
     window.scrollTo({
-      top:
-        document.querySelector(
-          ".diagnosis"
-        ).offsetTop - 100,
+      top:0,
       behavior:"smooth"
     });
 
@@ -1680,4 +1240,4 @@ retry.addEventListener(
 </body>
 
 </html>
-
+```
