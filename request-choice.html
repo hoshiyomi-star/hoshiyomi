@@ -20,18 +20,9 @@ body{
     linear-gradient(180deg,#020611 0%,#07152d 55%,#030817 100%);
 }
 
-.sky{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-}
-
+.sky{position:fixed;inset:0;pointer-events:none;overflow:hidden}
 .sky::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.28;
+  content:"";position:absolute;inset:0;opacity:.28;
   background-image:
     radial-gradient(circle at 14% 17%,rgba(235,243,255,.9) 0 1px,transparent 1.8px),
     radial-gradient(circle at 83% 26%,rgba(205,225,255,.65) 0 1px,transparent 1.8px),
@@ -39,208 +30,40 @@ body{
     radial-gradient(circle at 24% 72%,rgba(195,220,255,.5) 0 1px,transparent 1.8px);
 }
 
-.page{
-  position:relative;
-  z-index:2;
-  width:min(820px,calc(100% - 34px));
-  margin:auto;
-  padding:78px 0 70px;
-  text-align:center;
-}
-
-.emblem{
-  width:52px;
-  height:52px;
-  margin:0 auto 30px;
-  border:1px solid rgba(190,215,255,.38);
-  border-radius:50%;
-  position:relative;
-  opacity:.82;
-}
-
-.emblem::before,
-.emblem::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  background:rgba(215,230,255,.58);
-  transform:translate(-50%,-50%);
-}
-
-.emblem::before{width:70px;height:1px}
-.emblem::after{width:1px;height:70px}
-
-.emblem span{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  font-size:19px;
-}
-
-.system{
-  color:#9bbfff;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:.72rem;
-  letter-spacing:.35em;
-  margin-bottom:20px;
-}
-
-h1{
-  margin:0;
-  font-size:clamp(25px,5vw,36px);
-  font-weight:400;
-  letter-spacing:.14em;
-  line-height:1.8;
-}
-
-.lead{
-  margin:18px 0 48px;
-  color:#aebed5;
-  font-size:.9rem;
-  line-height:2.15;
-  letter-spacing:.07em;
-}
-
-.section-label{
-  margin:0 0 9px;
-  color:#9bbfff;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:.7rem;
-  letter-spacing:.25em;
-}
-
-.section-title{
-  margin:0 0 32px;
-  font-size:1.35rem;
-  font-weight:400;
-  letter-spacing:.12em;
-}
-
-.choices{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.choice{
-  min-height:245px;
-  padding:31px 25px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:#edf3ff;
-  text-decoration:none;
-  border:1px solid rgba(180,205,245,.22);
-  border-radius:16px;
-  background:rgba(8,22,48,.48);
-  transition:.35s ease;
-}
-
-.choice:hover{
-  transform:translateY(-5px);
-  border-color:rgba(165,205,255,.65);
-  background:rgba(35,60,105,.28);
-  box-shadow:0 18px 45px rgba(50,90,170,.12);
-}
-
-.number{
-  color:#9bbfff;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:.68rem;
-  letter-spacing:.25em;
-  margin-bottom:16px;
-}
-
-.choice h2{
-  margin:0 0 8px;
-  font-size:1.35rem;
-  font-weight:400;
-  letter-spacing:.12em;
-}
-
-.en{
-  color:#91b9f5;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:.68rem;
-  letter-spacing:.2em;
-  margin-bottom:15px;
-}
-
-.desc{
-  margin:0;
-  color:#aab8d0;
-  font-size:.78rem;
-  line-height:1.9;
-}
-
-.arrow{
-  margin-top:22px;
-  color:#bcd5ff;
-  font-size:.78rem;
-  letter-spacing:.1em;
-}
-
-.note{
-  margin:38px auto 0;
-  color:#8291aa;
-  font-size:.76rem;
-  line-height:2;
-}
-
-.back{
-  display:block;
-  width:max-content;
-  margin:35px auto 0;
-  padding:10px 22px;
-  border:1px solid rgba(180,205,245,.18);
-  border-radius:999px;
-  color:#dce8ff;
-  text-decoration:none;
-  font-size:.78rem;
-  letter-spacing:.08em;
-  transition:.3s ease;
-}
-
-.back:hover{
-  background:rgba(180,210,255,.08);
-}
-
-@media(max-width:650px){
-  .page{
-    padding:58px 0 48px;
-  }
-
-  .choices{
-    grid-template-columns:1fr;
-  }
-
-  .choice{
-    min-height:215px;
-  }
-}
+.page{position:relative;z-index:2;width:min(820px,calc(100% - 34px));margin:auto;padding:78px 0 70px;text-align:center}
+.emblem{width:52px;height:52px;margin:0 auto 30px;border:1px solid rgba(190,215,255,.38);border-radius:50%;position:relative;opacity:.82}
+.emblem::before,.emblem::after{content:"";position:absolute;left:50%;top:50%;background:rgba(215,230,255,.58);transform:translate(-50%,-50%)}
+.emblem::before{width:70px;height:1px}.emblem::after{width:1px;height:70px}
+.emblem span{position:absolute;inset:0;display:grid;place-items:center;font-size:19px}
+.system{color:#9bbfff;font-family:Georgia,"Times New Roman",serif;font-size:.72rem;letter-spacing:.35em;margin-bottom:20px}
+h1{margin:0;font-size:clamp(25px,5vw,36px);font-weight:400;letter-spacing:.14em;line-height:1.8}
+.lead{margin:18px 0 48px;color:#aebed5;font-size:.9rem;line-height:2.15;letter-spacing:.07em}
+.section-label{margin:0 0 9px;color:#9bbfff;font-family:Georgia,"Times New Roman",serif;font-size:.7rem;letter-spacing:.25em}
+.section-title{margin:0 0 32px;font-size:1.35rem;font-weight:400;letter-spacing:.12em}
+.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.choice{min-height:245px;padding:31px 25px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#edf3ff;text-decoration:none;border:1px solid rgba(180,205,245,.22);border-radius:16px;background:rgba(8,22,48,.48);transition:.35s ease}
+.choice:hover{transform:translateY(-5px);border-color:rgba(165,205,255,.65);background:rgba(35,60,105,.28);box-shadow:0 18px 45px rgba(50,90,170,.12)}
+.number{color:#9bbfff;font-family:Georgia,"Times New Roman",serif;font-size:.68rem;letter-spacing:.25em;margin-bottom:16px}
+.choice h2{margin:0 0 8px;font-size:1.35rem;font-weight:400;letter-spacing:.12em}
+.en{color:#91b9f5;font-family:Georgia,"Times New Roman",serif;font-size:.68rem;letter-spacing:.2em;margin-bottom:15px}
+.desc{margin:0;color:#aab8d0;font-size:.78rem;line-height:1.9}
+.arrow{margin-top:22px;color:#bcd5ff;font-size:.78rem;letter-spacing:.1em}
+.note{margin:38px auto 0;color:#8291aa;font-size:.76rem;line-height:2}
+.back{display:block;width:max-content;margin:35px auto 0;padding:10px 22px;border:1px solid rgba(180,205,245,.18);border-radius:999px;color:#dce8ff;text-decoration:none;font-size:.78rem;letter-spacing:.08em;transition:.3s ease}
+.back:hover{background:rgba(180,210,255,.08)}
+@media(max-width:650px){.page{padding:58px 0 48px}.choices{grid-template-columns:1fr}.choice{min-height:215px}}
 </style>
 </head>
 
 <body>
-
 <div class="sky"></div>
 
 <main class="page">
+  <div class="emblem"><span>✦</span></div>
 
-  <div class="emblem">
-    <span>✦</span>
-  </div>
+  <div class="system">HOSHIYOMI / REQUEST MENU</div>
 
-  <div class="system">
-    HOSHIYOMI / REQUEST MENU
-  </div>
-
-  <h1>
-    ご依頼内容をお選びください
-  </h1>
+  <h1>ご依頼内容をお選びください</h1>
 
   <p class="lead">
     星詠でご用意している作品の中から、<br>
@@ -248,122 +71,58 @@ h1{
   </p>
 
   <section>
+    <p class="section-label">REQUEST MENU</p>
 
-    <p class="section-label">
-      REQUEST MENU
-    </p>
-
-    <h2 class="section-title">
-      どの星をお選びになりますか？
-    </h2>
+    <h2 class="section-title">どの星をお選びになりますか？</h2>
 
     <div class="choices">
 
-      <a class="choice" href="request-normal.html">
-
-        <div class="number">
-          01｜YOUR FORM
-        </div>
-
-        <h2>
-          あなたの姿
-        </h2>
-
-        <div class="en">
-          YOUR FORM
-        </div>
-
+      <!-- 01だけリンクを変更 -->
+      <a class="choice" href="request-yourself_完成版.html">
+        <div class="number">01｜YOUR FORM</div>
+        <h2>あなたの姿</h2>
+        <div class="en">YOUR FORM</div>
         <p class="desc">
           あなた自身の姿や雰囲気を、<br>
           一枚の作品として描きます。
         </p>
-
-        <div class="arrow">
-          詳細を見る　→
-        </div>
-
+        <div class="arrow">詳細を見る　→</div>
       </a>
 
-
       <a class="choice" href="request-world.html">
-
-        <div class="number">
-          02｜YOUR WORLD
-        </div>
-
-        <h2>
-          あなたの世界
-        </h2>
-
-        <div class="en">
-          YOUR WORLD
-        </div>
-
+        <div class="number">02｜YOUR WORLD</div>
+        <h2>あなたの世界</h2>
+        <div class="en">YOUR WORLD</div>
         <p class="desc">
           あなたの記憶や想像する世界を、<br>
           一枚の作品として描きます。
         </p>
-
-        <div class="arrow">
-          詳細を見る　→
-        </div>
-
+        <div class="arrow">詳細を見る　→</div>
       </a>
 
-
       <a class="choice" href="request-memorial.html">
-
-        <div class="number">
-          03｜MEMORIAL
-        </div>
-
-        <h2>
-          記念品
-        </h2>
-
-        <div class="en">
-          MEMORIAL
-        </div>
-
+        <div class="number">03｜MEMORIAL</div>
+        <h2>記念品</h2>
+        <div class="en">MEMORIAL</div>
         <p class="desc">
           誕生日、周年、活動記念など。<br>
           大切な瞬間を作品として残します。
         </p>
-
-        <div class="arrow">
-          詳細を見る　→
-        </div>
-
+        <div class="arrow">詳細を見る　→</div>
       </a>
 
-
       <a class="choice" href="request-return.html">
-
-        <div class="number">
-          04｜RETURN GIFT
-        </div>
-
-        <h2>
-          返礼品
-        </h2>
-
-        <div class="en">
-          RETURN GIFT
-        </div>
-
+        <div class="number">04｜RETURN GIFT</div>
+        <h2>返礼品</h2>
+        <div class="en">RETURN GIFT</div>
         <p class="desc">
           応援してくれた人へ、<br>
           感謝を一枚の作品として届けます。
         </p>
-
-        <div class="arrow">
-          詳細を見る　→
-        </div>
-
+        <div class="arrow">詳細を見る　→</div>
       </a>
 
     </div>
-
   </section>
 
   <p class="note">
@@ -371,10 +130,7 @@ h1{
     各項目を選択すると、詳しい内容をご覧いただけます。
   </p>
 
-  <a class="back" href="index.html#choice">
-    ← カードに戻る
-  </a>
-
+  <a class="back" href="index.html#choice">← カードに戻る</a>
 </main>
 
 </body>
