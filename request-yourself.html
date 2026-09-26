@@ -693,10 +693,7 @@ textarea{
       <input type="hidden" name="_subject" value="【星詠】あなたの姿・新規依頼">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="">
-
-
-    <!-- 01 -->
+<!-- 01 -->
     <div class="form-block">
       <p class="form-block-label">01 / YOUR APPEARANCE</p>
       <h2>あなたの姿</h2>
@@ -704,12 +701,12 @@ textarea{
 
       <div class="field">
         <label>お名前・活動名 <span class="required">必須</span></label>
-        <input type="text" name="name" placeholder="お名前または活動名" required>
+        <input type="text" name="お名前・活動名" placeholder="お名前または活動名" required>
       </div>
 
       <div class="field">
         <label>メールアドレス <span class="required">必須</span></label>
-        <input type="email" name="email" placeholder="example@email.com" required>
+        <input type="email" name="メールアドレス" placeholder="example@email.com" required>
       </div>
 
       <div class="field">
@@ -718,21 +715,21 @@ textarea{
         <p class="help">正面・横向き・全身・顔まわりなど、姿が分かる画像を最大6枚まで添付できます。</p>
       </div>
 
-      <div class="field"><label>髪型・髪色 <span class="optional">任意</span></label><textarea name="hair" placeholder="例：黒髪ロング、毛先だけ青など。"></textarea></div>
-      <div class="field"><label>目の色や形 <span class="optional">任意</span></label><textarea name="eyes" placeholder="例：青い瞳、少しタレ目など。"></textarea></div>
-      <div class="field"><label>服装 <span class="optional">任意</span></label><textarea name="clothes" placeholder="普段よく使う衣装や、描いてほしい服装など。"></textarea></div>
-      <div class="field"><label>アクセサリー・よく使うアイテム <span class="optional">任意</span></label><textarea name="accessories"></textarea></div>
-      <div class="field"><label>お気に入りのパーツ <span class="optional">任意</span></label><textarea name="favorite_parts"></textarea></div>
-      <div class="field"><label>自分では特に気に入っているところ <span class="optional">任意</span></label><textarea name="favorite_feature"></textarea></div>
-      <div class="field"><label>あまり目立たせたくないところ <span class="optional">任意</span></label><textarea name="less_emphasis"></textarea></div>
-      <div class="field"><label>普段よく使う衣装や組み合わせ <span class="optional">任意</span></label><textarea name="usual_outfit"></textarea></div>
-      <div class="field"><label>「この姿といえばこれ」という特徴 <span class="optional">任意</span></label><textarea name="signature_feature"></textarea></div>
+      <div class="field"><label>髪型・髪色 <span class="optional">任意</span></label><textarea name="髪型・髪色" placeholder="例：黒髪ロング、毛先だけ青など。"></textarea></div>
+      <div class="field"><label>目の色や形 <span class="optional">任意</span></label><textarea name="目の色や形" placeholder="例：青い瞳、少しタレ目など。"></textarea></div>
+      <div class="field"><label>服装 <span class="optional">任意</span></label><textarea name="服装" placeholder="普段よく使う衣装や、描いてほしい服装など。"></textarea></div>
+      <div class="field"><label>アクセサリー・よく使うアイテム <span class="optional">任意</span></label><textarea name="アクセサリー・よく使うアイテム"></textarea></div>
+      <div class="field"><label>お気に入りのパーツ <span class="optional">任意</span></label><textarea name="お気に入りのパーツ"></textarea></div>
+      <div class="field"><label>自分では特に気に入っているところ <span class="optional">任意</span></label><textarea name="自分では特に気に入っているところ"></textarea></div>
+      <div class="field"><label>あまり目立たせたくないところ <span class="optional">任意</span></label><textarea name="あまり目立たせたくないところ"></textarea></div>
+      <div class="field"><label>普段よく使う衣装や組み合わせ <span class="optional">任意</span></label><textarea name="普段よく使う衣装や組み合わせ"></textarea></div>
+      <div class="field"><label>「この姿といえばこれ」という特徴 <span class="optional">任意</span></label><textarea name="「この姿といえばこれ」という特徴"></textarea></div>
 
       <div class="field">
         <label>REALITYアバターを参考にしますか？ <span class="required">必須</span></label>
         <div class="radio-list">
-          <label class="radio-item"><input type="radio" name="use_reality" value="yes" required><span>はい、REALITYアバターを参考にします</span></label>
-          <label class="radio-item"><input type="radio" name="use_reality" value="no"><span>いいえ、REALITYアバターは使用しません</span></label>
+          <label class="radio-item"><input type="radio" name="REALITYアバターを参考にしますか？" value="yes" required><span>はい、REALITYアバターを参考にします</span></label>
+          <label class="radio-item"><input type="radio" name="REALITYアバターを参考にしますか？" value="no"><span>いいえ、REALITYアバターは使用しません</span></label>
         </div>
       </div>
 
@@ -744,12 +741,12 @@ textarea{
         </div>
 
         <label class="agreement-check">
-          <input type="checkbox" name="reality_own_avatar" value="yes">
+          <input type="checkbox" name="REALITYアバターの使用権限確認" value="yes">
           <span>このアバターは自分が使用しているアバターであり、参考資料として提出することを確認しました。</span>
         </label>
 
         <label class="agreement-check">
-          <input type="checkbox" name="reality_model_agreement" value="yes">
+          <input type="checkbox" name="REALITYモデル利用についての確認" value="yes">
           <span>3Dモデルデータの抽出・複製を目的とした依頼ではないことを確認しました。</span>
         </label>
       </div>
@@ -761,15 +758,15 @@ textarea{
       <h2>あなた自身について</h2>
       <p class="form-block-lead">姿だけでは分からない、あなた自身のことを教えてください。</p>
 
-      <div class="field"><label>自分を一言で表すなら？ <span class="optional">任意</span></label><textarea name="one_word"></textarea></div>
-      <div class="field"><label>自分ではどんな性格だと思う？ <span class="optional">任意</span></label><textarea name="personality"></textarea></div>
-      <div class="field"><label>周りからはどんな人だと言われる？ <span class="optional">任意</span></label><textarea name="others_view"></textarea></div>
-      <div class="field"><label>第一印象と実際の性格に違いはある？ <span class="optional">任意</span></label><textarea name="first_impression"></textarea></div>
-      <div class="field"><label>人といるときはどんな立ち位置になりやすい？ <span class="optional">任意</span></label><textarea name="social_position"></textarea></div>
-      <div class="field"><label>得意なこと <span class="optional">任意</span></label><textarea name="strengths"></textarea></div>
-      <div class="field"><label>苦手なこと <span class="optional">任意</span></label><textarea name="weaknesses"></textarea></div>
-      <div class="field"><label>好きなこと <span class="optional">任意</span></label><textarea name="likes"></textarea></div>
-      <div class="field"><label>苦手・嫌いなこと <span class="optional">任意</span></label><textarea name="dislikes"></textarea></div>
+      <div class="field"><label>自分を一言で表すなら？ <span class="optional">任意</span></label><textarea name="自分を一言で表すなら？"></textarea></div>
+      <div class="field"><label>自分ではどんな性格だと思う？ <span class="optional">任意</span></label><textarea name="自分ではどんな性格だと思う？"></textarea></div>
+      <div class="field"><label>周りからはどんな人だと言われる？ <span class="optional">任意</span></label><textarea name="周りからはどんな人だと言われる？"></textarea></div>
+      <div class="field"><label>第一印象と実際の性格に違いはある？ <span class="optional">任意</span></label><textarea name="第一印象と実際の性格に違いはある？"></textarea></div>
+      <div class="field"><label>人といるときはどんな立ち位置になりやすい？ <span class="optional">任意</span></label><textarea name="人といるときはどんな立ち位置になりやすい？"></textarea></div>
+      <div class="field"><label>得意なこと <span class="optional">任意</span></label><textarea name="得意なこと"></textarea></div>
+      <div class="field"><label>苦手なこと <span class="optional">任意</span></label><textarea name="苦手なこと"></textarea></div>
+      <div class="field"><label>好きなこと <span class="optional">任意</span></label><textarea name="好きなこと"></textarea></div>
+      <div class="field"><label>苦手・嫌いなこと <span class="optional">任意</span></label><textarea name="苦手・嫌いなこと"></textarea></div>
       <div class="field"><label>最近ハマっていること <span class="optional">任意</span></label><textarea name="recent_interest"></textarea></div>
       <div class="field"><label>つい夢中になってしまうこと <span class="optional">任意</span></label><textarea name="obsession"></textarea></div>
       <div class="field"><label>大切にしていること <span class="optional">任意</span></label><textarea name="values"></textarea></div>
@@ -783,21 +780,21 @@ textarea{
       <h2>あなたの好きなもの</h2>
       <p class="form-block-lead">「好きなもの」と「なぜ好きなのか」も、もしあれば教えてください。</p>
 
-      <div class="field"><label>好きな色 <span class="optional">任意</span></label><input type="text" name="favorite_color"></div>
-      <div class="field"><label>好きな季節 <span class="optional">任意</span></label><input type="text" name="favorite_season"></div>
-      <div class="field"><label>好きな天気 <span class="optional">任意</span></label><input type="text" name="favorite_weather"></div>
-      <div class="field"><label>好きな場所 <span class="optional">任意</span></label><textarea name="favorite_place"></textarea></div>
-      <div class="field"><label>好きな動物 <span class="optional">任意</span></label><input type="text" name="favorite_animal"></div>
-      <div class="field"><label>好きな花 <span class="optional">任意</span></label><input type="text" name="favorite_flower"></div>
-      <div class="field"><label>好きな食べ物 <span class="optional">任意</span></label><input type="text" name="favorite_food"></div>
-      <div class="field"><label>好きな作品 <span class="optional">任意</span></label><textarea name="favorite_work"></textarea></div>
-      <div class="field"><label>好きな音楽 <span class="optional">任意</span></label><textarea name="favorite_music"></textarea></div>
-      <div class="field"><label>好きなキャラクター <span class="optional">任意</span></label><textarea name="favorite_character"></textarea></div>
-      <div class="field"><label>好きなモチーフ <span class="optional">任意</span></label><textarea name="favorite_motif"></textarea></div>
+      <div class="field"><label>好きな色 <span class="optional">任意</span></label><input type="text" name="好きな色"></div>
+      <div class="field"><label>好きな季節 <span class="optional">任意</span></label><input type="text" name="好きな季節"></div>
+      <div class="field"><label>好きな天気 <span class="optional">任意</span></label><input type="text" name="好きな天気"></div>
+      <div class="field"><label>好きな場所 <span class="optional">任意</span></label><textarea name="好きな場所"></textarea></div>
+      <div class="field"><label>好きな動物 <span class="optional">任意</span></label><input type="text" name="好きな動物"></div>
+      <div class="field"><label>好きな花 <span class="optional">任意</span></label><input type="text" name="好きな花"></div>
+      <div class="field"><label>好きな食べ物 <span class="optional">任意</span></label><input type="text" name="好きな食べ物"></div>
+      <div class="field"><label>好きな作品 <span class="optional">任意</span></label><textarea name="好きな作品"></textarea></div>
+      <div class="field"><label>好きな音楽 <span class="optional">任意</span></label><textarea name="好きな音楽"></textarea></div>
+      <div class="field"><label>好きなキャラクター <span class="optional">任意</span></label><textarea name="好きなキャラクター"></textarea></div>
+      <div class="field"><label>好きなモチーフ <span class="optional">任意</span></label><textarea name="好きなモチーフ"></textarea></div>
       <div class="field"><label>好きな世界観 <span class="optional">任意</span></label><textarea name="favorite_worldview"></textarea></div>
-      <div class="field"><label>好きな香り <span class="optional">任意</span></label><input type="text" name="favorite_scent"></div>
-      <div class="field"><label>好きな時間帯 <span class="optional">任意</span></label><input type="text" name="favorite_time"></div>
-      <div class="field"><label>好きな理由 <span class="optional">任意</span></label><textarea name="why_favorite"></textarea></div>
+      <div class="field"><label>好きな香り <span class="optional">任意</span></label><input type="text" name="好きな香り"></div>
+      <div class="field"><label>好きな時間帯 <span class="optional">任意</span></label><input type="text" name="好きな時間帯"></div>
+      <div class="field"><label>好きな理由 <span class="optional">任意</span></label><textarea name="好きなものを好きな理由"></textarea></div>
     </div>
 
     <!-- 04 -->
@@ -806,14 +803,14 @@ textarea{
       <h2>あなたの記憶</h2>
       <p class="form-block-lead">話せる範囲で大丈夫です。答えにくいものは飛ばしてください。</p>
 
-      <div class="field"><label>今までで印象に残っている出来事 <span class="optional">任意</span></label><textarea name="memorable_event"></textarea></div>
+      <div class="field"><label>今までで印象に残っている出来事 <span class="optional">任意</span></label><textarea name="今までで印象に残っている出来事"></textarea></div>
       <div class="field"><label>大切な思い出 <span class="optional">任意</span></label><textarea name="precious_memory"></textarea></div>
-      <div class="field"><label>忘れられない場所 <span class="optional">任意</span></label><textarea name="unforgettable_place"></textarea></div>
-      <div class="field"><label>忘れられない言葉 <span class="optional">任意</span></label><textarea name="unforgettable_words"></textarea></div>
+      <div class="field"><label>忘れられない場所 <span class="optional">任意</span></label><textarea name="忘れられない場所"></textarea></div>
+      <div class="field"><label>忘れられない言葉 <span class="optional">任意</span></label><textarea name="忘れられない言葉"></textarea></div>
       <div class="field"><label>昔から好きなもの <span class="optional">任意</span></label><textarea name="longtime_favorite"></textarea></div>
-      <div class="field"><label>今でも大切にしているもの <span class="optional">任意</span></label><textarea name="cherished_item"></textarea></div>
-      <div class="field"><label>「自分が変わった」と感じた出来事 <span class="optional">任意</span></label><textarea name="turning_point"></textarea></div>
-      <div class="field"><label>今の自分につながっていると思う出来事 <span class="optional">任意</span></label><textarea name="connected_event"></textarea></div>
+      <div class="field"><label>今でも大切にしているもの <span class="optional">任意</span></label><textarea name="今でも大切にしているもの"></textarea></div>
+      <div class="field"><label>「自分が変わった」と感じた出来事 <span class="optional">任意</span></label><textarea name="人生の中で「自分が変わった」と感じた出来事"></textarea></div>
+      <div class="field"><label>今の自分につながっていると思う出来事 <span class="optional">任意</span></label><textarea name="今の自分につながっていると思う出来事"></textarea></div>
     </div>
     <!-- 06 -->
     <div class="form-block">
@@ -924,7 +921,7 @@ textarea{
       </div>
 
       <label class="agreement-check">
-        <input type="checkbox" name="rights_agreement" required>
+        <input type="checkbox" name="権利・利用についての確認" required>
         <span>上記の権利・利用について確認し、内容に同意します。</span>
       </label>
     </div>
@@ -935,12 +932,12 @@ textarea{
       <h2>最終確認</h2>
 
       <label class="agreement-check">
-        <input type="checkbox" name="agree_notes" required>
+        <input type="checkbox" name="星詠の注意事項・利用についての確認" required>
         <span>星詠の注意事項・利用についての内容を確認しました。</span>
       </label>
 
       <label class="agreement-check">
-        <input type="checkbox" name="agree_contact" required>
+        <input type="checkbox" name="星詠から連絡を受けることの確認" required>
         <span>内容確認のため、星詠から連絡を受ける場合があることを確認しました。</span>
       </label>
 
@@ -963,11 +960,11 @@ textarea{
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const radios = document.querySelectorAll('input[name="use_reality"]');
+  const radios = document.querySelectorAll('input[name="REALITYアバターを参考にしますか？"]');
   const box = document.getElementById("realityExtra");
 
   function updateReality() {
-    const yes = document.querySelector('input[name="use_reality"]:checked')?.value === "yes";
+    const yes = document.querySelector('input[name="REALITYアバターを参考にしますか？"]:checked')?.value === "yes";
     box.classList.toggle("is-open", yes);
 
     box.querySelectorAll('input[type="checkbox"]').forEach(function (el) {
