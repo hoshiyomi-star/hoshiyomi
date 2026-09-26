@@ -689,7 +689,12 @@ textarea{
     短い回答でも、長く語ってもらっても大丈夫です。
   </p>
 
-  <form action="#" method="post" enctype="multipart/form-data">
+  <form action="https://formsubmit.co/hoshi.sengetu@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="【星詠】あなたの姿・新規依頼">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="">
+
 
     <!-- 01 -->
     <div class="form-block">
@@ -938,6 +943,12 @@ textarea{
         <input type="checkbox" name="agree_contact" required>
         <span>内容確認のため、星詠から連絡を受ける場合があることを確認しました。</span>
       </label>
+
+      <div class="note-box">
+        <strong>送信について</strong>
+        <p>送信すると、ご入力いただいた内容と添付画像が星詠の受付先へ送信されます。</p>
+        <p>画像は合計10MB以内を目安にしてください。</p>
+      </div>
 
       <div class="submit-area">
         <button type="submit" class="submit">依頼内容を送信する</button>
