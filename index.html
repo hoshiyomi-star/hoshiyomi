@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -265,73 +266,9 @@ body{
   display:grid;
 
   grid-template-columns:
-    repeat(12,1fr);
+    repeat(4,1fr);
 
   gap:20px;
-}
-
-
-/* -------------------------
-   ROW 1
-------------------------- */
-
-.choice:nth-child(1){
-
-  grid-column:
-    1 / 5;
-}
-
-.choice:nth-child(2){
-
-  grid-column:
-    5 / 9;
-}
-
-.choice:nth-child(3){
-
-  grid-column:
-    9 / 13;
-}
-
-
-/* -------------------------
-   ROW 2
-------------------------- */
-
-.choice:nth-child(4){
-
-  grid-column:
-    1 / 4;
-}
-
-.choice:nth-child(5){
-
-  grid-column:
-    4 / 7;
-}
-
-.choice:nth-child(6){
-
-  grid-column:
-    7 / 10;
-}
-
-.choice:nth-child(7){
-
-  grid-column:
-    10 / 13;
-}
-
-
-/* -------------------------
-   ROW 3
-   08｜作品診断
-------------------------- */
-
-.choice:nth-child(8){
-
-  grid-column:
-    4 / 10;
 }
 
 
@@ -344,7 +281,7 @@ body{
   min-height:240px;
 
   padding:
-    35px 25px;
+    35px 22px;
 
   display:flex;
 
@@ -463,68 +400,36 @@ body{
 
   .choices{
 
-    grid-template-columns:1fr;
+    grid-template-columns:
+      repeat(2,1fr);
 
     gap:16px;
   }
 
-  .choice:nth-child(1),
-  .choice:nth-child(2),
-  .choice:nth-child(3),
-  .choice:nth-child(4),
-  .choice:nth-child(5),
-  .choice:nth-child(6),
-  .choice:nth-child(7),
-  .choice:nth-child(8){
+  .choice{
 
-    grid-column:1;
+    min-height:210px;
+
+    padding:
+      30px 18px;
+  }
+
+}
+
+@media(max-width:520px){
+
+  .choices{
+
+    grid-template-columns:1fr;
+
   }
 
   .choice{
 
     min-height:180px;
 
-    padding:
-      30px 20px;
   }
 
-  .start-inner{
-
-    padding:
-      40px 15px;
-  }
-
-  .subtitle{
-
-    margin-bottom:50px;
-  }
-}
-
-@media(max-width:450px){
-
-  .choice-screen{
-
-    padding:
-      60px 15px
-      80px;
-  }
-
-  .choice-title{
-
-    font-size:1.7rem;
-
-    letter-spacing:.08em;
-  }
-
-  .choice-text{
-
-    margin-bottom:40px;
-  }
-
-  .choice{
-
-    min-height:170px;
-  }
 }
 
 </style>
@@ -870,4 +775,4 @@ if(
 </body>
 
 </html>
-
+```
