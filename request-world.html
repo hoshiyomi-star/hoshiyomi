@@ -13,7 +13,7 @@ body{min-height:100vh;overflow-x:hidden;color:#edf3ff;font-family:"Noto Serif JP
 .system{text-align:center;color:#9bbfff;font-family:Georgia,"Times New Roman",serif;font-size:.72rem;letter-spacing:.35em;margin-bottom:20px}h1{text-align:center;margin:0;font-size:clamp(25px,5vw,36px);font-weight:400;letter-spacing:.14em;line-height:1.8}.lead{text-align:center;margin:18px 0 45px;color:#aebed5;font-size:.9rem;line-height:2.15;letter-spacing:.07em}
 .notice{margin:0 0 34px;padding:20px 24px;border:1px solid rgba(180,205,245,.16);border-radius:14px;background:rgba(8,22,48,.35);color:#aebed5;font-size:.78rem;line-height:2.1;text-align:center}
 .section{margin:0 0 34px;padding:30px 28px;border:1px solid rgba(180,205,245,.18);border-radius:16px;background:rgba(8,22,48,.42)}.section-label{margin:0 0 8px;color:#9bbfff;font-family:Georgia,"Times New Roman",serif;font-size:.68rem;letter-spacing:.25em}h2{margin:0 0 8px;font-size:1.25rem;font-weight:400;letter-spacing:.1em}.section-desc{margin:0 0 24px;color:#8999b2;font-size:.76rem;line-height:2}
-label{display:block;margin:20px 0 7px;color:#dce7f8;font-size:.8rem;letter-spacing:.04em}.required{color:#91b9f5;font-size:.65rem;margin-left:6px}
+label{display:block;margin:20px 0 7px;color:#dce7f8;font-size:.8rem;letter-spacing:.04em}.required,.optional{font-size:.64rem;margin-left:7px;letter-spacing:.05em}.required{color:#91b9f5}.optional{color:#7f91ad}
 input[type=text],input[type=email],textarea{width:100%;padding:12px 14px;border:1px solid rgba(180,205,245,.18);border-radius:10px;background:rgba(2,10,25,.58);color:#edf3ff;font:inherit;font-size:.8rem;outline:none}textarea{min-height:110px;resize:vertical}input:focus,textarea:focus{border-color:rgba(165,205,255,.55)}
 .options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.options label{margin:0;padding:12px;border:1px solid rgba(180,205,245,.14);border-radius:10px;background:rgba(2,10,25,.34);cursor:pointer}.options input{margin-right:7px}
 .file-list{display:grid;gap:10px}.file-box{padding:15px;border:1px dashed rgba(180,205,245,.22);border-radius:10px;background:rgba(2,10,25,.34)}.file-box label{margin:0 0 7px}input[type=file]{width:100%;color:#aebed5;font-size:.72rem}.hint{margin:5px 0 0;color:#7788a3;font-size:.68rem;line-height:1.8}
@@ -39,102 +39,145 @@ input[type=text],input[type=email],textarea{width:100%;padding:12px 14px;border:
 
 <section class="section">
 <p class="section-label">01｜YOUR WORLD</p><h2>描きたい世界</h2><p class="section-desc">まずは、あなたが描いてほしい「世界」そのものについて教えてください。</p>
-<label>お名前・活動名</label><input type="text" name="お名前・活動名">
+<label>お名前・活動名<span class="optional">任意</span></label><input type="text" name="お名前・活動名">
 <label>メールアドレス <span class="required">必須</span></label><input type="email" name="メールアドレス" required>
-<label>どんな世界を描いてほしい？</label><textarea name="どんな世界を描いてほしい？"></textarea>
-<label>その世界を一言で表すなら？</label><textarea name="その世界を一言で表すなら？"></textarea>
-<label>現実にある場所？それとも完全な空想？</label><textarea name="現実か空想か"></textarea>
-<label>その世界で一番見せたいものは？</label><textarea name="一番見せたいもの"></textarea>
-<label>世界の中で特に大切な場所は？</label><textarea name="特に大切な場所"></textarea>
-<label>「この世界らしい」と思うものは？</label><textarea name="この世界らしいもの"></textarea>
+<label>どんな世界を描いてほしい？<span class="optional">任意</span></label><textarea name="どんな世界を描いてほしい？"></textarea>
+<label>その世界を一言で表すなら？<span class="optional">任意</span></label><textarea name="その世界を一言で表すなら？"></textarea>
+<label>現実にある場所？それとも完全な空想？<span class="optional">任意</span></label><textarea name="現実か空想か"></textarea>
+<label>その世界で一番見せたいものは？<span class="optional">任意</span></label><textarea name="一番見せたいもの"></textarea>
+<label>世界の中で特に大切な場所は？<span class="optional">任意</span></label><textarea name="特に大切な場所"></textarea>
+<label>「この世界らしい」と思うものは？<span class="optional">任意</span></label><textarea name="この世界らしいもの"></textarea>
 </section>
 
 <section class="section">
 <p class="section-label">02｜ATMOSPHERE</p><h2>景色・空気</h2><p class="section-desc">その場所に立ったとき、どんな景色や空気を感じるのか教えてください。</p>
-<label>昼と夜、どちらが似合う？</label><div class="options"><label><input type="radio" name="昼と夜" value="昼">昼</label><label><input type="radio" name="昼と夜" value="夜">夜</label><label><input type="radio" name="昼と夜" value="どちらでも">どちらでも</label></div>
-<label>どんな季節？</label><input type="text" name="季節">
-<label>どんな空？</label><textarea name="空"></textarea>
-<label>どんな天気？</label><input type="text" name="天気">
-<label>明るい／暗い、どちらに近い？</label><input type="text" name="明るさ">
-<label>静か／賑やか、どちらに近い？</label><input type="text" name="音の雰囲気">
-<label>暖かい／冷たい、どちらに近い？</label><input type="text" name="温度の印象">
-<label>その場所にはどんな光がある？</label><textarea name="光"></textarea>
-<label>どんな色が広がっている？</label><textarea name="色"></textarea>
-<label>どんな音が聞こえる？</label><textarea name="音"></textarea>
-<label>どんな匂いがする？</label><textarea name="匂い"></textarea>
+<label>昼と夜、どちらが似合う？ <span class="optional">任意</span></label><div class="options"><label><input type="radio" name="昼と夜" value="昼">昼</label><label><input type="radio" name="昼と夜" value="夜">夜</label><label><input type="radio" name="昼と夜" value="どちらでも">どちらでも</label></div>
+<label>どんな季節？<span class="optional">任意</span></label><input type="text" name="季節">
+<label>どんな空？<span class="optional">任意</span></label><textarea name="空"></textarea>
+<label>どんな天気？<span class="optional">任意</span></label><input type="text" name="天気">
+<label>明るい／暗い、どちらに近い？<span class="optional">任意</span></label><input type="text" name="明るさ">
+<label>静か／賑やか、どちらに近い？<span class="optional">任意</span></label><input type="text" name="音の雰囲気">
+<label>暖かい／冷たい、どちらに近い？<span class="optional">任意</span></label><input type="text" name="温度の印象">
+<label>その場所にはどんな光がある？<span class="optional">任意</span></label><textarea name="光"></textarea>
+<label>どんな色が広がっている？<span class="optional">任意</span></label><textarea name="色"></textarea>
+<label>どんな音が聞こえる？<span class="optional">任意</span></label><textarea name="音"></textarea>
+<label>どんな匂いがする？<span class="optional">任意</span></label><textarea name="匂い"></textarea>
 </section>
 
 <section class="section">
 <p class="section-label">03｜ELEMENTS</p><h2>そこにあるもの</h2><p class="section-desc">その世界を形作っているものを、思いつくまま教えてください。</p>
-<label>建物・自然・花・植物・動物など</label><textarea name="建物・自然・植物・動物"></textarea>
-<label>小物や特徴的な場所</label><textarea name="小物・特徴的な場所"></textarea>
-<label>世界を象徴するもの</label><textarea name="世界を象徴するもの"></textarea>
-<label>絶対に入れてほしいもの</label><textarea name="絶対に入れてほしいもの"></textarea>
-<label>逆に、入れてほしくないもの</label><textarea name="入れてほしくないもの"></textarea>
+<label>建物・自然・花・植物・動物など<span class="optional">任意</span></label><textarea name="建物・自然・植物・動物"></textarea>
+<label>小物や特徴的な場所<span class="optional">任意</span></label><textarea name="小物・特徴的な場所"></textarea>
+<label>世界を象徴するもの<span class="optional">任意</span></label><textarea name="世界を象徴するもの"></textarea>
+<label>絶対に入れてほしいもの<span class="optional">任意</span></label><textarea name="絶対に入れてほしいもの"></textarea>
+<label>逆に、入れてほしくないもの<span class="optional">任意</span></label><textarea name="入れてほしくないもの"></textarea>
 </section>
 
 <section class="section">
 <p class="section-label">04｜STORY</p><h2>その世界の物語</h2><p class="section-desc">その世界にある記憶や出来事、物語があれば教えてください。</p>
-<label>その世界にはどんな出来事があった？</label><textarea name="世界の出来事"></textarea>
-<label>その場所にまつわる大切な記憶</label><textarea name="大切な記憶"></textarea>
-<label>その世界で起こっていること</label><textarea name="起こっていること"></textarea>
-<label>誰かに伝えたい物語</label><textarea name="伝えたい物語"></textarea>
-<label>その世界を見た人に、どんなことを感じてほしい？</label><textarea name="感じてほしいこと"></textarea>
-<label>「この瞬間を描いてほしい」という場面</label><textarea name="描いてほしい場面"></textarea>
+<label>その世界にはどんな出来事があった？<span class="optional">任意</span></label><textarea name="世界の出来事"></textarea>
+<label>その場所にまつわる大切な記憶<span class="optional">任意</span></label><textarea name="大切な記憶"></textarea>
+<label>その世界で起こっていること<span class="optional">任意</span></label><textarea name="起こっていること"></textarea>
+<label>誰かに伝えたい物語<span class="optional">任意</span></label><textarea name="伝えたい物語"></textarea>
+<label>その世界を見た人に、どんなことを感じてほしい？<span class="optional">任意</span></label><textarea name="感じてほしいこと"></textarea>
+<label>「この瞬間を描いてほしい」という場面<span class="optional">任意</span></label><textarea name="描いてほしい場面"></textarea>
 </section>
 
 <section class="section">
 <p class="section-label">05｜CHARACTER</p><h2>人物について</h2><p class="section-desc">人物を登場させたい場合のみお答えください。<br>人物は世界を構成する要素のひとつとして扱います。必要ない場合は飛ばして大丈夫です。</p>
-<label>人物を登場させたいですか？</label><div class="options"><label><input type="radio" name="人物の登場" value="登場させたい">登場させたい</label><label><input type="radio" name="人物の登場" value="登場させない">登場させない</label><label><input type="radio" name="人物の登場" value="まだ決めていない">まだ決めていない</label></div>
-<label>誰を登場させたい？</label><textarea name="登場人物"></textarea>
-<label>その人物は、この世界でどんな存在？</label><textarea name="人物の存在"></textarea>
-<label>どこにいる？何をしている？</label><textarea name="人物の位置・行動"></textarea>
-<label>表情・服装・雰囲気など</label><textarea name="人物の表情・服装・雰囲気"></textarea>
+<label>人物を登場させたいですか？ <span class="optional">任意</span></label><div class="options"><label><input type="radio" name="人物の登場" value="登場させたい">登場させたい</label><label><input type="radio" name="人物の登場" value="登場させない">登場させない</label><label><input type="radio" name="人物の登場" value="まだ決めていない">まだ決めていない</label></div>
+<label>誰を登場させたい？<span class="optional">任意</span></label><textarea name="登場人物"></textarea>
+<label>その人物は、この世界でどんな存在？<span class="optional">任意</span></label><textarea name="人物の存在"></textarea>
+<label>どこにいる？何をしている？<span class="optional">任意</span></label><textarea name="人物の位置・行動"></textarea>
+<label>表情・服装・雰囲気など<span class="optional">任意</span></label><textarea name="人物の表情・服装・雰囲気"></textarea>
 </section>
 
 <section class="section">
 <p class="section-label">06｜IMAGE MATERIALS</p><h2>参考資料</h2><p class="section-desc">世界や人物を描くために必要な資料があれば送ってください。<br>人物を描かない場合、人物資料は不要です。</p>
 <div class="file-list">
-<div class="file-box"><label>世界観・背景の参考画像</label><input type="file" name="世界観・背景の参考画像" accept="image/*"></div>
-<div class="file-box"><label>人物・アバターの参考画像</label><input type="file" name="人物・アバターの参考画像" accept="image/*"></div>
-<div class="file-box"><label>衣装・小物などの参考画像</label><input type="file" name="衣装・小物の参考画像" accept="image/*"></div>
-<div class="file-box"><label>その他の参考画像</label><input type="file" name="その他の参考画像" accept="image/*"></div>
+<div class="file-box"><label>世界観・背景の参考画像 <span class="optional">任意</span></label><input type="file" name="世界観・背景の参考画像" accept="image/*"></div>
+<div class="file-box"><label>人物・アバターの参考画像 <span class="optional">任意</span></label><input type="file" name="人物・アバターの参考画像" accept="image/*"></div>
+<div class="file-box"><label>衣装・小物などの参考画像 <span class="optional">任意</span></label><input type="file" name="衣装・小物の参考画像" accept="image/*"></div>
+<div class="file-box"><label>その他の参考画像 <span class="optional">任意</span></label><input type="file" name="その他の参考画像" accept="image/*"></div>
 </div>
 <p class="hint">複数の資料がある場合は、必要に応じてまとめた画像をご用意ください。</p>
 </section>
 
 <section class="section">
 <p class="section-label">07｜ART DIRECTION</p><h2>構図・イラストについて</h2><p class="section-desc">「こんな一枚にしたい」という希望があれば教えてください。</p>
-<label>どこから見た景色にしたい？</label><textarea name="視点"></textarea>
-<label>世界を広く見せたい？それとも特定の場所を大きく見せたい？</label><textarea name="見せ方"></textarea>
-<label>好きな構図</label><textarea name="好きな構図"></textarea>
-<label>入れてほしいモチーフ</label><textarea name="入れてほしいモチーフ"></textarea>
-<label>好きな色</label><textarea name="好きな色"></textarea>
-<label>好きな雰囲気</label><textarea name="好きな雰囲気"></textarea>
-<label>その他、絵について希望すること</label><textarea name="イラストへの希望"></textarea>
+<label>どこから見た景色にしたい？<span class="optional">任意</span></label><textarea name="視点"></textarea>
+<label>世界を広く見せたい？それとも特定の場所を大きく見せたい？<span class="optional">任意</span></label><textarea name="見せ方"></textarea>
+<label>好きな構図<span class="optional">任意</span></label><textarea name="好きな構図"></textarea>
+<label>入れてほしいモチーフ<span class="optional">任意</span></label><textarea name="入れてほしいモチーフ"></textarea>
+<label>好きな色<span class="optional">任意</span></label><textarea name="好きな色"></textarea>
+<label>好きな雰囲気<span class="optional">任意</span></label><textarea name="好きな雰囲気"></textarea>
+<label>その他、絵について希望すること<span class="optional">任意</span></label><textarea name="イラストへの希望"></textarea>
 </section>
 
 <section class="section">
-<p class="section-label">08｜REFERRAL & RIGHTS</p><h2>紹介・権利について</h2><p class="section-desc">お申し込みに必要な確認事項です。</p>
-<label>紹介によるご依頼ですか？</label><div class="options"><label><input type="radio" name="紹介による依頼" value="はい">はい</label><label><input type="radio" name="紹介による依頼" value="いいえ">いいえ</label></div>
-<label>紹介してくれた方のお名前・活動名</label><input type="text" name="紹介者のお名前・活動名">
+<p class="section-label">08｜DISCOUNT & RIGHTS</p>
+<h2>割引・権利について</h2>
+<p class="section-desc">割引の利用と、制作に関わる権利について確認します。</p>
+
+<label>割引を利用しますか？ <span class="optional">任意</span></label>
+<div class="options">
+<label><input type="radio" name="割引の利用" value="利用する">利用する</label>
+<label><input type="radio" name="割引の利用" value="利用しない">利用しない</label>
+</div>
+
+<label>利用する割引の種類・名称 <span class="optional">任意</span></label>
+<input type="text" name="利用する割引の種類・名称" placeholder="例：紹介割引">
+
+<label>紹介によるご依頼ですか？ <span class="optional">任意</span></label>
+<div class="options">
+<label><input type="radio" name="紹介による依頼" value="はい">はい</label>
+<label><input type="radio" name="紹介による依頼" value="いいえ">いいえ</label>
+</div>
+
+<label>紹介してくれた方のお名前・活動名 <span class="optional">任意</span></label>
+<input type="text" name="紹介者のお名前・活動名">
+
+<label>割引について確認したいこと <span class="optional">任意</span></label>
+<textarea name="割引について確認したいこと"></textarea>
+
+<div class="notice" style="margin-top:24px;margin-bottom:0;text-align:left">
+<strong>権利について</strong><br>
+・制作した作品の著作権は、原則として星詠に帰属します。<br>
+・納品物は、個人で楽しむ範囲でご利用いただけます。<br>
+・商用利用、グッズ化、二次利用などをご希望の場合は、事前にご相談ください。<br>
+・第三者が権利を有する画像・キャラクター・ロゴ・衣装・素材などを、権利者の許可なく制作に使用する依頼は原則としてお受けできません。<br>
+・ご自身が権利を保有していない資料を使用する場合は、必要な許可・ライセンスを事前に取得してください。<br>
+・権利関係を確認できない場合、星詠が制作・納品をお断りする場合があります。<br>
+・星詠では制作にAIを使用しません。また、納品物をAI学習・AI生成等の目的で利用することも禁止しています。<br>
+・REALITYアバターを参考資料として使用する場合は、ご本人が使用しているアバターであることをご確認ください。REALITYの3Dモデルデータそのものを抽出・複製することを目的とした制作は行いません。
+</div>
+
 <div class="checks">
-<label class="check"><input type="checkbox" name="権利・利用についての確認" value="確認しました" required><span>著作権・利用範囲など、星詠の権利・利用についての案内を確認しました。</span></label>
-<label class="check"><input type="checkbox" name="注意事項の確認" value="確認しました" required><span>星詠の注意事項・制作条件を確認しました。</span></label>
-<label class="check"><input type="checkbox" name="連絡についての確認" value="確認しました" required><span>入力したメールアドレスへ、受付内容について連絡が届くことを確認しました。</span></label>
+<label class="check"><input type="checkbox" name="権利規定の確認" value="確認しました" required><span>星詠の著作権・利用範囲・商用利用等に関する案内を確認しました。<span class="required">必須</span></span></label>
+<label class="check"><input type="checkbox" name="第三者権利の確認" value="確認しました" required><span>使用する第三者コンテンツについて、権利者と利用条件を確認し、必要な許可・ライセンスを取得しています。無許可の素材を制作依頼に使用しません。<span class="required">必須</span></span></label>
+<label class="check"><input type="checkbox" name="権利確認の責任" value="確認しました" required><span>使用する素材・アバター・キャラクター・ロゴ等の権利関係および各サービスの利用条件について、自身の責任で確認・許可取得を行うことを了承します。<span class="required">必須</span></span></label>
+<label class="check"><input type="checkbox" name="注意事項の確認" value="確認しました" required><span>星詠の注意事項・制作条件を確認しました。<span class="required">必須</span></span></label>
+<label class="check"><input type="checkbox" name="割引条件の確認" value="確認しました"><span>利用する割引がある場合、その適用条件を確認しました。<span class="optional">任意</span></span></label>
+<label class="check"><input type="checkbox" name="連絡についての確認" value="確認しました" required><span>入力したメールアドレスへ、受付内容について連絡が届くことを確認しました。<span class="required">必須</span></span></label>
 </div>
 </section>
 
 <section class="section">
 <p class="section-label">09｜FINAL NOTE</p><h2>最後に</h2>
-<label>この世界で一番大切なもの</label><textarea name="この世界で一番大切なもの"></textarea>
-<label>自分だけが知っている、この世界のこと</label><textarea name="自分だけが知っている世界のこと"></textarea>
-<label>言葉では説明しにくいけれど入れてほしいもの</label><textarea name="言葉にしにくいが入れてほしいもの"></textarea>
-<label>今回の作品で「これだけは残してほしい」というもの</label><textarea name="これだけは残してほしいもの"></textarea>
-<label>その他、伝えておきたいこと</label><textarea name="その他、伝えておきたいこと"></textarea>
+<label>この世界で一番大切なもの<span class="optional">任意</span></label><textarea name="この世界で一番大切なもの"></textarea>
+<label>自分だけが知っている、この世界のこと<span class="optional">任意</span></label><textarea name="自分だけが知っている世界のこと"></textarea>
+<label>言葉では説明しにくいけれど入れてほしいもの<span class="optional">任意</span></label><textarea name="言葉にしにくいが入れてほしいもの"></textarea>
+<label>今回の作品で「これだけは残してほしい」というもの<span class="optional">任意</span></label><textarea name="これだけは残してほしいもの"></textarea>
+<label>その他、伝えておきたいこと<span class="optional">任意</span></label><textarea name="その他、伝えておきたいこと"></textarea>
 </section>
 
 <div class="notice">あなたが書いてくれた言葉や資料をもとに、<br>世界そのものを感じられる一枚を目指して制作します。<br><br>答えにくい質問は飛ばして大丈夫です。<br>思いついたところから自由に書いてください。</div>
+<div class="notice input-legend" style="margin-top:28px;margin-bottom:0">
+<strong>入力について</strong><br>
+<span style="color:#91b9f5">必須</span>：送信するために確認・入力が必要です。　
+<span style="color:#7f91ad">任意</span>：必要に応じてご記入ください。
+</div>
+
 <div class="submit-wrap"><button type="submit">この世界を届ける　→</button></div>
 </form>
 <a class="back" href="request-choice.html">← ご依頼内容の選択へ戻る</a>
