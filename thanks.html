@@ -1,322 +1,150 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>送信完了｜星詠</title>
-
 <style>
-
-*{
-  box-sizing:border-box;
-}
-
-html,body{
-  margin:0;
-  min-height:100%;
-}
-
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
 body{
-
   min-height:100vh;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
+  overflow-x:hidden;
   color:#edf3ff;
-
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(90,130,210,.14),
-      transparent 35%
-    ),
-    linear-gradient(
-      180deg,
-      #040916 0%,
-      #07142d 55%,
-      #040916 100%
-    );
-
-  font-family:
-    "Yu Mincho",
-    "Hiragino Mincho ProN",
-    "Noto Serif JP",
-    serif;
-
+  font-family:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
   line-height:1.9;
+  background:
+    radial-gradient(ellipse at 50% 30%,rgba(65,100,175,.15),transparent 48%),
+    linear-gradient(180deg,#020611 0%,#07152d 55%,#030817 100%);
 }
-
-.wrap{
-
-  width:min(
-    680px,
-    calc(100% - 40px)
-  );
-
+.sky{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.sky::before{
+  content:"";position:absolute;inset:0;opacity:.28;
+  background-image:
+    radial-gradient(circle at 14% 17%,rgba(235,243,255,.9) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 83% 26%,rgba(205,225,255,.65) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 73% 67%,rgba(225,238,255,.65) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 24% 72%,rgba(195,220,255,.5) 0 1px,transparent 1.8px);
+}
+.page{
+  position:relative;z-index:2;
+  width:min(720px,calc(100% - 34px));
+  min-height:100vh;
+  margin:auto;
+  padding:80px 0 70px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
   text-align:center;
 }
-
-
-/* SYSTEM */
-
+.emblem{
+  width:58px;height:58px;margin:0 auto 30px;
+  border:1px solid rgba(190,215,255,.38);
+  border-radius:50%;position:relative;opacity:.82;
+}
+.emblem::before,.emblem::after{
+  content:"";position:absolute;left:50%;top:50%;
+  background:rgba(215,230,255,.58);
+  transform:translate(-50%,-50%);
+}
+.emblem::before{width:76px;height:1px}
+.emblem::after{width:1px;height:76px}
+.emblem span{
+  position:absolute;inset:0;display:grid;place-items:center;font-size:20px;
+}
 .system{
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.72rem;
-
-  letter-spacing:.3em;
-
-  margin-bottom:30px;
+  color:#9bbfff;font-family:Georgia,"Times New Roman",serif;
+  font-size:.72rem;letter-spacing:.35em;margin-bottom:20px;
 }
-
-
-/* LOGO */
-
-.logo{
-
-  width:min(
-    190px,
-    55vw
-  );
-
-  height:auto;
-
-  display:block;
-
-  margin:0 auto 35px;
-
-  filter:
-    drop-shadow(
-      0 0 20px
-      rgba(150,190,255,.18)
-    );
-}
-
-
-/* MESSAGE */
-
-.message{
-
-  padding:50px 35px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.18);
-
-  border-radius:24px;
-
-  background:
-    rgba(10,24,52,.58);
-
-  box-shadow:
-    0 20px 60px
-    rgba(0,0,0,.15);
-}
-
-.label{
-
-  color:#8fbfff;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:.7rem;
-
-  letter-spacing:.25em;
-
-  margin-bottom:18px;
-}
-
 h1{
-
-  font-size:
-    clamp(
-      1.8rem,
-      5vw,
-      2.5rem
-    );
-
-  font-weight:400;
-
-  letter-spacing:.12em;
-
-  margin:0 0 25px;
+  margin:0;font-size:clamp(27px,5vw,38px);font-weight:400;
+  letter-spacing:.14em;line-height:1.8;
 }
-
-.text{
-
-  color:#aab8d2;
-
-  font-size:.9rem;
-
-  line-height:2.1;
-
-  margin:0;
+.lead{
+  margin:20px 0 34px;color:#b7c7df;font-size:.9rem;
+  line-height:2.15;letter-spacing:.07em;
 }
-
-.small{
-
-  margin-top:25px;
-
-  color:#74839d;
-
-  font-size:.75rem;
-
-  line-height:1.9;
+.message{
+  width:min(620px,100%);
+  margin:0 auto;
+  padding:38px 30px;
+  border:1px solid rgba(180,205,245,.20);
+  border-radius:18px;
+  background:rgba(8,22,48,.46);
+  box-shadow:0 18px 55px rgba(0,0,0,.16);
 }
-
-
-/* BUTTON */
-
-.back{
-
-  display:inline-block;
-
-  margin-top:35px;
-
-  padding:11px 25px;
-
-  border:
-    1px solid
-    rgba(180,205,245,.2);
-
-  border-radius:999px;
-
-  color:#dce8ff;
-
-  text-decoration:none;
-
-  font-size:.82rem;
-
-  letter-spacing:.08em;
-
-  transition:.35s ease;
+.message p{
+  margin:0 0 18px;color:#b9c7dc;font-size:.85rem;
+  line-height:2.2;letter-spacing:.05em;
 }
-
-.back:hover{
-
+.message p:last-child{margin-bottom:0}
+.buttons{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;
+  margin-top:32px;
+}
+.button{
+  display:inline-block;padding:11px 24px;
+  border:1px solid rgba(180,205,245,.22);
+  border-radius:999px;color:#dce8ff;text-decoration:none;
+  font-size:.78rem;letter-spacing:.08em;
+  background:rgba(180,210,255,.03);
+  transition:.3s ease;
+}
+.button:hover{
   transform:translateY(-2px);
-
-  background:
-    rgba(180,210,255,.08);
-
-  border-color:
-    rgba(143,191,255,.5);
-
-  box-shadow:
-    0 0 25px
-    rgba(143,191,255,.1);
+  background:rgba(180,210,255,.08);
+  border-color:rgba(180,205,245,.45);
 }
-
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-  .wrap{
-
-    width:min(
-      100% - 28px,
-      680px
-    );
-
-  }
-
-  .message{
-
-    padding:40px 22px;
-
-  }
-
+.signature{
+  margin-top:34px;color:#8192ad;font-size:.74rem;
+  line-height:2;letter-spacing:.08em;
 }
-
+@media(max-width:560px){
+  .page{padding:58px 0 48px}
+  .message{padding:30px 20px}
+}
 </style>
-
 </head>
-
-
 <body>
+<div class="sky"></div>
 
+<main class="page">
+  <div class="emblem"><span>✦</span></div>
 
-<main class="wrap">
+  <div class="system">HOSHIYOMI / THANK YOU</div>
 
+  <h1>星のかけらを、受け取りました。</h1>
 
-  <div class="system">
-    HOSHIYOMI REQUEST SYSTEM
-  </div>
+  <p class="lead">
+    ご依頼内容の送信が完了しました。
+  </p>
 
-
-  <img
-    src="logo.png"
-    alt="星詠"
-    class="logo"
-  >
-
-
-  <div class="message">
-
-
-    <div class="label">
-      REQUEST RECEIVED
-    </div>
-
-
-    <h1>
-      あなたの星を、<br>
-      受け取りました。
-    </h1>
-
-
-    <p class="text">
-
-      ご依頼内容の送信が完了しました。<br><br>
-
-      お送りいただいた内容を確認のうえ、<br>
-      ご入力いただいたメールアドレスへ<br>
-      ご連絡いたします。
-
+  <section class="message">
+    <p>
+      あなたが届けてくださった言葉や資料をもとに、<br>
+      これから一枚の作品へと形にしていきます。
     </p>
 
-
-    <p class="small">
-
-      ※この時点では、まだ正式なご依頼確定ではありません。<br>
-      内容を確認後、制作についてご案内いたします。
-
+    <p>
+      ご入力いただいたメールアドレス宛に、<br>
+      受付内容についてのご連絡をお送りします。
     </p>
 
+    <p>
+      今しばらく、お待ちください。
+    </p>
+  </section>
 
-    <a
-      href="index.html"
-      class="back"
-    >
-      星詠の入口へ戻る
-    </a>
-
-
+  <div class="buttons">
+    <a class="button" href="index.html">星詠のトップへ</a>
+    <a class="button" href="request-choice.html">依頼メニューへ</a>
   </div>
 
-
+  <p class="signature">
+    ──────────────<br>
+    星詠｜HOSHIYOMI<br>
+    無限に広がる夜空から、あなただけの星を。
+  </p>
 </main>
-
-
 </body>
 </html>
